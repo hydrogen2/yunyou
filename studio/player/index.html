@@ -53,7 +53,8 @@
   .leaflet-container { background:#e9e2d0; }
   .genwrap { position:absolute; inset:0; background:#efe6d3; display:flex; align-items:center; justify-content:center; }
   .genwrap svg.gen { width:100%; height:100%; display:block; touch-action:none; }
-  .genwrap svg.gen:focus { outline:2px solid #b03a2e; outline-offset:-2px; }
+  .genwrap svg.gen:focus-visible { outline:2px solid #b03a2e; outline-offset:-2px; }
+  .genwrap svg.gen :focus:not(:focus-visible) { outline:none; } /* pointer taps on tabindex'd svg parts (bag, rows) must not draw the browser focus ring */
   #countdown { color:var(--accent); font-family:system-ui,sans-serif; font-size:12px; }
   .row-hl { pointer-events:none; }
   .muted { color:var(--dim); font-family:system-ui,sans-serif; font-size:13px; }
@@ -117,8 +118,9 @@ speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
 function speak(text, onBoundary, onEnd){
   speechSynthesis.cancel(); if(!narrate||!text){ onEnd&&setTimeout(onEnd,0); return; }
   const u=new SpeechSynthesisUtterance(text); const v=voices.find(v=>v.name===$('#voice').value); if(v) u.voice=v; u.rate=0.98; u.pitch=1.0;
-  u.onboundary=e=>onBoundary&&onBoundary(e.charIndex); let ended=false; u.onend=()=>{ if(ended) return; ended=true; onEnd&&onEnd(); }; u.onerror=()=>{ ended=true; }; // cancel()/errors never fire onEnd (scene change is guarded by sceneSerial)
+  u.onboundary=e=>onBoundary&&onBoundary(e.charIndex); let ended=false; u.onend=()=>{ if(ended) return; ended=true; onEnd&&onEnd(); }; u.onerror=e=>{ if(ended) return; ended=true; if(e.error!=='canceled'&&e.error!=='interrupted'){ console.warn('tts error',e.error); onEnd&&onEnd(); } }; // cancel() never fires onEnd (scene change is guarded by sceneSerial); real failures (no voice, not-allowed…) count as 'said'
   window.__lastUtter=u; speechSynthesis.speak(u);
+  setTimeout(()=>{ if(!ended&&!speechSynthesis.speaking&&!speechSynthesis.pending){ ended=true; onEnd&&onEnd(); } },1500); // no voice / TTS silently refused (headless, some Android): behave as if the line had been read
 }
 
 // ---------- Audio bed ----------
@@ -219,7 +221,7 @@ async function shareCard(note){ const svg=$('#media svg.gen'); const title=scene
 
 // ---------- Renderers ----------
 function card(html){ const d=document.createElement('div'); d.className='fill'; d.innerHTML=`<div class="card">${html}</div>`; $('#media').appendChild(d); }
-async function showImage(m, kb=false){ const img=document.createElement('img'); if(kb) img.className='kenburns'; img.src= isCommons(m.ref)? await commonsUrl(m.ref):m.ref; img.alt=m.attribution||''; $('#media').innerHTML=''; $('#media').appendChild(img); if(m.attribution){ const a=document.createElement('div'); a.className='muted'; a.style.cssText='position:absolute;right:8px;bottom:6px;font-size:11px;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:4px'; a.textContent=m.attribution; $('#media').appendChild(a);} }
+async function showImage(m, kb=false){ const ser=sceneSerial, me=sched&&sched.active; const img=document.createElement('img'); if(kb) img.className='kenburns'; img.src= isCommons(m.ref)? await commonsUrl(m.ref):m.ref; if(ser!==sceneSerial||(sched&&sched.active!==me)) return; /* scene changed or the media schedule moved on (e.g. a generated card) while the Commons lookup was in flight */ img.alt=m.attribution||''; $('#media').innerHTML=''; $('#media').appendChild(img); if(m.attribution){ const a=document.createElement('div'); a.className='muted'; a.style.cssText='position:absolute;right:8px;bottom:6px;font-size:11px;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:4px'; a.textContent=m.attribution; $('#media').appendChild(a);} }
 function streetviewUrl(ref){ const [lat,lng,h,p,fov]=ref.split(',').map(Number); const key=localStorage.getItem('yy-gkey');
   return key ? `https://www.google.com/maps/embed/v1/streetview?key=${key}&location=${lat},${lng}&heading=${h||0}&pitch=${p||0}&fov=${fov||90}` : null; }
 function mapsLink(ref){ const [lat,lng,h,p,fov]=ref.split(',').map(Number); return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}&heading=${h||0}&pitch=${p||0}&fov=${fov||90}`; }
@@ -262,10 +264,10 @@ function renderInteraction(s){
   if(it.prompt){ const p=document.createElement('p'); p.innerHTML=`<b>${it.prompt}</b>`; box.appendChild(p); }
   if(it.kind==='choice'||it.kind==='tap-to-find'){
     const graded=(it.options||[]).some(o=>o.correct!==undefined); // info-taps (no correct flags) stay open for more taps
-    (it.options||[]).forEach((o,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=o.text; b.onclick=()=>{ if(b.disabled) return; interactionResolved=true; clearCountdown(); pauseTimer();
+    (it.options||[]).forEach((o,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=o.text; b.onclick=()=>{ if(b.disabled) return; interactionResolved=true; clearCountdown(); resumeTimer();
       if(graded){ box.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add(o.correct?'correct':'wrong','picked'); if(!o.correct){ const c=[...box.querySelectorAll('.opt')].find((x,k)=>it.options[k].correct); c&&c.classList.add('correct'); } }
       else { box.querySelectorAll('.opt').forEach(x=>x.classList.remove('picked')); b.classList.add('picked'); box.querySelectorAll('.fb').forEach(x=>x.remove()); }
-      const f=document.createElement('div'); f.className='fb'; f.textContent=o.feedback||(o.correct?'Yes.':'Not quite.'); box.appendChild(f); const a=after(); speak(f.textContent, null, ()=>{ if(a&&graded) speak(a); }); if(o.goto) box.dataset.goto=o.goto; genHooks.onPick&&genHooks.onPick(i); }; box.appendChild(b); });
+      const f=document.createElement('div'); f.className='fb'; f.textContent=o.feedback||(o.correct?'Yes.':'Not quite.'); box.appendChild(f); f.scrollIntoView({block:'nearest',behavior:'smooth'}); const a=after(); speak(f.textContent, null, ()=>{ if(a&&graded) speak(a); }); if(o.goto) box.dataset.goto=o.goto; genHooks.onPick&&genHooks.onPick(i); }; box.appendChild(b); });
     pickOption=i=>{ const b=box.querySelectorAll('.opt')[i]; if(b&&!b.disabled) b.click(); };
     box.autoResolve=()=>{ const k=(it.options||[]).findIndex(o=>o.correct); if(k>=0&&pickOption) pickOption(k); else { paused=false; } };
   } else if(it.kind==='drag'){
@@ -275,8 +277,8 @@ function renderInteraction(s){
       it.options.forEach((o,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent='☐ '+o.text; b.dataset.on='0'; b.onclick=()=>{ if(done) return; const on=b.dataset.on==='1';
         if(gameApi&&gameApi.svg){ if(o.correct) gameApi.svg.setIn(i,!on); else { wrongN++; gameApi.svg.snap(i); fbLine(o.feedback||'Fogg leaves that.'); } } else setBtn(i,!on); }; list.appendChild(b); }); box.appendChild(list);
       const chk=document.createElement('button'); chk.className='btn primary'; chk.textContent='Close the bag';
-      const close=()=>{ if(done) return; done=true; interactionResolved=true; clearCountdown(); pauseTimer(); let ok=0,bad=0; const svgMode=!!(gameApi&&gameApi.svg);
-        [...list.children].forEach((b,i)=>{ const want=!!it.options[i].correct, got=b.dataset.on==='1'; if(want&&got) ok++; if(!want&&got) bad++; b.classList.add(want?'correct':(got?'wrong':'')); b.disabled=true; }); if(svgMode) bad=wrongN;
+      const close=()=>{ if(done) return; done=true; interactionResolved=true; clearCountdown(); resumeTimer(); let ok=0,bad=0; const svgMode=!!(gameApi&&gameApi.svg);
+        [...list.children].forEach((b,i)=>{ const want=!!it.options[i].correct, got=b.dataset.on==='1'; if(want&&got) ok++; if(!want&&got) bad++; if(want) b.classList.add('correct'); else if(got) b.classList.add('wrong'); b.disabled=true; }); if(svgMode) bad=wrongN;
         box.querySelectorAll('.fb.tmp').forEach(x=>x.remove()); const f=document.createElement('div'); f.className='fb'; f.textContent= ok===need&&bad===0 ? 'Packed like Fogg. Two shirts, three pairs of stockings, and the money.' : `${ok} of ${need} right, ${bad} thing${bad===1?'':'s'} Fogg would have left behind.` + (it.answer?' '+it.answer:''); box.appendChild(f); const a=after(); speak(f.textContent,null,()=>{ if(a) speak(a); }); chk.disabled=true; if(svgMode) gameApi.svg.lock(); };
       chk.onclick=close; box.appendChild(chk);
       gameApi={ setBtn, feedback:i=>{ wrongN++; fbLine(it.options[i].feedback||'Fogg leaves that.'); }, close, need, get done(){ return done; }, svg:null };
@@ -289,7 +291,7 @@ function renderInteraction(s){
     row.append(b1,b2); box.append(row,note); interactionResolved=true;
   } else if(it.kind==='chat'){
     const wrap=document.createElement('div'); wrap.className='chat'; box.appendChild(wrap); const chips=document.createElement('div'); chips.className='chips'; box.appendChild(chips);
-    (it.options||[]).forEach(o=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=o.text; c.onclick=()=>{ interactionResolved=true; clearCountdown(); pauseTimer(); const q=document.createElement('div'); q.className='q'; q.textContent=o.text; wrap.appendChild(q); const a=document.createElement('div'); a.className='a'; a.textContent=o.feedback||o.answer||'…'; wrap.appendChild(a); speak(a.textContent); c.disabled=true; }; chips.appendChild(c); });
+    (it.options||[]).forEach(o=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=o.text; c.onclick=()=>{ interactionResolved=true; clearCountdown(); resumeTimer(); const q=document.createElement('div'); q.className='q'; q.textContent=o.text; wrap.appendChild(q); const a=document.createElement('div'); a.className='a'; a.textContent=o.feedback||o.answer||'…'; wrap.appendChild(a); speak(a.textContent); c.disabled=true; }; chips.appendChild(c); });
     const n=document.createElement('p'); n.className='muted'; n.textContent='Scripted fallback answers (no LLM connected in the dry run). Guardrails: '+(it.guardrails||[]).length+' rules.'; box.appendChild(n);
   } else if(it.kind==='walk'){ const p=document.createElement('p'); p.className='muted'; p.textContent=`Walk: ${(it.route||[]).length} waypoints. Use ◀ stop ▶ on the view.`; box.appendChild(p); }
 }
@@ -335,13 +337,15 @@ async function showScene(i){
   const it=s.interaction; const onEnd=()=>{ if(ser!==sceneSerial||!it||it.kind==='none'||interactionResolved) return; if(it.pause_narration&&it.timeout_s){ paused=true; startCountdown(it.timeout_s, ()=>{ if(ser!==sceneSerial) return; const box=$('#interaction'); if(box.autoResolve) box.autoResolve(); else paused=false; }); } };
   const startTts=()=>{ if(ser!==sceneSerial) return; speak(script, ci=>{ if(!captions) return; $('#script').innerHTML=`<span class="said">${script.slice(0,ci)}</span><span class="unsaid">${script.slice(ci)}</span>`; }, onEnd); };
   const delay=(s.narration&&s.narration.starts_at_s)||0; if(delay>0) setTimeout(startTts, delay*1000); else startTts();
-  t0=performance.now(); timer=setInterval(tick,500);
+  t0=performance.now(); timer=setInterval(tick,500); tick();
 }
-function tick(){ if(paused) { t0=performance.now()-elapsed*1000; return; } const s=scenes[idx]; elapsed=(performance.now()-t0)/1000; $('#prog i').style.width=Math.min(100,elapsed/s.duration_s*100)+'%'; $('#clock').textContent=`${Math.floor(elapsed)}s / ${s.duration_s}s`; renderOverlays(s,elapsed); schedTick();
+function tick(){ const s=scenes[idx]; if(paused) t0=performance.now()-elapsed*1000; else elapsed=(performance.now()-t0)/1000; $('#prog i').style.width=Math.min(100,elapsed/s.duration_s*100)+'%'; $('#clock').textContent=`${Math.floor(elapsed)}s / ${s.duration_s}s`; if(paused) return; renderOverlays(s,elapsed); schedTick();
   const needsInput = s.interaction && s.interaction.kind!=='none';
   if(s.type==='game' && elapsed>=s.duration_s && gameApi && !gameApi.done) gameApi.close();
   if(elapsed>=s.duration_s && !needsInput && !speechSynthesis.speaking){ next(); } }
 function pauseTimer(){ paused=true; }
+function resumeTimer(){ paused=false; } // interaction resolved: the scene clock (media schedule, overlays) runs on; auto-advance stays off for scenes that need input
+function seek(sec){ elapsed=Math.max(0,sec); t0=performance.now()-elapsed*1000; paused=false; tick(); } // test/render hook: jump the scene clock (media schedule + overlays follow)
 function next(){ const g=$('#interaction').dataset.goto; const j= g ? scenes.findIndex(x=>x.id===g) : -1; if(j>=0) return showScene(j); const nx=scenes[idx].next; const k= nx? scenes.findIndex(x=>x.id===nx) : -1; showScene(k>=0?k:idx+1); }
 $('#next').onclick=next; $('#prev').onclick=()=>showScene(idx-1);
 $('#btnCap').onclick=()=>{ captions=!captions; $('#btnCap').style.opacity=captions?1:.4; showScene(idx); };

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2176 1224" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="g01title" font-family="'Source Sans 3', system-ui, sans-serif">
 <title id="g01title">The full 80-day loop (16:9 crop)</title>
 <metadata>G-01 layer contract (ids of &lt;g> groups; show cumulatively L0 + L1..Lk):
-  L0    base: paper, graticule, Natural Earth coastlines, all ports (dots, names, dates), every leg dashed at 30 % ink,
-        port badges at 30 %, leg labels at 30 %, ledger at 30 %, key/legend, title, credits.
+  L0    base: paper, graticule, Natural Earth coastlines, all ports (numbered badges at 30 %, names, dates), every leg
+        dashed at 30 % ink, leg labels at 30 %, ledger at 30 %, key/legend, title, credits.
   DAY1  Day-1 state: London badge lit (accent) + caption 'Day 1 . London'. Hide when any L1..L9 is shown.
   L1..L8  leg k lit: leg k solid accent + hit path (class 'hit', data-leg=k, 48 px stroke); leg k-1 turned solid ink;
         badge of port k turned ink; badge of port k+1 lit accent; on-map leg label k and ledger row k solid
@@ -81,22 +81,14 @@
 
 </g>
 <g class="continues" font-family="'Source Sans 3', system-ui, sans-serif" font-size="14" fill="#5b4a3a"><text x="2152" y="309.3" text-anchor="end">leg 6 continues at the left edge →</text><text x="24" y="309.3">→ leg 6, from the right edge</text></g>
-<circle class="port-dot" data-port="1" cx="1026.8" cy="316.4" r="4" fill="#2a2118"/>
-<circle class="port-dot" data-port="2" cx="1224.3" cy="446.6" r="4" fill="#2a2118"/>
-<circle class="port-dot" data-port="3" cx="1467.8" cy="513.3" r="4" fill="#2a2118"/>
-<circle class="port-dot" data-port="4" cx="1561.6" cy="491.3" r="4" fill="#2a2118"/>
-<circle class="port-dot" data-port="5" cx="1717.6" cy="492.8" r="4" fill="#2a2118"/>
-<circle class="port-dot" data-port="6" cx="1871.6" cy="413.5" r="4" fill="#2a2118"/>
-<circle class="port-dot" data-port="7" cx="287.6" cy="399.4" r="4" fill="#2a2118"/>
-<circle class="port-dot" data-port="8" cx="580.2" cy="381.7" r="4" fill="#2a2118"/>
-<g class="badge badge-ahead" data-port="1" opacity="0.3"><circle cx="1026.8" cy="316.4" r="15" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="1026.8" y="322.9" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">1</text></g>
-<g class="badge badge-ahead" data-port="2" opacity="0.3"><circle cx="1224.3" cy="446.6" r="15" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="1224.3" y="453.1" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">2</text></g>
-<g class="badge badge-ahead" data-port="3" opacity="0.3"><circle cx="1467.8" cy="513.3" r="15" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="1467.8" y="519.8" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">3</text></g>
-<g class="badge badge-ahead" data-port="4" opacity="0.3"><circle cx="1561.6" cy="491.3" r="15" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="1561.6" y="497.8" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">4</text></g>
-<g class="badge badge-ahead" data-port="5" opacity="0.3"><circle cx="1717.6" cy="492.8" r="15" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="1717.6" y="499.3" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">5</text></g>
-<g class="badge badge-ahead" data-port="6" opacity="0.3"><circle cx="1871.6" cy="413.5" r="15" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="1871.6" y="420" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">6</text></g>
-<g class="badge badge-ahead" data-port="7" opacity="0.3"><circle cx="287.6" cy="399.4" r="15" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="287.6" y="405.9" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">7</text></g>
-<g class="badge badge-ahead" data-port="8" opacity="0.3"><circle cx="580.2" cy="381.7" r="15" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="580.2" y="388.2" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">8</text></g>
+<g class="badge badge-ahead" data-port="1"><circle cx="1026.8" cy="316.4" r="15" fill="#efe6d3" stroke="#2a2118" stroke-opacity="0.3" stroke-width="2"/><text x="1026.8" y="322.9" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118" fill-opacity="0.3">1</text></g>
+<g class="badge badge-ahead" data-port="2"><circle cx="1224.3" cy="446.6" r="15" fill="#efe6d3" stroke="#2a2118" stroke-opacity="0.3" stroke-width="2"/><text x="1224.3" y="453.1" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118" fill-opacity="0.3">2</text></g>
+<g class="badge badge-ahead" data-port="3"><circle cx="1467.8" cy="513.3" r="15" fill="#efe6d3" stroke="#2a2118" stroke-opacity="0.3" stroke-width="2"/><text x="1467.8" y="519.8" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118" fill-opacity="0.3">3</text></g>
+<g class="badge badge-ahead" data-port="4"><circle cx="1561.6" cy="491.3" r="15" fill="#efe6d3" stroke="#2a2118" stroke-opacity="0.3" stroke-width="2"/><text x="1561.6" y="497.8" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118" fill-opacity="0.3">4</text></g>
+<g class="badge badge-ahead" data-port="5"><circle cx="1717.6" cy="492.8" r="15" fill="#efe6d3" stroke="#2a2118" stroke-opacity="0.3" stroke-width="2"/><text x="1717.6" y="499.3" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118" fill-opacity="0.3">5</text></g>
+<g class="badge badge-ahead" data-port="6"><circle cx="1871.6" cy="413.5" r="15" fill="#efe6d3" stroke="#2a2118" stroke-opacity="0.3" stroke-width="2"/><text x="1871.6" y="420" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118" fill-opacity="0.3">6</text></g>
+<g class="badge badge-ahead" data-port="7"><circle cx="287.6" cy="399.4" r="15" fill="#efe6d3" stroke="#2a2118" stroke-opacity="0.3" stroke-width="2"/><text x="287.6" y="405.9" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118" fill-opacity="0.3">7</text></g>
+<g class="badge badge-ahead" data-port="8"><circle cx="580.2" cy="381.7" r="15" fill="#efe6d3" stroke="#2a2118" stroke-opacity="0.3" stroke-width="2"/><text x="580.2" y="388.2" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118" fill-opacity="0.3">8</text></g>
 <g class="port-label" data-port="1"><text x="1006.8" y="346.4" text-anchor="end" font-family="'Playfair Display', Georgia, serif" font-weight="600" font-size="24" fill="#2a2118">London</text><text x="1006.8" y="365.4" text-anchor="end" font-family="'Source Sans 3', system-ui, sans-serif" font-size="16" fill="#5b4a3a">2 Oct · 21 Dec</text></g>
 <g class="port-label" data-port="2"><text x="1244.3" y="452.6" text-anchor="start" font-family="'Playfair Display', Georgia, serif" font-weight="600" font-size="24" fill="#2a2118">Suez</text><text x="1244.3" y="471.6" text-anchor="start" font-family="'Source Sans 3', system-ui, sans-serif" font-size="16" fill="#5b4a3a">9 Oct</text></g>
 <g class="port-label" data-port="3"><text x="1443.8" y="499.3" text-anchor="end" font-family="'Playfair Display', Georgia, serif" font-weight="600" font-size="24" fill="#2a2118">Bombay</text><text x="1443.8" y="518.3" text-anchor="end" font-family="'Source Sans 3', system-ui, sans-serif" font-size="16" fill="#5b4a3a">20 Oct</text></g>
@@ -105,30 +97,30 @@
 <g class="port-label" data-port="6"><text x="1889.6" y="443.5" text-anchor="start" font-family="'Playfair Display', Georgia, serif" font-weight="600" font-size="24" fill="#2a2118">Yokohama</text><text x="1889.6" y="462.5" text-anchor="start" font-family="'Source Sans 3', system-ui, sans-serif" font-size="16" fill="#5b4a3a">14 Nov</text></g>
 <g class="port-label" data-port="7"><text x="269.6" y="429.4" text-anchor="end" font-family="'Playfair Display', Georgia, serif" font-weight="600" font-size="24" fill="#2a2118">San Francisco</text><text x="269.6" y="448.4" text-anchor="end" font-family="'Source Sans 3', system-ui, sans-serif" font-size="16" fill="#5b4a3a">3 Dec</text></g>
 <g class="port-label" data-port="8"><text x="598.2" y="411.7" text-anchor="start" font-family="'Playfair Display', Georgia, serif" font-weight="600" font-size="24" fill="#2a2118">New York</text><text x="598.2" y="430.7" text-anchor="start" font-family="'Source Sans 3', system-ui, sans-serif" font-size="16" fill="#5b4a3a">11 Dec</text></g>
-<text class="leg-label" data-leg="1" x="1106.1" y="445.2" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">rail + steamer · 7 days</text>
+<text class="leg-label" data-leg="1" x="1088" y="431.3" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">rail + steamer · 7 days</text>
 <text class="leg-label" data-leg="2" x="1372.1" y="576.4" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">steamer · 13 days</text>
-<text class="leg-label" data-leg="3" x="1514.1" y="522" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">rail · 3 days</text>
-<text class="leg-label" data-leg="4" x="1520.2" y="558.2" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">steamer · 13 days</text>
+<text class="leg-label" data-leg="3" x="1515.9" y="451.2" text-anchor="start" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">rail · 3 days</text>
+<text class="leg-label" data-leg="4" x="1550.4" y="594.5" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">steamer · 13 days</text>
 <text class="leg-label" data-leg="5" x="1825.4" y="488.7" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">steamer · 6 days</text>
-<text class="leg-label" data-leg="6" x="2043" y="410.1" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">steamer · 22 days — the longest leg</text>
+<text class="leg-label" data-leg="6" x="2030.9" y="389" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">steamer · 22 days<tspan x="2030.9" dy="19">the longest leg</tspan></text>
 <text class="leg-label" data-leg="7" x="471.5" y="352.7" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">rail · 7 days</text>
 <text class="leg-label" data-leg="8" x="773.7" y="298.3" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118" opacity="0.3">steamer + rail · 9 days</text>
 <g class="key" font-family="'Source Sans 3', system-ui, sans-serif" font-size="16" fill="#2a2118">
-<text x="70" y="1030" font-weight="600" font-size="17">Key</text>
-<g transform="translate(140 1024)"><path d="M0 0 h56" stroke="#b03a2e" stroke-width="4" fill="none"/></g>
-<text x="206" y="1030">this leg (lit)</text>
-<g transform="translate(366 1024)"><path d="M0 0 h56" stroke="#2a2118" stroke-width="3.6" fill="none"/></g>
-<text x="432" y="1030">travelled</text>
-<g transform="translate(551 1024)"><path d="M0 0 h56" stroke="#2a2118" stroke-opacity="0.3" stroke-width="3" stroke-dasharray="9 7" fill="none"/></g>
-<text x="617" y="1030">ahead (30 % ink, dashed)</text>
-<g transform="translate(859 1024)"><circle cx="28" cy="0" r="12" fill="#b03a2e"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="15" fill="#efe6d3">1</text></g>
-<text x="925" y="1030">port lit</text>
-<g transform="translate(1036 1024)"><circle cx="28" cy="0" r="12" fill="#2a2118"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="15" fill="#efe6d3">2</text></g>
-<text x="1102" y="1030">port called</text>
-<g transform="translate(1238 1024)"><g opacity="0.3"><circle cx="28" cy="0" r="12" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="15" fill="#2a2118">3</text></g></g>
-<text x="1304" y="1030">port ahead</text>
-<g transform="translate(1432 1024)"><path d="M28 -12 L40 0 L28 12 L16 0Z" fill="#b03a2e"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="14" fill="#efe6d3">A</text></g>
-<text x="1498" y="1030">A–C  what made it possible, 1869–70</text>
+<text x="70" y="1085" font-weight="600" font-size="17">Key</text>
+<g transform="translate(140 1079)"><path d="M0 0 h56" stroke="#b03a2e" stroke-width="4" fill="none"/></g>
+<text x="206" y="1085">this leg (lit)</text>
+<g transform="translate(366 1079)"><path d="M0 0 h56" stroke="#2a2118" stroke-width="3.6" fill="none"/></g>
+<text x="432" y="1085">travelled</text>
+<g transform="translate(551 1079)"><path d="M0 0 h56" stroke="#2a2118" stroke-opacity="0.3" stroke-width="3" stroke-dasharray="9 7" fill="none"/></g>
+<text x="617" y="1085">ahead (30 % ink, dashed)</text>
+<g transform="translate(859 1079)"><circle cx="28" cy="0" r="12" fill="#b03a2e"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="15" fill="#efe6d3">1</text></g>
+<text x="925" y="1085">port lit</text>
+<g transform="translate(1036 1079)"><circle cx="28" cy="0" r="12" fill="#2a2118"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="15" fill="#efe6d3">2</text></g>
+<text x="1102" y="1085">port called</text>
+<g transform="translate(1238 1079)"><g opacity="0.3"><circle cx="28" cy="0" r="12" fill="#efe6d3" stroke="#2a2118" stroke-width="2"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="15" fill="#2a2118">3</text></g></g>
+<text x="1304" y="1085">port ahead</text>
+<g transform="translate(1432 1079)"><path d="M28 -12 L40 0 L28 12 L16 0Z" fill="#b03a2e"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="14" fill="#efe6d3">A</text></g>
+<text x="1498" y="1085">A–C  what made it possible, 1869–70</text>
 </g>
 <text x="70" y="1300" font-family="'Playfair Display', Georgia, serif" font-weight="600" font-size="24" fill="#2a2118">The itinerary — the Daily Telegraph estimate Fogg wagers on</text>
 <g class="ledger-row" data-leg="1" opacity="0.3"><text x="70" y="1345" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="20" fill="#2a2118">1</text><text x="104" y="1345" font-family="'Playfair Display', Georgia, serif" font-size="21" fill="#2a2118">London → Suez</text><text x="470" y="1345" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#2a2118">rail + steamer</text><text x="710" y="1345" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">7 days</text><text x="830" y="1345" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#5b4a3a">2 – 9 Oct</text></g>
@@ -140,7 +132,7 @@
 <g class="ledger-row" data-leg="7" opacity="0.3"><text x="1130" y="1445" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="20" fill="#2a2118">7</text><text x="1164" y="1445" font-family="'Playfair Display', Georgia, serif" font-size="21" fill="#2a2118">San Francisco → New York</text><text x="1530" y="1445" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#2a2118">rail</text><text x="1770" y="1445" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">7 days</text><text x="1890" y="1445" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#5b4a3a">3 – 11 Dec</text></g>
 <g class="ledger-row" data-leg="8" opacity="0.3"><text x="1130" y="1495" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="20" fill="#2a2118">8</text><text x="1164" y="1495" font-family="'Playfair Display', Georgia, serif" font-size="21" fill="#2a2118">New York → London</text><text x="1530" y="1495" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#2a2118">steamer + rail</text><text x="1770" y="1495" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#2a2118">9 days</text><text x="1890" y="1495" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#5b4a3a">11 – 21 Dec</text></g>
 <g class="ledger-total" opacity="0.3"><text x="70" y="1563" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="22" fill="#2a2118">7 + 13 + 3 + 13 + 6 + 22 + 7 + 9 = 80 days</text><text x="590" y="1563" font-family="'Playfair Display', Georgia, serif" font-style="italic" font-size="21" fill="#2a2118">Back at the Reform Club, Saturday 21 December 1872, a quarter before nine.</text></g>
-<text x="70" y="1770" font-family="'Source Sans 3', system-ui, sans-serif" font-size="14" fill="#5b4a3a">Equirectangular, centre 10° E · Coastlines: Natural Earth 1:110m (public domain) · Itinerary and dates: Jules Verne, Around the World in Eighty Days, ch. III (fact-sheet F-10, F-11, F-33) · Yunyou studio 2026, generated (G-01)</text>
+<g class="credits"><text x="70" y="1770" font-family="'Source Sans 3', system-ui, sans-serif" font-size="14" fill="#5b4a3a">Equirectangular, centre 10° E · Coastlines: Natural Earth 1:110m (public domain) · Itinerary and dates: Jules Verne, Around the World in Eighty Days, ch. III (fact-sheet F-10, F-11, F-33) · Yunyou studio 2026, generated (G-01)</text></g>
 </g>
 <g id="L1"><title>L1 — leg 1: London → Suez, rail + steamer, 7 days (2 – 9 Oct)</title>
 <g class="leg leg-accent" data-leg="1" fill="none" stroke="#b03a2e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
@@ -152,7 +144,7 @@
 </g>
 <g class="badge badge-ink" data-port="1"><circle cx="1026.8" cy="316.4" r="15" fill="#2a2118" stroke="#efe6d3" stroke-width="1.5"/><text x="1026.8" y="322.9" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">1</text></g>
 <g class="badge badge-accent" data-port="2"><circle cx="1224.3" cy="446.6" r="15" fill="#b03a2e" stroke="#efe6d3" stroke-width="1.5"/><text x="1224.3" y="453.1" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">2</text></g>
-<text class="leg-label" data-leg="1" x="1106.1" y="445.2" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118">rail + steamer · 7 days</text>
+<text class="leg-label" data-leg="1" x="1088" y="431.3" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118">rail + steamer · 7 days</text>
 <g class="ledger-row" data-leg="1"><text x="70" y="1345" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="20" fill="#b03a2e">1</text><text x="104" y="1345" font-family="'Playfair Display', Georgia, serif" font-size="21" fill="#b03a2e">London → Suez</text><text x="470" y="1345" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#b03a2e">rail + steamer</text><text x="710" y="1345" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#b03a2e">7 days</text><text x="830" y="1345" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#5b4a3a">2 – 9 Oct</text></g>
 </g>
 <g id="L2"><title>L2 — leg 2: Suez → Bombay, steamer, 13 days (9 – 20 Oct)</title>
@@ -190,7 +182,7 @@
 <g class="badge badge-ink" data-port="2"><circle cx="1224.3" cy="446.6" r="15" fill="#2a2118" stroke="#efe6d3" stroke-width="1.5"/><text x="1224.3" y="453.1" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">2</text></g>
 <g class="badge badge-ink" data-port="3"><circle cx="1467.8" cy="513.3" r="15" fill="#2a2118" stroke="#efe6d3" stroke-width="1.5"/><text x="1467.8" y="519.8" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">3</text></g>
 <g class="badge badge-accent" data-port="4"><circle cx="1561.6" cy="491.3" r="15" fill="#b03a2e" stroke="#efe6d3" stroke-width="1.5"/><text x="1561.6" y="497.8" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">4</text></g>
-<text class="leg-label" data-leg="3" x="1514.1" y="522" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118">rail · 3 days</text>
+<text class="leg-label" data-leg="3" x="1515.9" y="451.2" text-anchor="start" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118">rail · 3 days</text>
 <g class="ledger-row" data-leg="3"><text x="70" y="1445" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="20" fill="#b03a2e">3</text><text x="104" y="1445" font-family="'Playfair Display', Georgia, serif" font-size="21" fill="#b03a2e">Bombay → Calcutta</text><text x="470" y="1445" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#b03a2e">rail</text><text x="710" y="1445" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#b03a2e">3 days</text><text x="830" y="1445" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#5b4a3a">20 – 25 Oct</text></g>
 </g>
 <g id="L4"><title>L4 — leg 4: Calcutta → Hong Kong, steamer, 13 days (25 Oct – 6 Nov)</title>
@@ -209,7 +201,7 @@
 <g class="badge badge-ink" data-port="3"><circle cx="1467.8" cy="513.3" r="15" fill="#2a2118" stroke="#efe6d3" stroke-width="1.5"/><text x="1467.8" y="519.8" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">3</text></g>
 <g class="badge badge-ink" data-port="4"><circle cx="1561.6" cy="491.3" r="15" fill="#2a2118" stroke="#efe6d3" stroke-width="1.5"/><text x="1561.6" y="497.8" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">4</text></g>
 <g class="badge badge-accent" data-port="5"><circle cx="1717.6" cy="492.8" r="15" fill="#b03a2e" stroke="#efe6d3" stroke-width="1.5"/><text x="1717.6" y="499.3" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">5</text></g>
-<text class="leg-label" data-leg="4" x="1520.2" y="558.2" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118">steamer · 13 days</text>
+<text class="leg-label" data-leg="4" x="1550.4" y="594.5" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118">steamer · 13 days</text>
 <g class="ledger-row" data-leg="4"><text x="70" y="1495" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="20" fill="#b03a2e">4</text><text x="104" y="1495" font-family="'Playfair Display', Georgia, serif" font-size="21" fill="#b03a2e">Calcutta → Hong Kong</text><text x="470" y="1495" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#b03a2e">steamer</text><text x="710" y="1495" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#b03a2e">13 days</text><text x="830" y="1495" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#5b4a3a">25 Oct – 6 Nov</text></g>
 </g>
 <g id="L5"><title>L5 — leg 5: Hong Kong → Yokohama, steamer, 6 days (6 – 14 Nov)</title>
@@ -249,7 +241,7 @@
 <g class="badge badge-ink" data-port="5"><circle cx="1717.6" cy="492.8" r="15" fill="#2a2118" stroke="#efe6d3" stroke-width="1.5"/><text x="1717.6" y="499.3" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">5</text></g>
 <g class="badge badge-ink" data-port="6"><circle cx="1871.6" cy="413.5" r="15" fill="#2a2118" stroke="#efe6d3" stroke-width="1.5"/><text x="1871.6" y="420" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">6</text></g>
 <g class="badge badge-accent" data-port="7"><circle cx="287.6" cy="399.4" r="15" fill="#b03a2e" stroke="#efe6d3" stroke-width="1.5"/><text x="287.6" y="405.9" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#efe6d3">7</text></g>
-<text class="leg-label" data-leg="6" x="2043" y="410.1" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118">steamer · 22 days — the longest leg</text>
+<text class="leg-label" data-leg="6" x="2030.9" y="389" text-anchor="middle" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="16" fill="#2a2118">steamer · 22 days<tspan x="2030.9" dy="19">the longest leg</tspan></text>
 <g class="ledger-row" data-leg="6"><text x="1130" y="1395" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="20" fill="#b03a2e">6</text><text x="1164" y="1395" font-family="'Playfair Display', Georgia, serif" font-size="21" fill="#b03a2e">Yokohama → San Francisco</text><text x="1530" y="1395" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#b03a2e">steamer</text><text x="1770" y="1395" font-family="'Source Sans 3', system-ui, sans-serif" font-weight="600" font-size="19" fill="#b03a2e">22 days</text><text x="1890" y="1395" font-family="'Source Sans 3', system-ui, sans-serif" font-size="19" fill="#5b4a3a">14 Nov – 3 Dec</text></g>
 </g>
 <g id="L7"><title>L7 — leg 7: San Francisco → New York, rail, 7 days (3 – 11 Dec)</title>

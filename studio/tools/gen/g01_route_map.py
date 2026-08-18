@@ -25,6 +25,17 @@ LAT_TOP = 84.0
 S = W / 360.0                   # 6.044 px per degree
 LAT_BOT = LAT_TOP - MAP_H / S   # ≈ -59.9
 CROP_16x9 = (0, 0, W, round(W * 9 / 16))  # 2176×1224
+CROP_9x16_X = 487               # 9:16 phone variant: map crop x 487..1567 (Newfoundland → Calcutta, London centred), 1:1 scale
+
+# Furniture layout (title / key / ledger / credits); the map itself never moves. build() switches between the two.
+LAYOUTS = {
+    'fold': dict(viewbox=(0, 0, W, H), text_x=70, ledger_x=(70, 1130), ledger_y0=1345, ledger_hdr_y=1300, key_y=1085,
+                 key_rows=1, credits_y=(1770,), paper_h=H),
+    '9x16': dict(viewbox=(CROP_9x16_X, 0, 1080, 2160), text_x=CROP_9x16_X + 48, ledger_x=(CROP_9x16_X + 48,),
+                 ledger_y0=1250, ledger_hdr_y=1200, key_y=1040, key_rows=2, credits_y=(2096, 2118), paper_h=2160,
+                 crop_x=(CROP_9x16_X, CROP_9x16_X + 1080)),
+}
+LAY = LAYOUTS['fold']
 
 PAPER, INK, SEPIA, ACCENT, LAND = '#efe6d3', '#2a2118', '#5b4a3a', '#b03a2e', '#e7dcc4'
 SERIF = "'Playfair Display', Georgia, serif"
@@ -51,20 +62,20 @@ PORTS = [  # n, name, lon, lat, date, anchor, dx, dy (px from the port dot)
 LEGS = [  # k, from, to, mode, days, dates, waypoints (lon unwrapped, lat), label anchor (lon, lat)
     (1, 1, 2, 'rail + steamer', 7, '2 – 9 Oct',
      [(-0.13, 51.51), (1.31, 51.13), (1.86, 50.95), (2.35, 48.86), (6.9, 45.2), (7.69, 45.07), (12.5, 43.5),
-      (17.94, 40.63), (19.5, 38.5), (24.5, 34.8), (30.5, 32.2), (32.3, 31.26), (32.55, 29.97)], (13, 30.2)),
+      (17.94, 40.63), (19.5, 38.5), (24.5, 34.8), (30.5, 32.2), (32.3, 31.26), (32.55, 29.97)], (10, 32.5)),
     (2, 2, 3, 'steamer', 13, '9 – 20 Oct',
      [(32.55, 29.97), (33.5, 27.5), (37, 22), (40, 16.5), (43.4, 12.6), (45.0, 12.7), (52, 12.7), (60, 13.5),
       (66, 15.5), (72.84, 18.94)], (57, 8.5)),
     (3, 3, 4, 'rail', 3, '20 – 25 Oct',
-     [(72.84, 18.94), (75.5, 20.5), (79.9, 23.2), (81.85, 25.44), (85, 24.8), (88.36, 22.57)], (80.5, 17.5)),
+     [(72.84, 18.94), (75.5, 20.5), (79.9, 23.2), (81.85, 25.44), (85, 24.8), (88.36, 22.57)], (80.8, 29.2)),
     (4, 4, 5, 'steamer', 13, '25 Oct – 6 Nov',
      [(88.36, 22.57), (89.5, 20.5), (91.5, 17), (93, 14), (97, 7), (103.85, 1.29), (106, 3), (110, 8),
-      (113, 14), (114.0, 20), (114.17, 22.32)], (81.5, 11.5)),
+      (113, 14), (114.0, 20), (114.17, 22.32)], (86.5, 5.5)),
     (5, 5, 6, 'steamer', 6, '6 – 14 Nov',
      [(114.17, 22.32), (117, 23), (122, 26), (128, 30), (134, 33.5), (139.64, 35.44)], (132, 23)),
     (6, 6, 7, 'steamer', 22, '14 Nov – 3 Dec',
      [(139.64, 35.44), (150, 41), (165, 47), (180, 50), (195, 50.5), (210, 47), (220, 43), (230, 39.5),
-      (237.58, 37.77)], (168, 36)),
+      (237.58, 37.77)], (166, 39.5)),
     (7, 7, 8, 'rail', 7, '3 – 11 Dec',
      [(-122.42, 37.77), (-121.5, 38.58), (-119.8, 39.5), (-111.97, 41.22), (-104.8, 41.14), (-95.94, 41.26),
       (-87.63, 41.88), (-80, 41.4), (-74.01, 40.71)], (-92, 45.5)),
@@ -73,15 +84,18 @@ LEGS = [  # k, from, to, mode, days, dates, waypoints (lon unwrapped, lat), labe
      (-42, 54.5)),
 ]
 ENABLERS = [  # letter, label, date, lon, lat (drawn), spec lon/lat, label anchor, dx, dy
-    ('A', 'Suez Canal', '17 Nov 1869', 32.35, 31.05, (32.5, 30.0), 'start', 16, -14),
-    ('B', 'Promontory Summit', '10 May 1869', -112.5, 41.6, (-112.5, 41.6), 'middle', 0, 34),
-    ('C', 'Jabalpur', '7 Mar 1870', 79.9, 23.2, (79.9, 23.2), 'middle', 0, -46),
+    # A: the canal (30.0 N 32.5 E) is 8 px from the Suez badge at this scale, so the diamond sits SW in the Egyptian
+    #    desert with a leader line to the badge rim (a callout, not a position). B and C sit on the route as specified.
+    ('A', 'Suez Canal', '17 Nov 1869', 28.3, 26.3, (32.5, 30.0), 'end', -20, 6),
+    ('B', 'Promontory Summit', '10 May 1869', -112.5, 41.6, (-112.5, 41.6), 'start', 18, 30),
+    ('C', 'Jabalpur', '7 Mar 1870', 79.9, 23.2, (79.9, 23.2), 'end', -28, -34),
 ]
+LEG_LABEL_ANCHOR = {3: 'start'}   # default 'middle'
 PORT_BY_N = {p[0]: p for p in PORTS}
 
 LAYER_CONTRACT = """G-01 layer contract (ids of <g> groups; show cumulatively L0 + L1..Lk):
-  L0    base: paper, graticule, Natural Earth coastlines, all ports (dots, names, dates), every leg dashed at 30 % ink,
-        port badges at 30 %, leg labels at 30 %, ledger at 30 %, key/legend, title, credits.
+  L0    base: paper, graticule, Natural Earth coastlines, all ports (numbered badges at 30 %, names, dates), every leg
+        dashed at 30 % ink, leg labels at 30 %, ledger at 30 %, key/legend, title, credits.
   DAY1  Day-1 state: London badge lit (accent) + caption 'Day 1 . London'. Hide when any L1..L9 is shown.
   L1..L8  leg k lit: leg k solid accent + hit path (class 'hit', data-leg=k, 48 px stroke); leg k-1 turned solid ink;
         badge of port k turned ink; badge of port k+1 lit accent; on-map leg label k and ledger row k solid
@@ -185,10 +199,10 @@ def leg_stroke(k, state, hit=False):
 def badge(n, state, r=15):
     _, name, lon, lat, *_ = PORT_BY_N[n]
     x, y = proj(lon, lat)
-    if state == 'ahead':
-        return (f'<g class="badge badge-ahead" data-port="{n}" opacity="{AHEAD_OPACITY}"><circle cx="{f(x)}" cy="{f(y)}" r="{r}" '
-                f'fill="{PAPER}" stroke="{INK}" stroke-width="2"/><text x="{f(x)}" y="{f(y+6.5)}" text-anchor="middle" '
-                f'font-family="{SANS}" font-weight="600" font-size="19" fill="{INK}">{n}</text></g>')
+    if state == 'ahead':  # opaque paper disc (hides the dashed line under it), outline + number at 30 %
+        return (f'<g class="badge badge-ahead" data-port="{n}"><circle cx="{f(x)}" cy="{f(y)}" r="{r}" '
+                f'fill="{PAPER}" stroke="{INK}" stroke-opacity="{AHEAD_OPACITY}" stroke-width="2"/><text x="{f(x)}" y="{f(y+6.5)}" text-anchor="middle" '
+                f'font-family="{SANS}" font-weight="600" font-size="19" fill="{INK}" fill-opacity="{AHEAD_OPACITY}">{n}</text></g>')
     fill = INK if state == 'ink' else ACCENT
     return (f'<g class="badge badge-{state}" data-port="{n}"><circle cx="{f(x)}" cy="{f(y)}" r="{r}" fill="{fill}" '
             f'stroke="{PAPER}" stroke-width="1.5"/><text x="{f(x)}" y="{f(y+6.5)}" text-anchor="middle" '
@@ -207,19 +221,25 @@ def port_labels():
 def leg_label(k, opacity=None):
     l = LEGS[k - 1]
     x, y = proj(*l[7])
-    txt = f'{l[3]} · {l[4]} days' + (' — the longest leg' if k == 6 else '')
+    txt = f'{l[3]} · {l[4]} days'
     op = f' opacity="{opacity}"' if opacity else ''
-    return (f'<text class="leg-label" data-leg="{k}" x="{f(x)}" y="{f(y)}" text-anchor="middle" font-family="{SANS}" '
-            f'font-weight="600" font-size="16" fill="{INK}"{op}>{txt}</text>')
+    anchor = LEG_LABEL_ANCHOR.get(k, 'middle')
+    if 'crop_x' in LAY:  # phone crop: drop a leg label that would be cut by the frame edge
+        w = len(txt) * 8.2
+        x0 = x if anchor == 'start' else x - w if anchor == 'end' else x - w / 2
+        if x0 < LAY['crop_x'][0] or x0 + w > LAY['crop_x'][1]:
+            return ''
+    second = f'<tspan x="{f(x)}" dy="19">the longest leg</tspan>' if k == 6 else ''
+    return (f'<text class="leg-label" data-leg="{k}" x="{f(x)}" y="{f(y)}" text-anchor="{anchor}" font-family="{SANS}" '
+            f'font-weight="600" font-size="16" fill="{INK}"{op}>{txt}{second}</text>')
 
-LEDGER_X = (70, 1130)
-LEDGER_Y0 = 1345
 LEDGER_DY = 50
 
 def ledger_row(k, state):
     l = LEGS[k - 1]
-    col, row = (0, k - 1) if k <= 4 else (1, k - 5)
-    x, y = LEDGER_X[col], LEDGER_Y0 + row * LEDGER_DY
+    LEDGER_X = LAY['ledger_x']
+    col, row = ((0, k - 1) if k <= 4 else (1, k - 5)) if len(LEDGER_X) == 2 else (0, k - 1)
+    x, y = LEDGER_X[col], LAY['ledger_y0'] + row * LEDGER_DY
     a, b = PORT_BY_N[l[1]][1], PORT_BY_N[l[2]][1]
     if state == 'ahead':
         op, c1, c2 = f' opacity="{AHEAD_OPACITY}"', INK, INK
@@ -235,19 +255,29 @@ def ledger_row(k, state):
             f'<text x="{x+760}" y="{y}" font-family="{SANS}" font-size="19" fill="{SEPIA}">{l[5]}</text></g>')
 
 def ledger_total(state):
-    y = LEDGER_Y0 + 4 * LEDGER_DY + 18
+    LEDGER_X = LAY['ledger_x']
+    two_col = len(LEDGER_X) == 2
+    y = LAY['ledger_y0'] + (4 if two_col else 8) * LEDGER_DY + 18
+    x2, y2 = (LEDGER_X[0] + 520, y) if two_col else (LEDGER_X[0], y + 34)
     c = ACCENT if state == 'accent' else INK
     op = f' opacity="{AHEAD_OPACITY}"' if state == 'ahead' else ''
     return (f'<g class="ledger-total"{op}><text x="{LEDGER_X[0]}" y="{y}" font-family="{SANS}" font-weight="600" '
             f'font-size="22" fill="{c}">7 + 13 + 3 + 13 + 6 + 22 + 7 + 9 = 80 days</text>'
-            f'<text x="{LEDGER_X[0]+520}" y="{y}" font-family="{SERIF}" font-style="italic" font-size="21" fill="{INK}">'
+            f'<text x="{x2}" y="{y2}" font-family="{SERIF}" font-style="italic" font-size="21" fill="{INK}">'
             f'Back at the Reform Club, Saturday 21 December 1872, a quarter before nine.</text></g>')
 
-def enabler_pin(letter, label, date, lon, lat, anchor, dx, dy):
+def enabler_pin(letter, label, date, lon, lat, anchor, dx, dy, leader_to=None):
     x, y = proj(lon, lat)
     r = 15
     lx, ly = x + dx, y + dy
-    return (f'<g class="enabler" data-enabler="{letter}">'
+    leader = ''
+    if leader_to:  # thin sepia leader from the diamond to the rim of a port badge (callout)
+        tx, ty = proj(*leader_to)
+        L = math.hypot(tx - x, ty - y) or 1
+        ex, ey = tx - (tx - x) / L * 19, ty - (ty - y) / L * 19
+        sx, sy = x + (tx - x) / L * (r + 2), y + (ty - y) / L * (r + 2)
+        leader = f'<path d="M{f(sx)} {f(sy)} L{f(ex)} {f(ey)}" stroke="{SEPIA}" stroke-width="1.5" fill="none"/>'
+    return (f'<g class="enabler" data-enabler="{letter}">{leader}'
             f'<path d="M{f(x)} {f(y-r)} L{f(x+r)} {f(y)} L{f(x)} {f(y+r)} L{f(x-r)} {f(y)}Z" fill="{ACCENT}" '
             f'stroke="{PAPER}" stroke-width="1.5"/>'
             f'<text x="{f(x)}" y="{f(y+6)}" text-anchor="middle" font-family="{SANS}" font-weight="600" font-size="17" '
@@ -271,8 +301,8 @@ def graticule():
 
 def key():
     """Legend: line states, badge states, enabler mark. Sits under the map (inside the 16:9 crop)."""
-    y = 1030
-    x = 70
+    y = LAY['key_y']
+    x = LAY['text_x']
     s = [f'<g class="key" font-family="{SANS}" font-size="16" fill="{INK}">',
          f'<text x="{x}" y="{y}" font-weight="600" font-size="17">Key</text>']
     items = [
@@ -284,27 +314,35 @@ def key():
         (f'<g opacity="{AHEAD_OPACITY}"><circle cx="28" cy="0" r="12" fill="{PAPER}" stroke="{INK}" stroke-width="2"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="15" fill="{INK}">3</text></g>', 'port ahead'),
         (f'<path d="M28 -12 L40 0 L28 12 L16 0Z" fill="{ACCENT}"/><text x="28" y="5.5" text-anchor="middle" font-weight="600" font-size="14" fill="{PAPER}">A</text>', 'A–C  what made it possible, 1869–70'),
     ]
-    cx = x + 70
-    for glyph, label in items:
-        s.append(f'<g transform="translate({cx} {y-6})">{glyph}</g>')
-        s.append(f'<text x="{cx+66}" y="{y}">{label}</text>')
-        cx += 66 + 12 + int(len(label) * 8.2) + 34
+    rows = [items] if LAY['key_rows'] == 1 else [items[:4], items[4:]]
+    for r, row_items in enumerate(rows):
+        cx, yy = x + 70, y + r * 40
+        for glyph, label in row_items:
+            s.append(f'<g transform="translate({cx} {yy-6})">{glyph}</g>')
+            s.append(f'<text x="{cx+66}" y="{yy}">{label}</text>')
+            cx += 66 + 12 + int(len(label) * 8.2) + 34
     s.append('</g>')
     return '\n'.join(s)
 
 def title():
-    return (f'<g class="title"><text x="70" y="64" font-family="{SERIF}" font-weight="700" font-size="42" fill="{INK}">'
+    x = LAY['text_x']
+    return (f'<g class="title"><text x="{x}" y="64" font-family="{SERIF}" font-weight="700" font-size="42" fill="{INK}">'
             f'Around the World in Eighty Days</text>'
-            f'<text x="70" y="98" font-family="{SANS}" font-size="20" fill="{SEPIA}">The route of Phileas Fogg · '
+            f'<text x="{x}" y="98" font-family="{SANS}" font-size="20" fill="{SEPIA}">The route of Phileas Fogg · '
             f'London, 2 October → 21 December 1872 · eight ports, eight legs, eighty days</text></g>')
 
 def credits():
-    return (f'<text x="70" y="1770" font-family="{SANS}" font-size="14" fill="{SEPIA}">Equirectangular, centre 10° E · '
-            f'Coastlines: Natural Earth 1:110m (public domain) · Itinerary and dates: Jules Verne, Around the World in '
-            f'Eighty Days, ch. III (fact-sheet F-10, F-11, F-33) · Yunyou studio 2026, generated (G-01)</text>')
+    parts = ['Equirectangular, centre 10° E · Coastlines: Natural Earth 1:110m (public domain)',
+             'Itinerary and dates: Jules Verne, Around the World in Eighty Days, ch. III (fact-sheet F-10, F-11, F-33) · '
+             'Yunyou studio 2026, generated (G-01)']
+    ys = LAY['credits_y']
+    lines = [' · '.join(parts)] if len(ys) == 1 else parts
+    return '<g class="credits">' + ''.join(
+        f'<text x="{LAY["text_x"]}" y="{y}" font-family="{SANS}" font-size="14" fill="{SEPIA}">{t}</text>'
+        for y, t in zip(ys, lines)) + '</g>'
 
 def ledger_header():
-    return (f'<text x="{LEDGER_X[0]}" y="1300" font-family="{SERIF}" font-weight="600" font-size="24" fill="{INK}">'
+    return (f'<text x="{LAY["ledger_x"][0]}" y="{LAY["ledger_hdr_y"]}" font-family="{SERIF}" font-weight="600" font-size="24" fill="{INK}">'
             f'The itinerary — the Daily Telegraph estimate Fogg wagers on</text>')
 
 def continues_text():
@@ -317,8 +355,8 @@ def continues_text():
 # ---------------------------------------------------------------- layers
 def layer_L0():
     s = ['<g id="L0"><title>L0 — base: paper, coastlines, all ports, whole line at 30 % ink, key</title>',
-         f'<rect x="0" y="0" width="{W}" height="{H}" fill="{PAPER}"/>',
-         f'<rect x="0" y="0" width="{W}" height="{H}" fill="{INK}" filter="url(#fibre)" opacity="0.045"/>',
+         f'<rect x="0" y="0" width="{W}" height="{LAY["paper_h"]}" fill="{PAPER}"/>',
+         f'<rect x="0" y="0" width="{W}" height="{LAY["paper_h"]}" fill="{INK}" filter="url(#fibre)" opacity="0.045"/>',
          f'<g clip-path="url(#mapclip)">',
          graticule(),
          f'<path class="land" d="{land_paths()}" fill="{LAND}" stroke="{SEPIA}" stroke-width="0.65" stroke-linejoin="round" fill-rule="evenodd"/>',
@@ -328,9 +366,6 @@ def layer_L0():
     for k in range(1, 9):
         s.append(leg_stroke(k, 'ahead'))
     s.append(continues_text())
-    for n, name, lon, lat, *_ in PORTS:
-        x, y = proj(lon, lat)
-        s.append(f'<circle class="port-dot" data-port="{n}" cx="{f(x)}" cy="{f(y)}" r="4" fill="{INK}"/>')
     for n in range(1, 9):
         s.append(badge(n, 'ahead'))
     s.append(port_labels())
@@ -381,8 +416,9 @@ def layer_L9():
 
 def layer_L10():
     s = ['<g id="L10"><title>L10 — enablers: A Suez Canal 1869 · B Promontory Summit 1869 · C Jabalpur 1870 (F-33)</title>']
-    for letter, label, date, lon, lat, _spec, anchor, dx, dy in ENABLERS:
-        s.append(enabler_pin(letter, label, date, lon, lat, anchor, dx, dy))
+    for letter, label, date, lon, lat, spec, anchor, dx, dy in ENABLERS:
+        leader = (PORT_BY_N[2][2], PORT_BY_N[2][3]) if letter == 'A' else None
+        s.append(enabler_pin(letter, label, date, lon, lat, anchor, dx, dy, leader))
     s.append('</g>')
     return '\n'.join(s)
 
@@ -404,8 +440,15 @@ def svg(layers, viewbox=(0, 0, W, H), title_txt='G-01 route map'):
             f'{DEFS}\n' + '\n'.join(layers) + '\n</svg>\n')
 
 def build():
+    global LAY
+    LAY = LAYOUTS['fold']
     L0, D1, L10 = layer_L0(), layer_DAY1(), layer_L10()
     Lk = [layer_Lk(k) for k in range(1, 9)] + [layer_L9()]
+    LAY = LAYOUTS['9x16']   # same map, furniture re-flowed for the phone / fold-front crop
+    P0, PD1, P10 = layer_L0(), layer_DAY1(), layer_L10()
+    Pk = [layer_Lk(k) for k in range(1, 9)] + [layer_L9()]
+    VB9 = LAYOUTS['9x16']['viewbox']
+    LAY = LAYOUTS['fold']
     files = {
         'route-map_master.svg': ([L0, D1] + Lk + [L10], (0, 0, W, H), 'G-01 master — all layers L0, DAY1, L1–L10'),
         'route-map_day-01-state.svg': ([L0, D1], (0, 0, W, H), 'Around the World in Eighty Days — route map, Day 1: London'),
@@ -414,6 +457,9 @@ def build():
         'route-map_day-01-state_16x9.svg': ([L0, D1], CROP_16x9, 'Route map, Day 1: London (16:9 crop)'),
         'route-map_full-loop_9-layers_16x9.svg': ([L0] + Lk, CROP_16x9, 'The full 80-day loop (16:9 crop)'),
         'route-map_enablers-layer_16x9.svg': ([L0, D1, L10], CROP_16x9, 'Day 1 with the three enablers (16:9 crop)'),
+        'route-map_day-01-state_9x16.svg': ([P0, PD1], VB9, 'Route map, Day 1: London (9:16 phone / fold-front crop)'),
+        'route-map_full-loop_9-layers_9x16.svg': ([P0] + Pk, VB9, 'The full 80-day loop (9:16 crop)'),
+        'route-map_enablers-layer_9x16.svg': ([P0, PD1, P10], VB9, 'Day 1 with the three enablers (9:16 crop)'),
     }
     os.makedirs(OUT, exist_ok=True)
     for name, (layers, vb, t) in files.items():
@@ -424,13 +470,16 @@ def build():
 
 def export_png():
     exporter = os.path.join(ROOT, 'studio/tools/svg2png.mjs')
-    jobs = [
-        ('route-map_day-01-state.svg', 'route-map_day-01-state@.png', '2176x1812,3840x2160,1920x1080,1080x2160'),
-        ('route-map_full-loop_9-layers.svg', 'route-map_full-loop_9-layers@.png', '2176x1812,3840x2160,1920x1080,1080x2160'),
-        ('route-map_enablers-layer.svg', 'route-map_enablers-layer@.png', '2176x1812,3840x2160,1920x1080,1080x2160'),
+    jobs = [  # one export per spec format; each PNG is a true crop of its own SVG (no letterboxing)
+        ('route-map_day-01-state.svg', 'route-map_day-01-state@.png', '2176x1812'),
+        ('route-map_full-loop_9-layers.svg', 'route-map_full-loop_9-layers@.png', '2176x1812'),
+        ('route-map_enablers-layer.svg', 'route-map_enablers-layer@.png', '2176x1812'),
         ('route-map_day-01-state_16x9.svg', 'route-map_day-01-state_16x9@.png', '3840x2160,1920x1080'),
         ('route-map_full-loop_9-layers_16x9.svg', 'route-map_full-loop_9-layers_16x9@.png', '3840x2160,1920x1080'),
         ('route-map_enablers-layer_16x9.svg', 'route-map_enablers-layer_16x9@.png', '3840x2160,1920x1080'),
+        ('route-map_day-01-state_9x16.svg', 'route-map_day-01-state_9x16@.png', '1080x2160'),
+        ('route-map_full-loop_9-layers_9x16.svg', 'route-map_full-loop_9-layers_9x16@.png', '1080x2160'),
+        ('route-map_enablers-layer_9x16.svg', 'route-map_enablers-layer_9x16@.png', '1080x2160'),
     ]
     for src, dst, sizes in jobs:
         cmd = ['node', exporter, os.path.join(OUT, src), os.path.join(OUT, dst), sizes, '--bg', PAPER]

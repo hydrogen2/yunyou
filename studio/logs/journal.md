@@ -35,3 +35,8 @@ scene 18: honest daylight lines, no M-16 insert · Passepartout system prompt ac
 house fonts fetched (`studio/player/fonts/` Playfair Display + Source Sans 3, OFL, + `fonts.css`), shared exporter `studio/tools/svg2png.mjs`
 (inline SVG → PNG via playwright chromium, exact WxH, house fonts). Four `yunyou-engine-tools` agents dispatched in parallel: G-01 map · G-02 split-frame ·
 G-04/05/06/08 cards · G-07 game + player wiring. (Entry completed below when the run finishes; if not, the run hit the quota.)
+
+## 2026-08-18 23:00 UTC — scheduled run (in progress)
+**Step:** A2 close-out. The 20:00 run produced G-01…G-08 SVGs/PNGs, generators (`studio/tools/gen/`), player wiring (G-01/02/04/07) but was cut
+before: G-01 PNG exports + README, player CHANGELOG v0.2 entry, manifest G-row statuses, STATUS/journal. Dispatching 2 Engine agents (G-01 finish;
+player smoke test + CHANGELOG), then Editor-in-Chief updates manifest/STATUS. (Completed below when the run finishes.)
