@@ -1,0 +1,1901 @@
+{
+ "id": "around-the-world-80-days",
+ "title": "Around the World in 80 Days",
+ "tagline": "Retrace Phileas Fogg's 1872 route — today's streets, Verne's guidebook.",
+ "world": "verne",
+ "guide_persona": "guide",
+ "style": "yunyou-v0",
+ "drip": "daily",
+ "chapters": [
+  {
+   "id": "day-01-london",
+   "title": "Day 1 · London — the departure",
+   "hook": "Wednesday 2 October 1872, 11:29. A valet's watch is four minutes slow, and by a quarter to nine tonight the whole world will have to fit into eighty days.",
+   "place": "London, UK",
+   "geo": "51.5063,-0.1339",
+   "scenes": [
+    {
+     "id": "cold-open",
+     "type": "interstitial",
+     "title": "Day 1 · London · Wednesday 2 October 1872",
+     "subtopic": "1 — Cold open: eighty days",
+     "duration_s": 60,
+     "learning_goal": "Know the date, the deadline and the stake in one breath; feel a clock already running.",
+     "narration": {
+      "script": "It is Wednesday, the second of October, 1872. Twenty-nine minutes past eleven in the morning. On a quiet street in Mayfair a French valet is being hired by a man who runs his life by the clock, and the valet's watch is four minutes slow. Keep that watch in mind. By a quarter to nine tonight, that same man will have staked half his fortune that the whole world fits into eighty days. Eighty days. Nineteen hundred and twenty hours. A hundred and fifteen thousand two hundred minutes. Look at the map: only London is lit. Over the next eighty days we will light the rest, one port at a time. Jules Verne printed this journey in a Paris newspaper that same winter, as if it were happening. The novel is our guidebook; we travel today. First, Savile Row.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Big_Ben_recorded_in_1890.ogg",
+       "start_s": 0,
+       "end_s": 12,
+       "license": "public-domain",
+       "manifest_id": "M-40",
+       "attribution": "Big Ben, Edison phonograph recording, 16 July 1890 (Wikimedia Commons, PD)",
+       "note": "Under the title card only; hissy, never under narration."
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-01/route-map_day-01-state.svg",
+       "start_s": 12,
+       "end_s": 60,
+       "license": "generated",
+       "manifest_id": "G-01",
+       "attribution": "Yunyou studio, generated",
+       "note": "Day-1 state of the route map: London lit, rest of the line at 30 % opacity. Backup if G-01 is late: M-30 (1872 Plan of London)."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-34",
+       "attribution": "Phileas Fogg, frontispiece by Alphonse de Neuville, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+       "start_s": 30,
+       "end_s": 40,
+       "note": "Small inset, lower-right, over the map. Dropped in the linear cut."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+       "start_s": 12,
+       "end_s": 60,
+       "license": "public-domain",
+       "manifest_id": "M-41",
+       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+       "note": "Bed under narration, ducked -12 dB."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "lower-third",
+       "until_s": 12,
+       "text": "Day 1 · London · Wednesday 2 October 1872",
+       "position": "bottom"
+      },
+      {
+       "at_s": 20,
+       "kind": "caption",
+       "until_s": 30,
+       "text": "Eighty days. 1,920 hours. 115,200 minutes.",
+       "position": "bottom"
+      },
+      {
+       "at_s": 42,
+       "kind": "pin",
+       "until_s": 55,
+       "text": "London — only stop lit tonight",
+       "geo": "51.5075,-0.1277"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut from black",
+      "out": "3-s fade to Savile Row",
+      "music_cue": "M-41 in at 12 s, tail out under the fade"
+     },
+     "next": "savile-row",
+     "sources": [
+      "F-02",
+      "F-11",
+      "F-32",
+      "F-39"
+     ],
+     "production_notes": "Narration starts at 12 s, after the Big Ben title beat (M-40 must never sit under speech). Linear cut: 45 s — same script, drop the M-34 inset and trim the pause on the map.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "savile-row",
+     "type": "video",
+     "title": "Savile Row — the address Verne got wrong",
+     "subtopic": "2 — Savile Row",
+     "duration_s": 100,
+     "learning_goal": "Know that Verne put Fogg at No. 7 and Sheridan's death there in 1814, that Sheridan lived at No. 14 and died in 1816, and that the Row was already tailoring country; feel the hush of cloth and chalk.",
+     "narration": {
+      "script": "Here we are: the corner of Burlington Gardens and Savile Row. Verne opens the novel on this spot — 'No. 7, Saville Row, Burlington Gardens, the house in which Sheridan died in 1814.' He spells the street with two Ls, and he is wrong twice more. Sheridan the playwright lived at No. 14, not No. 7, and he died there in 1816, not 1814. Watch the doors on the left as we walk: No. 14 carries the plaque, put up in 1881. There is no plaque for Fogg anywhere. So the novel is our guidebook, not our gospel; we will correct it with a smile whenever we can. Look in the windows now — bolts of cloth, chalk marks, half-made jackets. This was already tailoring country in 1872. Henry Poole came to the Row in 1846 and is still here at No. 15; his shop cut the Prince of Wales a short evening jacket, which is why the world calls it a dinner jacket. One small detour in time: on the roof of No. 3, on the thirtieth of January 1969, the Beatles played their rooftop concert. Fogg's house, in the book, ran on the newest kit of its day — gas for light and warmth, electric bells, speaking-tubes — and held not a single book, because his club had two libraries. Here is the Row around 1890, a few years after Fogg. Same doors. Same hush.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "youtube",
+       "ref": "tFaUD2llMJg",
+       "start_s": 1295,
+       "end_s": 1385,
+       "license": "youtube-embed",
+       "manifest_id": "M-05",
+       "attribution": "Watched Walker, 'London Walk - Bond Street & Savile Row' (2022) — YouTube embed",
+       "note": "21:35–23:05: Burlington Gardens corner into the Row (creator chapter 'Savile Row' at 21:55). Backup M-06 SNm-h6lxu1c 01:56–03:26; spare M-07 wyl0GZBEWXs. Content Preparer: pin the frames where 14 / 15 / 3 are legible; if the No. 14 plaque is not visible, hold M-33 as a still."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-32",
+       "attribution": "Savile Row c. 1890, Henry Poole & Co archive (Wikimedia Commons, PD)",
+       "start_s": 90,
+       "end_s": 100,
+       "note": "10-s insert with sepia vignette at the end of the scene."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 3,
+       "kind": "pin",
+       "until_s": 12,
+       "text": "Burlington Gardens — Verne's 'Saville Row, Burlington Gardens'",
+       "position": "bl"
+      },
+      {
+       "at_s": 25,
+       "kind": "pin",
+       "until_s": 35,
+       "text": "No. 14 — Sheridan's real house, plaque 1881",
+       "position": "bl"
+      },
+      {
+       "at_s": 48,
+       "kind": "pin",
+       "until_s": 58,
+       "text": "No. 15 — Henry Poole, here since 1846",
+       "position": "bl"
+      },
+      {
+       "at_s": 66,
+       "kind": "pin",
+       "until_s": 76,
+       "text": "No. 3 — Beatles rooftop, 30 Jan 1969",
+       "position": "bl"
+      },
+      {
+       "at_s": 90,
+       "kind": "caption",
+       "until_s": 100,
+       "text": "Savile Row, about 1890",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "3-s fade from the map",
+      "out": "cut to the timetable card",
+      "music_cue": "none — keep the binaural street sound of M-05"
+     },
+     "next": "fogg-by-the-clock",
+     "sources": [
+      "F-01",
+      "F-03",
+      "F-19",
+      "F-20",
+      "F-39"
+     ],
+     "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. F-20 (current shopfronts) is medium confidence — Content Preparer checks Street View before pinning No. 14 / No. 15. Linear cut: 75 s of M-05 (21:35–22:50), pins (a) and (b) only, drop the M-32 insert and the last four sentences.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "fogg-by-the-clock",
+     "type": "card",
+     "title": "Fogg's day, by the clock — enter Passepartout",
+     "subtopic": "3 — Fogg's day by the clock",
+     "duration_s": 60,
+     "learning_goal": "Know Fogg's timetable and who Passepartout is; feel precision as comedy and like the valet at once.",
+     "narration": {
+      "script": "Fogg's day, by the clock. Tap any line to see what happens. He rises at eight. Tea and toast at twenty-three minutes past. Shaving-water at nine thirty-seven, at thirty degrees — eighty-six Fahrenheit; the last valet brought it at eighty-four and was sacked for it. Out of the door at half past eleven, home at midnight. Into this house, at twenty-nine minutes past eleven, walks Passepartout: a Parisian of Paris, about thirty, once a wandering singer, a circus-rider who vaulted like Léotard, a rope-dancer like Blondin, then a fireman in Paris, then ten English households in five years. His watch is four minutes slow. He wants a quiet life. Look at his face on the card; we like him already.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-04/fogg-timetable-card.svg",
+       "start_s": 0,
+       "end_s": 60,
+       "license": "generated",
+       "manifest_id": "G-04",
+       "attribution": "Yunyou studio, generated",
+       "note": "REQUESTED (Content Preparer): typeset card in the style of a Victorian railway timetable, six rows (8:00, 8:23, 9:37, 11:29, 11:30, 12:00), each tappable. No illustration budget needed."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_02.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-50",
+       "attribution": "Passepartout, plate 02 by Alphonse de Neuville / Léon Benett, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+       "start_s": 30,
+       "end_s": 60,
+       "note": "REQUESTED id: the Neuville Passepartout plate from the set named in M-35's note (nos. 01–03). Backup: M-34 (Fogg frontispiece)."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "prompt",
+       "until_s": 8,
+       "text": "Tap a time to see what happens",
+       "position": "top"
+      },
+      {
+       "at_s": 44,
+       "kind": "caption",
+       "until_s": 56,
+       "text": "I've seen people at Madame Tussaud's as lively as my new master!",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "tap-to-find",
+      "prompt": "Tap a time on Fogg's timetable.",
+      "options": [
+       {
+        "text": "8:00 — rises",
+        "feedback": "Every day the same minute. The house is lit and warmed by gas, with electric bells and speaking-tubes to call the valet."
+       },
+       {
+        "text": "8:23 — tea and toast",
+        "feedback": "Twenty-three minutes past eight, not a minute later. Wardrobe items are numbered by season, so nothing needs deciding."
+       },
+       {
+        "text": "9:37 — shaving-water",
+        "feedback": "At 86 °F, about 30 °C. This morning James Forster brought it at 84 °F, and was dismissed for it. That is why there is a vacancy."
+       },
+       {
+        "text": "11:29 — a new valet",
+        "feedback": "'Twenty-nine minutes after eleven, a.m., this Wednesday, 2nd October' — Passepartout is engaged. His watch, Fogg notes, is four minutes slow."
+       },
+       {
+        "text": "11:30 — out to the club",
+        "feedback": "Fogg leaves for the Reform Club at half past eleven sharp. Passepartout's first words alone in the house are the Tussaud's line on the caption."
+       },
+       {
+        "text": "12:00 — home",
+        "feedback": "Home at midnight, every night. Passepartout has served in ten English houses in five years; this one, he thinks, will finally be quiet."
+       }
+      ]
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to Street View",
+      "music_cue": "none; a soft clock tick under the card is allowed"
+     },
+     "next": "count-the-steps",
+     "sources": [
+      "F-02",
+      "F-03",
+      "F-04"
+     ],
+     "production_notes": "Temperature conversion is arithmetic on F-02 (86 °F ≈ 30 °C), metric first per style guide. Passepartout's Tussaud's line keeps Verne's exclamation mark on the caption; the guide never reads it aloud. Linear cut: card only, no taps, 40 s — script trimmed after 'home at midnight' to the one-breath CV.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "count-the-steps",
+     "type": "streetview",
+     "title": "Count the steps — Savile Row to the Reform",
+     "subtopic": "4 — Count the steps",
+     "duration_s": 150,
+     "learning_goal": "Know that Fogg's 1,151 steps are close to the real kilometre and that Pall Mall is clubland lit by gas since 1807; feel the pace of a man who never hurries.",
+     "narration": {
+      "script": "Fogg leaves at half past eleven and counts his steps: five hundred and seventy-five with the right foot, five hundred and seventy-six with the left. One thousand one hundred and fifty-one. We will count them with him; watch the counter in the corner. Look up the Row first, then turn to face numbers seven and eight. Today it is a modern block — Verne's No. 7, not Sheridan's, and no Georgian house at all. Now walk. Bond Street, Piccadilly, St James's Street: about seven hundred steps we will keep for another day, so we jump. Here we are at the foot of St James's Street, and this is Pall Mall, one of the first streets in London lit by gas, back in 1807. Sixty-five years before Fogg, the lamps here were already the future. Keep walking east; the clubs are on your right and the counter is climbing. Pall Mall is clubland: the Reform, the Travellers and the Athenaeum stand in a row, and one turn of the head covers all three. Stop. Look right — the Portland-stone palazzo with the tall windows is the Reform Club, 104 Pall Mall, by Charles Barry, opened in 1841. Turn a little left: No. 106, the Travellers, Barry's first palazzo. Beyond it, No. 107, the Athenaeum. And the counter reads one thousand one hundred and fifty-one. Fogg made it 1,151. We make it about a kilometre. Close enough for a man who never hurries.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "streetview",
+       "ref": "51.5107,-0.1402,350,0,90",
+       "license": "google-maps-embed",
+       "manifest_id": "M-39",
+       "attribution": "Google Street View (Maps Embed API)",
+       "note": "Waypoint 1a: looking north up Savile Row."
+      },
+      {
+       "kind": "streetview",
+       "ref": "51.5107,-0.1402,70,5,80",
+       "license": "google-maps-embed",
+       "manifest_id": "M-39",
+       "attribution": "Google Street View (Maps Embed API)",
+       "note": "Waypoint 1b: same pano turned to face 7–8 Savile Row (modern block, OSM 'Gossard House 7-8' 51.51073,-0.13987). Optional look-back pano 51.5119,-0.1414 heading 170."
+      },
+      {
+       "kind": "streetview",
+       "ref": "51.5060,-0.1385,76,0,90",
+       "license": "google-maps-embed",
+       "manifest_id": "M-37",
+       "attribution": "Google Street View (Maps Embed API)",
+       "note": "Waypoint 2: Pall Mall × St James's Street, looking ENE along Pall Mall (after the jump)."
+      },
+      {
+       "kind": "streetview",
+       "ref": "51.5067,-0.1335,165,5,80",
+       "license": "google-maps-embed",
+       "manifest_id": "M-37",
+       "attribution": "Google Street View (Maps Embed API)",
+       "note": "Waypoint 3: facing the Reform Club façade, 104 Pall Mall (OSM centroid 51.50654,-0.13346). Counter must read 1,151 here."
+      },
+      {
+       "kind": "streetview",
+       "ref": "51.5070,-0.1318,90,0,90",
+       "license": "google-maps-embed",
+       "manifest_id": "M-37",
+       "attribution": "Google Street View (Maps Embed API)",
+       "note": "Waypoint 4: Waterloo Place, end of walk."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "sticker",
+       "until_s": 150,
+       "text": "steps 0 → 1,151",
+       "position": "br"
+      },
+      {
+       "at_s": 12,
+       "kind": "caption",
+       "until_s": 24,
+       "text": "Today: a modern block. Verne's No. 7, not Sheridan's.",
+       "position": "bottom"
+      },
+      {
+       "at_s": 40,
+       "kind": "caption",
+       "until_s": 52,
+       "text": "Bond Street, Piccadilly, St James's — about 700 steps, another day",
+       "position": "bottom"
+      },
+      {
+       "at_s": 60,
+       "kind": "pin",
+       "until_s": 72,
+       "text": "Pall Mall — gas-lit since 1807",
+       "position": "tl",
+       "geo": "51.5060,-0.1385"
+      },
+      {
+       "at_s": 105,
+       "kind": "pin",
+       "until_s": 120,
+       "text": "Reform Club — 104 Pall Mall, Barry, 1841",
+       "position": "bl",
+       "geo": "51.5065,-0.1335"
+      },
+      {
+       "at_s": 122,
+       "kind": "pin",
+       "until_s": 132,
+       "text": "Travellers Club — No. 106, Barry's first palazzo, 1823",
+       "position": "bl"
+      },
+      {
+       "at_s": 134,
+       "kind": "pin",
+       "until_s": 144,
+       "text": "Athenaeum — No. 107, 1830",
+       "position": "bl"
+      }
+     ],
+     "interaction": {
+      "kind": "walk",
+      "prompt": "Walk with Fogg. Tap ahead to step; the counter climbs with you.",
+      "route": [
+       "51.5107,-0.1402",
+       "51.5060,-0.1385",
+       "51.5067,-0.1335",
+       "51.5070,-0.1318"
+      ]
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the club door (M-01)",
+      "music_cue": "none — street ambience; gas-lamp cue (F-29) only if a lamp is in shot"
+     },
+     "next": "the-reform-club",
+     "sources": [
+      "F-01",
+      "F-05",
+      "F-15",
+      "F-18",
+      "F-29",
+      "F-39"
+     ],
+     "production_notes": "Step-counter calibration: counter = 0 at waypoint 1b (facing 7–8); the jump adds 700 (caption); the Pall Mall leg 51.5060,-0.1385 → 51.5067,-0.1335 is ≈ 352 m, counted at 0.78 m/step = 451 steps, so the counter lands on 1,151 exactly at waypoint 3. Note for Fact-Checker: the skipped Bond St/Piccadilly/St James's stretch is nearer 900 m on the ground (≈ 1,150 steps), so the true walk is longer than Fogg's count — consistent with F-05's 'about 0.9 km vs real ~1 km' caveat; the caption says 'about'. Only two verified pano sets exist (M-39, M-37); Content Preparer may add 3–4 intermediate panos for a full walk. Linear cut: this scene is replaced by 05 pall-mall-pass (M-01, 45 s).",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "pall-mall-pass",
+     "type": "video",
+     "title": "Pall Mall — passing the clubs (linear cut)",
+     "subtopic": "4 — Count the steps (linear replacement)",
+     "duration_s": 45,
+     "learning_goal": "Linear-cut stand-in for the Street View walk: know the 1,151 steps and see the three clubs in a row.",
+     "narration": {
+      "script": "From Savile Row, Fogg walks: five hundred and seventy-five steps with the right foot, five hundred and seventy-six with the left — one thousand one hundred and fifty-one, and he never hurries. We are on Pall Mall now, walking west through clubland, one of the first streets in London to be lit by gas, in 1807. Watch the left side: the Athenaeum at 107, then the Travellers at 106, then the palazzo with the tall windows — the Reform Club, 104 Pall Mall, by Charles Barry, opened 1841. Fogg made it 1,151 steps. We make it about a kilometre.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "youtube",
+       "ref": "WQCsxb2dMgQ",
+       "start_s": 1579,
+       "end_s": 1624,
+       "license": "youtube-embed",
+       "manifest_id": "M-01",
+       "attribution": "Wanderizm, 'LONDON Walk - Day stroll along Trafalgar Square, Royal horse guards and St. James's' (2020) — YouTube embed",
+       "note": "26:19–27:04, Pall Mall westbound; Athenaeum (107), Travellers (106), Reform (104) on the left. Backup M-02 kfuLPlhJGYE 06:37–07:22 (mute the Tunetank music). QA to pin the frame where No. 104 fills the shot."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 4,
+       "kind": "caption",
+       "until_s": 12,
+       "text": "1,151 steps — about a kilometre",
+       "position": "bottom"
+      },
+      {
+       "at_s": 30,
+       "kind": "pin",
+       "until_s": 42,
+       "text": "Reform Club — 104 Pall Mall, Barry, 1841",
+       "position": "bl",
+       "geo": "51.5065,-0.1335"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut",
+      "music_cue": "none"
+     },
+     "next": "the-reform-club",
+     "sources": [
+      "F-05",
+      "F-14",
+      "F-15",
+      "F-18"
+     ],
+     "production_notes": "LINEAR CUT ONLY. Replaces 04 count-the-steps in the passive version. In the linear cut, 06 the-reform-club then drops its M-01 video part (same clip) and starts on the photo trio.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "the-reform-club",
+     "type": "video",
+     "title": "Inside the Reform — what Verne got right",
+     "subtopic": "5 — Inside the Reform",
+     "duration_s": 70,
+     "learning_goal": "Know the Reform Club is real, founded 1836, Barry's palazzo of 1841, Soyer's kitchens, and Fogg's breakfast; feel cosy club warmth.",
+     "narration": {
+      "script": "We arrive at the door. The Reform Club is real, and still here: 104 Pall Mall, founded in 1836 by the men who had backed the Reform Act of 1832 — neutral today, and that is our one line of politics. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high, ringed by columns under a glass roof, and the famous kitchens that Alexis Soyer helped to plan. Here is the front today; here is Barry's elevation; and here, kept small, is the saloon as engraved in 1841 — we have no footage of the inside, so the engraving carries it. Now Fogg's breakfast, taken here at the club: a broiled fish with Reading sauce, a scarlet slice of roast beef with mushrooms, a rhubarb-and-gooseberry tart, a morsel of Cheshire cheese, and several cups of the tea for which the Reform is famous. Reading sauce was a real thing, from Berkshire — keep this in mind for later. Then he cuts open the Times with a paper-knife and reads.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "youtube",
+       "ref": "WQCsxb2dMgQ",
+       "start_s": 1579,
+       "end_s": 1624,
+       "license": "youtube-embed",
+       "manifest_id": "M-01",
+       "attribution": "Wanderizm, 'LONDON Walk - Day stroll along Trafalgar Square, Royal horse guards and St. James's' (2020) — YouTube embed",
+       "note": "26:19–27:04, arriving at the Reform Club door. Scene seconds 0–45. Backup M-02 kfuLPlhJGYE 06:37–07:22 (mute music). Dropped in the linear cut."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
+       "license": "cc-by-sa-2.0",
+       "manifest_id": "M-20",
+       "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
+       "start_s": 45,
+       "end_s": 53,
+       "note": "Façade today. Alt M-21 (square crop) for pin thumbnail."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._North_Elevation.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-22",
+       "attribution": "Reform Club, north elevation, from 'Life and Works of Sir Charles Barry' (Wikimedia Commons, PD)",
+       "start_s": 53,
+       "end_s": 61,
+       "note": "Barry's elevation, 709 px — phone size only."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-23",
+       "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
+       "start_s": 61,
+       "end_s": 70,
+       "note": "632 px — inset with vignette, never full-screen."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Johann_Strauss_-_Wiener_Blut_Op._354.ogg",
+       "start_s": 0,
+       "end_s": 70,
+       "license": "cc0",
+       "manifest_id": "M-43",
+       "attribution": "J. Strauss II, Wiener Blut Op. 354 (Wikimedia Commons, CC0)",
+       "note": "Low loop, ducked under narration. Backup bed: M-41."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 18,
+       "kind": "pin",
+       "until_s": 30,
+       "text": "Reform Club — 104 Pall Mall, founded 1836",
+       "position": "bl",
+       "geo": "51.5065,-0.1335"
+      },
+      {
+       "at_s": 45,
+       "kind": "caption",
+       "until_s": 53,
+       "text": "Portland stone, Charles Barry, opened 1 March 1841",
+       "position": "bottom"
+      },
+      {
+       "at_s": 61,
+       "kind": "caption",
+       "until_s": 70,
+       "text": "The saloon, engraved 1841 — no camera has been inside for us",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut from Street View",
+      "out": "dissolve to the quiz card",
+      "music_cue": "M-43 in low at 0 s, continues into 07"
+     },
+     "next": "quiz-verne-saloon",
+     "sources": [
+      "F-06",
+      "F-14",
+      "F-15",
+      "F-16",
+      "F-18",
+      "F-27"
+     ],
+     "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Linear cut: start at 45 s (photo trio only, 25 s), since M-01 26:19–27:04 is used by 05 pall-mall-pass.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "quiz-verne-saloon",
+     "type": "quiz",
+     "title": "Quiz — which of Verne's club details is real?",
+     "subtopic": "5 — Inside the Reform (Quiz A)",
+     "duration_s": 80,
+     "learning_goal": "Know that Verne's Reform is half fantasy (porphyry columns, blue glass) and half exact (nine garden windows); know you can visit during Open House.",
+     "narration": {
+      "script": "Verne describes the club in loving detail: mosaic floors, a gallery under a dome held up by twenty red porphyry columns, blue painted windows, a dining room with nine windows onto a garden already gilded with autumn. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous. Half fantasy, half exact — treat the novel that way for the next seventy-nine days. And one practical note: you can stand in that saloon yourself, one weekend a year, when the club opens for guided tours during Open House London; the caption has this year's dates. The tour, they say, includes one very long staircase.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-23",
+       "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
+       "start_s": 0,
+       "end_s": 80,
+       "note": "Vignetted inset behind the quiz card."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
+       "license": "cc-by-sa-2.0",
+       "manifest_id": "M-20",
+       "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
+       "start_s": 0,
+       "end_s": 80,
+       "note": "Blurred backdrop."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Johann_Strauss_-_Wiener_Blut_Op._354.ogg",
+       "start_s": 0,
+       "end_s": 80,
+       "license": "cc0",
+       "manifest_id": "M-43",
+       "attribution": "J. Strauss II, Wiener Blut Op. 354 (Wikimedia Commons, CC0)",
+       "note": "Continues from 06, low."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "prompt",
+       "until_s": 20,
+       "text": "Which of Verne's club details is real?",
+       "position": "top"
+      },
+      {
+       "at_s": 64,
+       "kind": "caption",
+       "until_s": 80,
+       "text": "Open House London: 12–13 September 2026, bookings from 19 August",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "choice",
+      "prompt": "Verne describes the Reform Club's interior. Which of these details is real?",
+      "options": [
+       {
+        "text": "Twenty red porphyry Ionic columns holding up a dome",
+        "correct": false,
+        "feedback": "Verne's invention. Barry's saloon has a two-storey peristyle — Ionic below, Corinthian above — in yellow marble and scagliola."
+       },
+       {
+        "text": "A gallery lit through blue painted windows",
+        "correct": false,
+        "feedback": "A garble. The saloon sits under a coved glass roof with an oval saucer-dome."
+       },
+       {
+        "text": "A dining-room with nine windows onto the garden",
+        "correct": true,
+        "feedback": "Exact. Nine tall casement windows in the coffee-room's south wall, and the garden is still there."
+       }
+      ]
+     },
+     "transition": {
+      "in": "dissolve",
+      "out": "cut to the Neuville plate",
+      "music_cue": "M-43 out under the last line"
+     },
+     "next": "the-wager",
+     "sources": [
+      "F-07",
+      "F-15",
+      "F-17"
+     ],
+     "production_notes": "Question ≈ 20 s, answer window ≈ 30 s, tail 20 s. The Open House date lives on the caption only so it can be updated yearly (F-17 is time-sensitive). Linear cut: the guide asks and answers in one breath (correct option + its feedback), 60 s incl. tail; keep the prompt overlay.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "the-wager",
+     "type": "photo",
+     "title": "The wager — twenty thousand at Baring's",
+     "subtopic": "6 — The wager",
+     "duration_s": 80,
+     "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
+     "narration": {
+      "script": "Evening, at the whist table. In the novel — and only in the novel — a gentleman has walked out of the Bank of England three days ago with fifty-five thousand pounds, and the Daily Telegraph has printed a timetable showing the world can be circled in eighty days. Andrew Stuart, an engineer, wagers four thousand pounds that it cannot be done. Fogg raises him: twenty thousand pounds, on deposit at Baring's — half his fortune — in 'eighty days or less; in nineteen hundred and twenty hours, or a hundred and fifteen thousand two hundred minutes'. Look at the card: six names on the memorandum. Stuart; the bankers John Sullivan and Samuel Fallentin; Thomas Flanagan, a brewer; Gauthier Ralph, a director of the Bank of England; and Phileas Fogg. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Verne's arithmetic holds: it is exactly eighty days, and it really was a Saturday. Fogg's motto for the evening: 'The unforeseen does not exist.' One footnote from today. Baring's, Fogg's bank, was one of London's oldest; it went under in 1995. The wager has outlived the bank.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_06.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-35",
+       "attribution": "'…I will wager £4,000 on it' — Neuville/Benett, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+       "start_s": 0,
+       "end_s": 40,
+       "note": "Slow push-in on the plate. M-36 is reference only — never ship."
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-05/memorandum-card.svg",
+       "start_s": 40,
+       "end_s": 80,
+       "license": "generated",
+       "manifest_id": "G-05",
+       "attribution": "Yunyou studio, generated",
+       "note": "REQUESTED (Content Preparer): typeset memorandum — six signatures, stake, date and hour. G-03 illustration is not required."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+       "start_s": 0,
+       "end_s": 80,
+       "license": "public-domain",
+       "manifest_id": "M-41",
+       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+       "note": "Low, swelling into 10 the-world-shrinks."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 2,
+       "kind": "caption",
+       "until_s": 12,
+       "text": "'I will wager £4,000 on it' — Neuville, 1872",
+       "position": "bottom"
+      },
+      {
+       "at_s": 40,
+       "kind": "caption",
+       "until_s": 50,
+       "text": "The unforeseen does not exist.",
+       "position": "bottom"
+      },
+      {
+       "at_s": 66,
+       "kind": "caption",
+       "until_s": 76,
+       "text": "Baring's — Fogg's bank — went under in 1995",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the Cook/Train card",
+      "music_cue": "M-41 low from 0 s"
+     },
+     "next": "two-real-men",
+     "sources": [
+      "F-08",
+      "F-09",
+      "F-10",
+      "F-11",
+      "F-23"
+     ],
+     "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks. Linear cut: keep whole (80 s), then skip 09 and play 10 without the tap.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "two-real-men",
+     "type": "card",
+     "title": "Two real men were doing it",
+     "subtopic": "6 — The wager (Cook and Train)",
+     "duration_s": 30,
+     "learning_goal": "Know that Thomas Cook and George Francis Train really went round the world just as Verne wrote; feel that Fogg's bet was in the air.",
+     "narration": {
+      "script": "Two real men were doing it as Verne wrote. Thomas Cook, going west, left Liverpool in late September 1872 on the first commercial round-the-world tour — two hundred and twenty-two days, with letters home to the Times; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early — and later said, 'Verne stole my thunder. I'm Phileas Fogg.'",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-06/two-real-men-card.svg",
+       "start_s": 0,
+       "end_s": 30,
+       "license": "generated",
+       "manifest_id": "G-06",
+       "attribution": "Yunyou studio, generated",
+       "note": "REQUESTED (Content Preparer): typeset card, two columns (Cook · Train) with dates; no illustration budget needed."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+       "start_s": 0,
+       "end_s": 30,
+       "license": "public-domain",
+       "manifest_id": "M-41",
+       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+       "note": "Continues low from 08."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 3,
+       "kind": "caption",
+       "until_s": 15,
+       "text": "Cook: 222 days. Train: 164 days. Fogg: 80.",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the map",
+      "music_cue": "M-41 continues"
+     },
+     "next": "the-world-shrinks",
+     "sources": [
+      "F-35",
+      "F-36"
+     ],
+     "production_notes": "INTERACTIVE CUT ONLY (optional card per rundown). Placed before the map so the map can close on the turn line. F-35's '26 Sept Liverpool' is medium confidence, hence 'late September'.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "the-world-shrinks",
+     "type": "map",
+     "title": "The world had just shrunk — the 80-day loop",
+     "subtopic": "6 — The wager (map beat)",
+     "duration_s": 100,
+     "learning_goal": "Know the three enablers of 1869–70 and the eight legs that add up to eighty; feel the thrill of the map lighting up.",
+     "narration": {
+      "script": "How could anyone even think it? Because the world had just shrunk. When a partner said the world was big, Fogg's answer was two words: 'It was once.' Look at the three lights. The Suez Canal, opened in November 1869. The American railroad, joined at Promontory Summit in May 1869. The last rail link across India, closed at Jabalpur in March 1870. Three doors, opened within ten months, two years before tonight. Now watch the line draw. London to Suez, by rail and steamer through Mont Cenis and Brindisi, seven days. Suez to Bombay by steamer, thirteen. Bombay to Calcutta by rail, three. Calcutta to Hong Kong, thirteen. Hong Kong to Yokohama, six. Yokohama to San Francisco, twenty-two. San Francisco to New York by rail, seven. New York back to London, nine. Add them up: eighty. Now tap the longest leg on the map. The Pacific — twenty-two days of ocean; keep this in mind for later. And the map fades back to tonight: only London lit. Because Fogg, still at the table, says the sentence that turns the evening. 'The train leaves for Dover at a quarter before nine.'",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-01/route-map_enablers-layer.svg",
+       "start_s": 0,
+       "end_s": 30,
+       "license": "generated",
+       "manifest_id": "G-01",
+       "attribution": "Yunyou studio, generated",
+       "note": "REQUESTED extra layer 'enablers': three dated pins — Suez Canal 17 Nov 1869 · Promontory Summit 10 May 1869 · Jabalpur 7 Mar 1870 (numbers + labels, never colour alone)."
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-01/route-map_full-loop_9-layers.svg",
+       "start_s": 30,
+       "end_s": 88,
+       "license": "generated",
+       "manifest_id": "G-01",
+       "attribution": "Yunyou studio, generated",
+       "note": "Full-loop reveal, 9 layers, leg by leg with mode + days (F-10)."
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-01/route-map_day-01-state.svg",
+       "start_s": 88,
+       "end_s": 100,
+       "license": "generated",
+       "manifest_id": "G-01",
+       "attribution": "Yunyou studio, generated",
+       "note": "Fade back to the Day-1 state (only London lit)."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+       "start_s": 0,
+       "end_s": 100,
+       "license": "public-domain",
+       "manifest_id": "M-41",
+       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+       "note": "Swell as the loop draws; out under the turn line."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 8,
+       "kind": "caption",
+       "until_s": 20,
+       "text": "Suez 1869 · Promontory 1869 · Jabalpur 1870",
+       "position": "bottom"
+      },
+      {
+       "at_s": 60,
+       "kind": "caption",
+       "until_s": 72,
+       "text": "7+13+3+13+6+22+7+9 = 80 days",
+       "position": "bottom"
+      },
+      {
+       "at_s": 74,
+       "kind": "prompt",
+       "until_s": 82,
+       "text": "Tap the longest leg",
+       "position": "top"
+      },
+      {
+       "at_s": 90,
+       "kind": "caption",
+       "until_s": 100,
+       "text": "The train leaves for Dover at a quarter before nine.",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "tap-to-find",
+      "prompt": "Tap the longest leg of Fogg's route.",
+      "options": [
+       {
+        "text": "London → Suez",
+        "correct": false,
+        "feedback": "Rail and steamer, via Mont Cenis and Brindisi: 7 days."
+       },
+       {
+        "text": "Suez → Bombay",
+        "correct": false,
+        "feedback": "Steamer across the Arabian Sea: 13 days. Long, but not the longest."
+       },
+       {
+        "text": "Bombay → Calcutta",
+        "correct": false,
+        "feedback": "Rail across India — the newest link, only just opened: 3 days."
+       },
+       {
+        "text": "Calcutta → Hong Kong",
+        "correct": false,
+        "feedback": "Steamer: 13 days. Same as Suez to Bombay."
+       },
+       {
+        "text": "Hong Kong → Yokohama",
+        "correct": false,
+        "feedback": "Steamer: 6 days."
+       },
+       {
+        "text": "Yokohama → San Francisco",
+        "correct": true,
+        "feedback": "The Pacific: 22 days by steamer — the longest leg by far. Keep this in mind for later."
+       },
+       {
+        "text": "San Francisco → New York",
+        "correct": false,
+        "feedback": "Rail, coast to coast, possible only since May 1869: 7 days."
+       },
+       {
+        "text": "New York → London",
+        "correct": false,
+        "feedback": "Steamer and rail home: 9 days."
+       }
+      ]
+     },
+     "transition": {
+      "in": "cut",
+      "out": "hard cut to the packing game",
+      "music_cue": "M-41 swell from 30 s, out at 90 s under the turn line"
+     },
+     "next": "pack-the-bag",
+     "sources": [
+      "F-10",
+      "F-11",
+      "F-12",
+      "F-33"
+     ],
+     "production_notes": "G-01 must deliver both the full-loop and the Day-1 layer plus the requested 'enablers' layer. Tap-to-find is interactive only; the eight legs are map targets, not a quiz. Linear cut: 40 s — enablers + loop reveal + turn line, no tap; skip 09 before it.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "pack-the-bag",
+     "type": "game",
+     "title": "Ten minutes — pack the carpet-bag",
+     "subtopic": "7 — Ten minutes: pack the bag",
+     "duration_s": 90,
+     "learning_goal": "Know what went into the carpet-bag and what stayed at Savile Row; feel the scramble.",
+     "narration": {
+      "script": "Twenty-five past seven. Fogg goes home from the club, calls Passepartout and says: 'We start for Dover and Calais in ten minutes.' Where to? 'We are going round the world.' 'In eighty days.' Passepartout, remember, wanted a quiet life. Now help him pack. One carpet-bag, and it must hold everything. Drag in what goes; leave what stays. Verne is exact about the list, so we are too. Two shirts and three pairs of stockings each, a mackintosh, a travelling-cloak, the red-bound Bradshaw's Continental Guide — the world's timetable, more than a thousand pages of trains and hotels — and a goodly roll of Bank of England notes: twenty thousand pounds. No books, because there are none in the house. The electric clock stays on the mantel. And so, tonight, does the gas — remember that. Two shirts, three pairs of stockings, and half a fortune.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-07/carpet-bag-game.svg",
+       "start_s": 0,
+       "end_s": 90,
+       "license": "generated",
+       "manifest_id": "G-07",
+       "attribution": "Yunyou studio, generated",
+       "note": "REQUESTED (Content Preparer): game UI — an open carpet-bag and nine draggable items (six go in, three stay). Auto-complete at 90 s."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture.ogg",
+       "start_s": 60,
+       "end_s": 90,
+       "license": "cc0",
+       "manifest_id": "M-42",
+       "attribution": "Offenbach, Orphée aux enfers overture, Musopen (Wikimedia Commons, CC0)",
+       "note": "Galop section, 20–40 s, in under the completion line and continuing into 12."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "prompt",
+       "until_s": 10,
+       "text": "Ten minutes. Pack the carpet-bag.",
+       "position": "top"
+      },
+      {
+       "at_s": 70,
+       "kind": "caption",
+       "until_s": 84,
+       "text": "Two shirts, three pairs of stockings, and half a fortune.",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "drag",
+      "prompt": "Ten minutes. Drag into the bag what Fogg takes; leave what stays at Savile Row.",
+      "options": [
+       {
+        "text": "Two shirts",
+        "correct": true,
+        "feedback": "In. 'Two shirts and three pairs of stockings' — the same for Passepartout."
+       },
+       {
+        "text": "Three pairs of stockings",
+        "correct": true,
+        "feedback": "In. Three pairs each; nothing else by way of linen."
+       },
+       {
+        "text": "A mackintosh",
+        "correct": true,
+        "feedback": "In. It is raining tonight, and Verne packs it."
+       },
+       {
+        "text": "A travelling-cloak",
+        "correct": true,
+        "feedback": "In. Verne lists it in the same breath as the mackintosh."
+       },
+       {
+        "text": "The red-bound Bradshaw's Continental Guide",
+        "correct": true,
+        "feedback": "In. Bradshaw's Continental Railway Guide, begun 1847 — over a thousand pages of timetables, hotels and advice. The most-used thing in the bag."
+       },
+       {
+        "text": "A roll of Bank of England notes — £20,000",
+        "correct": true,
+        "feedback": "In. 'There are twenty thousand pounds in it.' Half his fortune travels in a carpet-bag."
+       },
+       {
+        "text": "A book from Fogg's study",
+        "correct": false,
+        "feedback": "There is no study and no books at Savile Row; the club's two libraries served."
+       },
+       {
+        "text": "The electric clock from the mantel",
+        "correct": false,
+        "feedback": "It stays on the mantel — and so, tonight, does the gas."
+       },
+       {
+        "text": "This morning's Times",
+        "correct": false,
+        "feedback": "Fogg reads the papers at the club, cut open with a paper-knife."
+       }
+      ]
+     },
+     "transition": {
+      "in": "hard cut",
+      "out": "cut to the 1872 map",
+      "music_cue": "M-42 galop in at 60 s"
+     },
+     "next": "the-dash",
+     "sources": [
+      "F-03",
+      "F-06",
+      "F-11",
+      "F-12",
+      "F-13",
+      "F-37"
+     ],
+     "production_notes": "No invented Fogg lines — only what the sheet quotes (F-12). The gas clause depends on Ending B (accepted). Linear cut: packing list as a 20-s card, no drag; script trimmed to the list and the completion line.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "the-dash",
+     "type": "map",
+     "title": "A shilling's cab to Charing Cross",
+     "subtopic": "7 — The dash",
+     "duration_s": 60,
+     "learning_goal": "Know the cab, the fare, the times, and that Fogg does not take the nine-year-old Underground; feel wet cobbles and hooves.",
+     "narration": {
+      "script": "Down to the end of Savile Row and into a cab — a hansom, most likely; Verne never says. To the cabby, Fogg is a swell, and this is a fare of about a bob: sixpence a mile, and it is two and a half kilometres to Charing Cross. Watch the line on the 1872 map, south and east to Trafalgar Square and the Strand. London already had an Underground — nine years old, steam-hauled and smoky. Fogg takes a cab. Listen: hooves on wet stone, and an Offenbach galop, because Passepartout is a Parisian and would want one. They left the club at twenty-five past seven. They are at Charing Cross at twenty past eight.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "map",
+       "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
+       "start_s": 0,
+       "end_s": 60,
+       "license": "public-domain",
+       "manifest_id": "M-30",
+       "attribution": "'Plan of London', London Illustrated (1872) (Wikimedia Commons, PD)",
+       "note": "Animated route line drawn over the 1872 plan: Savile Row 51.5107,-0.1402 → Reform Club 51.5065,-0.1335 (context) → Trafalgar Square → Charing Cross 51.5081,-0.1247; about 2.5 km. Backup M-31 (1875, crop the West End tile)."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:From_%27Street_Life_in_London%27,_1877,_by_John_Thomson_and_Adolphe_Smith_(5600367314).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-28",
+       "attribution": "'London Cabmen', John Thomson, Street Life in London (1877) (Wikimedia Commons, PD)",
+       "start_s": 30,
+       "end_s": 45,
+       "note": "Inset. Backup M-29 — confirm it shows a two-wheeler before captioning 'hansom'."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://freesound.org/people/Sirderf/sounds/333680/",
+       "start_s": 0,
+       "end_s": 8,
+       "license": "cc-by-4.0",
+       "manifest_id": "M-46",
+       "attribution": "'Horse-drawn carriage - Approach and stop' — Sirderf, freesound 333680, CC BY 4.0",
+       "note": "Approach and stop under the first line. Attribution required."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://freesound.org/people/Owl/sounds/191741/",
+       "start_s": 8,
+       "end_s": 60,
+       "license": "cc-by-4.0",
+       "manifest_id": "M-47",
+       "attribution": "'Horse carriage on city street' — Owl, freesound 191741, CC BY 4.0",
+       "note": "Loop bed. Attribution required."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture.ogg",
+       "start_s": 0,
+       "end_s": 60,
+       "license": "cc0",
+       "manifest_id": "M-42",
+       "attribution": "Offenbach, Orphée aux enfers overture, Musopen (Wikimedia Commons, CC0)",
+       "note": "Galop, continuing from 11; duck under narration."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 6,
+       "kind": "caption",
+       "until_s": 14,
+       "text": "swell — a well-dressed gentleman",
+       "position": "bottom"
+      },
+      {
+       "at_s": 22,
+       "kind": "caption",
+       "until_s": 30,
+       "text": "bob — a shilling; the fare",
+       "position": "bottom"
+      },
+      {
+       "at_s": 38,
+       "kind": "caption",
+       "until_s": 45,
+       "text": "London cabmen, 1877 — John Thomson",
+       "position": "bottom"
+      },
+      {
+       "at_s": 52,
+       "kind": "caption",
+       "until_s": 60,
+       "text": "Hook it! — be off",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the Strand (M-08)",
+      "music_cue": "M-42 galop out under the last line"
+     },
+     "next": "charing-cross",
+     "sources": [
+      "F-12",
+      "F-13",
+      "F-25",
+      "F-28",
+      "F-31",
+      "F-39"
+     ],
+     "production_notes": "Slang comes only from the 1874 All the Year Round list and the money terms in F-31. Cab type: 'a hansom, most likely' — Verne never names it (F-12 note, F-28). Linear cut: 40 s — trim the Underground line and the Offenbach aside.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "charing-cross",
+     "type": "video",
+     "title": "Charing Cross — Fogg's newest London",
+     "subtopic": "8 — Charing Cross",
+     "duration_s": 60,
+     "learning_goal": "Know that Fogg's London was brand-new (station 8, Underground 9, Embankment 2, Big Ben 13) and remember the twenty guineas; feel awe at a new city and one warm beat.",
+     "narration": {
+      "script": "The Strand, and ahead the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the cross, 1865. The cross itself, 1865. The Underground, nine years old. The Embankment down by the river, two. Big Ben, thirteen. Almost everything Fogg passes tonight is younger than his valet. Look at the roofline: Hawkshaw's single iron span, about 155 metres by 50 — five hundred feet long — collapsed in 1905 and was replaced; that is all we will say about it. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money, and Fogg hands her the twenty guineas he won at whist without breaking stride — four hundred and twenty shillings, or about eight hundred and forty cab-miles.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "youtube",
+       "ref": "VIjDXClopyE",
+       "start_s": 285,
+       "end_s": 345,
+       "license": "youtube-embed",
+       "manifest_id": "M-08",
+       "attribution": "Virtual Walks and Adventures, '[4K] A London walk from Trafalgar Square via Charing Cross to Embankment and Golden Jubilee Bridge' (2022) — YouTube embed",
+       "note": "04:45–05:45: Strand approach into the forecourt (creator chapter 'Charing Cross' at 05:00; forecourt frames unverified — Content Preparer to pin). Small channel: keep backup M-09 UkXUiYNML3U 00:00–01:00 warm; rainy alt M-10 FI_AT-rhLP4 01:00–02:00."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 10,
+       "kind": "caption",
+       "until_s": 22,
+       "text": "Station: 8 years old. Underground: 9. Big Ben: 13.",
+       "position": "bottom"
+      },
+      {
+       "at_s": 30,
+       "kind": "pin",
+       "until_s": 42,
+       "text": "Eleanor Cross — replica, 1865, E. M. Barry",
+       "position": "bl",
+       "geo": "51.5081,-0.1247"
+      },
+      {
+       "at_s": 48,
+       "kind": "caption",
+       "until_s": 58,
+       "text": "Twenty guineas — 420 shillings, or 840 cab-miles",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "dissolve to the then/now frame",
+      "music_cue": "none — street sound; M-40 Big Ben optional under the caption at 10 s"
+     },
+     "next": "then-and-now",
+     "sources": [
+      "F-04",
+      "F-12",
+      "F-21",
+      "F-22",
+      "F-25",
+      "F-26",
+      "F-28",
+      "F-31",
+      "F-39"
+     ],
+     "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'Younger than his valet': Passepartout is about thirty (F-04). Linear cut: keep whole (60 s).",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "then-and-now",
+     "type": "photo",
+     "title": "Then and now — the forecourt, 1872 and today",
+     "subtopic": "8 — Charing Cross (then/now)",
+     "duration_s": 35,
+     "learning_goal": "See the 1872 forecourt against today's; know the station still runs about a train an hour to Dover.",
+     "narration": {
+      "script": "Drag the seam. On the left, an engraving from 1872 — the year itself — the hotel and forecourt as Fogg saw them. On the right, the cross today. Six platforms behind it, and still about a train an hour to Dover; you can still buy a ticket for Dover at Fogg's station, though the through route to Paris now leaves from St Pancras. The hotel is a hotel still, under a newer name.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-02/then-now_charing-cross_M-24_vs_M-26.svg",
+       "start_s": 0,
+       "end_s": 35,
+       "license": "generated",
+       "manifest_id": "G-02",
+       "attribution": "Yunyou studio, generated",
+       "note": "REQUESTED template 'then vs now', vertical seam, filled with M-24 (left) and M-26 (right); source line in 8 pt on the caption bar."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.037_HOTEL_AT_CHARING_CROSS.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-24",
+       "attribution": "'Hotel at Charing Cross', London Illustrated (1872), J. T. Wood (Wikimedia Commons, PD)",
+       "start_s": 0,
+       "end_s": 35,
+       "note": "Left half, sepia with engraved-line vignette."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Charing_Cross_Memorial_(4901651986).jpg",
+       "license": "cc-by-2.0",
+       "manifest_id": "M-26",
+       "attribution": "Queen Eleanor Memorial Cross — Tony Hisgett (2010), CC BY 2.0",
+       "start_s": 0,
+       "end_s": 35,
+       "note": "Right half, portrait — fold-phone friendly. Alt: M-25 (Rijksmuseum, CC0) vs a still from M-08 05:00–06:00."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "caption",
+       "until_s": 35,
+       "text": "1872 — the station is eight years old",
+       "position": "left"
+      },
+      {
+       "at_s": 0,
+       "kind": "caption",
+       "until_s": 35,
+       "text": "Today — six platforms, a train an hour to Dover",
+       "position": "right"
+      }
+     ],
+     "interaction": {
+      "kind": "drag",
+      "prompt": "Drag the seam left and right."
+     },
+     "transition": {
+      "in": "dissolve",
+      "out": "cut to Street View",
+      "music_cue": "none"
+     },
+     "next": "look-up-the-cross",
+     "sources": [
+      "F-21",
+      "F-22"
+     ],
+     "production_notes": "Two captions at 0 s are the split-frame labels (one per side), both ≤ 12 words. Linear cut: 15 s, seam auto-wipes once; script trimmed to the first two sentences and the Dover line.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "look-up-the-cross",
+     "type": "streetview",
+     "title": "Look up — the cross, and where London starts",
+     "subtopic": "8 — Charing Cross (Street View stop)",
+     "duration_s": 25,
+     "learning_goal": "Know the forecourt cross is an 1865 replica and that London's distances are measured from the Charles I statue.",
+     "narration": {
+      "script": "Look up. The cross is a replica, put up in 1865: twenty-one metres — seventy feet — of Portland stone. The original of 1291 stood a couple of hundred metres off to your right, where King Charles the First now rides in bronze, and London's distances are still measured from him, not from this cross.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "streetview",
+       "ref": "51.5083,-0.1247,180,10,80",
+       "license": "google-maps-embed",
+       "manifest_id": "M-38",
+       "attribution": "Google Street View (Maps Embed API)",
+       "note": "From the Strand looking into the forecourt: Eleanor Cross centre, hotel façade behind. Alt inside the forecourt 51.5081,-0.1246 heading 200 (taxi rank — confirm pano)."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 3,
+       "kind": "pin",
+       "until_s": 20,
+       "text": "Charles I — 1675, London's distances start here",
+       "position": "tr",
+       "geo": "51.5075,-0.1277"
+      }
+     ],
+     "interaction": {
+      "kind": "walk",
+      "prompt": "Look up, then turn right toward Trafalgar Square.",
+      "route": [
+       "51.5083,-0.1247"
+      ]
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the platform (dialogue)",
+      "music_cue": "none"
+     },
+     "next": "passepartout-on-the-platform",
+     "sources": [
+      "F-21",
+      "F-39"
+     ],
+     "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop with free look (interaction kind 'walk', one waypoint). 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano (F-39 pins) — 'to your right' when facing south.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "passepartout-on-the-platform",
+     "type": "dialogue",
+     "title": "The platform, 8:40 — talk to Passepartout",
+     "subtopic": "9 — The platform: Passepartout",
+     "duration_s": 90,
+     "learning_goal": "Know the platform scene — tickets for Paris, the five partners, seated 8:40 — and hear Passepartout in his own words; feel the thrill and the alarm of the first train out.",
+     "narration": {
+      "script": "Twenty past eight, and it is raining — Verne says so: the night is dark and a fine, steady rain is falling. Fogg is at the window buying two first-class tickets for Paris. His five whist partners have come to see him off. And Passepartout is standing under the roof with the carpet-bag, nine hours into a job he took for the quiet. Go and talk to him. He answers only what he knows tonight, and he does not know what happens next. Ask him about his master, or the bag, or the circus. Four questions — then we've got a train to catch.",
+      "timing": "before",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_02.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-50",
+       "attribution": "Passepartout, plate 02 by Alphonse de Neuville / Léon Benett, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+       "start_s": 0,
+       "end_s": 90,
+       "note": "REQUESTED id (see 03). Persona card portrait. Backup: M-34."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Steam_engine.ogg",
+       "start_s": 0,
+       "end_s": 90,
+       "license": "public-domain",
+       "manifest_id": "M-44",
+       "attribution": "Steam engine — aradlaw, pdsounds #632 (Wikimedia Commons, PD)",
+       "note": "Low steam bed. A CC0 rain-on-a-station-roof bed is still to be sourced (Content Preparer) — none in the manifest yet."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "lower-third",
+       "until_s": 12,
+       "text": "Charing Cross, 8:40 p.m. — Passepartout, valet since 11:29",
+       "position": "bottom"
+      },
+      {
+       "at_s": 80,
+       "kind": "caption",
+       "until_s": 90,
+       "text": "We've got a train to catch.",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "chat",
+      "persona": "passepartout",
+      "prompt": "Charing Cross platform, about 8:40 p.m., Wednesday 2 October 1872; rain; Mr Fogg is buying two first-class tickets for Paris; the five whist partners are nearby. Ask Passepartout up to four questions.",
+      "options": [
+       {
+        "text": "Who is your new master?",
+        "feedback": "Mr Phileas Fogg, of No. 7 Savile Row, monsieur; I have known him since twenty-nine minutes past eleven this morning. He rises at eight, takes tea at twenty-three past, wants shaving-water at eighty-six degrees exactly. I said I had seen people at Madame Tussaud's as lively as my new master. Then he said we were going round the world."
+       },
+       {
+        "text": "What did you pack?",
+        "feedback": "One carpet-bag, monsieur — two shirts and three pairs of stockings for him, and the same for me. A mackintosh, a travelling-cloak. His red-bound Bradshaw, the railway guide. And a roll of Bank of England notes that he says holds twenty thousand pounds. I have not let go of the handle since Savile Row."
+       },
+       {
+        "text": "Why did you leave the circus?",
+        "feedback": "I have been many things, monsieur: a singer on the road; a circus-rider, when I used to vault like Léotard and dance on a rope like Blondin; a gymnastics professor; a sergeant of firemen in Paris. Five years ago I came to England — ten houses since, the last young Lord Longferry's. I wanted a quiet life. So, Mr Fogg."
+       },
+       {
+        "text": "Are you nervous?",
+        "feedback": "A little, monsieur. At twenty-five past seven he told me, 'We start for Dover and Calais in ten minutes.' Where to? 'We are going round the world.' Then: 'In eighty days.' As calmly as he orders tea. He won twenty guineas at cards tonight and gave every one to a poor woman with a child, without stopping. That steadies me."
+       },
+       {
+        "text": "Did you forget anything?",
+        "feedback": "Nothing, monsieur — I think. The house is in order: the gas, the electric bells, the speaking-tubes. There was no study to lock and no books to pack, because Mr Fogg keeps his reading at the club. My watch, Mr Fogg tells me, is four minutes slow."
+       }
+      ],
+      "guardrails": [
+       "WHITELIST — speak only from: F-02 (this morning: hired at 11:29, watch four minutes slow, the household clock, James Forster's 84 °F); F-03 (the house: gas, electric bells, speaking-tubes, no books); F-04 (own past: Paris, singer, circus-rider 'like Léotard', rope-dancer 'like Blondin', gymnastics professor, fireman, ten English houses, Lord Longferry, the Tussaud's remark); F-12 (7:25 'We start for Dover and Calais in ten minutes', the bag and its contents, the cab, the beggar-woman, the tickets, 8:45); F-28/F-31 (cab colour and slang, lightly). Nothing else.",
+       "MUST NOT know or guess the outcome of the wager.",
+       "MUST NOT mention anything after chapter IV — no detective, no India, no dates after 2 October 1872.",
+       "MUST NOT mention the forgotten gas: on the platform he does not know yet (F-13 places the realisation at Sydenham). If asked 'did you forget anything?' the answer is 'Nothing, monsieur — I think.'",
+       "MUST NOT claim any real-world fact about today's London or the real Reform Club.",
+       "MUST NOT invent family, an age beyond 'about thirty', or a home town beyond Paris.",
+       "MUST NOT use a comic accent spelling.",
+       "MUST NOT use exclamation marks except inside verbatim Verne quotes.",
+       "When asked beyond the whitelist, answer in character: 'I have been in Mr Fogg's service since twenty-nine minutes past eleven this morning, monsieur — ask me again in eighty days.'",
+       "Tone: warm, a little alarmed, admiring of his master's calm; British spelling; captions on; ≤ 60 words per reply; four exchanges, then the guide takes over ('we've got a train to catch')."
+      ]
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the weather quiz",
+      "music_cue": "M-44 low; rain bed to be added"
+     },
+     "next": "quiz-the-weather",
+     "sources": [
+      "F-02",
+      "F-03",
+      "F-04",
+      "F-12",
+      "F-13",
+      "F-28",
+      "F-31"
+     ],
+     "production_notes": "Free chat with the guardrails above (Decision 3, provisionally accepted). The five option chips carry pre-written, whitelist-only answers: they are the fallback if free chat is switched off (interaction kind 'choice'), and the linear cut uses chips 1 and 4 as the scripted three-line exchange (guide → Passepartout → guide, 30 s). Cap: 4 exchanges, then the guide's hand-over caption at 80 s. Fact-Checker: red-team the persona with 20 off-whitelist questions before ship.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "quiz-the-weather",
+     "type": "quiz",
+     "title": "Quiz — what is the weather on the platform?",
+     "subtopic": "9 — The platform (Quiz B)",
+     "duration_s": 45,
+     "learning_goal": "Know that the departure night is dark and rainy, not foggy; know the pea-souper was a winter, coal-smoke thing.",
+     "narration": {
+      "script": "It is twenty to nine. Fogg and Passepartout are in their seats. Before the whistle, one question: what is the weather doing tonight? Choose. Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Charing_Cross_Station_en_Hotel_met_ervoor_de_replica_van_het_Eleanor_cross_in_Londen_Charing_%2B_Hotel_(titel_op_object),_RP-F-F01134-AG.jpg",
+       "license": "cc0",
+       "manifest_id": "M-25",
+       "attribution": "Charing Cross Station and Hotel with the Eleanor Cross, albumen photo, Rijksmuseum RP-F-F01134-AG, ca. 1880–1910 (CC0)",
+       "start_s": 0,
+       "end_s": 45,
+       "note": "Backdrop behind the quiz card, darkened."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Steam_engine.ogg",
+       "start_s": 0,
+       "end_s": 45,
+       "license": "public-domain",
+       "manifest_id": "M-44",
+       "attribution": "Steam engine — aradlaw, pdsounds #632 (Wikimedia Commons, PD)",
+       "note": "Continues low from 16."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "prompt",
+       "until_s": 12,
+       "text": "8:40 on the platform. What is the weather?",
+       "position": "top"
+      },
+      {
+       "at_s": 30,
+       "kind": "caption",
+       "until_s": 45,
+       "text": "Charing Cross, about 1880–1910 — Rijksmuseum",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "choice",
+      "prompt": "It is 8:40 on the platform. What is the weather?",
+      "options": [
+       {
+        "text": "A thick yellow pea-souper",
+        "correct": false,
+        "feedback": "The cliché — but London's great fogs were winter, coal-smoke things; the notorious one came in December 1873, the year after Fogg left."
+       },
+       {
+        "text": "A dark night and a fine, steady rain",
+        "correct": true,
+        "feedback": "Verne's own words. Rain on the station roof, then rain on the carriage window."
+       },
+       {
+        "text": "An early snow",
+        "correct": false,
+        "feedback": "Not in October. Verne gives rain — and no fog either; save the pea-souper for a winter chapter."
+       }
+      ]
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the 1905 postcard",
+      "music_cue": "M-44 continues"
+     },
+     "next": "the-boat-train",
+     "sources": [
+      "F-12",
+      "F-13",
+      "F-30"
+     ],
+     "production_notes": "Question ≈ 10 s, answer window ≈ 20 s, guide's close ≈ 15 s. Linear cut: the guide states the answer (15 s) — script minus 'Choose.'",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "the-boat-train",
+     "type": "video",
+     "title": "8:45 — over the river, to the forgotten gas",
+     "subtopic": "9 — The whistle and the first miles",
+     "duration_s": 85,
+     "learning_goal": "Feel the thrill of the first train out; know the train still leaves over Hungerford Bridge and takes about two hours to Dover today; end on Passepartout's forgotten gas.",
+     "narration": {
+      "script": "A postcard from 1905, thirty-three years after Fogg — but the same platforms and the same roof: the Paris boat train, waiting. Now, tonight. Twenty to nine, seated. A quarter to nine — the whistle, and we are off, over Hungerford Bridge, the way trains still leave Fogg's station. Look right through the rain: the Embankment along the river, two years old in 1872, and beyond it the clock tower, thirteen. Brand-new London slipping away in the dark. This train, today, takes about two hours to Dover; Fogg's timetable gave him seven days to Suez, and this is the first hour of them. Somewhere out past the suburbs — Verne says Sydenham, though by 1872 the express took a shorter line — Passepartout suddenly sits bolt upright. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:1905_LONDON_S.E_%26_C.R_CHARING_CROSS_RAILWAY_STATION_PARIS_BOAT_TRAIN_POSTCARD_(50272732396).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-27",
+       "attribution": "Charing Cross station, Paris boat train, S.E.&C.R. postcard (1905) (Wikimedia Commons, PD)",
+       "start_s": 0,
+       "end_s": 10,
+       "note": "Caption must say 1905."
+      },
+      {
+       "kind": "youtube",
+       "ref": "ME-x2yWqoiw",
+       "start_s": 0,
+       "end_s": 75,
+       "license": "youtube-embed",
+       "manifest_id": "M-13",
+       "attribution": "Ian Payne Urban Transport, 'Southeastern – London Charing Cross to Dover Priory | 2h02m' (2026) — YouTube embed",
+       "note": "00:00–01:15, departure over Hungerford Bridge (scene seconds 10–85). Passenger-window view reframed from 360°, not a cab view. If filmed in daylight, say nothing (we travel today) but consider a 10-s M-16 aqecMqk9z0o night insert for 'the night was dark'. Backups M-14 mxc2e8NCDos 03:47–04:22, M-12 fAfjnatbpb4 concourse; spare M-15 KKM-fpRGwTQ."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Steam_engine.ogg",
+       "start_s": 0,
+       "end_s": 10,
+       "license": "public-domain",
+       "manifest_id": "M-44",
+       "attribution": "Steam engine — aradlaw, pdsounds #632 (Wikimedia Commons, PD)",
+       "note": "Under the postcard."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:WWS_SteamWhistle.ogg",
+       "start_s": 12,
+       "end_s": 16,
+       "license": "cc-by-4.0",
+       "manifest_id": "M-45",
+       "attribution": "Steam locomotive P-8 whistle — Work With Sounds / Konrad Gutkowski (2014), CC BY 4.0",
+       "note": "Whistle sting exactly on the '8:45 p.m.' caption. Attribution required."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "caption",
+       "until_s": 10,
+       "text": "The Paris boat train, Charing Cross — 1905, not 1872",
+       "position": "bottom"
+      },
+      {
+       "at_s": 12,
+       "kind": "caption",
+       "until_s": 18,
+       "text": "8:45 p.m.",
+       "position": "center"
+      },
+      {
+       "at_s": 32,
+       "kind": "caption",
+       "until_s": 44,
+       "text": "Look right — Embankment (1870), clock tower (1859)",
+       "position": "bottom"
+      },
+      {
+       "at_s": 56,
+       "kind": "caption",
+       "until_s": 66,
+       "text": "Charing Cross to Dover — about two hours today",
+       "position": "bottom"
+      },
+      {
+       "at_s": 72,
+       "kind": "caption",
+       "until_s": 84,
+       "text": "Verne says Sydenham. By 1872 the express took a shorter line.",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "fade to black, then the souvenir card",
+      "music_cue": "M-45 sting at 12 s; rain and rail sound only after"
+     },
+     "next": "souvenir",
+     "sources": [
+      "F-10",
+      "F-12",
+      "F-13",
+      "F-22",
+      "F-26",
+      "F-40"
+     ],
+     "production_notes": "Ending B (on the boat train), provisionally accepted. Ending A would cut M-13 at 20 s and drop the gas line here and in 11. Content Preparer: check the time of day M-13 was filmed and confirm F-40 against the current Southeastern timetable. Linear cut: 65 s of video (postcard 10 s + M-13 00:00–00:55) — trim the Dover/Suez sentence.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    },
+    {
+     "id": "souvenir",
+     "type": "card",
+     "title": "Souvenir — Fogg's last breakfast in London",
+     "subtopic": "10 — Souvenir and send-off",
+     "duration_s": 60,
+     "learning_goal": "Take home the breakfast Fogg ate before betting half his fortune, and a date to cook it; feel warmth and a promise to be back on 21 December.",
+     "narration": {
+      "script": "Your souvenir of the day: Fogg's last breakfast in London — the meal he ate before betting half his fortune. Broiled fish with a Reading-sauce-style ketchup: walnut and mushroom ketchup, soy, anchovies, chillies, garlic — the real Berkshire condiment of 1802, gone since the 1960s. A slice of roast beef with mushrooms. A rhubarb-and-gooseberry tart. A morsel of Cheshire cheese. Tea. Save the card; the recipe is on it. Cook it on the evening of the twenty-first of December, and be at table by a quarter to nine, because that is when he promised to be back in that room. Fogg's other motto, and ours for the road: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris.",
+      "timing": "over",
+      "voice": "guide"
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-08/souvenir-breakfast-card.svg",
+       "start_s": 0,
+       "end_s": 60,
+       "license": "generated",
+       "manifest_id": "G-08",
+       "attribution": "Yunyou studio, generated",
+       "note": "REQUESTED (Content Preparer): typeset recipe card, saveable/shareable as an image (1080×1920 and 1920×1080); optional small M-23 vignette. Last line on the card: 'Cook it on the evening of 21 December, and be at table by a quarter to nine.'"
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-23",
+       "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
+       "start_s": 0,
+       "end_s": 60,
+       "note": "Small vignette on the card."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture.ogg",
+       "start_s": 0,
+       "end_s": 60,
+       "license": "cc0",
+       "manifest_id": "M-42",
+       "attribution": "Offenbach, Orphée aux enfers overture, Musopen (Wikimedia Commons, CC0)",
+       "note": "Tail. Backup M-48 Pinafore (must be captioned '1878, recorded 1907')."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 6,
+       "kind": "caption",
+       "until_s": 20,
+       "text": "Cook it on 21 December. Be at table by 8:45.",
+       "position": "bottom"
+      },
+      {
+       "at_s": 48,
+       "kind": "caption",
+       "until_s": 60,
+       "text": "Next: Dover, Calais, Paris.",
+       "position": "bottom"
+      }
+     ],
+     "interaction": {
+      "kind": "none",
+      "prompt": "Save the card (image) or share it."
+     },
+     "transition": {
+      "in": "fade from black",
+      "out": "hold on the card — chapter end frame",
+      "music_cue": "M-42 tail, out on the last caption"
+     },
+     "next": "",
+     "sources": [
+      "F-06",
+      "F-11",
+      "F-12",
+      "F-27"
+     ],
+     "production_notes": "Chapter end frame. Card must be exportable as an image (Scene Dev). Linear cut: 40 s — same script minus the ingredient list read-out (it stays on the card).",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+     }
+    }
+   ]
+  }
+ ],
+ "linear_cut": {
+  "target_minutes": 12,
+  "platforms": [
+   "youtube",
+   "bilibili"
+  ]
+ }
+}

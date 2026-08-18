@@ -1,0 +1,95 @@
+{
+  "id": "savile-row",
+  "type": "video",
+  "title": "Savile Row — the address Verne got wrong",
+  "subtopic": "2 — Savile Row",
+  "duration_s": 100,
+  "learning_goal": "Know that Verne put Fogg at No. 7 and Sheridan's death there in 1814, that Sheridan lived at No. 14 and died in 1816, and that the Row was already tailoring country; feel the hush of cloth and chalk.",
+  "narration": {
+    "script": "Here we are: the corner of Burlington Gardens and Savile Row. Verne opens the novel on this spot — 'No. 7, Saville Row, Burlington Gardens, the house in which Sheridan died in 1814.' He spells the street with two Ls, and he is wrong twice more. Sheridan the playwright lived at No. 14, not No. 7, and he died there in 1816, not 1814. Watch the doors on the left as we walk: No. 14 carries the plaque, put up in 1881. There is no plaque for Fogg anywhere. So the novel is our guidebook, not our gospel; we will correct it with a smile whenever we can. Look in the windows now — bolts of cloth, chalk marks, half-made jackets. This was already tailoring country in 1872. Henry Poole came to the Row in 1846 and is still here at No. 15; his shop cut the Prince of Wales a short evening jacket, which is why the world calls it a dinner jacket. One small detour in time: on the roof of No. 3, on the thirtieth of January 1969, the Beatles played their rooftop concert. Fogg's house, in the book, ran on the newest kit of its day — gas for light and warmth, electric bells, speaking-tubes — and held not a single book, because his club had two libraries. Here is the Row around 1890, a few years after Fogg. Same doors. Same hush.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "youtube",
+      "ref": "tFaUD2llMJg",
+      "start_s": 1295,
+      "end_s": 1385,
+      "license": "youtube-embed",
+      "manifest_id": "M-05",
+      "attribution": "Watched Walker, 'London Walk - Bond Street & Savile Row' (2022) — YouTube embed",
+      "note": "21:35–23:05: Burlington Gardens corner into the Row (creator chapter 'Savile Row' at 21:55). Backup M-06 SNm-h6lxu1c 01:56–03:26; spare M-07 wyl0GZBEWXs. Content Preparer: pin the frames where 14 / 15 / 3 are legible; if the No. 14 plaque is not visible, hold M-33 as a still."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-32",
+      "attribution": "Savile Row c. 1890, Henry Poole & Co archive (Wikimedia Commons, PD)",
+      "start_s": 90,
+      "end_s": 100,
+      "note": "10-s insert with sepia vignette at the end of the scene."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 3,
+      "kind": "pin",
+      "until_s": 12,
+      "text": "Burlington Gardens — Verne's 'Saville Row, Burlington Gardens'",
+      "position": "bl"
+    },
+    {
+      "at_s": 25,
+      "kind": "pin",
+      "until_s": 35,
+      "text": "No. 14 — Sheridan's real house, plaque 1881",
+      "position": "bl"
+    },
+    {
+      "at_s": 48,
+      "kind": "pin",
+      "until_s": 58,
+      "text": "No. 15 — Henry Poole, here since 1846",
+      "position": "bl"
+    },
+    {
+      "at_s": 66,
+      "kind": "pin",
+      "until_s": 76,
+      "text": "No. 3 — Beatles rooftop, 30 Jan 1969",
+      "position": "bl"
+    },
+    {
+      "at_s": 90,
+      "kind": "caption",
+      "until_s": 100,
+      "text": "Savile Row, about 1890",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "none"
+  },
+  "transition": {
+    "in": "3-s fade from the map",
+    "out": "cut to the timetable card",
+    "music_cue": "none — keep the binaural street sound of M-05"
+  },
+  "next": "fogg-by-the-clock",
+  "sources": [
+    "F-01",
+    "F-03",
+    "F-19",
+    "F-20",
+    "F-39"
+  ],
+  "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. F-20 (current shopfronts) is medium confidence — Content Preparer checks Street View before pinning No. 14 / No. 15. Linear cut: 75 s of M-05 (21:35–22:50), pins (a) and (b) only, drop the M-32 insert and the last four sentences.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "id": "fogg-by-the-clock",
+  "type": "card",
+  "title": "Fogg's day, by the clock — enter Passepartout",
+  "subtopic": "3 — Fogg's day by the clock",
+  "duration_s": 60,
+  "learning_goal": "Know Fogg's timetable and who Passepartout is; feel precision as comedy and like the valet at once.",
+  "narration": {
+    "script": "Fogg's day, by the clock. Tap any line to see what happens. He rises at eight. Tea and toast at twenty-three minutes past. Shaving-water at nine thirty-seven, at thirty degrees — eighty-six Fahrenheit; the last valet brought it at eighty-four and was sacked for it. Out of the door at half past eleven, home at midnight. Into this house, at twenty-nine minutes past eleven, walks Passepartout: a Parisian of Paris, about thirty, once a wandering singer, a circus-rider who vaulted like Léotard, a rope-dancer like Blondin, then a fireman in Paris, then ten English households in five years. His watch is four minutes slow. He wants a quiet life. Look at his face on the card; we like him already.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "generated",
+      "ref": "generated/g-04/fogg-timetable-card.svg",
+      "start_s": 0,
+      "end_s": 60,
+      "license": "generated",
+      "manifest_id": "G-04",
+      "attribution": "Yunyou studio, generated",
+      "note": "REQUESTED (Content Preparer): typeset card in the style of a Victorian railway timetable, six rows (8:00, 8:23, 9:37, 11:29, 11:30, 12:00), each tappable. No illustration budget needed."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_02.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-50",
+      "attribution": "Passepartout, plate 02 by Alphonse de Neuville / Léon Benett, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+      "start_s": 30,
+      "end_s": 60,
+      "note": "REQUESTED id: the Neuville Passepartout plate from the set named in M-35's note (nos. 01–03). Backup: M-34 (Fogg frontispiece)."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 0,
+      "kind": "prompt",
+      "until_s": 8,
+      "text": "Tap a time to see what happens",
+      "position": "top"
+    },
+    {
+      "at_s": 44,
+      "kind": "caption",
+      "until_s": 56,
+      "text": "I've seen people at Madame Tussaud's as lively as my new master!",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "tap-to-find",
+    "prompt": "Tap a time on Fogg's timetable.",
+    "options": [
+      {
+        "text": "8:00 — rises",
+        "feedback": "Every day the same minute. The house is lit and warmed by gas, with electric bells and speaking-tubes to call the valet."
+      },
+      {
+        "text": "8:23 — tea and toast",
+        "feedback": "Twenty-three minutes past eight, not a minute later. Wardrobe items are numbered by season, so nothing needs deciding."
+      },
+      {
+        "text": "9:37 — shaving-water",
+        "feedback": "At 86 °F, about 30 °C. This morning James Forster brought it at 84 °F, and was dismissed for it. That is why there is a vacancy."
+      },
+      {
+        "text": "11:29 — a new valet",
+        "feedback": "'Twenty-nine minutes after eleven, a.m., this Wednesday, 2nd October' — Passepartout is engaged. His watch, Fogg notes, is four minutes slow."
+      },
+      {
+        "text": "11:30 — out to the club",
+        "feedback": "Fogg leaves for the Reform Club at half past eleven sharp. Passepartout's first words alone in the house are the Tussaud's line on the caption."
+      },
+      {
+        "text": "12:00 — home",
+        "feedback": "Home at midnight, every night. Passepartout has served in ten English houses in five years; this one, he thinks, will finally be quiet."
+      }
+    ]
+  },
+  "transition": {
+    "in": "cut",
+    "out": "cut to Street View",
+    "music_cue": "none; a soft clock tick under the card is allowed"
+  },
+  "next": "count-the-steps",
+  "sources": [
+    "F-02",
+    "F-03",
+    "F-04"
+  ],
+  "production_notes": "Temperature conversion is arithmetic on F-02 (86 °F ≈ 30 °C), metric first per style guide. Passepartout's Tussaud's line keeps Verne's exclamation mark on the caption; the guide never reads it aloud. Linear cut: card only, no taps, 40 s — script trimmed after 'home at midnight' to the one-breath CV.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

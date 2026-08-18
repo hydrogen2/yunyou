@@ -1,0 +1,123 @@
+{
+  "id": "pack-the-bag",
+  "type": "game",
+  "title": "Ten minutes — pack the carpet-bag",
+  "subtopic": "7 — Ten minutes: pack the bag",
+  "duration_s": 90,
+  "learning_goal": "Know what went into the carpet-bag and what stayed at Savile Row; feel the scramble.",
+  "narration": {
+    "script": "Twenty-five past seven. Fogg goes home from the club, calls Passepartout and says: 'We start for Dover and Calais in ten minutes.' Where to? 'We are going round the world.' 'In eighty days.' Passepartout, remember, wanted a quiet life. Now help him pack. One carpet-bag, and it must hold everything. Drag in what goes; leave what stays. Verne is exact about the list, so we are too. Two shirts and three pairs of stockings each, a mackintosh, a travelling-cloak, the red-bound Bradshaw's Continental Guide — the world's timetable, more than a thousand pages of trains and hotels — and a goodly roll of Bank of England notes: twenty thousand pounds. No books, because there are none in the house. The electric clock stays on the mantel. And so, tonight, does the gas — remember that. Two shirts, three pairs of stockings, and half a fortune.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "generated",
+      "ref": "generated/g-07/carpet-bag-game.svg",
+      "start_s": 0,
+      "end_s": 90,
+      "license": "generated",
+      "manifest_id": "G-07",
+      "attribution": "Yunyou studio, generated",
+      "note": "REQUESTED (Content Preparer): game UI — an open carpet-bag and nine draggable items (six go in, three stay). Auto-complete at 90 s."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture.ogg",
+      "start_s": 60,
+      "end_s": 90,
+      "license": "cc0",
+      "manifest_id": "M-42",
+      "attribution": "Offenbach, Orphée aux enfers overture, Musopen (Wikimedia Commons, CC0)",
+      "note": "Galop section, 20–40 s, in under the completion line and continuing into 12."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 0,
+      "kind": "prompt",
+      "until_s": 10,
+      "text": "Ten minutes. Pack the carpet-bag.",
+      "position": "top"
+    },
+    {
+      "at_s": 70,
+      "kind": "caption",
+      "until_s": 84,
+      "text": "Two shirts, three pairs of stockings, and half a fortune.",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "drag",
+    "prompt": "Ten minutes. Drag into the bag what Fogg takes; leave what stays at Savile Row.",
+    "options": [
+      {
+        "text": "Two shirts",
+        "correct": true,
+        "feedback": "In. 'Two shirts and three pairs of stockings' — the same for Passepartout."
+      },
+      {
+        "text": "Three pairs of stockings",
+        "correct": true,
+        "feedback": "In. Three pairs each; nothing else by way of linen."
+      },
+      {
+        "text": "A mackintosh",
+        "correct": true,
+        "feedback": "In. It is raining tonight, and Verne packs it."
+      },
+      {
+        "text": "A travelling-cloak",
+        "correct": true,
+        "feedback": "In. Verne lists it in the same breath as the mackintosh."
+      },
+      {
+        "text": "The red-bound Bradshaw's Continental Guide",
+        "correct": true,
+        "feedback": "In. Bradshaw's Continental Railway Guide, begun 1847 — over a thousand pages of timetables, hotels and advice. The most-used thing in the bag."
+      },
+      {
+        "text": "A roll of Bank of England notes — £20,000",
+        "correct": true,
+        "feedback": "In. 'There are twenty thousand pounds in it.' Half his fortune travels in a carpet-bag."
+      },
+      {
+        "text": "A book from Fogg's study",
+        "correct": false,
+        "feedback": "There is no study and no books at Savile Row; the club's two libraries served."
+      },
+      {
+        "text": "The electric clock from the mantel",
+        "correct": false,
+        "feedback": "It stays on the mantel — and so, tonight, does the gas."
+      },
+      {
+        "text": "This morning's Times",
+        "correct": false,
+        "feedback": "Fogg reads the papers at the club, cut open with a paper-knife."
+      }
+    ]
+  },
+  "transition": {
+    "in": "hard cut",
+    "out": "cut to the 1872 map",
+    "music_cue": "M-42 galop in at 60 s"
+  },
+  "next": "the-dash",
+  "sources": [
+    "F-03",
+    "F-06",
+    "F-11",
+    "F-12",
+    "F-13",
+    "F-37"
+  ],
+  "production_notes": "No invented Fogg lines — only what the sheet quotes (F-12). The gas clause depends on Ending B (accepted). Linear cut: packing list as a 20-s card, no drag; script trimmed to the list and the completion line.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

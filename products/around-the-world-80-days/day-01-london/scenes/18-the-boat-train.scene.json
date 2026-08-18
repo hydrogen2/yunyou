@@ -1,0 +1,116 @@
+{
+  "id": "the-boat-train",
+  "type": "video",
+  "title": "8:45 — over the river, to the forgotten gas",
+  "subtopic": "9 — The whistle and the first miles",
+  "duration_s": 85,
+  "learning_goal": "Feel the thrill of the first train out; know the train still leaves over Hungerford Bridge and takes about two hours to Dover today; end on Passepartout's forgotten gas.",
+  "narration": {
+    "script": "A postcard from 1905, thirty-three years after Fogg — but the same platforms and the same roof: the Paris boat train, waiting. Now, tonight. Twenty to nine, seated. A quarter to nine — the whistle, and we are off, over Hungerford Bridge, the way trains still leave Fogg's station. Look right through the rain: the Embankment along the river, two years old in 1872, and beyond it the clock tower, thirteen. Brand-new London slipping away in the dark. This train, today, takes about two hours to Dover; Fogg's timetable gave him seven days to Suez, and this is the first hour of them. Somewhere out past the suburbs — Verne says Sydenham, though by 1872 the express took a shorter line — Passepartout suddenly sits bolt upright. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:1905_LONDON_S.E_%26_C.R_CHARING_CROSS_RAILWAY_STATION_PARIS_BOAT_TRAIN_POSTCARD_(50272732396).jpg",
+      "license": "public-domain",
+      "manifest_id": "M-27",
+      "attribution": "Charing Cross station, Paris boat train, S.E.&C.R. postcard (1905) (Wikimedia Commons, PD)",
+      "start_s": 0,
+      "end_s": 10,
+      "note": "Caption must say 1905."
+    },
+    {
+      "kind": "youtube",
+      "ref": "ME-x2yWqoiw",
+      "start_s": 0,
+      "end_s": 75,
+      "license": "youtube-embed",
+      "manifest_id": "M-13",
+      "attribution": "Ian Payne Urban Transport, 'Southeastern – London Charing Cross to Dover Priory | 2h02m' (2026) — YouTube embed",
+      "note": "00:00–01:15, departure over Hungerford Bridge (scene seconds 10–85). Passenger-window view reframed from 360°, not a cab view. If filmed in daylight, say nothing (we travel today) but consider a 10-s M-16 aqecMqk9z0o night insert for 'the night was dark'. Backups M-14 mxc2e8NCDos 03:47–04:22, M-12 fAfjnatbpb4 concourse; spare M-15 KKM-fpRGwTQ."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Steam_engine.ogg",
+      "start_s": 0,
+      "end_s": 10,
+      "license": "public-domain",
+      "manifest_id": "M-44",
+      "attribution": "Steam engine — aradlaw, pdsounds #632 (Wikimedia Commons, PD)",
+      "note": "Under the postcard."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:WWS_SteamWhistle.ogg",
+      "start_s": 12,
+      "end_s": 16,
+      "license": "cc-by-4.0",
+      "manifest_id": "M-45",
+      "attribution": "Steam locomotive P-8 whistle — Work With Sounds / Konrad Gutkowski (2014), CC BY 4.0",
+      "note": "Whistle sting exactly on the '8:45 p.m.' caption. Attribution required."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 0,
+      "kind": "caption",
+      "until_s": 10,
+      "text": "The Paris boat train, Charing Cross — 1905, not 1872",
+      "position": "bottom"
+    },
+    {
+      "at_s": 12,
+      "kind": "caption",
+      "until_s": 18,
+      "text": "8:45 p.m.",
+      "position": "center"
+    },
+    {
+      "at_s": 32,
+      "kind": "caption",
+      "until_s": 44,
+      "text": "Look right — Embankment (1870), clock tower (1859)",
+      "position": "bottom"
+    },
+    {
+      "at_s": 56,
+      "kind": "caption",
+      "until_s": 66,
+      "text": "Charing Cross to Dover — about two hours today",
+      "position": "bottom"
+    },
+    {
+      "at_s": 72,
+      "kind": "caption",
+      "until_s": 84,
+      "text": "Verne says Sydenham. By 1872 the express took a shorter line.",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "none"
+  },
+  "transition": {
+    "in": "cut",
+    "out": "fade to black, then the souvenir card",
+    "music_cue": "M-45 sting at 12 s; rain and rail sound only after"
+  },
+  "next": "souvenir",
+  "sources": [
+    "F-10",
+    "F-12",
+    "F-13",
+    "F-22",
+    "F-26",
+    "F-40"
+  ],
+  "production_notes": "Ending B (on the boat train), provisionally accepted. Ending A would cut M-13 at 20 s and drop the gas line here and in 11. Content Preparer: check the time of day M-13 was filmed and confirm F-40 against the current Southeastern timetable. Linear cut: 65 s of video (postcard 10 s + M-13 00:00–00:55) — trim the Dover/Suez sentence.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

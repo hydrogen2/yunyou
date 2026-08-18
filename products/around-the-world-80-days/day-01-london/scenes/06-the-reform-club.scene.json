@@ -1,0 +1,113 @@
+{
+  "id": "the-reform-club",
+  "type": "video",
+  "title": "Inside the Reform — what Verne got right",
+  "subtopic": "5 — Inside the Reform",
+  "duration_s": 70,
+  "learning_goal": "Know the Reform Club is real, founded 1836, Barry's palazzo of 1841, Soyer's kitchens, and Fogg's breakfast; feel cosy club warmth.",
+  "narration": {
+    "script": "We arrive at the door. The Reform Club is real, and still here: 104 Pall Mall, founded in 1836 by the men who had backed the Reform Act of 1832 — neutral today, and that is our one line of politics. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high, ringed by columns under a glass roof, and the famous kitchens that Alexis Soyer helped to plan. Here is the front today; here is Barry's elevation; and here, kept small, is the saloon as engraved in 1841 — we have no footage of the inside, so the engraving carries it. Now Fogg's breakfast, taken here at the club: a broiled fish with Reading sauce, a scarlet slice of roast beef with mushrooms, a rhubarb-and-gooseberry tart, a morsel of Cheshire cheese, and several cups of the tea for which the Reform is famous. Reading sauce was a real thing, from Berkshire — keep this in mind for later. Then he cuts open the Times with a paper-knife and reads.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "youtube",
+      "ref": "WQCsxb2dMgQ",
+      "start_s": 1579,
+      "end_s": 1624,
+      "license": "youtube-embed",
+      "manifest_id": "M-01",
+      "attribution": "Wanderizm, 'LONDON Walk - Day stroll along Trafalgar Square, Royal horse guards and St. James's' (2020) — YouTube embed",
+      "note": "26:19–27:04, arriving at the Reform Club door. Scene seconds 0–45. Backup M-02 kfuLPlhJGYE 06:37–07:22 (mute music). Dropped in the linear cut."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-20",
+      "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
+      "start_s": 45,
+      "end_s": 53,
+      "note": "Façade today. Alt M-21 (square crop) for pin thumbnail."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._North_Elevation.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-22",
+      "attribution": "Reform Club, north elevation, from 'Life and Works of Sir Charles Barry' (Wikimedia Commons, PD)",
+      "start_s": 53,
+      "end_s": 61,
+      "note": "Barry's elevation, 709 px — phone size only."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+      "license": "public-domain",
+      "manifest_id": "M-23",
+      "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
+      "start_s": 61,
+      "end_s": 70,
+      "note": "632 px — inset with vignette, never full-screen."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Johann_Strauss_-_Wiener_Blut_Op._354.ogg",
+      "start_s": 0,
+      "end_s": 70,
+      "license": "cc0",
+      "manifest_id": "M-43",
+      "attribution": "J. Strauss II, Wiener Blut Op. 354 (Wikimedia Commons, CC0)",
+      "note": "Low loop, ducked under narration. Backup bed: M-41."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 18,
+      "kind": "pin",
+      "until_s": 30,
+      "text": "Reform Club — 104 Pall Mall, founded 1836",
+      "position": "bl",
+      "geo": "51.5065,-0.1335"
+    },
+    {
+      "at_s": 45,
+      "kind": "caption",
+      "until_s": 53,
+      "text": "Portland stone, Charles Barry, opened 1 March 1841",
+      "position": "bottom"
+    },
+    {
+      "at_s": 61,
+      "kind": "caption",
+      "until_s": 70,
+      "text": "The saloon, engraved 1841 — no camera has been inside for us",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "none"
+  },
+  "transition": {
+    "in": "cut from Street View",
+    "out": "dissolve to the quiz card",
+    "music_cue": "M-43 in low at 0 s, continues into 07"
+  },
+  "next": "quiz-verne-saloon",
+  "sources": [
+    "F-06",
+    "F-14",
+    "F-15",
+    "F-16",
+    "F-18",
+    "F-27"
+  ],
+  "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Linear cut: start at 45 s (photo trio only, 25 s), since M-01 26:19–27:04 is used by 05 pall-mall-pass.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

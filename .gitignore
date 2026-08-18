@@ -1,0 +1,10 @@
+# generated / large / local
+node_modules/
+**/.cache/
+**/.work/
+*.log
+studio/research/prototypes/window/dev.crt
+studio/research/prototypes/window/dev.key
+products/**/linear/*.mp4
+www/serve.log
+.DS_Store

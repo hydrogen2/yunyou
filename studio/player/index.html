@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yunyou · player</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+  :root { --ink:#ece6da; --dim:#a9a193; --bg:#0d0c0e; --panel:#17161a; --line:#2b292f; --accent:#d9a441; --ok:#7bc47f; --bad:#e07a6a; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--ink); font:16px/1.45 Georgia,'Times New Roman',serif; }
+  #app { display:flex; flex-direction:column; height:100dvh; }
+  header { display:flex; align-items:center; gap:10px; padding:8px 12px; border-bottom:1px solid var(--line); font-family:system-ui,sans-serif; font-size:13px; color:var(--dim); }
+  header b { color:var(--ink); font-weight:600; }
+  header .sp { flex:1; }
+  header button, .btn { background:var(--panel); color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:6px 10px; font:inherit; cursor:pointer; }
+  .btn.primary { background:var(--accent); color:#1a1408; border-color:var(--accent); font-weight:600; }
+  #stage { flex:1; min-height:0; display:flex; flex-direction:column; }
+  #media { position:relative; flex:1 1 55%; min-height:34vh; background:#000; overflow:hidden; }
+  #media iframe, #media img, #media video, #media .fill { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  #media img { object-fit:contain; background:#000; }
+  #media img.kenburns { object-fit:cover; animation:kb 30s ease-in-out infinite alternate; }
+  @keyframes kb { from { transform:scale(1) translate(0,0);} to { transform:scale(1.12) translate(-2%,-1.5%);} }
+  #media .fill { display:flex; align-items:center; justify-content:center; padding:5vmin; text-align:center; }
+  .card { background:linear-gradient(160deg,#f4ecd8,#e7dcc0); color:#2a2118; border-radius:14px; padding:6vmin 7vmin; max-width:820px; box-shadow:0 20px 60px rgba(0,0,0,.6); font-size:clamp(15px,2.4vmin,22px); text-align:left; }
+  .card h2 { margin:0 0 .5em; font-weight:600; font-size:1.25em; letter-spacing:.02em; }
+  .card small { color:#6b5a48; font-family:system-ui,sans-serif; }
+  #overlays { min-height:2.4em; padding:6px 12px; display:flex; gap:8px; flex-wrap:wrap; align-items:center; border-top:1px solid var(--line); background:var(--panel); font-family:system-ui,sans-serif; font-size:13px; }
+  .pin { border:1px solid var(--accent); color:var(--accent); border-radius:999px; padding:2px 10px; }
+  .cap { color:var(--ink); }
+  .fact { color:var(--dim); font-style:italic; }
+  #panel { flex:0 1 auto; max-height:46%; overflow:auto; padding:10px 14px 14px; }
+  #title { font-family:system-ui,sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 4px; }
+  #script { margin:0; font-size:clamp(15px,2.2vmin,19px); }
+  #script .said { color:var(--ink); } #script .unsaid { color:var(--dim); }
+  #interaction { margin-top:10px; font-family:system-ui,sans-serif; }
+  .opt { display:block; width:100%; text-align:left; margin:6px 0; padding:10px 12px; background:var(--panel); border:1px solid var(--line); border-radius:10px; color:var(--ink); font:inherit; cursor:pointer; }
+  .opt.correct { border-color:var(--ok); } .opt.wrong { border-color:var(--bad); } .opt.picked { background:#221f26; }
+  .fb { margin:6px 0 0; padding:8px 12px; border-left:3px solid var(--accent); color:var(--ink); }
+  .chat { display:flex; flex-direction:column; gap:6px; }
+  .chat .q { align-self:flex-end; background:#2a2730; padding:8px 12px; border-radius:12px 12px 2px 12px; max-width:85%; }
+  .chat .a { align-self:flex-start; background:#1c2a1e; padding:8px 12px; border-radius:12px 12px 12px 2px; max-width:85%; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
+  .chip { border:1px solid var(--line); border-radius:999px; padding:6px 10px; background:var(--panel); color:var(--ink); cursor:pointer; font:inherit; font-size:14px; }
+  footer { display:flex; gap:8px; align-items:center; padding:8px 12px; border-top:1px solid var(--line); font-family:system-ui,sans-serif; font-size:13px; }
+  #prog { flex:1; height:4px; background:var(--line); border-radius:2px; overflow:hidden; } #prog i { display:block; height:100%; width:0; background:var(--accent); transition:width .5s linear; }
+  #cover { position:fixed; inset:0; background:radial-gradient(ellipse at 50% 30%, #241d14, #0d0c0e 70%); display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:6vmin; z-index:10; }
+  #cover h1 { font-weight:500; font-size:clamp(28px,6vmin,54px); margin:0 0 .2em; } #cover p { color:var(--dim); max-width:560px; }
+  #cover label { font-family:system-ui,sans-serif; font-size:12px; color:var(--dim); display:block; margin-top:22px; }
+  #cover input { background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:6px 8px; width:min(90vw,420px); font:13px system-ui; }
+  #cover select { background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:6px 8px; font:13px system-ui; }
+  .leaflet-container { background:#e9e2d0; }
+  .muted { color:var(--dim); font-family:system-ui,sans-serif; font-size:13px; }
+  @media (min-aspect-ratio: 4/3) { #stage { flex-direction:row; } #media { flex:1 1 60%; min-height:0; } #right { flex:1 1 40%; display:flex; flex-direction:column; min-width:0; } #panel { max-height:none; flex:1; } }
+</style>
+</head>
+<body>
+<div id="cover">
+  <div id="coverTitle"><h1>Yunyou 云游</h1><p>loading tour…</p></div>
+  <button class="btn primary" id="start" style="font-size:18px;padding:12px 26px">▶ Start the day</button>
+  <label>Narration voice <select id="voice"></select> <button class="btn" id="testVoice">test</button></label>
+  <label>Google Maps API key (optional — enables live Street View; stored only in this browser)<br><input id="gkey" placeholder="AIza…"></label>
+  <p class="muted" style="margin-top:18px">Dry-run player · YouTube embeds, Wikimedia Commons media, browser TTS. Generated cards/maps are rendered live from the scene text.</p>
+</div>
+
+<div id="app">
+  <header><b id="hTitle">Yunyou</b><span id="hScene"></span><span class="sp"></span>
+    <button id="btnCap" title="captions">CC</button><button id="btnMute" title="narration on/off">🔈</button><button id="btnList">☰</button></header>
+  <div id="stage">
+    <div id="media"></div>
+    <div id="right">
+      <div id="overlays"></div>
+      <div id="panel"><p id="title"></p><p id="script"></p><div id="interaction"></div></div>
+    </div>
+  </div>
+  <footer><button class="btn" id="prev">‹ Back</button><div id="prog"><i></i></div><span id="clock"></span><button class="btn primary" id="next">Next ›</button></footer>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+const qs=new URLSearchParams(location.search);
+const TOUR_URL=qs.get('tour')||'/products/around-the-world-80-days/day-01-london/tour.json';
+const $=s=>document.querySelector(s);
+let tour, scenes=[], idx=0, timer=null, t0=0, elapsed=0, paused=false, captions=true, narrate=true, ytPlayer=null, ytReady=false, bed=null, map=null;
+const commonsCache={};
+
+// ---------- Commons: File: page URL → direct file URL ----------
+async function commonsUrl(pageUrl, width=1600){
+  const m=pageUrl.match(/File:(.+)$/); if(!m) return pageUrl; const title='File:'+decodeURIComponent(m[1]);
+  const key=title+width; if(commonsCache[key]) return commonsCache[key];
+  const api=`https://commons.wikimedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=imageinfo&iiprop=url|mime&iiurlwidth=${width}&format=json&origin=*`;
+  try{ const r=await fetch(api); const j=await r.json(); const p=Object.values(j.query.pages)[0]; const ii=p.imageinfo&&p.imageinfo[0];
+    const url= ii ? (ii.mime&&ii.mime.startsWith('audio') ? ii.url : (ii.thumburl||ii.url)) : pageUrl; commonsCache[key]=url; return url; }catch(e){ return pageUrl; }
+}
+const isCommons=u=>/commons\.wikimedia\.org\/wiki\/File:/.test(u);
+
+// ---------- YouTube ----------
+function loadYT(){ return new Promise(res=>{ if(window.YT&&YT.Player) return res(); const s=document.createElement('script'); s.src='https://www.youtube.com/iframe_api'; document.head.appendChild(s); window.onYouTubeIframeAPIReady=()=>res(); }); }
+async function showYouTube(m){
+  await loadYT(); const host=document.createElement('div'); host.id='yt'; $('#media').appendChild(host);
+  ytPlayer=new YT.Player('yt',{videoId:m.ref, playerVars:{start:m.start_s||0, end:m.end_s||undefined, autoplay:1, controls:1, rel:0, modestbranding:1, playsinline:1, iv_load_policy:3},
+    events:{ onReady:e=>{ e.target.setVolume(35); e.target.playVideo(); }, onStateChange:e=>{ if(e.data===YT.PlayerState.ENDED){ /* keep last frame */ } } }});
+}
+
+// ---------- TTS ----------
+let voices=[]; function loadVoices(){ voices=speechSynthesis.getVoices(); const sel=$('#voice'); sel.innerHTML='';
+  const pref=voices.filter(v=>/en-GB|en_GB/i.test(v.lang)).concat(voices.filter(v=>/^en/i.test(v.lang)&&!/GB/i.test(v.lang)));
+  pref.forEach(v=>{ const o=document.createElement('option'); o.value=v.name; o.textContent=`${v.name} (${v.lang})`; sel.appendChild(o); });
+  const saved=localStorage.getItem('yy-voice'); if(saved) sel.value=saved; }
+speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
+function speak(text, onBoundary){
+  speechSynthesis.cancel(); if(!narrate) return;
+  const u=new SpeechSynthesisUtterance(text); const v=voices.find(v=>v.name===$('#voice').value); if(v) u.voice=v; u.rate=0.98; u.pitch=1.0;
+  u.onboundary=e=>onBoundary&&onBoundary(e.charIndex); speechSynthesis.speak(u);
+}
+
+// ---------- Audio bed ----------
+async function playBed(m){ stopBed(); if(!isCommons(m.ref)) return; const url=await commonsUrl(m.ref); bed=new Audio(url); bed.volume=0.18; bed.loop=true; bed.play().catch(()=>{}); }
+function stopBed(){ if(bed){ bed.pause(); bed=null; } }
+
+// ---------- Renderers ----------
+function card(html){ const d=document.createElement('div'); d.className='fill'; d.innerHTML=`<div class="card">${html}</div>`; $('#media').appendChild(d); }
+async function showImage(m, kb=false){ const img=document.createElement('img'); if(kb) img.className='kenburns'; img.src= isCommons(m.ref)? await commonsUrl(m.ref):m.ref; img.alt=m.attribution||''; $('#media').innerHTML=''; $('#media').appendChild(img); if(m.attribution){ const a=document.createElement('div'); a.className='muted'; a.style.cssText='position:absolute;right:8px;bottom:6px;font-size:11px;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:4px'; a.textContent=m.attribution; $('#media').appendChild(a);} }
+function streetviewUrl(ref){ const [lat,lng,h,p,fov]=ref.split(',').map(Number); const key=localStorage.getItem('yy-gkey');
+  return key ? `https://www.google.com/maps/embed/v1/streetview?key=${key}&location=${lat},${lng}&heading=${h||0}&pitch=${p||0}&fov=${fov||90}` : null; }
+function mapsLink(ref){ const [lat,lng,h,p,fov]=ref.split(',').map(Number); return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}&heading=${h||0}&pitch=${p||0}&fov=${fov||90}`; }
+function showStreetView(s){
+  const svs=s.media.filter(m=>m.kind==='streetview'); let i=0; const url=streetviewUrl(svs[0].ref);
+  const render=()=>{ $('#media').innerHTML=''; const m=svs[i]; const u=streetviewUrl(m.ref);
+    if(u){ const f=document.createElement('iframe'); f.src=u; f.allow='accelerometer; gyroscope'; f.referrerPolicy='no-referrer-when-downgrade'; $('#media').appendChild(f); }
+    else { const d=document.createElement('div'); d.className='fill'; d.innerHTML=`<div class="card"><h2>Street View stop ${i+1} of ${svs.length}</h2><p>${m.attribution||''} <br><small>${m.ref}</small></p><p><a class="btn primary" target="_blank" href="${mapsLink(m.ref)}">Open this view in Google Maps ↗</a></p><p><small>Add a Google Maps API key on the start screen to see Street View inline.</small></p></div>`; $('#media').appendChild(d); }
+    const nav=document.createElement('div'); nav.style.cssText='position:absolute;left:8px;bottom:8px;display:flex;gap:6px'; nav.innerHTML=`<button class="btn" id="svPrev">◀ stop</button><span class="btn" style="cursor:default">${i+1}/${svs.length}</span><button class="btn" id="svNext">stop ▶</button>`; $('#media').appendChild(nav);
+    nav.querySelector('#svPrev').onclick=()=>{ i=Math.max(0,i-1); render(); }; nav.querySelector('#svNext').onclick=()=>{ i=Math.min(svs.length-1,i+1); render(); }; };
+  render();
+}
+const ROUTE=[["London",51.5074,-0.1278],["Suez",29.9668,32.5498],["Bombay",18.9388,72.8354],["Calcutta",22.5726,88.3639],["Hong Kong",22.3193,114.1694],["Yokohama",35.4437,139.6380],["San Francisco",37.7749,-122.4194],["New York",40.7128,-74.0060],["London",51.5074,-0.1278]];
+function showRouteMap(dayState=true){
+  $('#media').innerHTML='<div id="lmap" class="fill" style="padding:0"></div>';
+  map=L.map('lmap',{zoomControl:false,attributionControl:true, worldCopyJump:true}).setView([25,20],2);
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap, © CARTO',maxZoom:6}).addTo(map);
+  const pts=ROUTE.map(r=>[r[1],r[2]]);
+  // route: London → New York eastward: draw as segments, crossing Pacific via +360 wrap
+  const wrapped=pts.map((p,i)=> i>=6 ? [p[0], p[1]+360] : p);
+  L.polyline(wrapped,{color:'#8a7150',weight:2,dashArray:'4 6',opacity:dayState?0.5:1}).addTo(map);
+  ROUTE.forEach((r,i)=>{ if(i===ROUTE.length-1) return; const on = !dayState || i===0; L.circleMarker([r[1], i>=6? r[2]+360 : r[2]],{radius:on?7:5,color:on?'#d9a441':'#8a7150',fillColor:on?'#d9a441':'#e9e2d0',fillOpacity:1,weight:2}).addTo(map).bindTooltip(r[0],{permanent:on,direction:'top',className:'muted'}); });
+  if(!dayState){ [["Suez Canal · 1869",30.0,32.5],["Promontory · 1869",41.6,-112.5+360],["Jabalpur · 1870",23.2,79.9]].forEach(e=>L.marker([e[1],e[2]],{icon:L.divIcon({className:'',html:`<div style="font:11px system-ui;color:#2a2118;background:#f4ecd8;border:1px solid #d9a441;border-radius:6px;padding:2px 6px;white-space:nowrap">${e[0]}</div>`})}).addTo(map)); }
+  setTimeout(()=>{ map.invalidateSize(); map.fitBounds(L.latLngBounds(wrapped),{padding:[24,24]}); },60);
+}
+function showVictorianMap(m){ showImage(m,true); }
+
+function renderInteraction(s){
+  const box=$('#interaction'); box.innerHTML=''; const it=s.interaction; if(!it||it.kind==='none') return;
+  if(it.prompt){ const p=document.createElement('p'); p.innerHTML=`<b>${it.prompt}</b>`; box.appendChild(p); }
+  if(it.kind==='choice'||it.kind==='tap-to-find'){
+    (it.options||[]).forEach(o=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=o.text; b.onclick=()=>{ pauseTimer();
+      box.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add(o.correct?'correct':'wrong','picked');
+      if(!o.correct){ const c=[...box.querySelectorAll('.opt')].find((x,i)=>it.options[i].correct); c&&c.classList.add('correct'); }
+      const f=document.createElement('div'); f.className='fb'; f.textContent=o.feedback||(o.correct?'Yes.':'Not quite.'); box.appendChild(f); speak(f.textContent); if(o.goto) box.dataset.goto=o.goto; }; box.appendChild(b); });
+  } else if(it.kind==='drag'){
+    if(it.options){ const list=document.createElement('div'); (it.options).forEach(o=>{ const b=document.createElement('button'); b.className='opt'; b.textContent='☐ '+o.text; b.dataset.on='0'; b.onclick=()=>{ b.dataset.on=b.dataset.on==='1'?'0':'1'; b.textContent=(b.dataset.on==='1'?'☑ ':'☐ ')+o.text; b.classList.toggle('picked'); }; list.appendChild(b); }); box.appendChild(list);
+      const chk=document.createElement('button'); chk.className='btn primary'; chk.textContent='Close the bag'; chk.onclick=()=>{ pauseTimer(); let ok=0,bad=0; [...list.children].forEach((b,i)=>{ const want=!!it.options[i].correct, got=b.dataset.on==='1'; if(want&&got) ok++; if(!want&&got) bad++; b.classList.add(want?'correct':(got?'wrong':'')); }); const f=document.createElement('div'); f.className='fb'; const need=it.options.filter(o=>o.correct).length; f.textContent= ok===need&&bad===0 ? 'Packed like Fogg. Two shirts, three pairs of stockings, and the money.' : `${ok} of ${need} right, ${bad} things Fogg would have left behind.` + (it.answer?' '+it.answer:''); box.appendChild(f); speak(f.textContent); }; box.appendChild(chk); }
+    else { const p=document.createElement('p'); p.className='muted'; p.textContent='(drag interaction — the split-frame is shown as two images here)'; box.appendChild(p); }
+  } else if(it.kind==='chat'){
+    const wrap=document.createElement('div'); wrap.className='chat'; box.appendChild(wrap); const chips=document.createElement('div'); chips.className='chips'; box.appendChild(chips);
+    (it.options||[]).forEach(o=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=o.text; c.onclick=()=>{ pauseTimer(); const q=document.createElement('div'); q.className='q'; q.textContent=o.text; wrap.appendChild(q); const a=document.createElement('div'); a.className='a'; a.textContent=o.feedback||o.answer||'…'; wrap.appendChild(a); speak(a.textContent); c.disabled=true; }; chips.appendChild(c); });
+    const n=document.createElement('p'); n.className='muted'; n.textContent='Scripted fallback answers (no LLM connected in the dry run). Guardrails: '+(it.guardrails||[]).length+' rules.'; box.appendChild(n);
+  } else if(it.kind==='walk'){ const p=document.createElement('p'); p.className='muted'; p.textContent=`Walk: ${(it.route||[]).length} waypoints. Use ◀ stop ▶ on the view.`; box.appendChild(p); }
+}
+
+function renderOverlays(s, t){
+  const box=$('#overlays'); box.innerHTML='';
+  (s.overlays||[]).filter(o=>t>=o.at_s && (o.until_s==null || t<=o.until_s+2)).forEach(o=>{ const e=document.createElement('span'); e.className= o.kind==='pin'?'pin':(o.kind==='fact'?'fact':'cap'); e.textContent=o.text; box.appendChild(e); });
+  if(!box.children.length){ box.innerHTML='<span class="muted">'+(s.subtopic||'')+'</span>'; }
+}
+
+async function showScene(i){
+  clearInterval(timer); speechSynthesis.cancel(); stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
+  idx=Math.max(0,Math.min(scenes.length-1,i)); const s=scenes[idx]; elapsed=0; paused=false;
+  $('#hScene').textContent=`scene ${idx+1}/${scenes.length} · ${s.type} · ${s.duration_s}s`; $('#title').textContent=s.title; $('#media').innerHTML='';
+  const script=s.narration&&s.narration.script||''; $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:'';
+  const media=s.media||[]; const yt=media.find(m=>m.kind==='youtube'), img=media.filter(m=>m.kind==='image'), aud=media.find(m=>m.kind==='audio'&&isCommons(m.ref)), gen=media.filter(m=>m.kind==='generated');
+  try{
+    if(s.type==='video' && yt){ await showYouTube(yt); }
+    else if(s.type==='streetview'){ showStreetView(s); }
+    else if(s.type==='map'){ if(gen.length && /route-map/.test(gen[0].ref)) showRouteMap(!/full-loop|enablers/.test(gen.map(g=>g.ref).join())); else if(media.find(m=>m.kind==='map')) showVictorianMap(media.find(m=>m.kind==='map')); else showRouteMap(true); }
+    else if(s.type==='photo' && img.length){ await showImage(img[0], true); if(img.length>1){ let k=0; const cyc=setInterval(()=>{ if(scenes[idx]!==s) return clearInterval(cyc); k=(k+1)%img.length; showImage(img[k],true); }, Math.max(8000, s.duration_s*1000/img.length)); } }
+    else if(img.length && (s.type==='quiz'||s.type==='dialogue')){ await showImage(img[0], false); }
+    else { // card / interstitial / game / anything generated
+      const ov=(s.overlays||[]).map(o=>`<div>${o.kind==='pin'?'📍 ':''}${o.text}</div>`).join('');
+      card(`<h2>${s.title}</h2>${s.learning_goal?`<p><small>${s.learning_goal}</small></p>`:''}${ov?`<div style="margin-top:.6em;font-family:system-ui;font-size:.85em;color:#4a3d2f">${ov}</div>`:''}${gen.length?`<p><small>generated asset pending: ${gen.map(g=>g.manifest_id).join(', ')}</small></p>`:''}`);
+      if(img.length && s.type!=='game'){ const im=document.createElement('img'); im.src=await commonsUrl(img[0].ref, 800); im.style.cssText='position:absolute;inset:auto;right:2vmin;bottom:2vmin;width:22%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.6)'; $('#media').appendChild(im); }
+    }
+  }catch(e){ console.error(e); card(`<h2>${s.title}</h2><p><small>media failed: ${e.message}</small></p>`); }
+  if(aud && s.type!=='video') playBed(aud);
+  renderInteraction(s); renderOverlays(s,0);
+  // narration + timer
+  speak(script, ci=>{ if(!captions) return; $('#script').innerHTML=`<span class="said">${script.slice(0,ci)}</span><span class="unsaid">${script.slice(ci)}</span>`; });
+  t0=performance.now(); timer=setInterval(tick,500);
+}
+function tick(){ if(paused) { t0=performance.now()-elapsed*1000; return; } const s=scenes[idx]; elapsed=(performance.now()-t0)/1000; $('#prog i').style.width=Math.min(100,elapsed/s.duration_s*100)+'%'; $('#clock').textContent=`${Math.floor(elapsed)}s / ${s.duration_s}s`; renderOverlays(s,elapsed);
+  const needsInput = s.interaction && s.interaction.kind!=='none';
+  if(elapsed>=s.duration_s && !needsInput && !speechSynthesis.speaking){ next(); } }
+function pauseTimer(){ paused=true; }
+function next(){ const g=$('#interaction').dataset.goto; const j= g ? scenes.findIndex(x=>x.id===g) : -1; if(j>=0) return showScene(j); const nx=scenes[idx].next; const k= nx? scenes.findIndex(x=>x.id===nx) : -1; showScene(k>=0?k:idx+1); }
+$('#next').onclick=next; $('#prev').onclick=()=>showScene(idx-1);
+$('#btnCap').onclick=()=>{ captions=!captions; $('#btnCap').style.opacity=captions?1:.4; showScene(idx); };
+$('#btnMute').onclick=()=>{ narrate=!narrate; $('#btnMute').textContent=narrate?'🔈':'🔇'; if(!narrate) speechSynthesis.cancel(); };
+$('#btnList').onclick=()=>{ const n=prompt('Jump to scene number (1–'+scenes.length+'):\n'+scenes.map((s,i)=>`${i+1}. ${s.title}`).join('\n')); if(n) showScene(parseInt(n,10)-1); };
+$('#testVoice').onclick=()=>{ localStorage.setItem('yy-voice',$('#voice').value); speak('It is Wednesday, the second of October, eighteen seventy-two. We have a train to catch.'); };
+$('#voice').onchange=()=>localStorage.setItem('yy-voice',$('#voice').value);
+$('#gkey').value=localStorage.getItem('yy-gkey')||''; $('#gkey').onchange=e=>localStorage.setItem('yy-gkey',e.target.value.trim());
+document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') showScene(idx-1); if(e.key===' '){ paused=!paused; e.preventDefault(); } });
+
+(async()=>{
+  try{ tour=await (await fetch(TOUR_URL)).json(); }catch(e){ $('#coverTitle').innerHTML='<h1>Yunyou</h1><p>Could not load '+TOUR_URL+'</p>'; return; }
+  const ch=tour.chapters[0]; scenes=ch.scenes; $('#hTitle').textContent=tour.title;
+  $('#coverTitle').innerHTML=`<p class="muted" style="letter-spacing:.2em;text-transform:uppercase">${tour.title}</p><h1>${ch.title}</h1><p>${ch.hook}</p><p class="muted">${scenes.length} scenes · about ${Math.round(scenes.reduce((a,s)=>a+s.duration_s,0)/60)} minutes · headphones recommended</p>`;
+  $('#start').onclick=()=>{ localStorage.setItem('yy-voice',$('#voice').value); $('#cover').remove(); showScene(0); };
+})();
+</script>
+</body>
+</html>

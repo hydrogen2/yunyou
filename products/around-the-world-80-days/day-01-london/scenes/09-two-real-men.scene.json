@@ -1,0 +1,64 @@
+{
+  "id": "two-real-men",
+  "type": "card",
+  "title": "Two real men were doing it",
+  "subtopic": "6 — The wager (Cook and Train)",
+  "duration_s": 30,
+  "learning_goal": "Know that Thomas Cook and George Francis Train really went round the world just as Verne wrote; feel that Fogg's bet was in the air.",
+  "narration": {
+    "script": "Two real men were doing it as Verne wrote. Thomas Cook, going west, left Liverpool in late September 1872 on the first commercial round-the-world tour — two hundred and twenty-two days, with letters home to the Times; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early — and later said, 'Verne stole my thunder. I'm Phileas Fogg.'",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "generated",
+      "ref": "generated/g-06/two-real-men-card.svg",
+      "start_s": 0,
+      "end_s": 30,
+      "license": "generated",
+      "manifest_id": "G-06",
+      "attribution": "Yunyou studio, generated",
+      "note": "REQUESTED (Content Preparer): typeset card, two columns (Cook · Train) with dates; no illustration budget needed."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+      "start_s": 0,
+      "end_s": 30,
+      "license": "public-domain",
+      "manifest_id": "M-41",
+      "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+      "note": "Continues low from 08."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 3,
+      "kind": "caption",
+      "until_s": 15,
+      "text": "Cook: 222 days. Train: 164 days. Fogg: 80.",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "none"
+  },
+  "transition": {
+    "in": "cut",
+    "out": "cut to the map",
+    "music_cue": "M-41 continues"
+  },
+  "next": "the-world-shrinks",
+  "sources": [
+    "F-35",
+    "F-36"
+  ],
+  "production_notes": "INTERACTIVE CUT ONLY (optional card per rundown). Placed before the map so the map can close on the turn line. F-35's '26 Sept Liverpool' is medium confidence, hence 'late September'.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "id": "souvenir",
+  "type": "card",
+  "title": "Souvenir — Fogg's last breakfast in London",
+  "subtopic": "10 — Souvenir and send-off",
+  "duration_s": 60,
+  "learning_goal": "Take home the breakfast Fogg ate before betting half his fortune, and a date to cook it; feel warmth and a promise to be back on 21 December.",
+  "narration": {
+    "script": "Your souvenir of the day: Fogg's last breakfast in London — the meal he ate before betting half his fortune. Broiled fish with a Reading-sauce-style ketchup: walnut and mushroom ketchup, soy, anchovies, chillies, garlic — the real Berkshire condiment of 1802, gone since the 1960s. A slice of roast beef with mushrooms. A rhubarb-and-gooseberry tart. A morsel of Cheshire cheese. Tea. Save the card; the recipe is on it. Cook it on the evening of the twenty-first of December, and be at table by a quarter to nine, because that is when he promised to be back in that room. Fogg's other motto, and ours for the road: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "generated",
+      "ref": "generated/g-08/souvenir-breakfast-card.svg",
+      "start_s": 0,
+      "end_s": 60,
+      "license": "generated",
+      "manifest_id": "G-08",
+      "attribution": "Yunyou studio, generated",
+      "note": "REQUESTED (Content Preparer): typeset recipe card, saveable/shareable as an image (1080×1920 and 1920×1080); optional small M-23 vignette. Last line on the card: 'Cook it on the evening of 21 December, and be at table by a quarter to nine.'"
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+      "license": "public-domain",
+      "manifest_id": "M-23",
+      "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
+      "start_s": 0,
+      "end_s": 60,
+      "note": "Small vignette on the card."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture.ogg",
+      "start_s": 0,
+      "end_s": 60,
+      "license": "cc0",
+      "manifest_id": "M-42",
+      "attribution": "Offenbach, Orphée aux enfers overture, Musopen (Wikimedia Commons, CC0)",
+      "note": "Tail. Backup M-48 Pinafore (must be captioned '1878, recorded 1907')."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 6,
+      "kind": "caption",
+      "until_s": 20,
+      "text": "Cook it on 21 December. Be at table by 8:45.",
+      "position": "bottom"
+    },
+    {
+      "at_s": 48,
+      "kind": "caption",
+      "until_s": 60,
+      "text": "Next: Dover, Calais, Paris.",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "none",
+    "prompt": "Save the card (image) or share it."
+  },
+  "transition": {
+    "in": "fade from black",
+    "out": "hold on the card — chapter end frame",
+    "music_cue": "M-42 tail, out on the last caption"
+  },
+  "next": "",
+  "sources": [
+    "F-06",
+    "F-11",
+    "F-12",
+    "F-27"
+  ],
+  "production_notes": "Chapter end frame. Card must be exportable as an image (Scene Dev). Linear cut: 40 s — same script minus the ingredient list read-out (it stays on the card).",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

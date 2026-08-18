@@ -1,0 +1,57 @@
+{
+  "id": "look-up-the-cross",
+  "type": "streetview",
+  "title": "Look up — the cross, and where London starts",
+  "subtopic": "8 — Charing Cross (Street View stop)",
+  "duration_s": 25,
+  "learning_goal": "Know the forecourt cross is an 1865 replica and that London's distances are measured from the Charles I statue.",
+  "narration": {
+    "script": "Look up. The cross is a replica, put up in 1865: twenty-one metres — seventy feet — of Portland stone. The original of 1291 stood a couple of hundred metres off to your right, where King Charles the First now rides in bronze, and London's distances are still measured from him, not from this cross.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "streetview",
+      "ref": "51.5083,-0.1247,180,10,80",
+      "license": "google-maps-embed",
+      "manifest_id": "M-38",
+      "attribution": "Google Street View (Maps Embed API)",
+      "note": "From the Strand looking into the forecourt: Eleanor Cross centre, hotel façade behind. Alt inside the forecourt 51.5081,-0.1246 heading 200 (taxi rank — confirm pano)."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 3,
+      "kind": "pin",
+      "until_s": 20,
+      "text": "Charles I — 1675, London's distances start here",
+      "position": "tr",
+      "geo": "51.5075,-0.1277"
+    }
+  ],
+  "interaction": {
+    "kind": "walk",
+    "prompt": "Look up, then turn right toward Trafalgar Square.",
+    "route": [
+      "51.5083,-0.1247"
+    ]
+  },
+  "transition": {
+    "in": "cut",
+    "out": "cut to the platform (dialogue)",
+    "music_cue": "none"
+  },
+  "next": "passepartout-on-the-platform",
+  "sources": [
+    "F-21",
+    "F-39"
+  ],
+  "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop with free look (interaction kind 'walk', one waypoint). 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano (F-39 pins) — 'to your right' when facing south.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

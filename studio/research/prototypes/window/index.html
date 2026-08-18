@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yunyou · window prototype</title>
+<style>
+  :root { --ink:#e8e2d6; --bg:#0b0b0d; --accent:#d9a441; }
+  html,body { margin:0; height:100%; background:var(--bg); color:var(--ink); font:14px/1.4 system-ui,sans-serif; overflow:hidden; }
+  #gl { position:fixed; inset:0; display:block; }
+  #frame { position:fixed; inset:0; pointer-events:none; display:none; }
+  #frame.window { display:block; box-shadow: inset 0 0 0 4vmin #14110d, inset 0 0 12vmin 6vmin rgba(0,0,0,.85); }
+  #frame.porthole { display:block; background: radial-gradient(circle at 50% 50%, transparent 38vmin, rgba(0,0,0,.92) 41vmin, #0b0b0d 44vmin); }
+  #frame.vignette { display:block; box-shadow: inset 0 0 18vmin 4vmin rgba(0,0,0,.9); }
+  #ui { position:fixed; top:0; left:0; right:0; padding:8px 10px; display:flex; flex-wrap:wrap; gap:6px; align-items:center;
+        background:linear-gradient(rgba(0,0,0,.75),transparent); z-index:5; transition:opacity .3s; }
+  #ui.hidden { opacity:0; pointer-events:none; }
+  button, select, label.file { background:#1d1b1f; color:var(--ink); border:1px solid #3a363c; border-radius:8px; padding:6px 10px; cursor:pointer; font:inherit; }
+  button.primary { background:var(--accent); color:#1a1408; border-color:var(--accent); font-weight:600; }
+  label.file input { display:none; }
+  input[type=range] { width:90px; }
+  #hud { position:fixed; left:10px; bottom:10px; font:12px/1.4 ui-monospace,monospace; color:#bdb5a6; background:rgba(0,0,0,.55); padding:6px 8px; border-radius:6px; z-index:5; white-space:pre; }
+  #cam { position:fixed; right:10px; bottom:10px; width:120px; border-radius:6px; transform:scaleX(-1); opacity:.85; z-index:5; display:none; }
+  #cam.show { display:block; }
+  #tip { position:fixed; left:50%; bottom:20%; transform:translateX(-50%); background:rgba(0,0,0,.7); padding:10px 14px; border-radius:10px; z-index:6; max-width:80vw; text-align:center; }
+  small { color:#9d968a; }
+</style>
+</head>
+<body>
+<canvas id="gl"></canvas>
+<div id="frame"></div>
+<video id="cam" playsinline muted></video>
+
+<div id="ui">
+  <button id="btnFace" class="primary">▶ Face tracking</button>
+  <button id="btnGyro">Gyro</button>
+  <button id="btnMouse">Mouse</button>
+  <select id="enclosure" title="Enclosure">
+    <option value="room">Box room (demo)</option>
+    <option value="room-photos">Box room (my photos)</option>
+    <option value="pano">Panorama (equirect)</option>
+  </select>
+  <label class="file">📷 back <input type="file" accept="image/*" data-face="back"></label>
+  <label class="file">left <input type="file" accept="image/*" data-face="left"></label>
+  <label class="file">right <input type="file" accept="image/*" data-face="right"></label>
+  <label class="file">floor <input type="file" accept="image/*" data-face="floor"></label>
+  <label class="file">ceiling <input type="file" accept="image/*" data-face="ceiling"></label>
+  <label class="file">🌐 pano <input type="file" accept="image/*" data-face="pano"></label>
+  <select id="mask" title="Frame mask">
+    <option value="">no frame</option>
+    <option value="window">window</option>
+    <option value="porthole">porthole</option>
+    <option value="vignette">vignette</option>
+  </select>
+  <label title="Physical screen width in mm — Fold open ≈ 150, Fold cover ≈ 65, iPad ≈ 200, laptop ≈ 300">screen mm <input id="screenMM" type="range" min="60" max="400" value="150"><span id="screenMMv">150</span></label>
+  <label title="Exaggerate parallax (1 = physically correct)">gain <input id="gain" type="range" min="0.5" max="4" step="0.1" value="1.5"><span id="gainv">1.5</span></label>
+  <label><input id="props" type="checkbox" checked> props</label>
+  <label><input id="showCam" type="checkbox"> cam preview</label>
+  <button id="btnHide">hide UI</button>
+</div>
+<div id="hud">idle</div>
+<div id="tip">Tap <b>Face tracking</b> and allow the camera (processed on-device, nothing is uploaded).<br><small>Put the phone down on a table, sit ~40–60 cm away, then move your head.</small></div>
+
+<script type="importmap">
+{ "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { FilesetResolver, FaceLandmarker } from 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14';
+
+// ---------- One-Euro filter (Casiez et al. 2012) ----------
+class OneEuro {
+  constructor(minCutoff=1.0, beta=0.02, dCutoff=1.0){ this.mc=minCutoff; this.b=beta; this.dc=dCutoff; this.x=null; this.dx=0; this.t=null; }
+  alpha(cut, dt){ const tau=1/(2*Math.PI*cut); return 1/(1+tau/dt); }
+  filter(x, t){
+    if(this.t===null){ this.t=t; this.x=x; return x; }
+    const dt=Math.max(1e-3,(t-this.t)/1000); this.t=t;
+    const dx=(x-this.x)/dt; const ad=this.alpha(this.dc,dt); this.dx=ad*dx+(1-ad)*this.dx;
+    const cut=this.mc+this.b*Math.abs(this.dx); const a=this.alpha(cut,dt);
+    this.x=a*x+(1-a)*this.x; return this.x;
+  }
+}
+
+// ---------- Scene ----------
+const canvas=document.getElementById('gl');
+const renderer=new THREE.WebGLRenderer({canvas, antialias:true, powerPreference:'high-performance'});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0x0b0b0d);
+const camera=new THREE.PerspectiveCamera(60,1,0.01,100); // projection overridden every frame
+scene.add(camera);
+scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+
+// World units: metres. Screen is the plane z=0, centred at origin. Room extends behind the screen (negative z).
+const state={ screenW:0.150, screenH:0.150*(innerHeight/innerWidth), head:{x:0,y:0,z:0.5}, gain:1.5, mode:'idle', enclosure:'room', fps:0 };
+const ROOM={ depth:null, w:null, h:null }; // all follow screen size: room as wide as the screen ("window into a room"), depth 2× width
+
+let roomGroup=null, propsGroup=null, panoMesh=null;
+const photos={}; // face -> HTMLImageElement
+
+function demoTexture(label, base, accent){
+  const c=document.createElement('canvas'); c.width=c.height=1024; const g=c.getContext('2d');
+  g.fillStyle=base; g.fillRect(0,0,1024,1024);
+  g.strokeStyle=accent; g.lineWidth=2; for(let i=0;i<=16;i++){ g.beginPath(); g.moveTo(i*64,0); g.lineTo(i*64,1024); g.stroke(); g.beginPath(); g.moveTo(0,i*64); g.lineTo(1024,i*64); g.stroke(); }
+  g.fillStyle='rgba(255,255,255,.08)'; for(let i=0;i<40;i++){ g.beginPath(); g.arc(Math.random()*1024,Math.random()*1024,Math.random()*60+10,0,7); g.fill(); }
+  g.fillStyle='#e8e2d6'; g.font='bold 120px system-ui'; g.textAlign='center'; g.fillText(label,512,560);
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; return t;
+}
+function demoBackWithWindow(){
+  const c=document.createElement('canvas'); c.width=c.height=1024; const g=c.getContext('2d');
+  g.fillStyle='#3b3128'; g.fillRect(0,0,1024,1024);
+  // a "window" with sky, to have a far layer behind the back wall
+  const sky=g.createLinearGradient(0,200,0,800); sky.addColorStop(0,'#7fb2e5'); sky.addColorStop(1,'#f2d7a0');
+  g.fillStyle=sky; g.fillRect(212,200,600,600);
+  g.fillStyle='#2a221c'; g.fillRect(500,200,24,600); g.fillRect(212,490,600,24);
+  g.fillStyle='#e8e2d6'; g.font='bold 90px system-ui'; g.textAlign='center'; g.fillText('BACK',512,950);
+  const t=new THREE.CanvasTexture(c); t.colorSpace=THREE.SRGBColorSpace; return t;
+}
+function texFrom(img){ const t=new THREE.Texture(img); t.needsUpdate=true; t.colorSpace=THREE.SRGBColorSpace; return t; }
+
+function buildRoom(){
+  if(roomGroup){ scene.remove(roomGroup); roomGroup.traverse(o=>o.geometry&&o.geometry.dispose()); }
+  if(panoMesh){ scene.remove(panoMesh); panoMesh=null; }
+  ROOM.w=state.screenW; ROOM.h=state.screenH; ROOM.depth=state.screenW*2;
+  const g=new THREE.Group(); const d=ROOM.depth, w=ROOM.w/2, h=ROOM.h/2;
+  const usePhotos=state.enclosure==='room-photos';
+  const T=(face, fallback)=> usePhotos&&photos[face] ? texFrom(photos[face]) : fallback();
+  const mat=(t)=>new THREE.MeshBasicMaterial({map:t, side:THREE.FrontSide});
+  const plane=(W,H,t)=>new THREE.Mesh(new THREE.PlaneGeometry(W,H), mat(t));
+  const back=plane(ROOM.w,ROOM.h, T('back', demoBackWithWindow)); back.position.z=-d; g.add(back);
+  const left=plane(d,ROOM.h, T('left', ()=>demoTexture('LEFT','#4a3d33','#6b5a4b'))); left.rotation.y=Math.PI/2; left.position.set(-w,0,-d/2); g.add(left);
+  const right=plane(d,ROOM.h, T('right', ()=>demoTexture('RIGHT','#4a3d33','#6b5a4b'))); right.rotation.y=-Math.PI/2; right.position.set(w,0,-d/2); g.add(right);
+  const floor=plane(ROOM.w,d, T('floor', ()=>demoTexture('FLOOR','#2c2a26','#4d4840'))); floor.rotation.x=-Math.PI/2; floor.position.set(0,-h,-d/2); g.add(floor);
+  const ceil=plane(ROOM.w,d, T('ceiling', ()=>demoTexture('CEILING','#25262b','#3d3f47'))); ceil.rotation.x=Math.PI/2; ceil.position.set(0,h,-d/2); g.add(ceil);
+  roomGroup=g; scene.add(g);
+  buildProps();
+}
+function buildProps(){
+  if(propsGroup){ scene.remove(propsGroup); }
+  propsGroup=new THREE.Group();
+  if(document.getElementById('props').checked){
+    // Near-field depth cues: this is where the parallax "pays off". Columns + a floating card at different depths.
+    const w=ROOM.w/2, h=ROOM.h/2, d=ROOM.depth;
+    const col=(x,z,c)=>{ const m=new THREE.Mesh(new THREE.CylinderGeometry(0.008,0.008,ROOM.h,24), new THREE.MeshBasicMaterial({color:c})); m.position.set(x,0,z); propsGroup.add(m); };
+    col(-w*0.55,-d*0.25,0xd9a441); col(w*0.55,-d*0.25,0xd9a441); col(-w*0.2,-d*0.6,0x9ab8c9); col(w*0.35,-d*0.8,0x9ab8c9);
+    const card=new THREE.Mesh(new THREE.PlaneGeometry(ROOM.w*0.28,ROOM.h*0.12), new THREE.MeshBasicMaterial({map:demoTexture('pin','#1d1b1f','#3a363c'), transparent:true}));
+    card.position.set(w*0.1,-h*0.35,-d*0.15); propsGroup.add(card);
+  }
+  scene.add(propsGroup);
+}
+function buildPano(){
+  if(roomGroup){ scene.remove(roomGroup); roomGroup=null; } if(propsGroup){ scene.remove(propsGroup); propsGroup=null; }
+  if(panoMesh){ scene.remove(panoMesh); }
+  const geo=new THREE.SphereGeometry(5,64,48); geo.scale(-1,1,1);
+  const tex= photos.pano ? texFrom(photos.pano) : demoTexture('PANO (load an equirect image)','#243447','#3c5570');
+  panoMesh=new THREE.Mesh(geo,new THREE.MeshBasicMaterial({map:tex})); scene.add(panoMesh);
+}
+function rebuild(){ state.enclosure==='pano' ? buildPano() : buildRoom(); }
+
+// ---------- Off-axis projection (Kooima 2008 generalized perspective, simplified for a screen on z=0) ----------
+function updateProjection(){
+  const {x,y,z}=state.head; const n=0.01, f=50;
+  const w=state.screenW/2, h=state.screenH/2;
+  // frustum edges on the screen plane relative to eye, scaled to near plane
+  const l=(-w-x)*n/z, r=(w-x)*n/z, b=(-h-y)*n/z, t=(h-y)*n/z;
+  camera.projectionMatrix.makePerspective(l,r,t,b,n,f);
+  camera.projectionMatrixInverse.copy(camera.projectionMatrix).invert();
+  camera.position.set(x,y,z); camera.rotation.set(0,0,0);
+}
+
+function resize(){
+  const W=innerWidth,H=innerHeight; renderer.setSize(W,H,false);
+  state.screenH=state.screenW*H/W; rebuild();
+}
+addEventListener('resize',resize);
+
+// ---------- Tracking modes ----------
+const fx=new OneEuro(1.2,0.03), fy=new OneEuro(1.2,0.03), fz=new OneEuro(0.8,0.02);
+const hud=document.getElementById('hud'), tip=document.getElementById('tip'), video=document.getElementById('cam');
+let landmarker=null, rafCam=null, lastVideoTime=-1, gyroBase=null;
+const HFOV=65*Math.PI/180;      // assumed horizontal FOV of a phone front camera
+const IPD=0.063;                 // metres, adult mean inter-pupillary distance
+
+async function startFace(){
+  stopModes(); state.mode='face'; tip.textContent='Loading face model…';
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:'user',width:{ideal:640},height:{ideal:480}},audio:false});
+    video.srcObject=stream; await video.play();
+    if(!landmarker){
+      const vision=await FilesetResolver.forVisionTasks('https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14/wasm');
+      landmarker=await FaceLandmarker.createFromOptions(vision,{
+        baseOptions:{modelAssetPath:'https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task', delegate:'GPU'},
+        runningMode:'VIDEO', numFaces:1, outputFaceBlendshapes:false, outputFacialTransformationMatrixes:false});
+    }
+    tip.style.display='none';
+    const loop=()=>{ rafCam=requestAnimationFrame(loop);
+      if(video.readyState<2 || video.currentTime===lastVideoTime) return; lastVideoTime=video.currentTime;
+      const res=landmarker.detectForVideo(video, performance.now());
+      const lm=res.faceLandmarks&&res.faceLandmarks[0]; if(!lm) return;
+      const L=lm[468]||lm[33], R=lm[473]||lm[263];      // iris centres (or eye corners)
+      const cx=(L.x+R.x)/2, cy=(L.y+R.y)/2;              // normalized 0..1, image coords (not mirrored)
+      const eyeDistN=Math.hypot(L.x-R.x, (L.y-R.y)*video.videoHeight/video.videoWidth);
+      // distance from camera: IPD / (2*tan(HFOV/2)) / eyeDistN
+      const zc=IPD/(2*Math.tan(HFOV/2))/Math.max(1e-3,eyeDistN);
+      // lateral offset in metres at that depth; camera image x grows to the *viewer's left* when mirrored, so flip
+      const xm=-(cx-0.5)*2*Math.tan(HFOV/2)*zc;
+      const ym=-(cy-0.5)*2*Math.tan(HFOV/2)*zc*(video.videoHeight/video.videoWidth);
+      // camera sits ~ at top-centre of screen: shift so y is relative to screen centre
+      const t=performance.now();
+      state.head.x=fx.filter(xm*state.gain,t);
+      state.head.y=fy.filter((ym+state.screenH/2)*state.gain,t);
+      state.head.z=Math.max(0.12,fz.filter(zc,t));
+    }; loop();
+  }catch(e){ tip.style.display='block'; tip.innerHTML='Camera unavailable: '+e.message+'<br><small>Needs HTTPS (or localhost) and camera permission. Try Gyro or Mouse.</small>'; state.mode='idle'; }
+}
+function startGyro(){
+  stopModes(); state.mode='gyro'; tip.style.display='none'; gyroBase=null;
+  const go=()=>addEventListener('deviceorientation',onGyro);
+  if(typeof DeviceOrientationEvent!=='undefined' && DeviceOrientationEvent.requestPermission){ DeviceOrientationEvent.requestPermission().then(s=>{ if(s==='granted') go(); }); } else go();
+}
+function onGyro(e){
+  if(e.gamma===null) return; if(!gyroBase) gyroBase={g:e.gamma,b:e.beta};
+  const dg=(e.gamma-gyroBase.g)*Math.PI/180, db=(e.beta-gyroBase.b)*Math.PI/180; // tilt → move the eye laterally around a pivot
+  const t=performance.now(); const z=0.5;
+  state.head.x=fx.filter(Math.sin(dg)*z*state.gain,t); state.head.y=fy.filter(Math.sin(db)*z*state.gain,t); state.head.z=z;
+}
+function startMouse(){ stopModes(); state.mode='mouse'; tip.style.display='none'; addEventListener('pointermove',onMouse); }
+function onMouse(e){ const t=performance.now(); const z=0.5;
+  state.head.x=fx.filter((e.clientX/innerWidth-0.5)*0.16*state.gain,t); state.head.y=fy.filter(-(e.clientY/innerHeight-0.5)*0.10*state.gain,t); state.head.z=z; }
+function stopModes(){
+  if(rafCam) cancelAnimationFrame(rafCam); rafCam=null;
+  if(video.srcObject){ video.srcObject.getTracks().forEach(t=>t.stop()); video.srcObject=null; }
+  removeEventListener('deviceorientation',onGyro); removeEventListener('pointermove',onMouse);
+}
+
+// ---------- UI ----------
+document.getElementById('btnFace').onclick=startFace;
+document.getElementById('btnGyro').onclick=startGyro;
+document.getElementById('btnMouse').onclick=startMouse;
+document.getElementById('enclosure').onchange=e=>{ state.enclosure=e.target.value; rebuild(); };
+document.getElementById('mask').onchange=e=>{ document.getElementById('frame').className=e.target.value; };
+document.getElementById('screenMM').oninput=e=>{ document.getElementById('screenMMv').textContent=e.target.value; state.screenW=e.target.value/1000; resize(); };
+document.getElementById('gain').oninput=e=>{ document.getElementById('gainv').textContent=e.target.value; state.gain=+e.target.value; };
+document.getElementById('props').onchange=()=>rebuild();
+document.getElementById('showCam').onchange=e=>video.classList.toggle('show',e.target.checked);
+document.getElementById('btnHide').onclick=()=>{ document.getElementById('ui').classList.add('hidden'); };
+canvas.addEventListener('dblclick',()=>document.getElementById('ui').classList.toggle('hidden'));
+document.querySelectorAll('label.file input').forEach(inp=>inp.onchange=async e=>{
+  const f=e.target.files[0]; if(!f) return; const img=new Image(); img.src=URL.createObjectURL(f); await img.decode();
+  photos[inp.dataset.face]=img; if(inp.dataset.face==='pano'){ document.getElementById('enclosure').value='pano'; state.enclosure='pano'; }
+  else if(state.enclosure==='room'){ document.getElementById('enclosure').value='room-photos'; state.enclosure='room-photos'; }
+  rebuild();
+});
+
+// ---------- Loop ----------
+let frames=0, tFps=performance.now();
+function animate(){
+  requestAnimationFrame(animate);
+  updateProjection(); renderer.render(scene,camera);
+  if(++frames%30===0){ const now=performance.now(); state.fps=Math.round(30000/(now-tFps)); tFps=now;
+    hud.textContent=`mode ${state.mode}  fps ${state.fps}\nhead x ${(state.head.x*100).toFixed(1)}cm  y ${(state.head.y*100).toFixed(1)}cm  z ${(state.head.z*100).toFixed(0)}cm\nscreen ${(state.screenW*1000)|0}×${(state.screenH*1000)|0}mm  gain ${state.gain}`; }
+}
+resize(); animate();
+</script>
+</body>
+</html>

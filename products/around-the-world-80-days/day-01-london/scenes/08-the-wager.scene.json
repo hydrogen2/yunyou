@@ -1,0 +1,91 @@
+{
+  "id": "the-wager",
+  "type": "photo",
+  "title": "The wager — twenty thousand at Baring's",
+  "subtopic": "6 — The wager",
+  "duration_s": 80,
+  "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
+  "narration": {
+    "script": "Evening, at the whist table. In the novel — and only in the novel — a gentleman has walked out of the Bank of England three days ago with fifty-five thousand pounds, and the Daily Telegraph has printed a timetable showing the world can be circled in eighty days. Andrew Stuart, an engineer, wagers four thousand pounds that it cannot be done. Fogg raises him: twenty thousand pounds, on deposit at Baring's — half his fortune — in 'eighty days or less; in nineteen hundred and twenty hours, or a hundred and fifteen thousand two hundred minutes'. Look at the card: six names on the memorandum. Stuart; the bankers John Sullivan and Samuel Fallentin; Thomas Flanagan, a brewer; Gauthier Ralph, a director of the Bank of England; and Phileas Fogg. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Verne's arithmetic holds: it is exactly eighty days, and it really was a Saturday. Fogg's motto for the evening: 'The unforeseen does not exist.' One footnote from today. Baring's, Fogg's bank, was one of London's oldest; it went under in 1995. The wager has outlived the bank.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_06.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-35",
+      "attribution": "'…I will wager £4,000 on it' — Neuville/Benett, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+      "start_s": 0,
+      "end_s": 40,
+      "note": "Slow push-in on the plate. M-36 is reference only — never ship."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-05/memorandum-card.svg",
+      "start_s": 40,
+      "end_s": 80,
+      "license": "generated",
+      "manifest_id": "G-05",
+      "attribution": "Yunyou studio, generated",
+      "note": "REQUESTED (Content Preparer): typeset memorandum — six signatures, stake, date and hour. G-03 illustration is not required."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+      "start_s": 0,
+      "end_s": 80,
+      "license": "public-domain",
+      "manifest_id": "M-41",
+      "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+      "note": "Low, swelling into 10 the-world-shrinks."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 2,
+      "kind": "caption",
+      "until_s": 12,
+      "text": "'I will wager £4,000 on it' — Neuville, 1872",
+      "position": "bottom"
+    },
+    {
+      "at_s": 40,
+      "kind": "caption",
+      "until_s": 50,
+      "text": "The unforeseen does not exist.",
+      "position": "bottom"
+    },
+    {
+      "at_s": 66,
+      "kind": "caption",
+      "until_s": 76,
+      "text": "Baring's — Fogg's bank — went under in 1995",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "none"
+  },
+  "transition": {
+    "in": "cut",
+    "out": "cut to the Cook/Train card",
+    "music_cue": "M-41 low from 0 s"
+  },
+  "next": "two-real-men",
+  "sources": [
+    "F-08",
+    "F-09",
+    "F-10",
+    "F-11",
+    "F-23"
+  ],
+  "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks. Linear cut: keep whole (80 s), then skip 09 and play 10 without the tap.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "id": "the-dash",
+  "type": "map",
+  "title": "A shilling's cab to Charing Cross",
+  "subtopic": "7 — The dash",
+  "duration_s": 60,
+  "learning_goal": "Know the cab, the fare, the times, and that Fogg does not take the nine-year-old Underground; feel wet cobbles and hooves.",
+  "narration": {
+    "script": "Down to the end of Savile Row and into a cab — a hansom, most likely; Verne never says. To the cabby, Fogg is a swell, and this is a fare of about a bob: sixpence a mile, and it is two and a half kilometres to Charing Cross. Watch the line on the 1872 map, south and east to Trafalgar Square and the Strand. London already had an Underground — nine years old, steam-hauled and smoky. Fogg takes a cab. Listen: hooves on wet stone, and an Offenbach galop, because Passepartout is a Parisian and would want one. They left the club at twenty-five past seven. They are at Charing Cross at twenty past eight.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "map",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
+      "start_s": 0,
+      "end_s": 60,
+      "license": "public-domain",
+      "manifest_id": "M-30",
+      "attribution": "'Plan of London', London Illustrated (1872) (Wikimedia Commons, PD)",
+      "note": "Animated route line drawn over the 1872 plan: Savile Row 51.5107,-0.1402 → Reform Club 51.5065,-0.1335 (context) → Trafalgar Square → Charing Cross 51.5081,-0.1247; about 2.5 km. Backup M-31 (1875, crop the West End tile)."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:From_%27Street_Life_in_London%27,_1877,_by_John_Thomson_and_Adolphe_Smith_(5600367314).jpg",
+      "license": "public-domain",
+      "manifest_id": "M-28",
+      "attribution": "'London Cabmen', John Thomson, Street Life in London (1877) (Wikimedia Commons, PD)",
+      "start_s": 30,
+      "end_s": 45,
+      "note": "Inset. Backup M-29 — confirm it shows a two-wheeler before captioning 'hansom'."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://freesound.org/people/Sirderf/sounds/333680/",
+      "start_s": 0,
+      "end_s": 8,
+      "license": "cc-by-4.0",
+      "manifest_id": "M-46",
+      "attribution": "'Horse-drawn carriage - Approach and stop' — Sirderf, freesound 333680, CC BY 4.0",
+      "note": "Approach and stop under the first line. Attribution required."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://freesound.org/people/Owl/sounds/191741/",
+      "start_s": 8,
+      "end_s": 60,
+      "license": "cc-by-4.0",
+      "manifest_id": "M-47",
+      "attribution": "'Horse carriage on city street' — Owl, freesound 191741, CC BY 4.0",
+      "note": "Loop bed. Attribution required."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture.ogg",
+      "start_s": 0,
+      "end_s": 60,
+      "license": "cc0",
+      "manifest_id": "M-42",
+      "attribution": "Offenbach, Orphée aux enfers overture, Musopen (Wikimedia Commons, CC0)",
+      "note": "Galop, continuing from 11; duck under narration."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 6,
+      "kind": "caption",
+      "until_s": 14,
+      "text": "swell — a well-dressed gentleman",
+      "position": "bottom"
+    },
+    {
+      "at_s": 22,
+      "kind": "caption",
+      "until_s": 30,
+      "text": "bob — a shilling; the fare",
+      "position": "bottom"
+    },
+    {
+      "at_s": 38,
+      "kind": "caption",
+      "until_s": 45,
+      "text": "London cabmen, 1877 — John Thomson",
+      "position": "bottom"
+    },
+    {
+      "at_s": 52,
+      "kind": "caption",
+      "until_s": 60,
+      "text": "Hook it! — be off",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "none"
+  },
+  "transition": {
+    "in": "cut",
+    "out": "cut to the Strand (M-08)",
+    "music_cue": "M-42 galop out under the last line"
+  },
+  "next": "charing-cross",
+  "sources": [
+    "F-12",
+    "F-13",
+    "F-25",
+    "F-28",
+    "F-31",
+    "F-39"
+  ],
+  "production_notes": "Slang comes only from the 1874 All the Year Round list and the money terms in F-31. Cab type: 'a hansom, most likely' — Verne never names it (F-12 note, F-28). Linear cut: 40 s — trim the Underground line and the Offenbach aside.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

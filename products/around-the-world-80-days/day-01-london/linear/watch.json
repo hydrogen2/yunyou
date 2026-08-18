@@ -1,0 +1,103 @@
+{
+ "video": "day-01-london_review-animatic.mp4",
+ "subtitles": "day-01-london_narration.vtt",
+ "duration_s": 702,
+ "chapters": [
+  {
+   "scene": "cold-open",
+   "type": "interstitial",
+   "at_s": 4,
+   "title": "Day 1 \u00b7 London \u00b7 Wednesday 2 October 1872"
+  },
+  {
+   "scene": "savile-row",
+   "type": "video",
+   "at_s": 51,
+   "title": "Savile Row \u2014 the address Verne got wrong"
+  },
+  {
+   "scene": "fogg-by-the-clock",
+   "type": "card",
+   "at_s": 128,
+   "title": "Fogg's day, by the clock \u2014 enter Passepartout"
+  },
+  {
+   "scene": "pall-mall-pass",
+   "type": "video",
+   "at_s": 170,
+   "title": "Pall Mall \u2014 passing the clubs (linear cut)"
+  },
+  {
+   "scene": "the-reform-club",
+   "type": "video",
+   "at_s": 215,
+   "title": "Inside the Reform \u2014 what Verne got right"
+  },
+  {
+   "scene": "quiz-verne-saloon",
+   "type": "quiz",
+   "at_s": 230,
+   "title": "Quiz \u2014 which of Verne's club details is real?"
+  },
+  {
+   "scene": "the-wager",
+   "type": "photo",
+   "at_s": 285,
+   "title": "The wager \u2014 twenty thousand at Baring's"
+  },
+  {
+   "scene": "the-world-shrinks",
+   "type": "map",
+   "at_s": 367,
+   "title": "The world had just shrunk \u2014 the 80-day loop"
+  },
+  {
+   "scene": "pack-the-bag",
+   "type": "game",
+   "at_s": 410,
+   "title": "Ten minutes \u2014 pack the carpet-bag"
+  },
+  {
+   "scene": "the-dash",
+   "type": "map",
+   "at_s": 429,
+   "title": "A shilling's cab to Charing Cross"
+  },
+  {
+   "scene": "charing-cross",
+   "type": "video",
+   "at_s": 463,
+   "title": "Charing Cross \u2014 Fogg's newest London"
+  },
+  {
+   "scene": "then-and-now",
+   "type": "photo",
+   "at_s": 528,
+   "title": "Then and now \u2014 the forecourt, 1872 and today"
+  },
+  {
+   "scene": "passepartout-on-the-platform",
+   "type": "dialogue",
+   "at_s": 541,
+   "title": "The platform, 8:40 \u2014 talk to Passepartout"
+  },
+  {
+   "scene": "quiz-the-weather",
+   "type": "quiz",
+   "at_s": 574,
+   "title": "Quiz \u2014 what is the weather on the platform?"
+  },
+  {
+   "scene": "the-boat-train",
+   "type": "video",
+   "at_s": 588,
+   "title": "8:45 \u2014 over the river, to the forgotten gas"
+  },
+  {
+   "scene": "souvenir",
+   "type": "card",
+   "at_s": 644,
+   "title": "Souvenir \u2014 Fogg's last breakfast in London"
+  }
+ ]
+}

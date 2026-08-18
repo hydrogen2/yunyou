@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yunyou.studio/schema/tour.schema.json",
+  "title": "Tour",
+  "type": "object",
+  "required": ["id", "title", "chapters"],
+  "properties": {
+    "id": {"type":"string"}, "title": {"type":"string"}, "tagline": {"type":"string"},
+    "world": {"type":"string", "description":"real | verne | tolkien | … (see shared/world-bible)"},
+    "guide_persona": {"type":"string"},
+    "style": {"type":"string", "description":"style guide id"},
+    "drip": {"type":"string", "enum":["all-at-once","daily","weekly"]},
+    "chapters": {
+      "type":"array",
+      "items": {
+        "type":"object",
+        "required":["id","title","scenes"],
+        "properties": {
+          "id":{"type":"string"}, "title":{"type":"string"}, "hook":{"type":"string"},
+          "place":{"type":"string"}, "geo":{"type":"string"},
+          "scenes":{"type":"array","items":{"$ref":"scene.schema.json"}}
+        }
+      }
+    },
+    "linear_cut": {"type":"object","description":"Publisher: how to render the passive video version","properties":{"target_minutes":{"type":"integer"},"platforms":{"type":"array","items":{"type":"string"}}}}
+  }
+}

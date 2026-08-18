@@ -1,0 +1,100 @@
+{
+  "id": "quiz-verne-saloon",
+  "type": "quiz",
+  "title": "Quiz — which of Verne's club details is real?",
+  "subtopic": "5 — Inside the Reform (Quiz A)",
+  "duration_s": 80,
+  "learning_goal": "Know that Verne's Reform is half fantasy (porphyry columns, blue glass) and half exact (nine garden windows); know you can visit during Open House.",
+  "narration": {
+    "script": "Verne describes the club in loving detail: mosaic floors, a gallery under a dome held up by twenty red porphyry columns, blue painted windows, a dining room with nine windows onto a garden already gilded with autumn. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous. Half fantasy, half exact — treat the novel that way for the next seventy-nine days. And one practical note: you can stand in that saloon yourself, one weekend a year, when the club opens for guided tours during Open House London; the caption has this year's dates. The tour, they say, includes one very long staircase.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+      "license": "public-domain",
+      "manifest_id": "M-23",
+      "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
+      "start_s": 0,
+      "end_s": 80,
+      "note": "Vignetted inset behind the quiz card."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-20",
+      "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
+      "start_s": 0,
+      "end_s": 80,
+      "note": "Blurred backdrop."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Johann_Strauss_-_Wiener_Blut_Op._354.ogg",
+      "start_s": 0,
+      "end_s": 80,
+      "license": "cc0",
+      "manifest_id": "M-43",
+      "attribution": "J. Strauss II, Wiener Blut Op. 354 (Wikimedia Commons, CC0)",
+      "note": "Continues from 06, low."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 0,
+      "kind": "prompt",
+      "until_s": 20,
+      "text": "Which of Verne's club details is real?",
+      "position": "top"
+    },
+    {
+      "at_s": 64,
+      "kind": "caption",
+      "until_s": 80,
+      "text": "Open House London: 12–13 September 2026, bookings from 19 August",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "choice",
+    "prompt": "Verne describes the Reform Club's interior. Which of these details is real?",
+    "options": [
+      {
+        "text": "Twenty red porphyry Ionic columns holding up a dome",
+        "correct": false,
+        "feedback": "Verne's invention. Barry's saloon has a two-storey peristyle — Ionic below, Corinthian above — in yellow marble and scagliola."
+      },
+      {
+        "text": "A gallery lit through blue painted windows",
+        "correct": false,
+        "feedback": "A garble. The saloon sits under a coved glass roof with an oval saucer-dome."
+      },
+      {
+        "text": "A dining-room with nine windows onto the garden",
+        "correct": true,
+        "feedback": "Exact. Nine tall casement windows in the coffee-room's south wall, and the garden is still there."
+      }
+    ]
+  },
+  "transition": {
+    "in": "dissolve",
+    "out": "cut to the Neuville plate",
+    "music_cue": "M-43 out under the last line"
+  },
+  "next": "the-wager",
+  "sources": [
+    "F-07",
+    "F-15",
+    "F-17"
+  ],
+  "production_notes": "Question ≈ 20 s, answer window ≈ 30 s, tail 20 s. The Open House date lives on the caption only so it can be updated yearly (F-17 is time-sensitive). Linear cut: the guide asks and answers in one breath (correct option + its feedback), 60 s incl. tail; keep the prompt overlay.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

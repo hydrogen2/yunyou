@@ -1,0 +1,150 @@
+{
+  "id": "the-world-shrinks",
+  "type": "map",
+  "title": "The world had just shrunk — the 80-day loop",
+  "subtopic": "6 — The wager (map beat)",
+  "duration_s": 100,
+  "learning_goal": "Know the three enablers of 1869–70 and the eight legs that add up to eighty; feel the thrill of the map lighting up.",
+  "narration": {
+    "script": "How could anyone even think it? Because the world had just shrunk. When a partner said the world was big, Fogg's answer was two words: 'It was once.' Look at the three lights. The Suez Canal, opened in November 1869. The American railroad, joined at Promontory Summit in May 1869. The last rail link across India, closed at Jabalpur in March 1870. Three doors, opened within ten months, two years before tonight. Now watch the line draw. London to Suez, by rail and steamer through Mont Cenis and Brindisi, seven days. Suez to Bombay by steamer, thirteen. Bombay to Calcutta by rail, three. Calcutta to Hong Kong, thirteen. Hong Kong to Yokohama, six. Yokohama to San Francisco, twenty-two. San Francisco to New York by rail, seven. New York back to London, nine. Add them up: eighty. Now tap the longest leg on the map. The Pacific — twenty-two days of ocean; keep this in mind for later. And the map fades back to tonight: only London lit. Because Fogg, still at the table, says the sentence that turns the evening. 'The train leaves for Dover at a quarter before nine.'",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "generated",
+      "ref": "generated/g-01/route-map_enablers-layer.svg",
+      "start_s": 0,
+      "end_s": 30,
+      "license": "generated",
+      "manifest_id": "G-01",
+      "attribution": "Yunyou studio, generated",
+      "note": "REQUESTED extra layer 'enablers': three dated pins — Suez Canal 17 Nov 1869 · Promontory Summit 10 May 1869 · Jabalpur 7 Mar 1870 (numbers + labels, never colour alone)."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-01/route-map_full-loop_9-layers.svg",
+      "start_s": 30,
+      "end_s": 88,
+      "license": "generated",
+      "manifest_id": "G-01",
+      "attribution": "Yunyou studio, generated",
+      "note": "Full-loop reveal, 9 layers, leg by leg with mode + days (F-10)."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-01/route-map_day-01-state.svg",
+      "start_s": 88,
+      "end_s": 100,
+      "license": "generated",
+      "manifest_id": "G-01",
+      "attribution": "Yunyou studio, generated",
+      "note": "Fade back to the Day-1 state (only London lit)."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+      "start_s": 0,
+      "end_s": 100,
+      "license": "public-domain",
+      "manifest_id": "M-41",
+      "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+      "note": "Swell as the loop draws; out under the turn line."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 8,
+      "kind": "caption",
+      "until_s": 20,
+      "text": "Suez 1869 · Promontory 1869 · Jabalpur 1870",
+      "position": "bottom"
+    },
+    {
+      "at_s": 60,
+      "kind": "caption",
+      "until_s": 72,
+      "text": "7+13+3+13+6+22+7+9 = 80 days",
+      "position": "bottom"
+    },
+    {
+      "at_s": 74,
+      "kind": "prompt",
+      "until_s": 82,
+      "text": "Tap the longest leg",
+      "position": "top"
+    },
+    {
+      "at_s": 90,
+      "kind": "caption",
+      "until_s": 100,
+      "text": "The train leaves for Dover at a quarter before nine.",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "tap-to-find",
+    "prompt": "Tap the longest leg of Fogg's route.",
+    "options": [
+      {
+        "text": "London → Suez",
+        "correct": false,
+        "feedback": "Rail and steamer, via Mont Cenis and Brindisi: 7 days."
+      },
+      {
+        "text": "Suez → Bombay",
+        "correct": false,
+        "feedback": "Steamer across the Arabian Sea: 13 days. Long, but not the longest."
+      },
+      {
+        "text": "Bombay → Calcutta",
+        "correct": false,
+        "feedback": "Rail across India — the newest link, only just opened: 3 days."
+      },
+      {
+        "text": "Calcutta → Hong Kong",
+        "correct": false,
+        "feedback": "Steamer: 13 days. Same as Suez to Bombay."
+      },
+      {
+        "text": "Hong Kong → Yokohama",
+        "correct": false,
+        "feedback": "Steamer: 6 days."
+      },
+      {
+        "text": "Yokohama → San Francisco",
+        "correct": true,
+        "feedback": "The Pacific: 22 days by steamer — the longest leg by far. Keep this in mind for later."
+      },
+      {
+        "text": "San Francisco → New York",
+        "correct": false,
+        "feedback": "Rail, coast to coast, possible only since May 1869: 7 days."
+      },
+      {
+        "text": "New York → London",
+        "correct": false,
+        "feedback": "Steamer and rail home: 9 days."
+      }
+    ]
+  },
+  "transition": {
+    "in": "cut",
+    "out": "hard cut to the packing game",
+    "music_cue": "M-41 swell from 30 s, out at 90 s under the turn line"
+  },
+  "next": "pack-the-bag",
+  "sources": [
+    "F-10",
+    "F-11",
+    "F-12",
+    "F-33"
+  ],
+  "production_notes": "G-01 must deliver both the full-loop and the Day-1 layer plus the requested 'enablers' layer. Tap-to-find is interactive only; the eight legs are map targets, not a quiz. Linear cut: 40 s — enablers + loop reveal + turn line, no tap; skip 09 before it.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "id": "charing-cross",
+  "type": "video",
+  "title": "Charing Cross — Fogg's newest London",
+  "subtopic": "8 — Charing Cross",
+  "duration_s": 60,
+  "learning_goal": "Know that Fogg's London was brand-new (station 8, Underground 9, Embankment 2, Big Ben 13) and remember the twenty guineas; feel awe at a new city and one warm beat.",
+  "narration": {
+    "script": "The Strand, and ahead the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the cross, 1865. The cross itself, 1865. The Underground, nine years old. The Embankment down by the river, two. Big Ben, thirteen. Almost everything Fogg passes tonight is younger than his valet. Look at the roofline: Hawkshaw's single iron span, about 155 metres by 50 — five hundred feet long — collapsed in 1905 and was replaced; that is all we will say about it. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money, and Fogg hands her the twenty guineas he won at whist without breaking stride — four hundred and twenty shillings, or about eight hundred and forty cab-miles.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "youtube",
+      "ref": "VIjDXClopyE",
+      "start_s": 285,
+      "end_s": 345,
+      "license": "youtube-embed",
+      "manifest_id": "M-08",
+      "attribution": "Virtual Walks and Adventures, '[4K] A London walk from Trafalgar Square via Charing Cross to Embankment and Golden Jubilee Bridge' (2022) — YouTube embed",
+      "note": "04:45–05:45: Strand approach into the forecourt (creator chapter 'Charing Cross' at 05:00; forecourt frames unverified — Content Preparer to pin). Small channel: keep backup M-09 UkXUiYNML3U 00:00–01:00 warm; rainy alt M-10 FI_AT-rhLP4 01:00–02:00."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 10,
+      "kind": "caption",
+      "until_s": 22,
+      "text": "Station: 8 years old. Underground: 9. Big Ben: 13.",
+      "position": "bottom"
+    },
+    {
+      "at_s": 30,
+      "kind": "pin",
+      "until_s": 42,
+      "text": "Eleanor Cross — replica, 1865, E. M. Barry",
+      "position": "bl",
+      "geo": "51.5081,-0.1247"
+    },
+    {
+      "at_s": 48,
+      "kind": "caption",
+      "until_s": 58,
+      "text": "Twenty guineas — 420 shillings, or 840 cab-miles",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "none"
+  },
+  "transition": {
+    "in": "cut",
+    "out": "dissolve to the then/now frame",
+    "music_cue": "none — street sound; M-40 Big Ben optional under the caption at 10 s"
+  },
+  "next": "then-and-now",
+  "sources": [
+    "F-04",
+    "F-12",
+    "F-21",
+    "F-22",
+    "F-25",
+    "F-26",
+    "F-28",
+    "F-31",
+    "F-39"
+  ],
+  "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'Younger than his valet': Passepartout is about thirty (F-04). Linear cut: keep whole (60 s).",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

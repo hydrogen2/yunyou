@@ -1,0 +1,100 @@
+{
+  "id": "cold-open",
+  "type": "interstitial",
+  "title": "Day 1 · London · Wednesday 2 October 1872",
+  "subtopic": "1 — Cold open: eighty days",
+  "duration_s": 60,
+  "learning_goal": "Know the date, the deadline and the stake in one breath; feel a clock already running.",
+  "narration": {
+    "script": "It is Wednesday, the second of October, 1872. Twenty-nine minutes past eleven in the morning. On a quiet street in Mayfair a French valet is being hired by a man who runs his life by the clock, and the valet's watch is four minutes slow. Keep that watch in mind. By a quarter to nine tonight, that same man will have staked half his fortune that the whole world fits into eighty days. Eighty days. Nineteen hundred and twenty hours. A hundred and fifteen thousand two hundred minutes. Look at the map: only London is lit. Over the next eighty days we will light the rest, one port at a time. Jules Verne printed this journey in a Paris newspaper that same winter, as if it were happening. The novel is our guidebook; we travel today. First, Savile Row.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Big_Ben_recorded_in_1890.ogg",
+      "start_s": 0,
+      "end_s": 12,
+      "license": "public-domain",
+      "manifest_id": "M-40",
+      "attribution": "Big Ben, Edison phonograph recording, 16 July 1890 (Wikimedia Commons, PD)",
+      "note": "Under the title card only; hissy, never under narration."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-01/route-map_day-01-state.svg",
+      "start_s": 12,
+      "end_s": 60,
+      "license": "generated",
+      "manifest_id": "G-01",
+      "attribution": "Yunyou studio, generated",
+      "note": "Day-1 state of the route map: London lit, rest of the line at 30 % opacity. Backup if G-01 is late: M-30 (1872 Plan of London)."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-34",
+      "attribution": "Phileas Fogg, frontispiece by Alphonse de Neuville, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+      "start_s": 30,
+      "end_s": 40,
+      "note": "Small inset, lower-right, over the map. Dropped in the linear cut."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+      "start_s": 12,
+      "end_s": 60,
+      "license": "public-domain",
+      "manifest_id": "M-41",
+      "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+      "note": "Bed under narration, ducked -12 dB."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 0,
+      "kind": "lower-third",
+      "until_s": 12,
+      "text": "Day 1 · London · Wednesday 2 October 1872",
+      "position": "bottom"
+    },
+    {
+      "at_s": 20,
+      "kind": "caption",
+      "until_s": 30,
+      "text": "Eighty days. 1,920 hours. 115,200 minutes.",
+      "position": "bottom"
+    },
+    {
+      "at_s": 42,
+      "kind": "pin",
+      "until_s": 55,
+      "text": "London — only stop lit tonight",
+      "geo": "51.5075,-0.1277"
+    }
+  ],
+  "interaction": {
+    "kind": "none"
+  },
+  "transition": {
+    "in": "cut from black",
+    "out": "3-s fade to Savile Row",
+    "music_cue": "M-41 in at 12 s, tail out under the fade"
+  },
+  "next": "savile-row",
+  "sources": [
+    "F-02",
+    "F-11",
+    "F-32",
+    "F-39"
+  ],
+  "production_notes": "Narration starts at 12 s, after the Big Ben title beat (M-40 must never sit under speech). Linear cut: 45 s — same script, drop the M-34 inset and trim the pause on the map.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

@@ -1,0 +1,96 @@
+{
+  "_comment": [
+    "Mechanical encoding of products/around-the-world-80-days/day-01-london/scenes/README.md, section 'Linear cut', into render hints.",
+    "script: ordered tokens — s:N / s:N-M = narration sentence(s) by index (0-based, splitter in render_linear.mjs; the numbered list is in linear/render-log.md),",
+    "quiz:correct = correct option text + its feedback, chat:N = chip N question + answer (answer in voice2), overlay:N = the overlay text, game:list = the correct drag options.",
+    "No words are invented here: every token points at text that already exists in the scene JSON. Where the README seconds are shorter than the TTS,",
+    "render_linear.mjs end-cuts at a sentence boundary and logs it — the Narrator owns the final trim.",
+    "visuals: kind image|clip|player|scenecard|pending|quiz|chat|checklist|streetview; dur in seconds or omitted = share the remainder.",
+    "overlays: indices into scene.overlays, or {i, at, until} to re-time for the shorter linear scene. beds: {media, at, until}."
+  ],
+  "scenes": {
+    "cold-open": {
+      "_readme": "whole, drop the M-34 inset, trim the map pause — 45 s",
+      "narration_at_s": 3,
+      "visuals": [ { "kind": "scenecard", "dur": 4 }, { "kind": "player", "call": "showRouteMap(true)" } ],
+      "beds": [ { "media": "M-40", "at": 0, "until": 4 }, { "media": "M-41", "at": 4 } ],
+      "overlays": [ { "i": 1, "at": 24, "until": 32 }, { "i": 2, "at": 33, "until": 44 } ]
+    },
+    "savile-row": {
+      "_readme": "M-05 21:35–22:50, pins (a)(b) only, drop M-32 tail and last four sentences — 75 s",
+      "script": [ "s:0-10" ],
+      "visuals": [ { "kind": "clip", "media": "M-05", "in_s": 1295, "out_s": 1370 } ],
+      "overlays": [ 0, 1 ]
+    },
+    "fogg-by-the-clock": {
+      "_readme": "card only, no taps; script to 'home at midnight' + one-breath CV — 40 s (drops the 'Tap any line' prompt and the tail after the CV)",
+      "script": [ "s:0", "s:2-6" ],
+      "visuals": [ { "kind": "player", "call": "showScene(2)" } ],
+      "overlays": []
+    },
+    "pall-mall-pass": { "_readme": "whole (replaces 04) — 45 s" },
+    "the-reform-club": {
+      "_readme": "from 45 s: photo trio only (M-01 already used by 05) — 25 s; script from the photo-trio sentence onward, end-cut by the cap",
+      "script": [ "s:3-6" ],
+      "visuals": [ { "kind": "image", "media": "M-20" }, { "kind": "image", "media": "M-22" }, { "kind": "image", "media": "M-23" } ],
+      "overlays": [ { "i": 1, "at": 4.5, "until": 10 }, { "i": 2, "at": 14, "until": 24 } ]
+    },
+    "quiz-verne-saloon": {
+      "_readme": "guide asks and answers in one breath (correct option + feedback) + Open House tail — 65 s (drops 'Take your time; the tea is famous.')",
+      "script": [ "s:0-2", "quiz:correct", "s:4-6" ],
+      "visuals": [ { "kind": "quiz" } ],
+      "overlays": [ { "i": 1, "at": 46, "until": 64 } ]
+    },
+    "the-wager": { "_readme": "whole — 80 s" },
+    "the-world-shrinks": {
+      "_readme": "enablers + loop reveal + turn line, no tap; skip 09 — 40 s (README's own three parts: enablers [3-7], loop reveal [8] + sum [17], turn line [20-22]; the leg-by-leg list cannot fit 40 s)",
+      "script": [ "s:3-8", "s:17", "s:20-22" ],
+      "visuals": [ { "kind": "player", "call": "showRouteMap(false)" }, { "kind": "player", "call": "showRouteMap(true)", "dur": 9 } ],
+      "overlays": [ { "i": 0, "at": 4.5, "until": 14 }, { "i": 1, "at": 24, "until": 31 }, { "i": 3, "at": 33, "until": 41 } ]
+    },
+    "pack-the-bag": {
+      "_readme": "20-s packing-list card, no drag; script trimmed to the list and the completion line",
+      "script": [ "s:10", "s:14" ],
+      "visuals": [ { "kind": "checklist", "closing_overlay": 1 } ],
+      "overlays": []
+    },
+    "the-dash": {
+      "_readme": "40 s: trim the Underground line and the Offenbach aside",
+      "script": [ "s:0-2", "s:4", "s:6-7" ],
+      "visuals": [ { "kind": "image", "media": "M-30" }, { "kind": "image", "media": "M-28", "dur": 10 }, { "kind": "image", "media": "M-30", "dur": 8 } ],
+      "overlays": [ 0, 1, { "i": 2, "at": 23, "until": 32 } ]
+    },
+    "charing-cross": { "_readme": "whole — 60 s" },
+    "then-and-now": {
+      "_readme": "15 s, seam auto-wipes; script trimmed to the first two sentences and the Dover line (drops 'Drag the seam.')",
+      "script": [ "s:1-3" ],
+      "visuals": [ { "kind": "image", "media": "M-24" }, { "kind": "image", "media": "M-26" } ],
+      "overlays": [ { "i": 0, "at": 4.2, "until": 8 }, { "i": 1, "at": 8, "until": 15 } ]
+    },
+    "passepartout-on-the-platform": {
+      "_readme": "scripted three-line exchange (guide → chip 1 answer → guide) — 30 s",
+      "script": [ "s:0", "chat:0", "overlay:1" ],
+      "visuals": [ { "kind": "chat", "chips": [ 0 ] } ],
+      "overlays": []
+    },
+    "quiz-the-weather": {
+      "_readme": "guide states the answer, no choice — 15 s (question sentence + answer sentence; the scene-setting lines are already said in 16)",
+      "script": [ "s:2", "s:4" ],
+      "visuals": [ { "kind": "quiz" } ],
+      "overlays": []
+    },
+    "the-boat-train": {
+      "_readme": "postcard 10 s + M-13 00:00–00:55; trim the Dover/Suez sentence — 65 s",
+      "script": [ "s:0-5", "s:7-10" ],
+      "visuals": [ { "kind": "image", "media": "M-27", "dur": 10 }, { "kind": "clip", "media": "M-13", "in_s": 0, "out_s": 55 } ],
+      "beds": [ { "media": "M-44", "at": 0, "until": 10 }, { "media": "M-45", "at": 13, "until": 17 } ],
+      "overlays": [ 0, { "i": 1, "at": 12, "until": 18 }, { "i": 2, "at": 24, "until": 34 }, { "i": 4, "at": 36, "until": 46 } ]
+    },
+    "souvenir": {
+      "_readme": "40 s, ingredient list stays on the card (script minus the read-out)",
+      "script": [ "s:0", "s:6-9" ],
+      "visuals": [ { "kind": "player", "call": "showScene(18)" } ],
+      "overlays": [ 0, { "i": 1, "at": 27, "until": 35 } ]
+    }
+  }
+}

@@ -1,0 +1,358 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yunyou.studio/schema/scene.schema.json",
+  "title": "Scene",
+  "description": "The single primitive of the Yunyou engine. A tour = ordered/branching list of scenes. Every product (guided tour, photo album, course) is authored content on this runtime.",
+  "type": "object",
+  "required": [
+    "id",
+    "type",
+    "title",
+    "duration_s",
+    "narration",
+    "media"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "video",
+        "streetview",
+        "photo",
+        "map",
+        "quiz",
+        "dialogue",
+        "game",
+        "card",
+        "interstitial",
+        "panorama",
+        "window",
+        "ambience",
+        "drone",
+        "timeline"
+      ],
+      "description": "See studio/research/scene-types.md for the catalogue; panorama/window/ambience/drone/timeline are research-track types."
+    },
+    "title": {
+      "type": "string"
+    },
+    "subtopic": {
+      "type": "string",
+      "description": "The rundown subtopic this scene realises"
+    },
+    "duration_s": {
+      "type": "integer",
+      "minimum": 5,
+      "description": "Target on-screen time"
+    },
+    "learning_goal": {
+      "type": "string",
+      "description": "One sentence: what the traveller should know/feel afterwards"
+    },
+    "narration": {
+      "type": "object",
+      "required": [
+        "script"
+      ],
+      "properties": {
+        "script": {
+          "type": "string",
+          "description": "Spoken script. Plain text, no stage directions. ~150 wpm."
+        },
+        "voice": {
+          "type": "string",
+          "default": "guide",
+          "description": "Persona id from shared/personas"
+        },
+        "timing": {
+          "type": "string",
+          "enum": [
+            "before",
+            "over",
+            "after"
+          ],
+          "default": "over"
+        },
+        "tts": {
+          "type": "object",
+          "properties": {
+            "provider": {
+              "type": "string"
+            },
+            "voice_id": {
+              "type": "string"
+            },
+            "rate": {
+              "type": "number"
+            }
+          }
+        }
+      }
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "kind",
+          "ref"
+        ],
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "youtube",
+              "image",
+              "audio",
+              "streetview",
+              "map",
+              "generated"
+            ]
+          },
+          "ref": {
+            "type": "string",
+            "description": "YouTube video id, URL, file path, or 'lat,lng,heading,pitch,fov'"
+          },
+          "start_s": {
+            "type": "integer"
+          },
+          "end_s": {
+            "type": "integer"
+          },
+          "attribution": {
+            "type": "string"
+          },
+          "license": {
+            "type": "string",
+            "description": "e.g. youtube-embed, cc-by-4.0, public-domain, generated, licensed"
+          },
+          "manifest_id": {
+            "type": "string",
+            "description": "Cross-ref into media/manifest.md"
+          }
+        }
+      }
+    },
+    "overlays": {
+      "type": "array",
+      "description": "Timed layers on top of media, synced to scene time (seconds from scene start)",
+      "items": {
+        "type": "object",
+        "required": [
+          "at_s",
+          "kind"
+        ],
+        "properties": {
+          "at_s": {
+            "type": "number"
+          },
+          "until_s": {
+            "type": "number"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "caption",
+              "pin",
+              "fact",
+              "prompt",
+              "sticker",
+              "lower-third",
+              "map-inset",
+              "highlight"
+            ]
+          },
+          "text": {
+            "type": "string"
+          },
+          "position": {
+            "type": "string",
+            "enum": [
+              "top",
+              "bottom",
+              "left",
+              "right",
+              "center",
+              "tl",
+              "tr",
+              "bl",
+              "br"
+            ]
+          },
+          "geo": {
+            "type": "string",
+            "description": "lat,lng for pins/map-inset"
+          },
+          "asset": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "interaction": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "none",
+            "choice",
+            "free-text",
+            "tap-to-find",
+            "drag",
+            "walk",
+            "chat",
+            "look",
+            "mix",
+            "scrub"
+          ]
+        },
+        "prompt": {
+          "type": "string"
+        },
+        "options": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "correct": {
+                "type": "boolean"
+              },
+              "feedback": {
+                "type": "string"
+              },
+              "goto": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "answer": {
+          "type": "string"
+        },
+        "persona": {
+          "type": "string",
+          "description": "dialogue scenes: persona id"
+        },
+        "guardrails": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "dialogue: what the persona must not claim"
+        },
+        "route": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "streetview walk: waypoints lat,lng"
+        }
+      }
+    },
+    "transition": {
+      "type": "object",
+      "properties": {
+        "in": {
+          "type": "string"
+        },
+        "out": {
+          "type": "string"
+        },
+        "music_cue": {
+          "type": "string"
+        }
+      }
+    },
+    "next": {
+      "type": "string",
+      "description": "Default next scene id; branches override via interaction.options[].goto"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Fact-sheet ids backing every claim in the narration/quiz (F-01, F-02\u2026)"
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "fact_check": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "pass",
+            "flag",
+            "fail"
+          ]
+        },
+        "rights": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "green",
+            "amber",
+            "red"
+          ]
+        },
+        "qa": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "pass",
+            "flag",
+            "fail"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "tracking": {
+      "type": "object",
+      "description": "For panorama/window scenes",
+      "properties": {
+        "sensors": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "gyro",
+              "face",
+              "touch"
+            ]
+          }
+        },
+        "enclosure": {
+          "type": "string",
+          "enum": [
+            "cube",
+            "sphere",
+            "cylinder",
+            "box-room"
+          ]
+        },
+        "screen_mm": {
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "description": "physical width,height if known"
+        },
+        "smoothing": {
+          "type": "string",
+          "default": "one-euro"
+        }
+      }
+    }
+  }
+}

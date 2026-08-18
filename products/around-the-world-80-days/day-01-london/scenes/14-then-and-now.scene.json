@@ -1,0 +1,82 @@
+{
+  "id": "then-and-now",
+  "type": "photo",
+  "title": "Then and now — the forecourt, 1872 and today",
+  "subtopic": "8 — Charing Cross (then/now)",
+  "duration_s": 35,
+  "learning_goal": "See the 1872 forecourt against today's; know the station still runs about a train an hour to Dover.",
+  "narration": {
+    "script": "Drag the seam. On the left, an engraving from 1872 — the year itself — the hotel and forecourt as Fogg saw them. On the right, the cross today. Six platforms behind it, and still about a train an hour to Dover; you can still buy a ticket for Dover at Fogg's station, though the through route to Paris now leaves from St Pancras. The hotel is a hotel still, under a newer name.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "generated",
+      "ref": "generated/g-02/then-now_charing-cross_M-24_vs_M-26.svg",
+      "start_s": 0,
+      "end_s": 35,
+      "license": "generated",
+      "manifest_id": "G-02",
+      "attribution": "Yunyou studio, generated",
+      "note": "REQUESTED template 'then vs now', vertical seam, filled with M-24 (left) and M-26 (right); source line in 8 pt on the caption bar."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.037_HOTEL_AT_CHARING_CROSS.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-24",
+      "attribution": "'Hotel at Charing Cross', London Illustrated (1872), J. T. Wood (Wikimedia Commons, PD)",
+      "start_s": 0,
+      "end_s": 35,
+      "note": "Left half, sepia with engraved-line vignette."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Charing_Cross_Memorial_(4901651986).jpg",
+      "license": "cc-by-2.0",
+      "manifest_id": "M-26",
+      "attribution": "Queen Eleanor Memorial Cross — Tony Hisgett (2010), CC BY 2.0",
+      "start_s": 0,
+      "end_s": 35,
+      "note": "Right half, portrait — fold-phone friendly. Alt: M-25 (Rijksmuseum, CC0) vs a still from M-08 05:00–06:00."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 0,
+      "kind": "caption",
+      "until_s": 35,
+      "text": "1872 — the station is eight years old",
+      "position": "left"
+    },
+    {
+      "at_s": 0,
+      "kind": "caption",
+      "until_s": 35,
+      "text": "Today — six platforms, a train an hour to Dover",
+      "position": "right"
+    }
+  ],
+  "interaction": {
+    "kind": "drag",
+    "prompt": "Drag the seam left and right."
+  },
+  "transition": {
+    "in": "dissolve",
+    "out": "cut to Street View",
+    "music_cue": "none"
+  },
+  "next": "look-up-the-cross",
+  "sources": [
+    "F-21",
+    "F-22"
+  ],
+  "production_notes": "Two captions at 0 s are the split-frame labels (one per side), both ≤ 12 words. Linear cut: 15 s, seam auto-wipes once; script trimmed to the first two sentences and the Dover line.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}

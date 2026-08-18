@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Yunyou · watch</title>
+<style>
+:root{--ink:#ece6da;--dim:#a9a193;--bg:#0d0c0e;--panel:#17161a;--line:#2b292f;--accent:#d9a441}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 Georgia,serif}
+main{max-width:1100px;margin:0 auto;padding:16px}
+.eyebrow{font:12px system-ui;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:4px 0}
+h1{font-weight:500;font-size:clamp(22px,4vmin,34px);margin:0 0 6px}
+p.hook{color:var(--dim);margin:0 0 14px}
+video{width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;display:block}
+.row{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px}
+.chapters{flex:1 1 320px}.chapters h3,.about h3{font:12px system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin:0 0 8px}
+.chapters button{display:flex;gap:10px;width:100%;text-align:left;background:var(--panel);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:8px 10px;margin:4px 0;font:inherit;cursor:pointer}
+.chapters button.now{border-color:var(--accent)}.chapters .t{font:13px ui-monospace,monospace;color:var(--accent);min-width:44px}.chapters .k{color:var(--dim);font:12px system-ui;margin-left:auto}
+.about{flex:1 1 280px;color:var(--dim);font-size:14px}.about a{color:var(--accent)}
+.bar{display:flex;gap:8px;align-items:center;margin-top:10px;font:13px system-ui;color:var(--dim)}.bar a,.bar button{color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px;text-decoration:none;font:inherit;cursor:pointer}
+</style></head><body><main>
+<p class="eyebrow" id="eyebrow">Yunyou 云游</p><h1 id="title">loading…</h1><p class="hook" id="hook"></p>
+<video id="v" controls playsinline preload="metadata" crossorigin="anonymous"></video>
+<div class="bar"><button id="cc">CC on</button><a id="dl" href="#" download>download mp4</a><a id="interactive" href="#">open interactive version ›</a><span id="dur"></span></div>
+<div class="row"><div class="chapters"><h3>Chapters</h3><div id="chs"></div></div>
+<div class="about"><h3>About this cut</h3><p id="about">Review animatic rendered by the studio: neural narration, public-domain plates, live map and cards. Walking-footage segments appear as clip cards until the creators' licences are in.</p><p><a id="log" href="#">render log</a> · <a id="digest" href="#">DIGEST</a></p></div></div>
+</main>
+<script>
+const parts=location.pathname.replace(/^\/watch\//,'').replace(/\/$/,'').split('/'); const [product,chapter]=parts;
+const base=`/products/${product}/${chapter}`; const $=s=>document.querySelector(s);
+const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+(async()=>{
+  if(!product||!chapter){ $('#title').textContent='Usage: /watch/<product>/<chapter>'; return; }
+  let tour=null,w=null; try{ tour=await (await fetch(`${base}/tour.json`)).json(); }catch(e){}
+  try{ w=await (await fetch(`${base}/linear/watch.json`)).json(); }catch(e){}
+  if(!w){ $('#title').textContent='No linear cut rendered yet for '+chapter; $('#hook').textContent='Run studio/tools/render/render_linear.mjs first.'; return; }
+  const ch=tour&&tour.chapters.find(c=>c.id===chapter)||tour&&tour.chapters[0];
+  $('#eyebrow').textContent=(tour?tour.title:'Yunyou')+' · review animatic'; document.title=(ch?ch.title:chapter)+' · Yunyou';
+  $('#title').textContent=ch?ch.title:chapter; $('#hook').textContent=ch?ch.hook:'';
+  const v=$('#v'); v.src=`${base}/linear/${w.video}`; $('#dl').href=v.src;
+  if(w.subtitles){ const tr=document.createElement('track'); tr.kind='subtitles'; tr.label='English'; tr.srclang='en'; tr.src=`${base}/linear/${w.subtitles}`; v.appendChild(tr); v.addEventListener('loadedmetadata',()=>{ for(const t of v.textTracks) t.mode='hidden'; }); }
+  $('#interactive').href=`/player/?tour=${base}/tour.json`; $('#log').href=`${base}/linear/render-log.md`; $('#digest').href=`${base}/review/DIGEST.md`;
+  $('#dur').textContent=fmt(w.duration_s)+' total';
+  const box=$('#chs'); (w.chapters||[]).forEach(c=>{ const b=document.createElement('button'); b.innerHTML=`<span class="t">${fmt(c.at_s)}</span><span>${c.title}</span><span class="k">${c.type}</span>`; b.onclick=()=>{ v.currentTime=c.at_s; v.play(); }; b.dataset.at=c.at_s; box.appendChild(b); });
+  v.ontimeupdate=()=>{ let cur=null; box.querySelectorAll('button').forEach(b=>{ if(v.currentTime>=+b.dataset.at) cur=b; b.classList.remove('now'); }); cur&&cur.classList.add('now'); };
+  let cc=false; $('#cc').textContent='CC off'; $('#cc').onclick=()=>{ cc=!cc; for(const t of v.textTracks) t.mode=cc?'showing':'hidden'; $('#cc').textContent=cc?'CC on':'CC off'; };
+  const t0=parseFloat(new URLSearchParams(location.search).get('t')); if(t0) v.currentTime=t0;
+})();
+</script></body></html>

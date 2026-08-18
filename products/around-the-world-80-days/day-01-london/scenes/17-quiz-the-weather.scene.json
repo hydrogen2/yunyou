@@ -1,0 +1,90 @@
+{
+  "id": "quiz-the-weather",
+  "type": "quiz",
+  "title": "Quiz — what is the weather on the platform?",
+  "subtopic": "9 — The platform (Quiz B)",
+  "duration_s": 45,
+  "learning_goal": "Know that the departure night is dark and rainy, not foggy; know the pea-souper was a winter, coal-smoke thing.",
+  "narration": {
+    "script": "It is twenty to nine. Fogg and Passepartout are in their seats. Before the whistle, one question: what is the weather doing tonight? Choose. Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter.",
+    "timing": "over",
+    "voice": "guide"
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Charing_Cross_Station_en_Hotel_met_ervoor_de_replica_van_het_Eleanor_cross_in_Londen_Charing_%2B_Hotel_(titel_op_object),_RP-F-F01134-AG.jpg",
+      "license": "cc0",
+      "manifest_id": "M-25",
+      "attribution": "Charing Cross Station and Hotel with the Eleanor Cross, albumen photo, Rijksmuseum RP-F-F01134-AG, ca. 1880–1910 (CC0)",
+      "start_s": 0,
+      "end_s": 45,
+      "note": "Backdrop behind the quiz card, darkened."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Steam_engine.ogg",
+      "start_s": 0,
+      "end_s": 45,
+      "license": "public-domain",
+      "manifest_id": "M-44",
+      "attribution": "Steam engine — aradlaw, pdsounds #632 (Wikimedia Commons, PD)",
+      "note": "Continues low from 16."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 0,
+      "kind": "prompt",
+      "until_s": 12,
+      "text": "8:40 on the platform. What is the weather?",
+      "position": "top"
+    },
+    {
+      "at_s": 30,
+      "kind": "caption",
+      "until_s": 45,
+      "text": "Charing Cross, about 1880–1910 — Rijksmuseum",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "choice",
+    "prompt": "It is 8:40 on the platform. What is the weather?",
+    "options": [
+      {
+        "text": "A thick yellow pea-souper",
+        "correct": false,
+        "feedback": "The cliché — but London's great fogs were winter, coal-smoke things; the notorious one came in December 1873, the year after Fogg left."
+      },
+      {
+        "text": "A dark night and a fine, steady rain",
+        "correct": true,
+        "feedback": "Verne's own words. Rain on the station roof, then rain on the carriage window."
+      },
+      {
+        "text": "An early snow",
+        "correct": false,
+        "feedback": "Not in October. Verne gives rain — and no fog either; save the pea-souper for a winter chapter."
+      }
+    ]
+  },
+  "transition": {
+    "in": "cut",
+    "out": "cut to the 1905 postcard",
+    "music_cue": "M-44 continues"
+  },
+  "next": "the-boat-train",
+  "sources": [
+    "F-12",
+    "F-13",
+    "F-30"
+  ],
+  "production_notes": "Question ≈ 10 s, answer window ≈ 20 s, guide's close ≈ 15 s. Linear cut: the guide states the answer (15 s) — script minus 'Choose.'",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+  }
+}
