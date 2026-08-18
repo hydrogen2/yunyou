@@ -17,7 +17,7 @@ if ! in_window; then echo "$(date -u +%FT%TZ) outside window (H=$H DOW=$DOW) —
 
 # ---- keep the HTTPS server up (port 443 needs sudo -n) ----
 if ! ss -tln 2>/dev/null | grep -q ':443 '; then
-  (sudo -n nohup python3 "$REPO/studio/research/prototypes/window/serve.py" 443 "$REPO/www" >> "$REPO/www/serve.log" 2>&1 &) ; sleep 1
+  (sudo -n env CERT=/etc/letsencrypt/live/178-104-53-233.sslip.io/fullchain.pem KEY=/etc/letsencrypt/live/178-104-53-233.sslip.io/privkey.pem nohup python3 "$REPO/studio/research/prototypes/window/serve.py" 443 "$REPO/www" >> "$REPO/www/serve.log" 2>&1 &) ; sleep 1
 fi
 
 # ---- single instance ----

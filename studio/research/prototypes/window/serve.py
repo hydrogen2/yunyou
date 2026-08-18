@@ -8,7 +8,7 @@ port=int(sys.argv[1]) if len(sys.argv)>1 else 8443
 here=os.path.dirname(os.path.abspath(__file__))
 root=sys.argv[2] if len(sys.argv)>2 else here   # optional web root (e.g. ../../../../www)
 certdir=here
-crt,key=os.path.join(certdir,'dev.crt'),os.path.join(certdir,'dev.key')
+crt,key=os.environ.get('CERT') or os.path.join(certdir,'dev.crt'), os.environ.get('KEY') or os.path.join(certdir,'dev.key')
 if not (os.path.exists(crt) and os.path.exists(key)):
     subprocess.check_call(['openssl','req','-x509','-newkey','rsa:2048','-nodes','-keyout',key,'-out',crt,'-days','365','-subj','/CN=yunyou-window-dev'],stderr=subprocess.DEVNULL)
 ip=socket.gethostbyname(socket.gethostname())
