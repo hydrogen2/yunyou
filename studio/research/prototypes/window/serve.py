@@ -20,6 +20,21 @@ class H(http.server.SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Cache-Control','no-store'); self.send_header('Accept-Ranges','bytes'); super().end_headers()
     def do_GET(self):
+        if self.path.split('?')[0]=='/watch/index.json':   # directory of every chapter that has a rendered cut
+            import json,glob
+            out=[]
+            for wj in sorted(glob.glob(os.path.join(os.path.abspath(root),'products','*','*','linear','watch.json'))):
+                chap=os.path.dirname(os.path.dirname(wj)); prod=os.path.dirname(chap)
+                try: w=json.load(open(wj))
+                except Exception: continue
+                title=os.path.basename(chap); hook=''; ttitle=os.path.basename(prod)
+                try:
+                    tj=json.load(open(os.path.join(chap,'tour.json'))); ttitle=tj.get('title',ttitle)
+                    ch=next((c for c in tj['chapters'] if c['id']==os.path.basename(chap)),tj['chapters'][0]); title=ch.get('title',title); hook=ch.get('hook','')
+                except Exception: pass
+                out.append({'product':os.path.basename(prod),'chapter':os.path.basename(chap),'tour_title':ttitle,'title':title,'hook':hook,
+                            'duration_s':w.get('duration_s'),'mtime':int(os.path.getmtime(wj)),'chapters':len(w.get('chapters',[]))})
+            body=json.dumps(out).encode(); self.send_response(200); self.send_header('Content-Type','application/json'); self.send_header('Content-Length',str(len(body))); self.end_headers(); self.wfile.write(body); return
         if self.path.startswith('/watch/') and not self.path.startswith('/watch/index.html') and '.' not in self.path.rsplit('/',1)[-1]:
             self.path='/watch/index.html'
         return super().do_GET()

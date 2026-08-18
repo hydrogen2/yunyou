@@ -26,7 +26,16 @@ const parts=location.pathname.replace(/^\/watch\//,'').replace(/\/$/,'').split('
 const base=`/products/${product}/${chapter}`; const $=s=>document.querySelector(s);
 const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 (async()=>{
-  if(!product||!chapter){ $('#title').textContent='Usage: /watch/<product>/<chapter>'; return; }
+  if(!product||!chapter){ // directory view
+    $('#eyebrow').textContent='Yunyou 云游 · watch'; $('#title').textContent='Episodes'; document.title='Watch · Yunyou'; $('#v').remove(); $('.bar').remove(); $('.about').remove(); $('.chapters h3').textContent='Rendered cuts';
+    let list=[]; try{ list=await (await fetch('/watch/index.json')).json(); }catch(e){}
+    if(!list.length){ $('#hook').textContent='No rendered cuts yet.'; return; }
+    $('#hook').textContent=list.length+' episode'+(list.length>1?'s':'')+' · newest first';
+    list.sort((a,b)=>b.mtime-a.mtime).forEach(e=>{ const a=document.createElement('a'); a.href=`/watch/${e.product}/${e.chapter}`; a.style.textDecoration='none';
+      const b=document.createElement('button'); b.style.flexDirection='column'; b.style.alignItems='flex-start'; b.style.gap='2px'; b.style.padding='12px 14px';
+      b.innerHTML=`<span style="font:11px system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)">${e.tour_title}</span><span style="font-size:1.1em">${e.title}</span><span style="color:var(--dim);font-size:.9em">${e.hook||''}</span><span class="k" style="margin-left:0">${fmt(e.duration_s||0)} · ${e.chapters} chapters · rendered ${new Date(e.mtime*1000).toISOString().slice(0,10)}</span>`;
+      a.appendChild(b); $('#chs').appendChild(a); });
+    return; }
   let tour=null,w=null; try{ tour=await (await fetch(`${base}/tour.json`)).json(); }catch(e){}
   try{ w=await (await fetch(`${base}/linear/watch.json`)).json(); }catch(e){}
   if(!w){ $('#title').textContent='No linear cut rendered yet for '+chapter; $('#hook').textContent='Run studio/tools/render/render_linear.mjs first.'; return; }
