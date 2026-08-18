@@ -1,64 +1,124 @@
 #!/usr/bin/env python3
 """Validate scene/tour JSON files against the studio schemas. Zero deps beyond stdlib
 (uses jsonschema if installed, else a light structural check).
-Usage: python3 studio/tools/validate.py products/<p>/<chapter>/scenes/*.scene.json [tour.json]
+Usage: python3 studio/tools/validate.py [--strict] [--no-jsonschema] products/<p>/<chapter>/scenes/*.scene.json [tour.json]
+
+Output per file: "OK   <path>" or "FAIL <path>", then one line per finding:
+    "     - <error>"   schema or studio-rule violation -> exit 1
+    "     ! WARN <..>" advisory (old scenes still pass)   -> exit 0, unless --strict
 """
 import json, sys, pathlib, re
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SCENE = json.load(open(ROOT/'studio/schema/scene.schema.json'))
 TOUR  = json.load(open(ROOT/'studio/schema/tour.schema.json'))
 
+WPS_ERROR = 3.2   # words per second that is physically too fast (~190 wpm)
+WPS_WARN  = 2.5   # the studio target (150 wpm) — Narrator's budget
+
+def _type_ok(v, t):
+    if t=='integer': return isinstance(v,int) and not isinstance(v,bool)
+    if t=='number':  return isinstance(v,(int,float)) and not isinstance(v,bool)
+    if t=='string':  return isinstance(v,str)
+    if t=='boolean': return isinstance(v,bool)
+    if t=='object':  return isinstance(v,dict)
+    if t=='array':   return isinstance(v,list)
+    return True
+
 def light_check(obj, schema, path='$'):
+    """Structural check used when jsonschema is not installed: required, type, enum, pattern, minimum, nested objects/arrays."""
     errs=[]
     for k in schema.get('required',[]):
         if k not in obj: errs.append(f'{path}: missing required "{k}"')
     props=schema.get('properties',{})
     for k,v in obj.items():
         if k not in props: continue
-        s=props[k]
-        if 'enum' in s and v not in s['enum']: errs.append(f'{path}.{k}: "{v}" not in {s["enum"]}')
-        if s.get('type')=='integer' and not isinstance(v,int): errs.append(f'{path}.{k}: expected integer')
-        if s.get('type')=='string' and not isinstance(v,str): errs.append(f'{path}.{k}: expected string')
-        if 'pattern' in s and isinstance(v,str) and not re.match(s['pattern'],v): errs.append(f'{path}.{k}: "{v}" fails pattern')
-        if s.get('type')=='object' and isinstance(v,dict): errs+=light_check(v,s,f'{path}.{k}')
-        if s.get('type')=='array' and isinstance(v,list) and 'items' in s and s['items'].get('type')=='object':
-            for i,it in enumerate(v):
-                if isinstance(it,dict): errs+=light_check(it,s['items'],f'{path}.{k}[{i}]')
+        s=props[k]; errs+=_check_value(v,s,f'{path}.{k}')
     return errs
 
-def check(path):
+def _check_value(v, s, path):
+    errs=[]
+    t=s.get('type')
+    if t and not _type_ok(v,t): errs.append(f'{path}: expected {t}'); return errs
+    if 'enum' in s and v not in s['enum']: errs.append(f'{path}: "{v}" not in {s["enum"]}')
+    if 'pattern' in s and isinstance(v,str) and not re.match(s['pattern'],v): errs.append(f'{path}: "{v}" fails pattern')
+    if 'minimum' in s and isinstance(v,(int,float)) and v < s['minimum']: errs.append(f'{path}: {v} < minimum {s["minimum"]}')
+    if t=='object' and isinstance(v,dict): errs+=light_check(v,s,path)
+    if t=='array' and isinstance(v,list) and 'items' in s:
+        for i,it in enumerate(v): errs+=_check_value(it,s['items'],f'{path}[{i}]')
+    return errs
+
+def studio_rules(s):
+    """Rules beyond the schema. Returns (errors, warnings)."""
+    errs=[]; warns=[]
+    sid=s.get('id'); typ=s.get('type'); it=s.get('interaction') or {}; n=s.get('narration') or {}
+    d=s.get('duration_s',0); ov=s.get('overlays',[]); route=it.get('route')
+    if typ=='quiz':
+        opts=it.get('options',[])
+        if sum(1 for o in opts if o.get('correct'))!=1: errs.append(f'{sid}: quiz must have exactly one correct option')
+        if any(not o.get('feedback') for o in opts): errs.append(f'{sid}: every quiz option needs feedback')
+    if typ=='dialogue':
+        if not it.get('guardrails'): errs.append(f'{sid}: dialogue scene needs guardrails')
+        if not it.get('on_llm_unavailable'): warns.append(f'{sid}: dialogue scene has no interaction.on_llm_unavailable (choice|skip|scripted) — runtime will fall back to "choice"')
+    if it.get('on_llm_unavailable') in ('choice','scripted') and not it.get('options'):
+        warns.append(f'{sid}: on_llm_unavailable "{it["on_llm_unavailable"]}" needs interaction.options (the chips / canned exchange)')
+    # wait states
+    if it.get('pause_narration') and not it.get('timeout_s'):
+        errs.append(f'{sid}: interaction.pause_narration:true requires interaction.timeout_s (honest wait budget)')
+    if it.get('timeout_s') and it.get('kind') in (None,'none'):
+        warns.append(f'{sid}: timeout_s set but interaction.kind is none')
+    # overlays: waypoint triggers + density
+    for i,o in enumerate(ov):
+        if 'at_waypoint' in o:
+            if route is None: warns.append(f'{sid}: overlays[{i}].at_waypoint={o["at_waypoint"]} but no interaction.route — will fire on at_s only')
+            elif not (isinstance(o['at_waypoint'],int) and 0 <= o['at_waypoint'] < len(route)):
+                errs.append(f'{sid}: overlays[{i}].at_waypoint={o["at_waypoint"]} out of range (route has {len(route)} waypoints, 0..{len(route)-1})')
+    timed=[o for o in ov if 'at_waypoint' not in o]
+    if d and len(timed) > max(1, d//15)+1: errs.append(f'{sid}: {len(timed)} timed overlays in {d}s exceeds ~1 per 15 s (waypoint-triggered overlays exempt)')
+    if not s.get('sources') and typ not in ('interstitial','map'): errs.append(f'{sid}: no fact-sheet sources cited')
+    # words per second: (script + after_script) over (duration_s - starts_at_s)
+    words=len(n.get('script','').split()) + len(n.get('after_script','').split())
+    start=n.get('starts_at_s',0) or 0
+    if d and isinstance(start,(int,float)):
+        secs=d-start
+        if secs<=0: errs.append(f'{sid}: narration.starts_at_s {start} leaves no time in {d}s')
+        else:
+            wps=words/secs
+            if words > secs*WPS_ERROR: errs.append(f'{sid}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, too fast (limit {WPS_ERROR})')
+            elif wps > WPS_WARN: warns.append(f'{sid}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, over the {WPS_WARN} w/s (150 wpm) target')
+    return errs, warns
+
+def check(path, use_jsonschema=True):
     data=json.load(open(path))
     schema = TOUR if 'chapters' in data else SCENE
-    try:
-        import jsonschema
-        from jsonschema import Draft202012Validator, RefResolver
-        store={SCENE['$id']:SCENE, TOUR['$id']:TOUR}
-        v=Draft202012Validator(schema, resolver=RefResolver.from_schema(schema, store=store))
-        errs=[f'{"/".join(map(str,e.path)) or "$"}: {e.message}' for e in v.iter_errors(data)]
-    except ImportError:
+    errs=[]
+    if use_jsonschema:
+        try:
+            import jsonschema
+            from jsonschema import Draft202012Validator, RefResolver
+            store={SCENE['$id']:SCENE, TOUR['$id']:TOUR}
+            v=Draft202012Validator(schema, resolver=RefResolver.from_schema(schema, store=store))
+            errs=[f'{"/".join(map(str,e.path)) or "$"}: {e.message}' for e in v.iter_errors(data)]
+        except ImportError:
+            use_jsonschema=False
+    if not use_jsonschema:
         errs=light_check(data,schema)
         if 'chapters' in data:
             for ci,ch in enumerate(data['chapters']):
                 for si,sc in enumerate(ch.get('scenes',[])): errs+=light_check(sc,SCENE,f'$.chapters[{ci}].scenes[{si}]')
-    # studio rules beyond schema
+    warns=[]
     scenes = [data] if 'chapters' not in data else [s for c in data['chapters'] for s in c['scenes']]
     for s in scenes:
-        if s.get('type')=='quiz':
-            opts=(s.get('interaction') or {}).get('options',[])
-            if sum(1 for o in opts if o.get('correct'))!=1: errs.append(f'{s.get("id")}: quiz must have exactly one correct option')
-            if any(not o.get('feedback') for o in opts): errs.append(f'{s.get("id")}: every quiz option needs feedback')
-        if s.get('type')=='dialogue' and not (s.get('interaction') or {}).get('guardrails'): errs.append(f'{s.get("id")}: dialogue scene needs guardrails')
-        ov=s.get('overlays',[]); d=s.get('duration_s',0)
-        if d and len(ov) > max(1, d//15)+1: errs.append(f'{s.get("id")}: {len(ov)} overlays in {d}s exceeds ~1 per 15 s')
-        if not s.get('sources') and s.get('type') not in ('interstitial','map'): errs.append(f'{s.get("id")}: no fact-sheet sources cited')
-        words=len((s.get('narration') or {}).get('script','').split()); 
-        if d and words > d*3.2: errs.append(f'{s.get("id")}: script {words} words too long for {d}s (~150 wpm)')
-    return errs
+        e,w=studio_rules(s); errs+=e; warns+=w
+    return errs, warns
 
 if __name__=='__main__':
+    args=[a for a in sys.argv[1:] if not a.startswith('--')]
+    strict='--strict' in sys.argv; use_js='--no-jsonschema' not in sys.argv
     bad=0
-    for p in sys.argv[1:]:
-        e=check(p)
+    for p in args:
+        e,w=check(p, use_js)
+        if strict: e=e+w; w=[]
         print(('OK   ' if not e else 'FAIL ')+p)
         for x in e: print('     -',x); bad+=1
+        for x in w: print('     ! WARN',x)
     sys.exit(1 if bad else 0)

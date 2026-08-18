@@ -6,7 +6,7 @@
   "duration_s": 70,
   "learning_goal": "Know the Reform Club is real, founded 1836, Barry's palazzo of 1841, Soyer's kitchens, and Fogg's breakfast; feel cosy club warmth.",
   "narration": {
-    "script": "We arrive at the door. The Reform Club is real, and still here: 104 Pall Mall, founded in 1836 by the men who had backed the Reform Act of 1832 — neutral today, and that is our one line of politics. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high, ringed by columns under a glass roof, and the famous kitchens that Alexis Soyer helped to plan. Here is the front today; here is Barry's elevation; and here, kept small, is the saloon as engraved in 1841 — we have no footage of the inside, so the engraving carries it. Now Fogg's breakfast, taken here at the club: a broiled fish with Reading sauce, a scarlet slice of roast beef with mushrooms, a rhubarb-and-gooseberry tart, a morsel of Cheshire cheese, and several cups of the tea for which the Reform is famous. Reading sauce was a real thing, from Berkshire — keep this in mind for later. Then he cuts open the Times with a paper-knife and reads.",
+    "script": "We arrive at the door. The Reform Club is real, and still here: 104 Pall Mall, founded in 1836 by the men who had backed the Reform Act of 1832 — neutral today, and that is our one line of politics. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high, ringed by columns under a glass roof, and the famous kitchens that Alexis Soyer helped to plan. Look up — the tall windows of the first floor. Now Fogg's breakfast, taken here at the club: a broiled fish with Reading sauce — keep that in mind — roast beef, a tart, Cheshire cheese, and the tea the Reform is famous for. Reading sauce was a real thing, from Berkshire. Then he cuts the pages himself and reads The Times. Here is the front today; here is Barry's elevation; and here, kept small, is the saloon as engraved in 1841. We have no footage of the inside, so the engraving carries the saloon.",
     "timing": "over",
     "voice": "guide"
   },
@@ -14,12 +14,12 @@
     {
       "kind": "youtube",
       "ref": "WQCsxb2dMgQ",
-      "start_s": 1579,
-      "end_s": 1624,
+      "start_s": 1610,
+      "end_s": 1655,
       "license": "youtube-embed",
       "manifest_id": "M-01",
       "attribution": "Wanderizm, 'LONDON Walk - Day stroll along Trafalgar Square, Royal horse guards and St. James's' (2020) — YouTube embed",
-      "note": "26:19–27:04, arriving at the Reform Club door. Scene seconds 0–45. Backup M-02 kfuLPlhJGYE 06:37–07:22 (mute music). Dropped in the linear cut."
+      "note": "26:50–27:35, arriving at the Reform Club door (scene seconds 0–45) — the last 45 s of the same Wanderizm stretch 05 uses, so the façade is in frame at the end; frame unverified (A3). Backup M-02 kfuLPlhJGYE 07:08–07:53 (mute music). Dropped in the linear cut."
     },
     {
       "kind": "image",
@@ -28,8 +28,8 @@
       "manifest_id": "M-20",
       "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
       "start_s": 45,
-      "end_s": 53,
-      "note": "Façade today. Alt M-21 (square crop) for pin thumbnail."
+      "end_s": 70,
+      "note": "Façade today, full frame 45–70 s; M-22 and M-23 appear as insets over it (they are too small for full-screen). Alt M-21 (square crop) for pin thumbnail."
     },
     {
       "kind": "image",
@@ -39,7 +39,7 @@
       "attribution": "Reform Club, north elevation, from 'Life and Works of Sir Charles Barry' (Wikimedia Commons, PD)",
       "start_s": 53,
       "end_s": 61,
-      "note": "Barry's elevation, 709 px — phone size only."
+      "note": "Barry's elevation, 709 px — INSET over M-20 (lower-left, ~40 % width), never full-screen."
     },
     {
       "kind": "image",
@@ -49,7 +49,7 @@
       "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
       "start_s": 61,
       "end_s": 70,
-      "note": "632 px — inset with vignette, never full-screen."
+      "note": "632 px — INSET over M-20 with vignette (replaces the M-22 inset), never full-screen."
     },
     {
       "kind": "audio",
@@ -64,12 +64,19 @@
   ],
   "overlays": [
     {
-      "at_s": 18,
+      "at_s": 12,
       "kind": "pin",
-      "until_s": 30,
+      "until_s": 24,
       "text": "Reform Club — 104 Pall Mall, founded 1836",
       "position": "bl",
       "geo": "51.5065,-0.1335"
+    },
+    {
+      "at_s": 30,
+      "kind": "caption",
+      "until_s": 42,
+      "text": "Broiled fish, Reading sauce · roast beef · rhubarb-and-gooseberry tart · Cheshire · tea",
+      "position": "bottom"
     },
     {
       "at_s": 45,
@@ -103,11 +110,11 @@
     "F-18",
     "F-27"
   ],
-  "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Linear cut: start at 45 s (photo trio only, 25 s), since M-01 26:19–27:04 is used by 05 pall-mall-pass.",
+  "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Order (QA): arrival + history over the video 0–25 s; the 'look up' cue and the breakfast over the video's last 20 s (25–45 s, we are 'at the door') with the menu on the caption at 30–42 s so the guide reads only the best clause; the photo trio lines over M-20 + insets 45–70 s. The 'look up' cue does NOT name the coffee-room: its nine windows are in the long SOUTH (garden) wall (F-15), not on the Pall Mall front — Narrator, keep it that way, and keep 'nine' out of this scene (Quiz A follows). No paper-knife: Towle says he cuts the uncut Times 'with a skill which betrayed familiarity' (F-06). Narrator: ≤ 140 words, every sentence ≤ 20 words (Continuity #2); ends on the noun. Linear cut: start at 45 s (photo trio only, 25 s), since M-01 is used by 05 pall-mall-pass.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s."
   }
 }

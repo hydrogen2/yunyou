@@ -75,7 +75,17 @@
             "over",
             "after"
           ],
-          "default": "over"
+          "default": "over",
+          "description": "When speech plays relative to the interaction: before / over (default) / after. For scenes that pause on an interaction, put the sentences that must come AFTER the answer in after_script instead."
+        },
+        "after_script": {
+          "type": "string",
+          "description": "Spoken after the interaction resolves (answer chosen, walk finished, chat handed back, timeout hit). Plain text like script. Counted in the words-per-second rule."
+        },
+        "starts_at_s": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Seconds into the scene when speech begins (default 0). The validator measures words-per-second over duration_s - starts_at_s."
         },
         "tts": {
           "type": "object",
@@ -133,13 +143,21 @@
           "manifest_id": {
             "type": "string",
             "description": "Cross-ref into media/manifest.md"
+          },
+          "fallback": {
+            "type": "string",
+            "description": "Manifest id (M-xx) or ref shown if this media cannot load (no Maps JS key, deleted video, offline). For streetview stops: the still to show instead of the pano."
+          },
+          "note": {
+            "type": "string",
+            "description": "Free note for the Scene Developer / renderer (framing, crop, why this clip). Not shown to the traveller."
           }
         }
       }
     },
     "overlays": {
       "type": "array",
-      "description": "Timed layers on top of media, synced to scene time (seconds from scene start)",
+      "description": "Timed layers on top of media, synced to scene time (seconds from scene start) or, in walks, to waypoints (at_waypoint).",
       "items": {
         "type": "object",
         "required": [
@@ -148,7 +166,13 @@
         ],
         "properties": {
           "at_s": {
-            "type": "number"
+            "type": "number",
+            "description": "Seconds from scene start. Always required: it is the linear/no-JS fallback even when at_waypoint is set."
+          },
+          "at_waypoint": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Index into interaction.route: show this overlay when the walk reaches that waypoint (interactive runtime). at_s remains the linear fallback. Overlays with at_waypoint are exempt from the ~1-per-15-s density rule."
           },
           "until_s": {
             "type": "number"
@@ -208,8 +232,10 @@
             "chat",
             "look",
             "mix",
-            "scrub"
-          ]
+            "scrub",
+            "save"
+          ],
+          "description": "save = card scenes: traveller keeps the card (souvenir/recipe) \u2014 runtime offers download/share; no answer required."
         },
         "prompt": {
           "type": "string"
@@ -237,6 +263,16 @@
         "answer": {
           "type": "string"
         },
+        "pause_narration": {
+          "type": "boolean",
+          "default": false,
+          "description": "Runtime holds narration and the scene clock at the interaction until it resolves or timeout_s elapses. Requires timeout_s. Sentences after the answer go in narration.after_script."
+        },
+        "timeout_s": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Honest budget for the wait state: seconds the runtime waits for the traveller before auto-resolving (skip / reveal / hand back). Per tap for tap-to-find. Also the number the length budget uses."
+        },
         "persona": {
           "type": "string",
           "description": "dialogue scenes: persona id"
@@ -248,12 +284,26 @@
           },
           "description": "dialogue: what the persona must not claim"
         },
+        "on_llm_unavailable": {
+          "type": "string",
+          "enum": [
+            "choice",
+            "skip",
+            "scripted"
+          ],
+          "description": "dialogue: what the runtime does without an LLM/API key. choice = show options[] as chips with their feedback as scripted answers; skip = play narration and move on; scripted = play a canned exchange from options[] in order."
+        },
+        "max_exchanges": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "dialogue: free exchanges allowed before the persona hands back (after_script). Budget = max_exchanges within timeout_s."
+        },
         "route": {
           "type": "array",
           "items": {
             "type": "string"
           },
-          "description": "streetview walk: waypoints lat,lng"
+          "description": "streetview walk: waypoints 'lat,lng' or 'lat,lng,heading[,pitch[,fov]]'. overlays[].at_waypoint indexes into this list."
         }
       }
     },

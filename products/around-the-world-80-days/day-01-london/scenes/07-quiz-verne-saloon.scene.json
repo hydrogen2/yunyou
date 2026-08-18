@@ -6,9 +6,10 @@
   "duration_s": 80,
   "learning_goal": "Know that Verne's Reform is half fantasy (porphyry columns, blue glass) and half exact (nine garden windows); know you can visit during Open House.",
   "narration": {
-    "script": "Verne describes the club in loving detail: mosaic floors, a gallery under a dome held up by twenty red porphyry columns, blue painted windows, a dining room with nine windows onto a garden already gilded with autumn. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous. Half fantasy, half exact — treat the novel that way for the next seventy-nine days. And one practical note: you can stand in that saloon yourself, one weekend a year, when the club opens for guided tours during Open House London; the caption has this year's dates. The tour, they say, includes one very long staircase.",
+    "script": "Verne describes the club in loving detail: mosaic floors, a gallery under a dome held up by twenty red porphyry columns, blue painted windows, a dining-room with nine windows onto a garden already gilded with autumn. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "after_script": "Half fantasy, half exact — treat the novel that way for the next seventy-nine days. And one practical note: you can stand in that saloon yourself, one weekend a year, when the club opens for guided tours during Open House London; the caption has this year's dates. The tour, they say, includes one very long staircase."
   },
   "media": [
     {
@@ -46,16 +47,18 @@
     {
       "at_s": 0,
       "kind": "prompt",
-      "until_s": 20,
+      "until_s": 80,
       "text": "Which of Verne's club details is real?",
-      "position": "top"
+      "position": "top",
+      "note": "Persists until answered, then clears."
     },
     {
       "at_s": 64,
       "kind": "caption",
       "until_s": 80,
       "text": "Open House London: 12–13 September 2026, bookings from 19 August",
-      "position": "bottom"
+      "position": "bottom",
+      "note": "TIME-BOUND (F-17): dates change yearly; text should come from a config value, not be baked in."
     }
   ],
   "interaction": {
@@ -65,7 +68,7 @@
       {
         "text": "Twenty red porphyry Ionic columns holding up a dome",
         "correct": false,
-        "feedback": "Verne's invention. Barry's saloon has a two-storey peristyle — Ionic below, Corinthian above — in yellow marble and scagliola."
+        "feedback": "Verne's invention. Barry's saloon has a two-storey peristyle — Ionic below, Corinthian above — in scagliola made to look like dark Siena marble."
       },
       {
         "text": "A gallery lit through blue painted windows",
@@ -77,7 +80,9 @@
         "correct": true,
         "feedback": "Exact. Nine tall casement windows in the coffee-room's south wall, and the garden is still there."
       }
-    ]
+    ],
+    "pause_narration": true,
+    "timeout_s": 30
   },
   "transition": {
     "in": "dissolve",
@@ -90,11 +95,11 @@
     "F-15",
     "F-17"
   ],
-  "production_notes": "Question ≈ 20 s, answer window ≈ 30 s, tail 20 s. The Open House date lives on the caption only so it can be updated yearly (F-17 is time-sensitive). Linear cut: the guide asks and answers in one breath (correct option + its feedback), 60 s incl. tail; keep the prompt overlay.",
+  "production_notes": "Question ≈ 20 s (narration.script), then the guide PAUSES (pause_narration) until the traveller answers or 30 s elapse (timeout_s); the option feedback shows; then narration.after_script (≈ 25 s) plays. The Open House date lives on the caption only so it can be updated yearly (F-17 is time-sensitive; D9). Linear cut: the guide asks and answers in one breath (script + correct option + its feedback + after_script), ~65 s; keep the prompt overlay.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: wait state added (pause_narration, timeout_s 30); the answer/tail sentences moved to narration.after_script; prompt persists until answered; option-1 feedback 'dark Siena marble' scagliola (F-15); 'dining-room' hyphenated; Open House caption marked time-bound (D9)."
   }
 }

@@ -6,7 +6,7 @@
   "duration_s": 90,
   "learning_goal": "Know what went into the carpet-bag and what stayed at Savile Row; feel the scramble.",
   "narration": {
-    "script": "Twenty-five past seven. Fogg goes home from the club, calls Passepartout and says: 'We start for Dover and Calais in ten minutes.' Where to? 'We are going round the world.' 'In eighty days.' Passepartout, remember, wanted a quiet life. Now help him pack. One carpet-bag, and it must hold everything. Drag in what goes; leave what stays. Verne is exact about the list, so we are too. Two shirts and three pairs of stockings each, a mackintosh, a travelling-cloak, the red-bound Bradshaw's Continental Guide — the world's timetable, more than a thousand pages of trains and hotels — and a goodly roll of Bank of England notes: twenty thousand pounds. No books, because there are none in the house. The electric clock stays on the mantel. And so, tonight, does the gas — remember that. Two shirts, three pairs of stockings, and half a fortune.",
+    "script": "Twenty-five past seven. Fogg goes home from the club, calls Passepartout and says: 'We start for Dover and Calais in ten minutes.' Where to? 'We are going round the world.' 'In eighty days.' Passepartout, remember, wanted a quiet life. Now help him pack. One carpet-bag, and it must hold everything. Drag in what goes; leave what stays. Verne gives the list; ours keeps the six things that matter. Two shirts and three pairs of stockings each, a mackintosh, a travelling-cloak, the red-bound Bradshaw's Continental Guide — the world's timetable, hundreds of pages of trains and hotels — and a goodly roll of Bank of England notes: twenty thousand pounds. No books, because there are none in the house. The electric clock stays on the mantel. And so, tonight, does the gas — remember that. Two shirts, three pairs of stockings, and half a fortune.",
     "timing": "over",
     "voice": "guide"
   },
@@ -19,7 +19,7 @@
       "license": "generated",
       "manifest_id": "G-07",
       "attribution": "Yunyou studio, generated",
-      "note": "REQUESTED (Content Preparer): game UI — an open carpet-bag and nine draggable items (six go in, three stay). Auto-complete at 90 s."
+      "note": "REQUESTED (Content Preparer): game UI — an open carpet-bag and nine draggable items (six go in, three stay); a bag counter ('4 of 6') and a 'Close the bag' button end the game; a wrong item snaps back with its feedback line. Auto-complete at 90 s."
     },
     {
       "kind": "audio",
@@ -65,7 +65,7 @@
       {
         "text": "A mackintosh",
         "correct": true,
-        "feedback": "In. It is raining tonight, and Verne packs it."
+        "feedback": "In. Verne packs it — you will see why at Charing Cross."
       },
       {
         "text": "A travelling-cloak",
@@ -75,7 +75,7 @@
       {
         "text": "The red-bound Bradshaw's Continental Guide",
         "correct": true,
-        "feedback": "In. Bradshaw's Continental Railway Guide, begun 1847 — over a thousand pages of timetables, hotels and advice. The most-used thing in the bag."
+        "feedback": "In. Bradshaw's Continental Railway Guide, begun 1847 — hundreds of pages of timetables, hotels and advice. The most-used thing in the bag."
       },
       {
         "text": "A roll of Bank of England notes — £20,000",
@@ -93,9 +93,9 @@
         "feedback": "It stays on the mantel — and so, tonight, does the gas."
       },
       {
-        "text": "This morning's Times",
+        "text": "This morning's copy of The Times",
         "correct": false,
-        "feedback": "Fogg reads the papers at the club, cut open with a paper-knife."
+        "feedback": "Fogg reads the papers at the club, cutting the pages himself."
       }
     ]
   },
@@ -113,11 +113,11 @@
     "F-13",
     "F-37"
   ],
-  "production_notes": "No invented Fogg lines — only what the sheet quotes (F-12). The gas clause depends on Ending B (accepted). Linear cut: packing list as a 20-s card, no drag; script trimmed to the list and the completion line.",
+  "production_notes": "No invented Fogg lines — only what the sheet quotes (F-12). The gas clause depends on Ending B (accepted). No Quiz-B spoiler before the platform: the mackintosh feedback no longer names the weather (R5). 'Stout shoes' and 'we'll buy our clothes on the way' are in Towle ch. IV (fact-check) but not yet on the fact sheet — once an F-id exists, add 'Stout shoes' as a seventh in-item; until then the boast 'so we are too' is dropped. Text says 'Bradshaw's Continental Railway Guide', spoken 'the red-bound Bradshaw' (Continuity #16). Linear cut: packing list as a 20-s card, no drag; script trimmed to the list and the completion line.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: mackintosh feedback de-spoiled ('you will see why at Charing Cross'); Bradshaw 'hundreds of pages' (F-37 med); paper-knife out of the Times feedback (F-06); 'so we are too' boast dropped (stout shoes not on the sheet); G-07 note asks for bag counter + close button."
   }
 }

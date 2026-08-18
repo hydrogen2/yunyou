@@ -1,0 +1,104 @@
+{
+  "id": "quiz-the-weather",
+  "type": "quiz",
+  "title": "Quiz — look up at the roof: what is the weather doing?",
+  "subtopic": "9 — The platform (Quiz B, before the dialogue)",
+  "duration_s": 45,
+  "learning_goal": "Know that the departure night is dark and rainy, not foggy; know the pea-souper was a winter, coal-smoke thing.",
+  "narration": {
+    "script": "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?",
+    "timing": "over",
+    "voice": "guide",
+    "after_script": "Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter."
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Charing_Cross_Station_en_Hotel_met_ervoor_de_replica_van_het_Eleanor_cross_in_Londen_Charing_%2B_Hotel_(titel_op_object),_RP-F-F01134-AG.jpg",
+      "license": "cc0",
+      "manifest_id": "M-25",
+      "attribution": "Charing Cross Station and Hotel with the Eleanor Cross, albumen photo, Rijksmuseum RP-F-F01134-AG, ca. 1880–1910 (CC0)",
+      "start_s": 0,
+      "end_s": 45,
+      "note": "Backdrop behind the quiz card, darkened."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Steam_engine.ogg",
+      "start_s": 0,
+      "end_s": 45,
+      "license": "public-domain",
+      "manifest_id": "M-44",
+      "attribution": "Steam engine — aradlaw, pdsounds #632 (Wikimedia Commons, PD)",
+      "note": "Low steam bed, continues into 17 and 18."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://freesound.org/people/delfieldrecordings/sounds/842069/",
+      "start_s": 0,
+      "end_s": 45,
+      "license": "cc0",
+      "manifest_id": "M-58",
+      "attribution": "'Hackney Downs Overground in the rain.' — delfieldrecordings, freesound 842069, CC0 (credit on the sources page)",
+      "note": "Rain on a London station roof: barely there (−24 dB) from 0 s — the traveller may hear the answer, not read it — up to −18 dB at the reveal; loops with a 2-s crossfade; continues under 17. If the founder wants the quiz recall-only, start it at the reveal."
+    }
+  ],
+  "overlays": [
+    {
+      "at_s": 0,
+      "kind": "prompt",
+      "until_s": 45,
+      "text": "Look up at the roof — what is the weather doing tonight?",
+      "position": "top",
+      "note": "Persists until answered."
+    },
+    {
+      "at_s": 30,
+      "kind": "caption",
+      "until_s": 45,
+      "text": "Charing Cross, about 1880–1910 — Rijksmuseum",
+      "position": "bottom"
+    }
+  ],
+  "interaction": {
+    "kind": "choice",
+    "prompt": "Twenty to nine, on the platform. Look up at the roof — what is the weather doing tonight?",
+    "options": [
+      {
+        "text": "A thick yellow pea-souper",
+        "correct": false,
+        "feedback": "The cliché — but London's great fogs were winter, coal-smoke things; the notorious one came in December 1873, the year after Fogg left."
+      },
+      {
+        "text": "A dark night and a fine, steady rain",
+        "correct": true,
+        "feedback": "Verne's own words. Rain on the station roof, then rain on the carriage window."
+      },
+      {
+        "text": "An early snow",
+        "correct": false,
+        "feedback": "Not in October. Verne gives rain — and no fog either; save the pea-souper for a winter chapter."
+      }
+    ],
+    "pause_narration": true,
+    "timeout_s": 20
+  },
+  "transition": {
+    "in": "cut from the forecourt",
+    "out": "cut to Passepartout",
+    "music_cue": "M-44 + M-58 rain bed continue into 17"
+  },
+  "next": "passepartout-on-the-platform",
+  "sources": [
+    "F-12",
+    "F-13",
+    "F-30"
+  ],
+  "production_notes": "QUIZ B NOW PRECEDES THE DIALOGUE (D4): 15 → 16 quiz → 17 Passepartout → 18. The guide names no weather before the reveal (R5): question ≈ 8 s (script), pause until the choice or 20 s (pause_narration/timeout_s), option feedback, then narration.after_script states Verne's sentence. Upstream spoilers removed: 11 mackintosh feedback, 12 'wet stone'; nothing in 13–15 names the weather. Passepartout may say 'raining' freely in 17. Linear cut: the guide asks and states the answer (script + after_script), 15 s, no choice.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved before the dialogue (file 17→16, D4); script → 'Twenty to nine, still under the roof. Look up — what is the weather doing tonight?' with the reveal in narration.after_script; wait state (pause_narration, timeout_s 20); prompt persists; M-58 rain bed added low; next → passepartout-on-the-platform."
+  }
+}

@@ -17,7 +17,8 @@
       "license": "google-maps-embed",
       "manifest_id": "M-38",
       "attribution": "Google Street View (Maps Embed API)",
-      "note": "From the Strand looking into the forecourt: Eleanor Cross centre, hotel façade behind. Alt inside the forecourt 51.5081,-0.1246 heading 200 (taxi rank — confirm pano)."
+      "note": "From the Strand looking into the forecourt: Eleanor Cross centre, hotel façade behind. Alt inside the forecourt 51.5081,-0.1246 heading 200 (taxi rank — confirm pano). Fallback if no pano: M-26 (the cross, portrait still).",
+      "fallback": "M-26"
     }
   ],
   "overlays": [
@@ -26,8 +27,7 @@
       "kind": "pin",
       "until_s": 20,
       "text": "Charles I — 1675, London's distances start here",
-      "position": "tr",
-      "geo": "51.5075,-0.1277"
+      "position": "tr"
     }
   ],
   "interaction": {
@@ -42,16 +42,16 @@
     "out": "cut to the platform (dialogue)",
     "music_cue": "none"
   },
-  "next": "passepartout-on-the-platform",
+  "next": "quiz-the-weather",
   "sources": [
     "F-21",
     "F-39"
   ],
-  "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop with free look (interaction kind 'walk', one waypoint). 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano (F-39 pins) — 'to your right' when facing south.",
+  "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop with free look (interaction kind 'walk', one waypoint); media[0].fallback = M-26 if the forecourt pano is missing. 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano and behind buildings — the pin is a plain corner pin (no geo, it would float over a wall); 'to your right' when facing south. Next: Quiz B (16), then the dialogue (17) — D4.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4)."
   }
 }

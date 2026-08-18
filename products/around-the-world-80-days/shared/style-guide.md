@@ -11,3 +11,12 @@
 **Souvenir:** every chapter ends with one keepsake (phrase, recipe, place, book) the traveller can act on.
 **Units/spelling:** metric first (imperial in brackets when the place uses it), British spelling for UK chapters.
 **Accessibility:** captions on all narration; colour never the only signal.
+
+## Rules R1–R5 (from Day 1 London continuity review)
+*Adopted provisionally 2026-08-18 (DIGEST D10) — founder may reverse. Source: `day-01-london/review/continuity.md` §3, with fact-check corrections applied.*
+
+**R1. Clock and calendar.** Spoken times in words as Fogg would hear them ("a quarter to nine"); on overlays and cards, numerals as **"8:45 pm"** (space, lower-case, no points) and dates as **"Wednesday 2 October 1872"**; pins may shorten months to three letters ("30 Jan 1969"); Verne's "a quarter before nine p.m." / "2nd October" only inside quotation marks.
+**R2. Overlay grammar.** Pins default to `bl` (move to `tl`/`tr` only to keep off the subject), captions `bottom`, prompts `top`, the step/score sticker `br`, `center` for at most one beat per chapter; split-frame labels (left/right pair at 0 s) are exempt from the 15-s spacing rule; house numbers "No. 14" when the door is the subject, "104 Pall Mall" when the street name follows.
+**R3. Word budget per spoken window.** ≤ 2.5 words/s and ~80 % fill measured over the seconds the guide actually speaks (state the window when narration starts late — title beats, whistle stings); anything the caption already shows (numbers, lists, menus) is not also read aloud.
+**R4. Personas own their lines.** Hand-off lines, deflections and canned answers live in `shared/personas/*.md`; scenes copy them verbatim or cite the section — never a second variant. Contractions ("it's", "we've", "that's") are allowed in the guide's speech; the narrator normalises at record.
+**R5. No quiz gives itself away.** A correct option's wording must not appear in narration, feedback or captions in the preceding two minutes; the guide may state the fact only in the reveal.

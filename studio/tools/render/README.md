@@ -68,6 +68,27 @@ No system ffmpeg / pip / PIL needed.
 No YouTube download/re-encode; no overlays over a YouTube player (there is none — cards only); no Street View recording or
 caching; Commons/CC attribution in-frame while shown and on the credits card; PD/CC0 credited anyway (studio policy).
 
+## Runtime TODO — schema keys added in fix pass A1 (2026-08-18, Engine/Tools)
+
+`studio/schema/scene.schema.json` gained optional keys this run (validator `studio/tools/validate.py` enforces the rules).
+Neither the interactive player (`studio/player/index.html`) nor this renderer honours them yet. Owner: Engine/Tools, next run.
+Do not touch scene JSON to work around these; the scenes are authored against the keys as specified here.
+
+| key | interactive player must | linear renderer (this tool) must | status |
+|---|---|---|---|
+| `interaction.pause_narration` (bool) | stop the scene clock and TTS at the interaction; hold overlays; resume on resolve or `timeout_s` | ignore (no interaction in a linear cut) — but never play `after_script` before the interaction beat has been shown | TODO |
+| `interaction.timeout_s` (int ≥ 1) | wait budget: auto-resolve (quiz → reveal correct + feedback; tap-to-find → per-tap countdown; walk → advance to next stop; chat → hand back) and show a discreet countdown; use it in the chapter length estimate (`duration_s` + timeouts) | budget the beat: quiz/chat screens hold for min(`timeout_s`, seconds cap from README table) before the reveal | TODO |
+| `interaction.on_llm_unavailable` (`choice`/`skip`/`scripted`) | dialogue with no API key/model: `choice` = render `options[]` as chips, chip → its `feedback` spoken by `--voice2`; `skip` = narration only then `next`; `scripted` = play `options[]` in order as canned Q/A. Default when absent: `choice` | always the no-LLM path: `choice` → chips screen with `sidecar chat:N` tokens; `skip` → guide narration only; `scripted` → all Q/A in order | TODO |
+| `interaction.max_exchanges` (int ≥ 1) | free-chat turn cap; after N answers the persona says `narration.after_script` (hand-back) and the scene ends | number of `chat:N` tokens rendered ≤ `max_exchanges` | TODO |
+| `interaction.kind: "save"` | card scenes: show a "Keep this card" button → download the generated asset (PNG) / add to the traveller's souvenirs; no answer required; `next` enabled immediately | show the card as `player` screenshot; caption "Saved to your souvenirs" not needed | TODO |
+| `narration.after_script` (string) | speak after the interaction resolves (answer chosen, walk finished, chat handed back, timeout) — never before; captions likewise | speak after the interaction beat (quiz reveal / chips / stop card) as the last utterance of the scene; sentence index continues from `script`; sidecar token `after:0-2` selects sentences of it | TODO |
+| `narration.starts_at_s` (number ≥ 0) | delay TTS start by this many seconds (title, music-only opening); scene clock still starts at 0 | equals sidecar `narration_at_s` when the sidecar does not override it | TODO |
+| `overlays[].at_waypoint` (int, index into `interaction.route`) | walk scenes: fire the overlay when the walk reaches that waypoint (Maps JavaScript API pano `position_changed`/nearest stop) instead of `at_s`; if no Maps JS key → fall back to `at_s` | use `at_s` (linear fallback) — but if the scene's stop cards are rendered per waypoint, attach the overlay to its stop card | TODO |
+| `media[].fallback` (string: M-xx or ref) | show this instead when the media cannot load: no Maps key/JS, deleted or region-blocked YouTube id, offline; for streetview stops the still image of that stop | prefer `fallback` (a Commons still) over the clip/stop placeholder card when it resolves to an image | TODO |
+
+Also pending from the same brief: the step counter in walk scenes needs the Maps JavaScript API (Street View Service, not the
+Embed API) — decision D12 open with the founder; until then the walk plays as stop stills (`fallback`) with `at_s` overlays.
+
 ## Known limits
 
 - Clip/stop cards are placeholders: the film has no real footage until Rights clears direct licences.

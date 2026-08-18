@@ -3,33 +3,34 @@
   "type": "interstitial",
   "title": "Day 1 · London · Wednesday 2 October 1872",
   "subtopic": "1 — Cold open: eighty days",
-  "duration_s": 60,
+  "duration_s": 75,
   "learning_goal": "Know the date, the deadline and the stake in one breath; feel a clock already running.",
   "narration": {
     "script": "It is Wednesday, the second of October, 1872. Twenty-nine minutes past eleven in the morning. On a quiet street in Mayfair a French valet is being hired by a man who runs his life by the clock, and the valet's watch is four minutes slow. Keep that watch in mind. By a quarter to nine tonight, that same man will have staked half his fortune that the whole world fits into eighty days. Eighty days. Nineteen hundred and twenty hours. A hundred and fifteen thousand two hundred minutes. Look at the map: only London is lit. Over the next eighty days we will light the rest, one port at a time. Jules Verne printed this journey in a Paris newspaper that same winter, as if it were happening. The novel is our guidebook; we travel today. First, Savile Row.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "starts_at_s": 10
   },
   "media": [
     {
       "kind": "audio",
       "ref": "https://commons.wikimedia.org/wiki/File:Big_Ben_recorded_in_1890.ogg",
       "start_s": 0,
-      "end_s": 12,
+      "end_s": 8,
       "license": "public-domain",
       "manifest_id": "M-40",
       "attribution": "Big Ben, Edison phonograph recording, 16 July 1890 (Wikimedia Commons, PD)",
-      "note": "Under the title card only; hissy, never under narration."
+      "note": "Under the 8-s title card only; hissy, never under narration."
     },
     {
       "kind": "generated",
       "ref": "generated/g-01/route-map_day-01-state.svg",
-      "start_s": 12,
-      "end_s": 60,
+      "start_s": 8,
+      "end_s": 75,
       "license": "generated",
       "manifest_id": "G-01",
       "attribution": "Yunyou studio, generated",
-      "note": "Day-1 state of the route map: London lit, rest of the line at 30 % opacity. Backup if G-01 is late: M-30 (1872 Plan of London)."
+      "note": "Day-1 state of the route map: London lit, rest of the line at 30 % opacity AND labelled 'Day 1' so the unlit state is not opacity-only (accessibility). Backup if G-01 is late: M-30 (1872 Plan of London)."
     },
     {
       "kind": "image",
@@ -37,15 +38,15 @@
       "license": "public-domain",
       "manifest_id": "M-34",
       "attribution": "Phileas Fogg, frontispiece by Alphonse de Neuville, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
-      "start_s": 30,
-      "end_s": 40,
-      "note": "Small inset, lower-right, over the map. Dropped in the linear cut."
+      "start_s": 50,
+      "end_s": 62,
+      "note": "Small inset, lower-right, over the map (after the hours caption has cleared). Dropped in the linear cut."
     },
     {
       "kind": "audio",
       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
-      "start_s": 12,
-      "end_s": 60,
+      "start_s": 8,
+      "end_s": 75,
       "license": "public-domain",
       "manifest_id": "M-41",
       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
@@ -56,22 +57,23 @@
     {
       "at_s": 0,
       "kind": "lower-third",
-      "until_s": 12,
+      "until_s": 8,
       "text": "Day 1 · London · Wednesday 2 October 1872",
       "position": "bottom"
     },
     {
-      "at_s": 20,
+      "at_s": 36,
       "kind": "caption",
-      "until_s": 30,
+      "until_s": 46,
       "text": "Eighty days. 1,920 hours. 115,200 minutes.",
       "position": "bottom"
     },
     {
-      "at_s": 42,
+      "at_s": 52,
       "kind": "pin",
-      "until_s": 55,
+      "until_s": 65,
       "text": "London — only stop lit tonight",
+      "position": "bl",
       "geo": "51.5075,-0.1277"
     }
   ],
@@ -81,7 +83,7 @@
   "transition": {
     "in": "cut from black",
     "out": "3-s fade to Savile Row",
-    "music_cue": "M-41 in at 12 s, tail out under the fade"
+    "music_cue": "M-41 in at 8 s under the map, tail out under the fade"
   },
   "next": "savile-row",
   "sources": [
@@ -90,11 +92,11 @@
     "F-32",
     "F-39"
   ],
-  "production_notes": "Narration starts at 12 s, after the Big Ben title beat (M-40 must never sit under speech). Linear cut: 45 s — same script, drop the M-34 inset and trim the pause on the map.",
+  "production_notes": "Title beat 0–8 s (M-40 Big Ben under the lower-third only — never under speech); narration starts at 10 s (narration.starts_at_s), so the spoken window is 65 s: Narrator to cut the script to ≤ 100 words (Continuity #1: drop the hours/minutes sentence — the caption at 36–46 s carries it — and move the 'Paris newspaper' sentence to 08/09; 'Keep that watch in mind' → cut or 'Remember the watch'). Linear cut: 60 s — same shape (title 8 s, narration from 10 s), drop the M-34 inset.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1)."
   }
 }

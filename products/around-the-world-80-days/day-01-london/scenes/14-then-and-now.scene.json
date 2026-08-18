@@ -19,7 +19,7 @@
       "license": "generated",
       "manifest_id": "G-02",
       "attribution": "Yunyou studio, generated",
-      "note": "REQUESTED template 'then vs now', vertical seam, filled with M-24 (left) and M-26 (right); source line in 8 pt on the caption bar."
+      "note": "REQUESTED template 'then vs now', vertical seam, filled with M-24 (left) and M-26 (right); source line in 8 pt on the caption bar; seam handle ≥ 44 px (accessibility)."
     },
     {
       "kind": "image",
@@ -77,6 +77,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: no content change; G-02 note asks for a ≥ 44 px seam handle. F-22 covers the St Pancras line."
   }
 }

@@ -19,7 +19,7 @@
       "license": "generated",
       "manifest_id": "G-08",
       "attribution": "Yunyou studio, generated",
-      "note": "REQUESTED (Content Preparer): typeset recipe card, saveable/shareable as an image (1080×1920 and 1920×1080); optional small M-23 vignette. Last line on the card: 'Cook it on the evening of 21 December, and be at table by a quarter to nine.'"
+      "note": "REQUESTED (Content Preparer): typeset recipe card, saveable/shareable as an image (1080×1920 and 1920×1080); optional small M-23 vignette; ingredients (walnut and mushroom ketchup, soy, anchovies, chillies, garlic, spices) on the card, not read aloud. Last line on the card: 'Cook it on the evening of 21 December, and be at table by 8:45 pm.'"
     },
     {
       "kind": "image",
@@ -33,13 +33,13 @@
     },
     {
       "kind": "audio",
-      "ref": "https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture.ogg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
       "start_s": 0,
       "end_s": 60,
-      "license": "cc0",
-      "manifest_id": "M-42",
-      "attribution": "Offenbach, Orphée aux enfers overture, Musopen (Wikimedia Commons, CC0)",
-      "note": "Tail. Backup M-48 Pinafore (must be captioned '1878, recorded 1907')."
+      "license": "public-domain",
+      "manifest_id": "M-41",
+      "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+      "note": "Tail of the chapter theme — bookends 01 (D10). Backup M-48 Pinafore (must be captioned '1878, recorded 1907')."
     }
   ],
   "overlays": [
@@ -47,7 +47,7 @@
       "at_s": 6,
       "kind": "caption",
       "until_s": 20,
-      "text": "Cook it on 21 December. Be at table by 8:45.",
+      "text": "Cook it on 21 December. Be at table by 8:45 pm.",
       "position": "bottom"
     },
     {
@@ -59,13 +59,13 @@
     }
   ],
   "interaction": {
-    "kind": "none",
+    "kind": "save",
     "prompt": "Save the card (image) or share it."
   },
   "transition": {
     "in": "fade from black",
     "out": "hold on the card — chapter end frame",
-    "music_cue": "M-42 tail, out on the last caption"
+    "music_cue": "M-41 tail (bookend with the cold open), out on the last caption"
   },
   "next": "",
   "sources": [
@@ -74,11 +74,11 @@
     "F-12",
     "F-27"
   ],
-  "production_notes": "Chapter end frame. Card must be exportable as an image (Scene Dev). Linear cut: 40 s — same script minus the ingredient list read-out (it stays on the card).",
+  "production_notes": "Chapter end frame. interaction.kind 'save' = the player offers save/share of the G-08 card as an image (schema addition this run). Music M-41 Sullivan tail, not the galop (D10). Time style '8:45 pm' on the card and caption. Narrator: the guide names the dish, not the ingredients (the card carries them). Linear cut: 40 s — same script minus the ingredient list read-out (it stays on the card); consider ending the linear on the card at 20 s with the music tail.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: interaction.kind → save; caption/card time style '8:45 pm'; music M-42 galop → M-41 Sullivan tail (D10); G-08 note carries the ingredient list (Narrator drops it from speech)."
   }
 }

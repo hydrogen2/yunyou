@@ -6,7 +6,7 @@
   "duration_s": 60,
   "learning_goal": "Know that Fogg's London was brand-new (station 8, Underground 9, Embankment 2, Big Ben 13) and remember the twenty guineas; feel awe at a new city and one warm beat.",
   "narration": {
-    "script": "The Strand, and ahead the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the cross, 1865. The cross itself, 1865. The Underground, nine years old. The Embankment down by the river, two. Big Ben, thirteen. Almost everything Fogg passes tonight is younger than his valet. Look at the roofline: Hawkshaw's single iron span, about 155 metres by 50 — five hundred feet long — collapsed in 1905 and was replaced; that is all we will say about it. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money, and Fogg hands her the twenty guineas he won at whist without breaking stride — four hundred and twenty shillings, or about eight hundred and forty cab-miles.",
+    "script": "The Strand, and ahead the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the cross, 1865. The cross itself, 1865. The Underground, nine years old. The Embankment down by the river, two. Big Ben — the clock tower — thirteen. So much of what Fogg passes tonight is younger than his valet. You cannot see it from here — Hawkshaw's roof, a single iron span about 155 metres by 50 — five hundred feet long — collapsed in 1905 and was replaced; that is all we will say about it. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money, and Fogg hands her the twenty guineas he won at whist. Without breaking stride. Four hundred and twenty shillings — about eight hundred and forty cab-miles.",
     "timing": "over",
     "voice": "guide"
   },
@@ -15,11 +15,21 @@
       "kind": "youtube",
       "ref": "VIjDXClopyE",
       "start_s": 285,
-      "end_s": 345,
+      "end_s": 325,
       "license": "youtube-embed",
       "manifest_id": "M-08",
       "attribution": "Virtual Walks and Adventures, '[4K] A London walk from Trafalgar Square via Charing Cross to Embankment and Golden Jubilee Bridge' (2022) — YouTube embed",
-      "note": "04:45–05:45: Strand approach into the forecourt (creator chapter 'Charing Cross' at 05:00; forecourt frames unverified — Content Preparer to pin). Small channel: keep backup M-09 UkXUiYNML3U 00:00–01:00 warm; rainy alt M-10 FI_AT-rhLP4 01:00–02:00."
+      "note": "04:45–05:25 (scene seconds 0–40): Strand approach into the forecourt (creator chapter 'Charing Cross' at 05:00; the auto still at ~05:28 is already Villiers Street, so we cut at 05:25 — forecourt frames unverified, A3 to pin). Small channel: keep backup M-09 UkXUiYNML3U 00:00–00:40 warm; rainy alt M-10 FI_AT-rhLP4 01:00–01:40."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_07.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-51",
+      "attribution": "'A poor mendicant' — the beggar-woman with a child, de Neuville & Benett plate 07, Hetzel edition 1873 (Wikimedia Commons, PD)",
+      "start_s": 40,
+      "end_s": 60,
+      "note": "Held still 40–60 s under the beggar-woman beat and the twenty-guineas caption; portrait, high-res. No sentiment (rundown)."
     }
   ],
   "overlays": [
@@ -27,13 +37,13 @@
       "at_s": 10,
       "kind": "caption",
       "until_s": 22,
-      "text": "Station: 8 years old. Underground: 9. Big Ben: 13.",
+      "text": "Station: 8 years old. Underground: 9. Clock tower: 13.",
       "position": "bottom"
     },
     {
-      "at_s": 30,
+      "at_s": 26,
       "kind": "pin",
-      "until_s": 42,
+      "until_s": 38,
       "text": "Eleanor Cross — replica, 1865, E. M. Barry",
       "position": "bl",
       "geo": "51.5081,-0.1247"
@@ -66,11 +76,11 @@
     "F-31",
     "F-39"
   ],
-  "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'Younger than his valet': Passepartout is about thirty (F-04). Linear cut: keep whole (60 s).",
+  "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1864 roof is gone (1905, replaced; Embankment Place sits over the platforms) and the train-shed is not visible from the Strand — hence 'You cannot see it from here'. The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'So much of what Fogg passes' (not 'almost everything' — Trafalgar Square and St Martin's are older). First mention 'Big Ben — the clock tower', then 'the clock tower' (Continuity #21). Narrator: short sentences at the beggar-woman beat (Continuity #10). Linear cut: keep whole (60 s: 40 s video + 20 s M-51 still).",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10)."
   }
 }

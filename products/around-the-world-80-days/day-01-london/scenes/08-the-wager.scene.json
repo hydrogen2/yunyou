@@ -3,10 +3,10 @@
   "type": "photo",
   "title": "The wager — twenty thousand at Baring's",
   "subtopic": "6 — The wager",
-  "duration_s": 80,
+  "duration_s": 60,
   "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
   "narration": {
-    "script": "Evening, at the whist table. In the novel — and only in the novel — a gentleman has walked out of the Bank of England three days ago with fifty-five thousand pounds, and the Daily Telegraph has printed a timetable showing the world can be circled in eighty days. Andrew Stuart, an engineer, wagers four thousand pounds that it cannot be done. Fogg raises him: twenty thousand pounds, on deposit at Baring's — half his fortune — in 'eighty days or less; in nineteen hundred and twenty hours, or a hundred and fifteen thousand two hundred minutes'. Look at the card: six names on the memorandum. Stuart; the bankers John Sullivan and Samuel Fallentin; Thomas Flanagan, a brewer; Gauthier Ralph, a director of the Bank of England; and Phileas Fogg. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Verne's arithmetic holds: it is exactly eighty days, and it really was a Saturday. Fogg's motto for the evening: 'The unforeseen does not exist.' One footnote from today. Baring's, Fogg's bank, was one of London's oldest; it went under in 1995. The wager has outlived the bank.",
+    "script": "Evening, at the whist table. In the novel — and only in the novel — a gentleman has walked out of the Bank of England three days ago with fifty-five thousand pounds, and the Daily Telegraph has printed a timetable showing the world can be circled in eighty days. Andrew Stuart, an engineer, wagers four thousand pounds that it cannot be done. Fogg raises him: twenty thousand pounds, on deposit at Baring's — half his fortune — in 'eighty days or less; in nineteen hundred and twenty hours, or a hundred and fifteen thousand two hundred minutes'. Look at the card: six names on the memorandum — Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Verne's arithmetic holds: it is exactly eighty days, and it really was a Saturday. Fogg's motto for the evening: 'The unforeseen does not exist.' One footnote from today. Baring's, Fogg's bank, was one of London's oldest; it went under in 1995. The wager has outlived the bank.",
     "timing": "over",
     "voice": "guide"
   },
@@ -16,26 +16,26 @@
       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_06.jpg",
       "license": "public-domain",
       "manifest_id": "M-35",
-      "attribution": "'…I will wager £4,000 on it' — Neuville/Benett, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+      "attribution": "The wager at the Reform Club — de Neuville & Benett, Hetzel illustrated edition 1873 (Wikimedia Commons, PD)",
       "start_s": 0,
-      "end_s": 40,
-      "note": "Slow push-in on the plate. M-36 is reference only — never ship."
+      "end_s": 30,
+      "note": "Slow push-in on the plate, 0–30 s. Plate belongs to the 1873 illustrated Hetzel edition (the 1872 serial was unillustrated). M-36 is reference only — never ship."
     },
     {
       "kind": "generated",
       "ref": "generated/g-05/memorandum-card.svg",
-      "start_s": 40,
-      "end_s": 80,
+      "start_s": 30,
+      "end_s": 60,
       "license": "generated",
       "manifest_id": "G-05",
       "attribution": "Yunyou studio, generated",
-      "note": "REQUESTED (Content Preparer): typeset memorandum — six signatures, stake, date and hour. G-03 illustration is not required."
+      "note": "REQUESTED (Content Preparer): typeset memorandum — six signatures (Stuart, Sullivan, Fallentin, Flanagan, Ralph, Fogg — the card carries the names the guide no longer reads), stake £20,000, 'Saturday 21 December 1872, 8:45 pm'. G-03 illustration is not required."
     },
     {
       "kind": "audio",
       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
       "start_s": 0,
-      "end_s": 80,
+      "end_s": 60,
       "license": "public-domain",
       "manifest_id": "M-41",
       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
@@ -47,21 +47,21 @@
       "at_s": 2,
       "kind": "caption",
       "until_s": 12,
-      "text": "'I will wager £4,000 on it' — Neuville, 1872",
+      "text": "The wager at the Reform — de Neuville & Benett, 1873",
       "position": "bottom"
     },
     {
-      "at_s": 40,
+      "at_s": 32,
       "kind": "caption",
-      "until_s": 50,
+      "until_s": 42,
       "text": "The unforeseen does not exist.",
       "position": "bottom"
     },
     {
-      "at_s": 66,
+      "at_s": 48,
       "kind": "caption",
-      "until_s": 76,
-      "text": "Baring's — Fogg's bank — went under in 1995",
+      "until_s": 58,
+      "text": "The wager has outlived the bank — Baring's fell in 1995",
       "position": "bottom"
     }
   ],
@@ -81,11 +81,11 @@
     "F-11",
     "F-23"
   ],
-  "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks. Linear cut: keep whole (80 s), then skip 09 and play 10 without the tap.",
+  "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). Cut to 60 s: the six names live on the G-05 card, the guide says 'Stuart first, Fogg last'. Narrator: ≤ 170 words, fix the tense of the opener (Continuity #9); the 'Paris newspaper' sentence from 01 may land here (F-32). Linear cut: keep whole (60 s), then skip 09 and play 10 without the tap.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed."
   }
 }

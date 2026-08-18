@@ -6,7 +6,7 @@
   "duration_s": 85,
   "learning_goal": "Feel the thrill of the first train out; know the train still leaves over Hungerford Bridge and takes about two hours to Dover today; end on Passepartout's forgotten gas.",
   "narration": {
-    "script": "A postcard from 1905, thirty-three years after Fogg — but the same platforms and the same roof: the Paris boat train, waiting. Now, tonight. Twenty to nine, seated. A quarter to nine — the whistle, and we are off, over Hungerford Bridge, the way trains still leave Fogg's station. Look right through the rain: the Embankment along the river, two years old in 1872, and beyond it the clock tower, thirteen. Brand-new London slipping away in the dark. This train, today, takes about two hours to Dover; Fogg's timetable gave him seven days to Suez, and this is the first hour of them. Somewhere out past the suburbs — Verne says Sydenham, though by 1872 the express took a shorter line — Passepartout suddenly sits bolt upright. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
+    "script": "A postcard from 1905, thirty-three years after Fogg — the same platforms and — just — the old roof, months before it fell: the Paris boat train, waiting. Now, tonight. Twenty to nine, seated. A quarter to nine — the whistle, and we are off, over Hungerford Bridge, the way trains still leave Fogg's station. We travel in daylight; Fogg had rain and dark. Look right — the Embankment along the river, two years old in 1872, and beyond it the clock tower, thirteen. Brand-new London slipping away behind him. This train, today, takes about two hours to Dover; Fogg's timetable gave him seven days to Suez, and this is the first hour of them. Somewhere out past the suburbs — Verne says Sydenham, though by 1872 the express probably took a shorter line — Passepartout suddenly sits bolt upright. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
     "timing": "over",
     "voice": "guide"
   },
@@ -19,7 +19,7 @@
       "attribution": "Charing Cross station, Paris boat train, S.E.&C.R. postcard (1905) (Wikimedia Commons, PD)",
       "start_s": 0,
       "end_s": 10,
-      "note": "Caption must say 1905."
+      "note": "Caption must say 1905. Published 1905; the photo date is unknown — the roof fell 5 Dec 1905, hence 'just — the old roof, months before it fell'."
     },
     {
       "kind": "youtube",
@@ -29,7 +29,7 @@
       "license": "youtube-embed",
       "manifest_id": "M-13",
       "attribution": "Ian Payne Urban Transport, 'Southeastern – London Charing Cross to Dover Priory | 2h02m' (2026) — YouTube embed",
-      "note": "00:00–01:15, departure over Hungerford Bridge (scene seconds 10–85). Passenger-window view reframed from 360°, not a cab view. If filmed in daylight, say nothing (we travel today) but consider a 10-s M-16 aqecMqk9z0o night insert for 'the night was dark'. Backups M-14 mxc2e8NCDos 03:47–04:22, M-12 fAfjnatbpb4 concourse; spare M-15 KKM-fpRGwTQ."
+      "note": "00:00–01:15, departure over Hungerford Bridge (scene seconds 10–85). DAYLIGHT, overcast (manifest second pass) — the script now says so ('We travel in daylight; Fogg had rain and dark'). The reframed 16:9 frame is split: window view LEFT, carriage interior RIGHT — CROP/ZOOM TO THE LEFT HALF for the bridge shot. Which bank the window faces is unverified (A3): 'Look right' stands only until then. No M-16 night insert (Scene Developer's call: keep the shot continuous; the honest line carries it). Backups M-14 mxc2e8NCDos 03:47–04:22, M-12 fAfjnatbpb4 concourse; spare M-15 KKM-fpRGwTQ."
     },
     {
       "kind": "audio",
@@ -39,7 +39,17 @@
       "license": "public-domain",
       "manifest_id": "M-44",
       "attribution": "Steam engine — aradlaw, pdsounds #632 (Wikimedia Commons, PD)",
-      "note": "Under the postcard."
+      "note": "Under the postcard, continuing from 17 with the M-58 rain bed (fade both by 12 s)."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://freesound.org/people/keithpeter/sounds/125211/",
+      "start_s": 10,
+      "end_s": 24,
+      "license": "cc0",
+      "manifest_id": "M-60",
+      "attribution": "'steam-train-leaving-moor-st-station' — keithpeter, freesound 125211, CC0 (credit on the sources page)",
+      "note": "Departure bed under 10–20 s (guard's whistle → hiss → pull-out), fading by 24 s under the first seconds of M-13. QA to note the in-file whistle timestamps; M-45 remains the clean sting. Backup M-61."
     },
     {
       "kind": "audio",
@@ -49,14 +59,24 @@
       "license": "cc-by-4.0",
       "manifest_id": "M-45",
       "attribution": "Steam locomotive P-8 whistle — Work With Sounds / Konrad Gutkowski (2014), CC BY 4.0",
-      "note": "Whistle sting exactly on the '8:45 p.m.' caption. Attribution required."
+      "note": "Whistle sting exactly on the '8:45 pm' caption; NO SPEECH 12–16 s. Attribution required."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://freesound.org/people/nicoproson/sounds/648529/",
+      "start_s": 20,
+      "end_s": 44,
+      "license": "cc0",
+      "manifest_id": "M-59",
+      "attribution": "'RAIN on glass window' — nicoproson, freesound 648529, CC0 (credit on the sources page)",
+      "note": "Light rain on a carriage window, low (−24 dB), only under 'Fogg had rain and dark' and the Embankment line — his weather as memory over our daylight frame; drop it if it fights the picture. Down-sample to 48 kHz."
     }
   ],
   "overlays": [
     {
       "at_s": 0,
       "kind": "caption",
-      "until_s": 10,
+      "until_s": 8,
       "text": "The Paris boat train, Charing Cross — 1905, not 1872",
       "position": "bottom"
     },
@@ -64,28 +84,29 @@
       "at_s": 12,
       "kind": "caption",
       "until_s": 18,
-      "text": "8:45 p.m.",
+      "text": "8:45 pm",
       "position": "center"
     },
     {
-      "at_s": 32,
+      "at_s": 24,
       "kind": "caption",
-      "until_s": 44,
+      "until_s": 36,
       "text": "Look right — Embankment (1870), clock tower (1859)",
-      "position": "bottom"
+      "position": "bottom",
+      "note": "Window side unverified (A3): if the window faces east, drop this caption and the 'Look right' cue."
     },
     {
-      "at_s": 56,
+      "at_s": 48,
       "kind": "caption",
-      "until_s": 66,
+      "until_s": 58,
       "text": "Charing Cross to Dover — about two hours today",
       "position": "bottom"
     },
     {
-      "at_s": 72,
+      "at_s": 64,
       "kind": "caption",
-      "until_s": 84,
-      "text": "Verne says Sydenham. By 1872 the express took a shorter line.",
+      "until_s": 76,
+      "text": "Verne says Sydenham. By 1872 the express probably took a shorter line.",
       "position": "bottom"
     }
   ],
@@ -95,7 +116,7 @@
   "transition": {
     "in": "cut",
     "out": "fade to black, then the souvenir card",
-    "music_cue": "M-45 sting at 12 s; rain and rail sound only after"
+    "music_cue": "M-60 departure bed 10–24 s with the M-45 sting at 12 s (no speech 12–16 s); rain and rail sound only after; M-44/M-58 fade out by 12 s"
   },
   "next": "souvenir",
   "sources": [
@@ -106,11 +127,20 @@
     "F-26",
     "F-40"
   ],
-  "production_notes": "Ending B (on the boat train), provisionally accepted. Ending A would cut M-13 at 20 s and drop the gas line here and in 11. Content Preparer: check the time of day M-13 was filmed and confirm F-40 against the current Southeastern timetable. Linear cut: 65 s of video (postcard 10 s + M-13 00:00–00:55) — trim the Dover/Suez sentence.",
+  "production_notes": "Ending B (on the boat train), provisionally accepted. HONEST ABOUT DAYLIGHT: M-13 is a daylight, overcast recording — the guide says 'We travel in daylight; Fogg had rain and dark' and never narrates night over the frame; M-13 cropped to the left (window) half; no M-16 night insert (Scene Developer's call — the honest line carries it, and the shot stays continuous; the insert remains an option under 20–30 s if the founder prefers). 'Look right' (Embankment/clock tower are upstream = right when leaving south over Hungerford Bridge) kept ONLY on the assumption the reframed window faces west — window side unverified (A3); if east, drop the cue and caption. Captions shifted −8 s to land with the narration; postcard caption ends at 8 s. NO SPEECH 12–16 s (whistle sting). Roof: 'just — the old roof, months before it fell' (photo date unknown, F-22 collapse 5 Dec 1905). Sydenham hedged 'probably' (F-13 med). Ending A would cut M-13 at 20 s and drop the gas line here and in 11. Content Preparer: confirm F-40 against the current Southeastern timetable. Linear cut: 65 s of video (postcard 10 s + M-13 00:00–00:55) — trim the Dover/Suez sentence.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: daylight lines rewritten honestly ('We travel in daylight; Fogg had rain and dark'), M-13 cropped to the left half, no M-16 insert (my call); 'same roof' → 'just — the old roof, months before it fell'; Sydenham 'probably' in script and caption; M-60 departure bed 10–24 s + M-45 sting, no speech 12–16 s; M-59 rain-on-window low under the 'Fogg had rain' line only; captions −8 s, postcard caption ends 8 s; '8:45 pm' style; 'Look right' kept — window side unverified (A3); accessibility caption '[whistle — 8:45 pm]'."
+  },
+  "accessibility": {
+    "sound_captions": [
+      {
+        "at_s": 12,
+        "until_s": 16,
+        "text": "[whistle — 8:45 pm]"
+      }
+    ]
   }
 }
