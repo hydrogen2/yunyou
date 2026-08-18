@@ -1,0 +1,155 @@
+#!/usr/bin/env node
+/**
+ * g02_then_now — fill the G-02 "then vs now" split-frame template from a small JSON spec.
+ *
+ *   node studio/tools/gen/g02_then_now.mjs spec.json            # writes SVGs listed in spec.formats into spec.out_dir
+ *   node studio/tools/gen/g02_then_now.mjs --template out.svg   # writes the empty 16:9 template (placeholder hrefs)
+ *   node studio/tools/gen/g02_then_now.mjs spec.json --seam 0.25 --suffix _seam25   # one-off seam position (for PNG exports)
+ *
+ * spec.json:
+ * {
+ *   "out_dir": "products/.../generated/g-02", "basename": "then-now_charing-cross_M-24_vs_M-26",
+ *   "then": { "href": "src/M-24.jpg", "natural": [1802,1345], "crop": { "16x9": [x,y,w,h], "fold": [...], "9x16": [...] } },
+ *   "now":  { "href": "src/M-26.jpg", "natural": [2784,4744], "crop": { ... } },
+ *   "captions": { "then": "1872 — …", "now": "Today — …" }, "source": "J.T. Wood … · Tony Hisgett …",
+ *   "seam": 0.5, "formats": ["16x9","fold","9x16"], "sepia_then": true
+ * }
+ * crop = [x, y, w, h] in the source image's pixels; omitted → the image is simply cover-fitted (xMidYMid slice) to the frame.
+ * Style: cream paper #efe6d3, ink #2a2622, one accent #b03a2e. Sepia + vignette are the only filters and only on "then".
+ *
+ * Id contract (what the player drives — see products/.../generated/g-02/README.md):
+ *   <svg id="g02" viewBox="0 0 W H" data-seam data-x0 data-x1 data-y0 data-y1>
+ *   <image id="then">   full-frame left photo (inside <g id="then-layer"> — sepia filter + vignette mask)
+ *   <image id="now">    full-frame right photo, inside <g id="now-layer" clip-path="url(#clip-now)">
+ *   <clipPath id="clip-now"><rect id="clip-now-rect" x=seamX y=y0 width=(x1-seamX) height=(y1-y0)/></clipPath>
+ *   <g id="seam" transform="translate(seamX 0)">  2 px accent line + <circle id="seam-handle"> + <rect id="seam-hit">
+ *   <g id="captions"> <text id="cap-then"> <text id="cap-now"> <text id="source-line">
+ *   Drag = set clip-now-rect.x / .width and the seam group's translate; everything is in viewBox user units.
+ */
+import fs from 'node:fs'; import path from 'node:path';
+
+const INK = '#2a2622', PAPER = '#efe6d3', ACCENT = '#b03a2e';
+const SERIF = "'Playfair Display', Georgia, serif", SANS = "'Source Sans 3', system-ui, sans-serif";
+
+// Format presets. pad = the "8 px" paper margin expressed in user units at the size the format is normally displayed
+// (16:9 is shown at ~1920 CSS px → 16 units; fold-open at ~2176 device px ≈ 1088 CSS → 16; 9:16 phone 1080 → ~360 CSS → 24).
+// hit = tap-target square (≥ 44 CSS px) in user units; handle_r = visible handle radius; cap = caption font size;
+// src = source-line font size (≈ 8 pt / 10.7 CSS px at the display scale); bar = caption bar height.
+const FORMATS = {
+  '16x9': { W: 3840, H: 2160, pad: 16, bar: 216, cap: 60, src: 22, handle_r: 30, hit: 96, line: 4, suffix: '' },
+  'fold': { W: 2176, H: 1812, pad: 16, bar: 170, cap: 44, src: 20, handle_r: 26, hit: 90, line: 3, suffix: '_2176x1812' },
+  '9x16': { W: 1080, H: 2160, pad: 24, bar: 236, cap: 40, src: 26, handle_r: 30, hit: 132, line: 4, suffix: '_1080x2160', stack: true }, // stack: captions on two lines (then above now)
+};
+
+const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const r1 = n => Math.round(n * 10) / 10;
+
+function imageEl(id, side, frame, href, natural, crop) {
+  const { x0, y0, w, h } = frame;
+  const attrs = `id="${id}" data-side="${side}" href="${esc(href)}" preserveAspectRatio="xMidYMid slice"`;
+  if (!crop || !natural) return `      <image ${attrs} x="${x0}" y="${y0}" width="${w}" height="${h}"/>`;
+  // manual crop: nested svg with a viewBox in source pixels, image at natural size, cover-fitted to the frame
+  const [cx, cy, cw, ch] = crop; const [nw, nh] = natural;
+  return `      <svg x="${x0}" y="${y0}" width="${w}" height="${h}" viewBox="${cx} ${cy} ${cw} ${ch}" preserveAspectRatio="xMidYMid slice" data-crop="${cx} ${cy} ${cw} ${ch}">
+        <image ${attrs} x="0" y="0" width="${nw}" height="${nh}"/>
+      </svg>`;
+}
+
+export function renderSvg(spec, fmtName, seam = spec.seam ?? 0.5) {
+  const F = FORMATS[fmtName]; if (!F) throw new Error('unknown format ' + fmtName);
+  const { W, H, pad, bar } = F;
+  const x0 = pad, x1 = W - pad, y0 = pad, y1 = H - bar - pad;
+  const frame = { x0, y0, w: x1 - x0, h: y1 - y0 };
+  const seamX = r1(x0 + seam * (x1 - x0));
+  const cap = spec.captions || {}; const t = spec.then || {}, n = spec.now || {};
+  const capY = y1 + pad + F.cap * 1.25; const capY2 = F.stack ? capY + F.cap * 1.4 : capY; const srcY = H - pad - F.src * 0.5;
+  const sepia = spec.sepia_then !== false;
+  const thenLayerAttrs = sepia ? ` filter="url(#sepia)" mask="url(#vignette)"` : '';
+  const hitH = Math.max(F.hit, frame.h * 0.18);
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<!-- G-02 "then vs now" split-frame · Yunyou studio · generated by studio/tools/gen/g02_then_now.mjs — do not hand-edit; regenerate. -->
+<!-- contract:
+  root  <svg id="g02" viewBox="0 0 ${W} ${H}" data-seam="${seam}" data-x0 data-x1 data-y0 data-y1>  (image-area bounds, user units)
+  then  <image id="then">  full-frame left photo, inside <g id="then-layer"> (sepia filter + vignette mask; may be wrapped in a nested <svg> for a manual crop)
+  now   <image id="now">   full-frame right photo, inside <g id="now-layer" clip-path="url(#clip-now)">
+  clip  <clipPath id="clip-now"><rect id="clip-now-rect" x="{seamX}" y="{y0}" width="{x1-seamX}" height="{y1-y0}"/></clipPath>
+  seam  <g id="seam" transform="translate({seamX} 0)"> = 2 px accent line + <circle id="seam-handle"> + <rect id="seam-hit"> (transparent tap target ≥ 44 CSS px)
+  text  <g id="captions"> <text id="cap-then"> <text id="cap-now"> <text id="source-line">
+  drag  seam fraction s in [0,1] → seamX = x0 + s*(x1-x0); set clip-now-rect.x = seamX, .width = x1-seamX; seam.transform = translate(seamX 0); root.dataset.seam = s
+-->
+<svg id="g02" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}"
+     data-seam="${seam}" data-x0="${x0}" data-x1="${x1}" data-y0="${y0}" data-y1="${y1}" data-format="${fmtName}" role="img" aria-label="${esc((cap.then || 'then') + ' / ' + (cap.now || 'now'))}">
+  <title>${esc(spec.title || 'Then vs now')}</title>
+  <defs>
+    <!-- sepia for the engraving: feColorMatrix (70 % sepia + 30 % identity, slightly lifted so the plate stays paper-cream, not yellow) -->
+    <filter id="sepia" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="0.575 0.538 0.132 0 0  0.244 0.780 0.118 0 0  0.190 0.374 0.392 0 0  0 0 0 1 0"/>
+      <feComponentTransfer><feFuncR type="linear" slope="0.97" intercept="0.02"/><feFuncG type="linear" slope="0.95" intercept="0.02"/><feFuncB type="linear" slope="0.91" intercept="0.02"/></feComponentTransfer>
+    </filter>
+    <!-- engraved-plate vignette: the plate fades into the paper at the corners (mask, not a gradient on the UI) -->
+    <radialGradient id="vig-grad" cx="0.5" cy="0.5" r="0.72">
+      <stop offset="0.55" stop-color="#fff"/><stop offset="1" stop-color="#fff" stop-opacity="0.72"/>
+    </radialGradient>
+    <mask id="vignette" maskUnits="userSpaceOnUse" x="${x0}" y="${y0}" width="${frame.w}" height="${frame.h}">
+      <rect x="${x0}" y="${y0}" width="${frame.w}" height="${frame.h}" fill="url(#vig-grad)"/>
+    </mask>
+    <!-- fine engraved hatch lines laid over the fading edge -->
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 3 H6" stroke="${INK}" stroke-width="0.8" opacity="0.28"/></pattern>
+    <radialGradient id="hatch-grad" cx="0.5" cy="0.5" r="0.72"><stop offset="0.6" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></radialGradient>
+    <mask id="hatch-mask" maskUnits="userSpaceOnUse" x="${x0}" y="${y0}" width="${frame.w}" height="${frame.h}"><rect x="${x0}" y="${y0}" width="${frame.w}" height="${frame.h}" fill="url(#hatch-grad)"/></mask>
+    <clipPath id="clip-frame"><rect x="${x0}" y="${y0}" width="${frame.w}" height="${frame.h}"/></clipPath>
+    <clipPath id="clip-now"><rect id="clip-now-rect" x="${seamX}" y="${y0}" width="${r1(x1 - seamX)}" height="${frame.h}"/></clipPath>
+  </defs>
+
+  <!-- L0 paper -->
+  <rect id="paper" width="${W}" height="${H}" fill="${PAPER}"/>
+
+  <!-- L1 then (left, full frame) -->
+  <g id="then-layer" clip-path="url(#clip-frame)">
+    <g${thenLayerAttrs}>
+${imageEl('then', 'then', frame, t.href || 'src/THEN.jpg', t.natural, t.crop && t.crop[fmtName])}
+    </g>${sepia ? `
+    <rect id="then-hatch" x="${x0}" y="${y0}" width="${frame.w}" height="${frame.h}" fill="url(#hatch)" mask="url(#hatch-mask)"/>` : ''}
+  </g>
+
+  <!-- L2 now (right, full frame, clipped at the seam) -->
+  <g id="now-layer" clip-path="url(#clip-now)">
+${imageEl('now', 'now', frame, n.href || 'src/NOW.jpg', n.natural, n.crop && n.crop[fmtName])}
+  </g>
+
+  <!-- L3 frame rule (ink hairline round the image area) -->
+  <rect id="frame-rule" x="${x0}" y="${y0}" width="${frame.w}" height="${frame.h}" fill="none" stroke="${INK}" stroke-width="1"/>
+
+  <!-- L4 seam: 2 px accent line + ink handle -->
+  <g id="seam" transform="translate(${seamX} 0)" style="cursor:ew-resize">
+    <line id="seam-line" x1="0" y1="${y0}" x2="0" y2="${y1}" stroke="${ACCENT}" stroke-width="${F.line}"/>
+    <circle id="seam-handle" cx="0" cy="${r1((y0 + y1) / 2)}" r="${F.handle_r}" fill="${INK}" stroke="${PAPER}" stroke-width="${Math.max(2, F.handle_r * 0.12)}"/>
+    <path id="seam-handle-glyph" d="M${-F.handle_r * 0.55} ${r1((y0 + y1) / 2)} l${F.handle_r * 0.3} ${-F.handle_r * 0.3} M${-F.handle_r * 0.55} ${r1((y0 + y1) / 2)} l${F.handle_r * 0.3} ${F.handle_r * 0.3} M${F.handle_r * 0.55} ${r1((y0 + y1) / 2)} l${-F.handle_r * 0.3} ${-F.handle_r * 0.3} M${F.handle_r * 0.55} ${r1((y0 + y1) / 2)} l${-F.handle_r * 0.3} ${F.handle_r * 0.3} M${-F.handle_r * 0.55} ${r1((y0 + y1) / 2)} H${F.handle_r * 0.55}" fill="none" stroke="${PAPER}" stroke-width="${Math.max(2, F.handle_r * 0.1)}" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect id="seam-hit" x="${-F.hit / 2}" y="${r1((y0 + y1) / 2 - hitH / 2)}" width="${F.hit}" height="${r1(hitH)}" fill="transparent" stroke="none"/>
+  </g>
+
+  <!-- L5 captions: ink on cream, Playfair Display; source line Source Sans 3 -->
+  <g id="captions" fill="${INK}">
+    <text id="cap-then" x="${x0}" y="${r1(capY)}" font-family="${SERIF}" font-size="${F.cap}" text-anchor="start">${esc(cap.then || '1872 — …')}</text>
+    <text id="cap-now" x="${x1}" y="${r1(capY2)}" font-family="${SERIF}" font-size="${F.cap}" text-anchor="end">${esc(cap.now || 'Today — …')}</text>
+    <text id="source-line" x="${W / 2}" y="${r1(srcY)}" font-family="${SANS}" font-size="${F.src}" text-anchor="middle" opacity="0.85">${esc(spec.source || 'Source · Source')}</text>
+  </g>
+</svg>
+`;
+}
+
+// ---- CLI ----
+const argv = process.argv.slice(2); const opt = {};
+for (let i = argv.length - 1; i >= 0; i--) if (argv[i].startsWith('--')) { opt[argv[i].slice(2)] = argv[i + 1] ?? true; argv.splice(i, 2); }
+if (opt.template) {
+  const svg = renderSvg({ title: 'Then vs now — template', captions: { then: '1872 — caption ≤ 12 words', now: 'Today — caption ≤ 12 words' }, source: 'Then author, work year (licence) · Now author year, licence' }, '16x9', 0.5);
+  fs.mkdirSync(path.dirname(opt.template), { recursive: true }); fs.writeFileSync(opt.template, svg); console.log(opt.template);
+} else if (argv[0]) {
+  const spec = JSON.parse(fs.readFileSync(argv[0], 'utf8'));
+  const outDir = spec.out_dir || path.dirname(argv[0]); fs.mkdirSync(outDir, { recursive: true });
+  const seam = opt.seam !== undefined ? Number(opt.seam) : (spec.seam ?? 0.5);
+  for (const f of (opt.formats ? opt.formats.split(',') : (spec.formats || ['16x9']))) {
+    const out = path.join(outDir, `${spec.basename}${opt.suffix || ''}${FORMATS[f].suffix}.svg`);
+    fs.writeFileSync(out, renderSvg(spec, f, seam)); console.log(out);
+  }
+} else { console.error('usage: g02_then_now.mjs spec.json [--seam 0.5] [--suffix _seam50] [--formats 16x9,fold,9x16] | --template out.svg'); process.exit(2); }

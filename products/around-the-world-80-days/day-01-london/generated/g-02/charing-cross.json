@@ -1,0 +1,73 @@
+{
+  "out_dir": "products/around-the-world-80-days/day-01-london/generated/g-02",
+  "basename": "then-now_charing-cross_M-24_vs_M-26",
+  "title": "Charing Cross forecourt — 1872 (J.T. Wood engraving) vs today (Eleanor Cross, Tony Hisgett 2010)",
+  "then": {
+    "id": "M-24",
+    "href": "src/M-24.jpg",
+    "natural": [
+      1802,
+      1345
+    ],
+    "crop": {
+      "16x9": [
+        354,
+        320,
+        1448,
+        727
+      ],
+      "fold": [
+        402,
+        40,
+        1400,
+        1065
+      ],
+      "9x16": [
+        763,
+        0,
+        606,
+        1150
+      ]
+    }
+  },
+  "now": {
+    "id": "M-26",
+    "href": "src/M-26.jpg",
+    "natural": [
+      2784,
+      4744
+    ],
+    "crop": {
+      "16x9": [
+        0,
+        2100,
+        2400,
+        1205
+      ],
+      "fold": [
+        0,
+        1500,
+        2350,
+        1787
+      ],
+      "9x16": [
+        0,
+        60,
+        2100,
+        3985
+      ]
+    }
+  },
+  "captions": {
+    "then": "1872 — the station is eight years old",
+    "now": "Today — six platforms, a train an hour to Dover"
+  },
+  "source": "J.T. Wood, London Illustrated 1872 (PD) · Tony Hisgett 2010, CC BY 2.0",
+  "seam": 0.5,
+  "sepia_then": true,
+  "formats": [
+    "16x9",
+    "fold",
+    "9x16"
+  ]
+}

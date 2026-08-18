@@ -29,3 +29,9 @@ dialogue · D5 full seven-stop walk at 0.97 m/step (needs Maps JS API — D12 op
 guardrails, chips fallback · D9 recipe-card souvenir · D10 R1–R5 + "8:45 pm" style, scene 19 music M-41 · D11 no Thames coda ·
 scene 18: honest daylight lines, no M-16 insert · Passepartout system prompt accepted at ≈ 350 words · 08/13 density accepted (08 stays 60 s).
 **Next step:** A2 — Engine/Tools generates G-01…G-08 into `day-01-london/generated/` per manifest specs and wires the player; update manifest status.
+
+## 2026-08-18 20:00 UTC — scheduled run (in progress)
+**Step:** A2 — Engine/Tools generates G-01…G-08 into `day-01-london/generated/` and wires the player. Prep by the Editor-in-Chief before dispatch:
+house fonts fetched (`studio/player/fonts/` Playfair Display + Source Sans 3, OFL, + `fonts.css`), shared exporter `studio/tools/svg2png.mjs`
+(inline SVG → PNG via playwright chromium, exact WxH, house fonts). Four `yunyou-engine-tools` agents dispatched in parallel: G-01 map · G-02 split-frame ·
+G-04/05/06/08 cards · G-07 game + player wiring. (Entry completed below when the run finishes; if not, the run hit the quota.)

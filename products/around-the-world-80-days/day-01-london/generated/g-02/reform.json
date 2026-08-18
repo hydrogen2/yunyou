@@ -1,0 +1,10 @@
+{
+  "out_dir": "products/around-the-world-80-days/day-01-london/generated/g-02",
+  "basename": "then-now_reform_M-22_vs_M-20",
+  "title": "Reform Club, Pall Mall — Barry's north elevation (engraving, PD) vs today (Philip Cornwall 2019)",
+  "then": { "id": "M-22", "href": "src/M-22.jpg", "natural": [709, 431] },
+  "now":  { "id": "M-20", "href": "src/M-20.jpg", "natural": [3024, 4032], "crop": { "16x9": [0, 0, 3024, 1518] } },
+  "captions": { "then": "1841 — Barry's Portland-stone palazzo opens on Pall Mall", "now": "Today — 104 Pall Mall, still a members' club, Grade I" },
+  "source": "Barry elevation, Life and Works of Sir Charles Barry (PD) · Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
+  "seam": 0.5, "sepia_then": true, "formats": ["16x9"]
+}

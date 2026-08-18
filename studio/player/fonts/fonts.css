@@ -1,0 +1,8 @@
+/* Playfair Display + Source Sans 3 — SIL Open Font License 1.1, downloaded from Google Fonts 2026-08-18. Yunyou house type: serif for names/titles, sans for dates/numbers. */
+@font-face{font-family:'Playfair Display';font-style:italic;font-weight:400;src:url('PlayfairDisplay-400-italic.woff2') format('woff2');}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:400;src:url('PlayfairDisplay-400.woff2') format('woff2');}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:600;src:url('PlayfairDisplay-600.woff2') format('woff2');}
+@font-face{font-family:'Playfair Display';font-style:normal;font-weight:700;src:url('PlayfairDisplay-700.woff2') format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:italic;font-weight:400;src:url('SourceSans3-400-italic.woff2') format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;src:url('SourceSans3-400.woff2') format('woff2');}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;src:url('SourceSans3-600.woff2') format('woff2');}

@@ -12,7 +12,7 @@ DONE:
 
 QUEUE (studio/PRODUCTION.md):
 - [x] A1 apply fix lists (14:00 + 17:00 runs)
-- [ ] A2 Engine/Tools: generate G-01…G-08 + wire the player  ← NEXT
+- [~] A2 Engine/Tools: generate G-01…G-08 + wire the player  ← IN PROGRESS (run 20:00 UTC; 4 Engine agents dispatched 20:03; if this line is still here the run was cut short — check generated/ and the journal)
 - [ ] A3 Content Preparer: M-50 reconcile, pin M-05/M-01/M-08/M-13 frames (02 side language, 18 "Look right" wait on this)
 - [ ] A4 Narrator cut-sheet + Publisher linear re-render + publish-record.md
 - [ ] A5 light Fact-Checker + QA re-pass, DIGEST → "ready to publish (free tier)"

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Yunyou · player</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
   :root { --ink:#ece6da; --dim:#a9a193; --bg:#0d0c0e; --panel:#17161a; --line:#2b292f; --accent:#d9a441; --ok:#7bc47f; --bad:#e07a6a; }
   * { box-sizing:border-box; }
@@ -50,6 +51,11 @@
   #cover input { background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:6px 8px; width:min(90vw,420px); font:13px system-ui; }
   #cover select { background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:6px 8px; font:13px system-ui; }
   .leaflet-container { background:#e9e2d0; }
+  .genwrap { position:absolute; inset:0; background:#efe6d3; display:flex; align-items:center; justify-content:center; }
+  .genwrap svg.gen { width:100%; height:100%; display:block; touch-action:none; }
+  .genwrap svg.gen:focus { outline:2px solid #b03a2e; outline-offset:-2px; }
+  #countdown { color:var(--accent); font-family:system-ui,sans-serif; font-size:12px; }
+  .row-hl { pointer-events:none; }
   .muted { color:var(--dim); font-family:system-ui,sans-serif; font-size:13px; }
   @media (min-aspect-ratio: 4/3) { #stage { flex-direction:row; } #media { flex:1 1 60%; min-height:0; } #right { flex:1 1 40%; display:flex; flex-direction:column; min-width:0; } #panel { max-height:none; flex:1; } }
 </style>
@@ -73,7 +79,7 @@
       <div id="panel"><p id="title"></p><p id="script"></p><div id="interaction"></div></div>
     </div>
   </div>
-  <footer><button class="btn" id="prev">‹ Back</button><div id="prog"><i></i></div><span id="clock"></span><button class="btn primary" id="next">Next ›</button></footer>
+  <footer><button class="btn" id="prev">‹ Back</button><div id="prog"><i></i></div><span id="clock"></span><span id="countdown"></span><button class="btn primary" id="next">Next ›</button></footer>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -108,15 +114,108 @@ let voices=[]; function loadVoices(){ voices=speechSynthesis.getVoices(); const 
   pref.forEach(v=>{ const o=document.createElement('option'); o.value=v.name; o.textContent=`${v.name} (${v.lang})`; sel.appendChild(o); });
   const saved=localStorage.getItem('yy-voice'); if(saved) sel.value=saved; }
 speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
-function speak(text, onBoundary){
-  speechSynthesis.cancel(); if(!narrate) return;
+function speak(text, onBoundary, onEnd){
+  speechSynthesis.cancel(); if(!narrate||!text){ onEnd&&setTimeout(onEnd,0); return; }
   const u=new SpeechSynthesisUtterance(text); const v=voices.find(v=>v.name===$('#voice').value); if(v) u.voice=v; u.rate=0.98; u.pitch=1.0;
-  u.onboundary=e=>onBoundary&&onBoundary(e.charIndex); speechSynthesis.speak(u);
+  u.onboundary=e=>onBoundary&&onBoundary(e.charIndex); let ended=false; u.onend=()=>{ if(ended) return; ended=true; onEnd&&onEnd(); }; u.onerror=()=>{ ended=true; }; // cancel()/errors never fire onEnd (scene change is guarded by sceneSerial)
+  window.__lastUtter=u; speechSynthesis.speak(u);
 }
 
 // ---------- Audio bed ----------
 async function playBed(m){ stopBed(); if(!isCommons(m.ref)) return; const url=await commonsUrl(m.ref); bed=new Audio(url); bed.volume=0.18; bed.loop=true; bed.play().catch(()=>{}); }
 function stopBed(){ if(bed){ bed.pause(); bed=null; } }
+
+// ---------- Generated assets (SVG, inlined) ----------
+const TOUR_DIR=TOUR_URL.replace(/[^/]*$/,'');
+const genCache={};
+const genUrl=ref=>/^(https?:)?\//.test(ref)?ref:TOUR_DIR+ref;
+async function fetchGen(ref){ const url=genUrl(ref); if(genCache[url]!==undefined) return genCache[url];
+  try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); const t=await r.text(); if(!/<svg[\s>]/i.test(t)) throw new Error('not svg'); genCache[url]=t; }catch(e){ console.warn('generated asset missing',url,e.message); genCache[url]=null; } return genCache[url]; }
+function inlineSvg(txt, ref){
+  const wrap=document.createElement('div'); wrap.className='genwrap'; wrap.innerHTML=txt; const svg=wrap.querySelector('svg'); if(!svg) return null;
+  const base=genUrl(ref).replace(/[^/]*$/,'');
+  svg.querySelectorAll('image').forEach(im=>['href','xlink:href'].forEach(a=>{ const v=im.getAttribute(a); if(v&&!/^(https?:|data:|blob:|\/)/.test(v)) im.setAttribute(a,base+v); }));
+  if(!svg.getAttribute('viewBox')&&svg.getAttribute('width')) svg.setAttribute('viewBox',`0 0 ${parseFloat(svg.getAttribute('width'))} ${parseFloat(svg.getAttribute('height'))}`);
+  svg.removeAttribute('width'); svg.removeAttribute('height'); svg.setAttribute('preserveAspectRatio','xMidYMid meet'); svg.classList.add('gen');
+  $('#media').innerHTML=''; $('#media').appendChild(wrap); return svg;
+}
+const svgPoint=(svg,e)=>{ const p=svg.createSVGPoint(); p.x=e.clientX; p.y=e.clientY; return p.matrixTransform(svg.getScreenCTM().inverse()); };
+// scene-time media schedule: items {start, fn, onTick?}; fn switches #media when elapsed passes start
+let sched=null, sceneSerial=0, genHooks={}, pickOption=null, gameApi=null;
+function setSchedule(items){ sched={items:items.slice().sort((a,b)=>a.start-b.start), cur:-1, active:null}; schedTick(); }
+function schedTick(){ if(!sched) return; let k=-1; sched.items.forEach((it,i)=>{ if(elapsed>=it.start) k=i; }); if(k!==sched.cur){ sched.cur=k; if(k>=0){ sched.active=sched.items[k]; sched.items[k].fn(); } } if(k>=0&&sched.items[k].onTick) sched.items[k].onTick(elapsed); }
+function sceneCard(s, pendingIds){ $('#media').innerHTML=''; const ov=(s.overlays||[]).map(o=>`<div>${o.kind==='pin'?'📍 ':''}${o.text}</div>`).join('');
+  card(`<h2>${s.title}</h2>${s.learning_goal?`<p><small>${s.learning_goal}</small></p>`:''}${ov?`<div style="margin-top:.6em;font-family:system-ui;font-size:.85em;color:#4a3d2f">${ov}</div>`:''}${pendingIds&&pendingIds.length?`<p><small>generated asset pending: ${pendingIds.join(', ')}</small></p>`:''}`); }
+function mkGen(m, s, opts={}){ const it={start:m.start_s||0, m}; it.fn=async()=>{ const ser=sceneSerial; const txt=await fetchGen(m.ref); if(ser!==sceneSerial||sched.active!==it) return;
+    if(!txt){ (opts.fail||(()=>sceneCard(s,[m.manifest_id])))(); return; } const svg=inlineSvg(txt,m.ref); if(!svg){ (opts.fail||(()=>sceneCard(s,[m.manifest_id])))(); return; } it.svg=svg; try{ opts.ok&&opts.ok(svg,it); }catch(e){ console.error(e); } }; return it; }
+async function insetImage(m){ const im=document.createElement('img'); im.src=await commonsUrl(m.ref,800); im.alt=m.attribution||''; im.style.cssText='position:absolute;inset:auto;right:2vmin;bottom:2vmin;width:22%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.6)'; $('#media').appendChild(im); }
+
+// G-01 route map: layers L0 base, L1..L9 legs (cumulative reveal across the media window), L10 enablers; .hit[data-leg] taps → option leg-1
+function wireG01(svg,it,m,s){
+  const legs=[]; for(let k=1;k<=9;k++){ const g=svg.querySelector('#L'+k); if(g) legs.push(g); }
+  if(/full-loop/.test(m.ref)&&legs.length){ const a=m.start_s||0, b=(m.end_s!=null?m.end_s:s.duration_s), per=Math.max(0.5,(b-a)/legs.length);
+    it.onTick=el=>{ const n=Math.min(legs.length, Math.floor((el-a)/per)+1); legs.forEach((g,i)=>g.style.display=i<n?'':'none'); }; it.onTick(elapsed); }
+  svg.querySelectorAll('.hit[data-leg]').forEach(h=>{ h.style.cursor='pointer'; h.style.pointerEvents='stroke'; h.addEventListener('click',()=>{ const i=+h.dataset.leg-1; if(pickOption) pickOption(i); }); });
+  genHooks.onPick=i=>{ const h=svg.querySelector(`.hit[data-leg="${i+1}"]`); if(h){ h.setAttribute('stroke','#b03a2e'); h.setAttribute('stroke-opacity','0.35'); } };
+}
+// G-02 then/now split: data-x0..y1 frame, #clip-now-rect + #seam translate; drag anywhere, ← → 2 %
+function wireG02(svg){
+  const x0=+svg.dataset.x0, x1=+svg.dataset.x1, rect=svg.querySelector('#clip-now-rect'), seamG=svg.querySelector('#seam'); if(!rect||!(x1>x0)) return;
+  const rx=+rect.getAttribute('x')||0, rw=+rect.getAttribute('width')||0; const nowLeft = Math.abs(rx-x0)<1 && rw<(x1-x0)*0.99; // else "now" occupies seam..x1
+  let seam=+(svg.dataset.seam||0.5); if(!(seam>=0&&seam<=1)) seam=0.5;
+  const set=v=>{ seam=Math.max(0,Math.min(1,v)); const x=x0+seam*(x1-x0); if(nowLeft){ rect.setAttribute('x',x0); rect.setAttribute('width',x-x0); } else { rect.setAttribute('x',x); rect.setAttribute('width',x1-x); } if(seamG) seamG.setAttribute('transform',`translate(${x} 0)`); svg.dataset.seam=seam; };
+  let down=false; svg.addEventListener('pointerdown',e=>{ down=true; try{svg.setPointerCapture(e.pointerId);}catch(_){} set((svgPoint(svg,e).x-x0)/(x1-x0)); e.preventDefault(); });
+  svg.addEventListener('pointermove',e=>{ if(down) set((svgPoint(svg,e).x-x0)/(x1-x0)); }); ['pointerup','pointercancel'].forEach(t=>svg.addEventListener(t,()=>down=false));
+  svg.tabIndex=0; svg.setAttribute('aria-label','Then and now: drag the seam, or use the arrow keys'); svg.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft'){ set(seam-0.02); e.stopPropagation(); e.preventDefault(); } if(e.key==='ArrowRight'){ set(seam+0.02); e.stopPropagation(); e.preventDefault(); } });
+  set(seam);
+}
+// G-04 timetable card: g.row[data-option] tap == option button; accent highlight on the picked row
+function wireG04(svg){
+  const rows=[...svg.querySelectorAll('g.row[data-option]')]; if(!rows.length) return;
+  rows.forEach(r=>{ r.style.cursor='pointer'; r.setAttribute('tabindex','0'); r.setAttribute('role','button'); const go=()=>{ if(pickOption) pickOption(+r.dataset.option); }; r.addEventListener('click',go); r.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); go(); } }); });
+  genHooks.onPick=i=>{ svg.querySelectorAll('.row-hl').forEach(x=>x.remove()); const r=rows.find(x=>+x.dataset.option===i); if(!r) return; const b=r.getBBox(); const hl=document.createElementNS('http://www.w3.org/2000/svg','rect'); hl.setAttribute('class','row-hl'); hl.setAttribute('x',b.x-6); hl.setAttribute('y',b.y-4); hl.setAttribute('width',b.width+12); hl.setAttribute('height',b.height+8); hl.setAttribute('rx',6); hl.setAttribute('fill','none'); hl.setAttribute('stroke','#b03a2e'); hl.setAttribute('stroke-width','5'); r.appendChild(hl); };
+}
+// G-07 carpet-bag game: drag .item into #bag-drop (or tap item, tap bag); correct → packed + counter; wrong → snap back + feedback; #close-btn → summary
+function wireG07(svg,s){
+  const it=s.interaction||{}; const items=[...svg.querySelectorAll('.item[data-option]')]; const drop=svg.querySelector('#bag-drop'), bag=svg.querySelector('#bag'), counter=svg.querySelector('#counter'), closeBtn=svg.querySelector('#close-btn'), packed=svg.querySelector('#packed')||bag, itemsG=svg.querySelector('#items')||svg;
+  if(!items.length||!drop) return; const need=+((bag&&bag.dataset.need)||svg.dataset.need||6); let sel=null, locked=false;
+  const body=svg.querySelector('#bag-body'); const bb=body?body.getBBox():drop.getBBox(); const tw=+svg.dataset.tileW||340, th=+svg.dataset.tileH||280, sc=0.5;
+  const slots=[]; for(let r=0;r<2;r++) for(let c=0;c<3;c++) slots.push([bb.x+30+c*(tw*sc+30), bb.y+bb.height*0.22+r*(th*sc+20)]);
+  const home=el=>el.setAttribute('transform','translate('+(el.dataset.home||'0 0')+')');
+  const inBag=(x,y)=>{ const b=drop.getBBox(); return x>=b.x&&x<=b.x+b.width&&y>=b.y&&y<=b.y+b.height; };
+  const count=()=>items.filter(i=>i.classList.contains('in')).length;
+  const setIn=(i,on)=>{ const el=items.find(x=>+x.dataset.option===i); if(!el) return; if(on&&!el.classList.contains('in')){ el.classList.add('in'); el.classList.remove('sel','wrong'); packed.appendChild(el); const [sx,sy]=slots[Math.min(slots.length-1,[...packed.querySelectorAll('.item')].length-1)]; el.setAttribute('transform',`translate(${sx} ${sy}) scale(${sc})`); }
+    else if(!on&&el.classList.contains('in')){ el.classList.remove('in'); itemsG.appendChild(el); home(el); } if(counter) counter.textContent=`${count()} of ${need}`; gameApi&&gameApi.setBtn&&gameApi.setBtn(i,on); if(sel===el) sel=null; };
+  const snap=i=>{ const el=items.find(x=>+x.dataset.option===i); if(!el) return; el.classList.remove('sel'); el.classList.add('wrong'); home(el); setTimeout(()=>el.classList.remove('wrong'),1200); if(sel===el) sel=null; };
+  const tryDrop=el=>{ const i=+el.dataset.option; bag&&bag.classList.remove('over'); if(el.dataset.correct==='true') setIn(i,true); else { snap(i); gameApi&&gameApi.feedback&&gameApi.feedback(i); } };
+  const select=el=>{ items.forEach(x=>x.classList.remove('sel')); if(sel===el){ sel=null; return; } sel=el; el.classList.add('sel'); };
+  items.forEach(el=>{ let start=null, moved=false, orig=null;
+    el.addEventListener('pointerdown',e=>{ if(locked) return; e.preventDefault(); if(el.classList.contains('in')) return; start=svgPoint(svg,e); moved=false; orig=(el.dataset.home||'0 0').split(' ').map(Number); itemsG.appendChild(el); try{ el.setPointerCapture(e.pointerId);}catch(_){} el.classList.add('drag'); });
+    el.addEventListener('pointermove',e=>{ if(!start) return; const p=svgPoint(svg,e); const dx=p.x-start.x, dy=p.y-start.y; if(Math.hypot(dx,dy)>8) moved=true; if(moved){ el.setAttribute('transform',`translate(${orig[0]+dx} ${orig[1]+dy})`); bag&&bag.classList.toggle('over',inBag(p.x,p.y)); } });
+    const up=e=>{ if(!start) return; el.classList.remove('drag'); const p=svgPoint(svg,e); const wasMoved=moved; start=null; moved=false; if(wasMoved){ if(inBag(p.x,p.y)) tryDrop(el); else { home(el); bag&&bag.classList.remove('over'); } } else { select(el); } };
+    el.addEventListener('pointerup',up); el.addEventListener('pointercancel',e=>{ if(start){ start=null; home(el); el.classList.remove('drag'); } });
+    el.addEventListener('click',e=>{ if(locked) return; if(el.classList.contains('in')){ setIn(+el.dataset.option,false); } });
+    el.addEventListener('keydown',e=>{ if(locked) return; if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); if(el.classList.contains('in')) setIn(+el.dataset.option,false); else if(sel===el) tryDrop(el); else select(el); } });
+  });
+  drop.addEventListener('click',()=>{ if(locked) return; if(sel) tryDrop(sel); }); drop.setAttribute('tabindex','0'); drop.setAttribute('role','button'); drop.setAttribute('aria-label','the bag — drop here');
+  drop.addEventListener('keydown',e=>{ if((e.key==='Enter'||e.key===' ')&&sel){ e.preventDefault(); e.stopPropagation(); tryDrop(sel); } });
+  if(closeBtn){ closeBtn.addEventListener('click',()=>gameApi&&gameApi.close&&gameApi.close()); closeBtn.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); e.stopPropagation(); gameApi&&gameApi.close&&gameApi.close(); } }); }
+  if(gameApi) gameApi.svg={ setIn, snap, lock:()=>{ locked=true; svg.style.pointerEvents='none'; }, count };
+}
+// G-08 (and any card): save inline SVG as PNG (fonts inlined as data: URLs; falls back to opening the SVG), share via Web Share
+let fontsCssInlineCache=null;
+async function fontsCssInline(){ if(fontsCssInlineCache!==null) return fontsCssInlineCache; try{ const base=new URL('fonts/fonts.css',location.href); let css=await (await fetch(base)).text();
+    const urls=[...css.matchAll(/url\('([^']+)'\)/g)].map(m=>m[1]); for(const u of urls){ const b=await (await fetch(new URL(u,base))).blob(); const d=await new Promise(r=>{ const fr=new FileReader(); fr.onload=()=>r(fr.result); fr.readAsDataURL(b); }); css=css.split(`url('${u}')`).join(`url('${d}')`); } fontsCssInlineCache=css; }catch(e){ fontsCssInlineCache=''; } return fontsCssInlineCache; }
+async function svgToPngBlob(svg){ const clone=svg.cloneNode(true); clone.removeAttribute('class'); clone.removeAttribute('style'); const vb=svg.viewBox.baseVal; const w=Math.round(vb&&vb.width||1080), h=Math.round(vb&&vb.height||1920); clone.setAttribute('width',w); clone.setAttribute('height',h); clone.setAttribute('xmlns','http://www.w3.org/2000/svg'); clone.setAttribute('xmlns:xlink','http://www.w3.org/1999/xlink');
+  const css=await fontsCssInline(); if(css){ const st=document.createElementNS('http://www.w3.org/2000/svg','style'); st.textContent=css; clone.insertBefore(st,clone.firstChild); }
+  for(const im of clone.querySelectorAll('image')){ for(const a of ['href','xlink:href']){ const v=im.getAttribute(a); if(v&&!/^data:/.test(v)){ try{ const b=await (await fetch(v)).blob(); const d=await new Promise(r=>{ const fr=new FileReader(); fr.onload=()=>r(fr.result); fr.readAsDataURL(b); }); im.setAttribute(a,d); }catch(e){ im.remove(); break; } } } }
+  const xml=new XMLSerializer().serializeToString(clone); const url=URL.createObjectURL(new Blob([xml],{type:'image/svg+xml;charset=utf-8'}));
+  try{ const img=new Image(); await new Promise((res,rej)=>{ img.onload=res; img.onerror=rej; img.src=url; }); const c=document.createElement('canvas'); c.width=w; c.height=h; const ctx=c.getContext('2d'); ctx.fillStyle='#efe6d3'; ctx.fillRect(0,0,w,h); ctx.drawImage(img,0,0,w,h); return await new Promise((res,rej)=>c.toBlob(b=>b?res(b):rej(new Error('toBlob failed')),'image/png')); } finally{ URL.revokeObjectURL(url); } }
+function downloadBlob(blob,name){ const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },2000); }
+async function saveCard(note){ const svg=$('#media svg.gen'); if(!svg){ note('No card to save yet.'); return; } const name=(scenes[idx].id||'card')+'.png'; try{ const b=await svgToPngBlob(svg); downloadBlob(b,name); note('Saved '+name); }
+  catch(e){ console.warn('png export failed, opening svg',e); const xml=new XMLSerializer().serializeToString(svg); const u=URL.createObjectURL(new Blob([xml],{type:'image/svg+xml'})); window.open(u,'_blank'); note('PNG export failed here — opened the SVG in a new tab instead.'); } }
+async function shareCard(note){ const svg=$('#media svg.gen'); const title=scenes[idx].title; try{ if(svg&&navigator.share){ const b=await svgToPngBlob(svg); const f=new File([b],(scenes[idx].id||'card')+'.png',{type:'image/png'}); if(navigator.canShare&&navigator.canShare({files:[f]})){ await navigator.share({files:[f],title,text:title}); note('Shared.'); return; } if(navigator.share){ await navigator.share({title,text:title,url:location.href}); note('Shared.'); return; } }
+    await navigator.clipboard.writeText(location.href); note('Link copied to the clipboard.'); }catch(e){ if(e&&e.name==='AbortError') return; try{ await navigator.clipboard.writeText(location.href); note('Link copied to the clipboard.'); }catch(_){ note('Share not available here: '+location.href); } } }
 
 // ---------- Renderers ----------
 function card(html){ const d=document.createElement('div'); d.className='fill'; d.innerHTML=`<div class="card">${html}</div>`; $('#media').appendChild(d); }
@@ -134,8 +233,14 @@ function showStreetView(s){
   render();
 }
 const ROUTE=[["London",51.5074,-0.1278],["Suez",29.9668,32.5498],["Bombay",18.9388,72.8354],["Calcutta",22.5726,88.3639],["Hong Kong",22.3193,114.1694],["Yokohama",35.4437,139.6380],["San Francisco",37.7749,-122.4194],["New York",40.7128,-74.0060],["London",51.5074,-0.1278]];
-function showRouteMap(dayState=true){
-  $('#media').innerHTML='<div id="lmap" class="fill" style="padding:0"></div>';
+// showRouteMap(dayState[, ref]) — used by the linear renderer. Prefers the G-01 SVG (all layers shown); Leaflet is the fallback when the file is missing.
+async function showRouteMap(dayState=true, ref){
+  const r=ref||`generated/g-01/route-map_${dayState?'day-01-state':'full-loop_9-layers'}.svg`; const txt=await fetchGen(r);
+  if(txt){ const svg=inlineSvg(txt,r); if(svg) return svg; }
+  return leafletRouteMap(dayState);
+}
+function leafletRouteMap(dayState=true){
+  if(map){ try{map.remove();}catch(e){} map=null; } $('#media').innerHTML='<div id="lmap" class="fill" style="padding:0"></div>';
   map=L.map('lmap',{zoomControl:false,attributionControl:true, worldCopyJump:true}).setView([25,20],2);
   L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png',{attribution:'© OpenStreetMap, © CARTO',maxZoom:6}).addTo(map);
   const pts=ROUTE.map(r=>[r[1],r[2]]);
@@ -144,25 +249,47 @@ function showRouteMap(dayState=true){
   L.polyline(wrapped,{color:'#8a7150',weight:2,dashArray:'4 6',opacity:dayState?0.5:1}).addTo(map);
   ROUTE.forEach((r,i)=>{ if(i===ROUTE.length-1) return; const on = !dayState || i===0; L.circleMarker([r[1], i>=6? r[2]+360 : r[2]],{radius:on?7:5,color:on?'#d9a441':'#8a7150',fillColor:on?'#d9a441':'#e9e2d0',fillOpacity:1,weight:2}).addTo(map).bindTooltip(r[0],{permanent:on,direction:'top',className:'muted'}); });
   if(!dayState){ [["Suez Canal · 1869",30.0,32.5],["Promontory · 1869",41.6,-112.5+360],["Jabalpur · 1870",23.2,79.9]].forEach(e=>L.marker([e[1],e[2]],{icon:L.divIcon({className:'',html:`<div style="font:11px system-ui;color:#2a2118;background:#f4ecd8;border:1px solid #d9a441;border-radius:6px;padding:2px 6px;white-space:nowrap">${e[0]}</div>`})}).addTo(map)); }
-  setTimeout(()=>{ map.invalidateSize(); map.fitBounds(L.latLngBounds(wrapped),{padding:[24,24]}); },60);
+  setTimeout(()=>{ if(map){ map.invalidateSize(); map.fitBounds(L.latLngBounds(wrapped),{padding:[24,24]}); } },60);
 }
 function showVictorianMap(m){ showImage(m,true); }
 
+let interactionResolved=false, cdTimer=null;
+function clearCountdown(){ if(cdTimer){ clearInterval(cdTimer); cdTimer=null; } $('#countdown').textContent=''; }
+function startCountdown(sec, onTimeout){ clearCountdown(); let left=sec; const show=()=>$('#countdown').textContent=`· ${left}s`; show(); cdTimer=setInterval(()=>{ left--; if(left<=0){ clearCountdown(); onTimeout&&onTimeout(); } else show(); },1000); }
 function renderInteraction(s){
-  const box=$('#interaction'); box.innerHTML=''; const it=s.interaction; if(!it||it.kind==='none') return;
+  const box=$('#interaction'); box.innerHTML=''; pickOption=null; gameApi=null; interactionResolved=false; clearCountdown(); const it=s.interaction; if(!it||it.kind==='none') return;
+  const after=()=>{ const a=s.narration&&s.narration.after_script; if(a&&!box.dataset.afterDone){ box.dataset.afterDone='1'; return a; } return null; };
   if(it.prompt){ const p=document.createElement('p'); p.innerHTML=`<b>${it.prompt}</b>`; box.appendChild(p); }
   if(it.kind==='choice'||it.kind==='tap-to-find'){
-    (it.options||[]).forEach(o=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=o.text; b.onclick=()=>{ pauseTimer();
-      box.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add(o.correct?'correct':'wrong','picked');
-      if(!o.correct){ const c=[...box.querySelectorAll('.opt')].find((x,i)=>it.options[i].correct); c&&c.classList.add('correct'); }
-      const f=document.createElement('div'); f.className='fb'; f.textContent=o.feedback||(o.correct?'Yes.':'Not quite.'); box.appendChild(f); speak(f.textContent); if(o.goto) box.dataset.goto=o.goto; }; box.appendChild(b); });
+    const graded=(it.options||[]).some(o=>o.correct!==undefined); // info-taps (no correct flags) stay open for more taps
+    (it.options||[]).forEach((o,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent=o.text; b.onclick=()=>{ if(b.disabled) return; interactionResolved=true; clearCountdown(); pauseTimer();
+      if(graded){ box.querySelectorAll('.opt').forEach(x=>x.disabled=true); b.classList.add(o.correct?'correct':'wrong','picked'); if(!o.correct){ const c=[...box.querySelectorAll('.opt')].find((x,k)=>it.options[k].correct); c&&c.classList.add('correct'); } }
+      else { box.querySelectorAll('.opt').forEach(x=>x.classList.remove('picked')); b.classList.add('picked'); box.querySelectorAll('.fb').forEach(x=>x.remove()); }
+      const f=document.createElement('div'); f.className='fb'; f.textContent=o.feedback||(o.correct?'Yes.':'Not quite.'); box.appendChild(f); const a=after(); speak(f.textContent, null, ()=>{ if(a&&graded) speak(a); }); if(o.goto) box.dataset.goto=o.goto; genHooks.onPick&&genHooks.onPick(i); }; box.appendChild(b); });
+    pickOption=i=>{ const b=box.querySelectorAll('.opt')[i]; if(b&&!b.disabled) b.click(); };
+    box.autoResolve=()=>{ const k=(it.options||[]).findIndex(o=>o.correct); if(k>=0&&pickOption) pickOption(k); else { paused=false; } };
   } else if(it.kind==='drag'){
-    if(it.options){ const list=document.createElement('div'); (it.options).forEach(o=>{ const b=document.createElement('button'); b.className='opt'; b.textContent='☐ '+o.text; b.dataset.on='0'; b.onclick=()=>{ b.dataset.on=b.dataset.on==='1'?'0':'1'; b.textContent=(b.dataset.on==='1'?'☑ ':'☐ ')+o.text; b.classList.toggle('picked'); }; list.appendChild(b); }); box.appendChild(list);
-      const chk=document.createElement('button'); chk.className='btn primary'; chk.textContent='Close the bag'; chk.onclick=()=>{ pauseTimer(); let ok=0,bad=0; [...list.children].forEach((b,i)=>{ const want=!!it.options[i].correct, got=b.dataset.on==='1'; if(want&&got) ok++; if(!want&&got) bad++; b.classList.add(want?'correct':(got?'wrong':'')); }); const f=document.createElement('div'); f.className='fb'; const need=it.options.filter(o=>o.correct).length; f.textContent= ok===need&&bad===0 ? 'Packed like Fogg. Two shirts, three pairs of stockings, and the money.' : `${ok} of ${need} right, ${bad} things Fogg would have left behind.` + (it.answer?' '+it.answer:''); box.appendChild(f); speak(f.textContent); }; box.appendChild(chk); }
-    else { const p=document.createElement('p'); p.className='muted'; p.textContent='(drag interaction — the split-frame is shown as two images here)'; box.appendChild(p); }
+    if(it.options){ const list=document.createElement('div'); const need=it.options.filter(o=>o.correct).length; let done=false, wrongN=0;
+      const fbLine=txt=>{ box.querySelectorAll('.fb.tmp').forEach(x=>x.remove()); const f=document.createElement('div'); f.className='fb tmp'; f.textContent=txt; box.appendChild(f); speak(txt); };
+      const setBtn=(i,on)=>{ const b=list.children[i]; if(!b) return; b.dataset.on=on?'1':'0'; b.textContent=(on?'☑ ':'☐ ')+it.options[i].text; b.classList.toggle('picked',on); };
+      it.options.forEach((o,i)=>{ const b=document.createElement('button'); b.className='opt'; b.textContent='☐ '+o.text; b.dataset.on='0'; b.onclick=()=>{ if(done) return; const on=b.dataset.on==='1';
+        if(gameApi&&gameApi.svg){ if(o.correct) gameApi.svg.setIn(i,!on); else { wrongN++; gameApi.svg.snap(i); fbLine(o.feedback||'Fogg leaves that.'); } } else setBtn(i,!on); }; list.appendChild(b); }); box.appendChild(list);
+      const chk=document.createElement('button'); chk.className='btn primary'; chk.textContent='Close the bag';
+      const close=()=>{ if(done) return; done=true; interactionResolved=true; clearCountdown(); pauseTimer(); let ok=0,bad=0; const svgMode=!!(gameApi&&gameApi.svg);
+        [...list.children].forEach((b,i)=>{ const want=!!it.options[i].correct, got=b.dataset.on==='1'; if(want&&got) ok++; if(!want&&got) bad++; b.classList.add(want?'correct':(got?'wrong':'')); b.disabled=true; }); if(svgMode) bad=wrongN;
+        box.querySelectorAll('.fb.tmp').forEach(x=>x.remove()); const f=document.createElement('div'); f.className='fb'; f.textContent= ok===need&&bad===0 ? 'Packed like Fogg. Two shirts, three pairs of stockings, and the money.' : `${ok} of ${need} right, ${bad} thing${bad===1?'':'s'} Fogg would have left behind.` + (it.answer?' '+it.answer:''); box.appendChild(f); const a=after(); speak(f.textContent,null,()=>{ if(a) speak(a); }); chk.disabled=true; if(svgMode) gameApi.svg.lock(); };
+      chk.onclick=close; box.appendChild(chk);
+      gameApi={ setBtn, feedback:i=>{ wrongN++; fbLine(it.options[i].feedback||'Fogg leaves that.'); }, close, need, get done(){ return done; }, svg:null };
+      box.autoResolve=close;
+    } // drag without options (G-02 seam): the prompt alone is the instruction
+  } else if(it.kind==='save'){
+    const row=document.createElement('div'); row.style.cssText='display:flex;gap:8px;flex-wrap:wrap;margin:6px 0'; const note=document.createElement('p'); note.className='muted';
+    const b1=document.createElement('button'); b1.className='btn primary'; b1.textContent='Save card (PNG)'; b1.onclick=()=>{ b1.disabled=true; saveCard(t=>note.textContent=t).finally(()=>b1.disabled=false); };
+    const b2=document.createElement('button'); b2.className='btn'; b2.textContent=navigator.share?'Share':'Copy link'; b2.onclick=()=>shareCard(t=>note.textContent=t);
+    row.append(b1,b2); box.append(row,note); interactionResolved=true;
   } else if(it.kind==='chat'){
     const wrap=document.createElement('div'); wrap.className='chat'; box.appendChild(wrap); const chips=document.createElement('div'); chips.className='chips'; box.appendChild(chips);
-    (it.options||[]).forEach(o=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=o.text; c.onclick=()=>{ pauseTimer(); const q=document.createElement('div'); q.className='q'; q.textContent=o.text; wrap.appendChild(q); const a=document.createElement('div'); a.className='a'; a.textContent=o.feedback||o.answer||'…'; wrap.appendChild(a); speak(a.textContent); c.disabled=true; }; chips.appendChild(c); });
+    (it.options||[]).forEach(o=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=o.text; c.onclick=()=>{ interactionResolved=true; clearCountdown(); pauseTimer(); const q=document.createElement('div'); q.className='q'; q.textContent=o.text; wrap.appendChild(q); const a=document.createElement('div'); a.className='a'; a.textContent=o.feedback||o.answer||'…'; wrap.appendChild(a); speak(a.textContent); c.disabled=true; }; chips.appendChild(c); });
     const n=document.createElement('p'); n.className='muted'; n.textContent='Scripted fallback answers (no LLM connected in the dry run). Guardrails: '+(it.guardrails||[]).length+' rules.'; box.appendChild(n);
   } else if(it.kind==='walk'){ const p=document.createElement('p'); p.className='muted'; p.textContent=`Walk: ${(it.route||[]).length} waypoints. Use ◀ stop ▶ on the view.`; box.appendChild(p); }
 }
@@ -174,31 +301,45 @@ function renderOverlays(s, t){
 }
 
 async function showScene(i){
-  clearInterval(timer); speechSynthesis.cancel(); stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
-  idx=Math.max(0,Math.min(scenes.length-1,i)); const s=scenes[idx]; elapsed=0; paused=false;
+  clearInterval(timer); sceneSerial++; sched=null; genHooks={}; clearCountdown(); speechSynthesis.cancel(); stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
+  idx=Math.max(0,Math.min(scenes.length-1,i)); const s=scenes[idx]; elapsed=0; paused=false; const ser=sceneSerial;
   $('#hScene').textContent=`scene ${idx+1}/${scenes.length} · ${s.type} · ${s.duration_s}s`; $('#title').textContent=s.title; $('#media').innerHTML='';
   const script=s.narration&&s.narration.script||''; $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:'';
   const media=s.media||[]; const yt=media.find(m=>m.kind==='youtube'), img=media.filter(m=>m.kind==='image'), aud=media.find(m=>m.kind==='audio'&&isCommons(m.ref)), gen=media.filter(m=>m.kind==='generated');
+  const genStarts=gen.map(g=>g.start_s||0), firstGen=gen.length?Math.min(...genStarts):Infinity;
+  const photoCycle=()=>{ const me=sched&&sched.active; showImage(img[0],true); if(img.length>1){ let k=0; const cyc=setInterval(()=>{ if(scenes[idx]!==s||(sched&&sched.active!==me)) return clearInterval(cyc); k=(k+1)%img.length; showImage(img[k],true); }, Math.max(8000, s.duration_s*1000/img.length)); } };
   try{
     if(s.type==='video' && yt){ await showYouTube(yt); }
     else if(s.type==='streetview'){ showStreetView(s); }
-    else if(s.type==='map'){ if(gen.length && /route-map/.test(gen[0].ref)) showRouteMap(!/full-loop|enablers/.test(gen.map(g=>g.ref).join())); else if(media.find(m=>m.kind==='map')) showVictorianMap(media.find(m=>m.kind==='map')); else showRouteMap(true); }
-    else if(s.type==='photo' && img.length){ await showImage(img[0], true); if(img.length>1){ let k=0; const cyc=setInterval(()=>{ if(scenes[idx]!==s) return clearInterval(cyc); k=(k+1)%img.length; showImage(img[k],true); }, Math.max(8000, s.duration_s*1000/img.length)); } }
+    else if(s.type==='map'){
+      if(gen.length){ setSchedule(gen.map(g=>mkGen(g,s,{ ok:(svg,it)=>{ if(/route-map|g-01/.test(g.ref)) wireG01(svg,it,g,s); }, fail:()=>{ if(/route-map/.test(g.ref)) leafletRouteMap(!/full-loop|enablers/.test(g.ref)); else sceneCard(s,[g.manifest_id]); } }))); }
+      else if(media.find(m=>m.kind==='map')) showVictorianMap(media.find(m=>m.kind==='map')); else showRouteMap(true); }
+    else if(s.type==='photo' && (img.length||gen.length)){
+      if(gen.length){ const items=gen.map(g=>mkGen(g,s,{ ok:svg=>{ if(/then-now|g-02/.test(g.ref)||svg.id==='g02') wireG02(svg); }, fail:()=> img.length? photoCycle() : sceneCard(s,[g.manifest_id]) }));
+        if(img.length && (img[0].start_s||0) < firstGen) items.push({start:img[0].start_s||0, fn:photoCycle}); setSchedule(items); }
+      else photoCycle(); }
     else if(img.length && (s.type==='quiz'||s.type==='dialogue')){ await showImage(img[0], false); }
-    else { // card / interstitial / game / anything generated
-      const ov=(s.overlays||[]).map(o=>`<div>${o.kind==='pin'?'📍 ':''}${o.text}</div>`).join('');
-      card(`<h2>${s.title}</h2>${s.learning_goal?`<p><small>${s.learning_goal}</small></p>`:''}${ov?`<div style="margin-top:.6em;font-family:system-ui;font-size:.85em;color:#4a3d2f">${ov}</div>`:''}${gen.length?`<p><small>generated asset pending: ${gen.map(g=>g.manifest_id).join(', ')}</small></p>`:''}`);
-      if(img.length && s.type!=='game'){ const im=document.createElement('img'); im.src=await commonsUrl(img[0].ref, 800); im.style.cssText='position:absolute;inset:auto;right:2vmin;bottom:2vmin;width:22%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.6)'; $('#media').appendChild(im); }
+    else if(gen.length){ // card / interstitial / game with a generated asset
+      const items=gen.map(g=>mkGen(g,s,{ ok:svg=>{ if(s.type==='game') wireG07(svg,s); else if(s.interaction&&(s.interaction.kind==='tap-to-find'||s.interaction.kind==='choice')) wireG04(svg); } }));
+      if(firstGen>0) items.push({start:0, fn:()=>sceneCard(s,[])});
+      if(s.type!=='game') img.filter(m=>!genStarts.includes(m.start_s||0)).forEach(m=>items.push({start:m.start_s||0, fn:()=>{ const me=sched.active; commonsUrl(m.ref,800).then(()=>{ if(sched&&sched.active===me) insetImage(m); }); }}));
+      setSchedule(items); }
+    else { // card / interstitial / game without generated media
+      sceneCard(s,[]);
+      if(img.length && s.type!=='game') insetImage(img[0]);
     }
   }catch(e){ console.error(e); card(`<h2>${s.title}</h2><p><small>media failed: ${e.message}</small></p>`); }
   if(aud && s.type!=='video') playBed(aud);
   renderInteraction(s); renderOverlays(s,0);
-  // narration + timer
-  speak(script, ci=>{ if(!captions) return; $('#script').innerHTML=`<span class="said">${script.slice(0,ci)}</span><span class="unsaid">${script.slice(ci)}</span>`; });
+  // narration + timer (narration.starts_at_s honoured; pause_narration/timeout_s: countdown after the script, auto-resolve on timeout)
+  const it=s.interaction; const onEnd=()=>{ if(ser!==sceneSerial||!it||it.kind==='none'||interactionResolved) return; if(it.pause_narration&&it.timeout_s){ paused=true; startCountdown(it.timeout_s, ()=>{ if(ser!==sceneSerial) return; const box=$('#interaction'); if(box.autoResolve) box.autoResolve(); else paused=false; }); } };
+  const startTts=()=>{ if(ser!==sceneSerial) return; speak(script, ci=>{ if(!captions) return; $('#script').innerHTML=`<span class="said">${script.slice(0,ci)}</span><span class="unsaid">${script.slice(ci)}</span>`; }, onEnd); };
+  const delay=(s.narration&&s.narration.starts_at_s)||0; if(delay>0) setTimeout(startTts, delay*1000); else startTts();
   t0=performance.now(); timer=setInterval(tick,500);
 }
-function tick(){ if(paused) { t0=performance.now()-elapsed*1000; return; } const s=scenes[idx]; elapsed=(performance.now()-t0)/1000; $('#prog i').style.width=Math.min(100,elapsed/s.duration_s*100)+'%'; $('#clock').textContent=`${Math.floor(elapsed)}s / ${s.duration_s}s`; renderOverlays(s,elapsed);
+function tick(){ if(paused) { t0=performance.now()-elapsed*1000; return; } const s=scenes[idx]; elapsed=(performance.now()-t0)/1000; $('#prog i').style.width=Math.min(100,elapsed/s.duration_s*100)+'%'; $('#clock').textContent=`${Math.floor(elapsed)}s / ${s.duration_s}s`; renderOverlays(s,elapsed); schedTick();
   const needsInput = s.interaction && s.interaction.kind!=='none';
+  if(s.type==='game' && elapsed>=s.duration_s && gameApi && !gameApi.done) gameApi.close();
   if(elapsed>=s.duration_s && !needsInput && !speechSynthesis.speaking){ next(); } }
 function pauseTimer(){ paused=true; }
 function next(){ const g=$('#interaction').dataset.goto; const j= g ? scenes.findIndex(x=>x.id===g) : -1; if(j>=0) return showScene(j); const nx=scenes[idx].next; const k= nx? scenes.findIndex(x=>x.id===nx) : -1; showScene(k>=0?k:idx+1); }

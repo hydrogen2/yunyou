@@ -1,0 +1,10 @@
+{
+  "out_dir": "products/around-the-world-80-days/day-01-london/generated/g-02",
+  "basename": "then-now_savile-row_M-32_vs_M-33",
+  "title": "Savile Row — c. 1890 (Henry Poole & Co archive, PD) vs from Burlington Gardens today (Dave Fergusson 2009)",
+  "then": { "id": "M-32", "href": "src/M-32.jpg", "natural": [695, 478] },
+  "now":  { "id": "M-33", "href": "src/M-33.jpg", "natural": [494, 363] },
+  "captions": { "then": "c. 1890 — tailors had been here since about 1803", "now": "Today — Henry Poole & Co at No. 15 since 1982" },
+  "source": "Henry Poole & Co archive, c. 1890 (PD) · Dave Fergusson 2009, CC BY-SA 2.0",
+  "seam": 0.5, "sepia_then": true, "formats": ["16x9"]
+}
