@@ -6,7 +6,7 @@
   "duration_s": 25,
   "learning_goal": "Know the forecourt cross is an 1865 replica and that London's distances are measured from the Charles I statue.",
   "narration": {
-    "script": "Look up. The cross is a replica, put up in 1865: twenty-one metres — seventy feet — of Portland stone. The original of 1291 stood a couple of hundred metres off to your right, where King Charles the First now rides in bronze, and London's distances are still measured from him, not from this cross.",
+    "script": "Look up. The cross is a replica, put up in 1865: twenty-one metres — seventy feet — of Portland stone. The original of 1291 stood a couple of hundred metres off to your right. King Charles the First rides there now, in bronze. London's distances are still measured from him, not from this cross.",
     "timing": "over",
     "voice": "guide"
   },
@@ -52,6 +52,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4)."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4). A1 narrator 2026-08-18: 36-word Charles I sentence split into three; ends on 'this cross'."
   }
 }

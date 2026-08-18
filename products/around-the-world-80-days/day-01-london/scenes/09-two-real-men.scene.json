@@ -6,7 +6,7 @@
   "duration_s": 30,
   "learning_goal": "Know that Thomas Cook and George Francis Train really went round the world just as Verne wrote; feel that Fogg's bet was in the air.",
   "narration": {
-    "script": "Two real men were doing it as Verne wrote. Thomas Cook, going west, left Liverpool in late September 1872 on the first commercial round-the-world tour — two hundred and twenty-two days, with letters home to the Times; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early — and later said, 'Verne stole my thunder. I'm Phileas Fogg.'",
+    "script": "Two real men were doing it as Verne wrote. Thomas Cook, going west, left Liverpool in late September 1872 — the first commercial round-the-world tour. Two hundred and twenty-two days, with letters home to The Times; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'",
     "timing": "over",
     "voice": "guide"
   },
@@ -59,6 +59,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 narrator 2026-08-18: two sentences per man (Continuity #10); 75→73 words / 30 s (2.43 w/s — tight, interactive-only); Train quote hedged 'later claimed' (F-36 med)."
   }
 }

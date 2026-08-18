@@ -20,7 +20,7 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
 
 ## Queue (top = next)
 ### A. Day 1 London — finish
-- [ ] A1 Apply review fix lists: Scene Developer + Narrator apply `review/fact-check.md` (5 wrong + hedges),
+- [x] A1 (done 2026-08-18, runs 14:00 + 17:00) Apply review fix lists: Scene Developer + Narrator apply `review/fact-check.md` (5 wrong + hedges),
       `review/continuity.md` (3 high, 7 med), `review/qa.md` (6 must-fix incl. Quiz B before dialogue, scene 18 daylight vs "dark",
       cold-open pace, wrong start pano, narration-pause). Re-validate. Note in each scene `review.notes` what changed.
 - [ ] A2 Engine/Tools: generate G-01…G-08 into `day-01-london/generated/` per manifest specs (SVG/PNG, cream/ink/one accent);

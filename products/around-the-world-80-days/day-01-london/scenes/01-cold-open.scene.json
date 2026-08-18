@@ -6,7 +6,7 @@
   "duration_s": 75,
   "learning_goal": "Know the date, the deadline and the stake in one breath; feel a clock already running.",
   "narration": {
-    "script": "It is Wednesday, the second of October, 1872. Twenty-nine minutes past eleven in the morning. On a quiet street in Mayfair a French valet is being hired by a man who runs his life by the clock, and the valet's watch is four minutes slow. Keep that watch in mind. By a quarter to nine tonight, that same man will have staked half his fortune that the whole world fits into eighty days. Eighty days. Nineteen hundred and twenty hours. A hundred and fifteen thousand two hundred minutes. Look at the map: only London is lit. Over the next eighty days we will light the rest, one port at a time. Jules Verne printed this journey in a Paris newspaper that same winter, as if it were happening. The novel is our guidebook; we travel today. First, Savile Row.",
+    "script": "It is Wednesday, the second of October, 1872. Twenty-nine minutes past eleven. In a quiet Mayfair street a French valet is hired by a man who runs his life by the clock. The valet's watch is four minutes slow. Remember the watch. By a quarter to nine tonight, that same man will have staked half his fortune. His bet: the whole world fits into eighty days. Look at the map: only London is lit. Over eighty days we'll light the rest, one port at a time. The novel is our guidebook; we travel today. First, Savile Row.",
     "timing": "over",
     "voice": "guide",
     "starts_at_s": 10
@@ -97,6 +97,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1)."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1). A1 narrator 2026-08-18: script cut 139→97 words (≤ 100 for the 60-s linear window from 10 s); hours/minutes sentence dropped (caption 36–46 s carries it); 'Paris newspaper' sentence moved to 08; 'Keep that watch in mind' → 'Remember the watch'; sentences ≤ 20 words; ends on 'Savile Row'."
   }
 }

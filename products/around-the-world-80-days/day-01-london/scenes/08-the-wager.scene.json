@@ -6,7 +6,7 @@
   "duration_s": 60,
   "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
   "narration": {
-    "script": "Evening, at the whist table. In the novel — and only in the novel — a gentleman has walked out of the Bank of England three days ago with fifty-five thousand pounds, and the Daily Telegraph has printed a timetable showing the world can be circled in eighty days. Andrew Stuart, an engineer, wagers four thousand pounds that it cannot be done. Fogg raises him: twenty thousand pounds, on deposit at Baring's — half his fortune — in 'eighty days or less; in nineteen hundred and twenty hours, or a hundred and fifteen thousand two hundred minutes'. Look at the card: six names on the memorandum — Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Verne's arithmetic holds: it is exactly eighty days, and it really was a Saturday. Fogg's motto for the evening: 'The unforeseen does not exist.' One footnote from today. Baring's, Fogg's bank, was one of London's oldest; it went under in 1995. The wager has outlived the bank.",
+    "script": "Evening, at the whist table. In the novel — only in the novel — a thief has walked out of the Bank of England with fifty-five thousand pounds. The Daily Telegraph has printed a timetable: the world in eighty days. Andrew Stuart, an engineer, wagers four thousand pounds it can't be done. Fogg raises him: twenty thousand pounds at Baring's — half his fortune — in 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Exactly eighty days — and it really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Verne printed this journey in a Paris newspaper that same winter, as if it were happening. Footnote from today: Baring's went under in 1995. The wager has outlived the bank.",
     "timing": "over",
     "voice": "guide"
   },
@@ -79,13 +79,14 @@
     "F-09",
     "F-10",
     "F-11",
-    "F-23"
+    "F-23",
+    "F-32"
   ],
   "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). Cut to 60 s: the six names live on the G-05 card, the guide says 'Stuart first, Fogg last'. Narrator: ≤ 170 words, fix the tense of the opener (Continuity #9); the 'Paris newspaper' sentence from 01 may land here (F-32). Linear cut: keep whole (60 s), then skip 09 and play 10 without the tap.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged."
   }
 }

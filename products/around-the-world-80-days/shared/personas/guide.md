@@ -1,6 +1,6 @@
 # Persona — The Guide (default narrator)
 
-**Narrator / Voice:** narrator (Claude)   **Date:** 2026-08-18   **Status:** v1 (expanded from v0; supersedes it)   **Scope:** every chapter of the product; Day 1 examples cite `day-01-london/research/fact-sheet.md`
+**Narrator / Voice:** narrator (Claude)   **Date:** 2026-08-18   **Status:** v1.1 — A1 narrator pass 2026-08-18 (example 6 side → right, unverified; contractions rule; §8 re-ordered for D4 Quiz-B-before-chat and D3 honest cap)   **Scope:** every chapter of the product; Day 1 examples cite `day-01-london/research/fact-sheet.md`
 **Inputs:** ../../brief.md · ../world-bible.md · ../style-guide.md · studio/style/style-guide.md · day-01-london/rundown/rundown.md · passepartout.md
 
 ---
@@ -21,6 +21,7 @@ Name on screen: **"your guide"**. A modern voice travelling *today* along Fogg's
 8. **The clock is the through-line.** Time of day is stated as Fogg would hear it — "twenty-nine minutes past eleven", "a quarter to nine" — never "11:29 am".
 9. **British spelling for UK chapters; metric first** — "about 30 °C (86 °F)" (F-02); "Savile" in narration, "Saville" only inside a Verne quotation.
 10. **Warmth over cleverness.** When a beat is moving (the beggar-woman, F-12) the guide says less, slower.
+11. **Contractions are allowed** in the guide's speech ("it's", "we've", "that's", "can't") — warmth, not slang; the narrator normalises at record so a scene never carries two variants of one line (style guide R4). Persona hand-off lines are copied with their contractions exactly as written in §8.
 
 ## 3. Six example lines — and three anti-examples
 
@@ -31,7 +32,7 @@ Name on screen: **"your guide"**. A modern voice travelling *today* along Fogg's
 3. "Nine tall windows onto the garden — Verne got that exactly right. The red porphyry columns he made up." (F-07, F-15)
 4. "Keep this in mind for later: Saturday the twenty-first of December, a quarter to nine, this room." (F-11)
 5. "The cab costs about a shilling. Sixpence a mile or part of a mile — call it two." (F-12, F-28)
-6. "Rain on the roof, not fog. Watch the left window as we cross the river — that's the Embankment, two years old." (F-13, F-26)
+6. "Rain on the roof, not fog. Look right as we cross the river — that's the Embankment, two years old." (F-13, F-26) — *side unverified:* "right" assumes the reframed window in scene 18 (M-13, left half) faces west; A3 confirms on the frame. If it faces east, scene 18 drops the Embankment cue and this line becomes "Watch the window as we cross the river…" — change both together, never one.
 
 **Anti-examples** (do not ship):
 
@@ -78,25 +79,28 @@ Not allowed: "right?", "guys", "amazing", "literally", "so" as a sentence-starte
 
 ## 8. Hand-off to Passepartout — and back
 
-Applies to Day 1 seg 9 (dialogue, chat, text-bound); the same shape serves any later dialogue persona.
+Applies to Day 1 scene 17 (dialogue, chat, text-bound); the same shape serves any later dialogue persona. **Order since D4:** 15 look up the cross → **16 Quiz B (the weather)** → **17 Passepartout** → 18 the boat train. The "look up at the roof" cue therefore belongs to the *quiz*, not to the hand-back. **These lines are the single source of truth** together with passepartout.md §6; scenes copy them verbatim (R4) — 17's `narration.script` / `after_script` and 16's `narration.script` are checked against this section.
 
-**Before (guide, ≈ 12 s, then silence):**
-1. Set the clock and the weather in one sentence: "It's twenty to nine, and it's raining." (F-12, F-13)
+**Quiz B opener (guide, scene 16 `narration.script`, ≈ 8 s, then the guide pauses):**
+"Twenty to nine, still under the roof. Look up — what is the weather doing tonight?" — the guide names no weather before the reveal (R5); the reveal is 16's `after_script`: "Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter." (F-13, F-30)
+
+**Before the chat (guide, ≈ 12 s, then silence — scene 17 `narration.script`):**
+1. Set the clock and the weather in one sentence: "It's twenty to nine, and it's raining." (F-12, F-13) — allowed now, the quiz has revealed it.
 2. Introduce him with his limit built in: "That's Passepartout, with the bag — he's known his master for about nine hours." (F-02, F-12)
 3. Invite, and stop: "Ask him something." The music ducks out; the rain bed stays; the caption label switches to "Passepartout".
 
-**During:** the guide says nothing. If the traveller asks *the guide* a question during the chat, the scene routes it to Passepartout; the guide never answers as him and never answers for him. The chips are his (passepartout.md §5). Cap: 4 exchanges or 90 s or a tap on "the train".
+**During:** the guide says nothing. If the traveller asks *the guide* a question during the chat, the scene routes it to Passepartout; the guide never answers as him and never answers for him. The chips are his (passepartout.md §5 answers 1–5). Cap (D3, honest): **4 exchanges or 180 s** (`interaction.timeout_s`) or a tap on "the train"; if the engine is unavailable the chips play as canned answers (`on_llm_unavailable: choice`).
 
-**Back (guide, first line always the same tic):**
-- "We've got a train to catch. Twenty to nine on the platform. Look up at the roof — what's the weather doing?" → Quiz B (F-12, F-13, F-30).
+**Back (guide, first line always the same tic — scene 17 `narration.after_script`, spoken and captioned):**
+- "We've got a train to catch. Twenty to nine on the platform." → 18 the boat train ("Now, tonight. Twenty to nine, seated."). (F-12)
 - If the traveller skipped the chat: same line, minus the first sentence.
-- After the quiz the guide may fold in one thing Passepartout said, attributed ("he told us he's still holding the bag") — never a spoiler, never a fact he could not know (his whitelist is the guide's ceiling for that segment).
+- After the hand-back the guide may fold in one thing Passepartout said, attributed ("he told us he's still holding the bag") — never a spoiler, never a fact he could not know (his whitelist is the guide's ceiling for that segment). Scene 18 as written does not use this option.
 
 **Rules of the boundary:**
 - The guide knows the whole fact sheet; Passepartout knows only ch. I–IV (passepartout.md §2–3). Anything the traveller learns "later" (F-13, the gas at Sydenham) is the *guide's* to tell, after the hand-back — Ending B's button line is the guide quoting Verne, not Passepartout confessing.
 - Voices never overlap; a 1-s pause either side of the boundary; speaker labels on all captions.
 - The guide never comments on Passepartout being an AI or a "persona"; on screen he is "Passepartout", full stop.
-- **Linear cut:** the scripted three-line exchange in passepartout.md §6 (guide → Passepartout → guide, ≈ 30 s), then straight to the weather line and the video.
+- **Linear cut:** 16 plays as question + reveal in one breath (≈ 15 s, no choice); then the scripted three-line exchange in passepartout.md §6 (guide → Passepartout → guide, ≈ 30 s), then straight to 18.
 
 ## Decisions I need from the human
 - [ ] Rundown Decision 2 (modern guide, not a Victorian club member) — this sheet assumes the modern guide. If you choose the club-member cameo, I will write it as a second text-bound persona, not as a change to this voice.
@@ -106,3 +110,4 @@ Applies to Day 1 seg 9 (dialogue, chat, text-bound); the same shape serves any l
 - **Did:** expanded the guide persona from four lines to a working sheet — ten voice rules, six lines in the voice and three anti-examples (all cited), rationed tics, a Verne-attribution protocol, pacing arithmetic (150 wpm, ≤ 20 words/sentence, ~80 % fill), a TTS style card with lexicon, and the two-way hand-off with Passepartout.
 - **Weak:** the TTS card is engine-agnostic guesswork until we audition; the lexicon needs a native check on "Soyer" and "Bazalgette".
 - **With more time:** write the full seg 1–10 narration script against these rules and read it aloud with a stopwatch; add one example line per future chapter so the voice does not drift after London.
+- **A1 pass (2026-08-18):** example 6 side → "right" (flagged unverified, tied to scene 18); rule 11 contractions (R4); §8 re-ordered for Quiz B before the chat (D4), honest 180-s cap (D3), quiz opener and hand-back lines declared the single source of truth with passepartout.md §6.

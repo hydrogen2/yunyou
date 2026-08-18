@@ -6,7 +6,7 @@
   "duration_s": 70,
   "learning_goal": "Know the Reform Club is real, founded 1836, Barry's palazzo of 1841, Soyer's kitchens, and Fogg's breakfast; feel cosy club warmth.",
   "narration": {
-    "script": "We arrive at the door. The Reform Club is real, and still here: 104 Pall Mall, founded in 1836 by the men who had backed the Reform Act of 1832 — neutral today, and that is our one line of politics. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high, ringed by columns under a glass roof, and the famous kitchens that Alexis Soyer helped to plan. Look up — the tall windows of the first floor. Now Fogg's breakfast, taken here at the club: a broiled fish with Reading sauce — keep that in mind — roast beef, a tart, Cheshire cheese, and the tea the Reform is famous for. Reading sauce was a real thing, from Berkshire. Then he cuts the pages himself and reads The Times. Here is the front today; here is Barry's elevation; and here, kept small, is the saloon as engraved in 1841. We have no footage of the inside, so the engraving carries the saloon.",
+    "script": "We arrive at the door. The Reform Club is real, and still here: 104 Pall Mall, since 1836. Its founders backed the Reform Act of 1832; neutral today — our one line of politics. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high under a glass roof. And the famous kitchens that Alexis Soyer helped to plan. Look up — the tall windows of the first floor. Now Fogg's breakfast, taken here. A broiled fish with Reading sauce — keep that in mind. Roast beef, a tart, Cheshire cheese, and the tea the Reform is famous for. The front today; Barry's elevation. And here, the saloon engraved in 1841 — no camera has been inside for us. Somewhere in there, breakfast done, Fogg cuts the pages himself and reads The Times.",
     "timing": "over",
     "voice": "guide"
   },
@@ -115,6 +115,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife."
   }
 }
