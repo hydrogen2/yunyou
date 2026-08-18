@@ -53,3 +53,8 @@ uses them, the research track measures them. Founder's thesis: careful content +
 - **Researcher ≠ Writer ≠ Fact-Checker.** Facts are gathered before writing and attacked after.
 - **Rights before publish.** Nothing ships with a red flag from Rights & Licensing.
 - **Every interactive tour has a linear rendering** (the "variety show" cut) for video platforms.
+
+## Scheduled production
+`studio/tools/studio_run.sh` is run by cron (see `crontab -l`): weekdays 11:00–02:00 UTC every 3 h, weekends every 3 h.
+Each run: `claude -p` reads `studio/PRODUCTION.md`, does one production step, journals to `studio/logs/journal.md`, commits and pushes.
+Force a run now: `FORCE=1 studio/tools/studio_run.sh`. Progress: `studio/logs/journal.md`, `studio/logs/cron.log`.
