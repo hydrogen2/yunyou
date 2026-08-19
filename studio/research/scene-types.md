@@ -77,6 +77,10 @@ Test 3 contents against the same tech: (a) a Kyoto machiya interior, (b) a train
 Prediction: (a),(b) score ≥1 point higher on presence than (c). Then: does adding head-coupled audio add another
 half-point? Then: user-uploaded photos of *their own* room vs a curated room (the "gallery/album" product hook).
 
+**Cost note (2026-08-19):** Google's Dynamic panorama API is billable past ~52 plays/month, so the studio's default `streetview`
+walk is being rebuilt on open imagery (KartaView/Mapillary) — see PRODUCTION.md C1a. Open frames may also be cached and reused in
+the rendered video, which Google's may not.
+
 **Status:** idea → sketch. Owner: studio research. Next artefact: `studio/research/prototypes/window/` (Three.js + MediaPipe demo).
 
 ---

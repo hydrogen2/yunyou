@@ -49,6 +49,25 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
       San Francisco; the American railroad; New York; the Atlantic; London again), each with a hook line and 3 candidate angles; and a brief.md per chapter as it starts.
 - [ ] B1 Day 2 (Dover–Calais–Paris–Brindisi) — run the pipeline step by step across runs (each run = next step).
 - [ ] B2… subsequent chapters per PLAN.md.
+### C1a. FREE open-imagery Street View walk (founder 2026-08-19: "i don't want any cost on google api")
+Context: player v0.4 built a cinematic auto-walk on Google's **Dynamic panorama** API — smooth, but billable past ~52 plays/month,
+so `www/config.json` is pinned to `mode: link` (calls nothing billable). Only Maps **Embed** API and Street View **metadata** are free.
+Build the same experience on open imagery, which we already fetch and are allowed to cache and to put in the video.
+- [ ] E-SV1 Engine: new streetview mode **`open`** — auto-walk driven by KartaView (no token) and Mapillary (free token) sequences
+      instead of Google. Reuse the hyperlapse builder A6w already wrote for `media/files/` (24 KartaView frames → 2 working hyperlapses).
+      Must keep the v0.4 contract: paced to `duration_s`, cross-fade between frames, eased `camera` look-at cues on the same `at_s`
+      as the naming pin, drag pauses / idle-resumes. Cache frames under `products/**/media/files/panos/` (gitignored) — unlike Google's
+      imagery these MAY be stored and reused, which also means the SAME assets serve the linear cut.
+- [ ] E-SV2 Engine: new mode **`embed`** (Maps Embed API — free and unlimited) as the middle fallback: a real Street View the traveller
+      can look around manually, when open imagery has no coverage. Ladder becomes `open → embed → link`; `js`/`stills` stay opt-in only
+      for deployments that supply their own key and accept billing.
+- [ ] E-SV3 Content: coverage audit per walk stop. Known: KartaView has Savile Row (seq 1123901) and Pall Mall (seq 1124); the Strand
+      at Charing Cross has **zero** coverage. Get a free Mapillary token and re-check the gaps — pedestrian sequences would beat the
+      dashcam frames we have (A6w's note: hyperlapses "cannot identify any of the three clubs").
+- [ ] E-SV4 Rights: CC BY-SA attribution burned per frame-run + credits; confirm KartaView terms in a real browser (their /terms is a
+      JS shell that will not render to a fetcher, so today's licence quote is second-hand from the OSM wiki).
+**Acceptance:** scenes 04 and 15 auto-walk with zero Google billable calls, attribution visible, and the same frames reusable in the MP4.
+
 ### C1b. `timeline` scene type — then ↔ now (founder request 2026-08-19, spec in studio/research/scene-types.md)
 - [ ] Engine: build the `timeline` renderer — two layers, draggable divider (pointer/touch/keyboard), `reveal_mode: wipe|ghost|side-by-side`,
       per-layer transform for alignment, per-layer caption, timed `reveal` events so the wipe lands on a narration beat, auto-wipe in the linear cut.
