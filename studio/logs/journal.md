@@ -66,3 +66,4 @@ downloading (this unblocks the 02 side-language and 18 "Look right" hedges).
 ## 2026-08-19 — production PAUSED by founder (until further notice). Resume: uncomment the #PAUSED# lines in crontab (crontab -e) or run: crontab -l | sed 's|^#PAUSED#||' | crontab -
 - Strategy: see studio/strategy/worlds-ladder.md (three-rung worlds ladder; rung-3 media doctrine; Inferno pilot).
 - Strategy: studio/strategy/audio-format.md (pure-audio format; owned media, podcast RSS, language-learning variant; queue F1–F4 parked).
+- Audience Report #1 (founder playtest): stance too literary, register too steep → style rule "Assume no prior reading", clear-English track, player aids; queue A3n/A3p inserted before A4. North star recorded in PRODUCTION.md.

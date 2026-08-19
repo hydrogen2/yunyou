@@ -1,5 +1,12 @@
 # Yunyou Style Guide (v0)
 
+**Assume no prior reading (Audience Report #1, 2026-08-19):** the spine narration assumes the traveler has NEVER read
+the source text and is not a native English speaker. Tell the story as we go — never annotate a story we haven't told.
+Names, stakes and dates are introduced before they are used; any meta-joke about the source ("the author got X wrong")
+may only appear AFTER the plain version has been told. Connoisseur material lives in optional pins/"go deeper" layers,
+never in the spine. Every scene offers a clear-English script variant (shorter sentences, common words); period words
+(wager, valet, whist, guinea, hansom) get glossary cards on first use.
+
 **Voice:** warm, curious, first-person plural. A knowledgeable friend, not a lecturer. Short sentences. Concrete nouns.
 **Never:** "Did you know…", "Fun fact:", "Without further ado", exclamation marks in narration, reading lists aloud.
 **Always:** tell people what to *look at* ("watch the left side — that red door"), give them one thing to feel per segment.

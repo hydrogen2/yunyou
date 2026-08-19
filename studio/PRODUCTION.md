@@ -4,6 +4,10 @@ You are the **Editor-in-Chief** of Yunyou (read `studio/roles/_common.md`, `stud
 `studio/RUN.md`). This file is your standing brief when the studio is woken by cron. The founder is asleep; do exactly
 **one production step**, leave everything reviewable, and stop.
 
+## North star (founder, 2026-08-19)
+This first production succeeds when the founder — armchair traveler, knows only the novel's title, non-native English
+speaker — personally feels **traveled** and **learned** by each chapter. Acceptance test for every DIGEST.
+
 ## Each run
 1. Read `studio/logs/journal.md` (last 3 entries) and the current chapter's `review/STATUS.md` + `review/DIGEST.md`.
 2. Pick the **next step** from the queue below (first unfinished item). One step ≈ one role's output or one review panel — not a whole chapter.
@@ -26,6 +30,13 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
 - [x] A2 (done 2026-08-18/19, runs 20:00 + 23:00 + 01:00) Engine/Tools: generate G-01…G-08 into `day-01-london/generated/` per manifest specs (SVG/PNG, cream/ink/one accent);
       wire the player to show them; update manifest status.
 - [ ] A3 Content Preparer: reconcile M-50 (Neuville plate 05 vs 02), pin M-05/M-01/M-08/M-13 frames as far as possible without downloading.
+- [ ] A3n **Newcomer rewrite (PRIORITY — must precede A4):** Narrator + Scene Developer apply the new style-guide rule
+      "Assume no prior reading" per `day-01-london/review/audience.md`: retell-the-story spine (cold open tells the bet in one
+      breath before any meta-joke; Act I recast), connoisseur notes moved to overlay/"go deeper" layers, clear-English script
+      variant per scene (schema: `narration.variants.clear`, Engine adds field + player toggle), glossary cards for period terms.
+      Re-validate; fact-check-light on changed lines.
+- [ ] A3p Engine/Tools: player aids — "who's who" card (from personas + fact sheet), chapter "previously on…" recap,
+      narration speed control, clear-English toggle.
 - [ ] A4 Narrator: edit `studio/tools/render/cuts/day-01-london.json` so no sentence is machine-cut; Publisher re-renders the linear cut
       (`node studio/tools/render/render_linear.mjs …`) and refreshes `linear/watch.json`; write `review/publish-record.md` (credits page from rights.md).
 - [ ] A5 Editor-in-Chief: re-run Fact-Checker + QA on the revised scenes (light pass), update DIGEST to "ready to publish (free tier)".
