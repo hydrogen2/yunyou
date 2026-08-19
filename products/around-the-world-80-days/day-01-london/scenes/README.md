@@ -9,23 +9,23 @@
 | # | file | id | type | dur (s) | rundown seg | media (manifest ids) | one line |
 |---|------|----|------|--------:|-------------|----------------------|----------|
 | 01 | 01-cold-open.scene.json | cold-open | interstitial | 75 | 1 | M-40 (title only, 8 s), G-01 (Day-1 layer, labelled), M-34, M-41 | Title 8 s, narration from 10 s; date, deadline, stake; 1,920-hours caption at 36–46 s; only London lit. |
-| 02 | 02-savile-row.scene.json | savile-row | video | 100 | 2 | M-05 21:35–23:05, M-32 | Burlington Gardens corner into the Row; Verne's No. 7 / 1814 vs Sheridan's No. 14 / 1816; Poole on the Row 1846, at No. 15 since 1982; side-neutral until A3 pins frames. |
+| 02 | 02-savile-row.scene.json | savile-row | video | 100 | 2 | M-05 21:35–23:05 (`use: player`), M-32; linear: **M-66** + M-77a / M-77c / M-77b | Burlington Gardens corner into the Row; Verne's No. 7 / 1814 vs Sheridan's No. 14 / 1816; Poole on the Row 1846, at No. 15 since 1982; side-neutral until A3 pins frames. |
 | 03 | 03-fogg-by-the-clock.scene.json | fogg-by-the-clock | card | 60 | 3 | G-04 (requested), M-50 (plate 05; backup M-34) | Tap-to-find timetable; guide reads only the times and the CV, the taps hold the punchlines (pause per tap, 12 s). |
 | 04 | 04-count-the-steps.scene.json | count-the-steps | streetview | 150 (user-paced) | 4 | M-39, M-53, M-54, M-55, M-56, M-57, M-37 (fallbacks M-33, M-20) | Full seven-stop walk, 1,120 m, counter 0.97 m/step lands on 1,151 at the façade; overlays and cues fire per waypoint; Reform / Travellers 1832 / Athenaeum. Needs Maps JavaScript API (D12 open). |
-| 05 | 05-pall-mall-pass.scene.json | pall-mall-pass | video | 76 | 4 (linear replacement) | M-01 26:19–27:35 | **Linear cut only.** Westbound past the three clubs, 1,151-steps line; extended so the façade is in frame. |
-| 06 | 06-the-reform-club.scene.json | the-reform-club | video | 70 | 5 | M-01 26:50–27:35, M-20 (+ M-22, M-23 as insets), M-43 | Arrive at the door; 1836 / Barry 1841 / Soyer; look-up cue; breakfast over the video's last 20 s with a menu caption; Reading sauce seeded; reads The Times (no paper-knife); photo trio as insets. |
+| 05 | 05-pall-mall-pass.scene.json | pall-mall-pass | video | **42** | 4 (linear replacement) | **M-67** (KartaView hyperlapse, 8 s) + M-69a / M-69b / M-20 / M-22; M-01 `use: player` | **Linear cut only. Re-cut 76 → 42 s (A8).** No free source carries 76 s of continuous Pall Mall façade, so the beat is a hyperlapse plus three façades. Same words, fewer seconds. |
+| 06 | 06-the-reform-club.scene.json | the-reform-club | video | 70 | 5 | M-01 26:50–27:35 (`use: player`), M-20 (+ **M-69c**, M-22, M-23 as insets), M-43 | Arrive at the door; 1836 / Barry 1841 / Soyer; look-up cue; breakfast over the video's last 20 s with a menu caption; Reading sauce seeded; reads The Times (no paper-knife); photo trio as insets. |
 | 07 | 07-quiz-verne-saloon.scene.json | quiz-verne-saloon | quiz | 80 | 5 (Quiz A) | M-23, M-20, M-43 | Which of Verne's club details is real? — pause until answered (30 s), reveal in `after_script`; Open House caption time-bound. |
 | 08 | 08-the-wager.scene.json | the-wager | photo | 70 | 6 | M-35 (1873 plate), G-05 (requested memorandum card), M-41 | The fictional theft "in the novel", Stuart's £4,000, Fogg's £20,000 at Baring's, six names on the card ("Stuart first, Fogg last"), 21 December 8:45 pm; "the wager has outlived the bank". |
 | 09 | 09-two-real-men.scene.json | two-real-men | card | 30 | 6 (optional card) | G-06 (requested), M-41 | **Interactive cut only.** Cook 222 days westward, Train home 21 Dec 1870 — "I'm Phileas Fogg." |
 | 10 | 10-the-world-shrinks.scene.json | the-world-shrinks | map | 100 | 6 (map beat) | G-01 (enablers layer requested, full loop, Day-1 layer), M-41 | Enablers light up, the loop draws leg by leg, "three words: 'It was once.'", tap the longest leg (pause 20 s), reveal + turn line in `after_script`. |
 | 11 | 11-pack-the-bag.scene.json | pack-the-bag | game | 90 | 7 | G-07 (requested game UI), M-42 | Drag game: six items in, three distractors; no weather in the mackintosh feedback; Bradshaw "hundreds of pages"; the gas stays. |
 | 12 | 12-the-dash.scene.json | the-dash | map | 60 | 7 | M-30, M-29 (hansom, confirmed), M-46, M-47, M-42 | Route line over the 1872 plan; hansom "most likely", sixpence a mile, barely a mile and a half — call it a bob; Underground nine years old; no "wet" before Quiz B. |
-| 13 | 13-charing-cross.scene.json | charing-cross | video | 60 | 8 | M-08 04:45–05:25, M-51 (held 40–60 s) | Strand into the forecourt; station 8, Underground 9, Big Ben — the clock tower 13; "you cannot see it from here — Hawkshaw's roof"; twenty guineas over Neuville's "A poor mendicant". |
+| 13 | 13-charing-cross.scene.json | charing-cross | video | 60 | 8 | M-08 04:45–05:25 (`use: player`), M-51 (held 40–60 s); linear: **M-84 → M-81 → M-78 → M-74** | Strand into the forecourt; station 8, Underground 9, Big Ben — the clock tower 13; "you cannot see it from here — Hawkshaw's roof"; twenty guineas over Neuville's "A poor mendicant". |
 | 14 | 14-then-and-now.scene.json | then-and-now | photo | 35 | 8 | G-02 (requested), M-24, M-26 | Drag-seam split frame, 1872 engraving vs today's cross; six platforms, a train an hour to Dover. |
 | 15 | 15-look-up-the-cross.scene.json | look-up-the-cross | streetview | 25 | 8 | M-38 (fallback M-26) | **Interactive cut only.** Look up: replica of 1865; the 1291 original stood where Charles I rides (plain corner pin). |
 | 16 | 16-quiz-the-weather.scene.json | quiz-the-weather | quiz | 45 | 9 (Quiz B — now BEFORE the dialogue, D4) | M-25, M-44, M-58 (rain bed, low) | "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?" — pause 20 s; reveal (Verne's sentence) in `after_script`; rain, not fog. |
 | 17 | 17-passepartout-on-the-platform.scene.json | passepartout-on-the-platform | dialogue | 90 (+ up to 180 s chat) | 9 | M-50 (plate 05; backup M-34), M-44, M-58 | Guide-in = persona §6 verbatim; chat with Passepartout (4 exchanges / 180 s; `on_llm_unavailable: choice` → §5 answers 1–5 as chips); guardrails + fog / politics / no-AI / injection; spoken hand-back. |
-| 18 | 18-the-boat-train.scene.json | the-boat-train | video | 85 | 9 | M-27 (10 s), M-13 00:00–01:15 (left half), M-44, M-60, M-45, M-59 | 1905 postcard ("just — the old roof"), M-60 departure bed + whistle sting at "8:45 pm" (no speech 12–16 s), over Hungerford Bridge; "we travel in daylight; Fogg had rain and dark"; look right (window side unverified); Sydenham "probably"; the forgotten gas — to be continued. |
+| 18 | 18-the-boat-train.scene.json | the-boat-train | video | 85 | 9 | M-27 (10 s), M-13 00:00–01:15 left half (`use: player` — CC BY, but no lawful copy of the file yet), M-44, M-60, M-45, M-59; linear: **M-88 + M-76** | 1905 postcard ("just — the old roof"), M-60 departure bed + whistle sting at "8:45 pm" (no speech 12–16 s), over Hungerford Bridge; "we travel in daylight; Fogg had rain and dark"; look right (window side unverified); Sydenham "probably"; the forgotten gas — to be continued. |
 | 19 | 19-souvenir.scene.json | souvenir | card | 60 | 10 | G-08 (requested), M-23, M-41 (tail) | Recipe card (`interaction.kind: save`): Fogg's last breakfast; cook it on 21 December, be at table by 8:45 pm; "A well-used minimum suffices for everything." Next: Dover, Calais, Paris. |
 
 **Chain (`next`):** 01 → 02 → 03 → 04 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → **16 quiz-the-weather → 17 passepartout-on-the-platform** → 18 → 19 (end). 05 also points to 06 and is used only in the linear cut.
@@ -43,25 +43,31 @@ script edit. The cut keeps the narrative spine whole (Poole named before 'The fi
 Passepartout's CV, the carpet-bag, the shilling, the recipe card, the Sheridan reveal) and drops only interactive-only
 instructions — coherence over the original 11:42 target.
 
+**A8 2026-08-19 (Content Preparer, queue item A6w) — the cut has no clip cards left.** Every shot that used to be a
+YouTube clip card now plays a real file from `<chapter>/media/files/` (not committed; `.gitignore`d and regenerable from
+`media/manifest.md`). Two sources are recorded per shot: the YouTube id keeps `use: "player"` — legal to embed, not to
+copy (`review/rights-a6.md` §1.2) — and the local file carries `use: "linear"`. Scene **05 was re-cut 76 → 42 s** because
+no freely-licensed source carries 76 s of continuous Pall Mall façade; the words are unchanged, only the seconds moved.
+
 | scene | use | s |
 |-------|-----|---|
 | 01 cold-open | title 8 s, narration from 10 s, drop the M-34 inset | 60 |
-| 02 savile-row | M-05 21:35–22:50, pins Savile Row / No. 15 / No. 14, drop the M-32 tail and its three sentences | 84 |
+| 02 savile-row | **M-66 hyperlapse 8 s + M-77a 32 s + M-77c 16 s + M-77b (1955) 28 s** (M-05 is player-only), pins Savile Row / No. 15 / No. 14, drop the M-32 tail and its three sentences | 84 |
 | 03 fogg-by-the-clock | card only, no taps; whole script minus the tap prompt and "Look at his face" | 50 |
-| 05 pall-mall-pass | whole (replaces 04), 26:19–27:35 | 60 |
-| 06 the-reform-club | from the door: M-20 + M-22/M-23 insets (M-01 already used by 05); drops the Soyer and Times asides | 62 |
+| 05 pall-mall-pass | **re-cut (A8): 8 s M-67 hyperlapse → Athenaeum → Travellers → Reform façade → Barry elevation**; whole script (replaces 04) | 42 |
+| 06 the-reform-club | from the door: M-20 + **M-69c** + M-22/M-23 insets (M-01 is player-only); drops the Soyer and Times asides | 62 |
 | 07 quiz-verne-saloon | guide asks and answers in one breath (script + correct option + feedback + after_script) + Open House tail | 50 |
 | 08 the-wager | whole | 75 |
 | 10 the-world-shrinks | enablers + loop reveal + turn line, no tap; skip 09 | 92 |
 | 11 pack-the-bag | 20-s packing-list card, no drag; whole script minus the drag instruction | 88 |
 | 12 the-dash | whole (the shilling sentence makes 'sixpence a mile' add up) | 58 |
-| 13 charing-cross | whole (40 s video + 20 s M-51 still) | 70 |
+| 13 charing-cross | whole: **M-84 Trafalgar today 16 s → M-81 Donisthorpe 1890 disc 8 s → M-78 the 1903 Strand 18 s → M-74 14 s → M-51** | 70 |
 | 14 then-and-now | 15 s, seam auto-wipes; skip 15 | 26 |
 | 16 quiz-the-weather | guide asks and states the answer (script + after_script), no choice | 28 |
 | 17 passepartout-on-the-platform | passepartout.md §6 scripted three-line exchange (guide names him → Passepartout → guide) | 46 |
-| 18 the-boat-train | postcard 10 s + M-13 00:00–00:55; trim the Dover/Suez sentence | 82 |
+| 18 the-boat-train | postcard 10 s + **M-88 lit bridge at night 12 s + M-76 the view from Hungerford Bridge 36 s** + postcard tail; trim the Dover/Suez sentence | 82 |
 | 19 souvenir | ingredient list stays on the card; "Save the card." dropped, the recipe-card sentence kept | 54 |
-| **total** | | **749 s ≈ 12 min 29 s** of caps; the A5 plan renders **854 s ≈ 14 min 14 s** — no scene is end-cut |
+| **total** | | **967 s ≈ 16 min 7 s** of caps (A8: 05 dropped 60 → 42, so 985 → 967). The **"749 s" printed here before A8 was stale** — it predated A4's cap rises and never matched the column. The A5 plan rendered **854 s ≈ 14 min 14 s**, which is what these caps actually produce once every scene is trimmed to `narration + pad`; re-run `--plan --track clear` after A8 |
 
 Linear-only: 05. Interactive-only: 09, 15 (and the interactions of 03, 04, 10, 11, 14, 16, 17). Narrator trims scripts to the marks in each scene's `production_notes`. Note for Engine/Tools: the renderer speaks `script` (or `variants.clear`) only — it has no token for `after_script`, so 07's "Half invented, half exact…", 10's "The train leaves for Dover at a quarter before nine." and 16's Verne rain quote are missing from the film; `after:N` is the missing token.
 

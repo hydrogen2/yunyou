@@ -8,7 +8,8 @@
     "visuals: kind image|clip|player|scenecard|pending|quiz|chat|checklist|streetview; dur in seconds or omitted = share the remainder.",
     "overlays: indices into scene.overlays, or {i, at, until} to re-time for the shorter linear scene. beds: {media, at, until}.",
     "A4 2026-08-19: all sentence tokens re-derived after the A3n newcomer rewrite (old indices were stale and cut payoffs: Sheridan reveal, the route legs, the carpet-bag beat, the forgotten gas, the recipe). Linear cut is now ~13 min, longer than the original 11:42 plan, deliberately: coherence beats the target length.",
-    "A5 2026-08-19 (Narrator): the A4 tokens were derived from the STANDARD track but the film renders the CLEAR one (`--track clear`), whose sentences split differently (192 vs 181) — that mismatch is what produced the dangling references in review/fact-check-a5.md §4. Every `s:N` below is now re-derived against `narration.variants.clear` (`node render_linear.mjs <tour.json> --plan --track clear`) on three rules: keep the narrative spine; never leave a reference without its antecedent (Henry Poole is named before 'The firm says…', the club before 'It is real…', the carpet-bag before the packing list, the recipe card before it is mentioned); drop interactive-only instructions ('Tap any line', 'Drag in what goes', 'Save the card.', 'Now tap the longest leg', 'Ask him something', 'Take your time'). Re-derive after ANY script edit: the indices are per-track and per-wording."
+    "A5 2026-08-19 (Narrator): the A4 tokens were derived from the STANDARD track but the film renders the CLEAR one (`--track clear`), whose sentences split differently (192 vs 181) — that mismatch is what produced the dangling references in review/fact-check-a5.md §4. Every `s:N` below is now re-derived against `narration.variants.clear` (`node render_linear.mjs <tour.json> --plan --track clear`) on three rules: keep the narrative spine; never leave a reference without its antecedent (Henry Poole is named before 'The firm says…', the club before 'It is real…', the carpet-bag before the packing list, the recipe card before it is mentioned); drop interactive-only instructions ('Tap any line', 'Drag in what goes', 'Save the card.', 'Now tap the longest leg', 'Ask him something', 'Take your time'). Re-derive after ANY script edit: the indices are per-track and per-wording.",
+    "A8 2026-08-19 (Content Preparer, queue item A6w): the linear cut no longer uses clip cards. A new visual kind `footage` points at a local, licence-clean file under <chapter>/media/files/ (h264 1280x720 25 fps, already normalised) — {kind:'footage', media:'M-xx', in_s?, dur?}. The scene JSONs record BOTH sources for the same shot: the YouTube entry keeps `use: \"player\"` (legal to embed, not to copy — review/rights-a6.md §1.2) and the local file carries `use: \"linear\"`. Scenes 02, 05, 13 and 18 changed here; 06 was already card-free. Scene 05 was RE-CUT 76 -> 42 s: no free source carries 76 s of continuous Pall Mall facade, so the beat is now a hyperlapse plus three facade stills (manifest-a6.md, rights-a6.md §3.6). Nothing in media/files/ is committed (.gitignore) — media/manifest.md carries the URL and the ffmpeg recipe for every file."
   ],
   "scenes": {
     "cold-open": {
@@ -50,16 +51,30 @@
       "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "savile-row": {
-      "_readme": "M-05 21:35–22:50, pins Savile Row / No. 15 / No. 14, drop the M-32 tail and its three sentences — 84 s",
+      "_readme": "M-66 KartaView hyperlapse + Savile Row stills (M-05 is player-only), pins Savile Row / No. 15 / No. 14, drop the M-32 tail and its three sentences — 84 s",
       "script": [
         "s:0-15"
       ],
       "visuals": [
         {
-          "kind": "clip",
-          "media": "M-05",
-          "in_s": 1295,
-          "out_s": 1375
+          "kind": "footage",
+          "media": "M-66",
+          "dur": 8
+        },
+        {
+          "kind": "image",
+          "media": "M-77a",
+          "dur": 32
+        },
+        {
+          "kind": "image",
+          "media": "M-77c",
+          "dur": 16
+        },
+        {
+          "kind": "image",
+          "media": "M-77b",
+          "dur": 28
         }
       ],
       "overlays": [
@@ -72,7 +87,8 @@
         }
       ],
       "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
-      "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped."
+      "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped.",
+      "_a8_note": "A8 (2026-08-19): clip card M-05 → M-66 hyperlapse (8 s) + M-77a (32 s) + M-77c (16 s) + M-77b (28 s) = 84 s, the cap, so the renderer does not rescale. Durations are chosen so the surviving pins land on the right picture: 'Savile Row' (3–12 s) over the hyperlapse, 'No. 15 — Henry Poole' (30–40 s) over M-77a looking up the Row, and 'No. 14 — Sheridan' (62–72 s) over M-77b, Ben Brooksbank's 1955 street view — whose burned-in attribution says 1955, which is the only thing on screen telling the viewer the picture is not today. M-05 stays the player source."
     },
     "fogg-by-the-clock": {
       "_readme": "card only, no taps; whole script minus the tap prompt and 'Look at his face' (the linear frame is the card) — 50 s",
@@ -92,11 +108,52 @@
       "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped."
     },
     "pall-mall-pass": {
-      "_readme": "whole (replaces 04) — 45 s",
-      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
+      "_readme": "RE-CUT to 42 s (A8): 8 s M-67 hyperlapse -> Athenaeum -> Travellers -> Reform facade -> Barry elevation; whole script (replaces 04)",
+      "visuals": [
+        {
+          "kind": "footage",
+          "media": "M-67",
+          "dur": 8
+        },
+        {
+          "kind": "image",
+          "media": "M-69a",
+          "dur": 8
+        },
+        {
+          "kind": "image",
+          "media": "M-69b",
+          "dur": 8
+        },
+        {
+          "kind": "image",
+          "media": "M-20",
+          "dur": 10
+        },
+        {
+          "kind": "image",
+          "media": "M-22",
+          "dur": 8
+        }
+      ],
+      "overlays": [
+        0,
+        {
+          "i": 2,
+          "at": 18,
+          "until": 26
+        },
+        {
+          "i": 3,
+          "at": 28,
+          "until": 40
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
+      "_a8_note": "A8 (2026-08-19): the scene was 76 s of a walk that does not exist under a free licence. Re-cut to 42 s of hyperlapse + facades; words unchanged (102 std / 94 clear = 2.43 / 2.24 w/s). Overlay 1 is the \"clubland\" gloss and is not timed here."
     },
     "the-reform-club": {
-      "_readme": "from the door: M-20 + the M-22/M-23 insets (M-01 already used by 05); drop the Soyer kitchens and the closing Times line — 62 s",
+      "_readme": "from the door: M-20 + M-69c second angle + the M-22/M-23 insets (M-01 is player-only); drop the Soyer kitchens and the closing Times line — 62 s",
       "script": [
         "s:0-5",
         "s:7-11"
@@ -105,7 +162,12 @@
         {
           "kind": "image",
           "media": "M-20",
-          "dur": 38
+          "dur": 24
+        },
+        {
+          "kind": "image",
+          "media": "M-69c",
+          "dur": 14
         },
         {
           "kind": "image",
@@ -140,7 +202,8 @@
         }
       ],
       "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
-      "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped."
+      "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped.",
+      "_a8_note": "A8 (2026-08-19): M-69c inserted so 62 s is not one still with two insets. No clip card here before or after."
     },
     "quiz-verne-saloon": {
       "_readme": "guide asks and answers in one breath (correct option + feedback); drops 'Take your time; the tea is famous.' — 50 s",
@@ -231,7 +294,7 @@
         },
         {
           "kind": "image",
-          "media": "M-28",
+          "media": "M-29",
           "dur": 10
         },
         {
@@ -250,11 +313,52 @@
         }
       ],
       "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
-      "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped."
+      "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped.",
+      "_a8_note": "A8 (2026-08-19, content-preparer): the middle visual asked for **M-28** (Thomson, 'London Cabmen', 1877), which is not in scene 12's media list — the renderer resolves `media` against the SCENE's entries, so that 10-second segment was silently dropped and the two M-30 map beats absorbed the time. Scene 12 carries **M-29** (Colard, a hansom on a wet London street, c.1891–96, CC0), which is what the README row names. Changed M-28 → M-29. Pre-existing bug, found while auditing the sidecar; if the Scene Developer wants Thomson's cabmen here instead, add M-28 to the scene's media rather than to the cut sheet."
     },
     "charing-cross": {
-      "_readme": "whole — 60 s",
-      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
+      "_readme": "M-84 Trafalgar Square today -> M-81 Donisthorpe 1890 disc -> M-78 the 1903 Strand -> M-74 the cross from the station yard -> M-51 (M-08 is player-only) — 70 s",
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
+      "visuals": [
+        {
+          "kind": "footage",
+          "media": "M-84",
+          "dur": 16
+        },
+        {
+          "kind": "footage",
+          "media": "M-81",
+          "dur": 8
+        },
+        {
+          "kind": "footage",
+          "media": "M-78",
+          "dur": 18
+        },
+        {
+          "kind": "image",
+          "media": "M-74",
+          "dur": 14
+        },
+        {
+          "kind": "image",
+          "media": "M-51"
+        }
+      ],
+      "overlays": [
+        0,
+        {
+          "i": 1,
+          "at": 42,
+          "until": 54
+        },
+        {
+          "i": 2,
+          "at": 56,
+          "until": 66
+        }
+      ],
+      "_a8_note": "A8 (2026-08-19): clip card M-08 gone. The Eleanor Cross pin moved to 40-52 s so it sits over M-74 (the cross photographed from the station yard, c.1903) rather than over Trafalgar Square. Overlay 3 is a gloss and is not timed."
     },
     "then-and-now": {
       "_readme": "15 s, seam auto-wipes; script trimmed to the first two sentences and the Dover line (drops 'Drag the seam.')",
@@ -325,7 +429,7 @@
       "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "the-boat-train": {
-      "_readme": "postcard 10 s + M-13 00:00–00:55; whole script — 82 s",
+      "_readme": "postcard 10 s + M-88 lit bridge at night 12 s + M-76 the view from Hungerford Bridge 30 s + postcard tail (M-13 is player-only until the creator sends the file); whole script — 82 s",
       "visuals": [
         {
           "kind": "image",
@@ -333,10 +437,18 @@
           "dur": 10
         },
         {
-          "kind": "clip",
-          "media": "M-13",
-          "in_s": 0,
-          "out_s": 55
+          "kind": "footage",
+          "media": "M-88",
+          "dur": 12
+        },
+        {
+          "kind": "image",
+          "media": "M-76",
+          "dur": 36
+        },
+        {
+          "kind": "image",
+          "media": "M-27"
         }
       ],
       "beds": [
@@ -370,7 +482,8 @@
         }
       ],
       "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
-      "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped."
+      "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped.",
+      "_a8_note": "A8 (2026-08-19): clip card M-13 gone. M-88 (night) is placed 10-22 s, under the whistle, so it never sits under 'we travel in daylight'. M-76 is the still that is literally the shot the scene describes. M-13 is CC BY but we hold no lawful copy — see the scene's production_notes. The 1905 postcard bookends the scene (10 s in, ~24 s out) because M-76 is a still and 60 s of one Ken Burns move would be worse than a return to the platform picture."
     },
     "souvenir": {
       "_readme": "40 s, ingredient list stays on the card; 'Save the card.' dropped (linear), the recipe-card sentence kept",

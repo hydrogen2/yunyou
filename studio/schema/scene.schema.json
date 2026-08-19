@@ -134,12 +134,13 @@
               "audio",
               "streetview",
               "map",
-              "generated"
+              "generated",
+              "footage"
             ]
           },
           "ref": {
             "type": "string",
-            "description": "YouTube video id, URL, file path, or 'lat,lng,heading,pitch,fov'"
+            "description": "YouTube video id, URL, file path (for kind 'footage': path relative to the chapter dir, e.g. media/files/x.mp4), or 'lat,lng,heading,pitch,fov'"
           },
           "start_s": {
             "type": "integer"
@@ -165,6 +166,28 @@
           "note": {
             "type": "string",
             "description": "Free note for the Scene Developer / renderer (framing, crop, why this clip). Not shown to the traveller."
+          },
+          "use": {
+            "type": "string",
+            "enum": [
+              "player",
+              "linear",
+              "both"
+            ],
+            "description": "Where this entry may be used. 'player' = interactive player only (e.g. a YouTube embed we may show but not copy); 'linear' = rendered MP4 only (e.g. our self-hosted cut of the same shot); 'both' (default) = either. Added 2026-08-19 (A8) so a scene can record the embed AND the local file for the same shot."
+          },
+          "audio": {
+            "type": "string",
+            "enum": [
+              "mute",
+              "keep",
+              "duck"
+            ],
+            "description": "How the renderer must treat this item's own audio. Default for kind 'footage' with an archive/PD source is 'mute' (uploader-added soundtracks over public-domain film are not licensed to us)."
+          },
+          "sa": {
+            "type": "boolean",
+            "description": "True if this item is derived from CC BY-SA material — the strip-list flag from review/rights-a6.md §2.4."
           }
         }
       }
@@ -251,7 +274,7 @@
             "scrub",
             "save"
           ],
-          "description": "save = card scenes: traveller keeps the card (souvenir/recipe) \u2014 runtime offers download/share; no answer required."
+          "description": "save = card scenes: traveller keeps the card (souvenir/recipe) — runtime offers download/share; no answer required."
         },
         "prompt": {
           "type": "string"
@@ -325,7 +348,7 @@
     },
     "camera": {
       "type": "array",
-      "description": "streetview: timed look-at cues for the cinematic auto-walk (player v0.4). The camera walks the route by itself, paced to duration_s, and turns to whatever a cue names, easing in and out \u2014 it never snaps. Between cues it looks along the direction of travel. Keep at_s equal to the at_s of the overlay/pin that names the same thing, so the pin and the turn coincide. Ignored by scenes of other types and by the linear renderer.",
+      "description": "streetview: timed look-at cues for the cinematic auto-walk (player v0.4). The camera walks the route by itself, paced to duration_s, and turns to whatever a cue names, easing in and out — it never snaps. Between cues it looks along the direction of travel. Keep at_s equal to the at_s of the overlay/pin that names the same thing, so the pin and the turn coincide. Ignored by scenes of other types and by the linear renderer.",
       "items": {
         "type": "object",
         "required": [
@@ -351,13 +374,13 @@
             "type": "number",
             "minimum": -90,
             "maximum": 90,
-            "description": "Up/down angle (default 0). Positive looks up \u2014 use it for towers, spires and fa\u00e7ades seen from close by."
+            "description": "Up/down angle (default 0). Positive looks up — use it for towers, spires and façades seen from close by."
           },
           "zoom": {
             "type": "number",
             "minimum": 0,
             "maximum": 5,
-            "description": "Street View zoom; fov = 180 / 2^zoom (0 = 180\u00b0, 0.85 = the walking default \u2248 100\u00b0, 1 = 90\u00b0, 2 = 45\u00b0)."
+            "description": "Street View zoom; fov = 180 / 2^zoom (0 = 180°, 0.85 = the walking default ≈ 100°, 1 = 90°, 2 = 45°)."
           },
           "hold_s": {
             "type": "number",
@@ -372,11 +395,11 @@
           "at_waypoint": {
             "type": "integer",
             "minimum": 0,
-            "description": "Index into interaction.route this cue belongs to \u2014 documentation for reviewers and a validator cross-check; the runtime paces from at_s."
+            "description": "Index into interaction.route this cue belongs to — documentation for reviewers and a validator cross-check; the runtime paces from at_s."
           },
           "label": {
             "type": "string",
-            "description": "What we are looking at, e.g. 'Reform Club fa\u00e7ade, 104 Pall Mall'. Reviewer note, never shown to the traveller."
+            "description": "What we are looking at, e.g. 'Reform Club façade, 104 Pall Mall'. Reviewer note, never shown to the traveller."
           }
         }
       }
@@ -404,7 +427,7 @@
       "items": {
         "type": "string"
       },
-      "description": "Fact-sheet ids backing every claim in the narration/quiz (F-01, F-02\u2026)"
+      "description": "Fact-sheet ids backing every claim in the narration/quiz (F-01, F-02…)"
     },
     "review": {
       "type": "object",

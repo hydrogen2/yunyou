@@ -22,7 +22,55 @@
       "license": "youtube-embed",
       "manifest_id": "M-08",
       "attribution": "Virtual Walks and Adventures, '[4K] A London walk from Trafalgar Square via Charing Cross to Embankment and Golden Jubilee Bridge' (2022) — YouTube embed",
-      "note": "04:45–05:25 (scene seconds 0–40): Strand approach into the forecourt (creator chapter 'Charing Cross' at 05:00; the auto still at ~05:28 is already Villiers Street, so we cut at 05:25 — forecourt frames unverified, A3 to pin). Small channel: keep backup M-09 UkXUiYNML3U 00:00–00:40 warm; rainy alt M-10 FI_AT-rhLP4 01:00–01:40."
+      "note": "04:45–05:25 (scene seconds 0–40): Strand approach into the forecourt (creator chapter 'Charing Cross' at 05:00; the auto still at ~05:28 is already Villiers Street, so we cut at 05:25 — forecourt frames unverified, A3 to pin). Small channel: keep backup M-09 UkXUiYNML3U 00:00–00:40 warm; rainy alt M-10 FI_AT-rhLP4 01:00–01:40. A8: player-only (Standard YouTube Licence). No downloadable modern file of the forecourt exists (manifest-a7.md S3c); the linear cut carries the beat with Trafalgar Square today (M-84), the 1890 Donisthorpe disc (M-81) and the 1903 Strand ride (M-78) instead of a clip card.",
+      "use": "player"
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m84-trafalgar-square.mp4",
+      "start_s": 0,
+      "end_s": 16,
+      "license": "cc-by-3.0",
+      "manifest_id": "M-84",
+      "attribution": "Kauko Helavuo (2015) · CC BY 3.0 · trimmed",
+      "use": "linear",
+      "audio": "mute",
+      "note": "Wide shots of the square with Nelson’s Column and the fountains, from 01:36–01:52 of the Commons copy of File:Trafalgar Square, London UK (HD1080p). 4K.webm (Commons mirror of YouTube T7VlupgAcbQ). Downloaded from upload.wikimedia.org, never from youtube.com. The creator’s own \"Video by Kauko Helavuo\" watermark is burned into the source and stays — CC BY §3(a) requires keeping the creator identification he supplied. Audio muted: unverified provenance (rights-a6 §1.1)."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m81-trafalgar-1890-disc.mp4",
+      "start_s": 0,
+      "end_s": 8,
+      "license": "public-domain",
+      "manifest_id": "M-81",
+      "attribution": "Wordsworth Donisthorpe, Trafalgar Square, 1890 — public domain (Wikimedia Commons)",
+      "use": "both",
+      "audio": "mute",
+      "note": "The ten surviving frames of the oldest moving picture of Trafalgar Square, looped twice at double speed. Composited as a magic-lantern DISC at 540×540 on a dark plate — the 270×270 source is never scaled to full frame (manifest-a7.md Engine implication 2). Eighteen years after Fogg leaves: caption must say 1890."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m78-strand-1903.mp4",
+      "start_s": 0,
+      "end_s": 20,
+      "license": "public-domain",
+      "manifest_id": "M-78",
+      "attribution": "\"Old London Street Scenes\" (1903), London’s Screen Archives / BFI — public domain (Wikimedia Commons)",
+      "use": "both",
+      "audio": "mute",
+      "note": "01:57–02:17 of the Commons file: a westbound ride down the Strand — the Lyceum \"PIT\" lamp is legible on the left and St Mary-le-Strand stands in the middle of the road ahead. VERIFIED BY EYE at 02:10. 4:3 640×480 pillarboxed to 1280×720 on a dark plate with a thin rule (never stretched). The source carries a burned-in BFI roundel top-right — see review note. Audio muted (the Commons file has an Opus track of unverified provenance)."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623).jpg",
+      "start_s": 44,
+      "end_s": 58,
+      "license": "public-domain",
+      "manifest_id": "M-74",
+      "attribution": "The Eleanor Cross from Charing Cross station yard, c.1903 — public domain (Wikimedia Commons)",
+      "use": "both",
+      "note": "2352×3600. A period photograph taken FROM the station yard — the scene’s own viewpoint, and a better match than M-24’s 1872 engraving. A6 M-74."
     },
     {
       "kind": "image",
@@ -86,11 +134,11 @@
     "F-31",
     "F-39"
   ],
-  "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1864 roof is gone (1905, replaced; Embankment Place sits over the platforms) and the train-shed is not visible from the Strand — hence 'You cannot see it from here'. The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'So much of what Fogg passes' (not 'almost everything' — Trafalgar Square and St Martin's are older). First mention 'Big Ben — the clock tower', then 'the clock tower' (Continuity #21). Narrator: short sentences at the beggar-woman beat (Continuity #10). Linear cut: keep whole (60 s: 40 s video + 20 s M-51 still).",
+  "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1864 roof is gone (1905, replaced; Embankment Place sits over the platforms) and the train-shed is not visible from the Strand — hence 'You cannot see it from here'. The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'So much of what Fogg passes' (not 'almost everything' — Trafalgar Square and St Martin's are older). First mention 'Big Ben — the clock tower', then 'the clock tower' (Continuity #21). Narrator: short sentences at the beggar-woman beat (Continuity #10). Linear cut: keep whole (60 s: 40 s video + 20 s M-51 still). A8 2026-08-19 (content-preparer): the linear cut loses its clip card here. Linear visuals: M-84 (16 s, Trafalgar Square today, CC BY 3.0 via the Commons mirror) → M-81 (8 s, Donisthorpe 1890 disc) → M-78 (18 s, the 1903 Strand ride) → M-74 (14 s, the cross from the station yard, c.1903) → M-51 (14 s, Neuville’s beggar-woman, unchanged). M-08 stays the PLAYER source. What we still do NOT have is modern moving footage of the forecourt: manifest-a7.md searched Commons, Pexels, Pixabay, Mixkit, Coverr and the Internet Archive and found none, and the Strand has no KartaView coverage at the station frontage. The Urban Pigeon file request (rights-a6 §1.6) remains the upgrade path.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s)."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s). A8 2026-08-19 (content-preparer): M-08 marked `use: player`; M-84 / M-81 / M-78 / M-74 wired for the linear cut. TWO honest flags for Rights: (i) the Commons PD copy of M-78 carries a burned-in BFI roundel in the top-right corner of every frame — the film's public-domain status is unaffected, but the BFI's mark will appear in our MP4 and should either be accepted and credited or the shot re-framed; (ii) M-84's frames were viewed and are genuinely Trafalgar Square, but the clip is tourist coverage of the fountains and lions, not the walk into the forecourt the scene describes — the narration must not claim more than the picture shows."
   }
 }

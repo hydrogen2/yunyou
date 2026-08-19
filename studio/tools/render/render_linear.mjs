@@ -182,6 +182,19 @@ async function segKenBurns(img, dur) {
   await ffmpeg(['-i', img, '-vf', vf, '-frames:v', String(frames), '-r', String(FPS), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21', '-pix_fmt', 'yuv420p', out]); return out;
 }
 
+// local, licence-clean footage (kind: "footage") — already normalised to h264/W×H/FPS by the Content Preparer.
+// Trimmed / looped to `dur`, video only: any bed or narration is mixed by the scene's audio graph, and every
+// footage item carries `audio: "mute"` unless QA has cleared its soundtrack (review/rights-a6.md §1.1).
+async function segFootage(file, dur, inS = 0) {
+  const out = path.join(CACHE, 'seg', `fo_${sha(file + dur + inS + W + H + FPS)}.mp4`); if (fs.existsSync(out)) return out;
+  const src = await probeDuration(file).catch(() => 0);
+  const loop = src && dur > (src - inS) + 0.05 ? ['-stream_loop', String(Math.ceil(dur / Math.max(0.5, src - inS)))] : [];
+  await ffmpeg([...loop, '-ss', fmt1(inS), '-i', file, '-t', fmt1(dur),
+    '-vf', `scale=${W}:${H}:force_original_aspect_ratio=decrease,pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2:color=black,setsar=1,fps=${FPS},format=yuv420p`,
+    '-an', '-r', String(FPS), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', out]);
+  return out;
+}
+
 // ---------------------------------------------------------------- ASS captions
 const assTime = t => { t = Math.max(0, t); const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = Math.floor(t % 60), cs = Math.floor((t - Math.floor(t)) * 100); return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}.${String(cs).padStart(2, '0')}`; };
 const assEsc = s => String(s).replace(/\\/g, '\\\\').replace(/\{/g, '(').replace(/\}/g, ')').replace(/\n/g, '\\N');
@@ -281,6 +294,7 @@ function captionChunks(text, words, maxChars = 84) {
 
   // 4. visuals + audio per scene → scene mp4
   const creditsUsed = new Map(); // manifest_id → {attribution, license, kind}
+  let clipCards = 0, footageSegs = 0;   // A8: the point of the exercise is to drive clipCards to zero
   const useCredit = (m) => { if (!m) return; const id = m.manifest_id || m.ref; if (!creditsUsed.has(id)) creditsUsed.set(id, { id, kind: m.kind, attribution: m.attribution || m.ref, license: m.license || '', ref: m.ref }); };
   const vtt = ['WEBVTT', '']; let globalT = TITLE_S; const sceneFiles = [];
   const ytLabel = m => { const row = manifestRow(m.manifest_id) || {}; const tm = (row.title || '').match(/^"(.+?)"\s+—\s+(.+?)\s*\(/); return { channel: tm ? tm[2] : (m.attribution || '').split(',')[0], videoTitle: tm ? tm[1] : (m.attribution || m.ref) }; };
@@ -295,7 +309,8 @@ function captionChunks(text, words, maxChars = 84) {
     // ---- visual segments (list of {kind, dur|null, ...}) ----
     let segs = [];
     const imgSeg = async (m, dur) => { const { file, info } = await commonsImage(m.ref); useCredit(m); return { kind: 'kb', file, dur, attribution: m.attribution || `${info.artist} — ${info.license} (Wikimedia Commons)`, src: `${m.manifest_id} Commons image (Ken Burns)` }; };
-    const clipSeg = async (m, dur, inS = m.start_s || 0, outS = m.end_s || 0) => { const { channel, videoTitle } = ytLabel(m); const th = await ytThumb(m.ref); useCredit(m); const html = T.clipCard({ channel, videoTitle, videoId: m.ref, inS, outS, sceneTitle: s.title, thumbUrl: th ? 'file://' + th : '', note: hint.clip_note || '' }); return { kind: 'png', file: await shotHtml(html, `clip_${m.ref}`), dur, src: `${m.manifest_id} clip card (YouTube ${m.ref} ${mmss(inS)}–${mmss(outS)}) — no download` }; };
+    const clipSeg = async (m, dur, inS = m.start_s || 0, outS = m.end_s || 0) => { const { channel, videoTitle } = ytLabel(m); const th = await ytThumb(m.ref); useCredit(m); clipCards++; const html = T.clipCard({ channel, videoTitle, videoId: m.ref, inS, outS, sceneTitle: s.title, thumbUrl: th ? 'file://' + th : '', note: hint.clip_note || '' }); return { kind: 'png', file: await shotHtml(html, `clip_${m.ref}`), dur, src: `${m.manifest_id} clip card (YouTube ${m.ref} ${mmss(inS)}–${mmss(outS)}) — no download` }; };
+    const footageSeg = async (m, dur, inS = m.start_s || 0) => { const f = path.join(CHAPTER_DIR, m.ref); if (!fs.existsSync(f)) return await pendingSeg(m, dur); useCredit(m); footageSegs++; return { kind: 'footage', file: f, in_s: inS, dur, attribution: m.attribution || '', src: `${m.manifest_id} local footage ${m.ref}${inS ? ' from ' + mmss(inS) : ''} — self-hosted, licence-clean` }; };
     const pendingSeg = async (m, dur) => ({ kind: 'png', file: await shotHtml(T.pendingCard({ sceneTitle: s.title, assetId: m.manifest_id, spec: (m.note || '').slice(0, 140), overlays: (s.overlays || []).filter(o => /caption|lower-third/.test(o.kind)).slice(0, 4) }), `pending_${m.manifest_id}`), dur, src: `${m.manifest_id} pending-asset card` });
     const playerSeg = async (call, dur, label) => ({ kind: 'png', file: await shotPlayer(call, `player_${label}`), dur, src: `player screenshot ${call}` });
     if (hint.visuals) {
@@ -303,6 +318,7 @@ function captionChunks(text, words, maxChars = 84) {
         const m = v.media ? media.find(x => x.manifest_id === v.media) : null; const dur = v.dur ?? null;
         if (v.kind === 'image' && m) segs.push(await imgSeg(m, dur));
         else if (v.kind === 'clip' && m) segs.push(await clipSeg(m, dur, v.in_s ?? m.start_s ?? 0, v.out_s ?? m.end_s ?? 0));
+        else if (v.kind === 'footage' && m) segs.push(await footageSeg(m, dur, v.in_s ?? m.start_s ?? 0));
         else if (v.kind === 'player') segs.push(await playerSeg(v.call, dur, `${tag}_${sha(v.call)}`));
         else if (v.kind === 'scenecard') segs.push({ kind: 'png', file: await shotHtml(T.sceneCard({ title: s.title, subtitle: chapter.title, note: v.note || '' }), `scenecard_${tag}`), dur, src: 'scene title card' });
         else if (v.kind === 'pending' && m) segs.push(await pendingSeg(m, dur));
@@ -313,7 +329,7 @@ function captionChunks(text, words, maxChars = 84) {
       }
     } else {
       // defaults by type
-      if (s.type === 'video') { for (const m of media) { if (m.kind === 'image') segs.push(await imgSeg(m, Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? 0)) * f))); else if (m.kind === 'youtube') segs.push(await clipSeg(m, null)); } }
+      if (s.type === 'video') { for (const m of media) { if (m.use === 'player') continue; if (m.kind === 'image') segs.push(await imgSeg(m, Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? 0)) * f))); else if (m.kind === 'footage') segs.push(await footageSeg(m, Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? 0)) * f))); else if (m.kind === 'youtube') segs.push(await clipSeg(m, null)); } }
       else if (s.type === 'streetview') { const svs = media.filter(x => x.kind === 'streetview'); segs.push({ kind: 'png', file: await shotHtml(T.streetViewCard({ sceneTitle: s.title, stops: svs.map(x => ({ desc: x.note || x.attribution, coords: x.ref })) }), `sv_${tag}`), dur: null, src: 'Street View stop card — not recorded' }); }
       else if (s.type === 'photo') { const vis = media.filter(x => x.kind === 'image' || x.kind === 'generated'); for (const m of vis) { const d = Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? s.duration_s)) * f); if (m.kind === 'image') segs.push(await imgSeg(m, d)); else if (fs.existsSync(path.join(CHAPTER_DIR, m.ref))) { if (/\.svg$/i.test(m.ref)) segs.push(await playerSeg(`showScene(${n}).then(()=>seek(${m.start_s ?? 0}))`, d, `${tag}_${sha(m.ref)}`)); /* ffmpeg has no svg decoder: shoot the player at the asset's scene time */ else segs.push({ kind: 'kb', file: path.join(CHAPTER_DIR, m.ref), dur: d, src: `${m.manifest_id} generated asset` }); } else segs.push(await pendingSeg(m, d)); } }
       else if (s.type === 'map') { const gen = media.filter(x => x.kind === 'generated' && /route-map/.test(x.ref)); const vm = media.find(x => x.kind === 'map'); if (gen.length) { for (const g of gen) segs.push(await playerSeg(`showRouteMap(${!/full-loop|enablers/.test(g.ref)})`, Math.max(4, ((g.end_s ?? 0) - (g.start_s ?? 0)) * f), `${tag}_${sha(g.ref)}`)); } else if (vm) { segs.push(await imgSeg(vm, null)); } else segs.push(await playerSeg('showRouteMap(true)', null, tag)); }
@@ -329,7 +345,7 @@ function captionChunks(text, words, maxChars = 84) {
     const tot = segs.reduce((a, x) => a + x.dur, 0); segs.forEach(x => x.dur = Math.max(1, x.dur * len / tot));
     // snap to frames, fix rounding on the last segment
     let acc = 0; segs.forEach((x, i) => { x.dur = Math.round(x.dur * FPS) / FPS; x.at = acc; acc += x.dur; }); segs[segs.length - 1].dur += Math.round((len - acc) * FPS) / FPS; if (segs[segs.length - 1].dur < 1) segs[segs.length - 1].dur = 1;
-    const segFiles = []; for (const x of segs) segFiles.push(x.kind === 'kb' ? await segKenBurns(x.file, x.dur) : await segStatic(x.file, x.dur));
+    const segFiles = []; for (const x of segs) segFiles.push(x.kind === 'kb' ? await segKenBurns(x.file, x.dur) : x.kind === 'footage' ? await segFootage(x.file, x.dur, x.in_s || 0) : await segStatic(x.file, x.dur));
 
     // ---- captions (ASS) + VTT ----
     let ass = assHeader(); ass += assLine('Title', 0, 4, s.title);
@@ -381,14 +397,14 @@ function captionChunks(text, words, maxChars = 84) {
     `**Output:** \`${path.relative(path.resolve(CHAPTER_DIR, '../../..'), finalMp4)}\` — ${fmt1(dur)} s (${mmss(dur)}), ${v.width}×${v.height} ${v.codec_name} ${v.r_frame_rate} fps, ${a.codec_name} ${a.sample_rate} Hz ${a.channels} ch, ${(probe.format.size / 1048576).toFixed(1)} MB, faststart. Subtitles: \`${chapter.id}_narration.vtt\`.`, '',
     `**Voice:** ${NO_TTS ? 'none (captions only)' : `Edge neural TTS ${VOICE} (guide), ${VOICE2} (Passepartout), rate ${RATE}`}${plans.some(p => !p.ttsOk) ? ' — **TTS FAILED for some scenes, see table**' : ''}. **Beds:** Commons audio at ${BED_TARGET_LUFS} LUFS (≈ 18 dB under narration), stings at ${STING_TARGET_LUFS} LUFS. **Slack:** a scene may exceed its README seconds by ${Math.round(SLACK * 100)} % before the script is end-cut at a sentence boundary.`, '',
     ...logLines, `Sidecar cut hints: ${fs.existsSync(cutsPath) ? path.relative(path.resolve(CHAPTER_DIR, '../../..'), cutsPath) : 'none'}.`, '',
-    `## Rights compliance`, `- YouTube: not downloaded, not re-encoded — every \`video\` scene shows a clip card (channel, title, in/out, thumbnail from i.ytimg.com).`, `- Street View: not screen-recorded — stop cards only.`, `- Commons images resolved through the API (imageinfo, width 1920), attribution burned bottom-right while shown and repeated on the credits card. Freesound refs (login-gated) skipped.`, '',
+    `## Rights compliance`, `- YouTube: not downloaded, not re-encoded. ${clipCards ? `${clipCards} clip card(s) stand in (channel, title, in/out, thumbnail from i.ytimg.com)` : 'no clip cards in this cut'}; ${footageSegs} shot(s) come from self-hosted, licence-clean files under \`media/files/\` (Wikimedia Commons / public-domain film / KartaView), never from youtube.com.`, `- Street View: not screen-recorded — stop cards only.`, `- Commons images resolved through the API (imageinfo, width 1920), attribution burned bottom-right while shown and repeated on the credits card. Freesound refs (login-gated) skipped.`, '',
     `## Scenes`, '', `| # | scene | type | at | s (README) | TTS | visual source | beds | script cuts |`, `|---|-------|------|----|-----------:|-----|---------------|------|-------------|`);
   for (const p of plans) { L.push(`| ${String(p.sel.idx + 1).padStart(2, '0')} | ${p.s.id} | ${p.s.type} | ${mmss(p.render.start)} | ${fmt1(p.render.len)} (${p.sel.cap}) | ${p.ttsOk ? 'ok' : '**fallback**'} ${fmt1(p.speechEnd)} s | ${p.render.segs.join('<br>')} | ${p.render.beds.join('<br>') || '—'} | ${[...p.droppedBySidecar.map(x => 'sidecar: dropped ' + x), ...p.cutLog].join('<br>') || '—'} |`); }
   L.push('', `Title card ${TITLE_S} s at 0:00; credits ${pages} page(s) at the end. Total ${mmss(dur)}.`, '');
   if (warnings.length) { L.push('## Warnings', ...warnings.map(w => '- ' + w), ''); }
   L.push('## Sentence index per scene (for the sidecar / Narrator)', '');
   for (const p of plans) { L.push(`**${String(p.sel.idx + 1).padStart(2, '0')} ${p.s.id}** — ${p.sents.map((x, i) => `[${i}] ${x}`).join(' ')}`, ''); }
-  L.push('## Digest', `- Did: rendered ${plans.length} scenes + title + credits into one h264/aac MP4 (${mmss(dur)}) with Edge TTS narration, sentence captions, Commons beds and clip/stop cards where rights forbid copying.`, `- Weak: clip cards stand in for ${plans.filter(p => p.s.type === 'video').length} video scene(s)${plans.filter(p => p.s.type === 'streetview').length ? ` and stop cards for ${plans.filter(p => p.s.type === 'streetview').length} Street View scene(s)` : ''} (${fmt1(plans.filter(p => p.s.type === 'video' || p.s.type === 'streetview').reduce((a, p) => a + p.render.len, 0))} s of ${fmt1(dur)}); ${plans.filter(p => p.cutLog.length).length} scene(s) were end-cut mechanically where TTS overran the README seconds (see table) — Narrator should re-trim by hand; generated assets (G-xx) are still pending cards.`, `- Next: swap clip cards for licensed footage once Rights clears direct licences; add per-sentence timed overlays; run loudnorm on the final mix; add a 9:16 variant.`);
+  L.push('## Digest', `- Did: rendered ${plans.length} scenes + title + credits into one h264/aac MP4 (${mmss(dur)}) with Edge TTS narration, sentence captions, Commons beds and clip/stop cards where rights forbid copying.`, `- Weak: ${clipCards} clip card(s) still stand in${plans.filter(p => p.s.type === 'streetview').length ? ` and stop cards for ${plans.filter(p => p.s.type === 'streetview').length} Street View scene(s)` : ''} (${fmt1(plans.filter(p => p.s.type === 'video' || p.s.type === 'streetview').reduce((a, p) => a + p.render.len, 0))} s of ${fmt1(dur)}); ${plans.filter(p => p.cutLog.length).length} scene(s) were end-cut mechanically where TTS overran the README seconds (see table) — Narrator should re-trim by hand; generated assets (G-xx) are still pending cards.`, `- Next: swap clip cards for licensed footage once Rights clears direct licences; add per-sentence timed overlays; run loudnorm on the final mix; add a 9:16 variant.`);
   fs.writeFileSync(path.join(OUT, 'render-log.md'), L.join('\n'));
   if (browser) await browser.close();
   if (!args.keep) { try { fs.rmSync(WORK, { recursive: true, force: true }); } catch { } }

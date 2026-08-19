@@ -6,6 +6,9 @@ node_modules/
 studio/research/prototypes/window/dev.crt
 studio/research/prototypes/window/dev.key
 products/**/linear/*.mp4
+# downloaded + normalised source footage (large, regenerable from media/manifest.md — see media/files/README.md)
+products/**/media/files/*
+!products/**/media/files/README.md
 www/serve.log
 .DS_Store
 www/config.json

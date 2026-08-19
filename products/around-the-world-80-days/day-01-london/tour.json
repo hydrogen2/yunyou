@@ -152,7 +152,50 @@
               "license": "youtube-embed",
               "manifest_id": "M-05",
               "attribution": "Watched Walker, 'London Walk - Bond Street & Savile Row' (2022) — YouTube embed",
-              "note": "21:35–23:05: Burlington Gardens corner into the Row (creator chapter 'Savile Row' at 21:55). Backup M-06 SNm-h6lxu1c 01:56–03:26; spare M-07 wyl0GZBEWXs. Content Preparer: pin the frames where 14 / 15 / 3 are legible; if the No. 14 plaque is not visible, hold M-33 as a still."
+              "note": "21:35–23:05: Burlington Gardens corner into the Row (creator chapter 'Savile Row' at 21:55). Backup M-06 SNm-h6lxu1c 01:56–03:26; spare M-07 wyl0GZBEWXs. Content Preparer: pin the frames where 14 / 15 / 3 are legible; if the No. 14 plaque is not visible, hold M-33 as a still. A8: player-only (Standard YouTube Licence, rights-a6 §3.2) — the linear cut now uses M-66 (KartaView hyperlapse) plus stills instead of a clip card.",
+              "use": "player"
+            },
+            {
+              "kind": "footage",
+              "ref": "media/files/m66-savile-row-hyperlapse.mp4",
+              "start_s": 0,
+              "end_s": 7,
+              "license": "cc-by-sa-4.0",
+              "manifest_id": "M-66",
+              "attribution": "KartaView / telenavdrives (2018) · CC BY-SA 4.0 · adapted",
+              "use": "linear",
+              "audio": "mute",
+              "sa": true,
+              "note": "Southbound Savile Row hyperlapse built from KartaView seq 1123901 frames 1770–1779 (17 Jan 2018), 1.0 s hold + 0.3 s dissolve each; cropped 2400×1350 from 2592×1936 to drop the dashboard, lifted +0.055 brightness (the source is backlit). 7.3 s. Opens the scene where the M-05 embed opens it in the player."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:View_up_Savile_Row_-_geograph.org.uk_-_2929073.jpg",
+              "license": "cc-by-sa-2.0",
+              "manifest_id": "M-77a",
+              "attribution": "Robert Lamb / geograph.org.uk (2012) · CC BY-SA 2.0 · adapted",
+              "use": "linear",
+              "sa": true,
+              "note": "3456×2592, looking up the Row. Ken Burns hold under the Poole / tailoring beat. Adaptation permitted under rights-a6 §3.2 (D4 superseded the \"BY-SA unmodified\" rule)."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:No_3,_Savile_Row_door_and_sign.jpg",
+              "license": "cc0",
+              "manifest_id": "M-77c",
+              "attribution": "VirtuallyLondonBecky (2014) · CC0",
+              "use": "linear",
+              "note": "960×540, the No. 3 door — the Beatles rooftop beat at ~52–62 s. CC0, so the only Savile Row still that may be freely cropped or tinted."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:London_Savile_Row_geograph-3066994-by-Ben-Brooksbank.jpg",
+              "license": "cc-by-sa-2.0",
+              "manifest_id": "M-77b",
+              "attribution": "Ben Brooksbank (1955) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+              "use": "linear",
+              "sa": true,
+              "note": "2338×1447, 26 Aug 1955 — a genuine \"then\" street view of the Row; pairs with M-32 (c.1890) and M-33 for the closing beat."
             },
             {
               "kind": "image",
@@ -227,12 +270,12 @@
             "F-39",
             "F-45"
           ],
-          "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut (A5, clear track): 84 s cap — s:0-15, i.e. everything up to 'he lived only in the book'; the M-32 insert and its three sentences ('Here is the street around 1890 / Same doors / Same quiet') go together; pins Savile Row, No. 15 and No. 14 (the last re-timed to 62–72 s). A3n: script recast (plain telling first, Sheridan reveal after) and title de-jokified — the old linear trim ('last four sentences') and the cut-sheet s:N tokens need re-picking in A4.",
+          "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut (A5, clear track): 84 s cap — s:0-15, i.e. everything up to 'he lived only in the book'; the M-32 insert and its three sentences ('Here is the street around 1890 / Same doors / Same quiet') go together; pins Savile Row, No. 15 and No. 14 (the last re-timed to 62–72 s). A3n: script recast (plain telling first, Sheridan reveal after) and title de-jokified — the old linear trim ('last four sentences') and the cut-sheet s:N tokens need re-picking in A4. A8 2026-08-19 (content-preparer): the linear cut no longer shows a clip card here: the scene's linear visuals are M-66 (7 s KartaView hyperlapse, CC BY-SA 4.0) → M-77a → M-77c → M-33 → M-77b. M-05 stays the PLAYER source (`use: player`) — the embed is legal, the copy is not (review/rights-a6.md §1.2). Attribution burn-ins per rights-a6 §2.6.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush'). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): recast for a first-time reader — plain telling first (Fogg's street, his door, why we start here), the Verne-got-the-address-wrong beat moved AFTER it and told as a reveal, not a prerequisite; the two-Ls spelling aside moved out of the spine into a 'go deeper' caption; Burlington Gardens pin simplified; clear-English variant added; F-03 (unused) swapped for F-12 (he leaves tonight from this door). Title 'the address Verne got wrong' → 'Fogg's front door' (spine may not lead with the meta-joke). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track had reinstated the A1 error — 'His shop is still here, at No. 15' → 'The shop is still here — at No. 15 since 1982' (F-45; it also contradicted overlay [1] on the same frame); 'a short evening jacket for a prince — the first dinner jacket' → 'for the Prince of Wales — the grandfather, they say, of the dinner jacket' (F-19/F-45 dinner-jacket attribution is med and belongs to the firm). Linear cut re-derived against the clear track: s:0-15 (Poole is named before 'The firm says…'), the M-32 tail and its three sentences dropped with the image, No. 14 pin added at 62 s."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush'). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): recast for a first-time reader — plain telling first (Fogg's street, his door, why we start here), the Verne-got-the-address-wrong beat moved AFTER it and told as a reveal, not a prerequisite; the two-Ls spelling aside moved out of the spine into a 'go deeper' caption; Burlington Gardens pin simplified; clear-English variant added; F-03 (unused) swapped for F-12 (he leaves tonight from this door). Title 'the address Verne got wrong' → 'Fogg's front door' (spine may not lead with the meta-joke). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track had reinstated the A1 error — 'His shop is still here, at No. 15' → 'The shop is still here — at No. 15 since 1982' (F-45; it also contradicted overlay [1] on the same frame); 'a short evening jacket for a prince — the first dinner jacket' → 'for the Prince of Wales — the grandfather, they say, of the dinner jacket' (F-19/F-45 dinner-jacket attribution is med and belongs to the firm). Linear cut re-derived against the clear track: s:0-15 (Poole is named before 'The firm says…'), the M-32 tail and its three sentences dropped with the image, No. 14 pin added at 62 s. A8 2026-08-19 (content-preparer): M-05 marked `use: player`; M-66/M-77a/M-77b/M-77c added with `use: linear` so the rendered MP4 loses its clip card. M-66's frames were downloaded and viewed (Union Jack and LANVIN shopfront at idx 1778 confirm the Row); the hyperlapse is 10 frames over ~110 m, so it reads as a dissolve-hyperlapse, not a walk — QA to say whether that is acceptable in the spine or should be shortened to 5 s."
           }
         },
         {
@@ -436,11 +479,11 @@
             },
             {
               "kind": "streetview",
-              "ref": "51.5067,-0.1335,165,5,80",
+              "ref": "51.50678,-0.13354,168,14,90",
               "license": "google-maps-embed",
               "manifest_id": "M-37",
               "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-              "note": "Waypoint 6: facing the Reform Club façade, 104 Pall Mall (OSM centroid 51.50654,-0.13346). Cumulative 1,120 m → counter must read 1,151 here. Optional look-on: Waterloo Place 51.5070,-0.1318 heading 90 (not counted).",
+              "note": "Waypoint 6: facing the Reform Club façade, 104 Pall Mall (OSM centroid 51.50654,-0.13346). Point refined 2026-08-19 (engine-tools) from 51.5067,-0.1335 to the pano Google actually returns there, 51.506775,-0.133543 (imagery 2025-10, verified via the Street View metadata endpoint); heading 168° is the measured bearing to the façade centroid, 27 m away. Cumulative 1,120 m → counter must read 1,151 here. Optional look-on: Waterloo Place 51.5070,-0.1318 heading 90 (not counted).",
               "fallback": "M-20"
             }
           ],
@@ -535,6 +578,112 @@
               "position": "tl"
             }
           ],
+          "camera": [
+            {
+              "at_s": 0,
+              "at_waypoint": 0,
+              "heading": 350,
+              "pitch": 2,
+              "zoom": 0.8,
+              "hold_s": 10,
+              "ease_s": 0,
+              "label": "look north up Savile Row (M-39 stop, waypoint 0)"
+            },
+            {
+              "at_s": 15,
+              "at_waypoint": 0,
+              "look_at": "51.51073,-0.13987",
+              "heading": 82,
+              "pitch": 10,
+              "zoom": 0.85,
+              "hold_s": 7,
+              "ease_s": 2.5,
+              "label": "turn to face 7-8 Savile Row (OSM 'Gossard House 7-8') as the caption fires"
+            },
+            {
+              "at_s": 30,
+              "at_waypoint": 1,
+              "heading": 240,
+              "pitch": 0,
+              "zoom": 0.8,
+              "hold_s": 4,
+              "ease_s": 2,
+              "label": "Verne's corner: turn right, WSW along Burlington Gardens"
+            },
+            {
+              "at_s": 45,
+              "at_waypoint": 2,
+              "heading": 150,
+              "pitch": 0,
+              "zoom": 0.8,
+              "hold_s": 4,
+              "ease_s": 2,
+              "label": "Old Bond Street: turn left, downhill towards Piccadilly"
+            },
+            {
+              "at_s": 60,
+              "at_waypoint": 3,
+              "heading": 147,
+              "pitch": 0,
+              "zoom": 0.8,
+              "hold_s": 4,
+              "ease_s": 2,
+              "label": "Piccadilly: across, then the mouth of St James's Street"
+            },
+            {
+              "at_s": 75,
+              "at_waypoint": 4,
+              "heading": 147,
+              "pitch": 0,
+              "zoom": 0.8,
+              "hold_s": 3,
+              "ease_s": 2,
+              "label": "St James's Street, the long straight slope"
+            },
+            {
+              "at_s": 90,
+              "at_waypoint": 5,
+              "heading": 65,
+              "pitch": 5,
+              "zoom": 0.8,
+              "hold_s": 5,
+              "ease_s": 2.5,
+              "label": "Pall Mall: turn east, clubland on the right (gas-lamp pin at 90 s)"
+            },
+            {
+              "at_s": 105,
+              "at_waypoint": 6,
+              "look_at": "51.50654,-0.13346",
+              "heading": 168,
+              "pitch": 18,
+              "zoom": 0.72,
+              "hold_s": 13,
+              "ease_s": 3,
+              "label": "Reform Club facade, 104 Pall Mall (OSM centroid) - pin at 105 s"
+            },
+            {
+              "at_s": 120,
+              "at_waypoint": 6,
+              "look_at": "51.50668,-0.13308",
+              "heading": 109,
+              "pitch": 12,
+              "zoom": 0.9,
+              "hold_s": 13,
+              "ease_s": 3,
+              "label": "a little left: Travellers Club, 106 Pall Mall (OSM centroid) - pin at 120 s"
+            },
+            {
+              "at_s": 135,
+              "at_waypoint": 6,
+              "look_at": "51.50679,-0.13275",
+              "heading": 89,
+              "pitch": 8,
+              "zoom": 1.1,
+              "hold_s": 14,
+              "ease_s": 3,
+              "label": "beyond it: the Athenaeum, 107 Pall Mall (OSM centroid) - pin at 135 s"
+            }
+          ],
           "interaction": {
             "kind": "walk",
             "prompt": "Walk with Fogg — the full 1,151 steps. Tap ahead to step; the counter climbs with you.",
@@ -545,7 +694,7 @@
               "51.5081,-0.1400,147",
               "51.5065,-0.1393,147",
               "51.5053,-0.1381,65",
-              "51.5067,-0.1335,165"
+              "51.50678,-0.13354,168"
             ]
           },
           "transition": {
@@ -569,16 +718,16 @@
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: full seven-stop walk M-39→M-53→M-54→M-55→M-56→M-57→M-37 (D5) with per-stop headings and fallbacks; counter recalibrated to 0.97 m/step, no jump caption, lands on 1,151 at the façade; Pall Mall leg now starts on M-57's true corner and the gas pin geo moved with it; overlays and cue sentences waypoint-triggered (at_waypoint / waypoint_script) with at_s fallback; sticker tr; Travellers 1832 (F-44), house-number style '106 Pall Mall'; No. 7 caption softened (D7); production_notes: counter needs Maps JavaScript API — key/billing owner open (D12). A1 narrator 2026-08-18: waypoint_script polished (24-word openers split at stops 0 and 5; contractions per R4); script regenerated as the join; counter numbers stay spoken because they are the beat, not a caption read-out. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): waypoint 0 now names the destination ('leaves for his club') so a first-time reader knows where we are walking; script regenerated as the join; clubland gloss chip at the Pall Mall waypoint; clear-English variant added (single track — the player plays it linearly over the walk). A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.waypoint_script_variants.clear added — seven blocks whose join is exactly variants.clear, so the walk speaks one register end to end in clear mode. No fact or timing changed. Engine: the player and the linear renderer still read waypoint_script only (backlog)."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: full seven-stop walk M-39→M-53→M-54→M-55→M-56→M-57→M-37 (D5) with per-stop headings and fallbacks; counter recalibrated to 0.97 m/step, no jump caption, lands on 1,151 at the façade; Pall Mall leg now starts on M-57's true corner and the gas pin geo moved with it; overlays and cue sentences waypoint-triggered (at_waypoint / waypoint_script) with at_s fallback; sticker tr; Travellers 1832 (F-44), house-number style '106 Pall Mall'; No. 7 caption softened (D7); production_notes: counter needs Maps JavaScript API — key/billing owner open (D12). A1 narrator 2026-08-18: waypoint_script polished (24-word openers split at stops 0 and 5; contractions per R4); script regenerated as the join; counter numbers stay spoken because they are the beat, not a caption read-out. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): waypoint 0 now names the destination ('leaves for his club') so a first-time reader knows where we are walking; script regenerated as the join; clubland gloss chip at the Pall Mall waypoint; clear-English variant added (single track — the player plays it linearly over the walk). A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.waypoint_script_variants.clear added — seven blocks whose join is exactly variants.clear, so the walk speaks one register end to end in clear mode. No fact or timing changed. Engine: the player and the linear renderer still read waypoint_script only (backlog). A4 engine-tools 2026-08-19 (v0.4 cinematic Street View): added the `camera` track — ten look-at cues on the same at_s as the overlays, so the turn and the pin coincide; the three clubhouse cues use look_at with OSM centroids (Reform 51.50654,-0.13346; Travellers 51.50668,-0.13308; Athenaeum 51.50679,-0.13275, all verified via Overpass) so the framing survives Google moving the nearest pano. Headings/pitches checked against real Street View Static frames from the M-37 pano (51.506775,-0.133543, imagery 2025-10): heading 168 pitch 18 fov ~110 shows the whole Portland-stone façade; 109 and 89 are the Travellers and the Athenaeum, both to the LEFT of the Reform as the narration says. Narration and overlays untouched. NOTE for the Scene Developer: interaction.prompt still says 'Tap ahead to step' — the walk now plays itself with no tapping, so that line needs a rewrite. Waypoint 6 / M-37 refined to the returned pano 51.50678,-0.13354 (heading 168°) so the three close-range look_at cues (27-55 m) resolve to the bearings measured from the real pano; the rounded 51.5067,-0.1335 swung the Travellers bearing by 15°. Route length by haversine over the rounded waypoints is 1,086 m; F-43's 1,120 m is measured between the exact OSM junction nodes — the spoken counter numbers are unaffected."
           }
         },
         {
           "id": "pall-mall-pass",
           "type": "video",
-          "title": "Pall Mall — passing the clubs (linear cut)",
+          "title": "Pall Mall — past the clubs (linear cut)",
           "subtopic": "4 — Count the steps (linear replacement)",
-          "duration_s": 76,
-          "learning_goal": "Linear-cut stand-in for the Street View walk: know the 1,151 steps and see the three clubs in a row.",
+          "duration_s": 42,
+          "learning_goal": "Linear-cut stand-in for the Street View walk: know the 1,151 steps and see the three clubs in a row — as one hyperlapse and three façades, not as a continuous walk.",
           "narration": {
             "script": "From Savile Row, Fogg walks to his club and counts. Five hundred and seventy-five steps with the right foot, five hundred and seventy-six with the left. One thousand one hundred and fifty-one. He never hurries. We are on Pall Mall now, walking west through clubland. It was one of the first streets in London lit by gas, in 1807. Watch the left side: the Athenaeum at 107, then the Travellers at 106. Then the palazzo with the tall windows — the Reform Club, 104 Pall Mall, by Charles Barry, opened 1841. Fogg made it 1,151 steps. We make it about a kilometre.",
             "timing": "over",
@@ -596,7 +745,60 @@
               "license": "youtube-embed",
               "manifest_id": "M-01",
               "attribution": "Wanderizm, 'LONDON Walk - Day stroll along Trafalgar Square, Royal horse guards and St. James's' (2020) — YouTube embed",
-              "note": "26:19–27:35 (76 s), Pall Mall westbound from the Edward VII statue; Athenaeum (107), Travellers (106), Reform (104) on the left. Extended so the No. 104 façade (~110 m west of the statue) is in frame before the scene ends — frame unverified (A3). Backup M-02 kfuLPlhJGYE 06:37–07:53 (mute the Tunetank music). QA to pin the frame where No. 104 fills the shot."
+              "note": "26:19–27:35 (76 s), Pall Mall westbound from the Edward VII statue; Athenaeum (107), Travellers (106), Reform (104) on the left. Extended so the No. 104 façade (~110 m west of the statue) is in frame before the scene ends — frame unverified (A3). Backup M-02 kfuLPlhJGYE 06:37–07:53 (mute the Tunetank music). QA to pin the frame where No. 104 fills the shot. A8: player-only (Standard YouTube Licence). The 76-second continuous façade pass this row was cut for does not exist at ladder rungs 1–3 (manifest-a6.md \"what still has no clean answer\" #1), which is why the scene was re-cut to 42 s.",
+              "use": "player"
+            },
+            {
+              "kind": "footage",
+              "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
+              "start_s": 0,
+              "end_s": 8,
+              "license": "cc-by-sa-4.0",
+              "manifest_id": "M-67",
+              "attribution": "KartaView / telenavdrives (2016) · CC BY-SA 4.0 · adapted",
+              "use": "linear",
+              "audio": "mute",
+              "sa": true,
+              "note": "Westbound Pall Mall hyperlapse from KartaView seq 1124 frames 828–838 (25 Mar 2016), 11 frames over ~270 m, 1.0 s hold + 0.3 s dissolve; cropped 2900×1631 from 3264×2448 to drop the dashboard. 8.0 s. Road-centre car view: the club fronts pass obliquely on the left, so the narration names them and the stills show them."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:The_Athen%C3%A6um_Club,_Pall_Mall,_London_WC1_-_geograph.org.uk_-_894173.jpg",
+              "license": "cc-by-sa-2.0",
+              "manifest_id": "M-69a",
+              "attribution": "Kevin Gordon (2008) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+              "use": "linear",
+              "sa": true,
+              "note": "640×501 — small, so a gentle move only. The Athenaeum, 107 Pall Mall."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:Travellers_Club,_Pall_Mall_-_geograph.org.uk_-_5323789.jpg",
+              "license": "cc-by-sa-2.0",
+              "manifest_id": "M-69b",
+              "attribution": "Jim Osley (2017) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+              "use": "linear",
+              "sa": true,
+              "note": "3240×5270 portrait — crop/pan to landscape. The Travellers Club, 106 Pall Mall (Barry, 1832)."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
+              "license": "cc-by-sa-2.0",
+              "manifest_id": "M-20",
+              "attribution": "Philip Cornwall (2019) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+              "use": "linear",
+              "sa": true,
+              "note": "The Reform Club façade today, 3024×4032. Held under the \"104 Pall Mall, by Charles Barry\" line."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._North_Elevation.jpg",
+              "license": "public-domain",
+              "manifest_id": "M-22",
+              "attribution": "Reform Club, north elevation — from the Life and Works of Sir Charles Barry (19th c.), public domain",
+              "use": "linear",
+              "note": "709×431 engraving. Closes 05 on the Barry drawing so that 06 can open on M-20 without repeating the same frame across the seam."
             }
           ],
           "overlays": [
@@ -608,26 +810,25 @@
               "position": "bottom"
             },
             {
-              "at_s": 34,
+              "at_s": 16,
+              "kind": "gloss",
+              "until_s": 24,
+              "text": "clubland — a district of private members’ clubs",
+              "position": "bottom"
+            },
+            {
+              "at_s": 18,
               "kind": "pin",
-              "until_s": 46,
-              "text": "Travellers Club — 106 Pall Mall, Barry's first, 1832",
+              "until_s": 26,
+              "text": "Travellers Club — 106 Pall Mall, Barry’s first, 1832",
               "position": "bl"
             },
             {
-              "at_s": 56,
+              "at_s": 28,
               "kind": "pin",
-              "until_s": 70,
+              "until_s": 40,
               "text": "Reform Club — 104 Pall Mall, Barry, 1841",
-              "position": "bl",
-              "geo": "51.5065,-0.1335"
-            },
-            {
-              "at_s": 16,
-              "kind": "gloss",
-              "until_s": 26,
-              "text": "clubland — a district of private members' clubs",
-              "position": "tl"
+              "position": "bl"
             }
           ],
           "interaction": {
@@ -646,12 +847,12 @@
             "F-18",
             "F-44"
           ],
-          "production_notes": "LINEAR CUT ONLY. Replaces 04 count-the-steps in the passive version. Extended to 76 s (QA: at ~1.3 m/s the façade arrives late in the clip); 'watch the left side' is correct for west-bound. In the linear cut, 06 the-reform-club uses M-01 26:50–27:35 (its own arrival window) — the two clips overlap by 45 s, so the linear renderer should start 06 on the photo trio as before.",
+          "production_notes": "LINEAR CUT ONLY. Replaces 04 count-the-steps in the passive version. A8 2026-08-19 (content-preparer): RE-CUT 76 s → 42 s. The old shape needed a 76-second continuous westbound façade pass past 107 / 106 / 104 Pall Mall; manifest-a6.md established that no such shot exists at ladder rungs 1–3, and rights-a6.md §3.6 approved the re-shape rather than a licence. New shape (A6's proposal, tightened): 8 s M-67 hyperlapse → 8 s M-69a Athenaeum → 8 s M-69b Travellers → 10 s M-20 Reform façade → 8 s M-22 Barry elevation. The WORDS ARE UNCHANGED (102 standard / 94 clear); only the seconds moved, 102/42 = 2.43 w/s and 94/42 = 2.24 w/s, both inside the 2.5 w/s budget. Overlays re-timed to the shorter scene (caption 4–12, gloss 16–24, Travellers 18–26, Reform 28–40) and kept at three timed overlays, the ceiling for 42 s. 'Watch the left side' still holds: M-67 is westbound and the clubs are on the south (left) side. M-01 stays as the PLAYER source (`use: player`); it is Standard YouTube Licence, so it may be embedded and may not be copied.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: extended to M-01 26:19–27:35 (76 s) so the façade is in frame; Reform pin moved to 56–70 s; Travellers pin added (1832, F-44). A1 narrator 2026-08-18: 30- and 32-word sentences split; 'watch the left side' kept (west-bound); 99 words / 76 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): 'walks to his club' names the destination for a first-time viewer (linear cut has no scene 04); clubland gloss chip; clear-English variant added."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: extended to M-01 26:19–27:35 (76 s) so the façade is in frame; Reform pin moved to 56–70 s; Travellers pin added (1832, F-44). A1 narrator 2026-08-18: 30- and 32-word sentences split; 'watch the left side' kept (west-bound); 99 words / 76 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): 'walks to his club' names the destination for a first-time viewer (linear cut has no scene 04); clubland gloss chip; clear-English variant added. A8 2026-08-19 (content-preparer): scene re-cut 76 → 42 s (the redesign rights-a6.md §3.6 asked for, not a licence). Media added: M-67 (KartaView hyperlapse, CC BY-SA 4.0, `sa: true`), M-69a/M-69b (geograph façades), M-20, M-22 — all `use: linear`; M-01 marked `use: player`. Honest limits: M-67 is a 2016 road-centre dashcam at ~25 m spacing, so the clubs pass obliquely at the frame edge and the moving shot cannot itself identify 104/106/107 — the stills and the narration do that. Frame idx 831 was downloaded and viewed (Royal Automobile Club front, blue flag, twin lanterns) which confirms the sequence is Pall Mall clubland, but WHICH frame shows the Reform is unpinned."
           }
         },
         {
@@ -678,7 +879,8 @@
               "license": "youtube-embed",
               "manifest_id": "M-01",
               "attribution": "Wanderizm, 'LONDON Walk - Day stroll along Trafalgar Square, Royal horse guards and St. James's' (2020) — YouTube embed",
-              "note": "26:50–27:35, arriving at the Reform Club door (scene seconds 0–45) — the last 45 s of the same Wanderizm stretch 05 uses, so the façade is in frame at the end; frame unverified (A3). Backup M-02 kfuLPlhJGYE 07:08–07:53 (mute music). Dropped in the linear cut."
+              "note": "26:50–27:35, arriving at the Reform Club door (scene seconds 0–45) — the last 45 s of the same Wanderizm stretch 05 uses, so the façade is in frame at the end; frame unverified (A3). Backup M-02 kfuLPlhJGYE 07:08–07:53 (mute music). Dropped in the linear cut. A8: player-only (Standard YouTube Licence). The linear cut already opened this scene on M-20 and never showed a clip card here; the `use` marker just records why.",
+              "use": "player"
             },
             {
               "kind": "image",
@@ -688,7 +890,9 @@
               "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
               "start_s": 45,
               "end_s": 70,
-              "note": "Façade today, full frame 45–70 s; M-22 and M-23 appear as insets over it (they are too small for full-screen). Alt M-21 (square crop) for pin thumbnail."
+              "note": "Façade today, full frame 45–70 s; M-22 and M-23 appear as insets over it (they are too small for full-screen). Alt M-21 (square crop) for pin thumbnail.",
+              "use": "both",
+              "sa": true
             },
             {
               "kind": "image",
@@ -698,7 +902,20 @@
               "attribution": "Reform Club, north elevation, from 'Life and Works of Sir Charles Barry' (Wikimedia Commons, PD)",
               "start_s": 53,
               "end_s": 61,
-              "note": "Barry's elevation, 709 px — INSET over M-20 (lower-left, ~40 % width), never full-screen."
+              "note": "Barry's elevation, 709 px — INSET over M-20 (lower-left, ~40 % width), never full-screen.",
+              "use": "both"
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_2317843.jpg",
+              "start_s": 24,
+              "end_s": 32,
+              "license": "cc-by-sa-2.0",
+              "manifest_id": "M-69c",
+              "attribution": "Stephen Craven (2011) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+              "use": "linear",
+              "sa": true,
+              "note": "1024×768, the Reform Club from across Pall Mall — a second angle so the 62-second linear cut is not one still with two insets. A6 M-69c."
             },
             {
               "kind": "image",
@@ -708,7 +925,8 @@
               "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
               "start_s": 61,
               "end_s": 70,
-              "note": "632 px — INSET over M-20 with vignette (replaces the M-22 inset), never full-screen."
+              "note": "632 px — INSET over M-20 with vignette (replaces the M-22 inset), never full-screen.",
+              "use": "both"
             },
             {
               "kind": "audio",
@@ -769,12 +987,12 @@
             "F-18",
             "F-27"
           ],
-          "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Order (QA): arrival + history over the video 0–25 s; the 'look up' cue and the breakfast over the video's last 20 s (25–45 s, we are 'at the door') with the menu on the caption at 30–42 s so the guide reads only the best clause; the photo trio lines over M-20 + insets 45–70 s. The 'look up' cue does NOT name the coffee-room: its nine windows are in the long SOUTH (garden) wall (F-15), not on the Pall Mall front — Narrator, keep it that way, and keep 'nine' out of this scene (Quiz A follows). No paper-knife: Towle says he cuts the uncut Times 'with a skill which betrayed familiarity' (F-06). Narrator: ≤ 140 words, every sentence ≤ 20 words (Continuity #2); ends on the noun. Linear cut (A5, clear track): 62 s cap, from the door — M-20 for 38 s, then the M-22 / M-23 insets (M-01 is used by 05 pall-mall-pass). Keep s:0 and s:2: without them the film opened on 'It is real, and still here…' with no antecedent and never said where the club's name comes from. The Soyer kitchens and the closing Times line pay for those seconds.",
+          "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Order (QA): arrival + history over the video 0–25 s; the 'look up' cue and the breakfast over the video's last 20 s (25–45 s, we are 'at the door') with the menu on the caption at 30–42 s so the guide reads only the best clause; the photo trio lines over M-20 + insets 45–70 s. The 'look up' cue does NOT name the coffee-room: its nine windows are in the long SOUTH (garden) wall (F-15), not on the Pall Mall front — Narrator, keep it that way, and keep 'nine' out of this scene (Quiz A follows). No paper-knife: Towle says he cuts the uncut Times 'with a skill which betrayed familiarity' (F-06). Narrator: ≤ 140 words, every sentence ≤ 20 words (Continuity #2); ends on the noun. Linear cut (A5, clear track): 62 s cap, from the door — M-20 for 38 s, then the M-22 / M-23 insets (M-01 is used by 05 pall-mall-pass). Keep s:0 and s:2: without them the film opened on 'It is real, and still here…' with no antecedent and never said where the club's name comes from. The Soyer kitchens and the closing Times line pay for those seconds. A8 2026-08-19 (content-preparer): M-01 marked `use: player`; M-69c added as a second façade angle for the linear cut. This beat was never a walking shot, so it never needed a clip card — rights-a6.md §3.6 'YES, and the slow push is now allowed on the BY-SA stills'.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): opener now says whose club this is and what it is to Fogg (a first-time reader meets 'the Reform' cold otherwise); Reform Act line recast as the name's plain explanation; clear-English variant added; 'nine' still kept out (Quiz A follows). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track 'Its founders wanted political reform; that is the name' → 'Its founders had backed the Reform Act of 1832 — that is where the name comes from' (F-14: 1836, by Radicals and Whigs who had backed the 1832 Act — as simplified it sounded like a campaign for a reform already law); 'the architect's drawing' → 'the architect's plan of the front' (M-22 is an engraving of Barry's north elevation, not his hand). Linear cut now opens on s:0 ('This is the door of Fogg's club') and keeps s:2, so the video no longer starts on a dangling 'It is real, and still here…' and does explain the club's name; the Soyer kitchens and the closing Times line pay for the seconds, and the three insets are timed 38 / 9 / rest so 'the front today' is said over the front."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): opener now says whose club this is and what it is to Fogg (a first-time reader meets 'the Reform' cold otherwise); Reform Act line recast as the name's plain explanation; clear-English variant added; 'nine' still kept out (Quiz A follows). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track 'Its founders wanted political reform; that is the name' → 'Its founders had backed the Reform Act of 1832 — that is where the name comes from' (F-14: 1836, by Radicals and Whigs who had backed the 1832 Act — as simplified it sounded like a campaign for a reform already law); 'the architect's drawing' → 'the architect's plan of the front' (M-22 is an engraving of Barry's north elevation, not his hand). Linear cut now opens on s:0 ('This is the door of Fogg's club') and keeps s:2, so the video no longer starts on a dangling 'It is real, and still here…' and does explain the club's name; the Soyer kitchens and the closing Times line pay for the seconds, and the three insets are timed 38 / 9 / rest so 'the front today' is said over the front. A8 2026-08-19 (content-preparer): M-01 `use: player`, M-69c added (`use: linear`, `sa: true`); M-20 flagged `sa: true` for the rights-a6 §2.4 strip-list."
           }
         },
         {
@@ -1525,7 +1743,55 @@
               "license": "youtube-embed",
               "manifest_id": "M-08",
               "attribution": "Virtual Walks and Adventures, '[4K] A London walk from Trafalgar Square via Charing Cross to Embankment and Golden Jubilee Bridge' (2022) — YouTube embed",
-              "note": "04:45–05:25 (scene seconds 0–40): Strand approach into the forecourt (creator chapter 'Charing Cross' at 05:00; the auto still at ~05:28 is already Villiers Street, so we cut at 05:25 — forecourt frames unverified, A3 to pin). Small channel: keep backup M-09 UkXUiYNML3U 00:00–00:40 warm; rainy alt M-10 FI_AT-rhLP4 01:00–01:40."
+              "note": "04:45–05:25 (scene seconds 0–40): Strand approach into the forecourt (creator chapter 'Charing Cross' at 05:00; the auto still at ~05:28 is already Villiers Street, so we cut at 05:25 — forecourt frames unverified, A3 to pin). Small channel: keep backup M-09 UkXUiYNML3U 00:00–00:40 warm; rainy alt M-10 FI_AT-rhLP4 01:00–01:40. A8: player-only (Standard YouTube Licence). No downloadable modern file of the forecourt exists (manifest-a7.md S3c); the linear cut carries the beat with Trafalgar Square today (M-84), the 1890 Donisthorpe disc (M-81) and the 1903 Strand ride (M-78) instead of a clip card.",
+              "use": "player"
+            },
+            {
+              "kind": "footage",
+              "ref": "media/files/m84-trafalgar-square.mp4",
+              "start_s": 0,
+              "end_s": 16,
+              "license": "cc-by-3.0",
+              "manifest_id": "M-84",
+              "attribution": "Kauko Helavuo (2015) · CC BY 3.0 · trimmed",
+              "use": "linear",
+              "audio": "mute",
+              "note": "Wide shots of the square with Nelson’s Column and the fountains, from 01:36–01:52 of the Commons copy of File:Trafalgar Square, London UK (HD1080p). 4K.webm (Commons mirror of YouTube T7VlupgAcbQ). Downloaded from upload.wikimedia.org, never from youtube.com. The creator’s own \"Video by Kauko Helavuo\" watermark is burned into the source and stays — CC BY §3(a) requires keeping the creator identification he supplied. Audio muted: unverified provenance (rights-a6 §1.1)."
+            },
+            {
+              "kind": "footage",
+              "ref": "media/files/m81-trafalgar-1890-disc.mp4",
+              "start_s": 0,
+              "end_s": 8,
+              "license": "public-domain",
+              "manifest_id": "M-81",
+              "attribution": "Wordsworth Donisthorpe, Trafalgar Square, 1890 — public domain (Wikimedia Commons)",
+              "use": "both",
+              "audio": "mute",
+              "note": "The ten surviving frames of the oldest moving picture of Trafalgar Square, looped twice at double speed. Composited as a magic-lantern DISC at 540×540 on a dark plate — the 270×270 source is never scaled to full frame (manifest-a7.md Engine implication 2). Eighteen years after Fogg leaves: caption must say 1890."
+            },
+            {
+              "kind": "footage",
+              "ref": "media/files/m78-strand-1903.mp4",
+              "start_s": 0,
+              "end_s": 20,
+              "license": "public-domain",
+              "manifest_id": "M-78",
+              "attribution": "\"Old London Street Scenes\" (1903), London’s Screen Archives / BFI — public domain (Wikimedia Commons)",
+              "use": "both",
+              "audio": "mute",
+              "note": "01:57–02:17 of the Commons file: a westbound ride down the Strand — the Lyceum \"PIT\" lamp is legible on the left and St Mary-le-Strand stands in the middle of the road ahead. VERIFIED BY EYE at 02:10. 4:3 640×480 pillarboxed to 1280×720 on a dark plate with a thin rule (never stretched). The source carries a burned-in BFI roundel top-right — see review note. Audio muted (the Commons file has an Opus track of unverified provenance)."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623).jpg",
+              "start_s": 44,
+              "end_s": 58,
+              "license": "public-domain",
+              "manifest_id": "M-74",
+              "attribution": "The Eleanor Cross from Charing Cross station yard, c.1903 — public domain (Wikimedia Commons)",
+              "use": "both",
+              "note": "2352×3600. A period photograph taken FROM the station yard — the scene’s own viewpoint, and a better match than M-24’s 1872 engraving. A6 M-74."
             },
             {
               "kind": "image",
@@ -1589,12 +1855,12 @@
             "F-31",
             "F-39"
           ],
-          "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1864 roof is gone (1905, replaced; Embankment Place sits over the platforms) and the train-shed is not visible from the Strand — hence 'You cannot see it from here'. The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'So much of what Fogg passes' (not 'almost everything' — Trafalgar Square and St Martin's are older). First mention 'Big Ben — the clock tower', then 'the clock tower' (Continuity #21). Narrator: short sentences at the beggar-woman beat (Continuity #10). Linear cut: keep whole (60 s: 40 s video + 20 s M-51 still).",
+          "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1864 roof is gone (1905, replaced; Embankment Place sits over the platforms) and the train-shed is not visible from the Strand — hence 'You cannot see it from here'. The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'So much of what Fogg passes' (not 'almost everything' — Trafalgar Square and St Martin's are older). First mention 'Big Ben — the clock tower', then 'the clock tower' (Continuity #21). Narrator: short sentences at the beggar-woman beat (Continuity #10). Linear cut: keep whole (60 s: 40 s video + 20 s M-51 still). A8 2026-08-19 (content-preparer): the linear cut loses its clip card here. Linear visuals: M-84 (16 s, Trafalgar Square today, CC BY 3.0 via the Commons mirror) → M-81 (8 s, Donisthorpe 1890 disc) → M-78 (18 s, the 1903 Strand ride) → M-74 (14 s, the cross from the station yard, c.1903) → M-51 (14 s, Neuville’s beggar-woman, unchanged). M-08 stays the PLAYER source. What we still do NOT have is modern moving footage of the forecourt: manifest-a7.md searched Commons, Pexels, Pixabay, Mixkit, Coverr and the Internet Archive and found none, and the Strand has no KartaView coverage at the station frontage. The Urban Pigeon file request (rights-a6 §1.6) remains the upgrade path.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s)."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s). A8 2026-08-19 (content-preparer): M-08 marked `use: player`; M-84 / M-81 / M-78 / M-74 wired for the linear cut. TWO honest flags for Rights: (i) the Commons PD copy of M-78 carries a burned-in BFI roundel in the top-right corner of every frame — the film's public-domain status is unaffected, but the BFI's mark will appear in our MP4 and should either be accepted and credited or the shot re-framed; (ii) M-84's frames were viewed and are genuinely Trafalgar Square, but the clip is tourist coverage of the fountains and lions, not the walk into the forecourt the scene describes — the narration must not claim more than the picture shows."
           }
         },
         {
@@ -1700,11 +1966,11 @@
           "media": [
             {
               "kind": "streetview",
-              "ref": "51.5083,-0.1247,180,10,80",
+              "ref": "51.50855,-0.12543,142,25,80",
               "license": "google-maps-embed",
               "manifest_id": "M-38",
-              "attribution": "Google Street View (Maps Embed API)",
-              "note": "From the Strand looking into the forecourt: Eleanor Cross centre, hotel façade behind. Alt inside the forecourt 51.5081,-0.1246 heading 200 (taxi rank — confirm pano). Fallback if no pano: M-26 (the cross, portrait still).",
+              "attribution": "Google Street View (Maps JavaScript API — Street View service; Static API in the fallback mode)",
+              "note": "Forecourt of Charing Cross, on the Strand pavement WNW of the cross: Eleanor Cross centre frame at heading 142°, Charing Cross Hotel façade behind. CORRECTED 2026-08-19 (engine-tools): the previous point 51.5083,-0.1247 resolves to a Google pano INSIDE the station concourse (verified: Street View Static metadata pano at 51.508257,-0.124700, imagery 2024-06, and the image at heading 180 shows the train-shed roof and WHSmith, not the cross). This point resolves to the outdoor pano at 51.508552,-0.125429, imagery 2025-07, 16 m from the cross (OSM node 10969212579 at 51.50844,-0.12529). Alt wider stop 51.508431,-0.125646 heading 87°. Fallback if no pano: M-26 (the cross, portrait still).",
               "fallback": "M-26"
             }
           ],
@@ -1717,11 +1983,57 @@
               "position": "tr"
             }
           ],
+          "camera": [
+            {
+              "at_s": 0,
+              "at_waypoint": 0,
+              "look_at": "51.50844,-0.12529",
+              "heading": 142,
+              "pitch": 10,
+              "zoom": 0.8,
+              "hold_s": 2,
+              "ease_s": 0,
+              "label": "the cross in the forecourt, hotel façade behind"
+            },
+            {
+              "at_s": 2,
+              "at_waypoint": 0,
+              "look_at": "51.50844,-0.12529",
+              "heading": 142,
+              "pitch": 32,
+              "zoom": 1.1,
+              "hold_s": 9,
+              "ease_s": 2.5,
+              "label": "look up — the 1865 replica cross, 21 m of Portland stone (F-21)"
+            },
+            {
+              "at_s": 13,
+              "at_waypoint": 0,
+              "look_at": "51.50733,-0.12765",
+              "heading": 229,
+              "pitch": 0,
+              "zoom": 0.6,
+              "hold_s": 8,
+              "ease_s": 3,
+              "label": "turn right, across to where Charles I rides — 205 m WSW (OSM 12877095809), F-39"
+            },
+            {
+              "at_s": 22,
+              "at_waypoint": 0,
+              "look_at": "51.50844,-0.12529",
+              "heading": 142,
+              "pitch": 18,
+              "zoom": 0.9,
+              "hold_s": 3,
+              "ease_s": 2,
+              "label": "settle back on the cross"
+            }
+          ],
           "interaction": {
             "kind": "walk",
             "prompt": "Look up, then turn right toward Trafalgar Square.",
             "route": [
-              "51.5083,-0.1247"
+              "51.50855,-0.12543,142"
             ]
           },
           "transition": {
@@ -1734,12 +2046,12 @@
             "F-21",
             "F-39"
           ],
-          "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop with free look (interaction kind 'walk', one waypoint); media[0].fallback = M-26 if the forecourt pano is missing. 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano and behind buildings — the pin is a plain corner pin (no geo, it would float over a wall); 'to your right' when facing south. Next: Quiz B (16), then the dialogue (17) — D4.",
+          "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop, cinematic: the camera looks up the cross, turns right to Charles I as the narration names him, then settles back (scene `camera` track, player v0.4). Free look still works — dragging pauses the cues for 4 s; media[0].fallback = M-26 if the forecourt pano is missing. 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano and behind buildings — the pin is a plain corner pin (no geo, it would float over a wall); 'to your right' when facing south. Next: Quiz B (16), then the dialogue (17) — D4.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4). A1 narrator 2026-08-18: 36-word Charles I sentence split into three; ends on 'this cross'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4). A1 narrator 2026-08-18: 36-word Charles I sentence split into three; ends on 'this cross'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added. A4 engine-tools 2026-08-19 (v0.4 cinematic Street View): the stop was pointing at the wrong place — 51.5083,-0.1247 resolves to a pano inside the station concourse (station roof + WHSmith at heading 180, imagery 2024-06, verified against the Street View Static image). Moved to the verified outdoor forecourt pano 51.50855,-0.12543 (imagery 2025-07), 16 m from the cross, which frames cross + hotel exactly as the note describes; Content Preparer to confirm and update M-38. Added a four-cue `camera` track: look up the spire (pitch 32) while the pin is up, turn right 87° to the Charles I statue (OSM 12877095809, 205 m WSW) at 13 s as the narration names him, then settle back. From this pano 'to your right' is geometrically true. Narration and overlays untouched."
           }
         },
         {
@@ -2033,7 +2345,33 @@
               "license": "youtube-embed",
               "manifest_id": "M-13",
               "attribution": "Ian Payne Urban Transport, 'Southeastern – London Charing Cross to Dover Priory | 2h02m' (2026) — YouTube embed",
-              "note": "00:00–01:15, departure over Hungerford Bridge (scene seconds 10–85). DAYLIGHT, overcast (manifest second pass) — the script now says so ('We travel in daylight; Fogg had rain and dark'). The reframed 16:9 frame is split: window view LEFT, carriage interior RIGHT — CROP/ZOOM TO THE LEFT HALF for the bridge shot. Which bank the window faces is unverified (A3): 'Look right' stands only until then. No M-16 night insert (Scene Developer's call: keep the shot continuous; the honest line carries it). Backups M-14 mxc2e8NCDos 03:47–04:22, M-12 fAfjnatbpb4 concourse; spare M-15 KKM-fpRGwTQ."
+              "note": "00:00–01:15, departure over Hungerford Bridge (scene seconds 10–85). DAYLIGHT, overcast (manifest second pass) — the script now says so ('We travel in daylight; Fogg had rain and dark'). The reframed 16:9 frame is split: window view LEFT, carriage interior RIGHT — CROP/ZOOM TO THE LEFT HALF for the bridge shot. Which bank the window faces is unverified (A3): 'Look right' stands only until then. No M-16 night insert (Scene Developer's call: keep the shot continuous; the honest line carries it). Backups M-14 mxc2e8NCDos 03:47–04:22, M-12 fAfjnatbpb4 concourse; spare M-15 KKM-fpRGwTQ. A8: **CC BY**, not embed-only (rights-a6 §3.1) — so the left-half crop is legal on a copy we hold. But we have no lawful copy: the file is not on Commons, the Internet Archive, Vimeo or anywhere else (manifest-a7.md §A), and rights-a6 §1.2 forbids downloading it from youtube.com. Marked `use: player` until the R1 file request to Ian Payne lands; the linear cut carries the beat with M-88 + M-76 instead of a clip card.",
+              "use": "player"
+            },
+            {
+              "kind": "footage",
+              "ref": "media/files/m88-hungerford-bridge-night.mp4",
+              "start_s": 0,
+              "end_s": 12,
+              "license": "cc-by-sa-4.0",
+              "manifest_id": "M-88",
+              "attribution": "Hungerford Bridge, London, lighting at night (2022) · Wikimedia Commons · CC BY-SA 4.0 · trimmed",
+              "use": "linear",
+              "audio": "mute",
+              "sa": true,
+              "note": "11.9 s of the lit bridge at night. Fogg leaves at 8:45 pm on 2 October, so night is the right hour even though this is not the view from the train. Runs under the whistle sting (12–18 s). Static establisher — do not imply it is the departure itself."
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:View_from_Hungerford_Bridge,_from_the_train_2025-09-06.jpg",
+              "start_s": 24,
+              "end_s": 58,
+              "license": "cc-by-sa-4.0",
+              "manifest_id": "M-76",
+              "attribution": "Amanda Slater (2025) · Wikimedia Commons · CC BY-SA 4.0 · adapted",
+              "use": "linear",
+              "sa": true,
+              "note": "3456×2592 — literally the shot this scene describes: the view from Hungerford Bridge, from the train. Slow push under \"look right — the Embankment\". Adaptation permitted under rights-a6 §3.2. This is what replaces the M-13 clip card until Ian Payne sends the file."
             },
             {
               "kind": "audio",
@@ -2131,12 +2469,12 @@
             "F-26",
             "F-40"
           ],
-          "production_notes": "Ending B (on the boat train), provisionally accepted. HONEST ABOUT DAYLIGHT: M-13 is a daylight, overcast recording — the guide says 'We travel in daylight; Fogg had rain and dark' and never narrates night over the frame; M-13 cropped to the left (window) half; no M-16 night insert (Scene Developer's call — the honest line carries it, and the shot stays continuous; the insert remains an option under 20–30 s if the founder prefers). 'Look right' (Embankment/clock tower are upstream = right when leaving south over Hungerford Bridge) kept ONLY on the assumption the reframed window faces west — window side unverified (A3); if east, drop the cue and caption. Captions shifted −8 s to land with the narration; postcard caption ends at 8 s. NO SPEECH 12–16 s (whistle sting). Roof: 'just — the old roof, months before it fell' (photo date unknown, F-22 collapse 5 Dec 1905). Sydenham: the aside is now OFF the traveller's screen entirely — A3n removed the spine sentence and A5 deleted the surviving caption ('Verne says Sydenham. By 1872 the express probably took a shorter line.'), which made a newcomer meet the word once, on screen, unexplained. If it ever returns it needs a spine clause or a 'go deeper' pin, and an October 1872 Bradshaw to promote it from 'probably'. Ending A would cut M-13 at 20 s and drop the gas line here and in 11. Content Preparer: confirm F-40 against the current Southeastern timetable. Linear cut: 65 s of video (postcard 10 s + M-13 00:00–00:55) — trim the Dover/Suez sentence.",
+          "production_notes": "Ending B (on the boat train), provisionally accepted. HONEST ABOUT DAYLIGHT: M-13 is a daylight, overcast recording — the guide says 'We travel in daylight; Fogg had rain and dark' and never narrates night over the frame; M-13 cropped to the left (window) half; no M-16 night insert (Scene Developer's call — the honest line carries it, and the shot stays continuous; the insert remains an option under 20–30 s if the founder prefers). 'Look right' (Embankment/clock tower are upstream = right when leaving south over Hungerford Bridge) kept ONLY on the assumption the reframed window faces west — window side unverified (A3); if east, drop the cue and caption. Captions shifted −8 s to land with the narration; postcard caption ends at 8 s. NO SPEECH 12–16 s (whistle sting). Roof: 'just — the old roof, months before it fell' (photo date unknown, F-22 collapse 5 Dec 1905). Sydenham: the aside is now OFF the traveller's screen entirely — A3n removed the spine sentence and A5 deleted the surviving caption ('Verne says Sydenham. By 1872 the express probably took a shorter line.'), which made a newcomer meet the word once, on screen, unexplained. If it ever returns it needs a spine clause or a 'go deeper' pin, and an October 1872 Bradshaw to promote it from 'probably'. Ending A would cut M-13 at 20 s and drop the gas line here and in 11. Content Preparer: confirm F-40 against the current Southeastern timetable. Linear cut: 65 s of video (postcard 10 s + M-13 00:00–00:55) — trim the Dover/Suez sentence. A8 2026-08-19 (content-preparer): the linear cut loses its clip card here. Linear visuals: M-27 postcard (10 s) → M-88 lit bridge at night (12 s, under the whistle) → M-76 the view from Hungerford Bridge from the train (30 s) → M-27 again as the tail (rest). M-13 is CC BY and would be the better shot, but no lawful copy of the file exists yet (rights-a6 §1.2 / §1.6) — it stays the PLAYER source. Note the honesty problem this fixes and the one it creates: the script says 'we travel in daylight; Fogg had rain and dark', which was written against M-13's overcast daylight. M-76 is daylight too, so the line still holds; M-88 is night, so it must not sit under that sentence — it is placed at 12–24 s, under the whistle, before the line is spoken.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: daylight lines rewritten honestly ('We travel in daylight; Fogg had rain and dark'), M-13 cropped to the left half, no M-16 insert (my call); 'same roof' → 'just — the old roof, months before it fell'; Sydenham 'probably' in script and caption; M-60 departure bed 10–24 s + M-45 sting, no speech 12–16 s; M-59 rain-on-window low under the 'Fogg had rain' line only; captions −8 s, postcard caption ends 8 s; '8:45 pm' style; 'Look right' kept — window side unverified (A3); accessibility caption '[whistle — 8:45 pm]'. A1 narrator 2026-08-18: 27- and 26-word sentences split; Sydenham aside made its own sentence so the caption (64–76 s) lands with it; 'We travel in daylight; Fogg had rain and dark' kept; 'Look right' kept — window side unverified (A3), guide.md example 6 now says 'right' with the same flag; hold: nothing spoken 12–16 s (after 'seated.'); 156 words / 85 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): the 'Verne says Sydenham' route aside moved out of the spine (the caption at 64–76 s is now its only carrier); the gas beat told plainly ('a few miles out'); boat-train gloss chip; clear-English variant added; the 12–16 s whistle hold is untouched. A5 narrator+scene-developer 2026-08-19 (fact-check-a5 §1–2, §4): clear track 'the old roof, months before it fell' → 'the old roof, probably in its last months before it fell' — M-27's 1905 is a publication year and the photograph's date is unknown, so the A1 hedge ('— just —') had to come back in some form. Orphan caption 'Verne says Sydenham. By 1872 the express probably took a shorter line.' DELETED: its spine sentence was removed in A3n, so a newcomer met 'Sydenham' once, on screen, with nothing to attach it to (the connoisseur note survives in production_notes and the manifest, not on the traveller's screen). Cut-sheet overlay list re-indexed accordingly ({i:4} was the Sydenham caption; it is now the two-hours-to-Dover caption at 52–62 s)."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: daylight lines rewritten honestly ('We travel in daylight; Fogg had rain and dark'), M-13 cropped to the left half, no M-16 insert (my call); 'same roof' → 'just — the old roof, months before it fell'; Sydenham 'probably' in script and caption; M-60 departure bed 10–24 s + M-45 sting, no speech 12–16 s; M-59 rain-on-window low under the 'Fogg had rain' line only; captions −8 s, postcard caption ends 8 s; '8:45 pm' style; 'Look right' kept — window side unverified (A3); accessibility caption '[whistle — 8:45 pm]'. A1 narrator 2026-08-18: 27- and 26-word sentences split; Sydenham aside made its own sentence so the caption (64–76 s) lands with it; 'We travel in daylight; Fogg had rain and dark' kept; 'Look right' kept — window side unverified (A3), guide.md example 6 now says 'right' with the same flag; hold: nothing spoken 12–16 s (after 'seated.'); 156 words / 85 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): the 'Verne says Sydenham' route aside moved out of the spine (the caption at 64–76 s is now its only carrier); the gas beat told plainly ('a few miles out'); boat-train gloss chip; clear-English variant added; the 12–16 s whistle hold is untouched. A5 narrator+scene-developer 2026-08-19 (fact-check-a5 §1–2, §4): clear track 'the old roof, months before it fell' → 'the old roof, probably in its last months before it fell' — M-27's 1905 is a publication year and the photograph's date is unknown, so the A1 hedge ('— just —') had to come back in some form. Orphan caption 'Verne says Sydenham. By 1872 the express probably took a shorter line.' DELETED: its spine sentence was removed in A3n, so a newcomer met 'Sydenham' once, on screen, with nothing to attach it to (the connoisseur note survives in production_notes and the manifest, not on the traveller's screen). Cut-sheet overlay list re-indexed accordingly ({i:4} was the Sydenham caption; it is now the two-hours-to-Dover caption at 52–62 s). A8 2026-08-19 (content-preparer): M-13 marked `use: player` and its licence row corrected to CC BY per rights-a6 §3.1; M-88 and M-76 added with `use: linear` and `sa: true`. Weakness worth stating: neither substitute is a moving shot from the departing train — M-88 is a static night establisher and M-76 is a still. The scene now has less motion than the clip card promised, and the single highest-value fix in the chapter is still the one email to Ian Payne."
           },
           "accessibility": {
             "sound_captions": [

@@ -22,7 +22,50 @@
       "license": "youtube-embed",
       "manifest_id": "M-05",
       "attribution": "Watched Walker, 'London Walk - Bond Street & Savile Row' (2022) — YouTube embed",
-      "note": "21:35–23:05: Burlington Gardens corner into the Row (creator chapter 'Savile Row' at 21:55). Backup M-06 SNm-h6lxu1c 01:56–03:26; spare M-07 wyl0GZBEWXs. Content Preparer: pin the frames where 14 / 15 / 3 are legible; if the No. 14 plaque is not visible, hold M-33 as a still."
+      "note": "21:35–23:05: Burlington Gardens corner into the Row (creator chapter 'Savile Row' at 21:55). Backup M-06 SNm-h6lxu1c 01:56–03:26; spare M-07 wyl0GZBEWXs. Content Preparer: pin the frames where 14 / 15 / 3 are legible; if the No. 14 plaque is not visible, hold M-33 as a still. A8: player-only (Standard YouTube Licence, rights-a6 §3.2) — the linear cut now uses M-66 (KartaView hyperlapse) plus stills instead of a clip card.",
+      "use": "player"
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m66-savile-row-hyperlapse.mp4",
+      "start_s": 0,
+      "end_s": 7,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-66",
+      "attribution": "KartaView / telenavdrives (2018) · CC BY-SA 4.0 · adapted",
+      "use": "linear",
+      "audio": "mute",
+      "sa": true,
+      "note": "Southbound Savile Row hyperlapse built from KartaView seq 1123901 frames 1770–1779 (17 Jan 2018), 1.0 s hold + 0.3 s dissolve each; cropped 2400×1350 from 2592×1936 to drop the dashboard, lifted +0.055 brightness (the source is backlit). 7.3 s. Opens the scene where the M-05 embed opens it in the player."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:View_up_Savile_Row_-_geograph.org.uk_-_2929073.jpg",
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-77a",
+      "attribution": "Robert Lamb / geograph.org.uk (2012) · CC BY-SA 2.0 · adapted",
+      "use": "linear",
+      "sa": true,
+      "note": "3456×2592, looking up the Row. Ken Burns hold under the Poole / tailoring beat. Adaptation permitted under rights-a6 §3.2 (D4 superseded the \"BY-SA unmodified\" rule)."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:No_3,_Savile_Row_door_and_sign.jpg",
+      "license": "cc0",
+      "manifest_id": "M-77c",
+      "attribution": "VirtuallyLondonBecky (2014) · CC0",
+      "use": "linear",
+      "note": "960×540, the No. 3 door — the Beatles rooftop beat at ~52–62 s. CC0, so the only Savile Row still that may be freely cropped or tinted."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:London_Savile_Row_geograph-3066994-by-Ben-Brooksbank.jpg",
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-77b",
+      "attribution": "Ben Brooksbank (1955) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+      "use": "linear",
+      "sa": true,
+      "note": "2338×1447, 26 Aug 1955 — a genuine \"then\" street view of the Row; pairs with M-32 (c.1890) and M-33 for the closing beat."
     },
     {
       "kind": "image",
@@ -97,11 +140,11 @@
     "F-39",
     "F-45"
   ],
-  "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut (A5, clear track): 84 s cap — s:0-15, i.e. everything up to 'he lived only in the book'; the M-32 insert and its three sentences ('Here is the street around 1890 / Same doors / Same quiet') go together; pins Savile Row, No. 15 and No. 14 (the last re-timed to 62–72 s). A3n: script recast (plain telling first, Sheridan reveal after) and title de-jokified — the old linear trim ('last four sentences') and the cut-sheet s:N tokens need re-picking in A4.",
+  "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut (A5, clear track): 84 s cap — s:0-15, i.e. everything up to 'he lived only in the book'; the M-32 insert and its three sentences ('Here is the street around 1890 / Same doors / Same quiet') go together; pins Savile Row, No. 15 and No. 14 (the last re-timed to 62–72 s). A3n: script recast (plain telling first, Sheridan reveal after) and title de-jokified — the old linear trim ('last four sentences') and the cut-sheet s:N tokens need re-picking in A4. A8 2026-08-19 (content-preparer): the linear cut no longer shows a clip card here: the scene's linear visuals are M-66 (7 s KartaView hyperlapse, CC BY-SA 4.0) → M-77a → M-77c → M-33 → M-77b. M-05 stays the PLAYER source (`use: player`) — the embed is legal, the copy is not (review/rights-a6.md §1.2). Attribution burn-ins per rights-a6 §2.6.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush'). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): recast for a first-time reader — plain telling first (Fogg's street, his door, why we start here), the Verne-got-the-address-wrong beat moved AFTER it and told as a reveal, not a prerequisite; the two-Ls spelling aside moved out of the spine into a 'go deeper' caption; Burlington Gardens pin simplified; clear-English variant added; F-03 (unused) swapped for F-12 (he leaves tonight from this door). Title 'the address Verne got wrong' → 'Fogg's front door' (spine may not lead with the meta-joke). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track had reinstated the A1 error — 'His shop is still here, at No. 15' → 'The shop is still here — at No. 15 since 1982' (F-45; it also contradicted overlay [1] on the same frame); 'a short evening jacket for a prince — the first dinner jacket' → 'for the Prince of Wales — the grandfather, they say, of the dinner jacket' (F-19/F-45 dinner-jacket attribution is med and belongs to the firm). Linear cut re-derived against the clear track: s:0-15 (Poole is named before 'The firm says…'), the M-32 tail and its three sentences dropped with the image, No. 14 pin added at 62 s."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush'). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): recast for a first-time reader — plain telling first (Fogg's street, his door, why we start here), the Verne-got-the-address-wrong beat moved AFTER it and told as a reveal, not a prerequisite; the two-Ls spelling aside moved out of the spine into a 'go deeper' caption; Burlington Gardens pin simplified; clear-English variant added; F-03 (unused) swapped for F-12 (he leaves tonight from this door). Title 'the address Verne got wrong' → 'Fogg's front door' (spine may not lead with the meta-joke). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track had reinstated the A1 error — 'His shop is still here, at No. 15' → 'The shop is still here — at No. 15 since 1982' (F-45; it also contradicted overlay [1] on the same frame); 'a short evening jacket for a prince — the first dinner jacket' → 'for the Prince of Wales — the grandfather, they say, of the dinner jacket' (F-19/F-45 dinner-jacket attribution is med and belongs to the firm). Linear cut re-derived against the clear track: s:0-15 (Poole is named before 'The firm says…'), the M-32 tail and its three sentences dropped with the image, No. 14 pin added at 62 s. A8 2026-08-19 (content-preparer): M-05 marked `use: player`; M-66/M-77a/M-77b/M-77c added with `use: linear` so the rendered MP4 loses its clip card. M-66's frames were downloaded and viewed (Union Jack and LANVIN shopfront at idx 1778 confirm the Row); the hyperlapse is 10 frames over ~110 m, so it reads as a dissolve-hyperlapse, not a walk — QA to say whether that is acceptable in the spine or should be shortened to 5 s."
   }
 }

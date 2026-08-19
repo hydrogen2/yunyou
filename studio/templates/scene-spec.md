@@ -32,8 +32,35 @@ Checklist before handing to review:
       "probably", "they say"). If the qualifier will not fit, cut the claim with it — never keep the claim and drop the hedge
       (standing rule from fact-check A5)
 - [ ] walk scenes: overlays and cue captions carry `at_waypoint` (index into `interaction.route`, 0-based, must be < route length)
-      **and** `at_s` — `at_s` is the linear / no-Maps-JS fallback and stays required
+      **and** `at_s` — `at_s` is the linear / no-Maps-JS fallback and stays required. In the player (v0.4) `at_s` is also the
+      *schedule*: the auto-walk times its arrival at waypoint k to the earliest `at_s` of that waypoint's overlays, so a pin at
+      45 s means "be standing there at 45 s". Space the waypoints the way you want the walk paced
+- [ ] streetview scenes turn to look at what the narration names: give the scene a `camera` track — an array of
+      `{at_s, heading | look_at, pitch?, zoom?, hold_s?, ease_s?, at_waypoint?, label?}`. Use the SAME `at_s` as the pin/caption
+      that names the thing (the validator warns about a pin with no cue within 3 s, and about a multi-stop walk with no camera
+      track at all). Prefer `look_at: "lat,lng"` (from OSM/the fact sheet) over a bare `heading`: the runtime aims from wherever
+      the pano actually is, so the framing survives Google moving the nearest pano — a bare heading is the fallback for the
+      modes that cannot know their position. `hold_s` stops the walk while we look; `pitch` up for spires and near façades
+      (~30 for a cross 15 m away, ~18 for a façade 27 m away); `zoom` tightens for anything far off (fov = 180 / 2^zoom).
+      Nothing else is needed to make the scene cinematic: the camera walks the route by itself, paced to `duration_s`
 - [ ] media that may not load (Street View pano, YouTube clip) names a `fallback` (manifest id M-xx or ref): a still for each stop
+- [ ] **one shot may carry two media entries** — the thing the player may embed and the thing the video may include are
+      often different works, and the scene records both. `media[].use` says which is which: `"player"` = interactive
+      player only (a YouTube embed under the Standard Licence, or a CC-BY video whose *file* we do not lawfully hold —
+      embedding is permitted, copying is not, `day-01-london/review/rights-a6.md` §1.2), `"linear"` = rendered MP4 only
+      (our self-hosted, licence-clean cut of the same beat), `"both"` (the default when the key is absent) = either.
+      The linear renderer skips `use: "player"` entries; a shot with no `linear`/`both` entry falls back to a clip card,
+      which is exactly what we are trying not to ship
+- [ ] **local, licence-clean video is `kind: "footage"`**, with `ref` = a path relative to the chapter directory
+      (`media/files/<file>.mp4`). The Content Preparer normalises it to h264 1280×720 25 fps before it is referenced,
+      records the source URL, the licence and the ffmpeg recipe in `media/manifest.md`, and does **not** commit the
+      file (`.gitignore`s `products/**/media/files/*`). If the file is absent the renderer degrades to a pending-asset
+      card, so a clean checkout still renders
+- [ ] **archive and CC-marked footage sets `audio: "mute"` unless QA has listened.** A public-domain film may carry an
+      uploader-added soundtrack that is not public domain, and a CC-marked upload may contain music the uploader could
+      not sublicense; the bed comes from the chapter's own CC0/PD audio instead (standing rule, `rights-a6.md` §1.1)
+- [ ] **anything derived from CC BY-SA material carries `sa: true`** — the strip-list flag from `rights-a6.md` §2.4, so
+      that a future change to the studio's own output licence is a generated list rather than an archaeology project
 - [ ] quiz has 3–4 options, exactly one correct, feedback on every option
 - [ ] dialogue scenes list guardrails, set `interaction.on_llm_unavailable` (`choice` = chips from `options[]`, `skip`, `scripted`)
       and `interaction.max_exchanges`; `timeout_s` is the whole-chat budget; hand-back line lives in `after_script`
