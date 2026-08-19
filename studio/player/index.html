@@ -74,7 +74,8 @@
   <button class="btn primary" id="start" style="font-size:18px;padding:12px 26px">▶ Start the day</button>
   <label>Narration voice <select id="voice"></select> <select id="rate" title="narration speed"><option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1.0×</option><option value="1.1">1.1×</option></select> <button class="btn" id="testVoice">test</button></label>
   <label style="cursor:pointer"><input type="checkbox" id="clearEn"> Clear English — simpler wording and a slightly slower voice, where the chapter provides it</label>
-  <label>Google Maps API key (optional — enables live Street View; stored only in this browser)<br><input id="gkey" placeholder="AIza…"></label>
+  <label id="gkeyRow">Google Maps API key (optional — enables live Street View; stored only in this browser)<br><input id="gkey" placeholder="AIza…"></label>
+  <label id="gkeyOk" style="display:none">Street View: <b>enabled</b> <button class="btn" id="gkeyEdit" style="padding:2px 8px;font-size:11px">use my own key</button></label>
   <p class="muted" style="margin-top:18px">Dry-run player · YouTube embeds, Wikimedia Commons media, browser TTS. Generated cards/maps are rendered live from the scene text.</p>
 </div>
 
@@ -382,7 +383,14 @@ $('#rate').value=String(ttsRate()); $('#rate').onchange=e=>localStorage.setItem(
 $('#clearEn').checked=clearEnglish;
 $('#clearEn').onchange=e=>{ clearEnglish=e.target.checked; localStorage.setItem('yy-clear',clearEnglish?'1':'0'); if(!localStorage.getItem('yy-rate')) $('#rate').value=String(ttsRate()); }; // no explicit speed chosen → clear mode defaults the dial to 0.9
 // Maps key: server config first (www/config.json, gitignored — never committed), then whatever the traveller pasted.
-fetch('/config.json').then(r=>r.ok?r.json():null).then(c=>{ if(c&&c.maps_api_key&&!localStorage.getItem('yy-gkey')){ localStorage.setItem('yy-gkey',c.maps_api_key); const g=$('#gkey'); if(g) g.placeholder='(loaded from server config)'; } }).catch(()=>{});
+// Maps key: server config (www/config.json, gitignored) supplies it, so the traveller never needs to paste one.
+// The input stays available as an override for self-hosted copies — hidden unless there is no server key or the traveller asks.
+fetch('/config.json').then(r=>r.ok?r.json():null).then(c=>{
+  const own=localStorage.getItem('yy-own-gkey')==='1';
+  if(c&&c.maps_api_key){ if(!own) localStorage.setItem('yy-gkey',c.maps_api_key);
+    if(!own){ $('#gkeyRow').style.display='none'; $('#gkeyOk').style.display='block'; } }
+}).catch(()=>{});
+$('#gkeyEdit')?.addEventListener('click',e=>{ e.preventDefault(); localStorage.setItem('yy-own-gkey','1'); localStorage.removeItem('yy-gkey'); $('#gkeyOk').style.display='none'; $('#gkeyRow').style.display='block'; $('#gkey').value=''; });
 $('#gkey').value=localStorage.getItem('yy-gkey')||''; $('#gkey').onchange=e=>localStorage.setItem('yy-gkey',e.target.value.trim());
 
 // ---------- who's who (cast card; product-level shared/whos-who.json — button hidden if the file is missing) ----------
