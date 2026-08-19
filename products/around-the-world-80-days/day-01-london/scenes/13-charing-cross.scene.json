@@ -10,7 +10,7 @@
     "timing": "over",
     "voice": "guide",
     "variants": {
-      "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross: 1865. The cross itself: 1865. The Underground railway: nine years old. The Embankment by the river: two. Big Ben, the clock tower: thirteen. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
+      "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross: 1865. The cross itself: 1865. The Underground railway: nine years old. The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
     }
   },
   "media": [
@@ -62,7 +62,7 @@
       "at_s": 45,
       "kind": "gloss",
       "until_s": 55,
-      "text": "guinea — an old coin: one pound and one shilling",
+      "text": "guinea — twenty-one shillings: a price, not a coin, by 1872",
       "position": "tl"
     }
   ],
@@ -91,6 +91,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s)."
   }
 }

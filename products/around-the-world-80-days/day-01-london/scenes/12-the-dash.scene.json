@@ -10,7 +10,7 @@
     "timing": "over",
     "voice": "guide",
     "variants": {
-      "clear": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a rich, well-dressed man. The fare is sixpence a mile. Charing Cross is about a mile and a half away — call it one shilling, a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight."
+      "clear": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a gentleman in good clothes. The fare is sixpence a mile — or part of a mile. Charing Cross is about a mile and a half away, so call it one shilling: a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight."
     }
   },
   "media": [
@@ -93,13 +93,6 @@
       "until_s": 45,
       "text": "A hansom, 1890s — Colard, Rijksmuseum",
       "position": "bottom"
-    },
-    {
-      "at_s": 54,
-      "kind": "gloss",
-      "until_s": 60,
-      "text": "Hook it! — be off",
-      "position": "bl"
     }
   ],
   "interaction": {
@@ -119,12 +112,12 @@
     "F-31",
     "F-39"
   ],
-  "production_notes": "Slang comes only from the 1874 All the Year Round list and the money terms in F-31. Cab type: 'a hansom, most likely' — Verne never names it (F-12 note, F-28). Distance: ≈ 1.6 km by road (~1 mile), 6d a mile or part of one, 1s minimum on the 1871 tariff — 'call it a bob' (F-28, fact-check). No 'wet' anywhere before Quiz B (R5) — the rain arrives with the platform. accessibility.sound_captions = caption-track entries for sound-only cues (not overlays; they do not count against overlay density). Linear cut: 40 s — trim the Underground line and the Offenbach aside.",
+  "production_notes": "Slang comes only from the 1874 All the Year Round list and the money terms in F-31. Cab type: 'a hansom, most likely' — Verne never names it (F-12 note, F-28). Distance: ≈ 1.6 km by road (~1 mile), 6d a mile or part of one, 1s minimum on the 1871 tariff — 'call it a bob' (F-28, fact-check). No 'wet' anywhere before Quiz B (R5) — the rain arrives with the platform. accessibility.sound_captions = caption-track entries for sound-only cues (not overlays; they do not count against overlay density). A5: the 'Hook it! — be off' gloss chip is removed — the phrase is spoken in neither track, in no caption and in no interaction, so it glossed a word the traveller never meets. OPEN for the founder: give the cabby the line as a sound caption at 54 s (F-31, the 1874 All the Year Round list — the only Cockney in the chapter) or move it to a slang souvenir card. Linear cut (A5, clear track): whole script, 58 s cap — the shilling sentence is what makes 'sixpence a mile' add up, and the 'bob' chip was on screen without it.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two and a half kilometres' → 'barely a mile and a half — call it a bob' (F-28); 'hooves on wet stone' → 'hooves on stone' and every 'wet' removed (Quiz B spoiler); M-29 confirmed hansom swapped in for 30–45 s (caption without weather); slang caption to 54 s; accessibility sound caption '[hooves]' added. A1 narrator 2026-08-18: 32-word fare sentence split (cab distance hedge 'barely a mile and a half — call it a bob' kept, F-28); no 'wet' before Quiz B; 116 words / 60 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): hansom gloss chip added; the three slang captions converted to tappable gloss chips (same texts and timings); Offenbach aside reworded plainly ('French dance music'); clear-English variant added."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two and a half kilometres' → 'barely a mile and a half — call it a bob' (F-28); 'hooves on wet stone' → 'hooves on stone' and every 'wet' removed (Quiz B spoiler); M-29 confirmed hansom swapped in for 30–45 s (caption without weather); slang caption to 54 s; accessibility sound caption '[hooves]' added. A1 narrator 2026-08-18: 32-word fare sentence split (cab distance hedge 'barely a mile and a half — call it a bob' kept, F-28); no 'wet' before Quiz B; 116 words / 60 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): hansom gloss chip added; the three slang captions converted to tappable gloss chips (same texts and timings); Offenbach aside reworded plainly ('French dance music'); clear-English variant added. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): clear track 'The fare is sixpence a mile' → 'sixpence a mile — or part of a mile … so call it one shilling: a bob' (F-28 + [51]: without the qualifier the arithmetic says ninepence and the scene title lies); 'a swell: a rich, well-dressed man' → 'a gentleman in good clothes' (F-31 says stylishly dressed, and 'rich' contradicted this scene's own swell chip). Orphan gloss 'Hook it! — be off' removed: the phrase appears in no track, caption or interaction, so the chip defined a word the traveller never meets (also relieves four chips in 60 s). OPEN for the founder: give the cabby the line as a sound caption at 54 s (F-31, the 1874 All the Year Round list) or move it to a slang souvenir card. Linear cut is now the whole script — the shilling sentence had been cut while the 'bob' chip stayed on screen."
   },
   "accessibility": {
     "sound_captions": [

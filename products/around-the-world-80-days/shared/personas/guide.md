@@ -83,6 +83,9 @@ Applies to Day 1 scene 17 (dialogue, chat, text-bound); the same shape serves an
 
 **Quiz B opener (guide, scene 16 `narration.script`, ≈ 8 s, then the guide pauses):**
 "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?" — the guide names no weather before the reveal (R5); the reveal is 16's `after_script`: "Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter." (F-13, F-30)
+**Clear-English track (A5, 2026-08-19):** the opener is identical (already plain — 16 `variants.clear` copies it verbatim); the reveal has a twin in
+`narration.after_script_variants.clear`: "Rain, then. Verne's words: 'The night was dark, and a fine, steady rain was falling.' No fog tonight — we save the pea-souper for a winter chapter."
+Same fact, same quotation, one idiom unpacked; "pea-souper" stays because the scene's gloss chip defines it and a chip may never gloss a word the traveller does not hear.
 
 **Before the chat (guide, ≈ 12 s, then silence — scene 17 `narration.script`):**
 1. Set the clock and the weather in one sentence: "It's twenty to nine, and it's raining." (F-12, F-13) — allowed now, the quiz has revealed it.
@@ -93,6 +96,7 @@ Applies to Day 1 scene 17 (dialogue, chat, text-bound); the same shape serves an
 
 **Back (guide, first line always the same tic — scene 17 `narration.after_script`, spoken and captioned):**
 - "We've got a train to catch. Twenty to nine on the platform." → 18 the boat train ("Now, tonight. Twenty to nine, seated."). (F-12)
+- Clear-English track (A5): the same words. 17's `narration.after_script_variants.clear` is a **verbatim copy** of this line — a persona line is never re-written for a track (R4); the field exists only so the clear track does not fall back silently.
 - If the traveller skipped the chat: same line, minus the first sentence.
 - After the hand-back the guide may fold in one thing Passepartout said, attributed ("he told us he's still holding the bag") — never a spoiler, never a fact he could not know (his whitelist is the guide's ceiling for that segment). Scene 18 as written does not use this option.
 

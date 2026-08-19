@@ -5,6 +5,13 @@
 For each media item: where it comes from, whether we may use it, and how it is used.
 Rights & Licensing reviews this and marks green/amber/red. Nothing red ships.
 
+> **A6 supersedes part of this file (2026-08-19).** See `manifest-a6.md` — the five embed-only walking shots
+> (scenes 02, 05, 06, 13, 18) were re-sourced at ladder rungs 1–3 and M-62…M-77 are proposed there.
+> **Licence correction:** M-13 `ME-x2yWqoiw` is **not** embed-only — its watch page carries
+> `Licence → "Creative Commons Attribution licence (reuse allowed)"` (re-verified 2026-08-19), as does its
+> backup `BJ3KDkHUCXg`. M-01, M-05 and M-08 were re-checked the same way and have **no licence row**, i.e.
+> Standard YouTube Licence — they are correctly marked player-only.
+
 **How things were verified (2026-08-18).** YouTube ids/titles/channels/durations come from live `youtube.com/results` pages; titles, upload dates, descriptions and creator chapter timestamps from the watch metadata; "embeddable?" = YouTube oEmbed endpoint returned HTTP 200 for the id (a 401 means the creator disabled embedding). Where a creator's own timestamps bracket the target, the segment is derived from them and marked *derived*; where I could not watch/confirm frames, it is marked *unverified*. Commons files were checked through the Commons API (file exists, licence field, uploader/date). Coordinates were checked against OpenStreetMap/Nominatim. No id or URL below is invented.
 
 **Scene key (second pass).** The provisional slots of the first pass map onto the rundown as: s-open → seg 1 (cold open) · s-savile → seg 2 (the address) and seg 3 (Fogg's day / Passepartout) · s-pallmall → seg 4 (1,151-step Street View walk) · s-club → seg 5 (inside the Reform) and seg 6 (the wager and the map) · s-cab → seg 7 (packing game + dash) · s-cx → seg 8 (Charing Cross then/now) · s-train → seg 9 (platform, whistle, boat train) · s-souvenir → seg 10 · s-thames → not scheduled (rundown Decision 9: linear-only 30-s coda if the human wants one) · s-quiz → Quiz A sits in seg 5, Quiz B in seg 9. "spare" = not placed by the rundown; kept as a swap.

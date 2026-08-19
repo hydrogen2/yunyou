@@ -74,6 +74,42 @@ def studio_rules(s):
             if route is None: warns.append(f'{sid}: overlays[{i}].at_waypoint={o["at_waypoint"]} but no interaction.route — will fire on at_s only')
             elif not (isinstance(o['at_waypoint'],int) and 0 <= o['at_waypoint'] < len(route)):
                 errs.append(f'{sid}: overlays[{i}].at_waypoint={o["at_waypoint"]} out of range (route has {len(route)} waypoints, 0..{len(route)-1})')
+    # camera track (streetview auto-walk): cues must be aimable, inside the scene, in order, and matched to the pins
+    cam=s.get('camera') or []
+    if cam and typ!='streetview':
+        warns.append(f'{sid}: camera track on a "{typ}" scene — only streetview scenes walk and turn; it will be ignored')
+    for i,c in enumerate(cam):
+        at=c.get('at_s')
+        if not isinstance(at,(int,float)): errs.append(f'{sid}: camera[{i}] needs a numeric at_s'); continue
+        if 'heading' not in c and 'look_at' not in c:
+            errs.append(f'{sid}: camera[{i}] needs heading or look_at — the runtime has nothing to turn to')
+        la=c.get('look_at')
+        if la is not None:
+            parts=str(la).split(',')
+            try:
+                ok = len(parts)==2 and -90<=float(parts[0])<=90 and -180<=float(parts[1])<=180
+            except ValueError:
+                ok=False
+            if not ok: errs.append(f'{sid}: camera[{i}].look_at "{la}" is not "lat,lng"')
+        if d and at >= d: errs.append(f'{sid}: camera[{i}].at_s {at} is at or past duration_s {d} — the cue never fires')
+        if i and isinstance(cam[i-1].get('at_s'),(int,float)) and at < cam[i-1]['at_s']:
+            warns.append(f'{sid}: camera[{i}].at_s {at} comes before camera[{i-1}].at_s — keep cues in time order')
+        if i and isinstance(cam[i-1].get('at_s'),(int,float)):
+            prev_end=cam[i-1]['at_s']+(cam[i-1].get('hold_s') or 0)
+            if at < prev_end - 0.01:
+                warns.append(f'{sid}: camera[{i-1}] holds until {prev_end:g}s but camera[{i}] starts at {at}s — the earlier look is cut short')
+        wp=c.get('at_waypoint')
+        if wp is not None:
+            if route is None: warns.append(f'{sid}: camera[{i}].at_waypoint={wp} but no interaction.route')
+            elif not (isinstance(wp,int) and 0 <= wp < len(route)):
+                errs.append(f'{sid}: camera[{i}].at_waypoint={wp} out of range (route has {len(route)} waypoints)')
+    if typ=='streetview':
+        if route and len(route)>1 and not cam:
+            warns.append(f'{sid}: streetview walk with {len(route)} waypoints and no camera track — the auto-walk will only use the stop headings, and nothing turns to the landmarks the pins name')
+        for i,o in enumerate(ov):                      # every pin should have a turn within 3 s of it
+            if o.get('kind') in ('pin','caption') and isinstance(o.get('at_s'),(int,float)) and cam:
+                if not any(isinstance(c.get('at_s'),(int,float)) and abs(c['at_s']-o['at_s'])<=3 for c in cam):
+                    warns.append(f'{sid}: overlays[{i}] ({o.get("kind")} at {o["at_s"]}s) has no camera cue within 3 s — the pin names something the camera never turns to')
     timed=[o for o in ov if 'at_waypoint' not in o and o.get('kind')!='gloss']  # gloss chips are reference, not pacing
     if d and len(timed) > max(1, d//15)+1: errs.append(f'{sid}: {len(timed)} timed overlays in {d}s exceeds ~1 per 15 s (waypoint-triggered overlays exempt)')
     if not s.get('sources') and typ not in ('interstitial','map'): errs.append(f'{sid}: no fact-sheet sources cited')

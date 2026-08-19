@@ -140,7 +140,7 @@
             "timing": "over",
             "voice": "guide",
             "variants": {
-              "clear": "This is Savile Row, a quiet street in Mayfair. The novel starts here. Phileas Fogg lives on this street — at No. 7, the book says. Tonight he will leave from that door to go round the world. Look in the shop windows: rolls of cloth, chalk marks, half-made jackets. In 1872 this was already a street of tailors. It still is. The tailor Henry Poole opened his door on the Row in 1846. His shop is still here, at No. 15. The firm says that in 1865 they made a short evening jacket for a prince — the first dinner jacket, they say. One more stop: on the roof of No. 3, in January 1969, the Beatles played their famous rooftop concert. And one small secret about No. 7. Verne wrote that the playwright Sheridan died there in 1814. In fact Sheridan lived at No. 14, and died in 1816. No. 14 has a plaque for him. Fogg has no plaque — he lived only in the book. Here is the street around 1890. Same doors. Same quiet."
+              "clear": "This is Savile Row, a quiet street in Mayfair. The novel starts here. Phileas Fogg lives on this street — at No. 7, the book says. Tonight he will leave from that door to go round the world. Look in the shop windows: rolls of cloth, chalk marks, half-made jackets. In 1872 this was already a street of tailors. It still is. The tailor Henry Poole opened his door on the Row in 1846. The shop is still here — at No. 15 since 1982. The firm says that in 1865 they made a short evening jacket for the Prince of Wales — the grandfather, they say, of the dinner jacket. One more stop: on the roof of No. 3, in January 1969, the Beatles played their famous rooftop concert. And one small secret about No. 7. Verne wrote that the playwright Sheridan died there in 1814. In fact Sheridan lived at No. 14, and died in 1816. No. 14 has a plaque for him. Fogg has no plaque — he lived only in the book. Here is the street around 1890. Same doors. Same quiet."
             }
           },
           "media": [
@@ -227,12 +227,12 @@
             "F-39",
             "F-45"
           ],
-          "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut: 75 s of M-05 (21:35–22:50), pins (a) and (b) only, drop the M-32 insert and the last four sentences. A3n: script recast (plain telling first, Sheridan reveal after) and title de-jokified — the old linear trim ('last four sentences') and the cut-sheet s:N tokens need re-picking in A4.",
+          "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut (A5, clear track): 84 s cap — s:0-15, i.e. everything up to 'he lived only in the book'; the M-32 insert and its three sentences ('Here is the street around 1890 / Same doors / Same quiet') go together; pins Savile Row, No. 15 and No. 14 (the last re-timed to 62–72 s). A3n: script recast (plain telling first, Sheridan reveal after) and title de-jokified — the old linear trim ('last four sentences') and the cut-sheet s:N tokens need re-picking in A4.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush'). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): recast for a first-time reader — plain telling first (Fogg's street, his door, why we start here), the Verne-got-the-address-wrong beat moved AFTER it and told as a reveal, not a prerequisite; the two-Ls spelling aside moved out of the spine into a 'go deeper' caption; Burlington Gardens pin simplified; clear-English variant added; F-03 (unused) swapped for F-12 (he leaves tonight from this door). Title 'the address Verne got wrong' → 'Fogg's front door' (spine may not lead with the meta-joke)."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush'). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): recast for a first-time reader — plain telling first (Fogg's street, his door, why we start here), the Verne-got-the-address-wrong beat moved AFTER it and told as a reveal, not a prerequisite; the two-Ls spelling aside moved out of the spine into a 'go deeper' caption; Burlington Gardens pin simplified; clear-English variant added; F-03 (unused) swapped for F-12 (he leaves tonight from this door). Title 'the address Verne got wrong' → 'Fogg's front door' (spine may not lead with the meta-joke). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track had reinstated the A1 error — 'His shop is still here, at No. 15' → 'The shop is still here — at No. 15 since 1982' (F-45; it also contradicted overlay [1] on the same frame); 'a short evening jacket for a prince — the first dinner jacket' → 'for the Prince of Wales — the grandfather, they say, of the dinner jacket' (F-19/F-45 dinner-jacket attribution is med and belongs to the firm). Linear cut re-derived against the clear track: s:0-15 (Poole is named before 'The firm says…'), the M-32 tail and its three sentences dropped with the image, No. 14 pin added at 62 s."
           }
         },
         {
@@ -331,12 +331,12 @@
             "F-03",
             "F-04"
           ],
-          "production_notes": "Temperature conversion is arithmetic on F-02 (86 °F ≈ 30 °C), metric first per style guide. The guide reads only the times and the CV; the taps hold the punchlines (the 84 °F sacking, the four-minutes-slow watch, the Tussaud's line) — pause_narration: each tap pauses the guide for its feedback, timeout_s 12 per tap. Passepartout's Tussaud's line keeps Verne's exclamation mark on the caption, attributed; the guide never reads it aloud. Narrator: break the CV after 'about thirty' and after 'Blondin' (done roughly here), end on the noun. Linear cut: card only, no taps, 40 s — script trimmed after 'home at midnight' to the one-breath CV.",
+          "production_notes": "Temperature conversion is arithmetic on F-02 (86 °F ≈ 30 °C), metric first per style guide. The guide reads only the times and the CV; the taps hold the punchlines (the 84 °F sacking, the four-minutes-slow watch, the Tussaud's line) — pause_narration: each tap pauses the guide for its feedback, timeout_s 12 per tap. Passepartout's Tussaud's line keeps Verne's exclamation mark on the caption, attributed; the guide never reads it aloud. Narrator: break the CV after 'about thirty' and after 'Blondin' (done roughly here), end on the noun. Linear cut (A5, clear track): card only, no taps, 50 s cap — whole script minus the tap prompt and 'Look at his face' (the linear frame is the G-04 card at t=0, not the M-50 plate). The CV must stay whole: cutting it left 'Then ten English houses in five years' as a non sequitur.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: M-50 ref → plate 05 (manifest); punchlines moved out of the script into the taps (pause_narration, timeout_s 12 per tap); tap feedback metric-first; caption attributed to Passepartout; ends on the noun. A1 narrator 2026-08-18: checked, no script change — the guide reads only the times and the CV, taps hold the punchlines, ends on 'the slow watch'; 110 words / 60 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already newcomer-safe (Passepartout introduced in 01, punchlines in the taps) — script untouched; clear-English variant added."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: M-50 ref → plate 05 (manifest); punchlines moved out of the script into the taps (pause_narration, timeout_s 12 per tap); tap feedback metric-first; caption attributed to Passepartout; ends on the noun. A1 narrator 2026-08-18: checked, no script change — the guide reads only the times and the CV, taps hold the punchlines, ends on 'the slow watch'; 110 words / 60 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already newcomer-safe (Passepartout introduced in 01, punchlines in the taps) — script untouched; clear-English variant added. A5 narrator 2026-08-19 (fact-check-a5 §4): scene text unchanged; the linear cut was re-derived against the clear track — Passepartout's CV (s:7-8) is back, so the film no longer says 'Then ten English houses in five years' as a non sequitur, and the tap prompt plus 'Look at his face' (the linear frame is the G-04 card, not the plate) are the only drops. Cap 45 → 50 s."
           }
         },
         {
@@ -361,6 +361,17 @@
             ],
             "variants": {
               "clear": "Fogg leaves for his club at half past eleven. He counts his steps as he walks: one thousand one hundred and fifty-one steps. We will count with him — watch the counter in the corner. Look up the street first. Then face numbers seven and eight. Today, No. 7 is not the house from the book — look for yourself. Now walk south. Sixty-seven steps: this is the corner from the novel, Savile Row and Burlington Gardens. Fogg turns right. Two hundred and eight: Old Bond Street. Turn left and walk down towards Piccadilly. Four hundred and five: Piccadilly. Cross the road, go a few steps west, and turn into St James's Street. St James's Street is a long, straight slope. Six hundred and twenty-nine steps, and Fogg has not hurried once. Keep going. Seven hundred and eighty-nine: Pall Mall. This street had gas lamps in 1807 — one of the first in London. Sixty-five years before Fogg, the lamps here were already the future. Turn east. The clubs are on your right. This is clubland: a whole street of private clubs. Three famous ones stand in a row — the Reform, the Travellers, the Athenaeum. Stop. Look at the grand stone building with tall windows: the Reform Club, 104 Pall Mall, by Charles Barry, opened 1841. A little to the left: No. 106, the Travellers, 1832. Beyond it: No. 107, the Athenaeum. And the counter says one thousand one hundred and fifty-one. Fogg counted 1,151 steps. We measure about one kilometre. Close enough, for a man who never hurries."
+            },
+            "waypoint_script_variants": {
+              "clear": [
+                "Fogg leaves for his club at half past eleven. He counts his steps as he walks: one thousand one hundred and fifty-one steps. We will count with him — watch the counter in the corner. Look up the street first. Then face numbers seven and eight. Today, No. 7 is not the house from the book — look for yourself. Now walk south.",
+                "Sixty-seven steps: this is the corner from the novel, Savile Row and Burlington Gardens. Fogg turns right.",
+                "Two hundred and eight: Old Bond Street. Turn left and walk down towards Piccadilly.",
+                "Four hundred and five: Piccadilly. Cross the road, go a few steps west, and turn into St James's Street.",
+                "St James's Street is a long, straight slope. Six hundred and twenty-nine steps, and Fogg has not hurried once. Keep going.",
+                "Seven hundred and eighty-nine: Pall Mall. This street had gas lamps in 1807 — one of the first in London. Sixty-five years before Fogg, the lamps here were already the future. Turn east. The clubs are on your right. This is clubland: a whole street of private clubs. Three famous ones stand in a row — the Reform, the Travellers, the Athenaeum.",
+                "Stop. Look at the grand stone building with tall windows: the Reform Club, 104 Pall Mall, by Charles Barry, opened 1841. A little to the left: No. 106, the Travellers, 1832. Beyond it: No. 107, the Athenaeum. And the counter says one thousand one hundred and fifty-one. Fogg counted 1,151 steps. We measure about one kilometre. Close enough, for a man who never hurries."
+              ]
             }
           },
           "media": [
@@ -558,7 +569,7 @@
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: full seven-stop walk M-39→M-53→M-54→M-55→M-56→M-57→M-37 (D5) with per-stop headings and fallbacks; counter recalibrated to 0.97 m/step, no jump caption, lands on 1,151 at the façade; Pall Mall leg now starts on M-57's true corner and the gas pin geo moved with it; overlays and cue sentences waypoint-triggered (at_waypoint / waypoint_script) with at_s fallback; sticker tr; Travellers 1832 (F-44), house-number style '106 Pall Mall'; No. 7 caption softened (D7); production_notes: counter needs Maps JavaScript API — key/billing owner open (D12). A1 narrator 2026-08-18: waypoint_script polished (24-word openers split at stops 0 and 5; contractions per R4); script regenerated as the join; counter numbers stay spoken because they are the beat, not a caption read-out. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): waypoint 0 now names the destination ('leaves for his club') so a first-time reader knows where we are walking; script regenerated as the join; clubland gloss chip at the Pall Mall waypoint; clear-English variant added (single track — the player plays it linearly over the walk)."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: full seven-stop walk M-39→M-53→M-54→M-55→M-56→M-57→M-37 (D5) with per-stop headings and fallbacks; counter recalibrated to 0.97 m/step, no jump caption, lands on 1,151 at the façade; Pall Mall leg now starts on M-57's true corner and the gas pin geo moved with it; overlays and cue sentences waypoint-triggered (at_waypoint / waypoint_script) with at_s fallback; sticker tr; Travellers 1832 (F-44), house-number style '106 Pall Mall'; No. 7 caption softened (D7); production_notes: counter needs Maps JavaScript API — key/billing owner open (D12). A1 narrator 2026-08-18: waypoint_script polished (24-word openers split at stops 0 and 5; contractions per R4); script regenerated as the join; counter numbers stay spoken because they are the beat, not a caption read-out. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): waypoint 0 now names the destination ('leaves for his club') so a first-time reader knows where we are walking; script regenerated as the join; clubland gloss chip at the Pall Mall waypoint; clear-English variant added (single track — the player plays it linearly over the walk). A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.waypoint_script_variants.clear added — seven blocks whose join is exactly variants.clear, so the walk speaks one register end to end in clear mode. No fact or timing changed. Engine: the player and the linear renderer still read waypoint_script only (backlog)."
           }
         },
         {
@@ -655,7 +666,7 @@
             "timing": "over",
             "voice": "guide",
             "variants": {
-              "clear": "This is the door of Fogg's club: the Reform Club. It is real, and still here — 104 Pall Mall, since 1836. Its founders wanted political reform; that is the name. In the book, Fogg spends every day here until midnight: meals, newspapers, cards. The architect Charles Barry finished the building in 1841. Stone outside; inside, a grand hall two floors high, under a glass roof. The club also had famous kitchens, planned with the chef Alexis Soyer. Look up at the tall windows. Here Fogg ate his breakfast: grilled fish with Reading sauce — remember that sauce. Roast beef, a fruit tart, cheese, and the club's famous tea. Now three pictures: the front today, the architect's drawing, and the great hall, drawn in 1841. No camera has been inside for us. Somewhere in there, Fogg cuts his newspaper's pages and reads The Times."
+              "clear": "This is the door of Fogg's club: the Reform Club. It is real, and still here — 104 Pall Mall, since 1836. Its founders had backed the Reform Act of 1832 — that is where the name comes from. In the book, Fogg spends every day here until midnight: meals, newspapers, cards. The architect Charles Barry finished the building in 1841. Stone outside; inside, a grand hall two floors high, under a glass roof. The club also had famous kitchens, planned with the chef Alexis Soyer. Look up at the tall windows. Here Fogg ate his breakfast: grilled fish with Reading sauce — remember that sauce. Roast beef, a fruit tart, cheese, and the club's famous tea. Now three pictures: the front today, the architect's plan of the front, and the great hall, drawn in 1841. No camera has been inside for us. Somewhere in there, Fogg cuts his newspaper's pages and reads The Times."
             }
           },
           "media": [
@@ -758,12 +769,12 @@
             "F-18",
             "F-27"
           ],
-          "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Order (QA): arrival + history over the video 0–25 s; the 'look up' cue and the breakfast over the video's last 20 s (25–45 s, we are 'at the door') with the menu on the caption at 30–42 s so the guide reads only the best clause; the photo trio lines over M-20 + insets 45–70 s. The 'look up' cue does NOT name the coffee-room: its nine windows are in the long SOUTH (garden) wall (F-15), not on the Pall Mall front — Narrator, keep it that way, and keep 'nine' out of this scene (Quiz A follows). No paper-knife: Towle says he cuts the uncut Times 'with a skill which betrayed familiarity' (F-06). Narrator: ≤ 140 words, every sentence ≤ 20 words (Continuity #2); ends on the noun. Linear cut: start at 45 s (photo trio only, 25 s), since M-01 is used by 05 pall-mall-pass.",
+          "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Order (QA): arrival + history over the video 0–25 s; the 'look up' cue and the breakfast over the video's last 20 s (25–45 s, we are 'at the door') with the menu on the caption at 30–42 s so the guide reads only the best clause; the photo trio lines over M-20 + insets 45–70 s. The 'look up' cue does NOT name the coffee-room: its nine windows are in the long SOUTH (garden) wall (F-15), not on the Pall Mall front — Narrator, keep it that way, and keep 'nine' out of this scene (Quiz A follows). No paper-knife: Towle says he cuts the uncut Times 'with a skill which betrayed familiarity' (F-06). Narrator: ≤ 140 words, every sentence ≤ 20 words (Continuity #2); ends on the noun. Linear cut (A5, clear track): 62 s cap, from the door — M-20 for 38 s, then the M-22 / M-23 insets (M-01 is used by 05 pall-mall-pass). Keep s:0 and s:2: without them the film opened on 'It is real, and still here…' with no antecedent and never said where the club's name comes from. The Soyer kitchens and the closing Times line pay for those seconds.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): opener now says whose club this is and what it is to Fogg (a first-time reader meets 'the Reform' cold otherwise); Reform Act line recast as the name's plain explanation; clear-English variant added; 'nine' still kept out (Quiz A follows)."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): opener now says whose club this is and what it is to Fogg (a first-time reader meets 'the Reform' cold otherwise); Reform Act line recast as the name's plain explanation; clear-English variant added; 'nine' still kept out (Quiz A follows). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track 'Its founders wanted political reform; that is the name' → 'Its founders had backed the Reform Act of 1832 — that is where the name comes from' (F-14: 1836, by Radicals and Whigs who had backed the 1832 Act — as simplified it sounded like a campaign for a reform already law); 'the architect's drawing' → 'the architect's plan of the front' (M-22 is an engraving of Barry's north elevation, not his hand). Linear cut now opens on s:0 ('This is the door of Fogg's club') and keeps s:2, so the video no longer starts on a dangling 'It is real, and still here…' and does explain the club's name; the Soyer kitchens and the closing Times line pay for the seconds, and the three insets are timed 38 / 9 / rest so 'the front today' is said over the front."
           }
         },
         {
@@ -780,6 +791,9 @@
             "after_script": "Half fantasy, half exact — treat the novel that way for the next seventy-nine days. One practical note. You can stand in that saloon yourself, one weekend a year, on the club's Open House London tours. The caption has this year's dates. The tour, they say, includes one very long staircase.",
             "variants": {
               "clear": "Verne describes the inside of the club with much detail. Mosaic floors. A gallery under a dome, held up by twenty red stone columns. Blue painted windows. A dining room with nine windows onto a garden. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous."
+            },
+            "after_script_variants": {
+              "clear": "Half invented, half exact — read the novel that way for the next seventy-nine days. One practical note. You can stand in that hall yourself, one weekend a year, on the club's Open House London tours. The dates are in the caption. The tour, they say, has one very long staircase."
             }
           },
           "media": [
@@ -871,7 +885,7 @@
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: wait state added (pause_narration, timeout_s 30); the answer/tail sentences moved to narration.after_script; prompt persists until answered; option-1 feedback 'dark Siena marble' scagliola (F-15); 'dining-room' hyphenated; Open House caption marked time-bound (D9). A1 narrator 2026-08-18: 35-word question opener split into short beats; after_script Open House sentence shortened; answer sentences stay in after_script (post-pause). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain (the question lists Verne's claims; the reveal waits in after_script) — script untouched; clear-English variant added; after_script stays single-track per the template."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: wait state added (pause_narration, timeout_s 30); the answer/tail sentences moved to narration.after_script; prompt persists until answered; option-1 feedback 'dark Siena marble' scagliola (F-15); 'dining-room' hyphenated; Open House caption marked time-bound (D9). A1 narrator 2026-08-18: 35-word question opener split into short beats; after_script Open House sentence shortened; answer sentences stay in after_script (post-pause). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain (the question lists Verne's claims; the reveal waits in after_script) — script untouched; clear-English variant added; after_script stays single-track per the template. A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.after_script_variants.clear added (plain twin of the reveal: 'Half invented, half exact… one weekend a year… one very long staircase'). Facts unchanged (F-17 Open House dates stay in the caption). Linear cut keeps s:5 ('Compare that with Barry's real building') so the question is answerable in the film. Engine: the renderer has no after:N token, so the reveal is still missing from the linear cut."
           }
         },
         {
@@ -879,14 +893,14 @@
           "type": "photo",
           "title": "The wager — twenty thousand at Baring's",
           "subtopic": "6 — The wager",
-          "duration_s": 60,
+          "duration_s": 70,
           "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
           "narration": {
-            "script": "Evening, at the club. Fogg and five friends sit down to whist, the card game they play nightly. In the novel — only in the novel — a thief has robbed the Bank of England of fifty-five thousand pounds. The Daily Telegraph newspaper has done the sums: the world can now be crossed in eighty days. That talk becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds it can't be done. Fogg stakes twenty thousand — half his fortune — that it can: 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Exactly eighty days — and it really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, fell in 1995. The wager has outlived the bank.",
+            "script": "Evening, at the club. Fogg sits down to whist with five fellow members — four hands at the table, the same five every night. In the novel — only in the novel — a thief has robbed the Bank of England of fifty-five thousand pounds. The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums: the world can be crossed in eighty days. That talk becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds it can't be done. Fogg stakes twenty thousand — half his fortune — that it can: 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Exactly eighty days — and it really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, fell in 1995. The wager has outlived the bank.",
             "timing": "over",
             "voice": "guide",
             "variants": {
-              "clear": "Evening, at the club. Fogg and five friends play whist, their card game, like every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. And a newspaper, the Daily Telegraph, has counted: you can now go around the world in eighty days. At the table, this becomes a bet. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Exactly eighty days. It really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, closed in 1995. The bet has outlived the bank."
+              "clear": "Evening, at the club. Fogg plays whist with five fellow members — four hands at the table, the same five men every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. Where could such a man hide now? So a newspaper, the Daily Telegraph, counts the days: you can now go around the world in eighty days. At the table this becomes a wager — a bet, with money on it. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Exactly eighty days. It really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, failed in 1995. The wager has outlived the bank."
             }
           },
           "media": [
@@ -897,14 +911,14 @@
               "manifest_id": "M-35",
               "attribution": "The wager at the Reform Club — de Neuville & Benett, Hetzel illustrated edition 1873 (Wikimedia Commons, PD)",
               "start_s": 0,
-              "end_s": 30,
+              "end_s": 35,
               "note": "Slow push-in on the plate, 0–30 s. Plate belongs to the 1873 illustrated Hetzel edition (the 1872 serial was unillustrated). M-36 is reference only — never ship."
             },
             {
               "kind": "generated",
               "ref": "generated/g-05/memorandum-card.svg",
-              "start_s": 30,
-              "end_s": 60,
+              "start_s": 35,
+              "end_s": 70,
               "license": "generated",
               "manifest_id": "G-05",
               "attribution": "Yunyou studio, generated",
@@ -914,7 +928,7 @@
               "kind": "audio",
               "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
               "start_s": 0,
-              "end_s": 60,
+              "end_s": 70,
               "license": "public-domain",
               "manifest_id": "M-41",
               "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
@@ -925,43 +939,43 @@
             {
               "at_s": 2,
               "kind": "caption",
-              "until_s": 12,
+              "until_s": 14,
               "text": "The wager at the Reform — de Neuville & Benett, 1873",
               "position": "bottom"
             },
             {
               "at_s": 5,
               "kind": "gloss",
-              "until_s": 15,
+              "until_s": 17,
               "text": "whist — a quiet card game for four players",
               "position": "tl"
             },
             {
-              "at_s": 18,
+              "at_s": 21,
               "kind": "caption",
-              "until_s": 28,
+              "until_s": 33,
               "text": "Go deeper: Verne serialised the tale in a Paris daily, winter 1872",
               "position": "bottom",
               "note": "Connoisseur layer (A3n): the serialisation aside moved out of the spine (F-32)."
             },
             {
-              "at_s": 24,
+              "at_s": 28,
               "kind": "gloss",
-              "until_s": 34,
+              "until_s": 40,
               "text": "wager — a bet, with money staked on it",
               "position": "tl"
             },
             {
-              "at_s": 32,
+              "at_s": 37,
               "kind": "caption",
-              "until_s": 42,
+              "until_s": 49,
               "text": "The unforeseen does not exist.",
               "position": "bottom"
             },
             {
-              "at_s": 48,
+              "at_s": 56,
               "kind": "caption",
-              "until_s": 58,
+              "until_s": 69,
               "text": "The wager has outlived the bank — Baring's fell in 1995",
               "position": "bottom"
             }
@@ -983,12 +997,12 @@
             "F-23",
             "F-32"
           ],
-          "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). Cut to 60 s: the six names live on the G-05 card, the guide says 'Stuart first, Fogg last'. Narrator: ≤ 170 words, fix the tense of the opener (Continuity #9); the 'Paris newspaper' sentence from 01 may land here (F-32). Linear cut: keep whole (60 s), then skip 09 and play 10 without the tap. A3n: script rewritten for newcomers — linear cut-sheet s:N tokens need re-picking in A4.",
+          "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). The six names live on the G-05 card; the guide says 'Stuart first, Fogg last'. A5: 60 → 70 s — the whist arithmetic (five members, four hands) and the reason the robbery is in the scene (where could such a man hide now?) do not fit 60 s at ≤ 2.5 w/s; media windows M-35 0–35, G-05 35–70, M-41 bed 0–70, overlays re-spread. Narrator: ≤ 175 words per track. Linear cut: keep whole (75 s cap, plan 72.3 s), then skip 09 and play 10 without the tap.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): whist and the wager now introduced in plain words before use (Stuart is 'one of the five friends' at the table); the Paris-serial meta aside moved out of the spine into a 'go deeper' caption; gloss chips for whist and wager; clear-English variant added."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): whist and the wager now introduced in plain words before use (Stuart is 'one of the five friends' at the table); the Paris-serial meta aside moved out of the spine into a 'go deeper' caption; gloss chips for whist and wager; clear-English variant added. A5 narrator+scene-developer 2026-08-19 (fact-check-a5 §1–2, both tracks): (1) whist — 'Fogg and five friends sit down to whist' → 'Fogg sits down to whist with five fellow members — four hands at the table, the same five every night' (F-08: five usual partners join him and four hands play), so the narration and the 'card game for four players' chip agree; nothing invented, the gloss is unchanged. (2) The £55,000 theft now has a reason to be in the scene — 'The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums…' (F-09 → F-10, ch. III), so a newcomer cannot conclude the wager is about catching the thief. (3) Clear track: 'Baring's closed' → 'failed' (F-23 collapsed, sold to ING for £1) and the word 'wager' is spoken once, which un-orphans the wager chip. duration 60 → 70 s: both fixes cannot fit 60 s at ≤ 2.5 w/s (std 166 w, clear 168 w = 2.37/2.40 w/s at 70 s); M-35 0–35, G-05 35–70, M-41 bed 0–70, overlays re-spread 2–14 / 5–17 / 21–33 / 28–40 / 37–49 / 56–69. Linear cap 70 → 75 s (plan: 72.3 s, nothing end-cut)."
           }
         },
         {
@@ -999,11 +1013,11 @@
           "duration_s": 30,
           "learning_goal": "Know that Thomas Cook and George Francis Train really went round the world just as Verne wrote; feel that Fogg's bet was in the air.",
           "narration": {
-            "script": "Two real men were doing it as Verne wrote. Thomas Cook, going west, left Liverpool in late September 1872 — the first commercial round-the-world tour. Two hundred and twenty-two days, with letters home to The Times; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'",
+            "script": "Two real men: one travelling as Verne wrote, the other already home. Thomas Cook, going west, left Liverpool in late September 1872 — the first commercial round-the-world tour. Two hundred and twenty-two days; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'",
             "timing": "over",
             "voice": "guide",
             "variants": {
-              "clear": "Two real men were doing the same thing as Verne wrote. Thomas Cook left Liverpool in late September 1872, going west — the first commercial round-the-world tour. It took him two hundred and twenty-two days. He was mid-ocean when Fogg's story began. George Francis Train had reached home earlier — on the twenty-first of December 1870. Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'"
+              "clear": "Two real men: one travelling as Verne wrote, the other already home. Thomas Cook left Liverpool in late September 1872, going west — the first commercial round-the-world tour. It took him two hundred and twenty-two days. He was mid-ocean when Fogg's story began. George Francis Train had reached home earlier — on the twenty-first of December 1870. Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'"
             }
           },
           "media": [
@@ -1055,7 +1069,7 @@
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 narrator 2026-08-18: two sentences per man (Continuity #10); 75→73 words / 30 s (2.43 w/s — tight, interactive-only); Train quote hedged 'later claimed' (F-36 med). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added (kept under the tight 30-s budget)."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 narrator 2026-08-18: two sentences per man (Continuity #10); 75→73 words / 30 s (2.43 w/s — tight, interactive-only); Train quote hedged 'later claimed' (F-36 med). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added (kept under the tight 30-s budget). A5 narrator 2026-08-19 (fact-check-a5 §1): 'Two real men were doing it as Verne wrote' overstated the sheet — only Cook was travelling while Verne wrote (F-35); Train had been home since 21 Dec 1870 (F-36). Both tracks now open 'Two real men: one travelling as Verne wrote, the other already home.' The 'letters home to The Times' clause was cut to stay inside 2.5 w/s at 30 s. Scene is interactive-cut only, so no cut-sheet change."
           }
         },
         {
@@ -1071,7 +1085,10 @@
             "voice": "guide",
             "after_script": "The Pacific — twenty-two days of ocean; keep this in mind for later. And the map fades back to tonight: only London lit. Because Fogg, still at the table, says the sentence that turns the evening. 'The train leaves for Dover at a quarter before nine.'",
             "variants": {
-              "clear": "How could anyone believe this plan? Because the world had just become smaller. When one of the card players said the world was big, Fogg answered with three words: 'It was once.' Look at the three lights. The Suez Canal opened in 1869. The American railroad, coast to coast, was joined in 1869. The last rail link across India closed the gap in 1870. Three doors, all opened within ten months, two years before tonight. Now watch the line draw. London to Suez: seven days. Suez to Bombay, by ship: thirteen. Bombay to Calcutta, by rail: three. Calcutta to Hong Kong: thirteen. Hong Kong to Yokohama: six. Yokohama to San Francisco: twenty-two. San Francisco to New York, by rail: seven. New York back to London: nine. Add them up: eighty. Now tap the longest leg on the map."
+              "clear": "How could anyone believe this plan? Because the world had just become smaller. When one of the card players said the world was big, Fogg answered with three words: 'It was once.' Look at the three lights. The Suez Canal opened in November 1869. The American railroad, coast to coast, was joined in May 1869. The last rail link across India closed the gap in March 1870. Three doors, all opened within ten months, two years before tonight. Now watch the line draw. London to Suez: seven days. Suez to Bombay, by ship: thirteen. Bombay to Calcutta, by rail: three. Calcutta to Hong Kong: thirteen. Hong Kong to Yokohama: six. Yokohama to San Francisco: twenty-two. San Francisco to New York, by rail: seven. New York back to London: nine. Add them up: eighty. Now tap the longest leg on the map."
+            },
+            "after_script_variants": {
+              "clear": "The Pacific — twenty-two days of ocean. Remember that for later. Now the map goes back to tonight: only London is lit. Because Fogg, still at the table, says the words that start everything. 'The train leaves for Dover at a quarter before nine.'"
             }
           },
           "media": [
@@ -1212,7 +1229,7 @@
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two words' → 'three words' (fact-check s10); wait state (pause_narration, timeout_s 20) with the reveal in narration.after_script; prompt at 76 s and persistent; G-01 Day-1 layer note asks for a 'Day 1' label. A1 narrator 2026-08-18: script unchanged (1.90 w/s, reveal already in after_script); 40-s linear form of the legs beat added to production_notes for A4. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): 'a partner' → 'one of the card players' (whist partners are strangers to a first-time reader); clear-English variant added; reveal stays in after_script."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two words' → 'three words' (fact-check s10); wait state (pause_narration, timeout_s 20) with the reveal in narration.after_script; prompt at 76 s and persistent; G-01 Day-1 layer note asks for a 'Day 1' label. A1 narrator 2026-08-18: script unchanged (1.90 w/s, reveal already in after_script); 40-s linear form of the legs beat added to production_notes for A4. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): 'a partner' → 'one of the card players' (whist partners are strangers to a first-time reader); clear-English variant added; reveal stays in after_script. A5 narrator 2026-08-19 (fact-check-a5 §1–2): clear track restored the months that make 'within ten months' true — November 1869, May 1869, March 1870 (F-33); with bare years the claim was unsupported by anything the traveller had heard. narration.after_script_variants.clear added (plain twin of the Pacific / 'the words that start everything' turn line) so the default track does not change register after the tap."
           }
         },
         {
@@ -1340,12 +1357,12 @@
             "F-13",
             "F-37"
           ],
-          "production_notes": "No invented Fogg lines — only what the sheet quotes (F-12). The gas clause depends on Ending B (accepted). No Quiz-B spoiler before the platform: the mackintosh feedback no longer names the weather (R5). 'Stout shoes' and 'we'll buy our clothes on the way' are in Towle ch. IV (fact-check) but not yet on the fact sheet — once an F-id exists, add 'Stout shoes' as a seventh in-item; until then the boast 'so we are too' is dropped. Text says 'Bradshaw's Continental Railway Guide', spoken 'the red-bound Bradshaw' (Continuity #16). Linear cut: packing list as a 20-s card, no drag; script trimmed to the list and the completion line.",
+          "production_notes": "No invented Fogg lines — only what the sheet quotes (F-12). The gas clause depends on Ending B (accepted). No Quiz-B spoiler before the platform: the mackintosh feedback no longer names the weather (R5). 'Stout shoes' and 'we'll buy our clothes on the way' are in Towle ch. IV (fact-check) but not yet on the fact sheet — once an F-id exists, add 'Stout shoes' as a seventh in-item; until then the boast 'so we are too' is dropped. Text says 'Bradshaw's Continental Railway Guide', spoken 'the red-bound Bradshaw' (Continuity #16). Linear cut (A5, clear track): packing list as a card, no drag; whole script minus 'Drag in what goes; leave what stays.' — the drag instruction is unobeyable in a film, and cutting the carpet-bag sentence instead left the bag unexplained.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: mackintosh feedback de-spoiled ('you will see why at Charing Cross'); Bradshaw 'hundreds of pages' (F-37 med); paper-knife out of the Times feedback (F-06); 'so we are too' boast dropped (stout shoes not on the sheet); G-07 note asks for bag counter + close button. A1 narrator 2026-08-18: 40-word list sentence split; spoken 'the red-bound Bradshaw' (Continuity #16, text keeps the full title in the drag item); 141 words / 90 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Dover and Calais located in one plain clause for a first-time reader; Bradshaw gloss chip; clear-English variant added (no weather words — R5 holds until Quiz B)."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: mackintosh feedback de-spoiled ('you will see why at Charing Cross'); Bradshaw 'hundreds of pages' (F-37 med); paper-knife out of the Times feedback (F-06); 'so we are too' boast dropped (stout shoes not on the sheet); G-07 note asks for bag counter + close button. A1 narrator 2026-08-18: 40-word list sentence split; spoken 'the red-bound Bradshaw' (Continuity #16, text keeps the full title in the drag item); 141 words / 90 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Dover and Calais located in one plain clause for a first-time reader; Bradshaw gloss chip; clear-English variant added (no weather words — R5 holds until Quiz B). A5 narrator 2026-08-19 (fact-check-a5 §4): scene text unchanged; linear cut re-derived against the clear track — the carpet-bag sentence (s:9) is back and the drag instruction (s:10) is out, so the film no longer tells a viewer to drag and never explains the bag."
           }
         },
         {
@@ -1360,7 +1377,7 @@
             "timing": "over",
             "voice": "guide",
             "variants": {
-              "clear": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a rich, well-dressed man. The fare is sixpence a mile. Charing Cross is about a mile and a half away — call it one shilling, a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight."
+              "clear": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a gentleman in good clothes. The fare is sixpence a mile — or part of a mile. Charing Cross is about a mile and a half away, so call it one shilling: a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight."
             }
           },
           "media": [
@@ -1443,13 +1460,6 @@
               "until_s": 45,
               "text": "A hansom, 1890s — Colard, Rijksmuseum",
               "position": "bottom"
-            },
-            {
-              "at_s": 54,
-              "kind": "gloss",
-              "until_s": 60,
-              "text": "Hook it! — be off",
-              "position": "bl"
             }
           ],
           "interaction": {
@@ -1469,12 +1479,12 @@
             "F-31",
             "F-39"
           ],
-          "production_notes": "Slang comes only from the 1874 All the Year Round list and the money terms in F-31. Cab type: 'a hansom, most likely' — Verne never names it (F-12 note, F-28). Distance: ≈ 1.6 km by road (~1 mile), 6d a mile or part of one, 1s minimum on the 1871 tariff — 'call it a bob' (F-28, fact-check). No 'wet' anywhere before Quiz B (R5) — the rain arrives with the platform. accessibility.sound_captions = caption-track entries for sound-only cues (not overlays; they do not count against overlay density). Linear cut: 40 s — trim the Underground line and the Offenbach aside.",
+          "production_notes": "Slang comes only from the 1874 All the Year Round list and the money terms in F-31. Cab type: 'a hansom, most likely' — Verne never names it (F-12 note, F-28). Distance: ≈ 1.6 km by road (~1 mile), 6d a mile or part of one, 1s minimum on the 1871 tariff — 'call it a bob' (F-28, fact-check). No 'wet' anywhere before Quiz B (R5) — the rain arrives with the platform. accessibility.sound_captions = caption-track entries for sound-only cues (not overlays; they do not count against overlay density). A5: the 'Hook it! — be off' gloss chip is removed — the phrase is spoken in neither track, in no caption and in no interaction, so it glossed a word the traveller never meets. OPEN for the founder: give the cabby the line as a sound caption at 54 s (F-31, the 1874 All the Year Round list — the only Cockney in the chapter) or move it to a slang souvenir card. Linear cut (A5, clear track): whole script, 58 s cap — the shilling sentence is what makes 'sixpence a mile' add up, and the 'bob' chip was on screen without it.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two and a half kilometres' → 'barely a mile and a half — call it a bob' (F-28); 'hooves on wet stone' → 'hooves on stone' and every 'wet' removed (Quiz B spoiler); M-29 confirmed hansom swapped in for 30–45 s (caption without weather); slang caption to 54 s; accessibility sound caption '[hooves]' added. A1 narrator 2026-08-18: 32-word fare sentence split (cab distance hedge 'barely a mile and a half — call it a bob' kept, F-28); no 'wet' before Quiz B; 116 words / 60 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): hansom gloss chip added; the three slang captions converted to tappable gloss chips (same texts and timings); Offenbach aside reworded plainly ('French dance music'); clear-English variant added."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two and a half kilometres' → 'barely a mile and a half — call it a bob' (F-28); 'hooves on wet stone' → 'hooves on stone' and every 'wet' removed (Quiz B spoiler); M-29 confirmed hansom swapped in for 30–45 s (caption without weather); slang caption to 54 s; accessibility sound caption '[hooves]' added. A1 narrator 2026-08-18: 32-word fare sentence split (cab distance hedge 'barely a mile and a half — call it a bob' kept, F-28); no 'wet' before Quiz B; 116 words / 60 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): hansom gloss chip added; the three slang captions converted to tappable gloss chips (same texts and timings); Offenbach aside reworded plainly ('French dance music'); clear-English variant added. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): clear track 'The fare is sixpence a mile' → 'sixpence a mile — or part of a mile … so call it one shilling: a bob' (F-28 + [51]: without the qualifier the arithmetic says ninepence and the scene title lies); 'a swell: a rich, well-dressed man' → 'a gentleman in good clothes' (F-31 says stylishly dressed, and 'rich' contradicted this scene's own swell chip). Orphan gloss 'Hook it! — be off' removed: the phrase appears in no track, caption or interaction, so the chip defined a word the traveller never meets (also relieves four chips in 60 s). OPEN for the founder: give the cabby the line as a sound caption at 54 s (F-31, the 1874 All the Year Round list) or move it to a slang souvenir card. Linear cut is now the whole script — the shilling sentence had been cut while the 'bob' chip stayed on screen."
           },
           "accessibility": {
             "sound_captions": [
@@ -1503,7 +1513,7 @@
             "timing": "over",
             "voice": "guide",
             "variants": {
-              "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross: 1865. The cross itself: 1865. The Underground railway: nine years old. The Embankment by the river: two. Big Ben, the clock tower: thirteen. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
+              "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross: 1865. The cross itself: 1865. The Underground railway: nine years old. The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
             }
           },
           "media": [
@@ -1555,7 +1565,7 @@
               "at_s": 45,
               "kind": "gloss",
               "until_s": 55,
-              "text": "guinea — an old coin: one pound and one shilling",
+              "text": "guinea — twenty-one shillings: a price, not a coin, by 1872",
               "position": "tl"
             }
           ],
@@ -1584,7 +1594,7 @@
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s)."
           }
         },
         {
@@ -1746,6 +1756,9 @@
             "after_script": "Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter.",
             "variants": {
               "clear": "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?"
+            },
+            "after_script_variants": {
+              "clear": "Rain, then. Verne's words: 'The night was dark, and a fine, steady rain was falling.' No fog tonight — we save the pea-souper for a winter chapter."
             }
           },
           "media": [
@@ -1843,7 +1856,7 @@
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved before the dialogue (file 17→16, D4); script → 'Twenty to nine, still under the roof. Look up — what is the weather doing tonight?' with the reveal in narration.after_script; wait state (pause_narration, timeout_s 20); prompt persists; M-58 rain bed added low; next → passepartout-on-the-platform. A1 narrator 2026-08-18: checked, no change — script names no weather before the after_script reveal (R5); 'Twenty to nine, still under the roof' clock; the 'look up' cue now lives here (was the dialogue hand-back) — persona sheets §8/§6 updated to match. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): pea-souper gloss chip timed for the after_script reveal; clear variant copies the script verbatim — it is a persona-owned line (guide.md §8, R4) and already plain."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved before the dialogue (file 17→16, D4); script → 'Twenty to nine, still under the roof. Look up — what is the weather doing tonight?' with the reveal in narration.after_script; wait state (pause_narration, timeout_s 20); prompt persists; M-58 rain bed added low; next → passepartout-on-the-platform. A1 narrator 2026-08-18: checked, no change — script names no weather before the after_script reveal (R5); 'Twenty to nine, still under the roof' clock; the 'look up' cue now lives here (was the dialogue hand-back) — persona sheets §8/§6 updated to match. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): pea-souper gloss chip timed for the after_script reveal; clear variant copies the script verbatim — it is a persona-owned line (guide.md §8, R4) and already plain. A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.after_script_variants.clear added — the reveal keeps Verne's sentence verbatim (F-13) and the word 'pea-souper' so the chip still glosses a word the traveller hears; only the idiom is plainer ('No fog tonight — we save the pea-souper for a winter chapter'). guide.md §8 carries the same clear form (R4)."
           }
         },
         {
@@ -1860,6 +1873,9 @@
             "after_script": "We've got a train to catch. Twenty to nine on the platform.",
             "variants": {
               "clear": "It's twenty to nine, and it's raining. That's Passepartout, with the bag — he's known his master for about nine hours. Ask him something."
+            },
+            "after_script_variants": {
+              "clear": "We've got a train to catch. Twenty to nine on the platform."
             }
           },
           "media": [
@@ -1975,12 +1991,12 @@
             "F-41",
             "F-42"
           ],
-          "production_notes": "Free chat with the guardrails above (D8: free chat, may repeat the return date; on_llm_unavailable = 'choice' → the five chips play as canned answers). HONEST BUDGET (D3): duration_s 90 covers the guide-in (~12 s) and the spoken hand-back; the chat itself runs up to timeout_s 180 / max_exchanges 4 — real scene length 1.5–4.5 min, chapter ≈ 24 min. Guide-in and hand-back are shared/personas/passepartout.md §6 / guide.md §8 verbatim; the §6 hand-back's 'Look up at the roof — what's the weather doing?' clause is dropped here because Quiz B now precedes the dialogue (D4) — Narrator to reconcile the persona sheets. Chips = passepartout.md §5 answers 1–5 verbatim (single source of truth, R4). Passepartout's silence opener (§6) after 8 s of no input. Linear cut: passepartout.md §6 scripted three-line exchange (guide → Passepartout → guide, ≈ 30 s), then straight to 18. Fact-Checker: run the 20 red-team probes against the amended system prompt before ship.",
+          "production_notes": "Free chat with the guardrails above (D8: free chat, may repeat the return date; on_llm_unavailable = 'choice' → the five chips play as canned answers). HONEST BUDGET (D3): duration_s 90 covers the guide-in (~12 s) and the spoken hand-back; the chat itself runs up to timeout_s 180 / max_exchanges 4 — real scene length 1.5–4.5 min, chapter ≈ 24 min. Guide-in and hand-back are shared/personas/passepartout.md §6 / guide.md §8 verbatim; the §6 hand-back's 'Look up at the roof — what's the weather doing?' clause is dropped here because Quiz B now precedes the dialogue (D4) — Narrator to reconcile the persona sheets. Chips = passepartout.md §5 answers 1–5 verbatim (single source of truth, R4). Passepartout's silence opener (§6) after 8 s of no input. Linear cut (A5, clear track): scripted exchange, 46 s cap — s:0-1 (the guide names Passepartout and the bag) + chip 1 + the spoken hand-back, with the lower-third at 4.5 s; before A5 the film's only speaker cue was the VTT <v Passepartout> tag. Then straight to 18. Fact-Checker: run the 20 red-team probes against the amended system prompt before ship.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved after Quiz B (file 16→17, D4); guide-in = persona §6 verbatim, hand-back spoken (after_script) + caption; chips = passepartout.md §5 answers 1–5 verbatim (chip 4 'won at cards' leak gone, no 'gold'); guardrails + fog / politics-of-any-year / no-AI-or-fiction / injection line / valet's-London limit; timeout_s 180, max_exchanges 4, on_llm_unavailable choice, pause_narration; M-50 → plate 05; M-58 rain bed added ('to be sourced' note removed); lower-third '8:40 pm'. A1 narrator 2026-08-18: guide-in and hand-back confirmed = passepartout.md §6 / guide.md §8 verbatim (hand-back without the 'look up' clause — Quiz B precedes, D4; persona sheets amended to say so); chips confirmed = §5 answers 1–5 verbatim; no script change. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): no spine change; clear variant copies the guide-in verbatim — persona-owned lines (guide.md §8 / passepartout.md §6, R4) and already plain."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved after Quiz B (file 16→17, D4); guide-in = persona §6 verbatim, hand-back spoken (after_script) + caption; chips = passepartout.md §5 answers 1–5 verbatim (chip 4 'won at cards' leak gone, no 'gold'); guardrails + fog / politics-of-any-year / no-AI-or-fiction / injection line / valet's-London limit; timeout_s 180, max_exchanges 4, on_llm_unavailable choice, pause_narration; M-50 → plate 05; M-58 rain bed added ('to be sourced' note removed); lower-third '8:40 pm'. A1 narrator 2026-08-18: guide-in and hand-back confirmed = passepartout.md §6 / guide.md §8 verbatim (hand-back without the 'look up' clause — Quiz B precedes, D4; persona sheets amended to say so); chips confirmed = §5 answers 1–5 verbatim; no script change. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): no spine change; clear variant copies the guide-in verbatim — persona-owned lines (guide.md §8 / passepartout.md §6, R4) and already plain. A5 narrator 2026-08-19 (fact-check-a5 §2, §4): narration.after_script_variants.clear added as a VERBATIM copy of the hand-back — the line is persona-owned (guide.md §8 / passepartout.md §6) and R4 forbids a second variant; the field exists so the clear track never falls back silently. Linear cut now speaks s:0-1 and shows the lower-third at 4.5 s, so the film says who Passepartout is before the chips (the only speaker cue was the VTT <v Passepartout> tag); cap 36 → 46 s to pay for it."
           }
         },
         {
@@ -1995,7 +2011,7 @@
             "timing": "over",
             "voice": "guide",
             "variants": {
-              "clear": "This postcard is from 1905, thirty-three years after Fogg. The same platforms, and the old roof, months before it fell. The boat train to Paris is waiting. Now, tonight. Twenty to nine: we are seated. A quarter to nine: the whistle, and we are off, over Hungerford Bridge. Trains still leave Fogg's station this way. Our film is daylight; Fogg had rain and dark. Look right: the Embankment along the river, two years old in 1872. Beyond it, the clock tower, thirteen. New London slips away behind him. Today this train takes about two hours to Dover. Fogg's plan gave him seven days to reach Suez. This is the first hour. A few miles out, Passepartout sits up straight. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued."
+              "clear": "This postcard is from 1905, thirty-three years after Fogg. The same platforms — and the old roof, probably in its last months before it fell. The boat train to Paris is waiting. Now, tonight. Twenty to nine: we are seated. A quarter to nine: the whistle, and we are off, over Hungerford Bridge. Trains still leave Fogg's station this way. Our film is daylight; Fogg had rain and dark. Look right: the Embankment along the river, two years old in 1872. Beyond it, the clock tower, thirteen. New London slips away behind him. Today this train takes about two hours to Dover. Fogg's plan gave him seven days to reach Suez. This is the first hour. A few miles out, Passepartout sits up straight. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued."
             }
           },
           "media": [
@@ -2091,14 +2107,6 @@
               "position": "bottom"
             },
             {
-              "at_s": 64,
-              "kind": "caption",
-              "until_s": 76,
-              "text": "Verne says Sydenham. By 1872 the express probably took a shorter line.",
-              "position": "bottom",
-              "note": "Connoisseur layer (A3n): the Sydenham route aside now lives ONLY here — removed from the spine (F-13 med)."
-            },
-            {
               "at_s": 7,
               "kind": "gloss",
               "until_s": 13,
@@ -2123,12 +2131,12 @@
             "F-26",
             "F-40"
           ],
-          "production_notes": "Ending B (on the boat train), provisionally accepted. HONEST ABOUT DAYLIGHT: M-13 is a daylight, overcast recording — the guide says 'We travel in daylight; Fogg had rain and dark' and never narrates night over the frame; M-13 cropped to the left (window) half; no M-16 night insert (Scene Developer's call — the honest line carries it, and the shot stays continuous; the insert remains an option under 20–30 s if the founder prefers). 'Look right' (Embankment/clock tower are upstream = right when leaving south over Hungerford Bridge) kept ONLY on the assumption the reframed window faces west — window side unverified (A3); if east, drop the cue and caption. Captions shifted −8 s to land with the narration; postcard caption ends at 8 s. NO SPEECH 12–16 s (whistle sting). Roof: 'just — the old roof, months before it fell' (photo date unknown, F-22 collapse 5 Dec 1905). Sydenham hedged 'probably' (F-13 med). Ending A would cut M-13 at 20 s and drop the gas line here and in 11. Content Preparer: confirm F-40 against the current Southeastern timetable. Linear cut: 65 s of video (postcard 10 s + M-13 00:00–00:55) — trim the Dover/Suez sentence.",
+          "production_notes": "Ending B (on the boat train), provisionally accepted. HONEST ABOUT DAYLIGHT: M-13 is a daylight, overcast recording — the guide says 'We travel in daylight; Fogg had rain and dark' and never narrates night over the frame; M-13 cropped to the left (window) half; no M-16 night insert (Scene Developer's call — the honest line carries it, and the shot stays continuous; the insert remains an option under 20–30 s if the founder prefers). 'Look right' (Embankment/clock tower are upstream = right when leaving south over Hungerford Bridge) kept ONLY on the assumption the reframed window faces west — window side unverified (A3); if east, drop the cue and caption. Captions shifted −8 s to land with the narration; postcard caption ends at 8 s. NO SPEECH 12–16 s (whistle sting). Roof: 'just — the old roof, months before it fell' (photo date unknown, F-22 collapse 5 Dec 1905). Sydenham: the aside is now OFF the traveller's screen entirely — A3n removed the spine sentence and A5 deleted the surviving caption ('Verne says Sydenham. By 1872 the express probably took a shorter line.'), which made a newcomer meet the word once, on screen, unexplained. If it ever returns it needs a spine clause or a 'go deeper' pin, and an October 1872 Bradshaw to promote it from 'probably'. Ending A would cut M-13 at 20 s and drop the gas line here and in 11. Content Preparer: confirm F-40 against the current Southeastern timetable. Linear cut: 65 s of video (postcard 10 s + M-13 00:00–00:55) — trim the Dover/Suez sentence.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: daylight lines rewritten honestly ('We travel in daylight; Fogg had rain and dark'), M-13 cropped to the left half, no M-16 insert (my call); 'same roof' → 'just — the old roof, months before it fell'; Sydenham 'probably' in script and caption; M-60 departure bed 10–24 s + M-45 sting, no speech 12–16 s; M-59 rain-on-window low under the 'Fogg had rain' line only; captions −8 s, postcard caption ends 8 s; '8:45 pm' style; 'Look right' kept — window side unverified (A3); accessibility caption '[whistle — 8:45 pm]'. A1 narrator 2026-08-18: 27- and 26-word sentences split; Sydenham aside made its own sentence so the caption (64–76 s) lands with it; 'We travel in daylight; Fogg had rain and dark' kept; 'Look right' kept — window side unverified (A3), guide.md example 6 now says 'right' with the same flag; hold: nothing spoken 12–16 s (after 'seated.'); 156 words / 85 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): the 'Verne says Sydenham' route aside moved out of the spine (the caption at 64–76 s is now its only carrier); the gas beat told plainly ('a few miles out'); boat-train gloss chip; clear-English variant added; the 12–16 s whistle hold is untouched."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: daylight lines rewritten honestly ('We travel in daylight; Fogg had rain and dark'), M-13 cropped to the left half, no M-16 insert (my call); 'same roof' → 'just — the old roof, months before it fell'; Sydenham 'probably' in script and caption; M-60 departure bed 10–24 s + M-45 sting, no speech 12–16 s; M-59 rain-on-window low under the 'Fogg had rain' line only; captions −8 s, postcard caption ends 8 s; '8:45 pm' style; 'Look right' kept — window side unverified (A3); accessibility caption '[whistle — 8:45 pm]'. A1 narrator 2026-08-18: 27- and 26-word sentences split; Sydenham aside made its own sentence so the caption (64–76 s) lands with it; 'We travel in daylight; Fogg had rain and dark' kept; 'Look right' kept — window side unverified (A3), guide.md example 6 now says 'right' with the same flag; hold: nothing spoken 12–16 s (after 'seated.'); 156 words / 85 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): the 'Verne says Sydenham' route aside moved out of the spine (the caption at 64–76 s is now its only carrier); the gas beat told plainly ('a few miles out'); boat-train gloss chip; clear-English variant added; the 12–16 s whistle hold is untouched. A5 narrator+scene-developer 2026-08-19 (fact-check-a5 §1–2, §4): clear track 'the old roof, months before it fell' → 'the old roof, probably in its last months before it fell' — M-27's 1905 is a publication year and the photograph's date is unknown, so the A1 hedge ('— just —') had to come back in some form. Orphan caption 'Verne says Sydenham. By 1872 the express probably took a shorter line.' DELETED: its spine sentence was removed in A3n, so a newcomer met 'Sydenham' once, on screen, with nothing to attach it to (the connoisseur note survives in production_notes and the manifest, not on the traveller's screen). Cut-sheet overlay list re-indexed accordingly ({i:4} was the Sydenham caption; it is now the two-hours-to-Dover caption at 52–62 s)."
           },
           "accessibility": {
             "sound_captions": [
@@ -2219,12 +2227,12 @@
             "F-12",
             "F-27"
           ],
-          "production_notes": "Chapter end frame. interaction.kind 'save' = the player offers save/share of the G-08 card as an image (schema addition this run). Music M-41 Sullivan tail, not the galop (D10). Time style '8:45 pm' on the card and caption. Narrator: the guide names the dish, not the ingredients (the card carries them). Linear cut: 40 s — same script minus the ingredient list read-out (it stays on the card); consider ending the linear on the card at 20 s with the music tail.",
+          "production_notes": "Chapter end frame. interaction.kind 'save' = the player offers save/share of the G-08 card as an image (schema addition this run). Music M-41 Sullivan tail, not the galop (D10). Time style '8:45 pm' on the card and caption. Narrator: the guide names the dish, not the ingredients (the card carries them). Linear cut (A5, clear track): 54 s cap — s:0-3 and s:5-7. 'Save the card.' is dropped (no viewer can obey it) and 'The recipe is on the card.' is kept; before A5 the film did the opposite and the instruction had no antecedent.",
           "review": {
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending",
-            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: interaction.kind → save; caption/card time style '8:45 pm'; music M-42 galop → M-41 Sullivan tail (D10); G-08 note carries the ingredient list (Narrator drops it from speech). A1 narrator 2026-08-18: guide names the dish (broiled fish with a Reading-sauce-style ketchup), ingredient list dropped from speech (G-08 card carries it); 118→102 words / 60 s; time in words, caption '8:45 pm'; ends on 'Paris'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added."
+            "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: interaction.kind → save; caption/card time style '8:45 pm'; music M-42 galop → M-41 Sullivan tail (D10); G-08 note carries the ingredient list (Narrator drops it from speech). A1 narrator 2026-08-18: guide names the dish (broiled fish with a Reading-sauce-style ketchup), ingredient list dropped from speech (G-08 card carries it); 118→102 words / 60 s; time in words, caption '8:45 pm'; ends on 'Paris'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added. A5 narrator 2026-08-19 (fact-check-a5 §4): scene text unchanged; linear cut re-derived against the clear track — 'The recipe is on the card.' (s:3) is back and 'Save the card.' (s:4) is dropped, so the film's last beat is not an instruction with no antecedent."
           }
         }
       ]

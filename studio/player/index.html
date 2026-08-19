@@ -65,6 +65,15 @@
   #countdown { color:var(--accent); font-family:system-ui,sans-serif; font-size:12px; }
   .row-hl { pointer-events:none; }
   .muted { color:var(--dim); font-family:system-ui,sans-serif; font-size:13px; }
+  /* Street View v0.4 (cinematic auto-walk). Chrome sits top-left/top-right and the cross-fade stops 30 px short of
+     the bottom edge, so Google's logo and ©-line inside the pano / static frame are never covered (rights: M-37/38/39). */
+  #media .svpano { position:absolute; inset:0; }
+  #media .svstill { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .38s ease-in-out; }
+  #media .svstill.on { opacity:1; }
+  #media .svfade { position:absolute; left:0; right:0; top:0; bottom:30px; background:#000; opacity:0; pointer-events:none; z-index:2; transition:opacity .18s linear; }
+  #media .svbar { position:absolute; left:8px; top:8px; z-index:3; display:flex; gap:6px; font-family:system-ui,sans-serif; }
+  #media .svbar .btn { padding:4px 10px; font-size:14px; background:rgba(13,12,14,.72); }
+  #media .svattr { position:absolute; right:8px; top:8px; z-index:3; font:11px/1.5 system-ui,sans-serif; color:var(--ink); background:rgba(13,12,14,.6); padding:2px 7px; border-radius:5px; }
   @media (min-aspect-ratio: 4/3) { #stage { flex-direction:row; } #media { flex:1 1 60%; min-height:0; } #right { flex:1 1 40%; display:flex; flex-direction:column; min-width:0; } #panel { max-height:none; flex:1; } }
 </style>
 </head>
@@ -244,18 +253,286 @@ async function shareCard(note){ const svg=$('#media svg.gen'); const title=scene
 // ---------- Renderers ----------
 function card(html){ const d=document.createElement('div'); d.className='fill'; d.innerHTML=`<div class="card">${html}</div>`; $('#media').appendChild(d); }
 async function showImage(m, kb=false){ const ser=sceneSerial, me=sched&&sched.active; const img=document.createElement('img'); if(kb) img.className='kenburns'; img.src= isCommons(m.ref)? await commonsUrl(m.ref):m.ref; if(ser!==sceneSerial||(sched&&sched.active!==me)) return; /* scene changed or the media schedule moved on (e.g. a generated card) while the Commons lookup was in flight */ img.alt=m.attribution||''; $('#media').innerHTML=''; $('#media').appendChild(img); if(m.attribution){ const a=document.createElement('div'); a.className='muted'; a.style.cssText='position:absolute;right:8px;bottom:6px;font-size:11px;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:4px'; a.textContent=m.attribution; $('#media').appendChild(a);} }
-function streetviewUrl(ref){ const [lat,lng,h,p,fov]=ref.split(',').map(Number); const key=localStorage.getItem('yy-gkey');
-  return key ? `https://www.google.com/maps/embed/v1/streetview?key=${key}&location=${lat},${lng}&heading=${h||0}&pitch=${p||0}&fov=${fov||90}` : null; }
-function mapsLink(ref){ const [lat,lng,h,p,fov]=ref.split(',').map(Number); return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}&heading=${h||0}&pitch=${p||0}&fov=${fov||90}`; }
-function showStreetView(s){
-  const svs=s.media.filter(m=>m.kind==='streetview'); let i=0; const url=streetviewUrl(svs[0].ref);
-  const render=()=>{ $('#media').innerHTML=''; const m=svs[i]; const u=streetviewUrl(m.ref);
-    if(u){ const f=document.createElement('iframe'); f.src=u; f.allow='accelerometer; gyroscope'; f.referrerPolicy='no-referrer-when-downgrade'; $('#media').appendChild(f); }
-    else { const d=document.createElement('div'); d.className='fill'; d.innerHTML=`<div class="card"><h2>Street View stop ${i+1} of ${svs.length}</h2><p>${m.attribution||''} <br><small>${m.ref}</small></p><p><a class="btn primary" target="_blank" href="${mapsLink(m.ref)}">Open this view in Google Maps ↗</a></p><p><small>Add a Google Maps API key on the start screen to see Street View inline.</small></p></div>`; $('#media').appendChild(d); }
-    const nav=document.createElement('div'); nav.style.cssText='position:absolute;left:8px;bottom:8px;display:flex;gap:6px'; nav.innerHTML=`<button class="btn" id="svPrev">◀ stop</button><span class="btn" style="cursor:default">${i+1}/${svs.length}</span><button class="btn" id="svNext">stop ▶</button>`; $('#media').appendChild(nav);
-    nav.querySelector('#svPrev').onclick=()=>{ i=Math.max(0,i-1); render(); }; nav.querySelector('#svNext').onclick=()=>{ i=Math.min(svs.length-1,i+1); render(); }; };
-  render();
+function mapsLink(ref){ const [lat,lng,h,p,fov]=String(ref).split(',').map(Number); return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}&heading=${h||0}&pitch=${p||0}&fov=${fov||90}`; }
+
+// ================= Street View v0.4 — cinematic auto-walk =================
+// The scene walks itself: the camera glides along interaction.route (or the streetview media stops), paced to
+// duration_s, and turns to look at whatever the `camera` track names, at the same at_s as the pin that names it.
+// Three modes, chosen silently in this order (fallback ladder):
+//   js     Maps JavaScript API StreetViewPanorama — real panos, pano-to-pano walking via links, eased POV (best)
+//   stills Street View Static API — a hyperlapse of frames along the same timeline, cross-faded (no JS API needed)
+//   link   no key / nothing enabled — an auto-advancing stop card with "open in Google Maps"
+// Rights: nothing here is recorded, persisted or pre-bundled. Static frames are requested at playback time with a
+// <=2-frame lookahead and live only in the browser's image cache. Google's attribution (logo + ©-line, baked into
+// both the pano and the static image) is never covered: our chrome sits top-left/top-right and the cross-fade
+// stops 30 px above the bottom edge.
+const SVCFG={ mode:'auto', step_m:12, max_stills:60, fade_ms:380, resume_after_s:4, smooth_s:1.05, radius_m:60, base_zoom:0.85 };
+let svRun=null, svAuthFailed=false, svJsPromise=null;
+window.gm_authFailure=()=>{ svAuthFailed=true; svJsPromise=null; if(svRun&&svRun.onAuthFail) svRun.onAuthFail(); };
+const svKey=()=>localStorage.getItem('yy-gkey')||'';
+const D2R=Math.PI/180, R2D=180/Math.PI, EARTH_M=6371000;
+function svDist(a,b){ const la1=a.lat*D2R,la2=b.lat*D2R,dla=(b.lat-a.lat)*D2R,dlo=(b.lng-a.lng)*D2R;
+  const h=Math.sin(dla/2)**2+Math.cos(la1)*Math.cos(la2)*Math.sin(dlo/2)**2; return 2*EARTH_M*Math.asin(Math.min(1,Math.sqrt(h))); }
+function svBearing(a,b){ const la1=a.lat*D2R,la2=b.lat*D2R,dlo=(b.lng-a.lng)*D2R;
+  const y=Math.sin(dlo)*Math.cos(la2), x=Math.cos(la1)*Math.sin(la2)-Math.sin(la1)*Math.cos(la2)*Math.cos(dlo); return (Math.atan2(y,x)*R2D+360)%360; }
+const svNorm=d=>((d%360)+360)%360;
+const svDelta=(from,to)=>{ let d=svNorm(to)-svNorm(from); if(d>180)d-=360; if(d<-180)d+=360; return d; };
+const svLerpPos=(a,b,f)=>({lat:a.lat+(b.lat-a.lat)*f, lng:a.lng+(b.lng-a.lng)*f});
+const svFovToZoom=f=>Math.max(0,Math.min(5, Math.log2(180/Math.max(15,Math.min(180,f||90)))));
+const svZoomToFov=z=>Math.max(15,Math.min(120, 180/Math.pow(2, z==null?SVCFG.base_zoom:z)));
+function svParse(ref){ const p=String(ref||'').split(',').map(Number);
+  if(!(p.length>=2&&isFinite(p[0])&&isFinite(p[1]))) return null;
+  return {lat:p[0], lng:p[1], heading:isFinite(p[2])?p[2]:null, pitch:isFinite(p[3])?p[3]:0, fov:isFinite(p[4])?p[4]:null}; }
+// critically damped smoothing (Unity SmoothDamp): eases in AND out, tracks a moving target, never snaps
+function svSmooth(cur, target, st, smoothTime, dt){
+  smoothTime=Math.max(0.05,smoothTime); const omega=2/smoothTime, x=omega*dt;
+  const exp=1/(1+x+0.48*x*x+0.235*x*x*x); const change=cur-target;
+  const temp=(st.v+omega*change)*dt; st.v=(st.v-omega*temp)*exp; return target+(change+temp)*exp; }
+
+// ---- plan: stops with arrival times + normalised camera cues -------------------------------------------------
+function svPlan(s){
+  const mediaStops=(s.media||[]).filter(m=>m.kind==='streetview').map(m=>({p:svParse(m.ref), m})).filter(x=>x.p);
+  const route=(((s.interaction||{}).route)||[]).map(svParse).filter(Boolean);
+  let stops = route.length ? route : mediaStops.map(x=>x.p);
+  if(!stops.length) return null;
+  if(route.length) stops.forEach(st=>{ const near=mediaStops.find(x=>svDist(x.p,st)<25); if(near){ if(st.heading==null) st.heading=near.p.heading; if(!st.fov) st.fov=near.p.fov; st.fallback=near.m.fallback; st.attribution=near.m.attribution; st.note=near.m.note; } });
+  else stops.forEach((st,i)=>{ st.fallback=mediaStops[i].m.fallback; st.attribution=mediaStops[i].m.attribution; st.note=mediaStops[i].m.note; });
+  const dur=s.duration_s||60;
+  // arrival times come from the content: overlays[].at_waypoint gives the second the pin fires, so the turn and the
+  // pin coincide by construction. No waypoint overlays -> spread the stops over the first 72 % of the scene.
+  const arrive=stops.map(()=>null); arrive[0]=0;
+  (s.overlays||[]).forEach(o=>{ const k=o.at_waypoint; if(Number.isInteger(k)&&k>0&&k<stops.length){ const t=+o.at_s||0; if(arrive[k]==null||t<arrive[k]) arrive[k]=t; } });
+  const span=dur*0.72;
+  for(let k=1;k<stops.length;k++) if(arrive[k]==null) arrive[k]=span*k/(stops.length-1);
+  for(let k=1;k<stops.length;k++) arrive[k]=Math.max(arrive[k], arrive[k-1]+2);
+  stops.forEach((st,k)=>st.arrive_s=arrive[k]);
+  let cues=(s.camera||[]).map(c=>({ at_s:Math.max(0,+c.at_s||0), heading:isFinite(c.heading)?+c.heading:null, look_at:svParse(c.look_at),
+      pitch:isFinite(c.pitch)?+c.pitch:0, zoom:isFinite(c.zoom)?+c.zoom:null, hold_s:isFinite(c.hold_s)?+c.hold_s:0,
+      ease_s:isFinite(c.ease_s)?+c.ease_s:1.8, label:c.label||'' }))
+    .filter(c=>c.heading!=null||c.look_at).sort((a,b)=>a.at_s-b.at_s);
+  if(!cues.length) cues=stops.filter(st=>st.heading!=null).map(st=>({ at_s:st.arrive_s, heading:st.heading, look_at:null,
+      pitch:st.pitch||0, zoom:st.fov?svFovToZoom(st.fov):null, hold_s:Math.min(4,dur/8), ease_s:1.8, label:'stop heading' }));
+  let total=0; for(let i=1;i<stops.length;i++) total+=svDist(stops[i-1],stops[i]);
+  return {stops, cues, dur, total};
 }
+// where the camera should be and what it should be looking at, at scene time t (pure — both modes use it)
+function svCameraAt(pl, t){
+  let k=0; for(let i=0;i<pl.stops.length;i++) if(t>=pl.stops[i].arrive_s) k=i;
+  const cur=pl.stops[k], nxt=pl.stops[k+1];
+  let cue=null; for(const c of pl.cues){ if(c.at_s<=t) cue=c; else break; }
+  const cueLive = !!(cue && t < cue.at_s + Math.max(cue.hold_s, cue.ease_s));
+  const holding = !!(cue && t < cue.at_s + cue.hold_s);
+  let pos=cur, moving=false;
+  if(nxt){
+    const holdEnd=pl.cues.reduce((a,c)=> (c.at_s>=cur.arrive_s-0.01 && c.at_s<nxt.arrive_s) ? Math.max(a,c.at_s+c.hold_s) : a, cur.arrive_s);
+    const t0=Math.min(holdEnd, nxt.arrive_s-1), t1=nxt.arrive_s;
+    const f=Math.max(0,Math.min(1,(t-t0)/Math.max(0.5,t1-t0)));
+    pos=svLerpPos(cur,nxt,f); moving=f>0&&f<1;
+  }
+  const travel = nxt ? svBearing(pos,nxt) : (cur.heading!=null?cur.heading:0);
+  let heading=travel, pitch=0, zoom=SVCFG.base_zoom;
+  if(cueLive){ heading = cue.look_at ? svBearing(pos,cue.look_at) : cue.heading; pitch=cue.pitch; if(cue.zoom!=null) zoom=cue.zoom; }
+  else if(!nxt && cur.heading!=null){ heading=cur.heading; if(cur.fov) zoom=svFovToZoom(cur.fov); }
+  return {pos, heading:svNorm(heading), pitch, zoom, holding, moving, stop:k, cue:cueLive?cue:null};
+}
+
+// ---- chrome: controls top-left, our attribution top-right, cross-fade that spares Google's ©-line -------------
+function svChrome(box, plan, ctl){
+  const bar=document.createElement('div'); bar.className='svbar';
+  const bP=document.createElement('button'); bP.className='btn svbtn'; bP.id='svPause'; bP.textContent='⏸'; bP.title='pause';
+  bP.setAttribute('aria-label','pause the walk');
+  bP.onclick=()=>{ paused=!paused; bP.textContent=paused?'▶':'⏸'; try{ paused?speechSynthesis.pause():speechSynthesis.resume(); }catch(e){} };
+  const bR=document.createElement('button'); bR.className='btn svbtn'; bR.id='svReplay'; bR.textContent='↻'; bR.title='replay the walk';
+  bR.setAttribute('aria-label','replay the walk'); bR.onclick=()=>showScene(idx);
+  bar.append(bP,bR);
+  const att=document.createElement('div'); att.className='svattr'; att.id='svAttr'; att.textContent='Google Street View';
+  const fade=document.createElement('div'); fade.className='svfade';
+  box.append(bar,att,fade);
+  return { fade, att, bar,
+    flash:()=>{ fade.style.opacity='0.62'; setTimeout(()=>{ fade.style.transition='opacity '+SVCFG.fade_ms+'ms ease-out'; fade.style.opacity='0';
+        setTimeout(()=>fade.style.transition='opacity .18s linear', SVCFG.fade_ms); }, 120); } };
+}
+// user drag pauses the auto-walk; it resumes ~4 s after the last touch. No click is ever required.
+function svWireIdle(el, ctl){
+  const touch=()=>{ ctl.userUntil=elapsed+SVCFG.resume_after_s; ctl.userActive=true; };
+  const rest=()=>{ ctl.userActive=false; ctl.userUntil=elapsed+SVCFG.resume_after_s; };
+  el.addEventListener('pointerdown',touch); el.addEventListener('pointermove',e=>{ if(e.buttons) touch(); });
+  ['pointerup','pointercancel','pointerleave'].forEach(t=>el.addEventListener(t,rest));
+  el.addEventListener('wheel',()=>{ touch(); rest(); },{passive:true});
+}
+
+// ---- mode js: Maps JavaScript API ----------------------------------------------------------------------------
+function svLoadMapsJs(key){
+  if(window.google&&window.google.maps&&google.maps.StreetViewPanorama) return Promise.resolve('ready');
+  if(!key) return Promise.reject(new Error('no-key'));
+  if(svAuthFailed) return Promise.reject(new Error('auth-failed'));
+  if(svJsPromise) return svJsPromise;
+  svJsPromise=new Promise((res,rej)=>{
+    const to=setTimeout(()=>rej(new Error('timeout')),9000);
+    const prev=window.gm_authFailure;
+    window.gm_authFailure=()=>{ clearTimeout(to); svAuthFailed=true; prev&&prev(); rej(new Error('gm_authFailure')); };
+    window.__svMapsReady=()=>{ clearTimeout(to); res('loaded'); };
+    const sc=document.createElement('script'); sc.async=true;
+    sc.src='https://maps.googleapis.com/maps/api/js?key='+encodeURIComponent(key)+'&v=weekly&loading=async&callback=__svMapsReady';
+    sc.onerror=()=>{ clearTimeout(to); rej(new Error('script-error')); };
+    document.head.appendChild(sc);
+  }).catch(e=>{ svJsPromise=null; throw e; });
+  return svJsPromise;
+}
+async function svLive(plan, box, ctl){
+  await svLoadMapsJs(svKey());
+  if(ctl.dead) return;
+  const host=document.createElement('div'); host.className='svpano'; box.appendChild(host);
+  const src=(google.maps.StreetViewSource&&(google.maps.StreetViewSource.GOOGLE||google.maps.StreetViewSource.OUTDOOR))||undefined; // Google-collected imagery: no third-party photosphere attribution
+  const svc=new google.maps.StreetViewService();
+  const first=await new Promise(res=>svc.getPanorama({location:plan.stops[0], radius:SVCFG.radius_m, source:src},(d,st)=>res(st==='OK'||st===google.maps.StreetViewStatus.OK?d:null)));
+  if(ctl.dead) return;
+  if(!first) throw new Error('no-pano');
+  const c0=svCameraAt(plan,0);
+  const pano=new google.maps.StreetViewPanorama(host,{ pano:first.location.pano, pov:{heading:c0.heading,pitch:c0.pitch}, zoom:c0.zoom,
+    visible:true, disableDefaultUI:true, clickToGo:false, scrollwheel:false, linksControl:false, panControl:false, zoomControl:false,
+    addressControl:false, fullscreenControl:false, imageDateControl:false, motionTracking:false, motionTrackingControl:false,
+    enableCloseButton:false, showRoadLabels:false });
+  ctl.pano=pano; ctl.mode='js';
+  const chrome=svChrome(box,plan,ctl); svWireIdle(host,ctl);
+  let cur={h:c0.heading,p:c0.pitch,z:c0.zoom}, vh={v:0}, vp={v:0}, vz={v:0}, last=performance.now()/1000;
+  let pos=first.location.latLng?{lat:first.location.latLng.lat(),lng:first.location.latLng.lng()}:plan.stops[0];
+  let links=first.links||[], nextStepAt=0, loads=1;
+  pano.addListener('position_changed',()=>{ const p=pano.getPosition(); if(p){ pos={lat:p.lat(),lng:p.lng()}; } });
+  pano.addListener('links_changed',()=>{ links=pano.getLinks()||[]; });
+  pano.addListener('pano_changed',()=>{ chrome.flash(); });
+  const step=(target)=>{                       // one pano along the street toward the target position
+    const want=svBearing(pos,target); let best=null, bd=999;
+    (links||[]).forEach(l=>{ const d=Math.abs(svDelta(l.heading,want)); if(d<bd){ bd=d; best=l; } });
+    if(best&&bd<62){ loads++; pano.setPano(best.pano); return true; }
+    svc.getPanorama({location:target, radius:40, source:src},(d,st)=>{ if(ctl.dead) return;
+      if((st==='OK'||st===google.maps.StreetViewStatus.OK)&&d){ loads++; pano.setPano(d.location.pano); } });
+    return true;
+  };
+  const frame=()=>{
+    if(ctl.dead) return; ctl.raf=requestAnimationFrame(frame);
+    const now=performance.now()/1000, dt=Math.min(0.1,Math.max(0.001,now-last)); last=now;
+    if(paused||document.hidden) return;
+    const t=elapsed, tgt=svCameraAt(plan,t);
+    ctl.debug={mode:'js', t, stop:tgt.stop, cue:tgt.cue?tgt.cue.label:'', loads, heading:cur.h, holding:tgt.holding};
+    if(ctl.userActive||t<ctl.userUntil){ const pv=pano.getPov(); if(pv){ cur.h=pv.heading; cur.p=pv.pitch; } vh.v=vp.v=0; return; } // hands off while the traveller looks around
+    const smooth = tgt.cue ? Math.max(0.35,(tgt.cue.ease_s||1.8)/2) : SVCFG.smooth_s;
+    cur.h = svNorm(svSmooth(cur.h, cur.h+svDelta(cur.h,tgt.heading), vh, smooth, dt));
+    cur.p = svSmooth(cur.p, tgt.pitch, vp, smooth, dt);
+    cur.z = svSmooth(cur.z, tgt.zoom, vz, smooth*1.4, dt);
+    pano.setPov({heading:cur.h, pitch:cur.p}); if(Math.abs(pano.getZoom()-cur.z)>0.02) pano.setZoom(cur.z);
+    if(!tgt.holding && t>=nextStepAt && svDist(pos,tgt.pos)>SVCFG.step_m){ nextStepAt=t+0.55; step(tgt.pos); }
+  };
+  ctl.raf=requestAnimationFrame(frame);
+  return 'js';
+}
+
+// ---- mode stills: Street View Static API hyperlapse ------------------------------------------------------------
+async function svProbeStatic(key, at){
+  const base='https://maps.googleapis.com/maps/api/streetview/metadata?location='+at.lat.toFixed(6)+','+at.lng.toFixed(6)+'&radius=60&key='+encodeURIComponent(key);
+  for(const pol of ['', 'no-referrer']){                       // metadata answers 200 even when denied: probing costs nothing and logs nothing
+    try{ const r=await fetch(base, pol?{referrerPolicy:pol}:{}); const j=await r.json();
+      if(j.status==='OK'||j.status==='ZERO_RESULTS') return {ok:true, pol, date:j.date||''};
+    }catch(e){ /* offline */ }
+  }
+  return {ok:false};
+}
+function svStillFrames(plan){
+  const out=[]; let last=null;
+  for(let t=0;t<=plan.dur;t+=0.5){
+    const c=svCameraAt(plan,t); const lab=c.cue?c.cue.label:'';
+    const far = !last || svDist(last.pos,c.pos)>=SVCFG.step_m;
+    const turn = !last || Math.abs(svDelta(last.heading,c.heading))>=16 || lab!==last.lab;
+    if(far||turn){ out.push({t, pos:c.pos, heading:c.heading, pitch:c.pitch, zoom:c.zoom, lab, keep:(lab!==(last?last.lab:null))}); last=out[out.length-1]; }
+  }
+  if(!out.length) out.push({t:0, ...svCameraAt(plan,0), lab:'', keep:true});
+  if(out.length>SVCFG.max_stills){                              // thin the plain travel frames, keep every look-at
+    const keep=out.filter(f=>f.keep), rest=out.filter(f=>!f.keep);
+    const room=Math.max(1,SVCFG.max_stills-keep.length), stride=Math.ceil(rest.length/room);
+    out.length=0; out.push(...keep, ...rest.filter((_,i)=>i%stride===0)); out.sort((a,b)=>a.t-b.t);
+  }
+  return out;
+}
+function svStillUrl(f, w, h, key){
+  return 'https://maps.googleapis.com/maps/api/streetview?size='+w+'x'+h
+    +'&location='+f.pos.lat.toFixed(6)+','+f.pos.lng.toFixed(6)
+    +'&heading='+svNorm(f.heading).toFixed(1)+'&pitch='+(f.pitch||0).toFixed(1)
+    +'&fov='+svZoomToFov(f.zoom).toFixed(0)+'&source=outdoor&key='+encodeURIComponent(key);
+}
+async function svStills(plan, box, ctl){
+  const key=svKey(); if(!key) throw new Error('no-key');
+  const probe=await svProbeStatic(key, plan.stops[0]); if(ctl.dead) return;
+  if(!probe.ok) throw new Error('static-denied');
+  const frames=svStillFrames(plan); ctl.mode='stills';
+  const r=box.getBoundingClientRect(); const w=640, h=Math.max(200,Math.min(640,Math.round(640*(r.height||540)/(r.width||960))));
+  const layers=[document.createElement('img'),document.createElement('img')];
+  layers.forEach(im=>{ im.className='svstill'; im.alt='Google Street View'; im.decoding='async'; if(probe.pol) im.referrerPolicy=probe.pol; box.appendChild(im); });
+  const chrome=svChrome(box,plan,ctl); svWireIdle(box,ctl);
+  chrome.att.textContent='Google Street View — hyperlapse';
+  let shown=-1, front=0, warm=[];
+  const url=f=>svStillUrl(f,w,h,key);
+  const preload=i=>{ for(let k=i;k<Math.min(frames.length,i+3);k++){ if(warm[k]) continue; const im=new Image(); if(probe.pol) im.referrerPolicy=probe.pol; im.src=url(frames[k]); warm[k]=im; } }; // <=2 frames ahead, browser cache only — never written to disk
+  preload(0);
+  const show=i=>{ const back=layers[1-front], f=frames[i];
+    back.onload=()=>{ back.classList.add('on'); layers[front].classList.remove('on'); front=1-front; };
+    if(probe.pol) back.referrerPolicy=probe.pol; back.src=url(f); shown=i; preload(i+1); };
+  const frame=()=>{ if(ctl.dead) return; ctl.raf=requestAnimationFrame(frame);
+    if(paused||document.hidden) return;
+    const t=elapsed; if(ctl.userActive||t<ctl.userUntil){ ctl.debug={mode:'stills',t,frame:shown,held:true}; return; }
+    let i=0; for(let k=0;k<frames.length;k++) if(t>=frames[k].t) i=k;
+    ctl.debug={mode:'stills', t, frame:i, frames:frames.length, cue:frames[i].lab};
+    if(i!==shown) show(i); };
+  show(0); ctl.raf=requestAnimationFrame(frame);
+  return 'stills';
+}
+
+// ---- mode link: no key / nothing enabled — the card still advances by itself -----------------------------------
+function svLinkCard(plan, box, ctl){
+  ctl.mode='link'; let shown=-1;
+  const draw=i=>{ const st=plan.stops[i]; box.innerHTML='';
+    const d=document.createElement('div'); d.className='fill';
+    d.innerHTML=`<div class="card"><h2>Street View stop ${i+1} of ${plan.stops.length}</h2>
+      <p>${(st.attribution||'Google Street View')}<br><small>${st.lat.toFixed(4)}, ${st.lng.toFixed(4)}${st.heading!=null?' · heading '+Math.round(st.heading)+'°':''}</small></p>
+      <p><a class="btn primary" target="_blank" rel="noopener" href="${mapsLink([st.lat,st.lng,st.heading||0,st.pitch||0,st.fov||90].join(','))}">Open this view in Google Maps ↗</a></p>
+      <p><small>Live Street View needs a Google Maps API key with the Maps JavaScript API or the Street View Static API enabled. The walk continues on its own.</small></p></div>`;
+    box.appendChild(d); const att=document.createElement('div'); att.className='svattr'; att.textContent='Google Street View'; box.appendChild(att);
+    shown=i; };
+  const frame=()=>{ if(ctl.dead) return; ctl.raf=requestAnimationFrame(frame); if(paused) return;
+    let i=0; for(let k=0;k<plan.stops.length;k++) if(elapsed>=plan.stops[k].arrive_s) i=k;
+    ctl.debug={mode:'link', t:elapsed, stop:i}; if(i!==shown) draw(i); };
+  draw(0); ctl.raf=requestAnimationFrame(frame);
+  return 'link';
+}
+
+function svStop(){ if(svRun){ svRun.dead=true; if(svRun.raf) cancelAnimationFrame(svRun.raf); try{ svRun.pano&&svRun.pano.setVisible(false); }catch(e){} svRun=null; } }
+async function showStreetView(s){
+  svStop();
+  const box=$('#media'); const plan=svPlan(s);
+  if(!plan){ sceneCard(s,[]); return; }
+  const ctl={dead:false, raf:0, userActive:false, userUntil:0, mode:null, plan, debug:{}}; svRun=ctl;
+  const ser=sceneSerial;
+  box.innerHTML='<div class="fill"><div class="muted">Street View — connecting…</div></div>';
+  ctl.onAuthFail=()=>{ if(ctl.dead||ctl.mode!=='js') return; ctl.mode=null; box.innerHTML=''; svBegin('stills'); };
+  const want=(localStorage.getItem('yy-sv-mode')||SVCFG.mode||'auto').toLowerCase();
+  const ladder = want==='auto' ? ['js','stills','link'] : (want==='js'?['js','stills','link']:(want==='stills'?['stills','link']:['link']));
+  const svBegin=async(from)=>{
+    const chain=ladder.slice(ladder.indexOf(from)<0?0:ladder.indexOf(from));
+    for(const m of chain){
+      if(ctl.dead||ser!==sceneSerial) return;
+      try{
+        box.innerHTML='';
+        if(m==='js'){ await svLive(plan,box,ctl); }
+        else if(m==='stills'){ await svStills(plan,box,ctl); }
+        else { svLinkCard(plan,box,ctl); }
+        if(ctl.dead) return;
+        window.__sv=ctl; return;                                  // mode is up
+      }catch(e){ if(ctl.dead) return; console.info('street view: '+m+' unavailable ('+(e&&e.message)+') — falling back'); ctl.mode=null; if(ctl.raf) cancelAnimationFrame(ctl.raf); box.innerHTML=''; }
+    }
+    sceneCard(s,[]); window.__sv=ctl;
+  };
+  await svBegin(ladder[0]);
+}
+
 const ROUTE=[["London",51.5074,-0.1278],["Suez",29.9668,32.5498],["Bombay",18.9388,72.8354],["Calcutta",22.5726,88.3639],["Hong Kong",22.3193,114.1694],["Yokohama",35.4437,139.6380],["San Francisco",37.7749,-122.4194],["New York",40.7128,-74.0060],["London",51.5074,-0.1278]];
 // showRouteMap(dayState[, ref]) — used by the linear renderer. Prefers the G-01 SVG (all layers shown); Leaflet is the fallback when the file is missing.
 async function showRouteMap(dayState=true, ref){
@@ -315,7 +592,9 @@ function renderInteraction(s){
     const wrap=document.createElement('div'); wrap.className='chat'; box.appendChild(wrap); const chips=document.createElement('div'); chips.className='chips'; box.appendChild(chips);
     (it.options||[]).forEach(o=>{ const c=document.createElement('button'); c.className='chip'; c.textContent=o.text; c.onclick=()=>{ interactionResolved=true; clearCountdown(); resumeTimer(); const q=document.createElement('div'); q.className='q'; q.textContent=o.text; wrap.appendChild(q); const a=document.createElement('div'); a.className='a'; a.textContent=o.feedback||o.answer||'…'; wrap.appendChild(a); speak(a.textContent); c.disabled=true; }; chips.appendChild(c); });
     const n=document.createElement('p'); n.className='muted'; n.textContent='Scripted fallback answers (no LLM connected in the dry run). Guardrails: '+(it.guardrails||[]).length+' rules.'; box.appendChild(n);
-  } else if(it.kind==='walk'){ const p=document.createElement('p'); p.className='muted'; p.textContent=`Walk: ${(it.route||[]).length} waypoints. Use ◀ stop ▶ on the view.`; box.appendChild(p); }
+  } else if(it.kind==='walk'){ const p=document.createElement('p'); p.className='muted';
+    p.textContent=`The walk plays itself — ${(it.route||[]).length} stop${(it.route||[]).length===1?'':'s'}, no tapping. Drag the view to look around; it picks the walk up again after a few seconds. ⏸ pauses, ↻ replays.`;
+    box.appendChild(p); interactionResolved=true; }
 }
 
 function renderOverlays(s, t){
@@ -328,7 +607,7 @@ function renderOverlays(s, t){
 }
 
 async function showScene(i){
-  clearInterval(timer); sceneSerial++; sched=null; genHooks={}; pendingNarrEnd=null; clearCountdown(); speechSynthesis.cancel(); stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
+  clearInterval(timer); sceneSerial++; svStop(); sched=null; genHooks={}; pendingNarrEnd=null; clearCountdown(); speechSynthesis.cancel(); stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
   idx=Math.max(0,Math.min(scenes.length-1,i)); const s=scenes[idx]; elapsed=0; paused=false; const ser=sceneSerial;
   $('#hScene').textContent=`scene ${idx+1}/${scenes.length} · ${s.type} · ${s.duration_s}s`; $('#title').textContent=s.title; $('#media').innerHTML='';
   const script=pickScript(s); $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:''; // clear-English: variants.clear replaces script for TTS + captions when present
@@ -366,7 +645,7 @@ async function showScene(i){
   t0=performance.now(); timer=setInterval(tick,500); tick();
 }
 function tick(){ const s=scenes[idx]; if(paused) t0=performance.now()-elapsed*1000; else elapsed=(performance.now()-t0)/1000; $('#prog i').style.width=Math.min(100,elapsed/s.duration_s*100)+'%'; $('#clock').textContent=`${Math.floor(elapsed)}s / ${s.duration_s}s`; if(paused) return; renderOverlays(s,elapsed); schedTick();
-  const needsInput = s.interaction && s.interaction.kind!=='none';
+  const needsInput = s.interaction && s.interaction.kind!=='none' && !(s.interaction.kind==='walk'&&s.type==='streetview'); // v0.4: the auto-walk needs no input, so a streetview scene plays out and hands on like a video
   if(s.type==='game' && elapsed>=s.duration_s && gameApi && !gameApi.done) gameApi.close();
   if(elapsed>=s.duration_s && !needsInput && !speechSynthesis.speaking){ next(); } }
 function pauseTimer(){ paused=true; }

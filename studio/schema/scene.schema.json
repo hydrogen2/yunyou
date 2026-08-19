@@ -89,7 +89,14 @@
         },
         "variants": {
           "type": "object",
-          "description": "Parallel narration tracks keyed by variant id; each value is a full replacement for `script` (plain text, same rules and w/s budget). Current ids: \"clear\" = simplified plain-English track for non-native speakers, selected on the player start screen (TTS slows to 0.9 unless the traveller picked a speed). Missing variant → the player falls back to `script`. after_script has no variant yet. Future ids: language codes (zh, …).",
+          "description": "Parallel narration tracks keyed by variant id; each value is a full replacement for `script` (plain text, same rules and w/s budget). Current ids: \"clear\" = simplified plain-English track for non-native speakers, selected on the player start screen (TTS slows to 0.9 unless the traveller picked a speed). Missing variant → the player falls back to `script`. Future ids: language codes (zh, …).",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "after_script_variants": {
+          "type": "object",
+          "description": "Same variant ids as `variants`, but for `after_script`: a full replacement for the post-interaction line so the chosen track does not change register mid-scene (fact-check A5, 2026-08-19). Missing id → the runtime falls back to `after_script`. Not counted twice by the validator: the w/s budget still measures `after_script` once per track. The walk key `waypoint_script` has the same twin, `waypoint_script_variants` (object of variant id → array of blocks, one per route index; `variants.<id>` must be their join).",
           "additionalProperties": {
             "type": "string"
           }
@@ -313,6 +320,64 @@
             "type": "string"
           },
           "description": "streetview walk: waypoints 'lat,lng' or 'lat,lng,heading[,pitch[,fov]]'. overlays[].at_waypoint indexes into this list."
+        }
+      }
+    },
+    "camera": {
+      "type": "array",
+      "description": "streetview: timed look-at cues for the cinematic auto-walk (player v0.4). The camera walks the route by itself, paced to duration_s, and turns to whatever a cue names, easing in and out \u2014 it never snaps. Between cues it looks along the direction of travel. Keep at_s equal to the at_s of the overlay/pin that names the same thing, so the pin and the turn coincide. Ignored by scenes of other types and by the linear renderer.",
+      "items": {
+        "type": "object",
+        "required": [
+          "at_s"
+        ],
+        "properties": {
+          "at_s": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Seconds from scene start when the turn begins."
+          },
+          "heading": {
+            "type": "number",
+            "minimum": -360,
+            "maximum": 360,
+            "description": "Compass heading to look at (0 = north, 90 = east). Required unless look_at is given; also the fallback for modes that cannot compute a bearing."
+          },
+          "look_at": {
+            "type": "string",
+            "description": "'lat,lng' of the thing to look at. Preferred over heading: the runtime computes the bearing from wherever the camera actually is, so the framing survives Google moving the nearest pano."
+          },
+          "pitch": {
+            "type": "number",
+            "minimum": -90,
+            "maximum": 90,
+            "description": "Up/down angle (default 0). Positive looks up \u2014 use it for towers, spires and fa\u00e7ades seen from close by."
+          },
+          "zoom": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 5,
+            "description": "Street View zoom; fov = 180 / 2^zoom (0 = 180\u00b0, 0.85 = the walking default \u2248 100\u00b0, 1 = 90\u00b0, 2 = 45\u00b0)."
+          },
+          "hold_s": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Seconds to hold this framing before the walk moves on. The camera stops walking while it looks."
+          },
+          "ease_s": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Seconds the turn takes (default 1.8). Long turns for reveals, short for glances; 0 still eases, it never cuts."
+          },
+          "at_waypoint": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Index into interaction.route this cue belongs to \u2014 documentation for reviewers and a validator cross-check; the runtime paces from at_s."
+          },
+          "label": {
+            "type": "string",
+            "description": "What we are looking at, e.g. 'Reform Club fa\u00e7ade, 104 Pall Mall'. Reviewer note, never shown to the traveller."
+          }
         }
       }
     },

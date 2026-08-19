@@ -31,7 +31,7 @@ presence÷cost, not by novelty.
 | ambience | multi-layer soundscape you can mix (rain, cab, station) | ears first | headphones | audio presence, cheapest lever of all | idea |
 | audio-episode | pure-audio rendering of a whole chapter (see studio/strategy/audio-format.md) | script+sound carry everything | headphones | imagination as renderer; 100% owned media | idea |
 | drone | flyover video, gyro-nudged framing | scale and awe | gyro | vertical motion | idea |
-| timeline | scrub then↔now on the same view | time as a dimension | touch | insight | idea |
+| **timeline** | **then ↔ now on one viewpoint: slider / wipe / cross-fade; stills OR archive film vs today's footage** | touch (auto in linear cut) | time as a dimension you can move through | **spec'd → queued for build** |
 | binaural walk | video + head-locked binaural audio | sound follows head | headphones + camera/gyro | audio localisation | idea |
 
 Bold = the founder's "fancy" set — where the research value is.
@@ -80,6 +80,43 @@ half-point? Then: user-uploaded photos of *their own* room vs a curated room (th
 **Status:** idea → sketch. Owner: studio research. Next artefact: `studio/research/prototypes/window/` (Three.js + MediaPipe demo).
 
 ---
+
+## Card: `timeline` — then ↔ now (founder request, 2026-08-19)
+
+**What it does.** One viewpoint, two eras, and a divider the traveller moves: drag left and it is 1872, drag right and it is
+today. In the linear cut the divider wipes itself on the narration beat. The "then" layer can be a photograph, an engraving,
+or — the upgrade that makes this worth building — **public-domain archive film**, so both halves move.
+
+**Why it earns its place.** This is where "I learned something" is *felt* rather than told. A fact sheet can say the
+Embankment was two years old; a wipe showing the river wall appear does it in a second, with no sentence spent. It is also
+cheap on the media side: the "now" half already exists in every walking clip we license, and the "then" half is
+public domain by age.
+
+**Variants (pick per shot).**
+- `still / still` — engraving vs photograph. Easiest, and what scene 14 does today (G-02).
+- `still / video` — the modern walk freezes on the matching frame, then the historic still wipes across. Good compromise.
+- `film / video` — both halves move. Strongest effect, hardest to source and align.
+- `ghost` — cross-fade instead of a wipe, for viewpoints that only roughly match.
+
+**The hard part is alignment, not the slider.** A wipe only convinces when both halves share a viewpoint, focal length and
+horizon. Most archive material will not match our footage. Three honest responses, in order of preference:
+1. **Choose the pair for alignment** — pick the shot because a historic view exists from that spot (Charing Cross forecourt
+   works; a random street usually does not).
+2. **Warp to fit** — crop, scale and rotate the modern frame to the historic viewpoint; state on screen that it is aligned, not identical.
+3. **Use `ghost`** and stop pretending — a cross-fade reads as "roughly here, then and now" and does not promise registration
+   the images cannot keep. Never silently stretch one half to fake a match: the whole value is that the comparison is true.
+
+**Sourcing the "then" layer.** Internet Archive (PD film), Wikimedia Commons, national and city archives (check licences —
+many are rights-reserved despite the age of the material), museum open-access programmes, and for the deep past, engravings.
+Note the era gap honestly in the caption ("1905 — the closest film we have to Fogg's night").
+
+**Engine work.** A `timeline` renderer: two layers, a divider at `reveal` position 0–1, pointer/touch drag with inertia,
+keyboard accessible, auto-wipe on a timeline for the linear cut, per-layer transform (scale/offset/rotate) for alignment,
+and a caption per layer. Schema: `layers: [{era, kind: image|video, ref, transform, caption}]`, `reveal_mode: wipe|ghost|side-by-side`,
+and camera-style timed `reveal` events so the wipe lands on a narration beat.
+
+**Status:** spec'd, queued for build. Scene 14 (Charing Cross forecourt, 1872 engraving vs today) is the first target;
+it currently ships as a static split frame with a non-functional "drag the seam" prompt, which this replaces.
 
 ## Card: `panorama` — gyro "magic window"
 360° photo/video sphere; DeviceOrientation drives the camera; touch-drag fallback. Already proven by YouTube 360 / Street

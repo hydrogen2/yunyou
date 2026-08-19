@@ -19,7 +19,8 @@ QUEUE (studio/PRODUCTION.md):
 - [x] A3n newcomer rewrite (2026-08-19, Narrator + Scene Developer, per Audience Report #1 / "Assume no prior reading"): spine retold for a first-time reader — 01 cold-open now opens with the novel/Verne/Fogg's bet/tonight-he-leaves/we-travel-today in that order; 02 recast (plain telling first, Sheridan reveal after, title de-jokified); 06/08/10/11/12/13 light spine touches (names, stakes and period terms introduced before use); connoisseur asides (two-Ls spelling, Paris serialisation, Sydenham mis-route) moved to "go deeper" captions; `narration.variants.clear` added to all 19 scenes (16/17 copy persona lines verbatim, R4); 13 gloss chips (valet, clubland ×2, whist, wager, Bradshaw, hansom, swell, bob, Hook it, guinea, pea-souper, boat train); chapter `recap` written into tour.json; tour.json reassembled from scene files; validate 19+1 all OK, 0 WARN. Heavy: 01, 02, 08. Light: rest. Cut-sheet s:N tokens for 01/02/08/13/18 now stale → A4.
 - [ ] A3-QA (on device, anyone with a signed-in browser): pin the five frames above  ← NEXT with A4
 - [ ] A4 Narrator cut-sheet + Publisher linear re-render + publish-record.md
-- [ ] A5 light Fact-Checker + QA re-pass, DIGEST → "ready to publish (free tier)"
+- [x] A5 light Fact-Checker + QA re-pass (2026-08-19): report `review/fact-check-a5.md` (pass-with-flags) **and its fixes applied**
+      by Narrator + Scene Developer — see scenes/README.md "A5 fix pass". DIGEST → "ready to publish (free tier)" still pending A6.
 
 OPEN FOR THE FOUNDER (see journal "Provisional decisions"): D3–D11 as recommended; D12 Maps JS API key/billing owner (scene 04 counter);
 Passepartout system prompt ≈ 350 words; 08/13 at ~2.5 w/s on stills.
@@ -44,3 +45,40 @@ Chain to complete before the next render:
       (confirm licence/API terms first; Street View may be embedded but NEVER recorded).
    c. Any shot still unresolved keeps its clip card; say so in the render log.
 3. Re-render (clear track), refresh linear/watch.json, update publish-record.md, THEN notify the founder.
+
+## 2026-08-19 (A5 fixes applied — Narrator + Scene Developer) — RENDER STILL ON HOLD
+`review/fact-check-a5.md` proposed; this pass **applied**. No render: the founder's hold stands until A6's footage lands.
+
+Applied in `scenes/*.scene.json` (full per-scene list in `scenes/README.md` → "A5 fix pass"):
+- **Clear-track qualifiers restored** — 02 Poole ("still here, at No. 15" → "at No. 15 since 1982", F-45; it had reinstated the A1 error and
+  contradicted the pin on the same frame) and the dinner jacket (attributed to the firm, "the Prince of Wales", "the grandfather, they say", F-19);
+  12 "sixpence a mile **— or part of a mile** … so call it one shilling: a 'bob'" (F-28) and "swell: a gentleman in good clothes" (F-31, was "rich");
+  18 "the old roof, **probably in its last months** before it fell" (M-27's 1905 is a publication year); 10 the months that prove "within ten months"
+  (November 1869 / May 1869 / March 1870, F-33); 08 Baring's "closed" → "failed" (F-23); 06 the Reform Act of 1832 (F-14) and "the architect's plan";
+  09 "one travelling as Verne wrote, the other already home" (F-35/F-36); 13 the age list said in full.
+- **08 the wager, both tracks, 60 → 70 s** — whist now reads "five fellow members — four hands at the table" (F-08: five usual partners, four hands
+  play), so narration and the "card game for four players" chip agree; and the £55,000 robbery has a reason to be in the scene ("The talk turns to
+  where such a man could hide now. And the Daily Telegraph has done the sums…", F-09 → F-10) so a newcomer cannot think the wager is about the thief.
+  Media windows and overlay times re-spread; interactive chapter 1,275 → 1,285 s.
+- **Glosses** — guinea corrected per **F-46** ("twenty-one shillings: a price, not a coin, by 1872"); orphan "Hook it!" chip removed (12);
+  orphan "wager" chip kept but un-orphaned (the clear track now says the word once).
+- **18's orphan "Verne says Sydenham" caption deleted** (its spine sentence went in A3n).
+- **Register break closed** — `narration.after_script_variants.clear` (07, 10, 16, 17) and `narration.waypoint_script_variants.clear` (04);
+  17's is a verbatim copy (persona-owned, R4); guide.md §8 carries the clear form of 16's reveal. Schema + `studio/templates/scene-spec.md` updated.
+- **Cut sheet re-derived against the CLEAR track** (`studio/tools/render/cuts/day-01-london.json`) — the A4 tokens had been derived from the standard
+  track, which is what produced the eight dangling references in fact-check-a5 §4. All eight are gone; caps raised 03 45→50, 08 70→75, 12 52→58,
+  17 36→46; `--plan --track clear` shows **no end-cut**, total ≈ 854 s (14 min 14 s, was 13 min 13 s).
+- validate: 19 scenes + tour.json **OK, 0 WARN**; tour.json reassembled from the scene files.
+
+**Engine backlog opened by this pass (do not hand to Content/Narrator):**
+1. `studio/player/index.html` — `pickScript()` must also swap `after_script` / `waypoint_script` via
+   `narration.after_script_variants.<track>` / `waypoint_script_variants.<track>` (one line).
+2. `studio/tools/render/render_linear.mjs` — same fallback when `--track clear`, plus the missing `after:N` cut-sheet token
+   (07's "Half invented, half exact…", 10's "The train leaves for Dover at a quarter before nine.", 16's Verne rain quote are still absent from the film).
+3. A per-track cut sheet (the tokens are correct for clear, approximate for standard).
+
+**Open for the founder (one editorial call, from fact-check-a5):** the "Hook it!" line — give it to the cabby as a 4-word sound caption at 12 · 54 s
+(F-31, the 1874 *All the Year Round* list, the only Cockney in the chapter), or let it live on a slang souvenir card. The chip is out until you say.
+
+**Next: A6** (media re-sourcing) → A6w/A6e → then ONE render carrying both A5 and A6.
+

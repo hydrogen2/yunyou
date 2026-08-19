@@ -49,6 +49,13 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
       San Francisco; the American railroad; New York; the Atlantic; London again), each with a hook line and 3 candidate angles; and a brief.md per chapter as it starts.
 - [ ] B1 Day 2 (Dover–Calais–Paris–Brindisi) — run the pipeline step by step across runs (each run = next step).
 - [ ] B2… subsequent chapters per PLAN.md.
+### C1b. `timeline` scene type — then ↔ now (founder request 2026-08-19, spec in studio/research/scene-types.md)
+- [ ] Engine: build the `timeline` renderer — two layers, draggable divider (pointer/touch/keyboard), `reveal_mode: wipe|ghost|side-by-side`,
+      per-layer transform for alignment, per-layer caption, timed `reveal` events so the wipe lands on a narration beat, auto-wipe in the linear cut.
+      Schema: `layers: [{era, kind: image|video, ref, transform, caption}]`. MUST wait until the cinematic-streetview build lands — both edit studio/player/index.html.
+- [ ] First target: scene 14 (Charing Cross forecourt, 1872 engraving vs today) — replaces the static split frame and its dead "drag the seam" prompt.
+- [ ] Content: hunt public-domain London *film* (Internet Archive et al.) for a moving "then" layer; caption the era gap honestly.
+
 ### C. Research track (weekend runs, or when A/B is blocked)
 - [ ] C1 Research Engineer: `ambience` prototype (mixable CC0 stems, presets per Day 1 scene) + catalogue card update.
 - [ ] C2 Research Engineer: `window` — head-coupled audio + gyro/face fusion; study protocol sheet.

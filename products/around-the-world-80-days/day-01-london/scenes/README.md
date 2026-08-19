@@ -2,7 +2,7 @@
 
 **Scene Developer:** scene-developer (Claude)   **Date:** 2026-08-18 (draft a.m.; fix pass A1 p.m.)   **Status:** fix pass A1 applied — all `review` fields still "pending" (fact-check / rights / QA re-run after the Narrator's phase 2)
 **Inputs:** ../rundown/rundown.md · ../review/fix-brief.md (§0 provisional decisions D3–D11, §1 my list) · ../review/fact-check.md · ../review/continuity.md · ../review/qa.md · ../research/fact-sheet.md (F-01…F-45) · ../media/manifest.md (M-01…M-61, G-01…G-08) · ../../shared/personas/passepartout.md §5–6 · ../../shared/personas/guide.md §8 · studio/schema/scene.schema.json (extended this run) · ../../shared/style-guide.md
-**Conventions used in the JSON:** `media[].start_s/end_s` = source in/out for YouTube; on-screen window in scene seconds for images, audio, generated assets and Street View. `media[].fallback` = manifest id shown if the primary cannot load. `overlays[].at_waypoint` = index into `interaction.route` (interactive trigger); `at_s` stays as the linear / no-JS fallback. `narration.after_script` = spoken after the interaction resolves; `narration.starts_at_s` = when speech begins; `interaction.pause_narration` + `timeout_s` = the honest wait state. Extra keys `production_notes` (per scene), `note` (per media entry / overlay), `narration.waypoint_script` (04: one cue block per route index; `script` is their join) and `accessibility.sound_captions` (12, 18: caption-track entries for sound-only cues) are allowed by the schema. Narration is first-person plural, guide persona; on-screen time style "8:45 pm" (D10).
+**Conventions used in the JSON:** `media[].start_s/end_s` = source in/out for YouTube; on-screen window in scene seconds for images, audio, generated assets and Street View. `media[].fallback` = manifest id shown if the primary cannot load. `overlays[].at_waypoint` = index into `interaction.route` (interactive trigger); `at_s` stays as the linear / no-JS fallback. `narration.after_script` = spoken after the interaction resolves; `narration.starts_at_s` = when speech begins; `interaction.pause_narration` + `timeout_s` = the honest wait state. Extra keys `production_notes` (per scene), `note` (per media entry / overlay), `narration.waypoint_script` (04: one cue block per route index; `script` is their join) and `accessibility.sound_captions` (12, 18: caption-track entries for sound-only cues) are allowed by the schema. `narration.variants.<id>` = a full parallel track for `script` (`clear` = plain English, the player's default); its twins `narration.after_script_variants.<id>` (string) and `narration.waypoint_script_variants.<id>` (array, one block per route index, joined = `variants.<id>`) carry the same track through the post-interaction and walk lines, so a chosen track never changes register mid-scene (added A5; schema + `studio/templates/scene-spec.md`). Narration is first-person plural, guide persona; on-screen time style "8:45 pm" (D10).
 
 ## Scenes in order
 
@@ -15,7 +15,7 @@
 | 05 | 05-pall-mall-pass.scene.json | pall-mall-pass | video | 76 | 4 (linear replacement) | M-01 26:19–27:35 | **Linear cut only.** Westbound past the three clubs, 1,151-steps line; extended so the façade is in frame. |
 | 06 | 06-the-reform-club.scene.json | the-reform-club | video | 70 | 5 | M-01 26:50–27:35, M-20 (+ M-22, M-23 as insets), M-43 | Arrive at the door; 1836 / Barry 1841 / Soyer; look-up cue; breakfast over the video's last 20 s with a menu caption; Reading sauce seeded; reads The Times (no paper-knife); photo trio as insets. |
 | 07 | 07-quiz-verne-saloon.scene.json | quiz-verne-saloon | quiz | 80 | 5 (Quiz A) | M-23, M-20, M-43 | Which of Verne's club details is real? — pause until answered (30 s), reveal in `after_script`; Open House caption time-bound. |
-| 08 | 08-the-wager.scene.json | the-wager | photo | 60 | 6 | M-35 (1873 plate), G-05 (requested memorandum card), M-41 | The fictional theft "in the novel", Stuart's £4,000, Fogg's £20,000 at Baring's, six names on the card ("Stuart first, Fogg last"), 21 December 8:45 pm; "the wager has outlived the bank". |
+| 08 | 08-the-wager.scene.json | the-wager | photo | 70 | 6 | M-35 (1873 plate), G-05 (requested memorandum card), M-41 | The fictional theft "in the novel", Stuart's £4,000, Fogg's £20,000 at Baring's, six names on the card ("Stuart first, Fogg last"), 21 December 8:45 pm; "the wager has outlived the bank". |
 | 09 | 09-two-real-men.scene.json | two-real-men | card | 30 | 6 (optional card) | G-06 (requested), M-41 | **Interactive cut only.** Cook 222 days westward, Train home 21 Dec 1870 — "I'm Phileas Fogg." |
 | 10 | 10-the-world-shrinks.scene.json | the-world-shrinks | map | 100 | 6 (map beat) | G-01 (enablers layer requested, full loop, Day-1 layer), M-41 | Enablers light up, the loop draws leg by leg, "three words: 'It was once.'", tap the longest leg (pause 20 s), reveal + turn line in `after_script`. |
 | 11 | 11-pack-the-bag.scene.json | pack-the-bag | game | 90 | 7 | G-07 (requested game UI), M-42 | Drag game: six items in, three distractors; no weather in the mackintosh feedback; Bradshaw "hundreds of pages"; the gas stays. |
@@ -30,36 +30,40 @@
 
 **Chain (`next`):** 01 → 02 → 03 → 04 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → **16 quiz-the-weather → 17 passepartout-on-the-platform** → 18 → 19 (end). 05 also points to 06 and is used only in the linear cut.
 
-**Interactive length (D3, honest):** nominal 01–04, 06–19 = 75+100+60+150+70+80+60+30+100+90+60+60+35+25+45+90+85+60 = **1,275 s ≈ 21 min 15 s**; plus wait budgets (03 up to 6 × 12 s, 07 30 s, 10 20 s, 16 20 s, 17 up to 180 s) and the user-paced walk (04: 90–240 s) ⇒ **≈ 24 min typical, 27 min maximum**. The brief's 18–22 min holds only if the traveller skips the chat.
+**Interactive length (D3, honest):** nominal 01–04, 06–19 = 75+100+60+150+70+80+70+30+100+90+60+60+35+25+45+90+85+60 = **1,285 s ≈ 21 min 25 s** (08 went 60 → 70 s in A5); plus wait budgets (03 up to 6 × 12 s, 07 30 s, 10 20 s, 16 20 s, 17 up to 180 s) and the user-paced walk (04: 90–240 s) ⇒ **≈ 24 min typical, 27 min maximum**. The brief's 18–22 min holds only if the traveller skips the chat.
 Rhythm check: no two video scenes adjacent (02 video → 03 card; 06 video → 07 quiz; 13 video → 14 photo; 18 video is preceded by the dialogue); no continuous video > 90 s.
 
 ## Linear cut (~13 min passive version)
 
-**A4 2026-08-19:** the `use` prose below describes the pre-A3n trims and is superseded by `studio/tools/render/cuts/day-01-london.json`;
-only the seconds column is current. NOTE: sentence indices differ between the standard and clear tracks (clear has 192 sentences vs 181); the cuts file is indexed for BOTH via the same tokens, which is approximate — a per-track cut sheet is an Engine backlog item. The cut now keeps the narrative spine whole (Sheridan reveal, all route legs, the carpet-bag beat,
-the forgotten gas, the recipe) — coherence over the original 11:42 target.
+**A5 2026-08-19 (Narrator):** the `use` column is now current again, but `studio/tools/render/cuts/day-01-london.json` remains the
+authority. Its `s:N` tokens are indexed against the **clear** track only (the rendered default, `--track clear`); the standard
+track splits into different sentences (181 vs 192) and the same tokens are approximate there — a per-track cut sheet stays an
+Engine backlog item. Re-derive with `cd studio/tools/render && node render_linear.mjs <tour.json> --plan --track clear` after ANY
+script edit. The cut keeps the narrative spine whole (Poole named before 'The firm says…', the club named before 'It is real…',
+Passepartout's CV, the carpet-bag, the shilling, the recipe card, the Sheridan reveal) and drops only interactive-only
+instructions — coherence over the original 11:42 target.
 
 | scene | use | s |
 |-------|-----|---|
 | 01 cold-open | title 8 s, narration from 10 s, drop the M-34 inset | 60 |
-| 02 savile-row | M-05 21:35–22:50, pins (a)(b) only, drop M-32 tail and last four sentences | 84 |
-| 03 fogg-by-the-clock | card only, no taps; script to "home at midnight" + one-breath CV | 45 |
+| 02 savile-row | M-05 21:35–22:50, pins Savile Row / No. 15 / No. 14, drop the M-32 tail and its three sentences | 84 |
+| 03 fogg-by-the-clock | card only, no taps; whole script minus the tap prompt and "Look at his face" | 50 |
 | 05 pall-mall-pass | whole (replaces 04), 26:19–27:35 | 60 |
-| 06 the-reform-club | from 45 s: M-20 + insets only (M-01 already used by 05) | 62 |
+| 06 the-reform-club | from the door: M-20 + M-22/M-23 insets (M-01 already used by 05); drops the Soyer and Times asides | 62 |
 | 07 quiz-verne-saloon | guide asks and answers in one breath (script + correct option + feedback + after_script) + Open House tail | 50 |
-| 08 the-wager | whole | 70 |
+| 08 the-wager | whole | 75 |
 | 10 the-world-shrinks | enablers + loop reveal + turn line, no tap; skip 09 | 92 |
-| 11 pack-the-bag | 20-s packing-list card, no drag | 88 |
-| 12 the-dash | 40 s: trim the Underground line and the Offenbach aside | 52 |
+| 11 pack-the-bag | 20-s packing-list card, no drag; whole script minus the drag instruction | 88 |
+| 12 the-dash | whole (the shilling sentence makes 'sixpence a mile' add up) | 58 |
 | 13 charing-cross | whole (40 s video + 20 s M-51 still) | 70 |
 | 14 then-and-now | 15 s, seam auto-wipes; skip 15 | 26 |
 | 16 quiz-the-weather | guide asks and states the answer (script + after_script), no choice | 28 |
-| 17 passepartout-on-the-platform | passepartout.md §6 scripted three-line exchange (guide → Passepartout → guide) | 36 |
+| 17 passepartout-on-the-platform | passepartout.md §6 scripted three-line exchange (guide names him → Passepartout → guide) | 46 |
 | 18 the-boat-train | postcard 10 s + M-13 00:00–00:55; trim the Dover/Suez sentence | 82 |
-| 19 souvenir | 40 s, ingredient list stays on the card | 54 |
-| **total** | | **726 s ≈ 12 min 06 s** |
+| 19 souvenir | ingredient list stays on the card; "Save the card." dropped, the recipe-card sentence kept | 54 |
+| **total** | | **749 s ≈ 12 min 29 s** of caps; the A5 plan renders **854 s ≈ 14 min 14 s** — no scene is end-cut |
 
-Linear-only: 05. Interactive-only: 09, 15 (and the interactions of 03, 04, 10, 11, 14, 16, 17). Narrator trims scripts to the marks in each scene's `production_notes`. Note for Engine/Tools: `studio/tools/render/cuts/day-01-london.json` addresses sentences by index — 03, 04, 06, 07, 10, 12, 13, 16, 17, 18 scripts changed in A1, so its `s:N` tokens need a re-check (16/17 swapped order; 07/10/16 now use `after_script`).
+Linear-only: 05. Interactive-only: 09, 15 (and the interactions of 03, 04, 10, 11, 14, 16, 17). Narrator trims scripts to the marks in each scene's `production_notes`. Note for Engine/Tools: the renderer speaks `script` (or `variants.clear`) only — it has no token for `after_script`, so 07's "Half invented, half exact…", 10's "The train leaves for Dover at a quarter before nine." and 16's Verne rain quote are missing from the film; `after:N` is the missing token.
 
 ## Fix pass A1 (2026-08-18) — what changed per scene
 Source lists: review/fix-brief.md §0–§1 (fact-check "wrong/should", continuity #11–#23, QA must-fix 1–6 + scene table). Every touched scene carries an "A1 scene-developer 2026-08-18" line in `review.notes`.
@@ -92,7 +96,7 @@ Not applied (and why): "Stout shoes" as a seventh in-item (11) — Towle has it 
 Per Audience Report #1 and the style guide's "Assume no prior reading" rule. Every scene now carries a
 `narration.variants.clear` track (full simplified parallel script, same facts, same w/s budget) and gloss chips
 (`overlays[].kind: "gloss"`) on first use of period terms: valet (01), clubland (04 and its linear stand-in 05), whist +
-wager (08), Bradshaw (11), hansom / swell / bob / Hook it (12), guinea (13), pea-souper (16), boat train (18).
+wager (08), Bradshaw (11), hansom / swell / bob (12), guinea (13), pea-souper (16), boat train (18). (A5: the 12 "Hook it!" chip was removed as an orphan and the 13 "guinea" chip corrected per F-46.)
 
 - **Heavy:** 01 cold-open (spine retold: 1872 novel by Jules Verne → Fogg bets half his fortune he can circle the world
   in eighty days → tonight at a quarter to nine he leaves → we travel his route today); 02 savile-row (plain telling
@@ -102,10 +106,68 @@ wager (08), Bradshaw (11), hansom / swell / bob / Hook it (12), guinea (13), pea
 - **Light:** 03, 04 ("leaves for his club"), 05, 06 (opener says whose club and what it is to Fogg), 07, 09,
   10 ("one of the card players"), 11 (Dover/Calais located), 12 (slang captions → gloss chips; Offenbach aside plain),
   13 (Hawkshaw's name out of the spine), 14, 15, 16, 17 (clear = persona lines verbatim, R4), 18 (Sydenham mis-route
-  aside out of the spine — the 64–76 s caption is its only carrier), 19.
+  aside out of the spine — the 64–76 s caption was its only carrier, and A5 deleted that too), 19.
 - **tour.json** reassembled from the scene files in this order; chapter object gains `recap` (newcomer-safe cover text).
 - **Stale for A4:** the linear cut-sheet's s:N sentence tokens for 01, 02, 08, 13, 18; 02's "last four sentences" trim
   now removes the Sheridan reveal — re-pick the marks in the Narrator cut-sheet.
+
+## A5 fix pass (2026-08-19) — Narrator + Scene Developer, from review/fact-check-a5.md
+
+Scope: the clear track's dropped qualifiers, two spine defects in 08, three gloss problems, one orphan caption, the
+`after_script`/`waypoint_script` register break, and the cut sheet that caused the dangling references in the rendered film.
+**No render** — the founder's hold stands until A6 lands (review/STATUS.md).
+
+- **02** — clear track: "His shop is still here, at No. 15" → "The shop is still here — at No. 15 since 1982" (F-45; it had
+  reinstated the exact A1 error and contradicted the pin on the same frame); "for a prince — the first dinner jacket" →
+  "for the Prince of Wales — the grandfather, they say, of the dinner jacket" (F-19 is med and attributed to the firm).
+- **06** — clear track: "Its founders wanted political reform" → "Its founders had backed the Reform Act of 1832 — that is
+  where the name comes from" (F-14); "the architect's drawing" → "the architect's plan of the front" (M-22 is an engraving
+  of Barry's elevation, not a drawing by his hand).
+- **08** — **both tracks**, 60 → 70 s (media windows and overlay times re-spread; the two spine fixes do not fit 60 s at
+  ≤ 2.5 w/s). (a) Whist: "Fogg and five friends sit down to whist" → "Fogg sits down to whist with five fellow members —
+  four hands at the table, the same five every night", so the narration and the "whist — a quiet card game for four
+  players" chip stop contradicting each other (F-08: five usual partners, four hands play). (b) The £55,000 robbery now
+  has a reason to be in the scene: "The talk turns to where such a man could hide now. And the Daily Telegraph has done
+  the sums…" (F-09 → F-10, ch. III) — a newcomer can no longer conclude the wager is about catching the thief. Clear
+  track also: "Baring's closed" → "failed" (F-23: collapsed), and the word "wager" is spoken once so the wager chip is
+  no longer an orphan.
+- **09** — both tracks: "Two real men were doing it as Verne wrote" → "Two real men: one travelling as Verne wrote, the
+  other already home" (only Cook was travelling, F-35; Train had finished in 1870, F-36). The Times-letters clause went
+  to pay for the words.
+- **10** — clear track: the months are back ("November 1869 … May 1869 … March 1870"), which is what makes "within ten
+  months" true (F-33).
+- **12** — clear track: "sixpence a mile" → "sixpence a mile — or part of a mile … so call it one shilling: a 'bob'"
+  (F-28 — without it the arithmetic says ninepence); "a rich, well-dressed man" → "a gentleman in good clothes" (F-31,
+  and it no longer contradicts its own "swell" chip). The orphan **"Hook it!" chip is removed** — the phrase is spoken
+  nowhere in the chapter (founder's call still open: give the cabby the line, or move it to a slang souvenir card).
+- **13** — clear track: the age list stops going elliptical ("The Embankment along the river: two years old. And the clock
+  tower we call Big Ben: thirteen years old"). **Gloss corrected per F-46**: "guinea — twenty-one shillings: a price, not
+  a coin, by 1872" (last struck 1813, demonetised 1816).
+- **18** — clear track: "the old roof, months before it fell" → "the old roof, probably in its last months before it fell"
+  (M-27's *publication* year is 1905; the photo's date is unknown). The orphan **"Verne says Sydenham" caption is deleted**
+  — its spine sentence was removed in A3n, so a newcomer met the word once, on screen, with nothing to attach it to.
+- **04, 07, 10, 16, 17** — the register break: `narration.after_script_variants.clear` (07, 10, 16, 17) and
+  `narration.waypoint_script_variants.clear` (04, seven blocks whose join is `variants.clear`) added, so the default track
+  no longer switches to the literary voice after the interaction. 17's hand-back is persona-owned (R4) and is copied
+  verbatim; 16's reveal keeps "pea-souper" so its chip still glosses a word the traveller hears.
+- **Schema / template** — `narration.after_script_variants` added to `studio/schema/scene.schema.json`;
+  both twins and the new standing rule ("when a sentence is simplified, its qualifier travels with it — if the qualifier
+  will not fit, cut the claim with it") documented in `studio/templates/scene-spec.md`.
+- **Cut sheet** — `studio/tools/render/cuts/day-01-london.json` re-derived **against the clear track** (it had been indexed
+  against the standard one), fixing all eight dangling references in fact-check-a5 §4: Poole is named before "The firm
+  says…", 06 opens on "This is the door of Fogg's club" and explains the name, Passepartout's CV survives, the carpet-bag
+  is introduced and the drag instruction dropped, the shilling sentence is back beside "sixpence a mile", "Save the card."
+  is replaced by "The recipe is on the card.", 17 names Passepartout before the chips (spoken + lower-third), and the
+  Sydenham caption is gone. Caps raised where the spine needed the seconds: 03 45 → 50, 08 70 → 75, 12 52 → 58,
+  17 36 → 46. `--plan --track clear`: **no scene is end-cut**, total ≈ 854 s (14 min 14 s).
+
+**Not fixed in A5, and why:** the missing `after:N` renderer token (07/10/16 lose their reveal in the film — Engine);
+`studio/player/index.html` and `studio/tools/render/render_linear.mjs` still read only `after_script`/`waypoint_script`
+(one line each — Engine backlog, deliberately not edited here); gloss chip *timings* against 0.9× TTS (QA on device);
+the s13 "420 shillings" spoken line (caption [2] carries it; adding it would push the clear track over 2.5 w/s);
+the s18 "boat train — … a ferry" chip (accurate enough as a plain-English aid; "Channel steamer" is the harder word);
+and the report's proposed "the hotel, eight years old too" for s13 — the hotel opened in May 1865 and was **seven**, not
+eight, years old that night (F-21), so the years stay as years.
 
 ## Requests to Content Preparer / Engine
 - **G-01** — Day-1 layer must carry a "Day 1" label and a lit/unlit legend (not opacity-only); enablers layer as before.

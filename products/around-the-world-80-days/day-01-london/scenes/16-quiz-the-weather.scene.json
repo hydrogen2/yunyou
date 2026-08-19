@@ -12,6 +12,9 @@
     "after_script": "Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter.",
     "variants": {
       "clear": "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?"
+    },
+    "after_script_variants": {
+      "clear": "Rain, then. Verne's words: 'The night was dark, and a fine, steady rain was falling.' No fog tonight — we save the pea-souper for a winter chapter."
     }
   },
   "media": [
@@ -109,6 +112,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved before the dialogue (file 17→16, D4); script → 'Twenty to nine, still under the roof. Look up — what is the weather doing tonight?' with the reveal in narration.after_script; wait state (pause_narration, timeout_s 20); prompt persists; M-58 rain bed added low; next → passepartout-on-the-platform. A1 narrator 2026-08-18: checked, no change — script names no weather before the after_script reveal (R5); 'Twenty to nine, still under the roof' clock; the 'look up' cue now lives here (was the dialogue hand-back) — persona sheets §8/§6 updated to match. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): pea-souper gloss chip timed for the after_script reveal; clear variant copies the script verbatim — it is a persona-owned line (guide.md §8, R4) and already plain."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved before the dialogue (file 17→16, D4); script → 'Twenty to nine, still under the roof. Look up — what is the weather doing tonight?' with the reveal in narration.after_script; wait state (pause_narration, timeout_s 20); prompt persists; M-58 rain bed added low; next → passepartout-on-the-platform. A1 narrator 2026-08-18: checked, no change — script names no weather before the after_script reveal (R5); 'Twenty to nine, still under the roof' clock; the 'look up' cue now lives here (was the dialogue hand-back) — persona sheets §8/§6 updated to match. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): pea-souper gloss chip timed for the after_script reveal; clear variant copies the script verbatim — it is a persona-owned line (guide.md §8, R4) and already plain. A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.after_script_variants.clear added — the reveal keeps Verne's sentence verbatim (F-13) and the word 'pea-souper' so the chip still glosses a word the traveller hears; only the idiom is plainer ('No fog tonight — we save the pea-souper for a winter chapter'). guide.md §8 carries the same clear form (R4)."
   }
 }

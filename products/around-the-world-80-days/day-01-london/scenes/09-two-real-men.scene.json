@@ -6,11 +6,11 @@
   "duration_s": 30,
   "learning_goal": "Know that Thomas Cook and George Francis Train really went round the world just as Verne wrote; feel that Fogg's bet was in the air.",
   "narration": {
-    "script": "Two real men were doing it as Verne wrote. Thomas Cook, going west, left Liverpool in late September 1872 — the first commercial round-the-world tour. Two hundred and twenty-two days, with letters home to The Times; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'",
+    "script": "Two real men: one travelling as Verne wrote, the other already home. Thomas Cook, going west, left Liverpool in late September 1872 — the first commercial round-the-world tour. Two hundred and twenty-two days; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'",
     "timing": "over",
     "voice": "guide",
     "variants": {
-      "clear": "Two real men were doing the same thing as Verne wrote. Thomas Cook left Liverpool in late September 1872, going west — the first commercial round-the-world tour. It took him two hundred and twenty-two days. He was mid-ocean when Fogg's story began. George Francis Train had reached home earlier — on the twenty-first of December 1870. Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'"
+      "clear": "Two real men: one travelling as Verne wrote, the other already home. Thomas Cook left Liverpool in late September 1872, going west — the first commercial round-the-world tour. It took him two hundred and twenty-two days. He was mid-ocean when Fogg's story began. George Francis Train had reached home earlier — on the twenty-first of December 1870. Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'"
     }
   },
   "media": [
@@ -62,6 +62,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 narrator 2026-08-18: two sentences per man (Continuity #10); 75→73 words / 30 s (2.43 w/s — tight, interactive-only); Train quote hedged 'later claimed' (F-36 med). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added (kept under the tight 30-s budget)."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 narrator 2026-08-18: two sentences per man (Continuity #10); 75→73 words / 30 s (2.43 w/s — tight, interactive-only); Train quote hedged 'later claimed' (F-36 med). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added (kept under the tight 30-s budget). A5 narrator 2026-08-19 (fact-check-a5 §1): 'Two real men were doing it as Verne wrote' overstated the sheet — only Cook was travelling while Verne wrote (F-35); Train had been home since 21 Dec 1870 (F-36). Both tracks now open 'Two real men: one travelling as Verne wrote, the other already home.' The 'letters home to The Times' clause was cut to stay inside 2.5 w/s at 30 s. Scene is interactive-cut only, so no cut-sheet change."
   }
 }

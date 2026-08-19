@@ -77,11 +77,11 @@
     "F-12",
     "F-27"
   ],
-  "production_notes": "Chapter end frame. interaction.kind 'save' = the player offers save/share of the G-08 card as an image (schema addition this run). Music M-41 Sullivan tail, not the galop (D10). Time style '8:45 pm' on the card and caption. Narrator: the guide names the dish, not the ingredients (the card carries them). Linear cut: 40 s — same script minus the ingredient list read-out (it stays on the card); consider ending the linear on the card at 20 s with the music tail.",
+  "production_notes": "Chapter end frame. interaction.kind 'save' = the player offers save/share of the G-08 card as an image (schema addition this run). Music M-41 Sullivan tail, not the galop (D10). Time style '8:45 pm' on the card and caption. Narrator: the guide names the dish, not the ingredients (the card carries them). Linear cut (A5, clear track): 54 s cap — s:0-3 and s:5-7. 'Save the card.' is dropped (no viewer can obey it) and 'The recipe is on the card.' is kept; before A5 the film did the opposite and the instruction had no antecedent.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: interaction.kind → save; caption/card time style '8:45 pm'; music M-42 galop → M-41 Sullivan tail (D10); G-08 note carries the ingredient list (Narrator drops it from speech). A1 narrator 2026-08-18: guide names the dish (broiled fish with a Reading-sauce-style ketchup), ingredient list dropped from speech (G-08 card carries it); 118→102 words / 60 s; time in words, caption '8:45 pm'; ends on 'Paris'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: interaction.kind → save; caption/card time style '8:45 pm'; music M-42 galop → M-41 Sullivan tail (D10); G-08 note carries the ingredient list (Narrator drops it from speech). A1 narrator 2026-08-18: guide names the dish (broiled fish with a Reading-sauce-style ketchup), ingredient list dropped from speech (G-08 card carries it); 118→102 words / 60 s; time in words, caption '8:45 pm'; ends on 'Paris'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added. A5 narrator 2026-08-19 (fact-check-a5 §4): scene text unchanged; linear cut re-derived against the clear track — 'The recipe is on the card.' (s:3) is back and 'Save the card.' (s:4) is dropped, so the film's last beat is not an instruction with no antecedent."
   }
 }

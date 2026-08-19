@@ -3,14 +3,14 @@
   "type": "photo",
   "title": "The wager — twenty thousand at Baring's",
   "subtopic": "6 — The wager",
-  "duration_s": 60,
+  "duration_s": 70,
   "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
   "narration": {
-    "script": "Evening, at the club. Fogg and five friends sit down to whist, the card game they play nightly. In the novel — only in the novel — a thief has robbed the Bank of England of fifty-five thousand pounds. The Daily Telegraph newspaper has done the sums: the world can now be crossed in eighty days. That talk becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds it can't be done. Fogg stakes twenty thousand — half his fortune — that it can: 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Exactly eighty days — and it really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, fell in 1995. The wager has outlived the bank.",
+    "script": "Evening, at the club. Fogg sits down to whist with five fellow members — four hands at the table, the same five every night. In the novel — only in the novel — a thief has robbed the Bank of England of fifty-five thousand pounds. The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums: the world can be crossed in eighty days. That talk becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds it can't be done. Fogg stakes twenty thousand — half his fortune — that it can: 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Exactly eighty days — and it really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, fell in 1995. The wager has outlived the bank.",
     "timing": "over",
     "voice": "guide",
     "variants": {
-      "clear": "Evening, at the club. Fogg and five friends play whist, their card game, like every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. And a newspaper, the Daily Telegraph, has counted: you can now go around the world in eighty days. At the table, this becomes a bet. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Exactly eighty days. It really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, closed in 1995. The bet has outlived the bank."
+      "clear": "Evening, at the club. Fogg plays whist with five fellow members — four hands at the table, the same five men every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. Where could such a man hide now? So a newspaper, the Daily Telegraph, counts the days: you can now go around the world in eighty days. At the table this becomes a wager — a bet, with money on it. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Exactly eighty days. It really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, failed in 1995. The wager has outlived the bank."
     }
   },
   "media": [
@@ -21,14 +21,14 @@
       "manifest_id": "M-35",
       "attribution": "The wager at the Reform Club — de Neuville & Benett, Hetzel illustrated edition 1873 (Wikimedia Commons, PD)",
       "start_s": 0,
-      "end_s": 30,
+      "end_s": 35,
       "note": "Slow push-in on the plate, 0–30 s. Plate belongs to the 1873 illustrated Hetzel edition (the 1872 serial was unillustrated). M-36 is reference only — never ship."
     },
     {
       "kind": "generated",
       "ref": "generated/g-05/memorandum-card.svg",
-      "start_s": 30,
-      "end_s": 60,
+      "start_s": 35,
+      "end_s": 70,
       "license": "generated",
       "manifest_id": "G-05",
       "attribution": "Yunyou studio, generated",
@@ -38,7 +38,7 @@
       "kind": "audio",
       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
       "start_s": 0,
-      "end_s": 60,
+      "end_s": 70,
       "license": "public-domain",
       "manifest_id": "M-41",
       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
@@ -49,43 +49,43 @@
     {
       "at_s": 2,
       "kind": "caption",
-      "until_s": 12,
+      "until_s": 14,
       "text": "The wager at the Reform — de Neuville & Benett, 1873",
       "position": "bottom"
     },
     {
       "at_s": 5,
       "kind": "gloss",
-      "until_s": 15,
+      "until_s": 17,
       "text": "whist — a quiet card game for four players",
       "position": "tl"
     },
     {
-      "at_s": 18,
+      "at_s": 21,
       "kind": "caption",
-      "until_s": 28,
+      "until_s": 33,
       "text": "Go deeper: Verne serialised the tale in a Paris daily, winter 1872",
       "position": "bottom",
       "note": "Connoisseur layer (A3n): the serialisation aside moved out of the spine (F-32)."
     },
     {
-      "at_s": 24,
+      "at_s": 28,
       "kind": "gloss",
-      "until_s": 34,
+      "until_s": 40,
       "text": "wager — a bet, with money staked on it",
       "position": "tl"
     },
     {
-      "at_s": 32,
+      "at_s": 37,
       "kind": "caption",
-      "until_s": 42,
+      "until_s": 49,
       "text": "The unforeseen does not exist.",
       "position": "bottom"
     },
     {
-      "at_s": 48,
+      "at_s": 56,
       "kind": "caption",
-      "until_s": 58,
+      "until_s": 69,
       "text": "The wager has outlived the bank — Baring's fell in 1995",
       "position": "bottom"
     }
@@ -107,11 +107,11 @@
     "F-23",
     "F-32"
   ],
-  "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). Cut to 60 s: the six names live on the G-05 card, the guide says 'Stuart first, Fogg last'. Narrator: ≤ 170 words, fix the tense of the opener (Continuity #9); the 'Paris newspaper' sentence from 01 may land here (F-32). Linear cut: keep whole (60 s), then skip 09 and play 10 without the tap. A3n: script rewritten for newcomers — linear cut-sheet s:N tokens need re-picking in A4.",
+  "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). The six names live on the G-05 card; the guide says 'Stuart first, Fogg last'. A5: 60 → 70 s — the whist arithmetic (five members, four hands) and the reason the robbery is in the scene (where could such a man hide now?) do not fit 60 s at ≤ 2.5 w/s; media windows M-35 0–35, G-05 35–70, M-41 bed 0–70, overlays re-spread. Narrator: ≤ 175 words per track. Linear cut: keep whole (75 s cap, plan 72.3 s), then skip 09 and play 10 without the tap.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): whist and the wager now introduced in plain words before use (Stuart is 'one of the five friends' at the table); the Paris-serial meta aside moved out of the spine into a 'go deeper' caption; gloss chips for whist and wager; clear-English variant added."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): whist and the wager now introduced in plain words before use (Stuart is 'one of the five friends' at the table); the Paris-serial meta aside moved out of the spine into a 'go deeper' caption; gloss chips for whist and wager; clear-English variant added. A5 narrator+scene-developer 2026-08-19 (fact-check-a5 §1–2, both tracks): (1) whist — 'Fogg and five friends sit down to whist' → 'Fogg sits down to whist with five fellow members — four hands at the table, the same five every night' (F-08: five usual partners join him and four hands play), so the narration and the 'card game for four players' chip agree; nothing invented, the gloss is unchanged. (2) The £55,000 theft now has a reason to be in the scene — 'The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums…' (F-09 → F-10, ch. III), so a newcomer cannot conclude the wager is about catching the thief. (3) Clear track: 'Baring's closed' → 'failed' (F-23 collapsed, sold to ING for £1) and the word 'wager' is spoken once, which un-orphans the wager chip. duration 60 → 70 s: both fixes cannot fit 60 s at ≤ 2.5 w/s (std 166 w, clear 168 w = 2.37/2.40 w/s at 70 s); M-35 0–35, G-05 35–70, M-41 bed 0–70, overlays re-spread 2–14 / 5–17 / 21–33 / 28–40 / 37–49 / 56–69. Linear cap 70 → 75 s (plan: 72.3 s, nothing end-cut)."
   }
 }

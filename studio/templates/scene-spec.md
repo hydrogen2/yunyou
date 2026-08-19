@@ -22,8 +22,15 @@ Checklist before handing to review:
 - [ ] clear-English track: `narration.variants.clear` = a FULL replacement for `script` (not a diff) in plain words and
       short sentences — the player swaps it in for both TTS and captions when the traveller picks "Clear English" on the
       start screen, and slows TTS to 0.9, so aim ~10 % fewer words than `script` (validator measures each variant against
-      the same w/s budget). `after_script` has no variant yet — keep it plain in the first place. Scenes without
-      `variants` simply play `script` (old files unaffected)
+      the same w/s budget). Scenes without `variants` simply play `script` (old files unaffected)
+- [ ] the OTHER spoken keys get the same twin, or the track changes register mid-scene (fact-check A5): `after_script`
+      → `narration.after_script_variants.clear` (string), and walk scenes' `waypoint_script`
+      → `narration.waypoint_script_variants.clear` (array, one block per route index; `variants.clear` must be the join
+      of those blocks, exactly as `script` is the join of `waypoint_script`). Missing twin → the runtime falls back to the
+      literary text. Persona-owned lines (R4) are copied verbatim into the twin rather than re-written
+- [ ] when a sentence is simplified for the clear track, its qualifier travels with it ("or part of a mile", "since 1982",
+      "probably", "they say"). If the qualifier will not fit, cut the claim with it — never keep the claim and drop the hedge
+      (standing rule from fact-check A5)
 - [ ] walk scenes: overlays and cue captions carry `at_waypoint` (index into `interaction.route`, 0-based, must be < route length)
       **and** `at_s` — `at_s` is the linear / no-Maps-JS fallback and stays required
 - [ ] media that may not load (Street View pano, YouTube clip) names a `fallback` (manifest id M-xx or ref): a still for each stop
