@@ -64,4 +64,4 @@ compromise accepted · G-08 licence line stays "CC BY-SA 4.0 (provisional, right
 **Next step:** A3 — Content Preparer reconciles M-50 (Neuville plate 05 vs 02) and pins M-05/M-01/M-08/M-13 frames as far as possible without
 downloading (this unblocks the 02 side-language and 18 "Look right" hedges).
 ## 2026-08-19 — production PAUSED by founder (until further notice). Resume: uncomment the #PAUSED# lines in crontab (crontab -e) or run: crontab -l | sed 's|^#PAUSED#||' | crontab -
-- Strategy: see  (three-rung worlds ladder; rung-3 media doctrine; Inferno pilot).
+- Strategy: see studio/strategy/worlds-ladder.md (three-rung worlds ladder; rung-3 media doctrine; Inferno pilot).
