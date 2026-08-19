@@ -29,7 +29,7 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
 - [ ] A4 Narrator: edit `studio/tools/render/cuts/day-01-london.json` so no sentence is machine-cut; Publisher re-renders the linear cut
       (`node studio/tools/render/render_linear.mjs …`) and refreshes `linear/watch.json`; write `review/publish-record.md` (credits page from rights.md).
 - [ ] A5 Editor-in-Chief: re-run Fact-Checker + QA on the revised scenes (light pass), update DIGEST to "ready to publish (free tier)".
-### B. Around the World — next chapters (one chapter at a time, full pipeline: Researcher → Rundown → Scenes/Media/Narrator → panel → Publisher → DIGEST)
+### B. Around the World — next chapters (see also studio/strategy/worlds-ladder.md for the long arc) (one chapter at a time, full pipeline: Researcher → Rundown → Scenes/Media/Narrator → panel → Publisher → DIGEST)
 - [ ] B0 Editor-in-Chief writes `products/around-the-world-80-days/PLAN.md`: chapter list following the novel's itinerary
       (Day 2 London→Paris→Turin→Brindisi; Suez; Bombay; the Indian railway gap/Allahabad; Calcutta; Hong Kong; Yokohama; the Pacific;
       San Francisco; the American railroad; New York; the Atlantic; London again), each with a hook line and 3 candidate angles; and a brief.md per chapter as it starts.
@@ -45,3 +45,6 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
 
 ## Budget per run
 Keep to roughly one role fan-out (≤ 6 agents) per run. If the quota is exhausted mid-run, write what was completed to the journal and stop.
+
+### E. Strategy experiments (only if founder promotes them into A–C)
+- [ ] E1 Inferno pilot per `studio/strategy/worlds-ladder.md` (rung-3 pipeline: Doré-led scenes, generation recipe, lore-checker).
