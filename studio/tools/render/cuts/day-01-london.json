@@ -6,91 +6,365 @@
     "No words are invented here: every token points at text that already exists in the scene JSON. Where the README seconds are shorter than the TTS,",
     "render_linear.mjs end-cuts at a sentence boundary and logs it — the Narrator owns the final trim.",
     "visuals: kind image|clip|player|scenecard|pending|quiz|chat|checklist|streetview; dur in seconds or omitted = share the remainder.",
-    "overlays: indices into scene.overlays, or {i, at, until} to re-time for the shorter linear scene. beds: {media, at, until}."
+    "overlays: indices into scene.overlays, or {i, at, until} to re-time for the shorter linear scene. beds: {media, at, until}.",
+    "A4 2026-08-19: all sentence tokens re-derived after the A3n newcomer rewrite (old indices were stale and cut payoffs: Sheridan reveal, the route legs, the carpet-bag beat, the forgotten gas, the recipe). Linear cut is now ~13 min, longer than the original 11:42 plan, deliberately: coherence beats the target length."
   ],
   "scenes": {
     "cold-open": {
       "_readme": "whole, drop the M-34 inset, trim the map pause — 45 s",
       "narration_at_s": 3,
-      "visuals": [ { "kind": "scenecard", "dur": 4 }, { "kind": "player", "call": "showRouteMap(true)" } ],
-      "beds": [ { "media": "M-40", "at": 0, "until": 4 }, { "media": "M-41", "at": 4 } ],
-      "overlays": [ { "i": 1, "at": 24, "until": 32 }, { "i": 2, "at": 33, "until": 44 } ]
+      "visuals": [
+        {
+          "kind": "scenecard",
+          "dur": 4
+        },
+        {
+          "kind": "player",
+          "call": "showRouteMap(true)"
+        }
+      ],
+      "beds": [
+        {
+          "media": "M-40",
+          "at": 0,
+          "until": 4
+        },
+        {
+          "media": "M-41",
+          "at": 4
+        }
+      ],
+      "overlays": [
+        {
+          "i": 1,
+          "at": 24,
+          "until": 32
+        },
+        {
+          "i": 2,
+          "at": 33,
+          "until": 44
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "savile-row": {
       "_readme": "M-05 21:35–22:50, pins (a)(b) only, drop M-32 tail and last four sentences — 75 s",
-      "script": [ "s:0-10" ],
-      "visuals": [ { "kind": "clip", "media": "M-05", "in_s": 1295, "out_s": 1370 } ],
-      "overlays": [ 0, 1 ]
+      "script": [
+        "s:0-5",
+        "s:9-13"
+      ],
+      "visuals": [
+        {
+          "kind": "clip",
+          "media": "M-05",
+          "in_s": 1295,
+          "out_s": 1375
+        }
+      ],
+      "overlays": [
+        0,
+        1
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "fogg-by-the-clock": {
       "_readme": "card only, no taps; script to 'home at midnight' + one-breath CV — 40 s (drops the 'Tap any line' prompt and the tail after the CV)",
-      "script": [ "s:0", "s:2-6" ],
-      "visuals": [ { "kind": "player", "call": "showScene(2)" } ],
-      "overlays": []
+      "script": [
+        "s:0",
+        "s:2-6",
+        "s:9-10"
+      ],
+      "visuals": [
+        {
+          "kind": "player",
+          "call": "showScene(2)"
+        }
+      ],
+      "overlays": [],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
-    "pall-mall-pass": { "_readme": "whole (replaces 04) — 45 s" },
+    "pall-mall-pass": {
+      "_readme": "whole (replaces 04) — 45 s",
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
+    },
     "the-reform-club": {
       "_readme": "from 45 s: photo trio only (M-01 already used by 05) — 25 s; script from the photo-trio sentence onward, end-cut by the cap",
-      "script": [ "s:3-6" ],
-      "visuals": [ { "kind": "image", "media": "M-20" }, { "kind": "image", "media": "M-22" }, { "kind": "image", "media": "M-23" } ],
-      "overlays": [ { "i": 1, "at": 4.5, "until": 10 }, { "i": 2, "at": 14, "until": 24 } ]
+      "script": [
+        "s:1",
+        "s:3-5",
+        "s:7-11"
+      ],
+      "visuals": [
+        {
+          "kind": "image",
+          "media": "M-20"
+        },
+        {
+          "kind": "image",
+          "media": "M-22"
+        },
+        {
+          "kind": "image",
+          "media": "M-23"
+        }
+      ],
+      "overlays": [
+        {
+          "i": 1,
+          "at": 4.5,
+          "until": 10
+        },
+        {
+          "i": 2,
+          "at": 14,
+          "until": 24
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "quiz-verne-saloon": {
       "_readme": "guide asks and answers in one breath (correct option + feedback) + Open House tail — 65 s (drops 'Take your time; the tea is famous.')",
-      "script": [ "s:0-2", "quiz:correct", "s:4-6" ],
-      "visuals": [ { "kind": "quiz" } ],
-      "overlays": [ { "i": 1, "at": 46, "until": 64 } ]
+      "script": [
+        "s:0-4",
+        "s:6",
+        "quiz:correct"
+      ],
+      "visuals": [
+        {
+          "kind": "quiz"
+        }
+      ],
+      "overlays": [
+        {
+          "i": 1,
+          "at": 46,
+          "until": 64
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
-    "the-wager": { "_readme": "whole — 80 s" },
+    "the-wager": {
+      "_readme": "whole — 80 s",
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
+    },
     "the-world-shrinks": {
       "_readme": "enablers + loop reveal + turn line, no tap; skip 09 — 40 s (README's own three parts: enablers [3-7], loop reveal [8] + sum [17], turn line [20-22]; the leg-by-leg list cannot fit 40 s)",
-      "script": [ "s:3-8", "s:17", "s:20-22" ],
-      "visuals": [ { "kind": "player", "call": "showRouteMap(false)" }, { "kind": "player", "call": "showRouteMap(true)", "dur": 9 } ],
-      "overlays": [ { "i": 0, "at": 4.5, "until": 14 }, { "i": 1, "at": 24, "until": 31 }, { "i": 3, "at": 33, "until": 41 } ]
+      "script": [
+        "s:0-17"
+      ],
+      "visuals": [
+        {
+          "kind": "player",
+          "call": "showRouteMap(false)"
+        },
+        {
+          "kind": "player",
+          "call": "showRouteMap(true)",
+          "dur": 9
+        }
+      ],
+      "overlays": [
+        {
+          "i": 0,
+          "at": 4.5,
+          "until": 14
+        },
+        {
+          "i": 1,
+          "at": 24,
+          "until": 31
+        },
+        {
+          "i": 3,
+          "at": 33,
+          "until": 41
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "pack-the-bag": {
       "_readme": "20-s packing-list card, no drag; script trimmed to the list and the completion line",
-      "script": [ "s:10", "s:14" ],
-      "visuals": [ { "kind": "checklist", "closing_overlay": 1 } ],
-      "overlays": []
+      "script": [
+        "s:0-6",
+        "s:8",
+        "s:10-18"
+      ],
+      "visuals": [
+        {
+          "kind": "checklist",
+          "closing_overlay": 1
+        }
+      ],
+      "overlays": [],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "the-dash": {
       "_readme": "40 s: trim the Underground line and the Offenbach aside",
-      "script": [ "s:0-2", "s:4", "s:6-7" ],
-      "visuals": [ { "kind": "image", "media": "M-30" }, { "kind": "image", "media": "M-28", "dur": 10 }, { "kind": "image", "media": "M-30", "dur": 8 } ],
-      "overlays": [ 0, 1, { "i": 2, "at": 23, "until": 32 } ]
+      "script": [
+        "s:0-2",
+        "s:4-9"
+      ],
+      "visuals": [
+        {
+          "kind": "image",
+          "media": "M-30"
+        },
+        {
+          "kind": "image",
+          "media": "M-28",
+          "dur": 10
+        },
+        {
+          "kind": "image",
+          "media": "M-30",
+          "dur": 8
+        }
+      ],
+      "overlays": [
+        0,
+        1,
+        {
+          "i": 2,
+          "at": 23,
+          "until": 32
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
-    "charing-cross": { "_readme": "whole — 60 s" },
+    "charing-cross": {
+      "_readme": "whole — 60 s",
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
+    },
     "then-and-now": {
       "_readme": "15 s, seam auto-wipes; script trimmed to the first two sentences and the Dover line (drops 'Drag the seam.')",
-      "script": [ "s:1-3" ],
-      "visuals": [ { "kind": "image", "media": "M-24" }, { "kind": "image", "media": "M-26" } ],
-      "overlays": [ { "i": 0, "at": 4.2, "until": 8 }, { "i": 1, "at": 8, "until": 15 } ]
+      "script": [
+        "s:1-3",
+        "s:6"
+      ],
+      "visuals": [
+        {
+          "kind": "image",
+          "media": "M-24"
+        },
+        {
+          "kind": "image",
+          "media": "M-26"
+        }
+      ],
+      "overlays": [
+        {
+          "i": 0,
+          "at": 4.2,
+          "until": 8
+        },
+        {
+          "i": 1,
+          "at": 8,
+          "until": 15
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "passepartout-on-the-platform": {
       "_readme": "scripted three-line exchange (guide → chip 1 answer → guide) — 30 s",
-      "script": [ "s:0", "chat:0", "overlay:1" ],
-      "visuals": [ { "kind": "chat", "chips": [ 0 ] } ],
+      "script": [
+        "s:0",
+        "chat:0",
+        "overlay:1"
+      ],
+      "visuals": [
+        {
+          "kind": "chat",
+          "chips": [
+            0
+          ]
+        }
+      ],
       "overlays": []
     },
     "quiz-the-weather": {
       "_readme": "guide states the answer, no choice — 15 s (question sentence + answer sentence; the scene-setting lines are already said in 16)",
-      "script": [ "s:2", "s:4" ],
-      "visuals": [ { "kind": "quiz" } ],
-      "overlays": []
+      "script": [
+        "s:0-1",
+        "quiz:correct"
+      ],
+      "visuals": [
+        {
+          "kind": "quiz"
+        }
+      ],
+      "overlays": [],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "the-boat-train": {
       "_readme": "postcard 10 s + M-13 00:00–00:55; trim the Dover/Suez sentence — 65 s",
-      "script": [ "s:0-5", "s:7-10" ],
-      "visuals": [ { "kind": "image", "media": "M-27", "dur": 10 }, { "kind": "clip", "media": "M-13", "in_s": 0, "out_s": 55 } ],
-      "beds": [ { "media": "M-44", "at": 0, "until": 10 }, { "media": "M-45", "at": 13, "until": 17 } ],
-      "overlays": [ 0, { "i": 1, "at": 12, "until": 18 }, { "i": 2, "at": 24, "until": 34 }, { "i": 4, "at": 36, "until": 46 } ]
+      "visuals": [
+        {
+          "kind": "image",
+          "media": "M-27",
+          "dur": 10
+        },
+        {
+          "kind": "clip",
+          "media": "M-13",
+          "in_s": 0,
+          "out_s": 55
+        }
+      ],
+      "beds": [
+        {
+          "media": "M-44",
+          "at": 0,
+          "until": 10
+        },
+        {
+          "media": "M-45",
+          "at": 13,
+          "until": 17
+        }
+      ],
+      "overlays": [
+        0,
+        {
+          "i": 1,
+          "at": 12,
+          "until": 18
+        },
+        {
+          "i": 2,
+          "at": 24,
+          "until": 34
+        },
+        {
+          "i": 4,
+          "at": 36,
+          "until": 46
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     },
     "souvenir": {
       "_readme": "40 s, ingredient list stays on the card (script minus the read-out)",
-      "script": [ "s:0", "s:6-9" ],
-      "visuals": [ { "kind": "player", "call": "showScene(18)" } ],
-      "overlays": [ 0, { "i": 1, "at": 27, "until": 35 } ]
+      "script": [
+        "s:0-2",
+        "s:4-7"
+      ],
+      "visuals": [
+        {
+          "kind": "player",
+          "call": "showScene(18)"
+        }
+      ],
+      "overlays": [
+        0,
+        {
+          "i": 1,
+          "at": 27,
+          "until": 35
+        }
+      ],
+      "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
     }
   }
 }

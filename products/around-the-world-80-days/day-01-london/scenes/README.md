@@ -33,26 +33,30 @@
 **Interactive length (D3, honest):** nominal 01–04, 06–19 = 75+100+60+150+70+80+60+30+100+90+60+60+35+25+45+90+85+60 = **1,275 s ≈ 21 min 15 s**; plus wait budgets (03 up to 6 × 12 s, 07 30 s, 10 20 s, 16 20 s, 17 up to 180 s) and the user-paced walk (04: 90–240 s) ⇒ **≈ 24 min typical, 27 min maximum**. The brief's 18–22 min holds only if the traveller skips the chat.
 Rhythm check: no two video scenes adjacent (02 video → 03 card; 06 video → 07 quiz; 13 video → 14 photo; 18 video is preceded by the dialogue); no continuous video > 90 s.
 
-## Linear cut (~11 min 50 s passive version)
+## Linear cut (~13 min passive version)
+
+**A4 2026-08-19:** the `use` prose below describes the pre-A3n trims and is superseded by `studio/tools/render/cuts/day-01-london.json`;
+only the seconds column is current. The cut now keeps the narrative spine whole (Sheridan reveal, all route legs, the carpet-bag beat,
+the forgotten gas, the recipe) — coherence over the original 11:42 target.
 
 | scene | use | s |
 |-------|-----|---|
 | 01 cold-open | title 8 s, narration from 10 s, drop the M-34 inset | 60 |
 | 02 savile-row | M-05 21:35–22:50, pins (a)(b) only, drop M-32 tail and last four sentences | 75 |
-| 03 fogg-by-the-clock | card only, no taps; script to "home at midnight" + one-breath CV | 40 |
-| 05 pall-mall-pass | whole (replaces 04), 26:19–27:35 | 76 |
-| 06 the-reform-club | from 45 s: M-20 + insets only (M-01 already used by 05) | 25 |
-| 07 quiz-verne-saloon | guide asks and answers in one breath (script + correct option + feedback + after_script) + Open House tail | 65 |
-| 08 the-wager | whole | 60 |
-| 10 the-world-shrinks | enablers + loop reveal + turn line, no tap; skip 09 | 40 |
-| 11 pack-the-bag | 20-s packing-list card, no drag | 20 |
-| 12 the-dash | 40 s: trim the Underground line and the Offenbach aside | 40 |
-| 13 charing-cross | whole (40 s video + 20 s M-51 still) | 60 |
-| 14 then-and-now | 15 s, seam auto-wipes; skip 15 | 15 |
-| 16 quiz-the-weather | guide asks and states the answer (script + after_script), no choice | 15 |
-| 17 passepartout-on-the-platform | passepartout.md §6 scripted three-line exchange (guide → Passepartout → guide) | 30 |
-| 18 the-boat-train | postcard 10 s + M-13 00:00–00:55; trim the Dover/Suez sentence | 65 |
-| 19 souvenir | 40 s, ingredient list stays on the card | 40 |
+| 03 fogg-by-the-clock | card only, no taps; script to "home at midnight" + one-breath CV | 45 |
+| 05 pall-mall-pass | whole (replaces 04), 26:19–27:35 | 60 |
+| 06 the-reform-club | from 45 s: M-20 + insets only (M-01 already used by 05) | 62 |
+| 07 quiz-verne-saloon | guide asks and answers in one breath (script + correct option + feedback + after_script) + Open House tail | 50 |
+| 08 the-wager | whole | 70 |
+| 10 the-world-shrinks | enablers + loop reveal + turn line, no tap; skip 09 | 92 |
+| 11 pack-the-bag | 20-s packing-list card, no drag | 82 |
+| 12 the-dash | 40 s: trim the Underground line and the Offenbach aside | 52 |
+| 13 charing-cross | whole (40 s video + 20 s M-51 still) | 70 |
+| 14 then-and-now | 15 s, seam auto-wipes; skip 15 | 26 |
+| 16 quiz-the-weather | guide asks and states the answer (script + after_script), no choice | 28 |
+| 17 passepartout-on-the-platform | passepartout.md §6 scripted three-line exchange (guide → Passepartout → guide) | 36 |
+| 18 the-boat-train | postcard 10 s + M-13 00:00–00:55; trim the Dover/Suez sentence | 82 |
+| 19 souvenir | 40 s, ingredient list stays on the card | 46 |
 | **total** | | **726 s ≈ 12 min 06 s** |
 
 Linear-only: 05. Interactive-only: 09, 15 (and the interactions of 03, 04, 10, 11, 14, 16, 17). Narrator trims scripts to the marks in each scene's `production_notes`. Note for Engine/Tools: `studio/tools/render/cuts/day-01-london.json` addresses sentences by index — 03, 04, 06, 07, 10, 12, 13, 16, 17, 18 scripts changed in A1, so its `s:N` tokens need a re-check (16/17 swapped order; 07/10/16 now use `after_script`).

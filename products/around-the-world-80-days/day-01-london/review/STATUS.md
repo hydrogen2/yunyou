@@ -24,3 +24,8 @@ QUEUE (studio/PRODUCTION.md):
 OPEN FOR THE FOUNDER (see journal "Provisional decisions"): D3–D11 as recommended; D12 Maps JS API key/billing owner (scene 04 counter);
 Passepartout system prompt ≈ 350 words; 08/13 at ~2.5 w/s on stills.
 A2 items for the founder/Rights: G-01 16:9 exports carry no source/credits line (linear cut) · G-08 licence line "CC BY-SA 4.0 (provisional, rights Q3)" · G-02 eye-line compromise accepted.
+
+
+## 2026-08-19 (interactive session)
+A3 ✓ (media pins verified, M-50 confirmed) · A3p ✓ (player v0.3 newcomer aids) · A3n ✓ (newcomer rewrite, clear track, glosses, recap) · A4 ✓ (cut sheet re-derived, re-rendered 13:49, publish-record written).
+**Next: A5** — light Fact-Check + QA pass on the rewritten scripts, then DIGEST update. Backlog: linear renderer ignores clear track/gloss; A3-QA on-device frame checks.
