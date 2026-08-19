@@ -29,6 +29,7 @@ presence÷cost, not by novelty.
 | **panorama** | 360°/photo-sphere with gyro "magic window" | turn the phone, the view turns | gyro | body-coupled view | idea |
 | **window** | **head-tracked parallax room** (fishtank VR) | user photos → enclosure; front camera tracks head; off-axis projection | front camera (+gyro) | motion parallax, "a window into a room" | idea → sketch |
 | ambience | multi-layer soundscape you can mix (rain, cab, station) | ears first | headphones | audio presence, cheapest lever of all | idea |
+| audio-episode | pure-audio rendering of a whole chapter (see studio/strategy/audio-format.md) | script+sound carry everything | headphones | imagination as renderer; 100% owned media | idea |
 | drone | flyover video, gyro-nudged framing | scale and awe | gyro | vertical motion | idea |
 | timeline | scrub then↔now on the same view | time as a dimension | touch | insight | idea |
 | binaural walk | video + head-locked binaural audio | sound follows head | headphones + camera/gyro | audio localisation | idea |

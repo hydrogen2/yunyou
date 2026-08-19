@@ -48,3 +48,8 @@ Keep to roughly one role fan-out (≤ 6 agents) per run. If the quota is exhaust
 
 ### E. Strategy experiments (only if founder promotes them into A–C)
 - [ ] E1 Inferno pilot per `studio/strategy/worlds-ladder.md` (rung-3 pipeline: Doré-led scenes, generation recipe, lore-checker).
+### F. Audio format (see studio/strategy/audio-format.md; only if founder promotes into A–C)
+- [ ] F1 Engine/Tools: audio render target (MP3 + chapters + RSS item) on the existing pipeline.
+- [ ] F2 Narrator: Day 1 audio adaptation pass (script overrides, sound-design notes).
+- [ ] F3 Publisher: podcast RSS feed on our server, episode art from G-01.
+- [ ] F4 Language-feed pilot: "80 Days in 80 Phrases" — Day 1, French.
