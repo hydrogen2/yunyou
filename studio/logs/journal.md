@@ -40,3 +40,26 @@ G-04/05/06/08 cards · G-07 game + player wiring. (Entry completed below when th
 **Step:** A2 close-out. The 20:00 run produced G-01…G-08 SVGs/PNGs, generators (`studio/tools/gen/`), player wiring (G-01/02/04/07) but was cut
 before: G-01 PNG exports + README, player CHANGELOG v0.2 entry, manifest G-row statuses, STATUS/journal. Dispatching 2 Engine agents (G-01 finish;
 player smoke test + CHANGELOG), then Editor-in-Chief updates manifest/STATUS. (Completed below when the run finishes.)
+
+## 2026-08-19 01:00 UTC — scheduled run (in progress)
+**Step:** A2 close-out, second attempt. The 23:00 run finished the G-01 exports (fold/16:9/9:16 SVG+PNG), the player smoke test
+(`studio/player/test/smoke_generated.mjs` → RESULTS.md ALL PASS for G-04/G-01/G-07) and G-02…G-08 manifest rows, but stopped before:
+`generated/g-01/README.md`, the player CHANGELOG v0.2 entry, the G-01 manifest row, STATUS and its journal close. Dispatching one Engine agent
+(G-01 README + CHANGELOG v0.2), then the Editor-in-Chief updates manifest/STATUS. (Completed below when the run finishes.)
+**Step done:** A2 is complete. One `yunyou-engine-tools` agent wrote `generated/g-01/README.md` (files table, layer contract as `wireG01` really
+drives it, F-10/F-11/F-33 verified in the SVGs — ledger sums to 80 days, all nine port dates present) and the player CHANGELOG **v0.2** entry
+(mkGen/setSchedule inlining + late-image-clobber guard, wireG01/02/04/07, runtime keys now honoured: `starts_at_s`, `pause_narration`/`timeout_s`
+countdown, `after_script`, `kind: save`; fallbacks; smoke test how-to; still-not-done list: `on_llm_unavailable`, `max_exchanges`, `at_waypoint`,
+`media[].fallback`, walk timeout advance). Editor-in-Chief set the manifest G-01 row to delivered (with weak points), STATUS.md (A2 ✓, A3 next),
+PRODUCTION.md A2 ticked. Validate: 19 scenes + tour.json — 20 OK, 0 WARN.
+**Files touched:** generated/g-01/README.md (new), studio/player/CHANGELOG.md, media/manifest.md (G-01 row), review/STATUS.md, studio/PRODUCTION.md, this journal.
+**Problems / weak points recorded (G-01, from the Engine agent's inspection of the PNGs):** label collisions (leg-4 dashed line through "Hong Kong / 6 Nov",
+leg labels sitting on their lines); the 16:9 crop drops the ledger, "= 80 days" and the credits/Natural Earth line, so the linear-cut frames carry
+no source line (Rights should say whether a caption suffices); the 9:16 crop half-cuts Calcutta; `.hit[data-leg]` targets are 48 px only at 1:1
+fold-open (~17 CSS px in the player — the panel buttons are the real ≥ 44 px targets) and exist only in the L1–L8 windows of scene 10;
+Suez enabler is a callout in the desert, not at 30.0 N 32.5 E; "fade back to Day 1" is a hard swap; M-52 style echoed in spirit only.
+None of these block A3–A5; a G-01 polish pass (label nudges, 16:9 credits line, 9:16 Calcutta) is queued as a D-item for a spare run.
+**Provisional decisions (founder may reverse):** G-01 shipped with the collisions above rather than spending another run on it · G-02 eye-line
+compromise accepted · G-08 licence line stays "CC BY-SA 4.0 (provisional, rights Q3)" · G-03 wager card stays on hold.
+**Next step:** A3 — Content Preparer reconciles M-50 (Neuville plate 05 vs 02) and pins M-05/M-01/M-08/M-13 frames as far as possible without
+downloading (this unblocks the 02 side-language and 18 "Look right" hedges).

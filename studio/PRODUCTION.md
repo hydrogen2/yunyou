@@ -23,7 +23,7 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
 - [x] A1 (done 2026-08-18, runs 14:00 + 17:00) Apply review fix lists: Scene Developer + Narrator apply `review/fact-check.md` (5 wrong + hedges),
       `review/continuity.md` (3 high, 7 med), `review/qa.md` (6 must-fix incl. Quiz B before dialogue, scene 18 daylight vs "dark",
       cold-open pace, wrong start pano, narration-pause). Re-validate. Note in each scene `review.notes` what changed.
-- [ ] A2 Engine/Tools: generate G-01…G-08 into `day-01-london/generated/` per manifest specs (SVG/PNG, cream/ink/one accent);
+- [x] A2 (done 2026-08-18/19, runs 20:00 + 23:00 + 01:00) Engine/Tools: generate G-01…G-08 into `day-01-london/generated/` per manifest specs (SVG/PNG, cream/ink/one accent);
       wire the player to show them; update manifest status.
 - [ ] A3 Content Preparer: reconcile M-50 (Neuville plate 05 vs 02), pin M-05/M-01/M-08/M-13 frames as far as possible without downloading.
 - [ ] A4 Narrator: edit `studio/tools/render/cuts/day-01-london.json` so no sentence is machine-cut; Publisher re-renders the linear cut
@@ -41,6 +41,7 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
 - [ ] C3 Engine/Tools: `panorama` scene renderer in the player.
 ### D. Studio improvements (any run, if something is clearly broken)
 - Fix tools/roles/templates that failed in the last run; record the lesson in `studio/logs/journal.md`.
+- [ ] D-G01 polish (spare run): nudge colliding leg labels, add a credits/source line inside the 16:9 crop, fix the 9:16 Calcutta cut (`studio/tools/gen/g01_route_map.py`).
 
 ## Budget per run
 Keep to roughly one role fan-out (≤ 6 agents) per run. If the quota is exhausted mid-run, write what was completed to the journal and stop.
