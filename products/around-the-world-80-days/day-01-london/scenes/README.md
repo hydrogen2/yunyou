@@ -36,27 +36,27 @@ Rhythm check: no two video scenes adjacent (02 video → 03 card; 06 video → 0
 ## Linear cut (~13 min passive version)
 
 **A4 2026-08-19:** the `use` prose below describes the pre-A3n trims and is superseded by `studio/tools/render/cuts/day-01-london.json`;
-only the seconds column is current. The cut now keeps the narrative spine whole (Sheridan reveal, all route legs, the carpet-bag beat,
+only the seconds column is current. NOTE: sentence indices differ between the standard and clear tracks (clear has 192 sentences vs 181); the cuts file is indexed for BOTH via the same tokens, which is approximate — a per-track cut sheet is an Engine backlog item. The cut now keeps the narrative spine whole (Sheridan reveal, all route legs, the carpet-bag beat,
 the forgotten gas, the recipe) — coherence over the original 11:42 target.
 
 | scene | use | s |
 |-------|-----|---|
 | 01 cold-open | title 8 s, narration from 10 s, drop the M-34 inset | 60 |
-| 02 savile-row | M-05 21:35–22:50, pins (a)(b) only, drop M-32 tail and last four sentences | 75 |
+| 02 savile-row | M-05 21:35–22:50, pins (a)(b) only, drop M-32 tail and last four sentences | 84 |
 | 03 fogg-by-the-clock | card only, no taps; script to "home at midnight" + one-breath CV | 45 |
 | 05 pall-mall-pass | whole (replaces 04), 26:19–27:35 | 60 |
 | 06 the-reform-club | from 45 s: M-20 + insets only (M-01 already used by 05) | 62 |
 | 07 quiz-verne-saloon | guide asks and answers in one breath (script + correct option + feedback + after_script) + Open House tail | 50 |
 | 08 the-wager | whole | 70 |
 | 10 the-world-shrinks | enablers + loop reveal + turn line, no tap; skip 09 | 92 |
-| 11 pack-the-bag | 20-s packing-list card, no drag | 82 |
+| 11 pack-the-bag | 20-s packing-list card, no drag | 88 |
 | 12 the-dash | 40 s: trim the Underground line and the Offenbach aside | 52 |
 | 13 charing-cross | whole (40 s video + 20 s M-51 still) | 70 |
 | 14 then-and-now | 15 s, seam auto-wipes; skip 15 | 26 |
 | 16 quiz-the-weather | guide asks and states the answer (script + after_script), no choice | 28 |
 | 17 passepartout-on-the-platform | passepartout.md §6 scripted three-line exchange (guide → Passepartout → guide) | 36 |
 | 18 the-boat-train | postcard 10 s + M-13 00:00–00:55; trim the Dover/Suez sentence | 82 |
-| 19 souvenir | 40 s, ingredient list stays on the card | 46 |
+| 19 souvenir | 40 s, ingredient list stays on the card | 54 |
 | **total** | | **726 s ≈ 12 min 06 s** |
 
 Linear-only: 05. Interactive-only: 09, 15 (and the interactions of 03, 04, 10, 11, 14, 16, 17). Narrator trims scripts to the marks in each scene's `production_notes`. Note for Engine/Tools: `studio/tools/render/cuts/day-01-london.json` addresses sentences by index — 03, 04, 06, 07, 10, 12, 13, 16, 17, 18 scripts changed in A1, so its `s:N` tokens need a re-check (16/17 swapped order; 07/10/16 now use `after_script`).

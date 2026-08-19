@@ -230,7 +230,12 @@ function captionChunks(text, words, maxChars = 84) {
   // 2. per-scene plan: script tokens → utterances
   const plans = [];
   for (const sel of selection) {
-    const s = sel.scene; const hint = (cuts.scenes || {})[s.id] || {}; const sents = splitSentences(s.narration?.script || '');
+    const s = sel.scene; const hint = (cuts.scenes || {})[s.id] || {};
+    // --track clear|standard : the clear-English variant (narration.variants.clear) is the DEFAULT (founder decision 2026-08-19,
+    // audience report #1: non-native-friendly). Falls back to narration.script wherever a scene has no variant.
+    const _track = (args.track || 'clear');
+    const _text = (_track === 'clear' && s.narration?.variants?.clear) ? s.narration.variants.clear : (s.narration?.script || '');
+    const sents = splitSentences(_text);
     const tokens = hint.script || sents.map((_, i) => `s:${i}`);
     const utts = []; const push = (voice, text, src) => { const last = utts[utts.length - 1]; if (last && last.voice === voice && !last.sealed) { last.text += ' ' + text; last.src.push(src); } else utts.push({ voice, text, src: [src] }); };
     const usedS = new Set();

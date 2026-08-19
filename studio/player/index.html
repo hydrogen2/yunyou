@@ -124,7 +124,7 @@ async function showYouTube(m){
 
 // ---------- TTS ----------
 // clear-English + speed: yy-clear picks narration.variants.clear when present; rate = yy-rate if the traveller chose one, else 0.9 in clear mode / 1.0
-let clearEnglish=localStorage.getItem('yy-clear')==='1';
+let clearEnglish=(localStorage.getItem('yy-clear')??'1')==='1';   // DEFAULT ON (founder decision 2026-08-19: clear English is the default in player and video; the literary track is the opt-out)
 function ttsRate(){ const r=parseFloat(localStorage.getItem('yy-rate')); if(r>=0.5&&r<=2) return r; return clearEnglish?0.9:1.0; }
 function pickScript(s){ const n=(s&&s.narration)||{}; return (clearEnglish&&n.variants&&typeof n.variants.clear==='string')?n.variants.clear:(n.script||''); }
 let voices=[], voiceName=localStorage.getItem('yy-voice')||''; // cached: the #voice select lives on the cover, which is removed on start

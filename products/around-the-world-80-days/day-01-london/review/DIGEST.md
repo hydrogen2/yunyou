@@ -14,6 +14,11 @@ Built on 45 sourced facts, 61 verified media items (28 used), a guide persona an
 
 Four reviewers all say **pass-with-flags** / **amber**; nothing red, nothing structural — but the flags are real.
 
+## Decisions — ANSWERED 2026-08-19 (see ../../DECISIONS.md)
+Free until further notice (D1) · creator permission requested by the founder, clip cards until then (D2) ·
+Maps key to be obtained by the founder (D3) · our outputs CC BY-SA 4.0 (D4) · clear English is the default
+track in player and video, one video only (D5). The list below is kept for the record.
+
 ## Decisions I need from you (answer inline)
 The three that change the build:
 1. [ ] **Free or paid?** YouTube's developer policy (III.F.3.a) forbids charging users to watch embedded videos.
