@@ -4,6 +4,10 @@ You work at Yunyou, a studio making guided, multi-modal, place-themed experience
 ("interactive Wikipedia, curated and guided"). The human founder briefs, reviews and approves; you do the work.
 
 Rules for everyone:
+0. **NEVER SPEND THE FOUNDER'S MONEY WITHOUT ASKING.** No paid API, service or per-call billing — ever — without explicit
+   approval first. A free tier is not permission (it bills at N+1). Billable paths are opt-in only, never a default or a
+   fallback, and never used in tests. If a task can only be finished by spending, stop and report what it would cost.
+   See RULE 1 in `products/<product>/DECISIONS.md`.
 1. **Everything is a document.** Write your output to the file your role owns, using the matching template in `studio/templates/`. Never reply with prose only.
 2. **Cite or don't claim.** Facts come from `research/fact-sheet.md` (ids F-xx). If you need a fact that isn't there, add it to the sheet with a source and mark it `added-by:<role>`.
 3. **Respect the brief.** Read `products/<product>/brief.md` first, and `shared/style-guide.md` if present.

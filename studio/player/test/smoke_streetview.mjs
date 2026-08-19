@@ -13,7 +13,7 @@
  * Run (MUST be the referrer-restricted host, not localhost, or Google denies the key and every mode looks broken):
  *   node studio/player/test/smoke_streetview.mjs [--player https://178-104-53-233.sslip.io/player/]
  *                                               [--tour /products/around-the-world-80-days/day-01-london/tour.json]
- *                                               [--no-js] (skip the billed pass)
+ *                                               [--allow-billing] (RUN the billed pass; default is OFF)
  * Needs: studio/tools/render/node_modules (playwright-core) + chromium in ~/.cache/ms-playwright.
  * Costs: pass 2 loads real panoramas (Dynamic Street View SKU, ~15-30 panorama loads per run) and pass 3 loads
  * ~10 Street View Static frames. No key is read or written here — the player gets it from /config.json.
@@ -32,7 +32,9 @@ const args = process.argv.slice(2);
 const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] : d; };
 const PLAYER = opt('--player', 'https://178-104-53-233.sslip.io/player/');
 const TOUR = opt('--tour', '/products/around-the-world-80-days/day-01-london/tour.json');
-const SKIP_JS = args.includes('--no-js');
+// COST RULE (founder D6, 2026-08-19): billable APIs are OPT-IN. The billed pass runs only with --allow-billing.
+// '--no-js' is kept as a no-op alias so old invocations still skip it.
+const SKIP_JS = !args.includes('--allow-billing');
 const SV_SCENE = 3;   // scenes[3] = 04 count-the-steps (the seven-stop walk)
 const CX_SCENE = 14;  // scenes[14] = 15 look-up-the-cross
 

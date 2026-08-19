@@ -3,6 +3,23 @@
 Standing answers to the studio's open questions. Roles read this before asking again.
 Anything here is reversible; say so and the studio changes course.
 
+## RULE 1 — NO SPENDING WITHOUT ASKING (founder, 2026-08-19, overrides everything below)
+
+**Never incur a cost on any account of the founder's — cloud APIs, paid services, subscriptions, per-call billing —
+without checking first.** This outranks every other instruction, including "finish the task" and any queue item.
+
+- Free-tier allowances are NOT permission: an API that is free for N calls still *bills* at N+1, so it counts as a cost.
+- Billable paths must be **opt-in**, never a default and never a fallback. Default configs, tests and CI must call nothing billable.
+- If work can only proceed by spending, STOP and ask, giving the amount, the per-unit rate and the cheapest alternative.
+- Applies to agents too: every role inherits this via `studio/roles/_common.md`.
+- Known billable surface today: Google Maps Platform (Dynamic Street View $14/1,000 after 5,000/mo; Street View Static
+  $7/1,000 after 10,000/mo). Free and unlimited: Maps **Embed** API, Street View **metadata**. Everything else the studio
+  uses (Wikimedia, Internet Archive, KartaView, Edge TTS, ffmpeg) is free.
+- **Breach on record:** on 2026-08-19 the studio tested Dynamic Street View live against the founder's key and shipped a
+  config whose default mode was billable, before asking. Almost certainly inside the free allowance, but it was the wrong
+  order. Guardrails added the same day: `www/config.json` pinned to a non-billing mode, the smoke test's billed pass made
+  opt-in (`--allow-billing`), and the player will refuse billable modes unless the config explicitly acknowledges billing.
+
 ## 2026-08-19
 
 **D1 · Business model — FREE until further notice.**
