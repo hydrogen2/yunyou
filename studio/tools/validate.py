@@ -66,25 +66,29 @@ def studio_rules(s):
         errs.append(f'{sid}: interaction.pause_narration:true requires interaction.timeout_s (honest wait budget)')
     if it.get('timeout_s') and it.get('kind') in (None,'none'):
         warns.append(f'{sid}: timeout_s set but interaction.kind is none')
-    # overlays: waypoint triggers + density
+    # overlays: waypoint triggers + density (+ gloss shape)
     for i,o in enumerate(ov):
+        if o.get('kind')=='gloss' and '—' not in o.get('text',''):
+            warns.append(f'{sid}: overlays[{i}] gloss text has no em-dash — expected "word — plain-English definition"')
         if 'at_waypoint' in o:
             if route is None: warns.append(f'{sid}: overlays[{i}].at_waypoint={o["at_waypoint"]} but no interaction.route — will fire on at_s only')
             elif not (isinstance(o['at_waypoint'],int) and 0 <= o['at_waypoint'] < len(route)):
                 errs.append(f'{sid}: overlays[{i}].at_waypoint={o["at_waypoint"]} out of range (route has {len(route)} waypoints, 0..{len(route)-1})')
-    timed=[o for o in ov if 'at_waypoint' not in o]
+    timed=[o for o in ov if 'at_waypoint' not in o and o.get('kind')!='gloss']  # gloss chips are reference, not pacing
     if d and len(timed) > max(1, d//15)+1: errs.append(f'{sid}: {len(timed)} timed overlays in {d}s exceeds ~1 per 15 s (waypoint-triggered overlays exempt)')
     if not s.get('sources') and typ not in ('interstitial','map'): errs.append(f'{sid}: no fact-sheet sources cited')
-    # words per second: (script + after_script) over (duration_s - starts_at_s)
-    words=len(n.get('script','').split()) + len(n.get('after_script','').split())
+    # words per second: (script + after_script) over (duration_s - starts_at_s); each narration.variants track measured the same way
+    tracks=[('', n.get('script',''))] + [(f' [variants.{k}]', v) for k,v in (n.get('variants') or {}).items() if isinstance(v,str)]
     start=n.get('starts_at_s',0) or 0
     if d and isinstance(start,(int,float)):
         secs=d-start
         if secs<=0: errs.append(f'{sid}: narration.starts_at_s {start} leaves no time in {d}s')
         else:
-            wps=words/secs
-            if words > secs*WPS_ERROR: errs.append(f'{sid}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, too fast (limit {WPS_ERROR})')
-            elif wps > WPS_WARN: warns.append(f'{sid}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, over the {WPS_WARN} w/s (150 wpm) target')
+            for label,txt in tracks:
+                words=len(txt.split()) + len(n.get('after_script','').split())
+                wps=words/secs
+                if words > secs*WPS_ERROR: errs.append(f'{sid}{label}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, too fast (limit {WPS_ERROR})')
+                elif wps > WPS_WARN: warns.append(f'{sid}{label}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, over the {WPS_WARN} w/s (150 wpm) target')
     return errs, warns
 
 def check(path, use_jsonschema=True):

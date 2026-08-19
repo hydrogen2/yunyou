@@ -8,6 +8,7 @@
     "id": {"type":"string"}, "title": {"type":"string"}, "tagline": {"type":"string"},
     "world": {"type":"string", "description":"real | verne | tolkien | … (see shared/world-bible)"},
     "guide_persona": {"type":"string"},
+    "whos_who": {"type":"string","description":"Path to the product's whos-who.json (cast card), resolved against the tour file's folder; default ../shared/whos-who.json. The player hides its 'who's who' button if the file is missing or empty."},
     "style": {"type":"string", "description":"style guide id"},
     "drip": {"type":"string", "enum":["all-at-once","daily","weekly"]},
     "chapters": {
@@ -17,6 +18,7 @@
         "required":["id","title","scenes"],
         "properties": {
           "id":{"type":"string"}, "title":{"type":"string"}, "hook":{"type":"string"},
+          "recap":{"type":"string","description":"'Previously on…' — one or two plain sentences shown on the chapter cover under the hook. Omit for a first chapter; the player ignores a missing recap."},
           "place":{"type":"string"}, "geo":{"type":"string"},
           "scenes":{"type":"array","items":{"$ref":"scene.schema.json"}}
         }

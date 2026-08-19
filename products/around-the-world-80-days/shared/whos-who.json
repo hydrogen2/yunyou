@@ -1,0 +1,48 @@
+{
+  "title": "Who's who",
+  "note": "Cast card for travellers who have never read the novel. Compiled by engine-tools 2026-08-19 from shared/personas/guide.md + passepartout.md and day-01-london/research/fact-sheet.md. One plain-English sentence each; `sources` (F-ids) are for reviewers — the player never shows or speaks them.",
+  "entries": [
+    {
+      "id": "phileas-fogg",
+      "name": "Phileas Fogg",
+      "who": "The hero of the story: a rich London gentleman who lives his whole day by the clock, and who bets half his fortune — twenty thousand pounds — that he can travel around the world in eighty days.",
+      "sources": ["F-02", "F-11"]
+    },
+    {
+      "id": "passepartout",
+      "name": "Passepartout",
+      "who": "Fogg's new French servant, a former circus acrobat from Paris who takes the job on the very morning the story begins because he wants a quiet life — and gets the opposite.",
+      "sources": ["F-02", "F-04", "F-41"]
+    },
+    {
+      "id": "jules-verne",
+      "name": "Jules Verne",
+      "who": "The French author who invented Fogg: he published this story chapter by chapter in a Paris newspaper in late 1872, timed so Fogg's deadline fell just as the final chapters appeared.",
+      "sources": ["F-32"]
+    },
+    {
+      "id": "sheridan",
+      "name": "Sheridan",
+      "who": "Richard Brinsley Sheridan, a famous Irish playwright who really lived on Savile Row: Verne name-drops him to make Fogg's address feel real — and gets both the house number and the year of his death wrong.",
+      "sources": ["F-01"]
+    },
+    {
+      "id": "whist-partners",
+      "name": "The five whist partners",
+      "who": "Fogg's card-playing friends at the Reform Club — Stuart an engineer, Sullivan and Fallentin bankers, Flanagan a brewer, and Ralph a director of the Bank of England — who together bet him twenty thousand pounds that he will fail.",
+      "sources": ["F-08", "F-11"]
+    },
+    {
+      "id": "thomas-cook",
+      "name": "Thomas Cook",
+      "who": "A real English travel agent: while Verne was writing, Cook was leading the first commercial round-the-world tour — 222 days, heading west just as the fictional Fogg heads east.",
+      "sources": ["F-35"]
+    },
+    {
+      "id": "george-francis-train",
+      "name": "George Francis Train",
+      "who": "A real American showman who went around the world in 1870 — home in 164 days — and spent years afterwards claiming that Verne's hero was really him.",
+      "sources": ["F-36"]
+    }
+  ]
+}

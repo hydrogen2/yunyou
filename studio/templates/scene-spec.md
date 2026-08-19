@@ -15,7 +15,15 @@ Checklist before handing to review:
       `interaction.timeout_s` (honest seconds; per tap for tap-to-find) — the validator fails `pause_narration` without `timeout_s`
 - [ ] the sentence(s) that answer / follow the interaction go in `narration.after_script`, not in `script`
       (`script` = before/over the media, `after_script` = after the interaction resolves or times out)
-- [ ] overlays ≤ 1 every 15 s (don't clutter) — overlays triggered by `at_waypoint` are exempt from the count
+- [ ] overlays ≤ 1 every 15 s (don't clutter) — overlays triggered by `at_waypoint` and `kind: "gloss"` chips are exempt from the count
+- [ ] period / hard words that a newcomer must not trip on get a glossary chip: `overlays[].kind: "gloss"` with
+      `text: "word — plain-English definition"` (em-dash separator; validator warns without it). The player shows a
+      tappable 📖 chip and speaks the definition on tap; keep definitions ≤ 12 plain words
+- [ ] clear-English track: `narration.variants.clear` = a FULL replacement for `script` (not a diff) in plain words and
+      short sentences — the player swaps it in for both TTS and captions when the traveller picks "Clear English" on the
+      start screen, and slows TTS to 0.9, so aim ~10 % fewer words than `script` (validator measures each variant against
+      the same w/s budget). `after_script` has no variant yet — keep it plain in the first place. Scenes without
+      `variants` simply play `script` (old files unaffected)
 - [ ] walk scenes: overlays and cue captions carry `at_waypoint` (index into `interaction.route`, 0-based, must be < route length)
       **and** `at_s` — `at_s` is the linear / no-Maps-JS fallback and stays required
 - [ ] media that may not load (Street View pano, YouTube clip) names a `fallback` (manifest id M-xx or ref): a still for each stop

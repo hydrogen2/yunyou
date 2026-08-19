@@ -87,6 +87,13 @@
           "minimum": 0,
           "description": "Seconds into the scene when speech begins (default 0). The validator measures words-per-second over duration_s - starts_at_s."
         },
+        "variants": {
+          "type": "object",
+          "description": "Parallel narration tracks keyed by variant id; each value is a full replacement for `script` (plain text, same rules and w/s budget). Current ids: \"clear\" = simplified plain-English track for non-native speakers, selected on the player start screen (TTS slows to 0.9 unless the traveller picked a speed). Missing variant → the player falls back to `script`. after_script has no variant yet. Future ids: language codes (zh, …).",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
         "tts": {
           "type": "object",
           "properties": {
@@ -187,8 +194,10 @@
               "sticker",
               "lower-third",
               "map-inset",
-              "highlight"
-            ]
+              "highlight",
+              "gloss"
+            ],
+            "description": "gloss = glossary chip for a period/hard word: text is 'word — plain-English definition' (em-dash separator); the player renders a tappable 📖 chip and speaks the definition on tap. Gloss overlays are exempt from the ~1-per-15-s density rule."
           },
           "text": {
             "type": "string"

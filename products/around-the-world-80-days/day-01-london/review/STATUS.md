@@ -15,7 +15,8 @@ DONE:
 QUEUE (studio/PRODUCTION.md):
 - [x] A1 apply fix lists (14:00 + 17:00 runs)
 - [x] A2 Engine/Tools: G-01…G-08 generated + player wired (20:00 / 23:00 / 01:00 runs) — weak points per `generated/g-0*/README.md` and manifest G rows
-- [ ] A3 Content Preparer: M-50 reconcile, pin M-05/M-01/M-08/M-13 frames (02 side language, 18 "Look right" wait on this)  ← NEXT
+- [x] A3 Content Preparer (2026-08-19): M-50 reconciled — Commons images viewed: plate 05 IS Passepartout (plate 02 = title balloon); manifest row + scenes 03/17 already agree (the _02.jpg refs were pre-A1), no ref change needed. M-05/M-01/M-08/M-13 re-verified on live watch pages (chapters, descriptions, dates) + M-05's pinned sights-timestamps comment (No. 3 Savile Row ≈ 22:05, northbound entry confirmed) + M-08's timeline corroborated by all three auto stills (forecourt 05:00–~05:55) + M-13 first-leg chapters/split-frame/daylight confirmed. No scene timings changed (no evidence against them); validator all OK. Storyboards unreachable (player API LOGIN_REQUIRED), so five frame pins stay QA ON DEVICE: M-05 Nos. 14/15 legibility, M-01 No. 104 façade second (least certain — walker lingers 10:41 over ~450 m after 26:19), M-08 cross-fills-shot frame, M-13 window side (02 side-neutral language and 18 "Look right" therefore still wait on device QA, not on A3). See manifest third-pass notes + digest.
+- [ ] A3-QA (on device, anyone with a signed-in browser): pin the five frames above  ← NEXT with A4
 - [ ] A4 Narrator cut-sheet + Publisher linear re-render + publish-record.md
 - [ ] A5 light Fact-Checker + QA re-pass, DIGEST → "ready to publish (free tier)"
 

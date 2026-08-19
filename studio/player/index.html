@@ -30,6 +30,13 @@
   .pin { border:1px solid var(--accent); color:var(--accent); border-radius:999px; padding:2px 10px; }
   .cap { color:var(--ink); }
   .fact { color:var(--dim); font-style:italic; }
+  .gloss { border:1px dashed var(--accent); background:#221c10; color:var(--ink); border-radius:999px; padding:3px 10px; font:inherit; cursor:pointer; }
+  .gloss:focus-visible { outline:2px solid var(--accent); }
+  #who { position:fixed; inset:0; z-index:20; background:rgba(6,5,8,.62); display:flex; align-items:center; justify-content:center; padding:4vmin; }
+  #who[hidden] { display:none; }
+  #who .card { max-height:86vh; overflow:auto; max-width:640px; }
+  #who .card p { margin:.5em 0; }
+  #who small.src { display:none; } /* F-ids stay in the JSON for reviewers; never shown to the traveller */
   #panel { flex:0 1 auto; max-height:46%; overflow:auto; padding:10px 14px 14px; }
   #title { font-family:system-ui,sans-serif; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin:0 0 4px; }
   #script { margin:0; font-size:clamp(15px,2.2vmin,19px); }
@@ -65,14 +72,15 @@
 <div id="cover">
   <div id="coverTitle"><h1>Yunyou 云游</h1><p>loading tour…</p></div>
   <button class="btn primary" id="start" style="font-size:18px;padding:12px 26px">▶ Start the day</button>
-  <label>Narration voice <select id="voice"></select> <button class="btn" id="testVoice">test</button></label>
+  <label>Narration voice <select id="voice"></select> <select id="rate" title="narration speed"><option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1.0×</option><option value="1.1">1.1×</option></select> <button class="btn" id="testVoice">test</button></label>
+  <label style="cursor:pointer"><input type="checkbox" id="clearEn"> Clear English — simpler wording and a slightly slower voice, where the chapter provides it</label>
   <label>Google Maps API key (optional — enables live Street View; stored only in this browser)<br><input id="gkey" placeholder="AIza…"></label>
   <p class="muted" style="margin-top:18px">Dry-run player · YouTube embeds, Wikimedia Commons media, browser TTS. Generated cards/maps are rendered live from the scene text.</p>
 </div>
 
 <div id="app">
   <header><b id="hTitle">Yunyou</b><span id="hScene"></span><span class="sp"></span>
-    <button id="btnCap" title="captions">CC</button><button id="btnMute" title="narration on/off">🔈</button><button id="btnList">☰</button></header>
+    <button id="btnWho" title="who's who — the people in this story" hidden>👥 who's who</button><button id="btnCap" title="captions">CC</button><button id="btnMute" title="narration on/off">🔈</button><button id="btnList">☰</button></header>
   <div id="stage">
     <div id="media"></div>
     <div id="right">
@@ -81,6 +89,11 @@
     </div>
   </div>
   <footer><button class="btn" id="prev">‹ Back</button><div id="prog"><i></i></div><span id="clock"></span><span id="countdown"></span><button class="btn primary" id="next">Next ›</button></footer>
+</div>
+
+<div id="who" hidden role="dialog" aria-modal="true" aria-labelledby="whoTitle">
+  <div class="card"><h2 id="whoTitle">Who's who</h2><div id="whoBody"></div>
+    <p style="margin-top:1em"><button class="btn primary" id="whoClose">Close</button></p></div>
 </div>
 
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -110,18 +123,26 @@ async function showYouTube(m){
 }
 
 // ---------- TTS ----------
-let voices=[]; function loadVoices(){ voices=speechSynthesis.getVoices(); const sel=$('#voice'); sel.innerHTML='';
+// clear-English + speed: yy-clear picks narration.variants.clear when present; rate = yy-rate if the traveller chose one, else 0.9 in clear mode / 1.0
+let clearEnglish=localStorage.getItem('yy-clear')==='1';
+function ttsRate(){ const r=parseFloat(localStorage.getItem('yy-rate')); if(r>=0.5&&r<=2) return r; return clearEnglish?0.9:1.0; }
+function pickScript(s){ const n=(s&&s.narration)||{}; return (clearEnglish&&n.variants&&typeof n.variants.clear==='string')?n.variants.clear:(n.script||''); }
+let voices=[], voiceName=localStorage.getItem('yy-voice')||''; // cached: the #voice select lives on the cover, which is removed on start
+function loadVoices(){ voices=speechSynthesis.getVoices(); const sel=$('#voice'); if(!sel) return; sel.innerHTML='';
   const pref=voices.filter(v=>/en-GB|en_GB/i.test(v.lang)).concat(voices.filter(v=>/^en/i.test(v.lang)&&!/GB/i.test(v.lang)));
   pref.forEach(v=>{ const o=document.createElement('option'); o.value=v.name; o.textContent=`${v.name} (${v.lang})`; sel.appendChild(o); });
-  const saved=localStorage.getItem('yy-voice'); if(saved) sel.value=saved; }
+  if(voiceName) sel.value=voiceName; voiceName=sel.value; }
 speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
 function speak(text, onBoundary, onEnd){
   speechSynthesis.cancel(); if(!narrate||!text){ onEnd&&setTimeout(onEnd,0); return; }
-  const u=new SpeechSynthesisUtterance(text); const v=voices.find(v=>v.name===$('#voice').value); if(v) u.voice=v; u.rate=0.98; u.pitch=1.0;
+  const u=new SpeechSynthesisUtterance(text); const v=voices.find(v=>v.name===voiceName); if(v) u.voice=v; u.rate=ttsRate(); u.pitch=1.0;
   u.onboundary=e=>onBoundary&&onBoundary(e.charIndex); let ended=false; u.onend=()=>{ if(ended) return; ended=true; onEnd&&onEnd(); }; u.onerror=e=>{ if(ended) return; ended=true; if(e.error!=='canceled'&&e.error!=='interrupted'){ console.warn('tts error',e.error); onEnd&&onEnd(); } }; // cancel() never fires onEnd (scene change is guarded by sceneSerial); real failures (no voice, not-allowed…) count as 'said'
   window.__lastUtter=u; speechSynthesis.speak(u);
   setTimeout(()=>{ if(!ended&&!speechSynthesis.speaking&&!speechSynthesis.pending){ ended=true; onEnd&&onEnd(); } },1500); // no voice / TTS silently refused (headless, some Android): behave as if the line had been read
 }
+// gloss chips interrupt the narration to speak a definition; pendingNarrEnd keeps the scene's wait-state logic (countdown, after_script) alive across the interruption
+let pendingNarrEnd=null;
+function speakGloss(text){ const fin=pendingNarrEnd; pendingNarrEnd=null; speak(text, null, ()=>{ fin&&fin(); }); }
 
 // ---------- Audio bed ----------
 async function playBed(m){ stopBed(); if(!isCommons(m.ref)) return; const url=await commonsUrl(m.ref); bed=new Audio(url); bed.volume=0.18; bed.loop=true; bed.play().catch(()=>{}); }
@@ -298,15 +319,18 @@ function renderInteraction(s){
 
 function renderOverlays(s, t){
   const box=$('#overlays'); box.innerHTML='';
-  (s.overlays||[]).filter(o=>t>=o.at_s && (o.until_s==null || t<=o.until_s+2)).forEach(o=>{ const e=document.createElement('span'); e.className= o.kind==='pin'?'pin':(o.kind==='fact'?'fact':'cap'); e.textContent=o.text; box.appendChild(e); });
+  (s.overlays||[]).filter(o=>t>=o.at_s && (o.until_s==null || t<=o.until_s+2)).forEach(o=>{ let e;
+    if(o.kind==='gloss'){ e=document.createElement('button'); e.type='button'; e.className='gloss'; e.textContent='📖 '+o.text; e.title='tap to hear this explained'; e.setAttribute('aria-label','glossary: '+o.text+' — tap to hear it read out'); e.onclick=()=>speakGloss(o.text); }
+    else { e=document.createElement('span'); e.className= o.kind==='pin'?'pin':(o.kind==='fact'?'fact':'cap'); e.textContent=o.text; }
+    box.appendChild(e); });
   if(!box.children.length){ box.innerHTML='<span class="muted">'+(s.subtopic||'')+'</span>'; }
 }
 
 async function showScene(i){
-  clearInterval(timer); sceneSerial++; sched=null; genHooks={}; clearCountdown(); speechSynthesis.cancel(); stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
+  clearInterval(timer); sceneSerial++; sched=null; genHooks={}; pendingNarrEnd=null; clearCountdown(); speechSynthesis.cancel(); stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
   idx=Math.max(0,Math.min(scenes.length-1,i)); const s=scenes[idx]; elapsed=0; paused=false; const ser=sceneSerial;
   $('#hScene').textContent=`scene ${idx+1}/${scenes.length} · ${s.type} · ${s.duration_s}s`; $('#title').textContent=s.title; $('#media').innerHTML='';
-  const script=s.narration&&s.narration.script||''; $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:'';
+  const script=pickScript(s); $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:''; // clear-English: variants.clear replaces script for TTS + captions when present
   const media=s.media||[]; const yt=media.find(m=>m.kind==='youtube'), img=media.filter(m=>m.kind==='image'), aud=media.find(m=>m.kind==='audio'&&isCommons(m.ref)), gen=media.filter(m=>m.kind==='generated');
   const genStarts=gen.map(g=>g.start_s||0), firstGen=gen.length?Math.min(...genStarts):Infinity;
   const photoCycle=()=>{ const me=sched&&sched.active; showImage(img[0],true); if(img.length>1){ let k=0; const cyc=setInterval(()=>{ if(scenes[idx]!==s||(sched&&sched.active!==me)) return clearInterval(cyc); k=(k+1)%img.length; showImage(img[k],true); }, Math.max(8000, s.duration_s*1000/img.length)); } };
@@ -335,7 +359,8 @@ async function showScene(i){
   renderInteraction(s); renderOverlays(s,0);
   // narration + timer (narration.starts_at_s honoured; pause_narration/timeout_s: countdown after the script, auto-resolve on timeout)
   const it=s.interaction; const onEnd=()=>{ if(ser!==sceneSerial||!it||it.kind==='none'||interactionResolved) return; if(it.pause_narration&&it.timeout_s){ paused=true; startCountdown(it.timeout_s, ()=>{ if(ser!==sceneSerial) return; const box=$('#interaction'); if(box.autoResolve) box.autoResolve(); else paused=false; }); } };
-  const startTts=()=>{ if(ser!==sceneSerial) return; speak(script, ci=>{ if(!captions) return; $('#script').innerHTML=`<span class="said">${script.slice(0,ci)}</span><span class="unsaid">${script.slice(ci)}</span>`; }, onEnd); };
+  const endOnce=()=>{ pendingNarrEnd=null; onEnd(); };
+  const startTts=()=>{ if(ser!==sceneSerial) return; pendingNarrEnd=endOnce; speak(script, ci=>{ if(!captions) return; $('#script').innerHTML=`<span class="said">${script.slice(0,ci)}</span><span class="unsaid">${script.slice(ci)}</span>`; }, endOnce); };
   const delay=(s.narration&&s.narration.starts_at_s)||0; if(delay>0) setTimeout(startTts, delay*1000); else startTts();
   t0=performance.now(); timer=setInterval(tick,500); tick();
 }
@@ -351,16 +376,40 @@ $('#next').onclick=next; $('#prev').onclick=()=>showScene(idx-1);
 $('#btnCap').onclick=()=>{ captions=!captions; $('#btnCap').style.opacity=captions?1:.4; showScene(idx); };
 $('#btnMute').onclick=()=>{ narrate=!narrate; $('#btnMute').textContent=narrate?'🔈':'🔇'; if(!narrate) speechSynthesis.cancel(); };
 $('#btnList').onclick=()=>{ const n=prompt('Jump to scene number (1–'+scenes.length+'):\n'+scenes.map((s,i)=>`${i+1}. ${s.title}`).join('\n')); if(n) showScene(parseInt(n,10)-1); };
-$('#testVoice').onclick=()=>{ localStorage.setItem('yy-voice',$('#voice').value); speak('It is Wednesday, the second of October, eighteen seventy-two. We have a train to catch.'); };
-$('#voice').onchange=()=>localStorage.setItem('yy-voice',$('#voice').value);
+$('#testVoice').onclick=()=>{ voiceName=$('#voice').value; localStorage.setItem('yy-voice',voiceName); speak('It is Wednesday, the second of October, eighteen seventy-two. We have a train to catch.'); };
+$('#voice').onchange=()=>{ voiceName=$('#voice').value; localStorage.setItem('yy-voice',voiceName); };
+$('#rate').value=String(ttsRate()); $('#rate').onchange=e=>localStorage.setItem('yy-rate',e.target.value);
+$('#clearEn').checked=clearEnglish;
+$('#clearEn').onchange=e=>{ clearEnglish=e.target.checked; localStorage.setItem('yy-clear',clearEnglish?'1':'0'); if(!localStorage.getItem('yy-rate')) $('#rate').value=String(ttsRate()); }; // no explicit speed chosen → clear mode defaults the dial to 0.9
 $('#gkey').value=localStorage.getItem('yy-gkey')||''; $('#gkey').onchange=e=>localStorage.setItem('yy-gkey',e.target.value.trim());
-document.addEventListener('keydown',e=>{ if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') showScene(idx-1); if(e.key===' '){ paused=!paused; e.preventDefault(); } });
+
+// ---------- who's who (cast card; product-level shared/whos-who.json — button hidden if the file is missing) ----------
+let whoData=null, whoPrevPaused=false;
+const escHtml=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function loadWhosWho(){
+  const ref=(tour&&tour.whos_who)||'../shared/whos-who.json'; const url=/^(https?:)?\//.test(ref)?ref:TOUR_DIR+ref;
+  try{ const r=await fetch(url); if(!r.ok) throw new Error(r.status); const j=await r.json();
+    if(j&&Array.isArray(j.entries)&&j.entries.length){ whoData=j; $('#btnWho').hidden=false; } }
+  catch(e){ console.warn('no whos-who card:',e.message); }
+}
+function openWho(){ if(!whoData) return; whoPrevPaused=paused; paused=true; try{ speechSynthesis.pause(); }catch(e){}
+  $('#whoTitle').textContent=whoData.title||"Who's who";
+  $('#whoBody').innerHTML=whoData.entries.map(en=>`<p><b>${escHtml(en.name)}</b> — ${escHtml(en.who)}</p>`).join('');
+  $('#who').hidden=false; $('#whoClose').focus(); }
+function closeWho(){ $('#who').hidden=true; paused=whoPrevPaused; try{ speechSynthesis.resume(); }catch(e){} $('#btnWho').focus(); }
+$('#btnWho').onclick=openWho; $('#whoClose').onclick=closeWho;
+$('#who').addEventListener('click',e=>{ if(e.target===$('#who')) closeWho(); });
+
+document.addEventListener('keydown',e=>{ if(!$('#who').hidden){ if(e.key==='Escape') closeWho(); return; } // modal open: keys stay in the card
+  if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') showScene(idx-1); if(e.key===' '){ paused=!paused; e.preventDefault(); } });
 
 (async()=>{
   try{ tour=await (await fetch(TOUR_URL)).json(); }catch(e){ $('#coverTitle').innerHTML='<h1>Yunyou</h1><p>Could not load '+TOUR_URL+'</p>'; return; }
   const ch=tour.chapters[0]; scenes=ch.scenes; $('#hTitle').textContent=tour.title;
-  $('#coverTitle').innerHTML=`<p class="muted" style="letter-spacing:.2em;text-transform:uppercase">${tour.title}</p><h1>${ch.title}</h1><p>${ch.hook}</p><p class="muted">${scenes.length} scenes · about ${Math.round(scenes.reduce((a,s)=>a+s.duration_s,0)/60)} minutes · headphones recommended</p>`;
-  $('#start').onclick=()=>{ localStorage.setItem('yy-voice',$('#voice').value); $('#cover').remove(); showScene(0); };
+  const recap= typeof ch.recap==='string'&&ch.recap ? `<p class="muted" style="max-width:560px"><span style="letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--accent)">Previously</span><br>${ch.recap}</p>` : '';
+  $('#coverTitle').innerHTML=`<p class="muted" style="letter-spacing:.2em;text-transform:uppercase">${tour.title}</p><h1>${ch.title}</h1><p>${ch.hook}</p>${recap}<p class="muted">${scenes.length} scenes · about ${Math.round(scenes.reduce((a,s)=>a+s.duration_s,0)/60)} minutes · headphones recommended</p>`;
+  loadWhosWho();
+  $('#start').onclick=()=>{ voiceName=$('#voice').value; localStorage.setItem('yy-voice',voiceName); $('#cover').remove(); showScene(0); };
 })();
 </script>
 </body>
