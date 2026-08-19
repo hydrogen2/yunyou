@@ -19,6 +19,13 @@ class H(http.server.SimpleHTTPRequestHandler):
     def __init__(self,*a,**k): super().__init__(*a,directory=os.path.abspath(root),**k)
     def end_headers(self):
         self.send_header('Cache-Control','no-store'); self.send_header('Accept-Ranges','bytes'); super().end_headers()
+    def handle_one_request(self):
+        # BUG FIX 2026-08-19: with HTTP/1.1 keep-alive one handler instance serves many requests
+        # on the same connection, so _range_left leaked from a Range request into the next plain
+        # request, truncating its body -> the client waited forever -> the whole server looked hung.
+        self._range_left = None
+        return super().handle_one_request()
+
     def do_GET(self):
         if self.path.split('?')[0]=='/watch/index.json':   # directory of every chapter that has a rendered cut
             import json,glob
