@@ -82,3 +82,22 @@ Applied in `scenes/*.scene.json` (full per-scene list in `scenes/README.md` → 
 
 **Next: A6** (media re-sourcing) → A6w/A6e → then ONE render carrying both A5 and A6.
 
+
+## 2026-08-19 — C1a landed; re-render in flight
+Player: streetview mode `open` LIVE (Mapillary frames, 6x 360° pano, free; ladder open→embed→link; zero billable calls).
+/watch: re-render started 10:04 UTC (scene 05 now uses `panowalk` frames). When it finishes: regenerate
+`linear/watch.json` from the render log (16 chapters, `track: clear`) and tell the founder.
+
+OPEN — needs Rights before anything ships publicly:
+- **Mapillary licence is unresolvable from the API.** `fields=id,license` returns bare id; the entity endpoint 500s on
+  `license`; `organization_id` absent on central-London images. Their terms say CC BY-SA by default but SOME content is
+  CC BY-NC-SA, and NC is a hard stop for us (D4 puts our output under CC BY-SA). Every frame is currently classed
+  `unknown` and only ships because a human passed `--accept-unknown-licence`; the burned credit says so honestly.
+  Rights must rule: accept the platform default, or contact Mapillary, or drop to KartaView-only (which loses the Strand).
+
+OPEN — content, not engineering:
+- Scene 04 asks 91–112 m of street per 15 s beat (~7 m/s, bicycle). Walking pace needs longer beats or shorter legs —
+  a Scene Developer/Rundown decision. Evidence: the same pipeline reads as a walk at the Reform stop (45 s, 3.5 m/s)
+  and scene 15 (1.7 m/s). Fetcher now reports `pace` per stop; `frames.json` carries `pace_reads_as`.
+- Stop w00 (Savile Row) falls back to `embed`: the cue names 7–8 Savile Row, 57–70° off every camera's heading there,
+  and a flat photo holds ~70°. Correctly refused rather than pinning a label over the wrong building.
