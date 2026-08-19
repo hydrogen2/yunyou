@@ -95,11 +95,11 @@
     },
     {
       "kind": "streetview",
-      "ref": "51.5067,-0.1335,165,5,80",
+      "ref": "51.50678,-0.13354,168,14,90",
       "license": "google-maps-embed",
       "manifest_id": "M-37",
       "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 6: facing the Reform Club façade, 104 Pall Mall (OSM centroid 51.50654,-0.13346). Cumulative 1,120 m → counter must read 1,151 here. Optional look-on: Waterloo Place 51.5070,-0.1318 heading 90 (not counted).",
+      "note": "Waypoint 6: facing the Reform Club façade, 104 Pall Mall (OSM centroid 51.50654,-0.13346). Point refined 2026-08-19 (engine-tools) from 51.5067,-0.1335 to the pano Google actually returns there, 51.506775,-0.133543 (imagery 2025-10, verified via the Street View metadata endpoint); heading 168° is the measured bearing to the façade centroid, 27 m away. Cumulative 1,120 m → counter must read 1,151 here. Optional look-on: Waterloo Place 51.5070,-0.1318 heading 90 (not counted).",
       "fallback": "M-20"
     }
   ],
@@ -194,6 +194,112 @@
       "position": "tl"
     }
   ],
+  "camera": [
+    {
+      "at_s": 0,
+      "at_waypoint": 0,
+      "heading": 350,
+      "pitch": 2,
+      "zoom": 0.8,
+      "hold_s": 10,
+      "ease_s": 0,
+      "label": "look north up Savile Row (M-39 stop, waypoint 0)"
+    },
+    {
+      "at_s": 15,
+      "at_waypoint": 0,
+      "look_at": "51.51073,-0.13987",
+      "heading": 82,
+      "pitch": 10,
+      "zoom": 0.85,
+      "hold_s": 7,
+      "ease_s": 2.5,
+      "label": "turn to face 7-8 Savile Row (OSM 'Gossard House 7-8') as the caption fires"
+    },
+    {
+      "at_s": 30,
+      "at_waypoint": 1,
+      "heading": 240,
+      "pitch": 0,
+      "zoom": 0.8,
+      "hold_s": 4,
+      "ease_s": 2,
+      "label": "Verne's corner: turn right, WSW along Burlington Gardens"
+    },
+    {
+      "at_s": 45,
+      "at_waypoint": 2,
+      "heading": 150,
+      "pitch": 0,
+      "zoom": 0.8,
+      "hold_s": 4,
+      "ease_s": 2,
+      "label": "Old Bond Street: turn left, downhill towards Piccadilly"
+    },
+    {
+      "at_s": 60,
+      "at_waypoint": 3,
+      "heading": 147,
+      "pitch": 0,
+      "zoom": 0.8,
+      "hold_s": 4,
+      "ease_s": 2,
+      "label": "Piccadilly: across, then the mouth of St James's Street"
+    },
+    {
+      "at_s": 75,
+      "at_waypoint": 4,
+      "heading": 147,
+      "pitch": 0,
+      "zoom": 0.8,
+      "hold_s": 3,
+      "ease_s": 2,
+      "label": "St James's Street, the long straight slope"
+    },
+    {
+      "at_s": 90,
+      "at_waypoint": 5,
+      "heading": 65,
+      "pitch": 5,
+      "zoom": 0.8,
+      "hold_s": 5,
+      "ease_s": 2.5,
+      "label": "Pall Mall: turn east, clubland on the right (gas-lamp pin at 90 s)"
+    },
+    {
+      "at_s": 105,
+      "at_waypoint": 6,
+      "look_at": "51.50654,-0.13346",
+      "heading": 168,
+      "pitch": 18,
+      "zoom": 0.72,
+      "hold_s": 13,
+      "ease_s": 3,
+      "label": "Reform Club facade, 104 Pall Mall (OSM centroid) - pin at 105 s"
+    },
+    {
+      "at_s": 120,
+      "at_waypoint": 6,
+      "look_at": "51.50668,-0.13308",
+      "heading": 109,
+      "pitch": 12,
+      "zoom": 0.9,
+      "hold_s": 13,
+      "ease_s": 3,
+      "label": "a little left: Travellers Club, 106 Pall Mall (OSM centroid) - pin at 120 s"
+    },
+    {
+      "at_s": 135,
+      "at_waypoint": 6,
+      "look_at": "51.50679,-0.13275",
+      "heading": 89,
+      "pitch": 8,
+      "zoom": 1.1,
+      "hold_s": 14,
+      "ease_s": 3,
+      "label": "beyond it: the Athenaeum, 107 Pall Mall (OSM centroid) - pin at 135 s"
+    }
+  ],
   "interaction": {
     "kind": "walk",
     "prompt": "Walk with Fogg — the full 1,151 steps. Tap ahead to step; the counter climbs with you.",
@@ -204,7 +310,7 @@
       "51.5081,-0.1400,147",
       "51.5065,-0.1393,147",
       "51.5053,-0.1381,65",
-      "51.5067,-0.1335,165"
+      "51.50678,-0.13354,168"
     ]
   },
   "transition": {
@@ -228,6 +334,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: full seven-stop walk M-39→M-53→M-54→M-55→M-56→M-57→M-37 (D5) with per-stop headings and fallbacks; counter recalibrated to 0.97 m/step, no jump caption, lands on 1,151 at the façade; Pall Mall leg now starts on M-57's true corner and the gas pin geo moved with it; overlays and cue sentences waypoint-triggered (at_waypoint / waypoint_script) with at_s fallback; sticker tr; Travellers 1832 (F-44), house-number style '106 Pall Mall'; No. 7 caption softened (D7); production_notes: counter needs Maps JavaScript API — key/billing owner open (D12). A1 narrator 2026-08-18: waypoint_script polished (24-word openers split at stops 0 and 5; contractions per R4); script regenerated as the join; counter numbers stay spoken because they are the beat, not a caption read-out. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): waypoint 0 now names the destination ('leaves for his club') so a first-time reader knows where we are walking; script regenerated as the join; clubland gloss chip at the Pall Mall waypoint; clear-English variant added (single track — the player plays it linearly over the walk). A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.waypoint_script_variants.clear added — seven blocks whose join is exactly variants.clear, so the walk speaks one register end to end in clear mode. No fact or timing changed. Engine: the player and the linear renderer still read waypoint_script only (backlog)."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: full seven-stop walk M-39→M-53→M-54→M-55→M-56→M-57→M-37 (D5) with per-stop headings and fallbacks; counter recalibrated to 0.97 m/step, no jump caption, lands on 1,151 at the façade; Pall Mall leg now starts on M-57's true corner and the gas pin geo moved with it; overlays and cue sentences waypoint-triggered (at_waypoint / waypoint_script) with at_s fallback; sticker tr; Travellers 1832 (F-44), house-number style '106 Pall Mall'; No. 7 caption softened (D7); production_notes: counter needs Maps JavaScript API — key/billing owner open (D12). A1 narrator 2026-08-18: waypoint_script polished (24-word openers split at stops 0 and 5; contractions per R4); script regenerated as the join; counter numbers stay spoken because they are the beat, not a caption read-out. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): waypoint 0 now names the destination ('leaves for his club') so a first-time reader knows where we are walking; script regenerated as the join; clubland gloss chip at the Pall Mall waypoint; clear-English variant added (single track — the player plays it linearly over the walk). A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.waypoint_script_variants.clear added — seven blocks whose join is exactly variants.clear, so the walk speaks one register end to end in clear mode. No fact or timing changed. Engine: the player and the linear renderer still read waypoint_script only (backlog). A4 engine-tools 2026-08-19 (v0.4 cinematic Street View): added the `camera` track — ten look-at cues on the same at_s as the overlays, so the turn and the pin coincide; the three clubhouse cues use look_at with OSM centroids (Reform 51.50654,-0.13346; Travellers 51.50668,-0.13308; Athenaeum 51.50679,-0.13275, all verified via Overpass) so the framing survives Google moving the nearest pano. Headings/pitches checked against real Street View Static frames from the M-37 pano (51.506775,-0.133543, imagery 2025-10): heading 168 pitch 18 fov ~110 shows the whole Portland-stone façade; 109 and 89 are the Travellers and the Athenaeum, both to the LEFT of the Reform as the narration says. Narration and overlays untouched. NOTE for the Scene Developer: interaction.prompt still says 'Tap ahead to step' — the walk now plays itself with no tapping, so that line needs a rewrite. Waypoint 6 / M-37 refined to the returned pano 51.50678,-0.13354 (heading 168°) so the three close-range look_at cues (27-55 m) resolve to the bearings measured from the real pano; the rounded 51.5067,-0.1335 swung the Travellers bearing by 15°. Route length by haversine over the rounded waypoints is 1,086 m; F-43's 1,120 m is measured between the exact OSM junction nodes — the spoken counter numbers are unaffected."
   }
 }

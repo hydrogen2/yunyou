@@ -52,3 +52,74 @@ Schema + validator + player + one content-adjacent data file (compiled, not narr
 - **Test** `studio/player/test/smoke_v03.mjs` (playwright-core from `studio/tools/render/node_modules`): 22 checks in 2 passes — cover controls, recap, variant swap + fallback, rate precedence, gloss chip render/tap, who's-who open/pause/close/no-F-ids, missing-whos-who degradation, and a regression check for the voice crash (injects a fake `voices[]` post-start). Injects recap/variant/gloss into the tour via `page.route` — content files untouched; route matching uses `URL.pathname` predicates because the player URL carries `tour.json` in its query string. Run: `node studio/player/test/smoke_v03.mjs [--player https://localhost/player/] [--tour /products/…/tour.json]`. Result 2026-08-19: **ALL PASS (22/22)**; `smoke_generated.mjs --only 2,10,13` re-run after the edits: **ALL PASS** (no v0.2 regression).
 - Look at: the cover (toggle + speed dial + recap), scene 1 with `?` — inject a `gloss` overlay or use the smoke test; the who's-who card from the 👥 header button.
 - Still NOT done: `after_script`/interaction feedback lines have no clear variant (they play as written); gloss taps rewind nothing (narration resumes at the next line, not where it left off — the interrupted remainder is skipped, only the wait-state chain survives); who's-who is one flat card (no per-scene "who is on screen now" filter); localization variants (zh) are schema-ready but the player only knows `clear`; the linear renderer ignores variants/gloss entirely (linear cut = main track).
+
+## 2026-08-19 — v0.4 (engine-tools, A4: the `streetview` scene type walks itself)
+Founder brief: *"if i need to click on the streetview to walk it's too much work; I want it like watching a video."* The manual
+stop-by-stop stepper is gone. A streetview scene is now a shot: the camera walks the route by itself, paced to `duration_s`,
+and turns to look at what the narration names. **No click is required to progress, ever** — and a streetview walk no longer
+counts as "needs input", so the scene hands on to the next one like a video.
+- **Schema:** new top-level `camera` array — `{at_s, heading | look_at, pitch?, zoom?, hold_s?, ease_s?, at_waypoint?, label?}`
+  (why: the view has to turn to the Reform Club *as the guide names it*, and a heading alone cannot survive Google moving the
+  nearest pano). `look_at: "lat,lng"` is aimed from wherever the camera actually is; `heading` is the fallback for modes that
+  cannot know their position. Old scene files are unaffected — with no `camera` track the runtime synthesises one cue per stop
+  from the stop's own heading, i.e. exactly the v0.3 framings, walked instead of stepped. No migration needed.
+- **Pacing comes from the content, not from a new field.** Waypoint *k* is timed to arrive at the earliest `at_s` of the
+  overlays carrying `at_waypoint: k`; scenes without waypoint overlays spread their stops over the first 72 % of the scene.
+  So the pin, the sentence and the arrival coincide by construction (this is `overlays[].at_waypoint`, finally honoured —
+  inverted: it schedules the walk instead of re-firing the overlay).
+- **Fallback ladder, silent and automatic** (`window.__sv.mode`):
+  1. `js` — Maps JavaScript API `StreetViewPanorama`. `StreetViewService.getPanorama` finds the stop pano
+     (`StreetViewSource.GOOGLE`, so no third-party photosphere attribution), then the walk hops pano-to-pano along each
+     pano's `links` (nearest link heading within 62° of the bearing to the target; no link down that street → one
+     `getPanorama` hop). POV is eased every frame with a critically damped spring (`svSmooth`, rAF) — ease-in *and* out,
+     tracks a moving target, never snaps. Each position change cross-fades. Rate limit is on the **wall clock**, so a `seek`
+     cannot freeze the walk.
+  2. `stills` — Street View Static hyperlapse on the same timeline: frames every `step_m` metres (and one per look-at),
+     capped at `max_stills`, cross-faded between two `<img>` layers, requested at playback time with a ≤ 2-frame lookahead.
+     Availability is probed with the free *metadata* endpoint (which answers HTTP 200 even when the key is denied, so the
+     probe cannot print a console error); if the key's referrer restrictions deny our origin the probe retries with
+     `referrer-policy: no-referrer` and the images follow that policy.
+  3. `link` — no key / nothing enabled: the v0.3 "open in Google Maps" card, except it now advances through the stops on the
+     timeline by itself.
+  A `gm_authFailure` **mid-scene** (key restricted, billing off, API disabled) tears the dead panorama down and slides to
+  `stills` without an error card and without a broken pano on screen. Verified live in the smoke test.
+- **Viewer control without chores:** dragging takes the camera off auto-walk instantly (`pointerdown`/`wheel`) and it takes
+  over again ~4 s after the last touch, easing from wherever the traveller left it. Controls: `⏸` pause/resume (scene clock +
+  speech) and `↻` replay the walk. That is the whole UI.
+- **Rights compliance is in the code, not in a note:** controls top-left, our attribution chip top-right, and the cross-fade
+  element is `bottom: 30px` so Google's logo and ©-line inside the pano/frame are never covered (the old stop stepper sat
+  bottom-left, right on top of the logo). Nothing is recorded, cached or pre-bundled; the linear renderer still draws stop
+  cards and never screen-records Street View.
+- **Config** (`www/config.json`, gitignored — see the new committed `www/config.example.json`): `streetview.mode`
+  (`auto|js|stills|link`, per-browser override `localStorage['yy-sv-mode']`), `step_m` (metres of drift before the walk hops —
+  this is the **cost dial**: 12 ≈ every pano, 25 ≈ every other one), `max_stills`, `fade_ms`, `resume_after_s`, `smooth_s`,
+  `base_zoom`. No key or model id is hard-coded anywhere.
+- **Content wired (technical fields only; no narration or overlay text touched):** scene 04 gets ten cues — up the Row, the
+  turn to 7–8 Savile Row at 15 s, the five street turns, then the Reform (168°, pitch 18), the Travellers (109°) and the
+  Athenaeum (89°) at 105/120/135 s, each `look_at` an OSM centroid. Scene 15 gets four — the cross, the look **up** the spire
+  (pitch 32), the 87° turn right to Charles I at 13 s as the narration names him, and back.
+- **Two content bugs found by pointing a camera at the coordinates.** (a) Scene 15 / M-38's stop `51.5083,-0.1247` returns a
+  pano **inside the station concourse** (train shed, WHSmith) — moved to the verified forecourt pano `51.50855,-0.12543`
+  (2025-07), 16 m from the cross; from there "to your right" for Charles I is geometrically true. (b) Scene 04's façade stop
+  was rounded to 4 decimals, which at 27 m swings the bearing to the Travellers by 15° — refined to the returned pano
+  `51.50678,-0.13354`. Both are noted in the scene `review.notes` and in the manifest rows for the Content Preparer to confirm.
+  Also verified live: **all seven walk stops have panoramas** (six 2025-10, M-56 is 2012-05) — the manifest's "expected" is now
+  "confirmed".
+- **Validator:** `camera` cues must be aimable (`heading` or a well-formed `look_at`), inside `duration_s`, in time order,
+  non-overlapping holds, `at_waypoint` in range; warns when a streetview walk has no camera track, and when a `pin`/`caption`
+  names something the camera never turns to (no cue within 3 s). Template checklist updated with how to author a cue.
+- **Test** `studio/player/test/smoke_streetview.mjs` — 56 checks, **ALL PASS 2026-08-19** against
+  `https://178-104-53-233.sslip.io/player/` (must be that host: the key is referrer-restricted, localhost is denied).
+  Pass 1 = plan + camera maths with the network blocked; pass 2 = the real panorama walk (eased turn < 25°/frame, panos
+  advance with zero clicks, drag/idle/resume, ⏸/↻, fade clears the ©-line); pass 3 = JS API blocked → static hyperlapse
+  (53 frames, metadata probed first); pass 4 = no key → auto-advancing card; pass 5 = live `gm_authFailure` → stills.
+  Run: `node studio/player/test/smoke_streetview.mjs [--player …] [--no-js]` (`--no-js` skips the two billed passes).
+- **Cost, so the dial is not a surprise:** the `js` mode bills one *Dynamic Street View* panorama load per hop
+  ($14/1,000, 5,000 free/month) — scene 04 at `step_m: 12` is ≈ 90 hops ≈ $1.26 a play (≈ 55 free plays a month, or double
+  that at `step_m: 25`). The `stills` mode bills *Street View Static* ($7/1,000, 10,000 free/month) — ≈ 53 frames ≈ $0.37 a
+  play. Metadata and the Embed API are free. Figures from Google's pricing page 2026-08-19; confirm on the SKU page.
+- **Still NOT done:** the 1,151-step counter (the `js` mode now has live position — `window.__sv.debug.pos` — but nothing
+  draws it); `media[].fallback` for a missing pano (v0.4 skips forward to the next reachable pano instead of showing the
+  still); the `stills` mode cannot be dragged (it is a hyperlapse, there is nothing to pan); no counter/attribution work in
+  the linear renderer, which still draws stop cards and must keep doing so; scene 04's `interaction.prompt` still says
+  "Tap ahead to step" — a Scene Developer fix, not an engine one.

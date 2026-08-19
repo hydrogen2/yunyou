@@ -16,11 +16,11 @@
   "media": [
     {
       "kind": "streetview",
-      "ref": "51.5083,-0.1247,180,10,80",
+      "ref": "51.50855,-0.12543,142,25,80",
       "license": "google-maps-embed",
       "manifest_id": "M-38",
-      "attribution": "Google Street View (Maps Embed API)",
-      "note": "From the Strand looking into the forecourt: Eleanor Cross centre, hotel façade behind. Alt inside the forecourt 51.5081,-0.1246 heading 200 (taxi rank — confirm pano). Fallback if no pano: M-26 (the cross, portrait still).",
+      "attribution": "Google Street View (Maps JavaScript API — Street View service; Static API in the fallback mode)",
+      "note": "Forecourt of Charing Cross, on the Strand pavement WNW of the cross: Eleanor Cross centre frame at heading 142°, Charing Cross Hotel façade behind. CORRECTED 2026-08-19 (engine-tools): the previous point 51.5083,-0.1247 resolves to a Google pano INSIDE the station concourse (verified: Street View Static metadata pano at 51.508257,-0.124700, imagery 2024-06, and the image at heading 180 shows the train-shed roof and WHSmith, not the cross). This point resolves to the outdoor pano at 51.508552,-0.125429, imagery 2025-07, 16 m from the cross (OSM node 10969212579 at 51.50844,-0.12529). Alt wider stop 51.508431,-0.125646 heading 87°. Fallback if no pano: M-26 (the cross, portrait still).",
       "fallback": "M-26"
     }
   ],
@@ -33,11 +33,57 @@
       "position": "tr"
     }
   ],
+  "camera": [
+    {
+      "at_s": 0,
+      "at_waypoint": 0,
+      "look_at": "51.50844,-0.12529",
+      "heading": 142,
+      "pitch": 10,
+      "zoom": 0.8,
+      "hold_s": 2,
+      "ease_s": 0,
+      "label": "the cross in the forecourt, hotel façade behind"
+    },
+    {
+      "at_s": 2,
+      "at_waypoint": 0,
+      "look_at": "51.50844,-0.12529",
+      "heading": 142,
+      "pitch": 32,
+      "zoom": 1.1,
+      "hold_s": 9,
+      "ease_s": 2.5,
+      "label": "look up — the 1865 replica cross, 21 m of Portland stone (F-21)"
+    },
+    {
+      "at_s": 13,
+      "at_waypoint": 0,
+      "look_at": "51.50733,-0.12765",
+      "heading": 229,
+      "pitch": 0,
+      "zoom": 0.6,
+      "hold_s": 8,
+      "ease_s": 3,
+      "label": "turn right, across to where Charles I rides — 205 m WSW (OSM 12877095809), F-39"
+    },
+    {
+      "at_s": 22,
+      "at_waypoint": 0,
+      "look_at": "51.50844,-0.12529",
+      "heading": 142,
+      "pitch": 18,
+      "zoom": 0.9,
+      "hold_s": 3,
+      "ease_s": 2,
+      "label": "settle back on the cross"
+    }
+  ],
   "interaction": {
     "kind": "walk",
     "prompt": "Look up, then turn right toward Trafalgar Square.",
     "route": [
-      "51.5083,-0.1247"
+      "51.50855,-0.12543,142"
     ]
   },
   "transition": {
@@ -50,11 +96,11 @@
     "F-21",
     "F-39"
   ],
-  "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop with free look (interaction kind 'walk', one waypoint); media[0].fallback = M-26 if the forecourt pano is missing. 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano and behind buildings — the pin is a plain corner pin (no geo, it would float over a wall); 'to your right' when facing south. Next: Quiz B (16), then the dialogue (17) — D4.",
+  "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop, cinematic: the camera looks up the cross, turns right to Charles I as the narration names him, then settles back (scene `camera` track, player v0.4). Free look still works — dragging pauses the cues for 4 s; media[0].fallback = M-26 if the forecourt pano is missing. 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano and behind buildings — the pin is a plain corner pin (no geo, it would float over a wall); 'to your right' when facing south. Next: Quiz B (16), then the dialogue (17) — D4.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4). A1 narrator 2026-08-18: 36-word Charles I sentence split into three; ends on 'this cross'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4). A1 narrator 2026-08-18: 36-word Charles I sentence split into three; ends on 'this cross'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added. A4 engine-tools 2026-08-19 (v0.4 cinematic Street View): the stop was pointing at the wrong place — 51.5083,-0.1247 resolves to a pano inside the station concourse (station roof + WHSmith at heading 180, imagery 2024-06, verified against the Street View Static image). Moved to the verified outdoor forecourt pano 51.50855,-0.12543 (imagery 2025-07), 16 m from the cross, which frames cross + hotel exactly as the note describes; Content Preparer to confirm and update M-38. Added a four-cue `camera` track: look up the spire (pitch 32) while the pin is up, turn right 87° to the Charles I statue (OSM 12877095809, 205 m WSW) at 13 s as the narration names him, then settle back. From this pano 'to your right' is geometrically true. Narration and overlays untouched."
   }
 }

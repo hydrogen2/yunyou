@@ -401,27 +401,32 @@ async function svLive(plan, box, ctl){
   pano.addListener('position_changed',()=>{ const p=pano.getPosition(); if(p){ pos={lat:p.lat(),lng:p.lng()}; } });
   pano.addListener('links_changed',()=>{ links=pano.getLinks()||[]; });
   pano.addListener('pano_changed',()=>{ chrome.flash(); });
-  const step=(target)=>{                       // one pano along the street toward the target position
+  const jump=target=>svc.getPanorama({location:target, radius:40, source:src},(d,st)=>{ if(ctl.dead) return;
+    if((st==='OK'||st===google.maps.StreetViewStatus.OK)&&d){ loads++; pano.setPano(d.location.pano); } });
+  const step=target=>{                         // one pano along the street toward the target, using this pano's links
     const want=svBearing(pos,target); let best=null, bd=999;
     (links||[]).forEach(l=>{ const d=Math.abs(svDelta(l.heading,want)); if(d<bd){ bd=d; best=l; } });
     if(best&&bd<62){ loads++; pano.setPano(best.pano); return true; }
-    svc.getPanorama({location:target, radius:40, source:src},(d,st)=>{ if(ctl.dead) return;
-      if((st==='OK'||st===google.maps.StreetViewStatus.OK)&&d){ loads++; pano.setPano(d.location.pano); } });
-    return true;
+    jump(target); return false;                // no link down this street (turn, dead end): hop straight there
   };
   const frame=()=>{
     if(ctl.dead) return; ctl.raf=requestAnimationFrame(frame);
     const now=performance.now()/1000, dt=Math.min(0.1,Math.max(0.001,now-last)); last=now;
     if(paused||document.hidden) return;
     const t=elapsed, tgt=svCameraAt(plan,t);
-    ctl.debug={mode:'js', t, stop:tgt.stop, cue:tgt.cue?tgt.cue.label:'', loads, heading:cur.h, holding:tgt.holding};
+    ctl.debug={mode:'js', t, stop:tgt.stop, cue:tgt.cue?tgt.cue.label:'', loads, heading:cur.h, holding:tgt.holding, gap:Math.round(svDist(pos,tgt.pos)), pos};
     if(ctl.userActive||t<ctl.userUntil){ const pv=pano.getPov(); if(pv){ cur.h=pv.heading; cur.p=pv.pitch; } vh.v=vp.v=0; return; } // hands off while the traveller looks around
     const smooth = tgt.cue ? Math.max(0.35,(tgt.cue.ease_s||1.8)/2) : SVCFG.smooth_s;
-    cur.h = svNorm(svSmooth(cur.h, cur.h+svDelta(cur.h,tgt.heading), vh, smooth, dt));
+    const want = (tgt.cue&&tgt.cue.look_at) ? svBearing(pos,tgt.cue.look_at) : tgt.heading;   // aim from where we really are
+    cur.h = svNorm(svSmooth(cur.h, cur.h+svDelta(cur.h,want), vh, smooth, dt));
     cur.p = svSmooth(cur.p, tgt.pitch, vp, smooth, dt);
     cur.z = svSmooth(cur.z, tgt.zoom, vz, smooth*1.4, dt);
-    pano.setPov({heading:cur.h, pitch:cur.p}); if(Math.abs(pano.getZoom()-cur.z)>0.02) pano.setZoom(cur.z);
-    if(!tgt.holding && t>=nextStepAt && svDist(pos,tgt.pos)>SVCFG.step_m){ nextStepAt=t+0.55; step(tgt.pos); }
+    pano.setPov({heading:cur.h, pitch:cur.p}); if(Math.abs((pano.getZoom()||1)-cur.z)>0.02) pano.setZoom(cur.z);
+    const wall=now, gap=svDist(pos,tgt.pos);                       // rate-limit on the wall clock: a seek must not freeze the walk
+    if(wall>=nextStepAt && gap>SVCFG.step_m){
+      if(tgt.holding||gap>120){ nextStepAt=wall+0.9; jump(tgt.pos); }   // late for a look-at, or a long hop: go straight to the stop
+      else { nextStepAt=wall+0.55; step(tgt.pos); }
+    }
   };
   ctl.raf=requestAnimationFrame(frame);
   return 'js';
@@ -467,7 +472,7 @@ async function svStills(plan, box, ctl){
   const r=box.getBoundingClientRect(); const w=640, h=Math.max(200,Math.min(640,Math.round(640*(r.height||540)/(r.width||960))));
   const layers=[document.createElement('img'),document.createElement('img')];
   layers.forEach(im=>{ im.className='svstill'; im.alt='Google Street View'; im.decoding='async'; if(probe.pol) im.referrerPolicy=probe.pol; box.appendChild(im); });
-  const chrome=svChrome(box,plan,ctl); svWireIdle(box,ctl);
+  const chrome=svChrome(box,plan,ctl);          // no drag-to-look in this mode: a still cannot be panned, so nothing to pause
   chrome.att.textContent='Google Street View — hyperlapse';
   let shown=-1, front=0, warm=[];
   const url=f=>svStillUrl(f,w,h,key);
@@ -509,7 +514,7 @@ async function showStreetView(s){
   svStop();
   const box=$('#media'); const plan=svPlan(s);
   if(!plan){ sceneCard(s,[]); return; }
-  const ctl={dead:false, raf:0, userActive:false, userUntil:0, mode:null, plan, debug:{}}; svRun=ctl;
+  const ctl={dead:false, raf:0, userActive:false, userUntil:0, mode:null, plan, debug:{}}; svRun=ctl; window.__sv=ctl; // test/QA hook: mode, plan, live debug
   const ser=sceneSerial;
   box.innerHTML='<div class="fill"><div class="muted">Street View — connecting…</div></div>';
   ctl.onAuthFail=()=>{ if(ctl.dead||ctl.mode!=='js') return; ctl.mode=null; box.innerHTML=''; svBegin('stills'); };
@@ -525,10 +530,10 @@ async function showStreetView(s){
         else if(m==='stills'){ await svStills(plan,box,ctl); }
         else { svLinkCard(plan,box,ctl); }
         if(ctl.dead) return;
-        window.__sv=ctl; return;                                  // mode is up
+        return;                                                   // mode is up
       }catch(e){ if(ctl.dead) return; console.info('street view: '+m+' unavailable ('+(e&&e.message)+') — falling back'); ctl.mode=null; if(ctl.raf) cancelAnimationFrame(ctl.raf); box.innerHTML=''; }
     }
-    sceneCard(s,[]); window.__sv=ctl;
+    ctl.mode='none'; sceneCard(s,[]);
   };
   await svBegin(ladder[0]);
 }
@@ -668,6 +673,7 @@ fetch('/config.json').then(r=>r.ok?r.json():null).then(c=>{
   const own=localStorage.getItem('yy-own-gkey')==='1';
   if(c&&c.maps_api_key){ if(!own) localStorage.setItem('yy-gkey',c.maps_api_key);
     if(!own){ $('#gkeyRow').style.display='none'; $('#gkeyOk').style.display='block'; } }
+  if(c&&c.streetview&&typeof c.streetview==='object') Object.assign(SVCFG,c.streetview); // mode/step_m/max_stills/fade_ms/resume_after_s — see www/config.example.json
 }).catch(()=>{});
 $('#gkeyEdit')?.addEventListener('click',e=>{ e.preventDefault(); localStorage.setItem('yy-own-gkey','1'); localStorage.removeItem('yy-gkey'); $('#gkeyOk').style.display='none'; $('#gkeyRow').style.display='block'; $('#gkey').value=''; });
 $('#gkey').value=localStorage.getItem('yy-gkey')||''; $('#gkey').onchange=e=>localStorage.setItem('yy-gkey',e.target.value.trim());

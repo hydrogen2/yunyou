@@ -1,4 +1,4 @@
-# smoke_generated — 2026-08-19T05:53:03.004Z · player https://localhost/player/
+# smoke_generated — 2026-08-19T08:04:10.425Z · player https://178-104-53-233.sslip.io/player/
 
 | scene | id | asset | result | detail |
 |---|---|---|---|---|

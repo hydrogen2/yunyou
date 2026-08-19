@@ -83,11 +83,14 @@ Do not touch scene JSON to work around these; the scenes are authored against th
 | `interaction.kind: "save"` | card scenes: show a "Keep this card" button → download the generated asset (PNG) / add to the traveller's souvenirs; no answer required; `next` enabled immediately | show the card as `player` screenshot; caption "Saved to your souvenirs" not needed | TODO |
 | `narration.after_script` (string) | speak after the interaction resolves (answer chosen, walk finished, chat handed back, timeout) — never before; captions likewise | speak after the interaction beat (quiz reveal / chips / stop card) as the last utterance of the scene; sentence index continues from `script`; sidecar token `after:0-2` selects sentences of it | TODO |
 | `narration.starts_at_s` (number ≥ 0) | delay TTS start by this many seconds (title, music-only opening); scene clock still starts at 0 | equals sidecar `narration_at_s` when the sidecar does not override it | TODO |
-| `overlays[].at_waypoint` (int, index into `interaction.route`) | walk scenes: fire the overlay when the walk reaches that waypoint (Maps JavaScript API pano `position_changed`/nearest stop) instead of `at_s`; if no Maps JS key → fall back to `at_s` | use `at_s` (linear fallback) — but if the scene's stop cards are rendered per waypoint, attach the overlay to its stop card | TODO |
+| `overlays[].at_waypoint` (int, index into `interaction.route`) | walk scenes: fire the overlay when the walk reaches that waypoint (Maps JavaScript API pano `position_changed`/nearest stop) instead of `at_s`; if no Maps JS key → fall back to `at_s` | use `at_s` (linear fallback) — but if the scene's stop cards are rendered per waypoint, attach the overlay to its stop card | **DONE (player, v0.4, inverted)** — the auto-walk reads `at_waypoint`+`at_s` as the *schedule*: waypoint k is timed to arrive at the earliest `at_s` of its overlays, so the pin and the arrival coincide in every mode and there is nothing left to re-fire. Linear renderer unchanged (`at_s`). |
 | `media[].fallback` (string: M-xx or ref) | show this instead when the media cannot load: no Maps key/JS, deleted or region-blocked YouTube id, offline; for streetview stops the still image of that stop | prefer `fallback` (a Commons still) over the clip/stop placeholder card when it resolves to an image | TODO |
 
 Also pending from the same brief: the step counter in walk scenes needs the Maps JavaScript API (Street View Service, not the
-Embed API) — decision D12 open with the founder; until then the walk plays as stop stills (`fallback`) with `at_s` overlays.
+Embed API). D12 is now answered — the founder's key has the Maps JavaScript API enabled and the player's `js` mode holds a live
+`StreetViewPanorama` with `position_changed` (v0.4), so a real distance-driven counter is buildable; it is NOT built yet
+(`window.__sv.debug.pos` is the hook). `media[].fallback` for a missing pano is still unimplemented: v0.4 skips forward to the
+next reachable pano instead of showing the stop still.
 
 ## Known limits
 

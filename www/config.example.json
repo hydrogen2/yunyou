@@ -1,0 +1,19 @@
+{
+  "_comment": "Copy to www/config.json (gitignored — never commit a key). The player reads this at boot.",
+  "maps_api_key": "AIza…",
+  "streetview": {
+    "mode": "auto",
+    "step_m": 12,
+    "max_stills": 60,
+    "fade_ms": 380,
+    "resume_after_s": 4,
+    "smooth_s": 1.05,
+    "base_zoom": 0.85
+  },
+  "_streetview_help": {
+    "mode": "auto (js → stills → link) | js | stills | link. Per-browser override: localStorage['yy-sv-mode'].",
+    "step_m": "metres of drift before the walk hops to the next pano. Smaller = smoother and more Dynamic Street View panorama loads (billed); 12 ≈ every pano on a London street, 25 ≈ every other one.",
+    "max_stills": "hard cap on Street View Static frames per scene in the hyperlapse fallback (cost ceiling).",
+    "resume_after_s": "seconds of no touching before the auto-walk takes the camera back after a drag."
+  }
+}
