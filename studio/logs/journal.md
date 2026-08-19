@@ -67,3 +67,5 @@ downloading (this unblocks the 02 side-language and 18 "Look right" hedges).
 - Strategy: see studio/strategy/worlds-ladder.md (three-rung worlds ladder; rung-3 media doctrine; Inferno pilot).
 - Strategy: studio/strategy/audio-format.md (pure-audio format; owned media, podcast RSS, language-learning variant; queue F1–F4 parked).
 - Audience Report #1 (founder playtest): stance too literary, register too steep → style rule "Assume no prior reading", clear-English track, player aids; queue A3n/A3p inserted before A4. North star recorded in PRODUCTION.md.
+
+- 2026-08-19: Founder decisions D1-D5 recorded; media fallback ladder adopted; Maps key live (restricted). RENDER HOLD in effect — next /watch render must contain both A5 fixes and A6 footage (see day-01-london/review/STATUS.md).

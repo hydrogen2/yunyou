@@ -29,3 +29,18 @@ A2 items for the founder/Rights: G-01 16:9 exports carry no source/credits line 
 ## 2026-08-19 (interactive session)
 A3 ✓ (media pins verified, M-50 confirmed) · A3p ✓ (player v0.3 newcomer aids) · A3n ✓ (newcomer rewrite, clear track, glosses, recap) · A4 ✓ (cut sheet re-derived, re-rendered 13:49, publish-record written).
 **Next: A5** — light Fact-Check + QA pass on the rewritten scripts, then DIGEST update. Backlog: linear renderer ignores clear track/gloss; A3-QA on-device frame checks.
+
+## 2026-08-19 (founder instruction) — RENDER HOLD
+Founder wants ONE updated video containing BOTH the A5 language fixes AND the A6 footage replacement.
+**Do not re-render /watch until both are applied.** Current live video (13:13, clear track, 07:05) stays up meanwhile;
+the player is live-reading and already shows the newcomer rewrite + clear default.
+
+Chain to complete before the next render:
+1. A5 (running) — clear-track fact/QA review → apply its fixes to scenes/*.scene.json, re-validate.
+2. A6 (running) — media re-sourcing proposal (manifest-a6.md) → then:
+   a. A6w: wire rung-1 (freely-licensed video, downloadable) into scenes 02/05/06/13/18, replacing embed-only primaries;
+      update manifest rows with rung + licence + attribution; Rights spot-check.
+   b. A6e: Engine — Mapillary/KartaView sequence → video renderer for any shot with no rung-1 answer
+      (confirm licence/API terms first; Street View may be embedded but NEVER recorded).
+   c. Any shot still unresolved keeps its clip card; say so in the render log.
+3. Re-render (clear track), refresh linear/watch.json, update publish-record.md, THEN notify the founder.
