@@ -83,6 +83,26 @@ Source lists: review/fix-brief.md §0–§1 (fact-check "wrong/should", continui
 
 Not applied (and why): "Stout shoes" as a seventh in-item (11) — Towle has it but no F-id yet, and the fact sheet is the Fact-Checker's this run; the persona §6 hand-back's "look up at the roof" clause (17) — superseded by D4, Narrator owns the persona sheets; 08/13 pace (validator warnings) — Narrator's phase 2.
 
+## A3n pass (2026-08-19) — newcomer rewrite (Narrator + Scene Developer)
+
+Per Audience Report #1 and the style guide's "Assume no prior reading" rule. Every scene now carries a
+`narration.variants.clear` track (full simplified parallel script, same facts, same w/s budget) and gloss chips
+(`overlays[].kind: "gloss"`) on first use of period terms: valet (01), clubland (04 and its linear stand-in 05), whist +
+wager (08), Bradshaw (11), hansom / swell / bob / Hook it (12), guinea (13), pea-souper (16), boat train (18).
+
+- **Heavy:** 01 cold-open (spine retold: 1872 novel by Jules Verne → Fogg bets half his fortune he can circle the world
+  in eighty days → tonight at a quarter to nine he leaves → we travel his route today); 02 savile-row (plain telling
+  first — Fogg's street, his door, why we start here — the Verne-got-the-address-wrong beat moved AFTER it; two-Ls
+  spelling aside → "go deeper" caption; title → "Savile Row — Fogg's front door"); 08 the-wager (whist and wager
+  introduced before use; Paris-serialisation aside → "go deeper" caption).
+- **Light:** 03, 04 ("leaves for his club"), 05, 06 (opener says whose club and what it is to Fogg), 07, 09,
+  10 ("one of the card players"), 11 (Dover/Calais located), 12 (slang captions → gloss chips; Offenbach aside plain),
+  13 (Hawkshaw's name out of the spine), 14, 15, 16, 17 (clear = persona lines verbatim, R4), 18 (Sydenham mis-route
+  aside out of the spine — the 64–76 s caption is its only carrier), 19.
+- **tour.json** reassembled from the scene files in this order; chapter object gains `recap` (newcomer-safe cover text).
+- **Stale for A4:** the linear cut-sheet's s:N sentence tokens for 01, 02, 08, 13, 18; 02's "last four sentences" trim
+  now removes the Sheridan reveal — re-pick the marks in the Narrator cut-sheet.
+
 ## Requests to Content Preparer / Engine
 - **G-01** — Day-1 layer must carry a "Day 1" label and a lit/unlit legend (not opacity-only); enablers layer as before.
 - **G-05** — the six names on the memorandum card (the guide no longer reads them); "Saturday 21 December 1872, 8:45 pm".

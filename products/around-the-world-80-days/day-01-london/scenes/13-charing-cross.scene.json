@@ -6,9 +6,12 @@
   "duration_s": 60,
   "learning_goal": "Know that Fogg's London was brand-new (station 8, Underground 9, Embankment 2, Big Ben 13) and remember the twenty guineas; feel awe at a new city and one warm beat.",
   "narration": {
-    "script": "The Strand, and ahead, the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the cross, 1865. The cross itself, 1865. The Underground, nine years old. The Embankment by the river, two. Big Ben — the clock tower — thirteen. So much of what Fogg passes tonight is younger than his valet. You can't see it from here: Hawkshaw's roof, one iron span about 155 metres long — five hundred feet. It collapsed in 1905 and was replaced; that's all we'll say about it. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money. Fogg hands her the twenty guineas he won at whist. Without breaking stride. Four hundred and twenty shillings — about eight hundred and forty cab-miles.",
+    "script": "The Strand, and ahead, the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the stone cross, 1865. The cross itself, 1865. The Underground, nine years old. The Embankment by the river, two. Big Ben — the clock tower — thirteen. So much of what Fogg passes tonight is younger than his valet. You can't see it from here: the station's great roof — one iron span, 155 metres, five hundred feet. It fell in 1905 and was replaced; that's all we'll say. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money. Fogg hands her the twenty guineas he has just won at whist. Without breaking stride. Four hundred and twenty shillings — about eight hundred and forty cab-miles.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross: 1865. The cross itself: 1865. The Underground railway: nine years old. The Embankment by the river: two. Big Ben, the clock tower: thirteen. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
+    }
   },
   "media": [
     {
@@ -54,6 +57,13 @@
       "until_s": 58,
       "text": "Twenty guineas — 420 shillings, or 840 cab-miles",
       "position": "bottom"
+    },
+    {
+      "at_s": 45,
+      "kind": "gloss",
+      "until_s": 55,
+      "text": "guinea — an old coin: one pound and one shilling",
+      "position": "tl"
     }
   ],
   "interaction": {
@@ -81,6 +91,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s."
   }
 }

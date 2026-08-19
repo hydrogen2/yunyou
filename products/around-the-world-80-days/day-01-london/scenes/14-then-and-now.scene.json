@@ -8,7 +8,10 @@
   "narration": {
     "script": "Drag the seam. On the left, an engraving from 1872 — the year itself — the hotel and forecourt as Fogg saw them. On the right, the cross today. Six platforms behind it, and still about a train an hour to Dover. You can still buy a ticket for Dover at Fogg's station. The through route to Paris, though, now leaves from St Pancras. The hotel is a hotel still, under a newer name.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "Drag the line. On the left: a drawing from 1872 — the hotel and forecourt as Fogg saw them. On the right: the cross today. Six platforms behind it, and still about one train an hour to Dover. You can still buy a ticket to Dover here. The fast Paris route now leaves from St Pancras station. The hotel is still a hotel, under a new name."
+    }
   },
   "media": [
     {
@@ -77,6 +80,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: no content change; G-02 note asks for a ≥ 44 px seam handle. F-22 covers the St Pancras line. A1 narrator 2026-08-18: 33-word Dover/St Pancras sentence split; 74 words / 35 s."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: no content change; G-02 note asks for a ≥ 44 px seam handle. F-22 covers the St Pancras line. A1 narrator 2026-08-18: 33-word Dover/St Pancras sentence split; 74 words / 35 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added."
   }
 }

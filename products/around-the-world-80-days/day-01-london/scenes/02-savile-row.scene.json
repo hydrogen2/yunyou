@@ -1,14 +1,17 @@
 {
   "id": "savile-row",
   "type": "video",
-  "title": "Savile Row — the address Verne got wrong",
+  "title": "Savile Row — Fogg's front door",
   "subtopic": "2 — Savile Row",
   "duration_s": 100,
   "learning_goal": "Know that Verne put Fogg at No. 7 and Sheridan's death there in 1814, that Sheridan lived at No. 14 and died in 1816, and that the Row was already tailoring country; feel the hush of cloth and chalk.",
   "narration": {
-    "script": "Here we are: the corner of Burlington Gardens and Savile Row. Verne opens the novel on this spot — 'No. 7, Saville Row, Burlington Gardens, the house in which Sheridan died in 1814.' He spells the street with two Ls, and he's wrong twice more. Sheridan the playwright lived at No. 14, not No. 7. He died there in 1816, not 1814. Watch the doors as we walk and look for the numbers. No. 14 carries the plaque, put up in 1881. There's no plaque for Fogg anywhere. The novel is our guidebook, not our gospel. Look in the windows now — bolts of cloth, chalk marks, half-made jackets. This was already tailoring country in 1872. Henry Poole put his front door on the Row in 1846 and is still here — since 1982 at No. 15. Poole's own story is that in 1865 they cut the Prince of Wales a short evening jacket. The ancestor, they say, of the dinner jacket. One detour: on the roof of No. 3, on the thirtieth of January 1969, the Beatles played their rooftop concert. Here is the Row around 1890, a few years after Fogg. Same doors. Same hush.",
+    "script": "Here we are: Savile Row, a quiet street in Mayfair. This is where the novel begins. Phileas Fogg lives on this street — at No. 7, Verne tells us — and from that door he leaves tonight to go round the world. Look in the windows as we walk: bolts of cloth, chalk marks, half-made jackets. This was already tailoring country in 1872, and it still is. Henry Poole put his front door on the Row in 1846 and is still here — since 1982 at No. 15. Poole's own story is that in 1865 they cut the Prince of Wales a short evening jacket. The ancestor, they say, of the dinner jacket. One detour: on the roof of No. 3, on the thirtieth of January 1969, the Beatles played their rooftop concert. Now, about No. 7. Verne picked a famous address: 'the house in which Sheridan died in 1814', he wrote. In fact Sheridan, the playwright, lived at No. 14 — and died there in 1816. The plaque on No. 14 remembers him. There's no plaque for Fogg anywhere; he lived only in the novel. Here is the Row around 1890, a few years after Fogg. Same doors. Same hush.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "This is Savile Row, a quiet street in Mayfair. The novel starts here. Phileas Fogg lives on this street — at No. 7, the book says. Tonight he will leave from that door to go round the world. Look in the shop windows: rolls of cloth, chalk marks, half-made jackets. In 1872 this was already a street of tailors. It still is. The tailor Henry Poole opened his door on the Row in 1846. His shop is still here, at No. 15. The firm says that in 1865 they made a short evening jacket for a prince — the first dinner jacket, they say. One more stop: on the roof of No. 3, in January 1969, the Beatles played their famous rooftop concert. And one small secret about No. 7. Verne wrote that the playwright Sheridan died there in 1814. In fact Sheridan lived at No. 14, and died in 1816. No. 14 has a plaque for him. Fogg has no plaque — he lived only in the book. Here is the street around 1890. Same doors. Same quiet."
+    }
   },
   "media": [
     {
@@ -37,29 +40,37 @@
       "at_s": 3,
       "kind": "pin",
       "until_s": 12,
-      "text": "Burlington Gardens — Verne's 'Saville Row, Burlington Gardens'",
+      "text": "Savile Row — Fogg's street in the novel",
       "position": "bl"
     },
     {
-      "at_s": 25,
+      "at_s": 30,
       "kind": "pin",
-      "until_s": 35,
-      "text": "No. 14 — Sheridan's real house, plaque 1881",
-      "position": "bl"
-    },
-    {
-      "at_s": 48,
-      "kind": "pin",
-      "until_s": 58,
+      "until_s": 40,
       "text": "No. 15 — Henry Poole, on the Row since 1846, here since 1982",
+      "position": "bl"
+    },
+    {
+      "at_s": 52,
+      "kind": "pin",
+      "until_s": 62,
+      "text": "No. 3 — Beatles rooftop, 30 Jan 1969",
       "position": "bl"
     },
     {
       "at_s": 66,
       "kind": "pin",
       "until_s": 76,
-      "text": "No. 3 — Beatles rooftop, 30 Jan 1969",
+      "text": "No. 14 — Sheridan's real house, plaque 1881",
       "position": "bl"
+    },
+    {
+      "at_s": 78,
+      "kind": "caption",
+      "until_s": 87,
+      "text": "Go deeper: Verne spells it 'Saville' — the street is Savile.",
+      "position": "bottom",
+      "note": "Connoisseur layer (A3n): the spelling aside moved out of the spine into this optional beat."
     },
     {
       "at_s": 90,
@@ -80,17 +91,17 @@
   "next": "fogg-by-the-clock",
   "sources": [
     "F-01",
-    "F-03",
+    "F-12",
     "F-19",
     "F-20",
     "F-39",
     "F-45"
   ],
-  "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut: 75 s of M-05 (21:35–22:50), pins (a) and (b) only, drop the M-32 insert and the last four sentences.",
+  "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut: 75 s of M-05 (21:35–22:50), pins (a) and (b) only, drop the M-32 insert and the last four sentences. A3n: script recast (plain telling first, Sheridan reveal after) and title de-jokified — the old linear trim ('last four sentences') and the cut-sheet s:N tokens need re-picking in A4.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush')."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush'). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): recast for a first-time reader — plain telling first (Fogg's street, his door, why we start here), the Verne-got-the-address-wrong beat moved AFTER it and told as a reveal, not a prerequisite; the two-Ls spelling aside moved out of the spine into a 'go deeper' caption; Burlington Gardens pin simplified; clear-English variant added; F-03 (unused) swapped for F-12 (he leaves tonight from this door). Title 'the address Verne got wrong' → 'Fogg's front door' (spine may not lead with the meta-joke)."
   }
 }

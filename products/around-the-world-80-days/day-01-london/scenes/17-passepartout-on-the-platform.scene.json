@@ -9,7 +9,10 @@
     "script": "It's twenty to nine, and it's raining. That's Passepartout, with the bag — he's known his master for about nine hours. Ask him something.",
     "timing": "before",
     "voice": "guide",
-    "after_script": "We've got a train to catch. Twenty to nine on the platform."
+    "after_script": "We've got a train to catch. Twenty to nine on the platform.",
+    "variants": {
+      "clear": "It's twenty to nine, and it's raining. That's Passepartout, with the bag — he's known his master for about nine hours. Ask him something."
+    }
   },
   "media": [
     {
@@ -129,6 +132,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved after Quiz B (file 16→17, D4); guide-in = persona §6 verbatim, hand-back spoken (after_script) + caption; chips = passepartout.md §5 answers 1–5 verbatim (chip 4 'won at cards' leak gone, no 'gold'); guardrails + fog / politics-of-any-year / no-AI-or-fiction / injection line / valet's-London limit; timeout_s 180, max_exchanges 4, on_llm_unavailable choice, pause_narration; M-50 → plate 05; M-58 rain bed added ('to be sourced' note removed); lower-third '8:40 pm'. A1 narrator 2026-08-18: guide-in and hand-back confirmed = passepartout.md §6 / guide.md §8 verbatim (hand-back without the 'look up' clause — Quiz B precedes, D4; persona sheets amended to say so); chips confirmed = §5 answers 1–5 verbatim; no script change."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: moved after Quiz B (file 16→17, D4); guide-in = persona §6 verbatim, hand-back spoken (after_script) + caption; chips = passepartout.md §5 answers 1–5 verbatim (chip 4 'won at cards' leak gone, no 'gold'); guardrails + fog / politics-of-any-year / no-AI-or-fiction / injection line / valet's-London limit; timeout_s 180, max_exchanges 4, on_llm_unavailable choice, pause_narration; M-50 → plate 05; M-58 rain bed added ('to be sourced' note removed); lower-third '8:40 pm'. A1 narrator 2026-08-18: guide-in and hand-back confirmed = passepartout.md §6 / guide.md §8 verbatim (hand-back without the 'look up' clause — Quiz B precedes, D4; persona sheets amended to say so); chips confirmed = §5 answers 1–5 verbatim; no script change. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): no spine change; clear variant copies the guide-in verbatim — persona-owned lines (guide.md §8 / passepartout.md §6, R4) and already plain."
   }
 }

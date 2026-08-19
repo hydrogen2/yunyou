@@ -8,7 +8,10 @@
   "narration": {
     "script": "Fogg's day, by the clock. Tap any line to see what happens. He rises at eight. Tea and toast at twenty-three minutes past. Shaving-water at nine thirty-seven, at thirty degrees — eighty-six Fahrenheit. Out of the door at half past eleven, home at midnight. Into this house, at twenty-nine minutes past eleven, walks Passepartout: a Parisian of Paris, about thirty. Once a wandering singer, then a circus-rider who vaulted like Léotard, a rope-dancer like Blondin. Then a fireman in Paris, then ten English households in five years. He wants a quiet life. Look at his face on the card; we like him already — the man with the slow watch.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "Fogg's day, hour by hour. Tap any line to see what happens. He gets up at eight. Tea and toast at twenty-three minutes past eight. Shaving water at nine thirty-seven, at exactly thirty degrees — eighty-six Fahrenheit. He leaves at half past eleven; home at midnight. This morning, at twenty-nine minutes past eleven, Passepartout walked into this house. A Parisian, about thirty. He was a singer, a circus rider, a gymnastics teacher, a fireman in Paris. Then ten English houses in five years. He wants a quiet life now. Look at his face. We like him already — the man with the slow watch."
+    }
   },
   "media": [
     {
@@ -96,6 +99,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: M-50 ref → plate 05 (manifest); punchlines moved out of the script into the taps (pause_narration, timeout_s 12 per tap); tap feedback metric-first; caption attributed to Passepartout; ends on the noun. A1 narrator 2026-08-18: checked, no script change — the guide reads only the times and the CV, taps hold the punchlines, ends on 'the slow watch'; 110 words / 60 s."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: M-50 ref → plate 05 (manifest); punchlines moved out of the script into the taps (pause_narration, timeout_s 12 per tap); tap feedback metric-first; caption attributed to Passepartout; ends on the noun. A1 narrator 2026-08-18: checked, no script change — the guide reads only the times and the CV, taps hold the punchlines, ends on 'the slow watch'; 110 words / 60 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already newcomer-safe (Passepartout introduced in 01, punchlines in the taps) — script untouched; clear-English variant added."
   }
 }

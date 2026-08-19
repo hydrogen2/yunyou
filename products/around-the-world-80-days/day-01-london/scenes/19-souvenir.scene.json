@@ -8,7 +8,10 @@
   "narration": {
     "script": "Your souvenir of the day: Fogg's last breakfast in London — the meal he ate before betting half his fortune. The dish is broiled fish with a Reading-sauce-style ketchup — a real Berkshire condiment from 1802, gone since the 1960s. The recipe is on the card, with the rest of the menu. Save the card. Cook it on the evening of the twenty-first of December, and be at table by a quarter to nine. That's when he promised to be back in that room. Fogg's other motto, and ours for the road: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "Your souvenir today: Fogg's last breakfast in London — the meal he ate before betting half his fortune. The dish is grilled fish with a Reading-sauce-style ketchup. Reading sauce was a real English sauce from 1802; it disappeared in the 1960s. The recipe is on the card. Save the card. Cook the meal on the evening of the twenty-first of December, and sit down to eat by a quarter to nine. That is when Fogg promised to be back. His motto, and ours: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris."
+    }
   },
   "media": [
     {
@@ -79,6 +82,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: interaction.kind → save; caption/card time style '8:45 pm'; music M-42 galop → M-41 Sullivan tail (D10); G-08 note carries the ingredient list (Narrator drops it from speech). A1 narrator 2026-08-18: guide names the dish (broiled fish with a Reading-sauce-style ketchup), ingredient list dropped from speech (G-08 card carries it); 118→102 words / 60 s; time in words, caption '8:45 pm'; ends on 'Paris'."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: interaction.kind → save; caption/card time style '8:45 pm'; music M-42 galop → M-41 Sullivan tail (D10); G-08 note carries the ingredient list (Narrator drops it from speech). A1 narrator 2026-08-18: guide names the dish (broiled fish with a Reading-sauce-style ketchup), ingredient list dropped from speech (G-08 card carries it); 118→102 words / 60 s; time in words, caption '8:45 pm'; ends on 'Paris'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added."
   }
 }

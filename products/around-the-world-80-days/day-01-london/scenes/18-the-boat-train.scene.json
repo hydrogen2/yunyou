@@ -6,9 +6,12 @@
   "duration_s": 85,
   "learning_goal": "Feel the thrill of the first train out; know the train still leaves over Hungerford Bridge and takes about two hours to Dover today; end on Passepartout's forgotten gas.",
   "narration": {
-    "script": "A postcard from 1905, thirty-three years after Fogg. The same platforms, and — just — the old roof, months before it fell. The Paris boat train, waiting. Now, tonight. Twenty to nine, seated. A quarter to nine — the whistle, and we're off, over Hungerford Bridge, the way trains still leave Fogg's station. We travel in daylight; Fogg had rain and dark. Look right — the Embankment along the river, two years old in 1872, and beyond it the clock tower, thirteen. Brand-new London slipping away behind him. This train, today, takes about two hours to Dover. Fogg's timetable gave him seven days to Suez, and this is the first hour of them. Verne says Sydenham — though by 1872 the express probably took a shorter line. Somewhere out there, Passepartout sits bolt upright. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
+    "script": "A postcard from 1905, thirty-three years after Fogg. The same platforms, and — just — the old roof, months before it fell. The Paris boat train, waiting. Now, tonight. Twenty to nine, seated. A quarter to nine — the whistle, and we're off, over Hungerford Bridge, the way trains still leave Fogg's station. We travel in daylight; Fogg had rain and dark. Look right — the Embankment along the river, two years old in 1872, and beyond it the clock tower, thirteen. Brand-new London slipping away behind him. This train, today, takes about two hours to Dover. Fogg's timetable gave him seven days to reach Suez, and this is the first hour of them. A few miles out, Passepartout sits bolt upright. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "This postcard is from 1905, thirty-three years after Fogg. The same platforms, and the old roof, months before it fell. The boat train to Paris is waiting. Now, tonight. Twenty to nine: we are seated. A quarter to nine: the whistle, and we are off, over Hungerford Bridge. Trains still leave Fogg's station this way. Our film is daylight; Fogg had rain and dark. Look right: the Embankment along the river, two years old in 1872. Beyond it, the clock tower, thirteen. New London slips away behind him. Today this train takes about two hours to Dover. Fogg's plan gave him seven days to reach Suez. This is the first hour. A few miles out, Passepartout sits up straight. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued."
+    }
   },
   "media": [
     {
@@ -107,7 +110,15 @@
       "kind": "caption",
       "until_s": 76,
       "text": "Verne says Sydenham. By 1872 the express probably took a shorter line.",
-      "position": "bottom"
+      "position": "bottom",
+      "note": "Connoisseur layer (A3n): the Sydenham route aside now lives ONLY here — removed from the spine (F-13 med)."
+    },
+    {
+      "at_s": 7,
+      "kind": "gloss",
+      "until_s": 13,
+      "text": "boat train — a train timed to meet a ferry",
+      "position": "tl"
     }
   ],
   "interaction": {
@@ -132,7 +143,7 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: daylight lines rewritten honestly ('We travel in daylight; Fogg had rain and dark'), M-13 cropped to the left half, no M-16 insert (my call); 'same roof' → 'just — the old roof, months before it fell'; Sydenham 'probably' in script and caption; M-60 departure bed 10–24 s + M-45 sting, no speech 12–16 s; M-59 rain-on-window low under the 'Fogg had rain' line only; captions −8 s, postcard caption ends 8 s; '8:45 pm' style; 'Look right' kept — window side unverified (A3); accessibility caption '[whistle — 8:45 pm]'. A1 narrator 2026-08-18: 27- and 26-word sentences split; Sydenham aside made its own sentence so the caption (64–76 s) lands with it; 'We travel in daylight; Fogg had rain and dark' kept; 'Look right' kept — window side unverified (A3), guide.md example 6 now says 'right' with the same flag; hold: nothing spoken 12–16 s (after 'seated.'); 156 words / 85 s."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: daylight lines rewritten honestly ('We travel in daylight; Fogg had rain and dark'), M-13 cropped to the left half, no M-16 insert (my call); 'same roof' → 'just — the old roof, months before it fell'; Sydenham 'probably' in script and caption; M-60 departure bed 10–24 s + M-45 sting, no speech 12–16 s; M-59 rain-on-window low under the 'Fogg had rain' line only; captions −8 s, postcard caption ends 8 s; '8:45 pm' style; 'Look right' kept — window side unverified (A3); accessibility caption '[whistle — 8:45 pm]'. A1 narrator 2026-08-18: 27- and 26-word sentences split; Sydenham aside made its own sentence so the caption (64–76 s) lands with it; 'We travel in daylight; Fogg had rain and dark' kept; 'Look right' kept — window side unverified (A3), guide.md example 6 now says 'right' with the same flag; hold: nothing spoken 12–16 s (after 'seated.'); 156 words / 85 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): the 'Verne says Sydenham' route aside moved out of the spine (the caption at 64–76 s is now its only carrier); the gas beat told plainly ('a few miles out'); boat-train gloss chip; clear-English variant added; the 12–16 s whistle hold is untouched."
   },
   "accessibility": {
     "sound_captions": [

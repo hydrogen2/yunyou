@@ -6,10 +6,13 @@
   "duration_s": 100,
   "learning_goal": "Know the three enablers of 1869–70 and the eight legs that add up to eighty; feel the thrill of the map lighting up.",
   "narration": {
-    "script": "How could anyone even think it? Because the world had just shrunk. When a partner said the world was big, Fogg's answer was three words: 'It was once.' Look at the three lights. The Suez Canal, opened in November 1869. The American railroad, joined at Promontory Summit in May 1869. The last rail link across India, closed at Jabalpur in March 1870. Three doors, opened within ten months, two years before tonight. Now watch the line draw. London to Suez, by rail and steamer through Mont Cenis and Brindisi, seven days. Suez to Bombay by steamer, thirteen. Bombay to Calcutta by rail, three. Calcutta to Hong Kong, thirteen. Hong Kong to Yokohama, six. Yokohama to San Francisco, twenty-two. San Francisco to New York by rail, seven. New York back to London, nine. Add them up: eighty. Now tap the longest leg on the map.",
+    "script": "How could anyone even think it? Because the world had just shrunk. When one of the card players said the world was big, Fogg's answer was three words: 'It was once.' Look at the three lights. The Suez Canal, opened in November 1869. The American railroad, joined at Promontory Summit in May 1869. The last rail link across India, closed at Jabalpur in March 1870. Three doors, opened within ten months, two years before tonight. Now watch the line draw. London to Suez, by rail and steamer through Mont Cenis and Brindisi, seven days. Suez to Bombay by steamer, thirteen. Bombay to Calcutta by rail, three. Calcutta to Hong Kong, thirteen. Hong Kong to Yokohama, six. Yokohama to San Francisco, twenty-two. San Francisco to New York by rail, seven. New York back to London, nine. Add them up: eighty. Now tap the longest leg on the map.",
     "timing": "over",
     "voice": "guide",
-    "after_script": "The Pacific — twenty-two days of ocean; keep this in mind for later. And the map fades back to tonight: only London lit. Because Fogg, still at the table, says the sentence that turns the evening. 'The train leaves for Dover at a quarter before nine.'"
+    "after_script": "The Pacific — twenty-two days of ocean; keep this in mind for later. And the map fades back to tonight: only London lit. Because Fogg, still at the table, says the sentence that turns the evening. 'The train leaves for Dover at a quarter before nine.'",
+    "variants": {
+      "clear": "How could anyone believe this plan? Because the world had just become smaller. When one of the card players said the world was big, Fogg answered with three words: 'It was once.' Look at the three lights. The Suez Canal opened in 1869. The American railroad, coast to coast, was joined in 1869. The last rail link across India closed the gap in 1870. Three doors, all opened within ten months, two years before tonight. Now watch the line draw. London to Suez: seven days. Suez to Bombay, by ship: thirteen. Bombay to Calcutta, by rail: three. Calcutta to Hong Kong: thirteen. Hong Kong to Yokohama: six. Yokohama to San Francisco: twenty-two. San Francisco to New York, by rail: seven. New York back to London: nine. Add them up: eighty. Now tap the longest leg on the map."
+    }
   },
   "media": [
     {
@@ -149,6 +152,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two words' → 'three words' (fact-check s10); wait state (pause_narration, timeout_s 20) with the reveal in narration.after_script; prompt at 76 s and persistent; G-01 Day-1 layer note asks for a 'Day 1' label. A1 narrator 2026-08-18: script unchanged (1.90 w/s, reveal already in after_script); 40-s linear form of the legs beat added to production_notes for A4."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two words' → 'three words' (fact-check s10); wait state (pause_narration, timeout_s 20) with the reveal in narration.after_script; prompt at 76 s and persistent; G-01 Day-1 layer note asks for a 'Day 1' label. A1 narrator 2026-08-18: script unchanged (1.90 w/s, reveal already in after_script); 40-s linear form of the legs beat added to production_notes for A4. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): 'a partner' → 'one of the card players' (whist partners are strangers to a first-time reader); clear-English variant added; reveal stays in after_script."
   }
 }

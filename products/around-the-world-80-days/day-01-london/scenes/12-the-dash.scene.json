@@ -6,9 +6,12 @@
   "duration_s": 60,
   "learning_goal": "Know the cab, the fare, the times, and that Fogg does not take the nine-year-old Underground; feel cobbles and hooves.",
   "narration": {
-    "script": "Down to the end of Savile Row and into a cab — a hansom, most likely; Verne never says. To the cabby, Fogg is a swell. The fare is sixpence a mile or part of one. Barely a mile and a half to Charing Cross — call it a bob. Watch the line on the 1872 map, south and east to Trafalgar Square and the Strand. London already had an Underground — nine years old, steam-hauled and smoky. Fogg takes a cab. Listen: hooves on stone, and an Offenbach galop, because Passepartout is a Parisian and would want one. They left the club at twenty-five past seven. They are at Charing Cross at twenty past eight.",
+    "script": "Down to the end of Savile Row and into a cab — a hansom, most likely; Verne never says. To the cabby, Fogg is a swell. The fare is sixpence a mile or part of one. Barely a mile and a half to Charing Cross — call it a bob. Watch the line on the 1872 map, south and east to Trafalgar Square and the Strand. London already had an Underground — nine years old, steam-hauled and smoky. Fogg takes a cab. Listen: hooves on stone, and a galop by Offenbach — French dance music — because Passepartout is a Parisian. They left the club at twenty-five past seven. They are at Charing Cross at twenty past eight.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a rich, well-dressed man. The fare is sixpence a mile. Charing Cross is about a mile and a half away — call it one shilling, a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight."
+    }
   },
   "media": [
     {
@@ -64,18 +67,25 @@
   ],
   "overlays": [
     {
-      "at_s": 6,
-      "kind": "caption",
-      "until_s": 14,
+      "at_s": 2,
+      "kind": "gloss",
+      "until_s": 10,
+      "text": "hansom — a fast two-wheeled, one-horse cab",
+      "position": "tl"
+    },
+    {
+      "at_s": 10,
+      "kind": "gloss",
+      "until_s": 18,
       "text": "swell — a well-dressed gentleman",
-      "position": "bottom"
+      "position": "bl"
     },
     {
       "at_s": 22,
-      "kind": "caption",
+      "kind": "gloss",
       "until_s": 30,
       "text": "bob — a shilling; the fare",
-      "position": "bottom"
+      "position": "bl"
     },
     {
       "at_s": 38,
@@ -86,10 +96,10 @@
     },
     {
       "at_s": 54,
-      "kind": "caption",
+      "kind": "gloss",
       "until_s": 60,
       "text": "Hook it! — be off",
-      "position": "bottom"
+      "position": "bl"
     }
   ],
   "interaction": {
@@ -114,7 +124,7 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two and a half kilometres' → 'barely a mile and a half — call it a bob' (F-28); 'hooves on wet stone' → 'hooves on stone' and every 'wet' removed (Quiz B spoiler); M-29 confirmed hansom swapped in for 30–45 s (caption without weather); slang caption to 54 s; accessibility sound caption '[hooves]' added. A1 narrator 2026-08-18: 32-word fare sentence split (cab distance hedge 'barely a mile and a half — call it a bob' kept, F-28); no 'wet' before Quiz B; 116 words / 60 s."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'two and a half kilometres' → 'barely a mile and a half — call it a bob' (F-28); 'hooves on wet stone' → 'hooves on stone' and every 'wet' removed (Quiz B spoiler); M-29 confirmed hansom swapped in for 30–45 s (caption without weather); slang caption to 54 s; accessibility sound caption '[hooves]' added. A1 narrator 2026-08-18: 32-word fare sentence split (cab distance hedge 'barely a mile and a half — call it a bob' kept, F-28); no 'wet' before Quiz B; 116 words / 60 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): hansom gloss chip added; the three slang captions converted to tappable gloss chips (same texts and timings); Offenbach aside reworded plainly ('French dance music'); clear-English variant added."
   },
   "accessibility": {
     "sound_captions": [

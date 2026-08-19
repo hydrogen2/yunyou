@@ -6,9 +6,12 @@
   "duration_s": 76,
   "learning_goal": "Linear-cut stand-in for the Street View walk: know the 1,151 steps and see the three clubs in a row.",
   "narration": {
-    "script": "From Savile Row, Fogg walks and counts. Five hundred and seventy-five steps with the right foot, five hundred and seventy-six with the left. One thousand one hundred and fifty-one. He never hurries. We are on Pall Mall now, walking west through clubland. It was one of the first streets in London lit by gas, in 1807. Watch the left side: the Athenaeum at 107, then the Travellers at 106. Then the palazzo with the tall windows — the Reform Club, 104 Pall Mall, by Charles Barry, opened 1841. Fogg made it 1,151 steps. We make it about a kilometre.",
+    "script": "From Savile Row, Fogg walks to his club and counts. Five hundred and seventy-five steps with the right foot, five hundred and seventy-six with the left. One thousand one hundred and fifty-one. He never hurries. We are on Pall Mall now, walking west through clubland. It was one of the first streets in London lit by gas, in 1807. Watch the left side: the Athenaeum at 107, then the Travellers at 106. Then the palazzo with the tall windows — the Reform Club, 104 Pall Mall, by Charles Barry, opened 1841. Fogg made it 1,151 steps. We make it about a kilometre.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "From Savile Row, Fogg walks to his club and counts his steps. One thousand one hundred and fifty-one steps. He never hurries. We are now on Pall Mall, walking west. This is clubland — a street of private clubs. It was one of the first streets in London with gas lamps, in 1807. Watch the left side: the Athenaeum at No. 107, then the Travellers at No. 106. Then the grand building with tall windows: the Reform Club, No. 104, by Charles Barry, opened 1841. Fogg counted 1,151 steps. We measure about one kilometre."
+    }
   },
   "media": [
     {
@@ -44,6 +47,13 @@
       "text": "Reform Club — 104 Pall Mall, Barry, 1841",
       "position": "bl",
       "geo": "51.5065,-0.1335"
+    },
+    {
+      "at_s": 16,
+      "kind": "gloss",
+      "until_s": 26,
+      "text": "clubland — a district of private members' clubs",
+      "position": "tl"
     }
   ],
   "interaction": {
@@ -67,6 +77,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: extended to M-01 26:19–27:35 (76 s) so the façade is in frame; Reform pin moved to 56–70 s; Travellers pin added (1832, F-44). A1 narrator 2026-08-18: 30- and 32-word sentences split; 'watch the left side' kept (west-bound); 99 words / 76 s."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: extended to M-01 26:19–27:35 (76 s) so the façade is in frame; Reform pin moved to 56–70 s; Travellers pin added (1832, F-44). A1 narrator 2026-08-18: 30- and 32-word sentences split; 'watch the left side' kept (west-bound); 99 words / 76 s. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): 'walks to his club' names the destination for a first-time viewer (linear cut has no scene 04); clubland gloss chip; clear-English variant added."
   }
 }

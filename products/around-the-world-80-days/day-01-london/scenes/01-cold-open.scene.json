@@ -6,10 +6,13 @@
   "duration_s": 75,
   "learning_goal": "Know the date, the deadline and the stake in one breath; feel a clock already running.",
   "narration": {
-    "script": "It is Wednesday, the second of October, 1872. Twenty-nine minutes past eleven. In a quiet Mayfair street a French valet is hired by a man who runs his life by the clock. The valet's watch is four minutes slow. Remember the watch. By a quarter to nine tonight, that same man will have staked half his fortune. His bet: the whole world fits into eighty days. Look at the map: only London is lit. Over eighty days we'll light the rest, one port at a time. The novel is our guidebook; we travel today. First, Savile Row.",
+    "script": "There is a novel, published in 1872, by the French writer Jules Verne: Around the World in Eighty Days. Its hero is Phileas Fogg, a London gentleman who runs his life by the clock. Fogg bets half his fortune that he can circle the whole world in eighty days. And tonight — Wednesday the second of October, 1872 — at a quarter to nine, he leaves. We are travelling his route, starting today. Look at the map: only London is lit. Day by day, we'll light the rest, one port at a time. One name before we start. This morning Fogg hired a French valet, Passepartout, whose watch runs four minutes slow. Remember the watch. Now to the street where it all begins: Savile Row.",
     "timing": "over",
     "voice": "guide",
-    "starts_at_s": 10
+    "starts_at_s": 10,
+    "variants": {
+      "clear": "In 1872, the French writer Jules Verne published a famous novel: Around the World in Eighty Days. The hero is Phileas Fogg, a gentleman in London who lives by the clock. Fogg bets half his money that he can travel around the whole world in eighty days. Tonight — Wednesday, the second of October, 1872 — at a quarter to nine, his train leaves London. We follow his route, starting today. Look at the map: only London is lit. Day by day, we light the rest. One more name: Passepartout, Fogg's new French valet. His watch is four minutes slow. Remember the watch. First stop: Fogg's street, Savile Row."
+    }
   },
   "media": [
     {
@@ -75,6 +78,13 @@
       "text": "London — only stop lit tonight",
       "position": "bl",
       "geo": "51.5075,-0.1277"
+    },
+    {
+      "at_s": 50,
+      "kind": "gloss",
+      "until_s": 60,
+      "text": "valet — a gentleman's personal manservant",
+      "position": "tl"
     }
   ],
   "interaction": {
@@ -88,15 +98,16 @@
   "next": "savile-row",
   "sources": [
     "F-02",
+    "F-04",
     "F-11",
     "F-32",
     "F-39"
   ],
-  "production_notes": "Title beat 0–8 s (M-40 Big Ben under the lower-third only — never under speech); narration starts at 10 s (narration.starts_at_s), so the spoken window is 65 s: Narrator to cut the script to ≤ 100 words (Continuity #1: drop the hours/minutes sentence — the caption at 36–46 s carries it — and move the 'Paris newspaper' sentence to 08/09; 'Keep that watch in mind' → cut or 'Remember the watch'). Linear cut: 60 s — same shape (title 8 s, narration from 10 s), drop the M-34 inset.",
+  "production_notes": "Title beat 0–8 s (M-40 Big Ben under the lower-third only — never under speech); narration starts at 10 s (narration.starts_at_s), so the spoken window is 65 s: Narrator to cut the script to ≤ 100 words (Continuity #1: drop the hours/minutes sentence — the caption at 36–46 s carries it — and move the 'Paris newspaper' sentence to 08/09; 'Keep that watch in mind' → cut or 'Remember the watch'). Linear cut: 60 s — same shape (title 8 s, narration from 10 s), drop the M-34 inset. A3n: script rewritten for newcomers — linear trim marks (s:N tokens) need re-picking in A4.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1). A1 narrator 2026-08-18: script cut 139→97 words (≤ 100 for the 60-s linear window from 10 s); hours/minutes sentence dropped (caption 36–46 s carries it); 'Paris newspaper' sentence moved to 08; 'Keep that watch in mind' → 'Remember the watch'; sentences ≤ 20 words; ends on 'Savile Row'."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1). A1 narrator 2026-08-18: script cut 139→97 words (≤ 100 for the 60-s linear window from 10 s); hours/minutes sentence dropped (caption 36–46 s carries it); 'Paris newspaper' sentence moved to 08; 'Keep that watch in mind' → 'Remember the watch'; sentences ≤ 20 words; ends on 'Savile Row'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine retold for a first-time reader in the briefed order — 1872 novel by Jules Verne, a precise London gentleman named Phileas Fogg bets he can circle the world in eighty days, tonight he leaves, we travel his route today; valet gloss chip added; clear-English variant added; F-04 cited (French valet)."
   }
 }

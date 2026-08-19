@@ -6,9 +6,12 @@
   "duration_s": 60,
   "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
   "narration": {
-    "script": "Evening, at the whist table. In the novel — only in the novel — a thief has walked out of the Bank of England with fifty-five thousand pounds. The Daily Telegraph has printed a timetable: the world in eighty days. Andrew Stuart, an engineer, wagers four thousand pounds it can't be done. Fogg raises him: twenty thousand pounds at Baring's — half his fortune — in 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Exactly eighty days — and it really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Verne printed this journey in a Paris newspaper that same winter, as if it were happening. Footnote from today: Baring's went under in 1995. The wager has outlived the bank.",
+    "script": "Evening, at the club. Fogg and five friends sit down to whist, the card game they play nightly. In the novel — only in the novel — a thief has robbed the Bank of England of fifty-five thousand pounds. The Daily Telegraph newspaper has done the sums: the world can now be crossed in eighty days. That talk becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds it can't be done. Fogg stakes twenty thousand — half his fortune — that it can: 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Exactly eighty days — and it really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, fell in 1995. The wager has outlived the bank.",
     "timing": "over",
-    "voice": "guide"
+    "voice": "guide",
+    "variants": {
+      "clear": "Evening, at the club. Fogg and five friends play whist, their card game, like every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. And a newspaper, the Daily Telegraph, has counted: you can now go around the world in eighty days. At the table, this becomes a bet. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Exactly eighty days. It really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, closed in 1995. The bet has outlived the bank."
+    }
   },
   "media": [
     {
@@ -51,6 +54,28 @@
       "position": "bottom"
     },
     {
+      "at_s": 5,
+      "kind": "gloss",
+      "until_s": 15,
+      "text": "whist — a quiet card game for four players",
+      "position": "tl"
+    },
+    {
+      "at_s": 18,
+      "kind": "caption",
+      "until_s": 28,
+      "text": "Go deeper: Verne serialised the tale in a Paris daily, winter 1872",
+      "position": "bottom",
+      "note": "Connoisseur layer (A3n): the serialisation aside moved out of the spine (F-32)."
+    },
+    {
+      "at_s": 24,
+      "kind": "gloss",
+      "until_s": 34,
+      "text": "wager — a bet, with money staked on it",
+      "position": "tl"
+    },
+    {
       "at_s": 32,
       "kind": "caption",
       "until_s": 42,
@@ -82,11 +107,11 @@
     "F-23",
     "F-32"
   ],
-  "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). Cut to 60 s: the six names live on the G-05 card, the guide says 'Stuart first, Fogg last'. Narrator: ≤ 170 words, fix the tense of the opener (Continuity #9); the 'Paris newspaper' sentence from 01 may land here (F-32). Linear cut: keep whole (60 s), then skip 09 and play 10 without the tap.",
+  "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). Cut to 60 s: the six names live on the G-05 card, the guide says 'Stuart first, Fogg last'. Narrator: ≤ 170 words, fix the tense of the opener (Continuity #9); the 'Paris newspaper' sentence from 01 may land here (F-32). Linear cut: keep whole (60 s), then skip 09 and play 10 without the tap. A3n: script rewritten for newcomers — linear cut-sheet s:N tokens need re-picking in A4.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): whist and the wager now introduced in plain words before use (Stuart is 'one of the five friends' at the table); the Paris-serial meta aside moved out of the spine into a 'go deeper' caption; gloss chips for whist and wager; clear-English variant added."
   }
 }
