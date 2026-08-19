@@ -363,6 +363,10 @@ function svWireIdle(el, ctl){
 
 // ---- mode js: Maps JavaScript API ----------------------------------------------------------------------------
 function svLoadMapsJs(key){
+  // RULE 1 HARD STOP: the Maps JavaScript API is a BILLABLE SKU (dynamic panorama loads). Never load the script —
+  // not even to probe — unless the server config explicitly acknowledges billing. Loading it authenticates the key,
+  // which is exactly the kind of silent, unasked-for spend the founder's rule forbids.
+  if(!(SVCFG && SVCFG.billing_ack===true)) return Promise.reject(new Error('billable-mode-refused'));
   if(window.google&&window.google.maps&&google.maps.StreetViewPanorama) return Promise.resolve('ready');
   if(!key) return Promise.reject(new Error('no-key'));
   if(svAuthFailed) return Promise.reject(new Error('auth-failed'));
@@ -442,6 +446,7 @@ async function svProbeStatic(key, at){
   }
   return {ok:false};
 }
+function svStillsAllowed(){ return SVCFG && SVCFG.billing_ack===true; }   // RULE 1: Street View Static bills per image
 function svStillFrames(plan){
   const out=[]; let last=null;
   for(let t=0;t<=plan.dur;t+=0.5){
@@ -468,6 +473,7 @@ async function svStills(plan, box, ctl){
   const key=svKey(); if(!key) throw new Error('no-key');
   const probe=await svProbeStatic(key, plan.stops[0]); if(ctl.dead) return;
   if(!probe.ok) throw new Error('static-denied');
+  if(!svStillsAllowed()) throw new Error('billable-mode-refused');   // RULE 1
   const frames=svStillFrames(plan); ctl.mode='stills';
   const r=box.getBoundingClientRect(); const w=640, h=Math.max(200,Math.min(640,Math.round(640*(r.height||540)/(r.width||960))));
   const layers=[document.createElement('img'),document.createElement('img')];
@@ -510,6 +516,47 @@ function svLinkCard(plan, box, ctl){
 }
 
 function svStop(){ if(svRun){ svRun.dead=true; if(svRun.raf) cancelAnimationFrame(svRun.raf); try{ svRun.pano&&svRun.pano.setVisible(false); }catch(e){} svRun=null; } }
+
+// ---- mode: embed — Maps Embed API. FREE and unlimited (founder RULE 1). Not programmable like the JS API, but the
+// URL carries location/heading/pitch/fov, so we can still move the camera along the route on the narration timeline
+// by swapping the src at each stop and each look-at cue. Two stacked iframes cross-fade so the reload does not flash.
+function svEmbedUrl(key, lat, lng, heading, pitch, fov){
+  return 'https://www.google.com/maps/embed/v1/streetview?key='+encodeURIComponent(key)
+    +'&location='+lat+','+lng+'&heading='+(heading||0)+'&pitch='+(pitch||0)+'&fov='+(fov||90);
+}
+async function svEmbed(plan, box, ctl){
+  const key=localStorage.getItem('yy-gkey');
+  if(!key) throw new Error('no maps key');
+  // one timeline entry per stop arrival and per camera cue, in time order
+  const marks=[];
+  plan.stops.forEach((st,i)=>marks.push({t:st.arrive_s||0, lat:st.lat, lng:st.lng, heading:st.heading||0, pitch:st.pitch||0, fov:st.fov||90, lab:'stop '+(i+1)}));
+  (plan.cues||[]).forEach(c=>{
+    let ref=plan.stops[0], best=1e9;
+    plan.stops.forEach(st=>{ const d=Math.abs((st.arrive_s||0)-c.at_s); if((st.arrive_s||0)<=c.at_s && d<best){ best=d; ref=st; } });
+    let h=c.heading; if(h==null && c.look_at) h=svBearing(ref,c.look_at);
+    if(h!=null) marks.push({t:c.at_s, lat:ref.lat, lng:ref.lng, heading:h, pitch:c.pitch||0, fov:ref.fov||90, lab:c.label||'look'});
+  });
+  marks.sort((a,b)=>a.t-b.t);
+  const wrap=document.createElement('div'); wrap.className='fill'; wrap.style.cssText='inset:0;padding:0';
+  const mk=()=>{ const f=document.createElement('iframe'); f.style.cssText='position:absolute;inset:0;width:100%;height:100%;border:0;opacity:0;transition:opacity '+(SVCFG.fade_ms||380)+'ms ease'; f.allow='accelerometer; gyroscope'; f.referrerPolicy='no-referrer-when-downgrade'; f.loading='eager'; return f; };
+  const a=mk(), b=mk(); wrap.appendChild(a); wrap.appendChild(b); box.appendChild(wrap);
+  let front=a, back=b, shown=-1;
+  const go=(i)=>{ const m=marks[i]; back.src=svEmbedUrl(key,m.lat,m.lng,m.heading,m.pitch,m.fov);
+    back.onload=()=>{ if(ctl.dead) return; back.style.opacity='1'; front.style.opacity='0'; const s=front; front=back; back=s; };
+    shown=i; ctl.debug={mode:'embed', t:elapsed, mark:i, of:marks.length, cue:m.lab}; };
+  go(0);
+  ctl.mode='embed';
+  const tick=()=>{ if(ctl.dead) return; ctl.raf=requestAnimationFrame(tick);
+    if(ctl.userActive||elapsed<ctl.userUntil) return;                 // traveller is looking around inside the iframe
+    let want=shown; for(let i=0;i<marks.length;i++) if(elapsed>=marks[i].t) want=i;
+    if(want!==shown) go(want); };
+  ctl.raf=requestAnimationFrame(tick);
+  const note=document.createElement('div'); note.className='muted';
+  note.style.cssText='position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.55);padding:3px 8px;border-radius:6px;font-size:11px';
+  note.textContent='Street View moves with the narration — drag inside to look around';
+  wrap.appendChild(note);
+  return 'embed';
+}
 async function showStreetView(s){
   svStop();
   const box=$('#media'); const plan=svPlan(s);
@@ -519,7 +566,12 @@ async function showStreetView(s){
   box.innerHTML='<div class="fill"><div class="muted">Street View — connecting…</div></div>';
   ctl.onAuthFail=()=>{ if(ctl.dead||ctl.mode!=='js') return; ctl.mode=null; box.innerHTML=''; svBegin('stills'); };
   const want=(localStorage.getItem('yy-sv-mode')||SVCFG.mode||'auto').toLowerCase();
-  const ladder = want==='auto' ? ['js','stills','link'] : (want==='js'?['js','stills','link']:(want==='stills'?['stills','link']:['link']));
+  // FREE-FIRST ladder (RULE 1): embed (Maps Embed API, free/unlimited) then the link card.
+  // 'js'/'stills' hit billable SKUs and are only reachable when config.billing_ack === true (svModeAllowed gates it).
+  const ladder = want==='js' ? ['js','stills','embed','link']
+    : want==='stills' ? ['stills','embed','link']
+    : want==='link' ? ['link']
+    : ['embed','link'];                                        // 'auto' and 'embed' both land here
   const svBegin=async(from)=>{
     const chain=ladder.slice(ladder.indexOf(from)<0?0:ladder.indexOf(from));
     for(const m of chain){
@@ -528,6 +580,7 @@ async function showStreetView(s){
         box.innerHTML='';
         if(m==='js'){ await svLive(plan,box,ctl); }
         else if(m==='stills'){ await svStills(plan,box,ctl); }
+        else if(m==='embed'){ await svEmbed(plan,box,ctl); }
         else { svLinkCard(plan,box,ctl); }
         if(ctl.dead) return;
         return;                                                   // mode is up
@@ -669,11 +722,24 @@ $('#clearEn').onchange=e=>{ clearEnglish=e.target.checked; localStorage.setItem(
 // Maps key: server config first (www/config.json, gitignored — never committed), then whatever the traveller pasted.
 // Maps key: server config (www/config.json, gitignored) supplies it, so the traveller never needs to paste one.
 // The input stays available as an override for self-hosted copies — hidden unless there is no server key or the traveller asks.
+// COST GATE (founder RULE 1, 2026-08-19): billable Google modes ('js' = Dynamic panorama, 'stills' = Street View Static)
+// are refused unless the server config explicitly sets billing_ack:true. A free tier is not permission.
+function svModeAllowed(cfg){
+  const m=(cfg&&cfg.streetview&&cfg.streetview.mode)||'link';
+  const billable=(m==='js'||m==='stills'||m==='auto');
+  if(billable && !(cfg&&cfg.billing_ack===true)){
+    console.warn('[yunyou] streetview mode "'+m+'" calls a billable Google API; refused (config.billing_ack is not true). Falling back to "link".');
+    return 'embed';                                            // free mode, not the dead link card
+  }
+  return m;
+}
 fetch('/config.json').then(r=>r.ok?r.json():null).then(c=>{
   const own=localStorage.getItem('yy-own-gkey')==='1';
   if(c&&c.maps_api_key){ if(!own) localStorage.setItem('yy-gkey',c.maps_api_key);
     if(!own){ $('#gkeyRow').style.display='none'; $('#gkeyOk').style.display='block'; } }
-  if(c&&c.streetview&&typeof c.streetview==='object') Object.assign(SVCFG,c.streetview); // mode/step_m/max_stills/fade_ms/resume_after_s — see www/config.example.json
+  if(c&&c.streetview&&typeof c.streetview==='object') Object.assign(SVCFG,c.streetview);
+  SVCFG.billing_ack = (c && c.billing_ack===true);   // RULE 1: billable SKUs stay locked unless the config says so explicitly
+  SVCFG.mode = svModeAllowed(c);                      // and the mode itself is gated the same way // mode/step_m/max_stills/fade_ms/resume_after_s — see www/config.example.json
 }).catch(()=>{});
 $('#gkeyEdit')?.addEventListener('click',e=>{ e.preventDefault(); localStorage.setItem('yy-own-gkey','1'); localStorage.removeItem('yy-gkey'); $('#gkeyOk').style.display='none'; $('#gkeyRow').style.display='block'; $('#gkey').value=''; });
 $('#gkey').value=localStorage.getItem('yy-gkey')||''; $('#gkey').onchange=e=>localStorage.setItem('yy-gkey',e.target.value.trim());
