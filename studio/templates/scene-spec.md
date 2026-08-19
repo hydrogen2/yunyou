@@ -43,6 +43,18 @@ Checklist before handing to review:
       modes that cannot know their position. `hold_s` stops the walk while we look; `pitch` up for spires and near façades
       (~30 for a cross 15 m away, ~18 for a façade 27 m away); `zoom` tightens for anything far off (fov = 180 / 2^zoom).
       Nothing else is needed to make the scene cinematic: the camera walks the route by itself, paced to `duration_s`
+- [ ] **streetview scenes now run on OPEN imagery first (player v0.5, mode `open`).** Nothing extra goes in the scene
+      file: `interaction.route` + the `camera` track are the whole input. Before the scene is reviewed, run
+      `node studio/tools/panowalk/fetch.mjs --chapter <chapter> --scene <id> --dry-run` and read the coverage table.
+      Two things it tells you that change how you write the scene:
+      **(a) `no-coverage`** — no freely-licensed photograph of that corner exists. The stop plays as a free Google
+      Street View embed and cannot appear in the rendered video at all, so do not hang a video-only beat on it.
+      **(b) `off-cue`** — imagery exists but faces the wrong way for a cue that *names* a place. A flat street
+      photograph holds about 70°, so a `look_at` more than ~35° off the direction the camera was travelling cannot be
+      shown; the whole stop then falls back to the embed rather than putting your pin over the wrong building. A 360°
+      sequence has no such limit — if the report says `pano`, every cue at that stop is reachable.
+      Cues authored against Google panoramas are not automatically servable from open imagery: re-point the `look_at`
+      at something the frames can actually see, or accept the embed for that stop and say so in `production_notes`
 - [ ] media that may not load (Street View pano, YouTube clip) names a `fallback` (manifest id M-xx or ref): a still for each stop
 - [ ] **one shot may carry two media entries** — the thing the player may embed and the thing the video may include are
       often different works, and the scene records both. `media[].use` says which is which: `"player"` = interactive

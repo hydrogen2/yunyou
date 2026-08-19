@@ -15,7 +15,25 @@ files/
   src/kv_savile/            13 KartaView frames, seq 1123901 idx 1767–1779
   src/kv_pallmall/          11 KartaView frames, seq 1124  idx 828–838
   *.mp4                     normalised for the renderer: h264 High, 1280×720, 25 fps, yuv420p, no audio (65 MB)
+  panos/                    open street-level frames for the streetview walks (186 MB) — see below
 ```
+
+## `panos/` — the open-imagery walk (added 2026-08-19, player v0.5 / queue item C1a)
+
+Written by `node studio/tools/panowalk/fetch.mjs --chapter <this chapter> --scene <id>` and read by BOTH the player
+(streetview mode `open`) and the linear renderer (visual kind `panowalk`). Also gitignored and also regenerable; the
+fetcher reuses whatever is already on disk, so a re-run downloads nothing.
+
+```
+panos/index.json                  usable stops + a `missing` list saying why each other stop falls back
+panos/<scene-id>-w<NN>/frames.json  sequence, licence, author, and per-frame lat/lng/ref_heading/timestamp/source_url
+panos/<scene-id>-w<NN>/f000.jpg     original bytes (360°: 5760×2880) — what ffmpeg cuts into the MP4
+panos/<scene-id>-w<NN>/f000.web.jpg 3072 px derivative — what the player streams
+```
+
+Day 1: 98 frames over 7 stops, all Mapillary (six of them 360°), 2.7–12.1 m between frames. Full table, the licence
+rules and the one open Rights question (Mapillary states no per-image licence) are in
+`studio/tools/panowalk/README.md`.
 
 ## Hard rules obeyed when fetching
 

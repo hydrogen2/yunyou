@@ -123,3 +123,99 @@ counts as "needs input", so the scene hands on to the next one like a video.
   still); the `stills` mode cannot be dragged (it is a hyperlapse, there is nothing to pan); no counter/attribution work in
   the linear renderer, which still draws stop cards and must keep doing so; scene 04's `interaction.prompt` still says
   "Tap ahead to step" — a Scene Developer fix, not an engine one.
+
+## 2026-08-19 — v0.5 (engine-tools, C1a "Path A"): streetview mode `open` — a FREE walk on open imagery, shared with the video
+
+**What changed.** The player's street walk no longer needs Google at all. A new fetcher caches freely-licensed
+street-level frames per walk stop; the player animates them (mode **`open`**, now first on the ladder
+`open → embed → link`); the linear renderer cuts the **same** frames with the **same** move (visual kind
+**`panowalk`**). One geometry module, `studio/player/panomove.mjs`, is imported by both, so the walk in the MP4 is
+the walk in the player. **Zero billable calls anywhere in the default path** — asserted by the smoke test.
+
+### New: `studio/tools/panowalk/` (fetcher)
+- `fetch.mjs --chapter <dir> [--scene id]… [--dry-run] [--source both|kartaview|mapillary] [--radius 60]
+  [--max-frames 14] [--max-yaw 35] [--accept-unknown-licence] [--report f.json]`.
+- KartaView (no token, no account) + Mapillary (**only** if `www/config.json` already has `mapillary_token`; the tool
+  never creates one, never signs up, never accepts terms — RULE 0). No Google endpoint is contacted.
+- Scores candidate sequences per waypoint (coverage · spacing · span · direction · 360° · pedestrian · recency ·
+  proximity to places the cues *name* · continuity) and takes **one** sequence per stop — never mixes sources inside a
+  move. Stops that share a sequence have its frames partitioned by nearest waypoint, so no stretch is walked twice.
+- **Licence gate per frame, not per platform** (`lib/licence.mjs`): NC/ND is a hard stop that drops the whole
+  sequence; `unknown` is dropped unless a human passes `--accept-unknown-licence`. KartaView = CC BY-SA 4.0
+  platform-wide (rights-a6 green). **Mapillary's Graph API states no per-image licence at all** — verified live:
+  `fields=id,license` returns `{"id":…}` with no licence key, and the entity endpoint answers
+  `500 "Tried accessing nonexisting field (license)"`; `organization_id` is absent too. Open question for Rights,
+  recorded in `studio/tools/panowalk/README.md` §Licence and visible in the burned-in credit.
+- Cache: `<chapter>/media/files/panos/{index.json, <stop-id>/frames.json, f000.jpg, f000.web.jpg}` — gitignored,
+  reused on re-run (a second run downloads nothing). API answers cached in `studio/tools/panowalk/.cache/`.
+- `ref_heading` per frame — the world bearing at the image centre — is *derived*, not trusted: camera compass for
+  360° frames (verified by rendering the Reform Club's "104" doorway at `yaw = 168° − 245.8°`), GPS travel bearing
+  for flat ones (KartaView seq 1124 states 160° while its dashcam looks along 240°; Mapillary's `compass_angle` is
+  routinely 180° from its own `computed_compass_angle`).
+
+### New: `studio/player/panomove.mjs` (the move, defined once)
+Frame timing on the scene clock, cross-fade windows, the slow drift ("breathing"), the window geometry (a cylindrical
+crop out of the 360°×180° sphere or the ~70° flat photo), cue **retargeting** (a cue authored at the stop is rescaled
+in pitch and field of view for the frame we actually cut to, clamped 0.7–1.6× so a façade never becomes a doorknob),
+`frameForCue` (a cue that *names* a place cuts to the frame nearest it), and ports of `svPlan`/`svCameraAt` for the
+renderer. The smoke test asserts the port and the player agree on scene 04's stops, arrival times, cues and headings.
+
+### Player
+- **Mode `open`**: two cross-fading layers, a per-frame drift, turn-to-cue on the same `at_s` as the pin, drag to look
+  (pauses the walk, eases back to zero after the idle window) — the v0.4 contract, unchanged.
+- **Per-stop honesty**: stops with no usable imagery do not get a faked walk. They fall back inside the same scene to
+  the free Maps **Embed** (or the stop card with no key), and `window.__sv.coverage` lists `{open:[…], gap:[…]}`.
+- **Burned attribution** bottom-left while those frames are on screen: source (linked to the exact image page),
+  author, licence and capture date. Legal because these are open-licensed frames we host — unlike Google's, which the
+  player still never covers.
+- Ladder is now `open → embed → link`; `auto` starts at `open`, and `svModeAllowed` no longer treats `auto` as
+  billable. `www/config.example.json` documents `mode: "open"` and the optional `mapillary_token`.
+
+### Linear renderer (`studio/tools/render/render_linear.mjs`)
+- Visual kind **`panowalk`**: `{ "kind":"panowalk", "scene":"count-the-steps", "stops":[5,6], "dur":8,
+  "fallback":{"kind":"footage","media":"M-67"} }`. Builds the move with ffmpeg from the same cached frames
+  (`crop` out of the doubled equirect for wrap → `scale` → `zoompan` drift → `xfade`), credits each sequence.
+- A `streetview` scene with no cut-sheet hint now renders the walk automatically when frames are cached.
+- **Degrades**: no cache → the declared `fallback`, else the old stop card, with a warning in `render-log.md`. A clean
+  checkout still renders (verified by removing `panos/index.json` and re-rendering scene 05).
+- Honest difference: ffmpeg cannot animate a crop, so the turn is quantised to one value per source frame (its
+  midpoint) while the player interpolates. Timing, cross-fade and drift are identical.
+- `cuts/day-01-london.json` scene 05 `pall-mall-pass`: visual 0 changed from the M-67 KartaView dashcam hyperlapse to
+  `panowalk` over `count-the-steps` stops 5–6. Same 8 s, same words; M-67 stays as the declared fallback.
+
+### Day 1 coverage (real numbers, `--report`)
+7 of 8 stops got open imagery, all from Mapillary, 98 frames, **186 MB** of cache (+23 MB of API cache):
+w01 flat 8.9 m spacing (2022) · w02 **360°** 8.3 m (2024) · w03 **360°** 7.9 m (2026) · w04 **360°** 8.7 m (2024) ·
+w05 **360°** 10.1 m (2024, same sequence as w04, one continuous leg) · w06 **360°** 12.1 m (2024) ·
+`look-up-the-cross` **360°** 2.7 m (2025). **w00 Savile Row falls back to `embed`**: the scene's cue *names*
+7–8 Savile Row, which needs a 57–70° turn, and no flat photograph there holds it. The Strand — zero on KartaView —
+is fully covered by Mapillary.
+
+**Does it read as a walk? Mostly not, and the imagery is not why.** The fetcher now measures `pace` per stop (metres
+of selected span ÷ the seconds the scene gives that stop) and prints it. Scene 04 asks for 91–112 m in each 15 s
+beat = **6–7 m/s, a bicycle**; nothing can make that a man who never hurries. Where the beat is long enough the same
+frames do read as a walk: the Reform stop (45 s) at 3.5 m/s, and scene 15 (25 s / 44 m) at **1.7 m/s — walking pace
+exactly**. The cure is a content decision (more seconds, or a shorter leg), so `frames.json` carries `pace_ms` and
+`pace_reads_as` for the Scene Developer to act on.
+
+### How to run / what to look at
+```bash
+node studio/tools/panowalk/fetch.mjs --chapter products/around-the-world-80-days/day-01-london \
+     --scene count-the-steps --scene look-up-the-cross --dry-run            # coverage report, no downloads
+node studio/player/test/smoke_panowalk.mjs                                   # 32 checks, incl. zero billable calls
+node studio/player/test/smoke_streetview.mjs                                 # v0.4 ladder, updated for v0.5
+cd studio/tools/render && node render_linear.mjs ../../../products/around-the-world-80-days/day-01-london/tour.json \
+     --scenes 5 --out /tmp/lin05 --no-tts                                    # the walk, in the film
+```
+Look at: the player's scene 04 at 34 s (walking Burlington Gardens) and 108 s (the Reform Club façade, turned to
+inside a 360° frame), scene 15 at 4 s (the Eleanor Cross centre-frame against the hotel), and `/tmp/lin05` around
+5–9 s. `studio/tools/panowalk/README.md` has the cache layout, the scoring table and the licence rules.
+
+### Still not done
+- Mapillary's per-image licence cannot be verified through the API — **Rights must rule** before this ships publicly.
+- Mapillary's contractual attribution asks for their mark; we show a linked "Mapillary" wordmark, not their logo file.
+- The cylindrical crop bows horizontals at wide fields of view (a true rectilinear re-projection is not expressible
+  in CSS, so matching the video would be impossible).
+- Scene 04's cue list was authored for Google panoramas; w00's named look-at is unreachable from open imagery. That is
+  a content decision (re-point the cue, or keep the embed) — Engine does not touch cues.
+- `--max-frames 14` per stop is a cost-free but disk-heavy default (360° originals are ~1.5 MB each).

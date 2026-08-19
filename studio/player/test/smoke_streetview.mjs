@@ -5,8 +5,9 @@
  * Proves, without a human clicking anything:
  *   1. the walk PLAN builds from the scene content (stops, arrival times from overlays[].at_waypoint, camera cues)
  *   2. the camera FUNCTION turns where the cues say, when the pins fire, and looks along the street in between
- *   3. the FALLBACK LADDER picks the right mode: js (Maps JavaScript API) → stills (Street View Static) → link (card)
- *      — tested with the JS API available, with it blocked, and with no key at all, plus a live gm_authFailure
+ *   3. the FALLBACK LADDER picks the right mode. v0.5 note: the FREE ladder is now open → embed → link, and the two
+ *      billable Google modes (js, stills) sit above it only when the config acknowledges billing. So the passes
+ *      below block /media/files/panos/ to reach the lower rungs, and the billable ones need --allow-billing.
  *   4. the walk advances with zero clicks, dragging pauses it and it resumes by itself
  *   5. Google's attribution is never covered (cross-fade stops short of the ©-line) and no console errors appear
  *
@@ -45,7 +46,7 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--mute-audio', '--autoplay-policy=no-user-gesture-required'] });
 
-async function newPage({ blockJs = false, blockConfig = false, blockStatic = false } = {}) {
+async function newPage({ blockJs = false, blockConfig = false, blockStatic = false, blockPanos = false } = {}) {
   const ctx = await browser.newContext({ viewport: { width: 1280, height: 720 }, ignoreHTTPSErrors: true });
   const page = await ctx.newPage();
   page.errors = []; page.consoleErrors = []; page.svRequests = [];
@@ -55,6 +56,7 @@ async function newPage({ blockJs = false, blockConfig = false, blockStatic = fal
   if (blockJs) await page.route(u => /maps\.googleapis\.com\/maps\/api\/js/.test(String(u)), r => r.abort());
   if (blockStatic) await page.route(u => /maps\.googleapis\.com\/maps\/api\/streetview/.test(String(u)), r => r.abort());
   if (blockConfig) await page.route(u => new URL(u).pathname === '/config.json', r => r.fulfill({ status: 404, body: 'no config' }));
+  if (blockPanos) await page.route(u => /\/media\/files\/panos\//.test(String(u)), r => r.abort());   // v0.5: hide the open-imagery cache to reach the lower rungs
   await page.goto(`${PLAYER}?tour=${TOUR}`, { waitUntil: 'load' });
   await page.waitForSelector('#start', { timeout: 20000 });
   await page.waitForFunction(() => typeof scenes !== 'undefined' && scenes.length > 0, null, { timeout: 20000 });
@@ -167,9 +169,9 @@ if (!SKIP_JS) {
   await page.context().close();
 }
 
-// ---------------- pass 3: JS API unavailable → Street View Static hyperlapse ----------------
-{
-  const page = await newPage({ blockJs: true });
+// ---------------- pass 3: JS API unavailable → Street View Static hyperlapse (BILLABLE: --allow-billing only) ----
+if (!SKIP_JS) {
+  const page = await newPage({ blockJs: true, blockPanos: true });
   await startAt(page, SV_SCENE);
   let up = true;
   await waitMode(page, 'stills', 30000).catch(() => { up = false; });
@@ -195,7 +197,7 @@ if (!SKIP_JS) {
 
 // ---------------- pass 4: no key at all → the auto-advancing card ----------------
 {
-  const page = await newPage({ blockConfig: true, blockJs: true, blockStatic: true });
+  const page = await newPage({ blockConfig: true, blockJs: true, blockStatic: true, blockPanos: true });
   await page.evaluate(() => localStorage.removeItem('yy-gkey'));
   await startAt(page, SV_SCENE);
   let up = true;

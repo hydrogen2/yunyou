@@ -30,6 +30,7 @@ import ffmpegPath from 'ffmpeg-static';
 import ffprobeStatic from 'ffprobe-static';
 import { chromium } from 'playwright-core';
 import * as T from './lib/templates.mjs';
+import * as PM from '../../player/panomove.mjs';   // ONE definition of the open-imagery walk, shared with the player
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FFMPEG = ffmpegPath, FFPROBE = ffprobeStatic.path;
@@ -195,6 +196,123 @@ async function segFootage(file, dur, inS = 0) {
   return out;
 }
 
+
+// ---------------------------------------------------------------- panowalk: the open-imagery walk, in the video
+// The SAME cached frames the player animates in streetview mode `open`, cut with the SAME move (studio/player/
+// panomove.mjs is imported by both). Nothing is downloaded here and nothing Google is touched: the frames come from
+// <chapter>/media/files/panos/, built by `node studio/tools/panowalk/fetch.mjs`.
+// Difference from the player, stated plainly: ffmpeg cannot animate a crop, so the turn is quantised to one value
+// per source frame (evaluated at that frame's midpoint) while the player interpolates it continuously. The drift
+// inside each frame, the cross-fade and the frame timing are identical.
+// Degrades: no cache, no frames, or a stop the fetcher marked unusable → the visual's `fallback` is used instead
+// (and if there is none, the ordinary Street View stop card), so a clean checkout still renders.
+const panoRoot = path.join(CHAPTER_DIR, 'media', 'files', 'panos');
+let panoIndexCache;
+function panoIndex() {
+  if (panoIndexCache !== undefined) return panoIndexCache;
+  const f = path.join(panoRoot, 'index.json');
+  panoIndexCache = fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null;
+  return panoIndexCache;
+}
+function panoPacks(sceneId, only) {
+  const idx = panoIndex(); if (!idx) return [];
+  return idx.stops.filter(s => s.scene_id === sceneId && (!only || only.includes(s.waypoint_index)))
+    .map(s => { const f = path.join(panoRoot, s.stop_id, 'frames.json'); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null; })
+    .filter(p => p && p.frames && p.frames.length);
+}
+
+/** one source frame → one clip: crop the window out of the (doubled, for 360°) image, then breathe */
+async function segPanoFrame(pack, frame, win, dur, dir) {
+  const src = path.join(panoRoot, pack.stop_id, frame.file);
+  const out = path.join(CACHE, 'seg', `pw_${sha(src + JSON.stringify(win) + dur + dir + W + H + FPS)}.mp4`);
+  if (fs.existsSync(out)) return out;
+  const frames = Math.max(2, Math.round(dur * FPS));
+  const iw = frame.w || 5760, ih = frame.h || 2880;
+  // margin so the drift's pan/zoom stays inside the crop
+  const mw = Math.min(1, win.w * 1.10), mh = Math.min(1, win.h * 1.10);
+  const cw = Math.max(16, Math.round(iw * mw)), ch = Math.max(16, Math.round(ih * mh));
+  const cy = Math.max(0, Math.min(ih - ch, Math.round(ih * (win.y - (mh - win.h) / 2))));
+  let pre, cx;
+  if (win.pano) {                                   // wrap: the equirect doubled side by side, then crop anywhere
+    pre = 'split[a][b];[a][b]hstack=inputs=2,';
+    cx = Math.round(iw * ((win.x - (mw - win.w) / 2) + 1));   // +1 image width keeps x positive across the seam
+  } else {
+    pre = '';
+    cx = Math.max(0, Math.min(iw - cw, Math.round(iw * (win.x - (mw - win.w) / 2))));
+  }
+  const z = `1+${(0.055).toFixed(3)}*on/${frames}`;
+  const px = dir >= 0 ? `iw/2-(iw/zoom/2)+${(0.04 * 0.5).toFixed(3)}*iw*(on/${frames}-0.5)` : `iw/2-(iw/zoom/2)-${(0.04 * 0.5).toFixed(3)}*iw*(on/${frames}-0.5)`;
+  const vf = `${pre}crop=${cw}:${ch}:${cx}:${cy},scale=${W * 2}:${H * 2}:flags=lanczos,` +
+    `zoompan=z='${z}':x='${px}':y='ih/2-(ih/zoom/2)':d=${frames}:s=${W}x${H}:fps=${FPS},format=yuv420p,setsar=1`;
+  await ffmpeg(['-i', src, '-filter_complex', vf, '-frames:v', String(frames), '-r', String(FPS),
+    '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', out]);
+  return out;
+}
+
+/** chain clips with cross-fades of `fade` seconds; returns one mp4 of the requested total duration */
+async function xfadeChain(clips, fade) {
+  if (clips.length === 1) return clips[0].file;
+  const out = path.join(CACHE, 'seg', `pwx_${sha(JSON.stringify(clips.map(c => c.file + c.dur)) + fade + W + H + FPS)}.mp4`);
+  if (fs.existsSync(out)) return out;
+  const inputs = clips.flatMap(c => ['-i', c.file]);
+  let fc = '', prev = '0:v', at = clips[0].dur;
+  for (let i = 1; i < clips.length; i++) {
+    const off = Math.max(0.05, at - fade);
+    fc += `[${prev}][${i}:v]xfade=transition=fade:duration=${fmt1(fade)}:offset=${fmt1(off)}[x${i}];`;
+    prev = `x${i}`; at = off + clips[i].dur;
+  }
+  fc = fc.replace(/;$/, '');
+  await ffmpeg([...inputs, '-filter_complex', fc, '-map', `[${prev}]`, '-r', String(FPS),
+    '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', out]);
+  return out;
+}
+
+/**
+ * Build the walk for `dur` seconds from the cached frames of `sceneId` (optionally only some waypoints).
+ * Returns { file, dur, credits:[…] } or null when the cache cannot serve it.
+ */
+async function buildPanowalk(scene, sceneId, only, dur) {
+  const packs = panoPacks(sceneId, only);
+  if (!packs.length) return null;
+  const plan = PM.planScene(scene);
+  if (!plan) return null;
+  const byWp = new Map(packs.map(p => [p.waypoint_index, p]));
+  const wps = (only && only.length ? only : packs.map(p => p.waypoint_index)).filter(k => byWp.has(k)).sort((a, b) => a - b);
+  if (!wps.length) return null;
+  const tStart = plan.stops[wps[0]].arrive_s || 0;
+  const last = wps[wps.length - 1];
+  const tEnd = plan.stops[last + 1] ? plan.stops[last + 1].arrive_s : plan.dur;
+  const scale = dur / Math.max(1, tEnd - tStart);
+  const aspect = W / H;
+
+  const clips = [], credits = new Map(); let notes = [];
+  for (const k of wps) {
+    const pack = byWp.get(k);
+    const s0 = (plan.stops[k].arrive_s || 0), s1 = plan.stops[k + 1] ? plan.stops[k + 1].arrive_s : plan.dur;
+    const l0 = (s0 - tStart) * scale, l1 = Math.min(dur, (s1 - tStart) * scale);
+    const laid = PM.planStop(pack, l0, l1);
+    for (const seg of laid.segments) {
+      const mid = tStart + ((seg.t0 + seg.t1) / 2) / scale;            // the cue track is read in ORIGINAL scene time
+      const cam = PM.cameraTrack(plan.stops, plan.cues, mid);
+      let frame = seg.frame, aim = cam;
+      if (cam.cue && cam.cue.look_at) {
+        const pick = PM.frameForCue(laid.segments.map(x => x.frame), cam.cue.look_at);
+        if (pick) frame = pick;
+        aim = { ...cam, heading: PM.bearingDeg(frame, cam.cue.look_at) };
+        aim = PM.retarget(aim, PM.distM(plan.stops[k], cam.cue.look_at), PM.distM(frame, cam.cue.look_at));
+      }
+      const win = PM.windowFor(frame, { heading: aim.heading, pitch: aim.pitch, fov: aim.fov }, aspect);
+      const d = Math.max(0.5, seg.t1 - seg.t0);
+      clips.push({ file: await segPanoFrame(pack, frame, win, d + (seg.fade || 0), seg.dir), dur: d + (seg.fade || 0), fade: seg.fade || 0.4 });
+      if (win.clamped) notes.push(`${pack.stop_id}: flat frame clamped at ${Math.round(win.yaw)}° — the cue asked for more turn than the photograph holds`);
+    }
+    credits.set(pack.sequence_key, { attribution: pack.attribution, licence: pack.licence, source: pack.source, author: pack.author, url: (pack.frames[0] || {}).source_url });
+  }
+  if (!clips.length) return null;
+  const file = await xfadeChain(clips, clips[0].fade || 0.4);
+  return { file, dur, credits: [...credits.values()], notes, stops: wps, packs };
+}
+
 // ---------------------------------------------------------------- ASS captions
 const assTime = t => { t = Math.max(0, t); const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = Math.floor(t % 60), cs = Math.floor((t - Math.floor(t)) * 100); return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}.${String(cs).padStart(2, '0')}`; };
 const assEsc = s => String(s).replace(/\\/g, '\\\\').replace(/\{/g, '(').replace(/\}/g, ')').replace(/\n/g, '\\N');
@@ -325,12 +443,42 @@ function captionChunks(text, words, maxChars = 84) {
         else if (v.kind === 'quiz') { const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img); const it = s.interaction || {}; const co = (it.options || []).find(o => o.correct) || {}; segs.push({ kind: 'png', file: await shotHtml(T.quizScreen({ sceneTitle: s.title, imageUrl: ci ? 'file://' + ci.file : '', prompt: it.prompt || '', options: it.options || [], feedback: co.feedback || '' }), `quiz_${tag}`), dur, attribution: img?.attribution, src: 'quiz screen (own render)' }); }
         else if (v.kind === 'chat') { const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img); const it = s.interaction || {}; const turns = (v.chips || [0]).flatMap(i => { const o = (it.options || [])[i]; return o ? [{ role: 'q', text: o.text }, { role: 'a', text: o.feedback || o.answer || '' }] : []; }); segs.push({ kind: 'png', file: await shotHtml(T.chatScreen({ sceneTitle: s.title, imageUrl: ci ? 'file://' + ci.file : '', context: it.prompt || '', turns }), `chat_${tag}`), dur, attribution: img?.attribution, src: 'dialogue screen (own render, scripted chips)' }); }
         else if (v.kind === 'checklist') { const it = s.interaction || {}; segs.push({ kind: 'png', file: await shotHtml(T.checklistScreen({ sceneTitle: s.title, prompt: it.prompt || '', options: it.options || [], closing: v.closing_overlay !== undefined ? (s.overlays || [])[v.closing_overlay]?.text : '' }), `check_${tag}`), dur, src: 'checklist screen (own render)' }); }
+        else if (v.kind === 'panowalk') {
+          const srcScene = v.scene ? scenes.find(x => x.id === v.scene) : s;
+          const built = srcScene ? await buildPanowalk(srcScene, srcScene.id, v.stops || null, dur || 8) : null;
+          if (built) {
+            for (const c of built.credits) if (!creditsUsed.has(c.attribution)) creditsUsed.set(c.attribution, { id: c.attribution, kind: 'panowalk', attribution: c.attribution, license: c.licence || '', ref: c.url || '' });
+            built.notes.forEach(n => warnings.push(`${tag}: ${n}`));
+            segs.push({ kind: 'mp4', file: built.file, dur, attribution: built.credits.map(c => c.attribution).join(' · '), src: `panowalk — ${built.packs.map(p => p.source + ' ' + p.sequence_id).join(', ')} (stops ${built.stops.join(',')}), cached frames, same move as the player` });
+          } else if (v.fallback) {
+            warnings.push(`${tag}: panowalk cache missing (run studio/tools/panowalk/fetch.mjs) — using the declared fallback`);
+            const fm = v.fallback.media ? media.find(x => x.manifest_id === v.fallback.media) : null;
+            if (v.fallback.kind === 'footage' && fm) segs.push(await footageSeg(fm, dur, v.fallback.in_s ?? 0));
+            else if (v.fallback.kind === 'image' && fm) segs.push(await imgSeg(fm, dur));
+            else if (fm) segs.push(await pendingSeg(fm, dur));
+          } else {
+            warnings.push(`${tag}: panowalk cache missing and no fallback declared — Street View stop card`);
+            const svs = media.filter(x => x.kind === 'streetview');
+            segs.push({ kind: 'png', file: await shotHtml(T.streetViewCard({ sceneTitle: s.title, stops: svs.map(x => ({ desc: x.note || x.attribution, coords: x.ref })), note: '' }), `sv_${tag}`), dur, src: 'Street View stop card — panowalk cache absent' });
+          }
+        }
         else if (v.kind === 'streetview') { const svs = media.filter(x => x.kind === 'streetview'); segs.push({ kind: 'png', file: await shotHtml(T.streetViewCard({ sceneTitle: s.title, stops: svs.map(x => ({ desc: x.note || x.attribution, coords: x.ref })), note: '' }), `sv_${tag}`), dur, src: 'Street View stop card — not recorded' }); }
       }
     } else {
       // defaults by type
       if (s.type === 'video') { for (const m of media) { if (m.use === 'player') continue; if (m.kind === 'image') segs.push(await imgSeg(m, Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? 0)) * f))); else if (m.kind === 'footage') segs.push(await footageSeg(m, Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? 0)) * f))); else if (m.kind === 'youtube') segs.push(await clipSeg(m, null)); } }
-      else if (s.type === 'streetview') { const svs = media.filter(x => x.kind === 'streetview'); segs.push({ kind: 'png', file: await shotHtml(T.streetViewCard({ sceneTitle: s.title, stops: svs.map(x => ({ desc: x.note || x.attribution, coords: x.ref })) }), `sv_${tag}`), dur: null, src: 'Street View stop card — not recorded' }); }
+      else if (s.type === 'streetview') {
+        // v0.5: if panowalk frames are cached for this scene, the walk goes in the film; otherwise the old stop card.
+        const built = await buildPanowalk(s, s.id, null, Math.max(6, p.len));
+        if (built) {
+          for (const c of built.credits) if (!creditsUsed.has(c.attribution)) creditsUsed.set(c.attribution, { id: c.attribution, kind: 'panowalk', attribution: c.attribution, license: c.licence || '', ref: c.url || '' });
+          built.notes.forEach(n => warnings.push(`${tag}: ${n}`));
+          segs.push({ kind: 'mp4', file: built.file, dur: null, attribution: built.credits.map(c => c.attribution).join(' · '), src: `panowalk — ${built.packs.map(x => x.source + ' ' + x.sequence_id).join(', ')}, cached open imagery` });
+        } else {
+          const svs = media.filter(x => x.kind === 'streetview');
+          segs.push({ kind: 'png', file: await shotHtml(T.streetViewCard({ sceneTitle: s.title, stops: svs.map(x => ({ desc: x.note || x.attribution, coords: x.ref })) }), `sv_${tag}`), dur: null, src: 'Street View stop card — not recorded' });
+        }
+      }
       else if (s.type === 'photo') { const vis = media.filter(x => x.kind === 'image' || x.kind === 'generated'); for (const m of vis) { const d = Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? s.duration_s)) * f); if (m.kind === 'image') segs.push(await imgSeg(m, d)); else if (fs.existsSync(path.join(CHAPTER_DIR, m.ref))) { if (/\.svg$/i.test(m.ref)) segs.push(await playerSeg(`showScene(${n}).then(()=>seek(${m.start_s ?? 0}))`, d, `${tag}_${sha(m.ref)}`)); /* ffmpeg has no svg decoder: shoot the player at the asset's scene time */ else segs.push({ kind: 'kb', file: path.join(CHAPTER_DIR, m.ref), dur: d, src: `${m.manifest_id} generated asset` }); } else segs.push(await pendingSeg(m, d)); } }
       else if (s.type === 'map') { const gen = media.filter(x => x.kind === 'generated' && /route-map/.test(x.ref)); const vm = media.find(x => x.kind === 'map'); if (gen.length) { for (const g of gen) segs.push(await playerSeg(`showRouteMap(${!/full-loop|enablers/.test(g.ref)})`, Math.max(4, ((g.end_s ?? 0) - (g.start_s ?? 0)) * f), `${tag}_${sha(g.ref)}`)); } else if (vm) { segs.push(await imgSeg(vm, null)); } else segs.push(await playerSeg('showRouteMap(true)', null, tag)); }
       else if (s.type === 'quiz') { const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img); const it = s.interaction || {}; const co = (it.options || []).find(o => o.correct) || {}; segs.push({ kind: 'png', file: await shotHtml(T.quizScreen({ sceneTitle: s.title, imageUrl: ci ? 'file://' + ci.file : '', prompt: it.prompt || '', options: it.options || [], feedback: co.feedback || '' }), `quiz_${tag}`), dur: null, attribution: img?.attribution, src: 'quiz screen (own render)' }); }
@@ -345,7 +493,7 @@ function captionChunks(text, words, maxChars = 84) {
     const tot = segs.reduce((a, x) => a + x.dur, 0); segs.forEach(x => x.dur = Math.max(1, x.dur * len / tot));
     // snap to frames, fix rounding on the last segment
     let acc = 0; segs.forEach((x, i) => { x.dur = Math.round(x.dur * FPS) / FPS; x.at = acc; acc += x.dur; }); segs[segs.length - 1].dur += Math.round((len - acc) * FPS) / FPS; if (segs[segs.length - 1].dur < 1) segs[segs.length - 1].dur = 1;
-    const segFiles = []; for (const x of segs) segFiles.push(x.kind === 'kb' ? await segKenBurns(x.file, x.dur) : x.kind === 'footage' ? await segFootage(x.file, x.dur, x.in_s || 0) : await segStatic(x.file, x.dur));
+    const segFiles = []; for (const x of segs) segFiles.push(x.kind === 'kb' ? await segKenBurns(x.file, x.dur) : x.kind === 'footage' ? await segFootage(x.file, x.dur, x.in_s || 0) : x.kind === 'mp4' ? await segFootage(x.file, x.dur, 0) : await segStatic(x.file, x.dur));
 
     // ---- captions (ASS) + VTT ----
     let ass = assHeader(); ass += assLine('Title', 0, 4, s.title);

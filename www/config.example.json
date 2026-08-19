@@ -1,8 +1,9 @@
 {
-  "_comment": "Copy to www/config.json (gitignored — never commit a key). The player reads this at boot.",
+  "_comment": "Copy to www/config.json (gitignored — never commit a key or a token). The player reads this at boot.",
   "maps_api_key": "AIza…",
+  "mapillary_token": "MLY|… — OPTIONAL. Free, but the studio never creates one: paste it only if you made it yourself at mapillary.com/dashboard/developers. With it, studio/tools/panowalk/fetch.mjs can use Mapillary sequences (denser, often 360°) as well as KartaView (which needs nothing).",
   "streetview": {
-    "mode": "auto",
+    "mode": "open",
     "step_m": 12,
     "max_stills": 60,
     "fade_ms": 380,
@@ -11,9 +12,11 @@
     "base_zoom": 0.85
   },
   "_streetview_help": {
-    "mode": "auto (js → stills → link) | js | stills | link. Per-browser override: localStorage['yy-sv-mode'].",
-    "step_m": "metres of drift before the walk hops to the next pano. Smaller = smoother and more Dynamic Street View panorama loads (billed); 12 ≈ every pano on a London street, 25 ≈ every other one.",
-    "max_stills": "hard cap on Street View Static frames per scene in the hyperlapse fallback (cost ceiling).",
+    "mode": "open (our own cached open imagery → embed → link) | embed | link | js | stills. 'auto' behaves as 'open'. Per-browser override: localStorage['yy-sv-mode'].",
+    "cost": "open, embed and link call nothing billable. 'js' (Dynamic Street View) and 'stills' (Street View Static) are BILLABLE and are refused unless this file also sets billing_ack: true.",
+    "open": "needs frames cached by `node studio/tools/panowalk/fetch.mjs --chapter <chapter>`; stops with no open imagery fall back to embed, then to the card.",
+    "step_m": "metres of drift before the walk hops to the next pano in 'js' mode.",
+    "max_stills": "hard cap on Street View Static frames per scene in the 'stills' fallback (cost ceiling).",
     "resume_after_s": "seconds of no touching before the auto-walk takes the camera back after a drag."
   }
 }

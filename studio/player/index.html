@@ -74,6 +74,15 @@
   #media .svbar { position:absolute; left:8px; top:8px; z-index:3; display:flex; gap:6px; font-family:system-ui,sans-serif; }
   #media .svbar .btn { padding:4px 10px; font-size:14px; background:rgba(13,12,14,.72); }
   #media .svattr { position:absolute; right:8px; top:8px; z-index:3; font:11px/1.5 system-ui,sans-serif; color:var(--ink); background:rgba(13,12,14,.6); padding:2px 7px; border-radius:5px; }
+  /* Street View v0.5 — mode `open`: our own cached KartaView / Mapillary frames. Unlike Google's imagery these are
+     ours to store, to overlay and to put in the video, so the CC BY-SA credit is burned bottom-left over the frame. */
+  #media .svopen { position:absolute; inset:0; background-color:#000; opacity:0; transition:opacity .5s linear; will-change:background-position,background-size; }
+  #media .svopen.on { opacity:1; }
+  #media .svgap { position:absolute; inset:0; display:none; }
+  #media .svgap iframe { position:absolute; inset:0; width:100%; height:100%; border:0; }
+  #media .svgapnote { position:absolute; left:8px; bottom:8px; z-index:3; font:11px/1.5 system-ui,sans-serif; color:var(--ink); background:rgba(13,12,14,.6); padding:3px 8px; border-radius:5px; }
+  #media .svcredit { position:absolute; left:8px; bottom:8px; z-index:3; font:11px/1.5 system-ui,sans-serif; color:var(--ink); background:rgba(13,12,14,.62); padding:3px 8px; border-radius:5px; max-width:72%; }
+  #media .svcredit a { color:var(--accent); text-decoration:none; }
   @media (min-aspect-ratio: 4/3) { #stage { flex-direction:row; } #media { flex:1 1 60%; min-height:0; } #right { flex:1 1 40%; display:flex; flex-direction:column; min-width:0; } #panel { max-height:none; flex:1; } }
 </style>
 </head>
@@ -557,6 +566,136 @@ async function svEmbed(plan, box, ctl){
   wrap.appendChild(note);
   return 'embed';
 }
+// ---- mode open: OUR OWN cached open imagery (KartaView / Mapillary) ------------------------------------------
+// Free, and the only mode whose pixels we may also put in the rendered video. Frames come from
+// <chapter>/media/files/panos/, built by `node studio/tools/panowalk/fetch.mjs` (gitignored, regenerable).
+// The move — cross-fade between frames, a slow drift inside each one, a turn onto the `camera` cues — is defined
+// once in player/panomove.mjs and reused verbatim by the linear renderer, so the walk is the same in both outputs.
+// Stops with no usable open imagery fall back to a Maps Embed (free) or, with no key, to the stop card: we never
+// invent a walk where there is no imagery, and never claim a landmark the frames cannot show.
+let panoIdxP=null, panoMoveP=null;
+const panoBase=()=>TOUR_DIR+'media/files/panos/';
+function panoIndex(){ if(!panoIdxP) panoIdxP=fetch(panoBase()+'index.json').then(r=>r.ok?r.json():null).catch(()=>null); return panoIdxP; }
+function panoMove(){ if(!panoMoveP) panoMoveP=import('./panomove.mjs'); return panoMoveP; }
+window.__panoReset=()=>{ panoIdxP=null; };   // test hook
+
+async function svOpen(plan, box, ctl, scene){
+  const [idx, PM] = await Promise.all([panoIndex(), panoMove()]);
+  if(!idx||!Array.isArray(idx.stops)||!idx.stops.length) throw new Error('no-open-imagery');
+  const mine=idx.stops.filter(x=>x.scene_id===scene.id);
+  if(!mine.length) throw new Error('no-open-imagery-for-this-scene');
+  const packs={};
+  await Promise.all(mine.map(async st=>{ try{ const r=await fetch(panoBase()+st.stop_id+'/frames.json'); if(r.ok){ const j=await r.json(); if(j&&j.frames&&j.frames.length) packs[st.waypoint_index]=j; } }catch(e){} }));
+  if(!Object.keys(packs).length) throw new Error('no-frames-cached');
+  if(ctl.dead) return;
+
+  const legs=plan.stops.map((st,k)=>{
+    const t0=st.arrive_s||0, t1=(plan.stops[k+1]? plan.stops[k+1].arrive_s : plan.dur);
+    const pack=packs[k];
+    return pack ? {k,t0,t1,src:'open',pack,seg:PM.planStop(pack,t0,t1).segments} : {k,t0,t1,src:'gap',stop:st};
+  });
+  ctl.mode='open';
+  ctl.coverage={ open:legs.filter(l=>l.src==='open').map(l=>l.k), gap:legs.filter(l=>l.src==='gap').map(l=>l.k) };
+
+  box.innerHTML='';
+  const layers=[document.createElement('div'),document.createElement('div')];
+  layers.forEach(l=>{ l.className='svopen'; box.appendChild(l); });
+  const gapBox=document.createElement('div'); gapBox.className='svgap'; box.appendChild(gapBox);
+  const chrome=svChrome(box,plan,ctl); chrome.att.textContent='open street-level imagery';
+  const credit=document.createElement('div'); credit.className='svcredit'; box.appendChild(credit);
+
+  // drag to look around; the walk pauses while a hand is on it and eases back afterwards (v0.4 contract)
+  svWireIdle(box,ctl); ctl.userYaw=0;
+  let dragX=null, lastFov=82;
+  box.addEventListener('pointerdown',e=>{ dragX=e.clientX; });
+  box.addEventListener('pointermove',e=>{ if(dragX==null||!e.buttons) return;
+    const w=box.getBoundingClientRect().width||960; ctl.userYaw-=(e.clientX-dragX)/w*lastFov; dragX=e.clientX; });
+  ['pointerup','pointercancel','pointerleave'].forEach(t=>box.addEventListener(t,()=>{ dragX=null; }));
+
+  let front=0, shownKey='', gapFrame=null, lastLeg=-1;
+  const url=(pack,f)=>panoBase()+pack.stop_id+'/'+(f.web||f.file);
+  const place=(el,pack,f,win)=>{
+    const r=box.getBoundingClientRect(), BW=r.width||960, BH=r.height||540;
+    const bgW=BW/Math.max(0.001,win.w), bgH=BH/Math.max(0.001,win.h);
+    el.style.backgroundRepeat=f.is_pano?'repeat-x':'no-repeat';
+    el.style.backgroundSize=bgW.toFixed(1)+'px '+bgH.toFixed(1)+'px';
+    el.style.backgroundPosition=(-win.x*bgW).toFixed(1)+'px '+(-win.y*bgH).toFixed(1)+'px';
+  };
+  const warm=new Set();
+  const preload=(pack,f)=>{ const u=url(pack,f); if(warm.has(u)) return; warm.add(u); const im=new Image(); im.decoding='async'; im.src=u; };
+  const showCredit=(pack,f)=>{
+    credit.innerHTML='<a href="'+(f.source_url||'#')+'" target="_blank" rel="noopener">'+
+      (pack.source==='mapillary'?'Mapillary':'KartaView')+'</a> · '+
+      (pack.author||'contributor')+' · '+(pack.licence||'CC BY-SA 4.0')+' · '+(f.timestamp||'').slice(0,10);
+    credit.style.display='block';
+  };
+
+  // a stop with no open imagery: a real Street View the traveller can look around in (Maps Embed API — free and
+  // unlimited), or the stop card when there is no key. Nothing billable is loaded either way.
+  const showGap=(leg)=>{
+    layers.forEach(l=>l.classList.remove('on')); credit.style.display='none';
+    gapBox.style.display='block';
+    if(gapFrame===leg.k) return; gapFrame=leg.k;
+    const st=leg.stop, key=localStorage.getItem('yy-gkey');
+    const cam=svCameraAt(plan, Math.min(leg.t1-0.1, leg.t0+1));
+    if(key){ gapBox.innerHTML='<iframe allow="accelerometer; gyroscope" referrerpolicy="no-referrer-when-downgrade" src="'+
+        svEmbedUrl(key, st.lat, st.lng, Math.round(cam.heading), Math.round(cam.pitch||0), Math.round(svZoomToFov(cam.zoom)))+'"></iframe>'+
+        '<div class="svgapnote">no open-licensed imagery here — Google Street View, drag to look around</div>';
+      chrome.att.textContent='Google Street View (embed)';
+    } else {
+      gapBox.innerHTML='<div class="fill"><div class="card"><h2>No open imagery at this stop</h2>'+
+        '<p>'+(st.attribution||'This corner has no freely-licensed street-level photograph yet.')+'<br><small>'+st.lat.toFixed(4)+', '+st.lng.toFixed(4)+'</small></p>'+
+        '<p><a class="btn primary" target="_blank" rel="noopener" href="'+mapsLink([st.lat,st.lng,Math.round(cam.heading),0,90].join(','))+'">Open this view in Google Maps ↗</a></p></div></div>';
+      chrome.att.textContent='no open imagery at this stop';
+    }
+  };
+
+  const tick=()=>{
+    if(ctl.dead) return; ctl.raf=requestAnimationFrame(tick);
+    if(paused||document.hidden) return;
+    const t=elapsed;
+    let leg=legs[0]; for(const L of legs) if(t>=L.t0) leg=L;
+    if(leg.src==='gap'){ ctl.debug={mode:'open', src:'embed', t, stop:leg.k}; showGap(leg); lastLeg=leg.k; return; }
+    if(gapFrame!=null){ gapBox.style.display='none'; gapBox.innerHTML=''; gapFrame=null; chrome.att.textContent='open street-level imagery'; }
+
+    const segs=leg.seg; if(!segs.length) return;
+    let si=0; for(let i=0;i<segs.length;i++) if(t>=segs[i].t0) si=i;
+    let seg=segs[si], f=seg.frame; const pack=leg.pack;
+    const prog=PM.segProgress(seg,t);
+    const cam=svCameraAt(plan,t);
+    // a cue that NAMES a place: cut to the frame with the best view of it, and aim from where that frame really is
+    let cutKey='', aim=cam;
+    if(cam.cue&&cam.cue.look_at){
+      const pick=PM.frameForCue(segs.map(x=>x.frame), cam.cue.look_at);
+      if(pick&&pick!==f){ f=pick; cutKey='@'+cam.cue.at_s; }
+      aim={...cam, heading:svBearing(f, cam.cue.look_at)};
+      aim=PM.retarget(aim, svDist(plan.stops[leg.k], cam.cue.look_at), svDist(f, cam.cue.look_at));
+      aim.fov=aim.fov||svZoomToFov(cam.zoom);
+    }
+    // hands off while the traveller is looking around; the manual offset eases back to zero once they let go
+    if(!(ctl.userActive||t<ctl.userUntil) && ctl.userYaw) ctl.userYaw*=0.94;
+    const want={ heading:aim.heading+(ctl.userYaw||0), pitch:aim.pitch, fov:aim.fov||svZoomToFov(cam.zoom), drift:PM.driftAt(seg,prog) };
+    const win=PM.windowFor(f,want,(box.clientWidth||960)/(box.clientHeight||540));
+    lastFov=win.fov;
+    const key=leg.k+':'+si+cutKey;
+    if(key!==shownKey){
+      const back=layers[1-front];
+      back.style.transitionDuration=(seg.fade||0.5)+'s';
+      back.style.backgroundImage='url("'+url(pack,f)+'")';
+      place(back,pack,f,win);
+      back.classList.add('on'); layers[front].classList.remove('on');
+      front=1-front; shownKey=key; showCredit(pack,f);
+      if(segs[si+1]) preload(pack,segs[si+1].frame);
+      if(segs[si+2]) preload(pack,segs[si+2].frame);
+    } else place(layers[front],pack,f,win);
+    ctl.debug={mode:'open', src:'open', t, stop:leg.k, frame:si, of:segs.length, source:pack.source,
+      seq:pack.sequence_id, yaw:Math.round(win.yaw), clamped:win.clamped, cue:cam.cue?cam.cue.label:'', pano:!!f.is_pano};
+  };
+  // paint the first frame immediately so the scene never opens on black
+  ctl.raf=requestAnimationFrame(tick);
+  return 'open';
+}
+
 async function showStreetView(s){
   svStop();
   const box=$('#media'); const plan=svPlan(s);
@@ -566,12 +705,14 @@ async function showStreetView(s){
   box.innerHTML='<div class="fill"><div class="muted">Street View — connecting…</div></div>';
   ctl.onAuthFail=()=>{ if(ctl.dead||ctl.mode!=='js') return; ctl.mode=null; box.innerHTML=''; svBegin('stills'); };
   const want=(localStorage.getItem('yy-sv-mode')||SVCFG.mode||'auto').toLowerCase();
-  // FREE-FIRST ladder (RULE 1): embed (Maps Embed API, free/unlimited) then the link card.
+  // FREE-FIRST ladder (RULE 1): open (our own cached CC BY-SA frames — costs nothing, and the same pixels go in the
+  // video) → embed (Maps Embed API, free and unlimited) → the link card.
   // 'js'/'stills' hit billable SKUs and are only reachable when config.billing_ack === true (svModeAllowed gates it).
-  const ladder = want==='js' ? ['js','stills','embed','link']
-    : want==='stills' ? ['stills','embed','link']
+  const ladder = want==='js' ? ['js','stills','open','embed','link']
+    : want==='stills' ? ['stills','open','embed','link']
     : want==='link' ? ['link']
-    : ['embed','link'];                                        // 'auto' and 'embed' both land here
+    : want==='embed' ? ['embed','link']
+    : ['open','embed','link'];                                 // 'auto' and 'open' both land here
   const svBegin=async(from)=>{
     const chain=ladder.slice(ladder.indexOf(from)<0?0:ladder.indexOf(from));
     for(const m of chain){
@@ -580,6 +721,7 @@ async function showStreetView(s){
         box.innerHTML='';
         if(m==='js'){ await svLive(plan,box,ctl); }
         else if(m==='stills'){ await svStills(plan,box,ctl); }
+        else if(m==='open'){ await svOpen(plan,box,ctl,s); }
         else if(m==='embed'){ await svEmbed(plan,box,ctl); }
         else { svLinkCard(plan,box,ctl); }
         if(ctl.dead) return;
@@ -725,11 +867,11 @@ $('#clearEn').onchange=e=>{ clearEnglish=e.target.checked; localStorage.setItem(
 // COST GATE (founder RULE 1, 2026-08-19): billable Google modes ('js' = Dynamic panorama, 'stills' = Street View Static)
 // are refused unless the server config explicitly sets billing_ack:true. A free tier is not permission.
 function svModeAllowed(cfg){
-  const m=(cfg&&cfg.streetview&&cfg.streetview.mode)||'link';
-  const billable=(m==='js'||m==='stills'||m==='auto');
+  const m=(cfg&&cfg.streetview&&cfg.streetview.mode)||'open';
+  const billable=(m==='js'||m==='stills');                     // v0.5: 'auto' starts at 'open' and calls nothing billable
   if(billable && !(cfg&&cfg.billing_ack===true)){
-    console.warn('[yunyou] streetview mode "'+m+'" calls a billable Google API; refused (config.billing_ack is not true). Falling back to "link".');
-    return 'embed';                                            // free mode, not the dead link card
+    console.warn('[yunyou] streetview mode "'+m+'" calls a billable Google API; refused (config.billing_ack is not true). Falling back to "open".');
+    return 'open';                                             // free mode, not the dead link card
   }
   return m;
 }
