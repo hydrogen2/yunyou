@@ -381,6 +381,8 @@ $('#voice').onchange=()=>{ voiceName=$('#voice').value; localStorage.setItem('yy
 $('#rate').value=String(ttsRate()); $('#rate').onchange=e=>localStorage.setItem('yy-rate',e.target.value);
 $('#clearEn').checked=clearEnglish;
 $('#clearEn').onchange=e=>{ clearEnglish=e.target.checked; localStorage.setItem('yy-clear',clearEnglish?'1':'0'); if(!localStorage.getItem('yy-rate')) $('#rate').value=String(ttsRate()); }; // no explicit speed chosen → clear mode defaults the dial to 0.9
+// Maps key: server config first (www/config.json, gitignored — never committed), then whatever the traveller pasted.
+fetch('/config.json').then(r=>r.ok?r.json():null).then(c=>{ if(c&&c.maps_api_key&&!localStorage.getItem('yy-gkey')){ localStorage.setItem('yy-gkey',c.maps_api_key); const g=$('#gkey'); if(g) g.placeholder='(loaded from server config)'; } }).catch(()=>{});
 $('#gkey').value=localStorage.getItem('yy-gkey')||''; $('#gkey').onchange=e=>localStorage.setItem('yy-gkey',e.target.value.trim());
 
 // ---------- who's who (cast card; product-level shared/whos-who.json — button hidden if the file is missing) ----------

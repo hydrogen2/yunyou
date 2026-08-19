@@ -39,6 +39,9 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
       narration speed control, clear-English toggle.
 - [ ] A4 Narrator: edit `studio/tools/render/cuts/day-01-london.json` so no sentence is machine-cut; Publisher re-renders the linear cut
       (`node studio/tools/render/render_linear.mjs …`) and refreshes `linear/watch.json`; write `review/publish-record.md` (credits page from rights.md).
+- [ ] A6 Content Preparer: re-source Day 1's five walking segments at ladder rungs 1–3 (`studio/strategy/media-fallback-ladder.md`)
+      so the video no longer needs clip cards: search CC-licensed walks, Mapillary sequences for Pall Mall / Savile Row / the Strand,
+      and PD/CC stills as the fallback. Report what each shot resolved to.
 - [ ] A5 Editor-in-Chief: re-run Fact-Checker + QA on the revised scenes (light pass), update DIGEST to "ready to publish (free tier)".
 ### B. Around the World — next chapters (see also studio/strategy/worlds-ladder.md for the long arc) (one chapter at a time, full pipeline: Researcher → Rundown → Scenes/Media/Narrator → panel → Publisher → DIGEST)
 - [ ] B0 Editor-in-Chief writes `products/around-the-world-80-days/PLAN.md`: chapter list following the novel's itinerary
