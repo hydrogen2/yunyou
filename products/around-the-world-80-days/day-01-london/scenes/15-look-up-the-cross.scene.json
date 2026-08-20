@@ -3,14 +3,14 @@
   "type": "streetview",
   "title": "Look up — the cross, and where London starts",
   "subtopic": "8 — Charing Cross (Street View stop)",
-  "duration_s": 25,
-  "learning_goal": "Know the forecourt cross is an 1865 replica and that London's distances are measured from the Charles I statue.",
+  "duration_s": 47,
+  "learning_goal": "Find two things without being told where to point: the 1865 replica cross overhead, and the direction of the Charles I statue — the point London's distances are measured from.",
   "narration": {
-    "script": "Look up. The cross is a replica, put up in 1865: twenty-one metres — seventy feet — of Portland stone. The original of 1291 stood a couple of hundred metres off to your right. King Charles the First rides there now, in bronze. London's distances are still measured from him, not from this cross.",
+    "script": "Stop here. Two things to find. The first is straight above you: follow the cross up to its very top, twenty-one metres, seventy feet, of Portland stone. It is a replica, put up in 1865 — the year the hotel behind it opened. The second is harder. Turn to your right, out of the forecourt, and look about two hundred metres towards Trafalgar Square. You cannot quite see him from here, but King Charles the First rides there in bronze. The first cross, of 1291, stood on that spot — and London still measures its distances from him, not from the stone above your head.",
     "timing": "over",
     "voice": "guide",
     "variants": {
-      "clear": "Look up. This cross is a copy, put up in 1865: twenty-one metres — seventy feet — of stone. The original, from 1291, stood a little way to your right. A statue of King Charles the First rides there now. London still measures its distances from that statue, not from this cross."
+      "clear": "Stop here. Two things to find. The first is straight above you: follow the cross up to its top — twenty-one metres, seventy feet, of stone. It is a copy, put up in 1865 — the year the hotel behind it opened. The second is harder. Turn to your right, out of the station yard, and look about two hundred metres towards Trafalgar Square. You cannot quite see him from here, but a statue of King Charles the First rides there. The first cross, from 1291, stood on that spot. London still measures its distances from that statue, not from the stone above your head."
     }
   },
   "media": [
@@ -22,13 +22,29 @@
       "attribution": "Google Street View (Maps JavaScript API — Street View service; Static API in the fallback mode)",
       "note": "Forecourt of Charing Cross, on the Strand pavement WNW of the cross: Eleanor Cross centre frame at heading 142°, Charing Cross Hotel façade behind. CORRECTED 2026-08-19 (engine-tools): the previous point 51.5083,-0.1247 resolves to a Google pano INSIDE the station concourse (verified: Street View Static metadata pano at 51.508257,-0.124700, imagery 2024-06, and the image at heading 180 shows the train-shed roof and WHSmith, not the cross). This point resolves to the outdoor pano at 51.508552,-0.125429, imagery 2025-07, 16 m from the cross (OSM node 10969212579 at 51.50844,-0.12529). Alt wider stop 51.508431,-0.125646 heading 87°. Fallback if no pano: M-26 (the cross, portrait still).",
       "fallback": "M-26"
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Charing_Cross_Memorial_(4901651986).jpg",
+      "license": "cc-by-2.0",
+      "manifest_id": "M-26",
+      "attribution": "Tony Hisgett (2010) / Wikimedia Commons · CC BY 2.0",
+      "use": "linear",
+      "note": "The Eleanor Cross, portrait still. Declared fallback for the linear pan when media/files/panos/ is absent (and the pano's own `fallback` in the player). Also the 'today' half of G-02 in scene 14 — the film shows it there at 10 s, so keep this one for degraded mode only."
     }
   ],
   "overlays": [
     {
       "at_s": 3,
       "kind": "pin",
-      "until_s": 20,
+      "until_s": 16,
+      "text": "Eleanor Cross — replica of 1865, 21 m",
+      "position": "bl"
+    },
+    {
+      "at_s": 19,
+      "kind": "pin",
+      "until_s": 33,
       "text": "Charles I — 1675, London's distances start here",
       "position": "tr"
     }
@@ -36,7 +52,6 @@
   "camera": [
     {
       "at_s": 0,
-      "at_waypoint": 0,
       "look_at": "51.50844,-0.12529",
       "heading": 142,
       "pitch": 10,
@@ -46,45 +61,40 @@
       "label": "the cross in the forecourt, hotel façade behind"
     },
     {
-      "at_s": 2,
-      "at_waypoint": 0,
+      "at_s": 3,
       "look_at": "51.50844,-0.12529",
       "heading": 142,
       "pitch": 32,
       "zoom": 1.1,
-      "hold_s": 9,
+      "hold_s": 16,
       "ease_s": 2.5,
-      "label": "look up — the 1865 replica cross, 21 m of Portland stone (F-21)"
+      "label": "find it: up the 1865 replica to the top, 21 m of Portland stone (F-21)"
     },
     {
-      "at_s": 13,
-      "at_waypoint": 0,
+      "at_s": 19,
       "look_at": "51.50733,-0.12765",
       "heading": 229,
       "pitch": 0,
       "zoom": 0.6,
-      "hold_s": 8,
+      "hold_s": 18,
       "ease_s": 3,
-      "label": "turn right, across to where Charles I rides — 205 m WSW (OSM 12877095809), F-39"
+      "label": "find it: turn right, towards where Charles I rides — 205 m WSW (OSM 12877095809), F-39; lands ≈ 18 s in the film, as the guide says 'turn to your right'"
     },
     {
-      "at_s": 22,
-      "at_waypoint": 0,
+      "at_s": 38,
       "look_at": "51.50844,-0.12529",
       "heading": 142,
       "pitch": 18,
       "zoom": 0.9,
-      "hold_s": 3,
+      "hold_s": 9,
       "ease_s": 2,
-      "label": "settle back on the cross"
+      "label": "settle back on the cross — ≈ 36 s in the film, under 'not from the stone above your head'"
     }
   ],
   "interaction": {
-    "kind": "walk",
-    "prompt": "Look up, then turn right toward Trafalgar Square.",
-    "route": [
-      "51.50855,-0.12543,142"
-    ]
+    "kind": "look",
+    "prompt": "Two things to find: the top of the cross above you, then the way towards Charles I — drag the view to look.",
+    "timeout_s": 30
   },
   "transition": {
     "in": "cut",
@@ -96,11 +106,11 @@
     "F-21",
     "F-39"
   ],
-  "production_notes": "INTERACTIVE CUT ONLY. Single Street View stop, cinematic: the camera looks up the cross, turns right to Charles I as the narration names him, then settles back (scene `camera` track, player v0.4). Free look still works — dragging pauses the cues for 4 s; media[0].fallback = M-26 if the forecourt pano is missing. 70 ft ≈ 21 m (F-21). Charles I statue is ≈ 230 m WSW of the pano and behind buildings — the pin is a plain corner pin (no geo, it would float over a wall); 'to your right' when facing south. Next: Quiz B (16), then the dialogue (17) — D4.",
+  "production_notes": "STOP-AND-LOOK (D6). The chapter's one Street View stop, and the only scene that asks the traveller to aim their own gaze. Player: Maps **Embed** (drag to look) — free SKU, no programmatic camera needed, no billable call; the `camera` cues are the guided version and dragging pauses them for 4 s (player v0.4). Two finds, both said out loud: the cross overhead (21 m / 70 ft, replica of 1865, F-21) and the direction of the Charles I statue (≈ 205 m WSW, bearing 229°, F-39 / F-21 note) from which London's distances are measured. The statue is behind buildings from this pano, so its pin stays a plain corner pin with no geo and the script says so. `interaction.kind: look` with a 30-second budget: the traveller looks for as long as they like and the runtime should hand on when the budget is spent. ENGINE REQUEST (one line, not done here — studio/player/index.html is out of scope for this pass): `tick()`'s `needsInput` test exempts only `walk` on a streetview scene, so today a `look` scene waits for the traveller to press ▶ instead of auto-advancing. Either add `look` to that exemption or make `timeout_s` resolve it. Nothing is lost meanwhile — the traveller can look and move on — but it is a stall, not a design. LINEAR CUT: a slow pan over the same open imagery (`panowalk`, stop 0), the words unchanged; per D6 that is an adaptation, not a downgrade. Next: Quiz B (16), then the dialogue (17) — D4.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4). A1 narrator 2026-08-18: 36-word Charles I sentence split into three; ends on 'this cross'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added. A4 engine-tools 2026-08-19 (v0.4 cinematic Street View): the stop was pointing at the wrong place — 51.5083,-0.1247 resolves to a pano inside the station concourse (station roof + WHSmith at heading 180, imagery 2024-06, verified against the Street View Static image). Moved to the verified outdoor forecourt pano 51.50855,-0.12543 (imagery 2025-07), 16 m from the cross, which frames cross + hotel exactly as the note describes; Content Preparer to confirm and update M-38. Added a four-cue `camera` track: look up the spire (pitch 32) while the pin is up, turn right 87° to the Charles I statue (OSM 12877095809, 205 m WSW) at 13 s as the narration names him, then settle back. From this pano 'to your right' is geometrically true. Narration and overlays untouched."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Charles I pin → plain corner pin (geo removed); fallback M-26 on the pano; next → quiz-the-weather (Quiz B now precedes the dialogue, D4). A1 narrator 2026-08-18: 36-word Charles I sentence split into three; ends on 'this cross'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain — script untouched; clear-English variant added. A4 engine-tools 2026-08-19 (v0.4 cinematic Street View): the stop was pointing at the wrong place — 51.5083,-0.1247 resolves to a pano inside the station concourse (station roof + WHSmith at heading 180, imagery 2024-06, verified against the Street View Static image). Moved to the verified outdoor forecourt pano 51.50855,-0.12543 (imagery 2025-07), 16 m from the cross, which frames cross + hotel exactly as the note describes; Content Preparer to confirm and update M-38. Added a four-cue `camera` track: look up the spire (pitch 32) while the pin is up, turn right 87° to the Charles I statue (OSM 12877095809, 205 m WSW) at 13 s as the narration names him, then settle back. From this pano 'to your right' is geometrically true. Narration and overlays untouched. D6 scene-developer 2026-08-19 (stop-and-look pass, founder's instruction): kept as `streetview` — this is the chapter's one genuine stop-and-look, and D6 says such a stop earns Street View because there is something to FIND. The task is now stated in the narration and in the prompt: (1) the Eleanor Cross straight overhead, followed up to its top; (2) where Charles I rides, about 200 m towards Trafalgar Square, from which London's distances are measured. `interaction.kind` walk → **look** and the single route waypoint removed (a route of one is transport grammar); the stop's coordinates now come from the M-38 media entry, which is the same point and the same index (0) the pano cache is keyed to, so the film's pan is unaffected. Duration 25 → 47 s: the old 25 s had no room for a task, and 47 s is what the two finds cost at ≈ 2.15 w/s. `camera` cues KEPT (their `at_waypoint: 0` markers dropped with the route) and re-timed to the longer scene (0 · 3 look up, held to 19 · 19 turn right, held to 37 · 38 settle back, held to the end — i.e. ≈ 0 / 2.8 / 18 / 36 s of the 44 s rendered scene; the holds butt up against each other so the linear pan never drops back to a travel frame between finds), same verified look_at points. A second pin names the cross itself so both finds are labelled; each pin sits within 3 s of the cue that turns to it. Honest limit kept in the words: the statue is 205 m off and behind buildings, so the script says 'you cannot quite see him from here' and points instead — the find is the direction and the fact, not a claim the traveller will see bronze. LINEAR CUT: the scene is no longer interactive-only. D6 says a film cannot offer a task, so the cut sheet plays the SAME open imagery as a slow pan (visual kind `panowalk`, stop 0 = look-up-the-cross-w00, Mapillary 360°, 2025-08, 44 m at 1.7 m/s — walking pace) and the guide names what the player-traveller would have found for themselves. Fallback if the pano cache is absent: the M-26 still, now carried as a media entry so the sidecar can resolve it."
   }
 }

@@ -101,3 +101,42 @@ OPEN — content, not engineering:
   and scene 15 (1.7 m/s). Fetcher now reports `pace` per stop; `frames.json` carries `pace_reads_as`.
 - Stop w00 (Savile Row) falls back to `embed`: the cue names 7–8 Savile Row, 57–70° off every camera's heading there,
   and a flat photo holds ~70°. Correctly refused rather than pinning a label over the wrong building.
+
+
+## 2026-08-19 — D6 applied to Day 1 (Scene Developer). RENDER IS THE FOUNDER'S.
+Founder's instruction: scene 04 is transport, so it stops being a Street View walk — the step-counting moves onto the map and the street
+footage just plays; the traveller is never asked to walk or to click. `DECISIONS.md` **D6**.
+
+Done:
+- **04 count-the-steps: `streetview` → `video`, 150 s (user-paced) → 94 s.** Beat A = the counting over M-30, the 1872 plan (575/576, 1,151
+  steps, the six turns, 1,120 m ≈ a kilometre, 0.97 m a step, "he never hurries"). Beat B = the street playing plainly while the guide talks
+  clubland — in the film the cached open imagery (`panowalk` stop 5, then stop 6, which stops in front of 104 Pall Mall on the frame C1a
+  verified) plus the Travellers and Athenaeum façades; in the player the M-01 embed. `interaction.kind: walk`, the seven route waypoints, the
+  "Tap ahead to step" prompt, `waypoint_script` and `waypoint_script_variants` are all gone. The seven `streetview` refs stay as **geometry**
+  (the pano cache is indexed to them; they must stay seven and in order).
+- **05 pall-mall-pass: RETIRED and deleted.** It was only ever the linear stand-in for that walk; once 04 works in both cuts the two scenes
+  said the same words over the same pictures. Its media (M-01, M-67, M-20, M-69b, M-69a) moved into 04. File numbers 06–19 are unchanged, so
+  they are now one ahead of the tour index.
+- **15 look-up-the-cross: stays Street View, and is now a real stop-and-look.** Two finds stated out loud (the top of the 1865 replica cross
+  overhead; the direction of Charles I, 200 m off, from whom London's distances are measured), `interaction.kind` walk → **look** with a 30 s
+  budget, 25 → 47 s, `camera` cues kept and re-timed with butting holds. In the film it is a slow pan over the same imagery (the one stop in
+  the chapter whose pace reads as a walk) — an adaptation, per D6, not a downgrade.
+- **The film now carries the transport.** `studio/tools/render/cuts/day-01-london.json`: `pall-mall-pass` deleted, `count-the-steps` and
+  `look-up-the-cross` added, tokens re-derived against the clear track. `--plan --track clear`: no dangling reference, no end-cut, no
+  mid-thought drop. **Total ≈ 940.6 s of scenes (15:41) ⇒ finished MP4 ≈ 16:10, was 14:42.**
+- tour.json reassembled (18 scenes); `validate.py` on 18 scenes + tour: **all OK**. One WARN survives and is stale, not a defect —
+  "camera track on a video scene … will be ignored" predates C1a, where the renderer's `panowalk` started reading `camera` on any scene type.
+
+NOT done, deliberately: **no render** (the founder's); `studio/player/index.html` untouched; `linear/watch.json` still names `pall-mall-pass`
+in its chapter markers and must be regenerated from the new render log; `validate.py` untouched.
+
+Engine backlog opened by this pass (one line each):
+1. player — honour media windows in a `video` scene, so 04's map beat plays before the embed (today the player shows only the embed).
+2. player — `tick()`'s `needsInput` exempts only `walk` on a streetview scene, so 15's `look` waits for ▶ instead of resolving on `timeout_s`.
+3. `validate.py` — stop warning about `camera` on non-streetview scenes.
+
+Closed by D6: **D12** (Maps JavaScript API key / billing for the step counter) — there is no counter any more, and the chapter's one Street View
+stop runs on the free Maps Embed. Nothing in Day 1 needs a billable SKU.
+
+Still open for Rights, and now load-bearing for the FILM rather than a retired player mode: the Mapillary per-image licence
+(`--accept-unknown-licence`) under scene 04's street and scene 15's pan.

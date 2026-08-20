@@ -9,7 +9,8 @@
   "overlays: indices into scene.overlays, or {i, at, until} to re-time for the shorter linear scene. beds: {media, at, until}.",
   "A4 2026-08-19: all sentence tokens re-derived after the A3n newcomer rewrite (old indices were stale and cut payoffs: Sheridan reveal, the route legs, the carpet-bag beat, the forgotten gas, the recipe). Linear cut is now ~13 min, longer than the original 11:42 plan, deliberately: coherence beats the target length.",
   "A5 2026-08-19 (Narrator): the A4 tokens were derived from the STANDARD track but the film renders the CLEAR one (`--track clear`), whose sentences split differently (192 vs 181) — that mismatch is what produced the dangling references in review/fact-check-a5.md §4. Every `s:N` below is now re-derived against `narration.variants.clear` (`node render_linear.mjs <tour.json> --plan --track clear`) on three rules: keep the narrative spine; never leave a reference without its antecedent (Henry Poole is named before 'The firm says…', the club before 'It is real…', the carpet-bag before the packing list, the recipe card before it is mentioned); drop interactive-only instructions ('Tap any line', 'Drag in what goes', 'Save the card.', 'Now tap the longest leg', 'Ask him something', 'Take your time'). Re-derive after ANY script edit: the indices are per-track and per-wording.",
-  "A8 2026-08-19 (Content Preparer, queue item A6w): the linear cut no longer uses clip cards. A new visual kind `footage` points at a local, licence-clean file under <chapter>/media/files/ (h264 1280x720 25 fps, already normalised) — {kind:'footage', media:'M-xx', in_s?, dur?}. The scene JSONs record BOTH sources for the same shot: the YouTube entry keeps `use: \"player\"` (legal to embed, not to copy — review/rights-a6.md §1.2) and the local file carries `use: \"linear\"`. Scenes 02, 05, 13 and 18 changed here; 06 was already card-free. Scene 05 was RE-CUT 76 -> 42 s: no free source carries 76 s of continuous Pall Mall facade, so the beat is now a hyperlapse plus three facade stills (manifest-a6.md, rights-a6.md §3.6). Nothing in media/files/ is committed (.gitignore) — media/manifest.md carries the URL and the ffmpeg recipe for every file."
+  "A8 2026-08-19 (Content Preparer, queue item A6w): the linear cut no longer uses clip cards. A new visual kind `footage` points at a local, licence-clean file under <chapter>/media/files/ (h264 1280x720 25 fps, already normalised) — {kind:'footage', media:'M-xx', in_s?, dur?}. The scene JSONs record BOTH sources for the same shot: the YouTube entry keeps `use: \"player\"` (legal to embed, not to copy — review/rights-a6.md §1.2) and the local file carries `use: \"linear\"`. Scenes 02, 05, 13 and 18 changed here; 06 was already card-free. Scene 05 was RE-CUT 76 -> 42 s: no free source carries 76 s of continuous Pall Mall facade, so the beat is now a hyperlapse plus three facade stills (manifest-a6.md, rights-a6.md §3.6). Nothing in media/files/ is committed (.gitignore) — media/manifest.md carries the URL and the ffmpeg recipe for every file.",
+  "D6 2026-08-19 (Scene Developer, founder's instruction): Street View is a stop-and-look device, never transport (DECISIONS.md D6). Scene 04 count-the-steps stopped being a Street View walk and became a transport scene: the counting plays over the 1872 plan (M-30), then the street plays plainly as the cached open imagery (`panowalk` stops 5 and 6). Scene 05 pall-mall-pass is RETIRED and its entry deleted here — it existed only as the linear stand-in for the walk, and 04 now carries the same words in both cuts. Scene 15 look-up-the-cross joins the film as a slow pan over its own stop (`panowalk` stop 0, 44 m of 2025 Mapillary frames at walking pace): a film cannot offer a task, so the guide names what the player-traveller would have found. All s:N tokens for 04 and 15 are derived against the CLEAR track (`node render_linear.mjs <tour.json> --plan --track clear`)."
  ],
  "scenes": {
   "cold-open": {
@@ -107,60 +108,87 @@
    "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
    "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped."
   },
-  "pall-mall-pass": {
-   "_readme": "RE-CUT to 42 s (A8): 8 s M-67 hyperlapse -> Athenaeum -> Travellers -> Reform facade -> Barry elevation; whole script (replaces 04)",
+  "count-the-steps": {
+   "_readme": "D6 transport scene: the counting over the 1872 plan (M-30), then the street playing plainly — open-imagery walk, stop 5 (turn east into Pall Mall) and stop 6 (up to the Reform door, where the walk stops and looks), then the two neighbour façades; whole script — 97 s",
    "visuals": [
+    {
+     "kind": "image",
+     "media": "M-30",
+     "dur": 46,
+     "_why": "BEAT A, the counting: the step numbers and the turns belong on the map, not on a street the traveller has to steer (D6). Different beat from scene 12's use of the same plate — see the scene's media note (crop + five stop-start strokes + step numbers); until the M-30a crop exists both scenes share the plate under a Ken Burns and the captions carry the difference."
+    },
     {
      "kind": "panowalk",
      "scene": "count-the-steps",
      "stops": [
-      5,
-      6
+      5
      ],
-     "dur": 8,
+     "dur": 14,
      "fallback": {
       "kind": "footage",
       "media": "M-67"
      },
-     "_why": "v0.5: the Pall Mall leg now comes from the SAME open-imagery frames the player walks in streetview mode `open` (Mapillary 360 sequences, cached by studio/tools/panowalk/fetch.mjs). Falls back to the M-67 KartaView hyperlapse when the cache is absent, so a clean checkout still renders."
+     "_why": "BEAT B part 1: St James's Street × Pall Mall, the turn east into clubland (Mapillary 360°, 2024, 107 m). Falls back to the M-67 KartaView hyperlapse when media/files/panos/ is absent."
     },
     {
-     "kind": "image",
-     "media": "M-69a",
-     "dur": 8
+     "kind": "panowalk",
+     "scene": "count-the-steps",
+     "stops": [
+      6
+     ],
+     "dur": 20,
+     "fallback": {
+      "kind": "image",
+      "media": "M-20"
+     },
+     "_why": "BEAT B part 2: the last 158 m up to the Reform door (Mapillary 360°, 2024-04). The scene's single stop-6 camera cue stops the walk in front of 104 Pall Mall at ≈ 64 s of the rendered scene and holds there while the guide names it. Falls back to the M-20 façade still."
     },
     {
      "kind": "image",
      "media": "M-69b",
-     "dur": 8
+     "dur": 8,
+     "_why": "'A little to the left, No. 106, the Travellers…' — over its own façade. Swinging the open-imagery camera back onto it instead made the walk reverse 36 m."
     },
     {
      "kind": "image",
-     "media": "M-20",
-     "dur": 10
-    },
-    {
-     "kind": "image",
-     "media": "M-22",
-     "dur": 8
+     "media": "M-69a",
+     "dur": 9,
+     "_why": "'And beyond it, No. 107, the Athenaeum. One turn of the head covers all three.' — the third façade closes the scene, so 06 can open on M-20 without repeating a frame across the seam."
     }
    ],
    "overlays": [
-    0,
     {
-     "i": 2,
-     "at": 18,
-     "until": 26
+     "i": 1,
+     "at": 13,
+     "until": 21
     },
     {
-     "i": 3,
-     "at": 28,
-     "until": 40
+     "i": 2,
+     "at": 21,
+     "until": 29
+    },
+    {
+     "i": 4,
+     "at": 48,
+     "until": 58
+    },
+    {
+     "i": 5,
+     "at": 65,
+     "until": 74
+    },
+    {
+     "i": 6,
+     "at": 76,
+     "until": 82.5
+    },
+    {
+     "i": 7,
+     "at": 83.5,
+     "until": 89.5
     }
    ],
-   "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
-   "_a8_note": "A8 (2026-08-19): the scene was 76 s of a walk that does not exist under a free licence. Re-cut to 42 s of hyperlapse + facades; words unchanged (102 std / 94 clear = 2.43 / 2.24 w/s). Overlay 1 is the \"clubland\" gloss and is not timed here.",
-   "_v05_note": "Engine 2026-08-19 (C1a): visual 0 changed from the M-67 KartaView dashcam hyperlapse to `panowalk` over count-the-steps stops 5-6 (St James's x Pall Mall -> the Reform facade). Same seconds, same words, better source: 2024 Mapillary 360 frames at ~12 m, and the same pixels the player shows. M-67 stays as the declared fallback."
+   "_d6_note": "Rendered length ≈ 90.2 s (clear track), so the five fixed visuals (46 + 14 + 20 + 8 + 9 = 97) scale to ≈ 42.8 / 13.0 / 18.6 / 7.4 / 8.4 s: the map holds the whole counting beat and hands over one second into 'And this is the street he is walking into'; the walk turns east at ≈ 43.5 s, stops in front of the Reform at ≈ 64 s, and the two neighbour façades take the last two lines. Overlay 0 is the step sticker and overlay 3 the clubland gloss — the renderer burns only pin/caption/lower-third, so neither is timed here. The six timed rows are in RENDERED seconds, each on the picture its words belong to."
   },
   "the-reform-club": {
    "_readme": "from the door: M-20 + M-69c second angle + the M-22/M-23 insets (M-01 is player-only); drop the Soyer kitchens and the closing Times line — 62 s",
@@ -399,6 +427,36 @@
     }
    ],
    "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
+  },
+  "look-up-the-cross": {
+   "_readme": "D6 stop-and-look, adapted for the film: a slow pan over the same open imagery (44 m at walking pace), whole script — 50 s",
+   "visuals": [
+    {
+     "kind": "panowalk",
+     "scene": "look-up-the-cross",
+     "stops": [
+      0
+     ],
+     "dur": 54,
+     "fallback": {
+      "kind": "image",
+      "media": "M-26"
+     },
+     "_why": "look-up-the-cross-w00: Mapillary 360°, 2025-08, 14 frames over 44 m — the only stop in the chapter whose imagery reads as a walk (1.7 m/s). The scene's camera cues (up the cross at 3 s, right towards Charles I at 17 s, back at 33 s) become the pan. Fallback: the M-26 still. Built at 54 s and scaled down to the rendered length, so ffmpeg never has to loop the walk."
+    }
+   ],
+   "overlays": [
+    {
+     "i": 0,
+     "at": 4.2,
+     "until": 16
+    },
+    {
+     "i": 1,
+     "at": 19,
+     "until": 31
+    }
+   ]
   },
   "passepartout-on-the-platform": {
    "_readme": "scripted three-line exchange (guide names Passepartout → chip 1 answer → guide) — 46 s",

@@ -1,321 +1,228 @@
 {
   "id": "count-the-steps",
-  "type": "streetview",
-  "title": "Count the steps — Savile Row to the Reform",
+  "type": "video",
+  "title": "Count the steps — Savile Row to Pall Mall",
   "subtopic": "4 — Count the steps",
-  "duration_s": 150,
-  "learning_goal": "Know that Fogg's 1,151 steps are close to the real kilometre and that Pall Mall is clubland lit by gas since 1807; feel the pace of a man who never hurries.",
+  "duration_s": 94,
+  "learning_goal": "Know that Fogg's 1,151 steps are about a kilometre of real London, and that the street they end in is clubland — gas-lit since 1807, with the Reform, the Travellers and the Athenaeum in a row.",
   "narration": {
-    "script": "Fogg leaves for his club at half past eleven, counting his steps. Five hundred and seventy-five with the right foot, five hundred and seventy-six with the left. One thousand one hundred and fifty-one. We'll count them with him; watch the counter in the corner. Look up the Row first, then turn to face numbers seven and eight. Today No. 7 is not the house Verne imagined — look for yourself. Now walk south. Sixty-seven steps, and here is Verne's corner: Savile Row, Burlington Gardens. Fogg turns right. Two hundred and eight. Old Bond Street — turn left, and downhill towards Piccadilly. Four hundred and five. Piccadilly. Cross over, step a few paces west, and turn down St James's Street. St James's Street, the long straight slope. Six hundred and twenty-nine, and Fogg has not hurried once. Keep going. Seven hundred and eighty-nine. This is Pall Mall, one of the first streets in London lit by gas, back in 1807. Sixty-five years before Fogg, the lamps here were already the future. Turn east; the clubs are on your right and the counter is climbing. Pall Mall is clubland. The Reform, the Travellers and the Athenaeum stand in a row, and one turn of the head covers all three. Stop. Face the Portland-stone palazzo with the tall windows: the Reform Club, 104 Pall Mall, by Charles Barry, opened in 1841. Turn a little left: 106, the Travellers, Barry's first palazzo, 1832. Beyond it, 107, the Athenaeum. And the counter reads one thousand one hundred and fifty-one. Fogg made it 1,151. We make it about a kilometre — eleven hundred metres between the corners. Close enough for a man who never hurries.",
+    "script": "Half past eleven, and Fogg leaves the house on foot, counting. Five hundred and seventy-five paces with the right foot, five hundred and seventy-six with the left: one thousand one hundred and fifty-one steps to his club. His way runs down Savile Row, right into Burlington Gardens, left down Old Bond Street to Piccadilly. Across, and down the long slope of St James's Street. At the bottom, east into Pall Mall. Door to door it is eleven hundred and twenty metres, near enough a kilometre, so his step works out at ninety-seven centimetres. He never hurries once. And this is the street he is walking into. Pall Mall was one of the first streets in London lit by gas, back in 1807. Sixty-five years before Fogg, the lamps here were already the future. This is clubland, a row of private clubs along the south side, and three of them stand together. In front of us, the Portland-stone front with the tall windows: 104 Pall Mall, the Reform Club, by Charles Barry, opened in 1841. That one is Fogg's. A little to the left, 106, the Travellers, Barry's first Italian palazzo, finished in 1832. And beyond it, 107, the Athenaeum. One turn of the head covers all three.",
     "timing": "over",
     "voice": "guide",
-    "waypoint_script": [
-      "Fogg leaves for his club at half past eleven, counting his steps. Five hundred and seventy-five with the right foot, five hundred and seventy-six with the left. One thousand one hundred and fifty-one. We'll count them with him; watch the counter in the corner. Look up the Row first, then turn to face numbers seven and eight. Today No. 7 is not the house Verne imagined — look for yourself. Now walk south.",
-      "Sixty-seven steps, and here is Verne's corner: Savile Row, Burlington Gardens. Fogg turns right.",
-      "Two hundred and eight. Old Bond Street — turn left, and downhill towards Piccadilly.",
-      "Four hundred and five. Piccadilly. Cross over, step a few paces west, and turn down St James's Street.",
-      "St James's Street, the long straight slope. Six hundred and twenty-nine, and Fogg has not hurried once. Keep going.",
-      "Seven hundred and eighty-nine. This is Pall Mall, one of the first streets in London lit by gas, back in 1807. Sixty-five years before Fogg, the lamps here were already the future. Turn east; the clubs are on your right and the counter is climbing. Pall Mall is clubland. The Reform, the Travellers and the Athenaeum stand in a row, and one turn of the head covers all three.",
-      "Stop. Face the Portland-stone palazzo with the tall windows: the Reform Club, 104 Pall Mall, by Charles Barry, opened in 1841. Turn a little left: 106, the Travellers, Barry's first palazzo, 1832. Beyond it, 107, the Athenaeum. And the counter reads one thousand one hundred and fifty-one. Fogg made it 1,151. We make it about a kilometre — eleven hundred metres between the corners. Close enough for a man who never hurries."
-    ],
     "variants": {
-      "clear": "Fogg leaves for his club at half past eleven. He counts his steps as he walks: one thousand one hundred and fifty-one steps. We will count with him — watch the counter in the corner. Look up the street first. Then face numbers seven and eight. Today, No. 7 is not the house from the book — look for yourself. Now walk south. Sixty-seven steps: this is the corner from the novel, Savile Row and Burlington Gardens. Fogg turns right. Two hundred and eight: Old Bond Street. Turn left and walk down towards Piccadilly. Four hundred and five: Piccadilly. Cross the road, go a few steps west, and turn into St James's Street. St James's Street is a long, straight slope. Six hundred and twenty-nine steps, and Fogg has not hurried once. Keep going. Seven hundred and eighty-nine: Pall Mall. This street had gas lamps in 1807 — one of the first in London. Sixty-five years before Fogg, the lamps here were already the future. Turn east. The clubs are on your right. This is clubland: a whole street of private clubs. Three famous ones stand in a row — the Reform, the Travellers, the Athenaeum. Stop. Look at the grand stone building with tall windows: the Reform Club, 104 Pall Mall, by Charles Barry, opened 1841. A little to the left: No. 106, the Travellers, 1832. Beyond it: No. 107, the Athenaeum. And the counter says one thousand one hundred and fifty-one. Fogg counted 1,151 steps. We measure about one kilometre. Close enough, for a man who never hurries."
-    },
-    "waypoint_script_variants": {
-      "clear": [
-        "Fogg leaves for his club at half past eleven. He counts his steps as he walks: one thousand one hundred and fifty-one steps. We will count with him — watch the counter in the corner. Look up the street first. Then face numbers seven and eight. Today, No. 7 is not the house from the book — look for yourself. Now walk south.",
-        "Sixty-seven steps: this is the corner from the novel, Savile Row and Burlington Gardens. Fogg turns right.",
-        "Two hundred and eight: Old Bond Street. Turn left and walk down towards Piccadilly.",
-        "Four hundred and five: Piccadilly. Cross the road, go a few steps west, and turn into St James's Street.",
-        "St James's Street is a long, straight slope. Six hundred and twenty-nine steps, and Fogg has not hurried once. Keep going.",
-        "Seven hundred and eighty-nine: Pall Mall. This street had gas lamps in 1807 — one of the first in London. Sixty-five years before Fogg, the lamps here were already the future. Turn east. The clubs are on your right. This is clubland: a whole street of private clubs. Three famous ones stand in a row — the Reform, the Travellers, the Athenaeum.",
-        "Stop. Look at the grand stone building with tall windows: the Reform Club, 104 Pall Mall, by Charles Barry, opened 1841. A little to the left: No. 106, the Travellers, 1832. Beyond it: No. 107, the Athenaeum. And the counter says one thousand one hundred and fifty-one. Fogg counted 1,151 steps. We measure about one kilometre. Close enough, for a man who never hurries."
-      ]
+      "clear": "Half past eleven. Fogg leaves the house and walks to his club. He counts his steps as he goes: one thousand one hundred and fifty-one of them. His way runs down Savile Row, right into Burlington Gardens, then left down Old Bond Street to Piccadilly. Across the road, and down the long slope of St James's Street. At the bottom he turns east, into Pall Mall. From his front door to the club door is one thousand one hundred and twenty metres: about one kilometre. So each step is about ninety-seven centimetres. He never hurries. And this is the street he is walking into. Pall Mall had gas lamps in 1807, one of the first streets in London. Sixty-five years before Fogg, the lamps here were already the future. This is clubland: a row of private clubs on the south side. Three of them stand together. In front of us, the grand stone front with the tall windows: 104 Pall Mall, the Reform Club, by Charles Barry, opened 1841. That one is Fogg's. A little to the left, No. 106, the Travellers, Barry's first Italian palazzo, finished in 1832. And beyond it, No. 107, the Athenaeum. One turn of the head covers all three."
     }
   },
   "media": [
     {
-      "kind": "streetview",
-      "ref": "51.5107,-0.1402,350,0,90",
-      "license": "google-maps-embed",
-      "manifest_id": "M-39",
-      "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 0a: looking north up Savile Row (7–8 Savile Row, OSM 'Gossard House 7-8' 51.51073,-0.13987). Counter = 0.",
-      "fallback": "M-33"
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
+      "start_s": 0,
+      "end_s": 40,
+      "license": "public-domain",
+      "manifest_id": "M-30",
+      "attribution": "\"Plan of London\", London Illustrated (1872) — public domain (Wikimedia Commons)",
+      "use": "both",
+      "note": "THE COUNTING BEAT (D6). The step count is told over the plan, not over a street the traveller has to steer. Treatment asked for, and deliberately unlike scene 12's use of the same plate: crop to the West End quarter only (roughly Regent Street to Green Park, Oxford Street to Pall Mall) so the street names are readable, and draw the route in FIVE short strokes that stop at each turn — Savile Row · Burlington Gardens · Old Bond Street · Piccadilly · St James's Street · Pall Mall — with the running step number stamped beside each turn (67 · 208 · 405 · 629 · 789 · 1,151, F-43). Scene 12 keeps the whole plate and one continuous line at cab speed. Until the crop exists (request to Content Preparer: M-30a, a free PD derivative) the film shows the full plate under a slow Ken Burns and the captions carry the turns."
     },
     {
       "kind": "streetview",
-      "ref": "51.5107,-0.1402,70,5,80",
+      "ref": "51.5107,-0.1402,350",
       "license": "google-maps-embed",
       "manifest_id": "M-39",
-      "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 0b: same pano turned to face 7–8 Savile Row. Whether today's No. 7 is a modern block is unconfirmed (fact-check s04) — caption softened until A3 looks. Optional look-back pano 51.5119,-0.1414 heading 170.",
-      "fallback": "M-33"
+      "attribution": "Google Street View (geometry only — nothing Google is shown or recorded in this scene)",
+      "note": "Geometry stop 0 — 7–8 Savile Row (OSM 'Gossard House 7-8' 51.51073,-0.13987). These seven entries are no longer a walk the traveller steers (D6): they are the survey points the open-imagery cache is indexed against (media/files/panos/count-the-steps-w00…w06) and the anchors the route on M-30 is drawn between. w00 has no usable open imagery (fetcher verdict 'off-cue') and is never shown."
     },
     {
       "kind": "streetview",
-      "ref": "51.5102,-0.1397,240,0,90",
+      "ref": "51.5102,-0.1397,240",
       "license": "google-maps-embed",
       "manifest_id": "M-53",
-      "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 1: Savile Row × Burlington Gardens (OSM node 2129908162), Verne's corner; heading 240° looks WSW along Burlington Gardens. 65 m from stop 0 → counter 67.",
-      "fallback": "M-33"
+      "attribution": "Google Street View (geometry only — nothing Google is shown or recorded in this scene)",
+      "note": "Geometry stop 1 — Savile Row × Burlington Gardens (OSM node 2129908162), 65 m from stop 0 → step 67. Pano cache: count-the-steps-w01 (Mapillary, 2022, 91 m)."
     },
     {
       "kind": "streetview",
-      "ref": "51.5095,-0.1414,150,0,90",
+      "ref": "51.5095,-0.1414,150",
       "license": "google-maps-embed",
       "manifest_id": "M-54",
-      "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 2: Burlington Gardens × Old Bond Street (OSM node 2910874877); turn left (south). 137 m → cumulative 202 m → counter 208. No still exists for this stop: if the pano is missing, skip to the next waypoint and add its steps."
+      "attribution": "Google Street View (geometry only — nothing Google is shown or recorded in this scene)",
+      "note": "Geometry stop 2 — Burlington Gardens × Old Bond Street (OSM node 2910874877), cumulative 202 m → step 208. Pano cache: w02 (Mapillary 360°, 2024)."
     },
     {
       "kind": "streetview",
-      "ref": "51.5081,-0.1400,147,0,90",
+      "ref": "51.5081,-0.1400,147",
       "license": "google-maps-embed",
       "manifest_id": "M-55",
-      "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 3: Old Bond Street × Piccadilly (OSM node 109631); QA to pick the pano on the south pavement (traffic island); the mouth of St James's Street is 54 m WSW. 192 m → cumulative 394 m → counter 405 (mouth of St James's Street: 448 m → 460). No still: skip-forward rule as above."
+      "attribution": "Google Street View (geometry only — nothing Google is shown or recorded in this scene)",
+      "note": "Geometry stop 3 — Old Bond Street × Piccadilly (OSM node 109631), cumulative 394 m → step 405. Pano cache: w03 (Mapillary 360°, 2026)."
     },
     {
       "kind": "streetview",
-      "ref": "51.5065,-0.1393,147,0,90",
+      "ref": "51.5065,-0.1393,147",
       "license": "google-maps-embed",
       "manifest_id": "M-56",
-      "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 4: St James's Street mid-slope (Nominatim 23 St James's Street). Cumulative ≈ 612 m → counter 629. No pins here — club names on this street are not on the fact sheet. No still: skip-forward rule."
+      "attribution": "Google Street View (geometry only — nothing Google is shown or recorded in this scene)",
+      "note": "Geometry stop 4 — St James's Street mid-slope, cumulative ≈ 612 m → step 629. Pano cache: w04 (Mapillary 360°, 2024)."
     },
     {
       "kind": "streetview",
-      "ref": "51.5053,-0.1381,65,0,90",
+      "ref": "51.5053,-0.1381,65",
       "license": "google-maps-embed",
       "manifest_id": "M-57",
-      "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 5: St James's Street × Pall Mall, the true corner (OSM node 1938580015; replaces M-37's first-pass start 51.5060,-0.1385, which sits ~80 m north beside King Street). Heading 65° looks ENE along Pall Mall; bearing to the Reform façade 64°, 352 m. Cumulative 768 m → counter 789. No still: skip-forward rule."
+      "attribution": "Google Street View (geometry only — nothing Google is shown or recorded in this scene)",
+      "note": "Geometry stop 5 — St James's Street × Pall Mall, the true corner (OSM node 1938580015); heading 65° looks ENE along Pall Mall. Cumulative 768 m → step 789. Pano cache: w05 (Mapillary 360°, 2024, 107 m) — this is the 'turn east into clubland' shot in the film."
     },
     {
       "kind": "streetview",
-      "ref": "51.50678,-0.13354,168,14,90",
+      "ref": "51.50678,-0.13354,168",
       "license": "google-maps-embed",
       "manifest_id": "M-37",
-      "attribution": "Google Street View (Maps JavaScript API — Street View service; Embed API cannot report position for the counter)",
-      "note": "Waypoint 6: facing the Reform Club façade, 104 Pall Mall (OSM centroid 51.50654,-0.13346). Point refined 2026-08-19 (engine-tools) from 51.5067,-0.1335 to the pano Google actually returns there, 51.506775,-0.133543 (imagery 2025-10, verified via the Street View metadata endpoint); heading 168° is the measured bearing to the façade centroid, 27 m away. Cumulative 1,120 m → counter must read 1,151 here. Optional look-on: Waterloo Place 51.5070,-0.1318 heading 90 (not counted).",
-      "fallback": "M-20"
+      "attribution": "Google Street View (geometry only — nothing Google is shown or recorded in this scene)",
+      "note": "Geometry stop 6 — in front of the Reform Club, 104 Pall Mall (OSM centroid 51.50654,-0.13346, 27 m at bearing 168°). Cumulative 1,120 m → step 1,151. Pano cache: w06 (Mapillary 360°, 2024-04, 158 m) — the frames C1a verified: yaw 168° − 245.8° on f006 shows the '104' doorway, and all three club cues are reachable from this stop."
+    },
+    {
+      "kind": "youtube",
+      "ref": "WQCsxb2dMgQ",
+      "start_s": 1579,
+      "end_s": 1655,
+      "license": "youtube-embed",
+      "manifest_id": "M-01",
+      "attribution": "Wanderizm, 'LONDON Walk - Day stroll along Trafalgar Square, Royal horse guards and St. James's' (2020) — YouTube embed",
+      "use": "player",
+      "note": "26:19–27:35 (76 s), Pall Mall westbound past the Athenaeum (107), the Travellers (106) and the Reform (104). THE PLAYER'S STREET FOOTAGE: it simply plays — nothing to aim, nothing to tap (D6). Standard YouTube Licence: embed only, never copied (A8, rights-a6.md §1.2). Inherited from the retired scene 05. Note for the player: this shot travels WEST, the film's open-imagery shot travels EAST, which is why neither track says 'on your left/right' — the narration says 'the south side'."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
+      "start_s": 0,
+      "end_s": 8,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-67",
+      "attribution": "KartaView / telenavdrives (2016) · CC BY-SA 4.0 · adapted",
+      "use": "linear",
+      "audio": "mute",
+      "sa": true,
+      "note": "Westbound Pall Mall hyperlapse (KartaView seq 1124 frames 828–838, 8.0 s). Declared FALLBACK for the first panowalk segment when media/files/panos/ is absent, so a clean checkout still renders. Inherited from the retired scene 05."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Travellers_Club,_Pall_Mall_-_geograph.org.uk_-_5323789.jpg",
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-69b",
+      "attribution": "Jim Osley (2017) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+      "use": "linear",
+      "sa": true,
+      "note": "The Travellers Club, 106 Pall Mall (Barry, 1832). 3240×5270 portrait — crop/pan to landscape. Inherited from the retired scene 05: the walk stops in front of the Reform, so the two neighbours are named over their own façades rather than by swinging the camera back down the street."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Athen%C3%A6um_Club,_Pall_Mall,_London_WC1_-_geograph.org.uk_-_894173.jpg",
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-69a",
+      "attribution": "Kevin Gordon (2008) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+      "use": "linear",
+      "sa": true,
+      "note": "The Athenaeum, 107 Pall Mall. 640×501 — small, so a gentle move only. Inherited from the retired scene 05; in the film it holds the last lines while the guide names the third club."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-20",
+      "attribution": "Philip Cornwall (2019) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+      "use": "linear",
+      "sa": true,
+      "note": "The Reform Club façade today. Declared FALLBACK for the second panowalk segment (the clubland arrival) when the pano cache is absent. Not in the normal cut — scene 06 opens on this still, and the film must not show it twice across the seam."
     }
   ],
   "overlays": [
     {
       "at_s": 0,
       "kind": "sticker",
-      "until_s": 150,
-      "text": "steps 0 → 1,151",
+      "until_s": 43,
+      "text": "1,151 steps ≈ 1,120 m",
       "position": "tr"
     },
     {
-      "at_s": 15,
-      "at_waypoint": 0,
+      "at_s": 13,
       "kind": "caption",
-      "until_s": 27,
-      "text": "Today No. 7 is not the house Verne imagined — look for yourself.",
+      "until_s": 21,
+      "text": "Savile Row · Burlington Gardens · Old Bond Street",
       "position": "bottom"
     },
     {
-      "at_s": 30,
-      "at_waypoint": 1,
+      "at_s": 21,
       "kind": "caption",
-      "until_s": 40,
-      "text": "Burlington Gardens — Verne's corner. Turn right: 67 steps.",
+      "until_s": 29,
+      "text": "Piccadilly · St James's Street · Pall Mall",
       "position": "bottom"
     },
     {
-      "at_s": 45,
-      "at_waypoint": 2,
-      "kind": "caption",
-      "until_s": 55,
-      "text": "Old Bond Street — turn left, downhill: 208 steps.",
-      "position": "bottom"
+      "at_s": 44,
+      "kind": "gloss",
+      "until_s": 56,
+      "text": "clubland — a district of private members' clubs",
+      "position": "tl"
     },
     {
-      "at_s": 60,
-      "at_waypoint": 3,
-      "kind": "caption",
-      "until_s": 70,
-      "text": "Piccadilly — cross, then St James's Street: 405 steps.",
-      "position": "bottom"
-    },
-    {
-      "at_s": 75,
-      "at_waypoint": 4,
-      "kind": "caption",
-      "until_s": 85,
-      "text": "St James's Street — the long slope: 629 steps.",
-      "position": "bottom"
-    },
-    {
-      "at_s": 90,
-      "at_waypoint": 5,
+      "at_s": 48,
       "kind": "pin",
-      "until_s": 102,
+      "until_s": 58,
       "text": "Pall Mall — gas-lit since 1807",
-      "position": "tl",
+      "position": "bl",
       "geo": "51.5053,-0.1381"
     },
     {
-      "at_s": 105,
-      "at_waypoint": 6,
+      "at_s": 65,
       "kind": "pin",
-      "until_s": 119,
+      "until_s": 74,
       "text": "Reform Club — 104 Pall Mall, Barry, 1841",
       "position": "bl",
       "geo": "51.5065,-0.1335"
     },
     {
-      "at_s": 120,
-      "at_waypoint": 6,
+      "at_s": 76,
       "kind": "pin",
-      "until_s": 132,
+      "until_s": 83,
       "text": "Travellers Club — 106 Pall Mall, Barry's first, 1832",
       "position": "bl"
     },
     {
-      "at_s": 135,
-      "at_waypoint": 6,
+      "at_s": 84,
       "kind": "pin",
-      "until_s": 147,
+      "until_s": 91,
       "text": "Athenaeum — 107 Pall Mall, 1830",
       "position": "bl"
-    },
-    {
-      "at_s": 92,
-      "at_waypoint": 5,
-      "kind": "gloss",
-      "until_s": 104,
-      "text": "clubland — a district of private members' clubs",
-      "position": "tl"
     }
   ],
   "camera": [
     {
-      "at_s": 0,
-      "at_waypoint": 0,
-      "heading": 350,
-      "pitch": 2,
-      "zoom": 0.8,
-      "hold_s": 10,
-      "ease_s": 0,
-      "label": "look north up Savile Row (M-39 stop, waypoint 0)"
-    },
-    {
-      "at_s": 15,
-      "at_waypoint": 0,
-      "look_at": "51.51073,-0.13987",
-      "heading": 82,
-      "pitch": 10,
-      "zoom": 0.85,
-      "hold_s": 7,
-      "ease_s": 2.5,
-      "label": "turn to face 7-8 Savile Row (OSM 'Gossard House 7-8') as the caption fires"
-    },
-    {
-      "at_s": 30,
-      "at_waypoint": 1,
-      "heading": 240,
-      "pitch": 0,
-      "zoom": 0.8,
-      "hold_s": 4,
-      "ease_s": 2,
-      "label": "Verne's corner: turn right, WSW along Burlington Gardens"
-    },
-    {
-      "at_s": 45,
-      "at_waypoint": 2,
-      "heading": 150,
-      "pitch": 0,
-      "zoom": 0.8,
-      "hold_s": 4,
-      "ease_s": 2,
-      "label": "Old Bond Street: turn left, downhill towards Piccadilly"
-    },
-    {
-      "at_s": 60,
-      "at_waypoint": 3,
-      "heading": 147,
-      "pitch": 0,
-      "zoom": 0.8,
-      "hold_s": 4,
-      "ease_s": 2,
-      "label": "Piccadilly: across, then the mouth of St James's Street"
-    },
-    {
-      "at_s": 75,
-      "at_waypoint": 4,
-      "heading": 147,
-      "pitch": 0,
-      "zoom": 0.8,
-      "hold_s": 3,
-      "ease_s": 2,
-      "label": "St James's Street, the long straight slope"
-    },
-    {
-      "at_s": 90,
-      "at_waypoint": 5,
+      "at_s": 57,
       "heading": 65,
       "pitch": 5,
       "zoom": 0.8,
-      "hold_s": 5,
+      "hold_s": 7,
       "ease_s": 2.5,
-      "label": "Pall Mall: turn east, clubland on the right (gas-lamp pin at 90 s)"
+      "label": "stop 5: turn east into Pall Mall — clubland ahead (open-imagery frames w05; lands ≈ 43.5 s in the film)"
     },
     {
-      "at_s": 105,
-      "at_waypoint": 6,
+      "at_s": 79,
       "look_at": "51.50654,-0.13346",
       "heading": 168,
       "pitch": 18,
       "zoom": 0.72,
-      "hold_s": 13,
+      "hold_s": 15,
       "ease_s": 3,
-      "label": "Reform Club facade, 104 Pall Mall (OSM centroid) - pin at 105 s"
-    },
-    {
-      "at_s": 120,
-      "at_waypoint": 6,
-      "look_at": "51.50668,-0.13308",
-      "heading": 109,
-      "pitch": 12,
-      "zoom": 0.9,
-      "hold_s": 13,
-      "ease_s": 3,
-      "label": "a little left: Travellers Club, 106 Pall Mall (OSM centroid) - pin at 120 s"
-    },
-    {
-      "at_s": 135,
-      "at_waypoint": 6,
-      "look_at": "51.50679,-0.13275",
-      "heading": 89,
-      "pitch": 8,
-      "zoom": 1.1,
-      "hold_s": 14,
-      "ease_s": 3,
-      "label": "beyond it: the Athenaeum, 107 Pall Mall (OSM centroid) - pin at 135 s"
+      "label": "stop 6: arrive and stop in front of the Reform Club, 104 Pall Mall (OSM centroid; frame f006, the '104' doorway C1a verified) — lands ≈ 64 s in the film and holds to the end of the scene clock (hold_s 15 = to 94 s, so the walk's last frame does not flash 84 m up the street), under the line that names it"
     }
   ],
   "interaction": {
-    "kind": "walk",
-    "prompt": "Walk with Fogg — the full 1,151 steps. Tap ahead to step; the counter climbs with you.",
-    "route": [
-      "51.5107,-0.1402,350",
-      "51.5102,-0.1397,240",
-      "51.5095,-0.1414,150",
-      "51.5081,-0.1400,147",
-      "51.5065,-0.1393,147",
-      "51.5053,-0.1381,65",
-      "51.50678,-0.13354,168"
-    ]
+    "kind": "none"
   },
   "transition": {
     "in": "cut",
-    "out": "cut to the club door (M-01)",
+    "out": "cut to the club door (06 opens on M-20)",
     "music_cue": "none — street ambience; gas-lamp cue (F-29) only if a lamp is in shot"
   },
   "next": "the-reform-club",
@@ -329,11 +236,11 @@
     "F-43",
     "F-44"
   ],
-  "production_notes": "FULL SEVEN-STOP WALK (D5): route = M-39 → M-53 → M-54 → M-55 → M-56 → M-57 → M-37 façade, 1,120 m between OSM junction nodes (F-43). Route strings are lat,lng,heading (heading = initial view at the stop). Step counter: 1,151 steps / 1,120 m = 0.97 m per step (Fogg's implied stride); counter = round(cumulative metres × 1,151/1,120): stop 1 (65 m) 67 · stop 2 (202 m) 208 · stop 3 (394 m) 405 · mouth of St James's Street (448 m) 460 · stop 4 (≈ 612 m) 629 · stop 5 (768 m) 789 · stop 6 (1,120 m) 1,151. No jump, no fudge. The counter needs the Maps JavaScript API Street View service (position/pano-change events); the Embed API declared in the manifest cannot report position — API key / billing owner is open (D12); until then the walk plays as seven fixed panos and the counter steps per stop. Overlays and narration are waypoint-triggered: overlays[].at_waypoint = index into interaction.route; narration.waypoint_script[i] is spoken on arrival at route[i]; at_s and narration.script (= the join of waypoint_script) are the linear / no-JS fallback. Three pins share waypoint 6: fire them in at_s order, 15 s apart, from arrival. media[].fallback = manifest id shown if a pano is unavailable (M-33 for the Savile Row stops, M-20 for the façade); stops 2–5 have no still: skip to the next waypoint and add its steps. Sticker top-right so the lower third holds only one caption/pin at a time. Duration ~150 s at a steady tap; user-paced (90–240 s). Linear cut: this scene is replaced by 05 pall-mall-pass (M-01, 76 s). Narrator: waypoint_script is the source; regenerate script as its join.",
+  "production_notes": "TRANSPORT SCENE (D6, 2026-08-19 restructure). This was the seven-stop Street View walk; D6 rules that Street View is a stop-and-look device and never transport, so the walk is gone: no interaction, no route, no 'tap to step', nothing to aim. The scene is now two beats. BEAT A, 0–~40 s: the counting, over the 1872 plan (M-30) — the numbers and the turns live on the map. BEAT B, ~40–94 s: the street simply plays while the guide talks clubland. In the FILM beat B is the cached open-imagery walk (visual kind `panowalk`, stops 5 then 6 of this scene's geometry: St James's × Pall Mall, then the 158 m up to the Reform door — Mapillary 360° frames, 2024, CC BY-SA platform default, see studio/tools/panowalk/README.md), with the `camera` cue below stopping the walk in front of the Reform as the guide names it, and the two neighbours named over their own façades (M-69b, M-69a). In the PLAYER beat B is the M-01 embed (Pall Mall, `use: player`), which plays by itself. NEITHER track asks the traveller to do anything. The seven `streetview` media entries are GEOMETRY ONLY: they are the survey points the pano cache is indexed against (waypoint_index 0…6 = count-the-steps-w00…w06) and the anchors of the route drawn on M-30; nothing Google is shown or recorded here. They must stay seven, in this order, or `panomove.planScene` re-indexes and the cut sheet's `stops: [5]` / `[6]` point at the wrong place. The `camera` track is kept because the linear renderer's panowalk reads it (render_linear.mjs → buildPanowalk → panomove.planScene) on any scene type; the validator's 'camera track on a video scene … will be ignored' warning is therefore stale — Engine backlog. Only TWO camera cues, deliberately: a first pass gave the Travellers and the Athenaeum their own look_at cues and `panomove.frameForCue` answered them with frames 36 m and 96 m BACK down the street, so the walk visibly reversed twice at the end. The cue that survives is the one that ends the walk (arrive, stop, look at 104); the neighbours are stills. Cue times are in scene seconds and must stay inside their stop's window: with duration_s 94, panomove.planScene puts stop 5 at 56.4 s and stop 6 at 67.7 s, so 57 belongs to stop 5 and 79 to stop 6. They are then re-scaled onto the cut sheet's segment lengths, which is why each label also gives the second it lands on in the FILM (43.5 s and 64 s of a 90.2 s scene) — that is the number to check against the narration, and the reason the cue seconds do not read like the spoken seconds. If duration_s, the script or the cut sheet's `dur`s change, re-derive both. Words: everything the walk used to carry is still here — 1,151 steps, the kilometre, 'he never hurries', gas from 1807, the three clubs — only re-homed so that nothing depends on the traveller steering a camera. Left / right is never spoken: the film's open imagery travels EAST and the player's M-01 travels WEST, so the clubs are named by side of the street ('the south side'). Basis for 'the south side', for the Fact-Checker: F-18 gives the addresses (Athenaeum 107, Travellers 106, Reform 104) and the OSM centroids this scene already carries — 51.50654,-0.13346 · 51.50668,-0.13308 · 51.50679,-0.13275 — all sit south of the Pall Mall carriageway; it is the same claim scene 05 made as 'watch the left side' for a westbound shot. Engine request (one line each, not done here): the player should honour media windows in a `video` scene so beat A shows M-30 before the embed starts; and validate.py should stop warning about `camera` on non-streetview scenes now that panowalk reads it. Retired with this pass: scene 05 pall-mall-pass, which existed only as the linear stand-in for the walk (its words are these words). M-69a / M-69b (Athenaeum and Travellers façades) come with it and are wired here.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: full seven-stop walk M-39→M-53→M-54→M-55→M-56→M-57→M-37 (D5) with per-stop headings and fallbacks; counter recalibrated to 0.97 m/step, no jump caption, lands on 1,151 at the façade; Pall Mall leg now starts on M-57's true corner and the gas pin geo moved with it; overlays and cue sentences waypoint-triggered (at_waypoint / waypoint_script) with at_s fallback; sticker tr; Travellers 1832 (F-44), house-number style '106 Pall Mall'; No. 7 caption softened (D7); production_notes: counter needs Maps JavaScript API — key/billing owner open (D12). A1 narrator 2026-08-18: waypoint_script polished (24-word openers split at stops 0 and 5; contractions per R4); script regenerated as the join; counter numbers stay spoken because they are the beat, not a caption read-out. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): waypoint 0 now names the destination ('leaves for his club') so a first-time reader knows where we are walking; script regenerated as the join; clubland gloss chip at the Pall Mall waypoint; clear-English variant added (single track — the player plays it linearly over the walk). A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.waypoint_script_variants.clear added — seven blocks whose join is exactly variants.clear, so the walk speaks one register end to end in clear mode. No fact or timing changed. Engine: the player and the linear renderer still read waypoint_script only (backlog). A4 engine-tools 2026-08-19 (v0.4 cinematic Street View): added the `camera` track — ten look-at cues on the same at_s as the overlays, so the turn and the pin coincide; the three clubhouse cues use look_at with OSM centroids (Reform 51.50654,-0.13346; Travellers 51.50668,-0.13308; Athenaeum 51.50679,-0.13275, all verified via Overpass) so the framing survives Google moving the nearest pano. Headings/pitches checked against real Street View Static frames from the M-37 pano (51.506775,-0.133543, imagery 2025-10): heading 168 pitch 18 fov ~110 shows the whole Portland-stone façade; 109 and 89 are the Travellers and the Athenaeum, both to the LEFT of the Reform as the narration says. Narration and overlays untouched. NOTE for the Scene Developer: interaction.prompt still says 'Tap ahead to step' — the walk now plays itself with no tapping, so that line needs a rewrite. Waypoint 6 / M-37 refined to the returned pano 51.50678,-0.13354 (heading 168°) so the three close-range look_at cues (27-55 m) resolve to the bearings measured from the real pano; the rounded 51.5067,-0.1335 swung the Travellers bearing by 15°. Route length by haversine over the rounded waypoints is 1,086 m; F-43's 1,120 m is measured between the exact OSM junction nodes — the spoken counter numbers are unaffected."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: full seven-stop walk M-39→M-53→M-54→M-55→M-56→M-57→M-37 (D5) with per-stop headings and fallbacks; counter recalibrated to 0.97 m/step, no jump caption, lands on 1,151 at the façade; Pall Mall leg now starts on M-57's true corner and the gas pin geo moved with it; overlays and cue sentences waypoint-triggered (at_waypoint / waypoint_script) with at_s fallback; sticker tr; Travellers 1832 (F-44), house-number style '106 Pall Mall'; No. 7 caption softened (D7); production_notes: counter needs Maps JavaScript API — key/billing owner open (D12). A1 narrator 2026-08-18: waypoint_script polished (24-word openers split at stops 0 and 5; contractions per R4); script regenerated as the join; counter numbers stay spoken because they are the beat, not a caption read-out. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): waypoint 0 now names the destination ('leaves for his club') so a first-time reader knows where we are walking; script regenerated as the join; clubland gloss chip at the Pall Mall waypoint; clear-English variant added (single track — the player plays it linearly over the walk). A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.waypoint_script_variants.clear added — seven blocks whose join is exactly variants.clear, so the walk speaks one register end to end in clear mode. No fact or timing changed. Engine: the player and the linear renderer still read waypoint_script only (backlog). A4 engine-tools 2026-08-19 (v0.4 cinematic Street View): added the `camera` track — ten look-at cues on the same at_s as the overlays, so the turn and the pin coincide; the three clubhouse cues use look_at with OSM centroids (Reform 51.50654,-0.13346; Travellers 51.50668,-0.13308; Athenaeum 51.50679,-0.13275, all verified via Overpass) so the framing survives Google moving the nearest pano. Headings/pitches checked against real Street View Static frames from the M-37 pano (51.506775,-0.133543, imagery 2025-10): heading 168 pitch 18 fov ~110 shows the whole Portland-stone façade; 109 and 89 are the Travellers and the Athenaeum, both to the LEFT of the Reform as the narration says. Narration and overlays untouched. NOTE for the Scene Developer: interaction.prompt still says 'Tap ahead to step' — the walk now plays itself with no tapping, so that line needs a rewrite. Waypoint 6 / M-37 refined to the returned pano 51.50678,-0.13354 (heading 168°) so the three close-range look_at cues (27-55 m) resolve to the bearings measured from the real pano; the rounded 51.5067,-0.1335 swung the Travellers bearing by 15°. Route length by haversine over the rounded waypoints is 1,086 m; F-43's 1,120 m is measured between the exact OSM junction nodes — the spoken counter numbers are unaffected. D6 scene-developer 2026-08-19 (restructure, founder's instruction): type streetview → video; `interaction.kind: walk`, the seven route waypoints and the 'Tap ahead to step' prompt REMOVED (D6: Street View is never transport). Duration 150 (user-paced) → 94 (fixed). The counting beat now plays over M-30, the 1872 plan (differentiated from scene 12's use of the same plate by extent, by the five stop-start strokes and by the step numbers stamped at the turns; 12 keeps the whole plate and one continuous line at cab speed). The street then plays plainly: `panowalk` stops 5–6 in the film, the M-01 embed in the player. `waypoint_script` / `waypoint_script_variants` deleted (there are no waypoints left); their seven blocks were re-written into one continuous script plus its clear variant, keeping 1,151, the ~1 km, 'he never hurries' and the three clubs, and dropping every instruction to walk, turn or look at a particular building — including the 'Today No. 7 is not the house Verne imagined' beat, which needed the traveller to aim at 7–8 Savile Row (the one stop the open-imagery fetcher could not serve anyway, verdict 'off-cue'); D7's softened caption goes with it. The eighth media entry (the second M-39 framing, 'waypoint 0b') was deleted so the seven remaining streetview refs index 0…6 exactly as the pano cache does. Overlays: per-waypoint triggers gone, seven timed overlays + the clubland gloss, all on scene seconds and set to the same numbers the cut sheet uses, so the pins land on the same words in the player and in the film (and no two pins are ever up together); captions name the turns instead of the map, so the same words and pictures are true in both cuts. Camera track kept but cut to two cues and retimed for the panowalk (57 s = the turn east, 79 s = arrive and hold on 104 Pall Mall; 43.5 s and 64 s of the rendered scene). The two dropped cues (Travellers, Athenaeum) made the open-imagery walk jump backwards down the street, so those two clubs are named over M-69b / M-69a instead — the third pin (Athenaeum, 107, 1830) is back with them, same verified look_at centroids as A4. Media absorbed from the retired scene 05: M-01 (player), M-67 (hyperlapse fallback), M-20 (still fallback), M-69b and M-69a (the Travellers and Athenaeum façades, now the film's last two shots). Sources unchanged."
   }
 }
