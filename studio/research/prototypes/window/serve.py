@@ -16,6 +16,7 @@ try:
     s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM); s.connect(('8.8.8.8',80)); ip=s.getsockname()[0]; s.close()
 except Exception: pass
 class H(http.server.SimpleHTTPRequestHandler):
+    timeout = 30                      # idle keep-alive connection cannot hold a worker thread forever
     def __init__(self,*a,**k): super().__init__(*a,directory=os.path.abspath(root),**k)
     def end_headers(self):
         self.send_header('Cache-Control','no-store'); self.send_header('Accept-Ranges','bytes'); super().end_headers()
@@ -67,8 +68,31 @@ class H(http.server.SimpleHTTPRequestHandler):
             buf=src.read(min(65536,left)); 
             if not buf: break
             dst.write(buf); left-=len(buf)
-httpd=http.server.ThreadingHTTPServer(('0.0.0.0',port),H)
+# BUG FIX 2026-08-19 (second outage): wrapping the LISTENING socket makes the TLS handshake run inside accept(),
+# i.e. single-threaded. One port scanner that connects and never completes the handshake blocks the accept loop and
+# the whole server hangs — the process stays alive, so it looks healthy while serving nothing. This box has a public
+# IP and is scanned constantly (/terraform.tfstate, /info.php in the log), so it is a matter of when, not if.
+# Fix: accept plain and fast, then do the handshake in the worker thread, with timeouts so nothing can hang forever.
+class TLSServer(http.server.ThreadingHTTPServer):
+    daemon_threads = True
+    allow_reuse_address = True
+    def __init__(self, addr, handler, ctx):
+        self.ctx = ctx
+        super().__init__(addr, handler)
+    def get_request(self):
+        sock, addr = self.socket.accept()          # plain accept — never blocks on a stalled client
+        sock.settimeout(30)
+        return sock, addr
+    def process_request_thread(self, request, client_address):
+        try:
+            tls = self.ctx.wrap_socket(request, server_side=True)   # handshake in the worker thread
+        except Exception:
+            try: self.shutdown_request(request)
+            except Exception: pass
+            return
+        super().process_request_thread(tls, client_address)
+
 ctx=ssl.SSLContext(ssl.PROTOCOL_TLS_SERVER); ctx.load_cert_chain(crt,key)
-httpd.socket=ctx.wrap_socket(httpd.socket,server_side=True)
+httpd=TLSServer(('0.0.0.0',port),H,ctx)
 print(f"Serving https://{ip}:{port}/  (accept the self-signed certificate on the phone)")
 httpd.serve_forever()

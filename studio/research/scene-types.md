@@ -18,7 +18,7 @@ presence÷cost, not by novelty.
 | id | scene type | one-line | sensors | presence lever | status |
 |----|-----------|----------|---------|----------------|--------|
 | video | curated video + narration + synced pins | the workhorse | none | motion, sound, guided attention | in-engine |
-| streetview | Street View walk with waypoints | you steer, we narrate | touch/gyro | agency, "I chose to look there" | in-engine (spec) |
+| streetview | **stop-and-look**: one spot, a thing to find, you aim your own gaze | touch | agency — the ONLY thing video cannot give | in-engine · **never use for transport (D6)** |
 | photo | photo + Ken Burns + stickers + music | album mode | none | emotion via music sync | sketch |
 | map | route/interstitial map | orientation | none | knowing where you are | in-engine (spec) |
 | quiz | 3–4 options, teaching feedback | retention | touch | attention, "why should I care" | in-engine (spec) |

@@ -1,8 +1,8 @@
 # Render log — Day 1 · London — the departure — linear cut (review animatic)
 
-**Rendered:** 2026-08-19T09:00:05.367Z   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** 5.3 min
+**Rendered:** 2026-08-19T10:08:31.798Z   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** 3.6 min
 
-**Output:** `products/around-the-world-80-days/day-01-london/linear/day-01-london_review-animatic.mp4` — 881.7 s (14:42), 1280×720 h264 25/1 fps, aac 48000 Hz 2 ch, 101.1 MB, faststart. Subtitles: `day-01-london_narration.vtt`.
+**Output:** `products/around-the-world-80-days/day-01-london/linear/day-01-london_review-animatic.mp4` — 881.7 s (14:42), 1280×720 h264 25/1 fps, aac 48000 Hz 2 ch, 99.9 MB, faststart. Subtitles: `day-01-london_narration.vtt`.
 
 **Voice:** Edge neural TTS en-GB-RyanNeural (guide), en-GB-ThomasNeural (Passepartout), rate -5%. **Beds:** Commons audio at -35 LUFS (≈ 18 dB under narration), stings at -26 LUFS. **Slack:** a scene may exceed its README seconds by 10 % before the script is end-cut at a sentence boundary.
 
@@ -10,7 +10,7 @@ Selection: 16 scenes from scenes/README.md "Linear cut" table (967 s planned).
 Sidecar cut hints: studio/tools/render/cuts/day-01-london.json.
 
 ## Rights compliance
-- YouTube: not downloaded, not re-encoded. no clip cards in this cut; 6 shot(s) come from self-hosted, licence-clean files under `media/files/` (Wikimedia Commons / public-domain film / KartaView), never from youtube.com.
+- YouTube: not downloaded, not re-encoded. no clip cards in this cut; 5 shot(s) come from self-hosted, licence-clean files under `media/files/` (Wikimedia Commons / public-domain film / KartaView), never from youtube.com.
 - Street View: not screen-recorded — stop cards only.
 - Commons images resolved through the API (imageinfo, width 1920), attribution burned bottom-right while shown and repeated on the credits card. Freesound refs (login-gated) skipped.
 
@@ -21,7 +21,7 @@ Sidecar cut hints: studio/tools/render/cuts/day-01-london.json.
 | 01 | cold-open | interstitial | 0:04 | 53.4 (60) | ok 48.9 s | scene title card 4.0 s<br>player screenshot showRouteMap(true) 49.4 s | M-40 0:00–0:04 (sting -15 dB → -26 LUFS)<br>M-41 0:04–0:53 (bed -8 dB → -35 LUFS) | — |
 | 02 | savile-row | video | 0:57 | 76.5 (84) | ok 74.0 s | M-66 local footage media/files/m66-savile-row-hyperlapse.mp4 — self-hosted, licence-clean 7.3 s<br>M-77a Commons image (Ken Burns) 29.1 s<br>M-77c Commons image (Ken Burns) 14.6 s<br>M-77b Commons image (Ken Burns) 25.5 s | — | sidecar: dropped [16] Here is the street around 1890.<br>sidecar: dropped [17] Same doors.<br>sidecar: dropped [18] Same quiet. |
 | 03 | fogg-by-the-clock | card | 2:14 | 46.7 (50) | ok 44.2 s | player screenshot showScene(2) 46.7 s | — | sidecar: dropped [1] Tap any line to see what happens.<br>sidecar: dropped [11] Look at his face. |
-| 05 | pall-mall-pass | video | 3:01 | 45.5 (42) | ok 43.0 s | M-67 local footage media/files/m67-pall-mall-hyperlapse.mp4 — self-hosted, licence-clean 8.7 s<br>M-69a Commons image (Ken Burns) 8.7 s<br>M-69b Commons image (Ken Burns) 8.7 s<br>M-20 Commons image (Ken Burns) 10.8 s<br>M-22 Commons image (Ken Burns) 8.6 s | — | script cut to fit 42 s (+10% slack = 46.2 s): dropped 1 sentence(s) at the end — "We measure about one kilometre." |
+| 05 | pall-mall-pass | video | 3:01 | 45.5 (42) | ok 43.0 s | panowalk — mapillary Sx3G6T8ksr5enAm47adDbE, mapillary JhVerKzIuOMLq1PbWpil4Z (stops 5,6), cached frames, same move as the player 8.7 s<br>M-69a Commons image (Ken Burns) 8.7 s<br>M-69b Commons image (Ken Burns) 8.7 s<br>M-20 Commons image (Ken Burns) 10.8 s<br>M-22 Commons image (Ken Burns) 8.6 s | — | script cut to fit 42 s (+10% slack = 46.2 s): dropped 1 sentence(s) at the end — "We measure about one kilometre." |
 | 06 | the-reform-club | video | 3:46 | 61.3 (62) | ok 58.8 s | M-20 Commons image (Ken Burns) 24.0 s<br>M-69c Commons image (Ken Burns) 14.0 s<br>M-22 Commons image (Ken Burns) 9.0 s<br>M-23 Commons image (Ken Burns) 14.3 s | M-43 0:00–1:01 (bed -14 dB → -35 LUFS) | sidecar: dropped [6] The club also had famous kitchens, planned with the chef Alexis Soyer.<br>sidecar: dropped [12] Somewhere in there, Fogg cuts his newspaper's pages and reads The Times. |
 | 07 | quiz-verne-saloon | quiz | 4:47 | 36.5 (50) | ok 34.0 s | quiz screen (own render) 36.5 s | M-43 0:00–0:36 (bed -14 dB → -35 LUFS) | sidecar: dropped [7] Take your time; the tea is famous. |
 | 08 | the-wager | photo | 5:24 | 72.2 (75) | ok 69.7 s | M-35 Commons image (Ken Burns) 36.1 s<br>player screenshot showScene(7).then(()=>seek(35)) 36.1 s | M-41 0:00–1:12 (bed -8 dB → -35 LUFS) | — |

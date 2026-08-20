@@ -708,11 +708,16 @@ async function showStreetView(s){
   // FREE-FIRST ladder (RULE 1): open (our own cached CC BY-SA frames — costs nothing, and the same pixels go in the
   // video) → embed (Maps Embed API, free and unlimited) → the link card.
   // 'js'/'stills' hit billable SKUs and are only reachable when config.billing_ack === true (svModeAllowed gates it).
-  const ladder = want==='js' ? ['js','stills','open','embed','link']
-    : want==='stills' ? ['stills','open','embed','link']
+  // DESIGN 2026-08-19 (founder, after playtesting): auto-walking Street View is dominated by both alternatives —
+  // it discards the agency that makes Street View worth having, and cannot match video for smoothness. Street View is
+  // now used ONLY as a stop-and-look (the traveller aims their own gaze at something worth finding). That needs no
+  // programmatic camera control, so the free Maps Embed API is both the right affordance AND free. Mode 'open'
+  // (open-imagery walk) is retired from the player ladder; its frames/cache/panomove.mjs live on for the VIDEO,
+  // where transport is correctly served by a hyperlapse. See studio/research/scene-types.md.
+  const ladder = want==='js' ? ['js','stills','embed','link']
+    : want==='stills' ? ['stills','embed','link']
     : want==='link' ? ['link']
-    : want==='embed' ? ['embed','link']
-    : ['open','embed','link'];                                 // 'auto' and 'open' both land here
+    : ['embed','link'];                                        // 'auto', 'embed' and the retired 'open' all land here
   const svBegin=async(from)=>{
     const chain=ladder.slice(ladder.indexOf(from)<0?0:ladder.indexOf(from));
     for(const m of chain){

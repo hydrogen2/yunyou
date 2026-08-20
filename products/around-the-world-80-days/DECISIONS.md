@@ -20,6 +20,27 @@ without checking first.** This outranks every other instruction, including "fini
   order. Guardrails added the same day: `www/config.json` pinned to a non-billing mode, the smoke test's billed pass made
   opt-in (`--allow-billing`), and the player will refuse billable modes unless the config explicitly acknowledges billing.
 
+## D6 · Street View is a STOP-AND-LOOK device, never transport (founder, 2026-08-19, after playtesting)
+
+Auto-walking Street View was built, played, and rejected. It is dominated by both alternatives: it discards the
+**agency** that is Street View's only unique offer (the traveller aims their own gaze), while failing to match video
+for **smoothness**, because it is fundamentally photographs taken metres apart.
+
+**The rule:** use `streetview` only where there is something for the traveller to *find* — a task, a reason to look.
+Never to move someone from A to B. Transport is video or hyperlapse, always. Expect one or two Street View stops in a
+whole chapter, not a spine; each should feel like a change of gear.
+
+**Consequences**
+- **Player:** Maps **Embed** API (drag to look). No programmatic camera control is needed, so the billable SKUs are
+  never required — the cost problem disappears along with the auto-walk. Ladder is `embed → link`.
+- **Player mode `open` (open-imagery walk) is RETIRED.** Its fetcher, cache and `panomove.mjs` live on for the video.
+- **/watch:** Street View cannot be recorded anyway. Transport scenes become open-imagery hyperlapse; a stop-and-look
+  scene becomes a slow pan over the same view, with the guide naming what the player-traveller would have found
+  themselves. That is an adaptation, not a downgrade — a film cannot offer a task.
+- **Day 1:** scene 04 (the 1,151 steps) is transport → restructured, street footage plays while the counting moves to
+  the map. Scene 15 (the Eleanor Cross) is a genuine stop-and-look → stays Street View in the player.
+- The Mapillary licence question now matters for **video use only**, since the player is on Google.
+
 ## 2026-08-19
 
 **D1 · Business model — FREE until further notice.**
