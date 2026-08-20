@@ -1,7 +1,7 @@
 {
  "video": "day-01-london_review-animatic.mp4",
  "subtitles": "day-01-london_narration.vtt",
- "duration_s": 882,
+ "duration_s": 971,
  "track": "clear",
  "chapters": [
   {
@@ -23,81 +23,87 @@
    "title": "Fogg's day, by the clock \u2014 enter Passepartout"
   },
   {
-   "scene": "pall-mall-pass",
+   "scene": "count-the-steps",
    "type": "video",
    "at_s": 181,
-   "title": "Pall Mall \u2014 past the clubs (linear cut)"
+   "title": "Count the steps \u2014 Savile Row to Pall Mall"
   },
   {
    "scene": "the-reform-club",
    "type": "video",
-   "at_s": 226,
+   "at_s": 271,
    "title": "Inside the Reform \u2014 what Verne got right"
   },
   {
    "scene": "quiz-verne-saloon",
    "type": "quiz",
-   "at_s": 287,
+   "at_s": 332,
    "title": "Quiz \u2014 which of Verne's club details is real?"
   },
   {
    "scene": "the-wager",
    "type": "photo",
-   "at_s": 324,
+   "at_s": 369,
    "title": "The wager \u2014 twenty thousand at Baring's"
   },
   {
    "scene": "the-world-shrinks",
    "type": "map",
-   "at_s": 396,
+   "at_s": 441,
    "title": "The world had just shrunk \u2014 the 80-day loop"
   },
   {
    "scene": "pack-the-bag",
    "type": "game",
-   "at_s": 467,
+   "at_s": 511,
    "title": "Ten minutes \u2014 pack the carpet-bag"
   },
   {
    "scene": "the-dash",
    "type": "map",
-   "at_s": 534,
+   "at_s": 579,
    "title": "A shilling's cab to Charing Cross"
   },
   {
    "scene": "charing-cross",
    "type": "video",
-   "at_s": 585,
+   "at_s": 630,
    "title": "Charing Cross \u2014 Fogg's newest London"
   },
   {
    "scene": "then-and-now",
    "type": "photo",
-   "at_s": 651,
+   "at_s": 696,
    "title": "Then and now \u2014 the forecourt, 1872 and today"
+  },
+  {
+   "scene": "look-up-the-cross",
+   "type": "streetview",
+   "at_s": 716,
+   "title": "Look up \u2014 the cross, and where London starts"
   },
   {
    "scene": "quiz-the-weather",
    "type": "quiz",
-   "at_s": 671,
+   "at_s": 761,
    "title": "Quiz \u2014 look up at the roof: what is the weather doing?"
   },
   {
    "scene": "passepartout-on-the-platform",
    "type": "dialogue",
-   "at_s": 690,
+   "at_s": 779,
    "title": "The platform, 8:40 pm \u2014 talk to Passepartout"
   },
   {
    "scene": "the-boat-train",
    "type": "video",
-   "at_s": 731,
+   "at_s": 820,
    "title": "8:45 \u2014 over the river, to the forgotten gas"
   },
   {
    "scene": "souvenir",
    "type": "card",
-   "at_s": 801,
+   "at_s": 890,
    "title": "Souvenir \u2014 Fogg's last breakfast in London"
   }
  ]
