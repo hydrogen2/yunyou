@@ -769,7 +769,10 @@ function clearCountdown(){ if(cdTimer){ clearInterval(cdTimer); cdTimer=null; } 
 function startCountdown(sec, onTimeout){ clearCountdown(); let left=sec; const show=()=>$('#countdown').textContent=`· ${left}s`; show(); cdTimer=setInterval(()=>{ left--; if(left<=0){ clearCountdown(); onTimeout&&onTimeout(); } else show(); },1000); }
 function renderInteraction(s){
   const box=$('#interaction'); box.innerHTML=''; pickOption=null; gameApi=null; interactionResolved=false; clearCountdown(); const it=s.interaction; if(!it||it.kind==='none') return;
-  const after=()=>{ const a=s.narration&&s.narration.after_script; if(a&&!box.dataset.afterDone){ box.dataset.afterDone='1'; return a; } return null; };
+  const after=()=>{ const n=s.narration||{};
+    // honour the clear-English register for the reveal too (D5), same rule as pickScript
+    const a=(clearEnglish && n.after_script_variants && n.after_script_variants.clear) || n.after_script;
+    if(a&&!box.dataset.afterDone){ box.dataset.afterDone='1'; return a; } return null; };
   if(it.prompt){ const p=document.createElement('p'); p.innerHTML=`<b>${it.prompt}</b>`; box.appendChild(p); }
   if(it.kind==='choice'||it.kind==='tap-to-find'){
     const graded=(it.options||[]).some(o=>o.correct!==undefined); // info-taps (no correct flags) stay open for more taps
@@ -928,7 +931,8 @@ document.addEventListener('keydown',e=>{ if(!$('#who').hidden){ if(e.key==='Esca
       const L=loc.scenes[s.id]; if(!L) return;
       if(L.title) s.title=L.title;
       if(L.learning_goal) s.learning_goal=L.learning_goal;
-      if(L.after_script) s.after_script=L.after_script;
+      if(L.after_script){ s.narration=s.narration||{}; s.narration.after_script=L.after_script;   // renderer reads narration.after_script
+        s.narration.after_script_variants=Object.assign({},s.narration.after_script_variants,{clear:L.after_script}); }
       if(L.script){ s.narration=s.narration||{}; s.narration.script=L.script;
         s.narration.variants=Object.assign({}, s.narration.variants, {clear:L.script}); }   // both registers -> the locale
       (L.overlays||[]).forEach(o=>{ const tgt=(s.overlays||[])[o.i]; if(tgt && o.text) tgt.text=o.text; });
