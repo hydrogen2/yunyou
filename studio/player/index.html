@@ -90,6 +90,7 @@
 <div id="cover">
   <div id="coverTitle"><h1>Yunyou 云游</h1><p>loading tour…</p></div>
   <button class="btn primary" id="start" style="font-size:18px;padding:12px 26px">▶ Start the day</button>
+  <label>Language / 语言 <select id="lang"><option value="en">English</option><option value="zh-Hans">简体中文</option></select></label>
   <label>Narration voice <select id="voice"></select> <select id="rate" title="narration speed"><option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1.0×</option><option value="1.1">1.1×</option></select> <button class="btn" id="testVoice">test</button></label>
   <label style="cursor:pointer"><input type="checkbox" id="clearEn"> Clear English — simpler wording and a slightly slower voice, where the chapter provides it</label>
   <label id="gkeyRow">Google Maps API key (optional — enables live Street View; stored only in this browser)<br><input id="gkey" placeholder="AIza…"></label>
@@ -122,6 +123,7 @@ const TOUR_URL=qs.get('tour')||'/products/around-the-world-80-days/day-01-london
 const $=s=>document.querySelector(s);
 let tour, scenes=[], idx=0, timer=null, t0=0, elapsed=0, paused=false, captions=true, narrate=true, ytPlayer=null, ytReady=false, bed=null, map=null;
 const commonsCache={};
+let LOCALE=null;                       // active locale object (null = English)
 
 // ---------- Commons: File: page URL → direct file URL ----------
 async function commonsUrl(pageUrl, width=1600){
@@ -148,7 +150,10 @@ function ttsRate(){ const r=parseFloat(localStorage.getItem('yy-rate')); if(r>=0
 function pickScript(s){ const n=(s&&s.narration)||{}; return (clearEnglish&&n.variants&&typeof n.variants.clear==='string')?n.variants.clear:(n.script||''); }
 let voices=[], voiceName=localStorage.getItem('yy-voice')||''; // cached: the #voice select lives on the cover, which is removed on start
 function loadVoices(){ voices=speechSynthesis.getVoices(); const sel=$('#voice'); if(!sel) return; sel.innerHTML='';
-  const pref=voices.filter(v=>/en-GB|en_GB/i.test(v.lang)).concat(voices.filter(v=>/^en/i.test(v.lang)&&!/GB/i.test(v.lang)));
+  // voice list follows the active locale: a Chinese script read by an English voice is unusable
+  const hint=(LOCALE&&LOCALE.tts&&LOCALE.tts.voice_hint)||'en-GB';
+  const rx=new RegExp('^'+hint.split('-')[0],'i'), exact=new RegExp(hint.replace('-','[-_]'),'i');
+  const pref=voices.filter(v=>exact.test(v.lang)).concat(voices.filter(v=>rx.test(v.lang)&&!exact.test(v.lang)));
   pref.forEach(v=>{ const o=document.createElement('option'); o.value=v.name; o.textContent=`${v.name} (${v.lang})`; sel.appendChild(o); });
   if(voiceName) sel.value=voiceName; voiceName=sel.value; }
 speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
@@ -912,7 +917,43 @@ document.addEventListener('keydown',e=>{ if(!$('#who').hidden){ if(e.key==='Esca
   if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') showScene(idx-1); if(e.key===' '){ paused=!paused; e.preventDefault(); } });
 
 (async()=>{
+  // ---- i18n: a locale is an index-addressed OVERLAY applied to the tour in memory, so every render path below
+  // stays monolingual and unaware. English remains canonical in scenes/*.scene.json; a partial locale is valid.
+  // Format: studio/templates/i18n-locale.md. Select with ?lang=zh-Hans or the picker on the cover.
+  function applyLocale(tour, loc){
+    if(!loc || !loc.scenes) return;
+    const ch=tour.chapters[0];
+    if(loc.chapter){ ['title','hook','recap'].forEach(k=>{ if(loc.chapter[k]) ch[k]=loc.chapter[k]; }); }
+    (ch.scenes||[]).forEach(s=>{
+      const L=loc.scenes[s.id]; if(!L) return;
+      if(L.title) s.title=L.title;
+      if(L.learning_goal) s.learning_goal=L.learning_goal;
+      if(L.after_script) s.after_script=L.after_script;
+      if(L.script){ s.narration=s.narration||{}; s.narration.script=L.script;
+        s.narration.variants=Object.assign({}, s.narration.variants, {clear:L.script}); }   // both registers -> the locale
+      (L.overlays||[]).forEach(o=>{ const tgt=(s.overlays||[])[o.i]; if(tgt && o.text) tgt.text=o.text; });
+      if(L.interaction && s.interaction){
+        if(L.interaction.prompt) s.interaction.prompt=L.interaction.prompt;
+        if(L.interaction.answer) s.interaction.answer=L.interaction.answer;
+        (L.interaction.options||[]).forEach(o=>{ const tgt=(s.interaction.options||[])[o.i]; if(!tgt) return;
+          if(o.text) tgt.text=o.text; if(o.feedback) tgt.feedback=o.feedback; });
+      }
+    });
+  }
+  async function loadLocale(code){
+    if(!code || code==='en') return null;
+    const base=TOUR_URL.replace(/\/[^/]*$/,'');
+    try{ const r=await fetch(base+'/i18n/'+code+'.json'); if(!r.ok) return null; return await r.json(); }
+    catch(e){ console.info('locale '+code+' unavailable'); return null; }
+  }
   try{ tour=await (await fetch(TOUR_URL)).json(); }catch(e){ $('#coverTitle').innerHTML='<h1>Yunyou</h1><p>Could not load '+TOUR_URL+'</p>'; return; }
+  const wantLang=(qs.get('lang')||localStorage.getItem('yy-lang')||'en');
+  const langSel=$('#lang'); if(langSel){ langSel.value=wantLang;
+    langSel.onchange=e=>{ const v=e.target.value; localStorage.setItem('yy-lang',v);
+      const u=new URL(location.href); if(v==='en') u.searchParams.delete('lang'); else u.searchParams.set('lang',v); location.href=u.toString(); }; }
+  LOCALE=await loadLocale(wantLang);
+  if(LOCALE){ applyLocale(tour, LOCALE); localStorage.setItem('yy-lang', wantLang); voiceName=null; loadVoices();
+    document.documentElement.lang = LOCALE.locale || wantLang; }
   const ch=tour.chapters[0]; scenes=ch.scenes; $('#hTitle').textContent=tour.title;
   const recap= typeof ch.recap==='string'&&ch.recap ? `<p class="muted" style="max-width:560px"><span style="letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--accent)">Previously</span><br>${ch.recap}</p>` : '';
   $('#coverTitle').innerHTML=`<p class="muted" style="letter-spacing:.2em;text-transform:uppercase">${tour.title}</p><h1>${ch.title}</h1><p>${ch.hook}</p>${recap}<p class="muted">${scenes.length} scenes · about ${Math.round(scenes.reduce((a,s)=>a+s.duration_s,0)/60)} minutes · headphones recommended</p>`;
