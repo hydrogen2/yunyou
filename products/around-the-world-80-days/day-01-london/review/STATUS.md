@@ -140,3 +140,41 @@ stop runs on the free Maps Embed. Nothing in Day 1 needs a billable SKU.
 
 Still open for Rights, and now load-bearing for the FILM rather than a retired player mode: the Mapillary per-image licence
 (`--accept-unknown-licence`) under scene 04's street and scene 15's pan.
+
+
+## 2026-08-27 — A9 "Inside the Reform" (Content Preparer). NO RENDER (founder's hold stands; player only).
+Founder's finding on 2026-08-20 was that the scene titled *Inside the Reform* played over purely outdoor footage; it was
+retitled *At the door of the Reform* on the belief that no free interior material existed. **That belief was wrong.**
+A category walk on Commons plus one 1887 club history on archive.org produced four interior pictures worth showing.
+
+Done:
+- **`media/manifest.md` §A9** — new rows **M-94…M-103**, each with rung, licence, exact attribution string, source URL,
+  pixel size and player-vs-linear use. Verdicts on the founder's three files: `ReformClubLobby.jpg` **accepted** (it is the
+  Saloon's ground-level colonnade looking at the principal staircase — geotag, F-15 and the 1841/1887 plates all agree);
+  the 1840 cross-section **recorded but not wired** (legible, but out-classed by Fagan's 1887 section at 4× the pixels);
+  the 1840 ground plan **superseded** by the same plan at 1698 px in Alfred Barry's 1867 life of his father.
+- **`scenes/06-the-reform-club.scene.json`: `video` → `photo`, seven pictures, four of them interiors.** 0–10 façade ·
+  10–20 the labelled ground plan · **20–30 the Saloon drawn 1887** · **30–40 Soyer's kitchens, 1842** ·
+  **40–50 inside today, photographed 2013** · 50–60 Barry's elevation · **60–70 the saloon engraved 1841**. Slot times were
+  checked sentence by sentence against BOTH narration tracks at the player's own words-per-second estimate.
+  The type change is the load-bearing part: a `video` scene shows its clip and *never* its images
+  (STATUS 2026-08-19, "Engine backlog #1"), which is exactly how an "Inside" title came to play over Pall Mall pavement.
+  M-01 (embed-only YouTube) left the scene — the arrival at the door is scene 04's job since D6.
+- **Title restored: "Inside the Reform — what Verne got right"** (43 of 70 seconds are now inside the building), synced into
+  `tour.json` and `i18n/zh-Hans.json` (走进改良俱乐部——凡尔纳写对了什么, with the script and all four overlay strings re-localised).
+- **`research/fact-sheet.md`: F-47** added (the club's basement culinary department) with source **[53]** Fagan 1887, plus an
+  explicit warning that Fagan's much-quoted "the basement comprised the kitchen…" on p. 50 describes *Smirke's rejected design*.
+- `validate.py` on 18 scenes + tour.json: **all OK** (the one surviving WARN is the stale `camera`-on-a-video-scene note on 04).
+
+Needs a human or another role:
+1. **Narrator, four script edits to sign off** (both tracks; listed verbatim in the scene's `review.notes`): the false clause
+   "no camera has been inside for us" deleted; the closing three-picture enumeration dropped (seven images at ten seconds
+   cannot keep a promise spoken in five); "Look up — the tall windows of the first floor" → "Look down — they ran in the
+   basement, under all this" so the cue lands on the kitchen plate; one new literary-track sentence over the 2013 photograph.
+2. **Rights** — M-94 is the chapter's first CC BY-SA **3.0** item (author + licence + file link in the attribution string,
+   `sa:true` for the §2.4 strip-list). Everything else added is PD by age.
+3. **Engine (one line)** — `mountImage` should honour `media[].fallback` for images; M-96 is served by
+   `iiif.archive.org`, which 504s often enough that the scene already carries a whole-page fallback URL it cannot use yet.
+4. **The one email worth sending** — the club runs an Open House weekend (F-17). Permission to photograph the Saloon and the
+   coffee-room's nine windows would give this chapter and Quiz A the picture they actually want. The free ceiling is honestly
+   one 729-px phone photograph from 2013.

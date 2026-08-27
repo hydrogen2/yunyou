@@ -18,6 +18,10 @@ Rights & Licensing reviews this and marks green/amber/red. Nothing red ships.
 >   (`manifest-a6.md`), so the scene changed shape rather than waiting for a licence (`rights-a6.md` §3.6).
 >
 > The promoted rows are M-66, M-67, M-69a–d, M-74, M-76, M-77a–c, M-78, M-79, M-81, M-82, M-83, M-84, M-88, M-89.
+>
+> **A9 supersedes this file for scene 06 (2026-08-27).** The “no free Reform Club interior” finding was
+> wrong; scene 06 is now a `photo` scene built on four interior pictures (M-94…M-97) and holds no YouTube item.
+> See **§A9** at the foot of this file.
 > The at-a-glance table with rung / licence / attribution string / local path / player-vs-linear use is
 > **"A8 — promoted rows"** below the main manifest.
 
@@ -291,3 +295,99 @@ For every primary video, one backup (creators delete videos).
   `is_pano` filters, which would replace both dashcam hyperlapses with pedestrian sequences; and turn the range-seek
   proxy used to probe M-87 into a studio tool, because "trim 20 seconds out of a 2 GB Commons file" is a question that
   will be asked eighty times.
+
+---
+
+## A9 — the Reform Club interior pass (2026-08-27, content-preparer)
+
+**This section corrects an earlier finding of this file.** The A1–A3 passes concluded that there was *no free
+interior material for the Reform Club beyond one small 1841 engraving*, and scene 06 was built — and later
+re-titled "At the door of the Reform" — on that belief. **The conclusion was wrong.** A direct Commons category
+walk plus one archive.org book turns up a modern photograph taken inside, a wide hand-coloured cut-away of
+Soyer's kitchens, an 1887 drawing of the saloon, an 1867 ground plan that names the rooms, and an 1886
+photogravure *photograph* of the club library. Scene 06 goes inside again (`scenes/06-the-reform-club.scene.json`,
+type `video` → `photo`, title back to "Inside the Reform — what Verne got right").
+
+Two general lessons, worth carrying to the other 79 chapters:
+
+1. **Search the categories, not the phrases.** Everything below sits in `Category:Reform Club` (31 files) and
+   `Category:Reform Club, London in art` (7). The earlier pass searched for phrases like "Reform Club interior"
+   and got temperance pamphlets. A category walk takes one API call.
+2. **A private building with no public photography is not a building with no pictures.** The pictures are old,
+   and they are in books. `archive.org` full-text search across a single relevant book (`_djvu.txt`, then its
+   *List of Illustrations*) found four interior plates in about five minutes.
+
+### What the three files the founder sent actually show — verdicts
+
+I fetched the pixels of all three and looked at them.
+
+| file | what it really is | verdict |
+|------|-------------------|---------|
+| `File:ReformClubLobby.jpg` (729×545, CC BY-SA 3.0, alexander williams, 2013-08-22, iPhone 5, geotagged 51.50667,-0.13367 = the club) | **A real interior, and a good one.** Not a "lobby" in the vestibule sense: it is the ground-level colonnade of the **Saloon**, looking through paired fluted Ionic columns at the arch over the principal staircase, with marble busts on pedestals, framed portraits between the columns, club armchairs, a tessellated floor and a coffered ambulatory ceiling. Warm pink-and-gold, low light, slightly noisy — it reads as a photograph taken by a member on a phone, which is what it is. Identification cross-checks three ways: the geotag is the club; F-15's "two-storey peristyle, Ionic surmounted by Corinthian… tessellated pavement" matches; and the same columns, balustrade, busts and stair-arch appear in M-96 (1887) and M-23 (1841). | **ACCEPT — wired, M-94.** Under the player's 760-px plate threshold, so it mounts small on paper with its credit under it. Never full-bleed, never upscaled. |
+| `File:Reform executed cross section published 1840 edited.jpg` (712×492, PD) | A north–south **cut-through** of the building. It *does* legibly show the two-storey saloon: ground-level arcade, first-floor arcaded gallery above it, and a curved roof over the void — plus the vaulted basement, i.e. the kitchen floor. What it does **not** do at 712 px is show that the roof is *glazed*: the cove reads as hatched tone, not glass. Fine pen lines, dense: at plate size (712 px on a paper mount) it is a squint. | **RECORDED, NOT WIRED — M-98.** Out-competed for scene 06's seventy seconds by M-96 (the same space, drawn as a room you could stand in) and by M-101 (the same section, four times the resolution, glazing legible). Keep it as the quick Commons-hosted fallback if M-101/M-96 go flaky. |
+| `File:Reform executed ground 1840.jpg` (699×628, PD) | Barry's executed **ground-floor plan**: Coffee Room along the south (garden) side, Saloon in the middle between the North and South Colonnades, House Dining Room, Parliamentary Library or Morning Room, the kitchen/steward's offices on the west. Correct and useful — but the room names are set in spaced 6-pt letterpress and at 699 px only "Coffee Room" and "Saloon" survive. | **SUPERSEDED — M-99.** The *same plan* is on Commons at 1698×1792 from Alfred Barry's 1867 life of his father, with the labels in clean capitals (M-97). Use M-97 and forget this one. |
+
+### The wider search — what exists, and at what licence
+
+Searched: Commons categories `Reform Club`, `Reform Club, London in art`, `Charles Barry`, `Gentlemen's clubs in
+London`, `Travellers Club`, `Athenaeum Club`; Commons full-text for the club, its saloon, its kitchens and Soyer;
+Commons for *London Interiors* (1841); archive.org (Fagan 1887, Soyer 1846); Wellcome Collection catalogue API;
+the Met collection API; Yale's LUX. Geograph is already fully mirrored into Commons and holds no interior of this
+building — it is a private club that forbids visitor photography, so **the modern-photography ceiling really is
+one CC BY-SA phone picture from 2013**. Everything else that exists is pre-1900 and public domain by age.
+
+| id | rung | what | px | licence | exact attribution string | source | use |
+|----|------|------|----|---------|--------------------------|--------|-----|
+| **M-94** | 3 | **The saloon colonnade and the principal staircase, photographed 2013** — the only modern interior | 729×545 | **CC BY-SA 3.0** | `Reform Club interior, 2013 — photo alexander williams, CC BY-SA 3.0, commons.wikimedia.org/wiki/File:ReformClubLobby.jpg` | `https://commons.wikimedia.org/wiki/File:ReformClubLobby.jpg` | **both** (scene 06, 40–50 s) · `sa:true` |
+| **M-95** | 3 | **"The Kitchen Department of the Reform Club"** — hand-coloured cut-away of Soyer's kitchens, with the key and a plan of the kitchen floor in letterpress below; the paintings on the back wall are by Emma Soyer | 4000×2201 | PD (PD-old-70) | `'The Kitchen Department of the Reform Club', lithograph by John Tarring, published by Alexis Soyer, 1842 (Wikimedia Commons, public domain)` | `https://commons.wikimedia.org/wiki/File:The_Kitchen_Department_of_the_Reform_Club,_1842.jpg` | **both** (scene 06, 30–40 s) |
+| **M-96** | 3 | **The Saloon seen from the south-west corner** — pen drawing: two storeys, Ionic below and Corinthian on the gallery, balustraded first-floor peristyle, the glazed cove and lantern overhead, the staircase in the far corner, busts on pedestals | 1200×1158 (IIIF crop of a 2170×3380 page) | PD by age | `The Reform Club saloon from the south-west corner — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887), p. 51 (public domain; scan: Internet Archive)` | IIIF crop, leaf 0069 of `archive.org/details/18361886reformcl00fagauoft`; whole page: `https://archive.org/download/18361886reformcl00fagauoft/page/n68_w1200.jpg` | **both** (scene 06, 20–30 s) |
+| **M-97** | 3 | **Ground-floor plan, labelled** — COFFEE ROOM · SOUTH-COLONNADE · SALOON · NORTH-COLONNADE · HOUSE-DINING-ROOM · PARLIAMENTARY LIBRARY OR MORNING-ROOM · PRINCIPAL STAIRCASE · ENTRANCE HALL · PORTERS LOBBY, with a 90-ft scale bar | 1698×1792 | PD | `Reform Club, plan of the ground floor — Alfred Barry, 'The Life and Works of Sir Charles Barry' (1867), p. 120 (Wikimedia Commons, public domain)` | `https://commons.wikimedia.org/wiki/File:Life_and_works_of_sir_Charls_Barry_page_120.jpg` | **both** (scene 06, 10–20 s) |
+| M-98 | 3 | Barry's executed cross-section, 1840 (the founder's file) | 712×492 | PD | `Reform Club, cross-section of the executed design, 1840 (Wikimedia Commons, public domain)` | `https://commons.wikimedia.org/wiki/File:Reform_executed_cross_section_published_1840_edited.jpg` | available — not wired |
+| M-99 | 3 | Barry's executed ground plan, 1840 (the founder's file) — superseded by M-97 | 699×628 | PD | `Reform Club, ground plan of the executed design, 1840 (Wikimedia Commons, public domain)` | `https://commons.wikimedia.org/wiki/File:Reform_executed_ground_1840.jpg` | available — not wired |
+| **M-100** | 3 | **"THE LIBRARY" — a photogravure, i.e. an actual photograph taken inside the club c.1886**: bookcases to the cornice, coffered ceiling, columns, reading chairs, a table lamp. Printed sideways on the page (needs a 90° rotation) and dark, but unmistakably a photograph | ~2170×3380 page; plate fills ~85 % | PD by age | `The library of the Reform Club, photogravure frontispiece — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887) (public domain; scan: Internet Archive)` | leaf n7: `https://archive.org/download/18361886reformcl00fagauoft/page/n7_w1200.jpg` | available — not wired. **This is the row that kills the line "no camera has been inside for us."** |
+| M-101 | 3 | Section of the Reform Club from Barry's original design, finely engraved: the saloon's two arcaded storeys, the **glazed lattice roof** explicit, the vaulted basement (the kitchen floor) below, the principal staircase at the left. Much better than M-98 | page 2176×3380; section band ≈ 2000×1000 | PD by age | `Reform Club, section from Barry's original design — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887), p. 55 (public domain; scan: Internet Archive)` | leaf n72: `https://archive.org/download/18361886reformcl00fagauoft/page/n72_w1200.jpg` | available — not wired |
+| M-102 | 3 | "Reform Club, Pall Mall — view from Pall Mall", wood engraving: the palazzo in perspective with 1860s figures, a hansom and a brougham. The club as Fogg would have seen it, six years before the novel | 2994×1932 | PD | `Reform Club, Pall Mall — Alfred Barry, 'The Life and Works of Sir Charles Barry' (1867), p. 124 (Wikimedia Commons, public domain)` | `https://commons.wikimedia.org/wiki/File:Life_and_works_of_sir_Charls_Barry_page_124.jpg` | available — the high-res alternative to M-22 |
+| M-103 | 3 | Title page of Soyer's *Gastronomic Regenerator* (1846), "by Monsieur A. Soyer, of the Reform Club" — a clean period card if a scene ever needs one | 1882×3192 | PD | `Alexis Soyer, 'The Gastronomic Regenerator' (London, 1846), title page (Wikimedia Commons, public domain)` | Commons, `…(IA gastronomicregen00soye 0) (page 11 crop).jpg` | available — not wired |
+
+Also seen and deliberately passed over: `File:Reform Club 01.JPG` / `02.JPG` (4000×3000, CC BY-SA 4.0) and
+`File:The Reform Club, London doorway-15248850190.jpg` (4896×3672, CC BY-SA 2.0, Phil Guest) — all **exteriors**,
+and the chapter already has two façades it has cleared; `File:Alexis Soyer.jpg` and the *Gastronomic Regenerator*
+frontispiece portrait — Soyer's face, not his kitchen; the Fagan vignettes of a single lamp, arm-chair, table and
+match-stand in the Large Smoking Room (pp. 75, 91, 105, 118, 138) — charming objects, too small a subject for a
+70-second scene, but exactly the sort of thing a "furniture of 1872" beat would want one day.
+
+**Rights notes.** M-94 is the only new item that is not PD: CC BY-SA 3.0 needs author + licence + a link, which
+the attribution string carries verbatim, and it goes on the `rights-a6.md` §2.4 share-alike strip-list (`sa:true`
+in the scene). Everything from Fagan 1887 and Barry 1867 is public domain by age in the UK and the US; the
+archive.org scans are faithful reproductions and add no new right (the scanning institution is the University of
+Toronto). Nothing here needs a licence email, and nothing here costs money.
+
+**Delivery notes for Engine / QA.**
+- Nothing is cached under `media/files/` — every row is a live URL. The four wired pictures are two Commons files,
+  one Commons file behind the usual 1600-px thumb, and one archive.org IIIF crop.
+- **The one fragile URL is M-96.** `iiif.archive.org` served the crop in 1.4 s once warm, but returned 504s for
+  other leaves of the same book for minutes at a time from this environment. The scene therefore carries
+  `fallback: <whole page scan>` on that entry — but **the player does not yet honour `fallback` for images**
+  (`mountImage` only degrades to a named card). Engine backlog: one line in `showImage`. If QA sees the card,
+  swap `ref` for the `fallback` URL and lose only the crop.
+- **Scene 06 no longer holds a YouTube item.** M-01 (`WQCsxb2dMgQ`, Standard YouTube Licence, embed-only) was
+  removed: in the player a `video` scene shows its clip and *never* its images, which is precisely why an
+  "Inside the Reform" title played over 70 seconds of Pall Mall pavement. The arrival at the door is scene 04's.
+- **M-69c is released.** The second façade angle (Stephen Craven, geograph, CC BY-SA 2.0) was scene 06's
+  linear-only second exterior; the re-cut has no room for it. It stays in the A8 table as a spare.
+
+### Digest
+
+- **Did:** looked at the founder's three files pixel by pixel, walked the Commons categories and one 1887 club
+  history on archive.org, and found four interior pictures worth showing (a 2013 photograph inside, Soyer's 1842
+  kitchens, the saloon drawn in 1887, the rooms labelled in 1867) plus an 1886 photogravure of the library;
+  wired seven pictures into scene 06 as a `photo` scene and gave the title "Inside" back.
+- **Weak:** the player cycles a photo scene's images at a flat `duration_s / n`, so "timed against the script"
+  means the ten-second slots were chosen to straddle the sentences, not to hit them — I checked both narration
+  tracks by word count, but no one has watched it; M-96 depends on an archive.org IIIF endpoint that 504s often
+  enough to worry me; and the founder's ceiling question has a blunt answer — one modern photograph exists, and
+  it is 729 px wide.
+- **Change with more time:** ask the club (they run an Open House weekend, F-17) for permission to photograph the
+  Saloon and the coffee-room's nine windows — that single email would give this chapter and Quiz A the picture
+  they actually want; and add the Fagan library photogravure (M-100) to a "Fogg reads The Times" beat, because it
+  is a photograph of the room where a member of 1886 would have read it.

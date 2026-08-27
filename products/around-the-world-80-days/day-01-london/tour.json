@@ -630,40 +630,75 @@
     },
     {
      "id": "the-reform-club",
-     "type": "video",
-     "title": "At the door of the Reform — what Verne got right",
+     "type": "photo",
+     "title": "Inside the Reform — what Verne got right",
      "subtopic": "5 — Inside the Reform",
      "duration_s": 70,
      "learning_goal": "Know the Reform Club is real, founded 1836, Barry's palazzo of 1841, Soyer's kitchens, and Fogg's breakfast; feel cosy club warmth.",
      "narration": {
-      "script": "We arrive at the door of Fogg's club. The Reform Club is real, and still here: 104 Pall Mall, since 1836. Its founders backed the great Reform Act of 1832 — hence the name. In the novel this is Fogg's whole world: he eats here, reads here, plays cards here, every day until midnight. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high under a glass roof. And the famous kitchens that the chef Alexis Soyer helped to plan. Look up — the tall windows of the first floor. Now Fogg's breakfast, taken here. A broiled fish with Reading sauce — keep that in mind. Roast beef, a tart, Cheshire cheese, and the tea the Reform is famous for. The front today; Barry's elevation. And here, the saloon engraved in 1841 — no camera has been inside for us. Somewhere in there, breakfast done, Fogg cuts the pages himself and reads The Times.",
+      "script": "We arrive at the door of Fogg's club. The Reform Club is real, and still here: 104 Pall Mall, since 1836. Its founders backed the great Reform Act of 1832 — hence the name. In the novel this is Fogg's whole world: he eats here, reads here, plays cards here, every day until midnight. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high under a glass roof. And the famous kitchens that the chef Alexis Soyer helped to plan. Look down — they ran in the basement, under all this. Now Fogg's breakfast, taken here. A broiled fish with Reading sauce — keep that in mind. Roast beef, a tart, Cheshire cheese, and the tea the Reform is famous for. Inside today: a tessellated floor, marble busts, portraits between the columns. Barry's elevation of the front. Somewhere in there, breakfast done, Fogg cuts the pages himself and reads The Times.",
       "timing": "over",
       "voice": "guide",
       "variants": {
-       "clear": "This is the door of Fogg's club: the Reform Club. It is real, and still here — 104 Pall Mall, since 1836. Its founders had backed the Reform Act of 1832 — that is where the name comes from. In the book, Fogg spends every day here until midnight: meals, newspapers, cards. The architect Charles Barry finished the building in 1841. Stone outside; inside, a grand hall two floors high, under a glass roof. The club also had famous kitchens, planned with the chef Alexis Soyer. Look up at the tall windows. Here Fogg ate his breakfast: grilled fish with Reading sauce — remember that sauce. Roast beef, a fruit tart, cheese, and the club's famous tea. Now three pictures: the front today, the architect's plan of the front, and the great hall, drawn in 1841. No camera has been inside for us. Somewhere in there, Fogg cuts his newspaper's pages and reads The Times."
+       "clear": "This is the door of Fogg's club: the Reform Club. It is real, and still here — 104 Pall Mall, since 1836. Its founders had backed the Reform Act of 1832 — that is where the name comes from. In the book, Fogg spends every day here until midnight: meals, newspapers, cards. The architect Charles Barry finished the building in 1841. Stone outside; inside, a grand hall two floors high, under a glass roof. The club also had famous kitchens, planned with the chef Alexis Soyer. They were down in the basement. Here Fogg ate his breakfast: grilled fish with Reading sauce — remember that sauce. Roast beef, a fruit tart, cheese, and the club's famous tea. Then Barry's own drawing of the front. Somewhere in there, Fogg cuts his newspaper's pages and reads The Times."
       }
      },
      "media": [
-      {
-       "kind": "youtube",
-       "ref": "WQCsxb2dMgQ",
-       "start_s": 1610,
-       "end_s": 1655,
-       "license": "youtube-embed",
-       "manifest_id": "M-01",
-       "attribution": "Wanderizm, 'LONDON Walk - Day stroll along Trafalgar Square, Royal horse guards and St. James's' (2020) — YouTube embed",
-       "note": "26:50–27:35, arriving at the Reform Club door (scene seconds 0–45) — the last 45 s of the same Wanderizm stretch 05 uses, so the façade is in frame at the end; frame unverified (A3). Backup M-02 kfuLPlhJGYE 07:08–07:53 (mute music). Dropped in the linear cut. A8: player-only (Standard YouTube Licence). The linear cut already opened this scene on M-20 and never showed a clip card here; the `use` marker just records why.",
-       "use": "player"
-      },
       {
        "kind": "image",
        "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
        "license": "cc-by-sa-2.0",
        "manifest_id": "M-20",
        "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
-       "start_s": 45,
-       "end_s": 70,
-       "note": "Façade today, full frame 45–70 s; M-22 and M-23 appear as insets over it (they are too small for full-screen). Alt M-21 (square crop) for pin thumbnail.",
+       "start_s": 0,
+       "end_s": 10,
+       "note": "Slot 1/7 (0-10 s) — the front today, over the arrival and the address. 3024x4032 portrait: the player contains it over a blurred backdrop (treatment 'backdrop'), never stretched.",
+       "use": "both",
+       "sa": true
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Life_and_works_of_sir_Charls_Barry_page_120.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-97",
+       "attribution": "Reform Club, plan of the ground floor — Alfred Barry, 'The Life and Works of Sir Charles Barry' (1867), p. 120 (Wikimedia Commons, public domain)",
+       "start_s": 10,
+       "end_s": 20,
+       "note": "Slot 2/7 (10-20 s) — over 'Fogg's whole world: he eats here, reads here, plays cards here'. The plate labels the rooms he lived in: COFFEE ROOM, SALOON, PARLIAMENTARY LIBRARY OR MORNING-ROOM, HOUSE-DINING-ROOM. 1698x1792, so it is shown contained, not upscaled. Supersedes the 699-px 'Reform executed ground 1840' (M-99) — same plan, unreadable labels at that size.",
+       "use": "both"
+      },
+      {
+       "kind": "image",
+       "ref": "https://iiif.archive.org/image/iiif/3/18361886reformcl00fagauoft%2f18361886reformcl00fagauoft_jp2.zip%2f18361886reformcl00fagauoft_jp2%2f18361886reformcl00fagauoft_0069.jp2/pct:9,29,82,55/1200,/0/default.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-96",
+       "attribution": "The Reform Club saloon from the south-west corner — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887), p. 51 (public domain; scan: Internet Archive)",
+       "start_s": 20,
+       "end_s": 30,
+       "note": "Slot 3/7 (20-30 s) — INTERIOR, over 'a saloon two storeys high under a glass roof' (spoken ~21-32 s). Two storeys, Ionic below and Corinthian above on the gallery, the balustraded first-floor peristyle, the glazed cove top left, the staircase in the far corner — F-15 exactly. IIIF crop of leaf 0069, 1200x1158, no upscale. If iiif.archive.org is slow, swap ref for the full page scan in `fallback` (drawing sits in the middle 55 %).",
+       "use": "both",
+       "fallback": "https://archive.org/download/18361886reformcl00fagauoft/page/n68_w1200.jpg"
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:The_Kitchen_Department_of_the_Reform_Club,_1842.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-95",
+       "attribution": "'The Kitchen Department of the Reform Club', lithograph by John Tarring, published by Alexis Soyer, 1842 (Wikimedia Commons, public domain)",
+       "start_s": 30,
+       "end_s": 40,
+       "note": "Slot 4/7 (30-40 s) — INTERIOR, over 'the famous kitchens that the chef Alexis Soyer helped to plan' and the new basement line. 4000x2201 hand-coloured cut-away of Soyer's kitchen with its letterpress key and plan below; the player asks Commons for a 1600-px thumb and fills the frame (1.82:1 against 1.78:1, ~2 % cropped). The linear cut should pan slowly left to right across the top band.",
+       "use": "both"
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:ReformClubLobby.jpg",
+       "license": "cc-by-sa-3.0",
+       "manifest_id": "M-94",
+       "attribution": "Reform Club interior, 2013 — photo alexander williams, CC BY-SA 3.0, commons.wikimedia.org/wiki/File:ReformClubLobby.jpg",
+       "start_s": 40,
+       "end_s": 50,
+       "note": "Slot 5/7 (40-50 s) — INTERIOR, the only modern photograph from inside, over the breakfast lines and 'Inside today: a tessellated floor, marble busts, portraits between the columns'. 729x545, under the 760-px plate threshold, so the player mounts it small on paper with its credit under it — never full-bleed, never upscaled. Identified as the saloon's ground-level colonnade looking at the principal staircase: the geotag is the club (51.50667,-0.13367), and the columns, balustrade, busts and the arch over the stair match M-96 (1887) and M-23 (1841). This is the picture the title now rests on.",
        "use": "both",
        "sa": true
       },
@@ -673,32 +708,20 @@
        "license": "public-domain",
        "manifest_id": "M-22",
        "attribution": "Reform Club, north elevation, from 'Life and Works of Sir Charles Barry' (Wikimedia Commons, PD)",
-       "start_s": 53,
-       "end_s": 61,
-       "note": "Barry's elevation, 709 px — INSET over M-20 (lower-left, ~40 % width), never full-screen.",
+       "start_s": 50,
+       "end_s": 60,
+       "note": "Slot 6/7 (50-60 s) — over 'Barry's elevation of the front' (~50-53 s in the clear track). 709x431 -> plate mount. M-102 (p. 124, 2994x1932, view from Pall Mall) is the high-res alternative if a perspective is wanted.",
        "use": "both"
-      },
-      {
-       "kind": "image",
-       "ref": "https://commons.wikimedia.org/wiki/File:The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_2317843.jpg",
-       "start_s": 24,
-       "end_s": 32,
-       "license": "cc-by-sa-2.0",
-       "manifest_id": "M-69c",
-       "attribution": "Stephen Craven (2011) / geograph.org.uk · CC BY-SA 2.0 · adapted",
-       "use": "linear",
-       "sa": true,
-       "note": "1024×768, the Reform Club from across Pall Mall — a second angle so the 62-second linear cut is not one still with two insets. A6 M-69c."
       },
       {
        "kind": "image",
        "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
        "license": "public-domain",
        "manifest_id": "M-23",
-       "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
-       "start_s": 61,
+       "attribution": "Reform Club, the corridors of the saloon — 'London Interiors' (1841) (Wikimedia Commons, PD)",
+       "start_s": 60,
        "end_s": 70,
-       "note": "632 px — INSET over M-20 with vignette (replaces the M-22 inset), never full-screen.",
+       "note": "Slot 7/7 (60-70 s) — the closing image, under 'Somewhere in there...'. 632x521 -> plate mount. Its own caption reads 'Reform Club. The Corridors of the Saloon': it is the UPPER level of the same colonnade M-94 photographs from below.",
        "use": "both"
       },
       {
@@ -714,32 +737,32 @@
      ],
      "overlays": [
       {
-       "at_s": 12,
+       "at_s": 8,
        "kind": "pin",
-       "until_s": 24,
+       "until_s": 17,
        "text": "Reform Club — 104 Pall Mall, founded 1836",
        "position": "bl",
        "geo": "51.5065,-0.1335"
       },
       {
-       "at_s": 30,
+       "at_s": 21,
        "kind": "caption",
-       "until_s": 42,
-       "text": "Broiled fish, Reading sauce · roast beef · rhubarb-and-gooseberry tart · Cheshire · tea",
+       "until_s": 30,
+       "text": "The Saloon: 57 × 51 ft, two storeys, under a glazed roof — Barry, opened 1 March 1841",
        "position": "bottom"
       },
       {
-       "at_s": 45,
+       "at_s": 40,
        "kind": "caption",
-       "until_s": 53,
-       "text": "Portland stone, Charles Barry, opened 1 March 1841",
+       "until_s": 50,
+       "text": "Broiled fish, Reading sauce · roast beef · rhubarb-and-gooseberry tart · Cheshire · tea",
        "position": "bottom"
       },
       {
        "at_s": 61,
        "kind": "caption",
        "until_s": 70,
-       "text": "The saloon, engraved 1841 — no camera has been inside for us",
+       "text": "The corridors of the saloon, engraved 1841 — the club is private; pictures are how we get in",
        "position": "bottom"
       }
      ],
@@ -758,14 +781,15 @@
       "F-15",
       "F-16",
       "F-18",
-      "F-27"
+      "F-27",
+      "F-47"
      ],
-     "production_notes": "No footage of the interior exists (manifest search note) — never fake it. Order (QA): arrival + history over the video 0–25 s; the 'look up' cue and the breakfast over the video's last 20 s (25–45 s, we are 'at the door') with the menu on the caption at 30–42 s so the guide reads only the best clause; the photo trio lines over M-20 + insets 45–70 s. The 'look up' cue does NOT name the coffee-room: its nine windows are in the long SOUTH (garden) wall (F-15), not on the Pall Mall front — Narrator, keep it that way, and keep 'nine' out of this scene (Quiz A follows). No paper-knife: Towle says he cuts the uncut Times 'with a skill which betrayed familiarity' (F-06). Narrator: ≤ 140 words, every sentence ≤ 20 words (Continuity #2); ends on the noun. Linear cut (A5, clear track): 62 s cap, from the door — M-20 for 38 s, then the M-22 / M-23 insets (M-01 is used by 04 count-the-steps, player only). Keep s:0 and s:2: without them the film opened on 'It is real, and still here…' with no antecedent and never said where the club's name comes from. The Soyer kitchens and the closing Times line pay for those seconds. A8 2026-08-19 (content-preparer): M-01 marked `use: player`; M-69c added as a second façade angle for the linear cut. This beat was never a walking shot, so it never needed a clip card — rights-a6.md §3.6 'YES, and the slow push is now allowed on the BY-SA stills'.",
+     "production_notes": "A9 2026-08-27 (content-preparer) — THE SCENE NOW GOES INSIDE. Free interior material does exist; the earlier 'no PD Reform interior beyond one 1841 engraving' finding was wrong (media/manifest.md §A9). Four of the seven pictures are interiors: M-96 (Fagan 1887, the saloon from the SW corner), M-95 (Soyer's kitchens, 1842), M-94 (a 2013 photograph inside), M-23 (1841). TYPE CHANGED video -> photo. This is the load-bearing change: in the player, a 'video' scene with a youtube item calls showYouTube() and NEVER shows the scene's images (index.html, showScene) — which is exactly why the founder saw 70 s of outdoor walking under an 'Inside' title. As a photo scene the player cycles the images every max(8000, duration_s*1000/n) ms = 10 s for seven, in ARRAY ORDER, ignoring start_s; start_s/end_s are set to the same 10-s slots so the rendered cut matches what the player shows. Adding or removing one image re-times the whole scene — keep it at seven. M-01 (Wanderizm, Standard YouTube Licence, embed-only) was REMOVED from this scene: it is inert in a photo scene, and the arrival at the Reform door is scene 04's job (D6). To restore it, re-add {kind:'youtube', ref:'WQCsxb2dMgQ', start_s:1610, end_s:1655, use:'player'} and set type back to 'video' — but then the interiors disappear again. SLOTS, ten seconds each (checked against the player's own words-per-second estimate, 2.6 x rate, on BOTH tracks — clear English is the default, at rate 0.9): 0-10 M-20 the front today (arrival, the address) · 10-20 M-97 the ground plan (‘his whole world: he eats here, reads here, plays cards here’) · 20-30 M-96 THE SALOON (spoken 20.8-28.1 literary / 22.2-31.6 clear) · 30-40 M-95 SOYER'S KITCHENS (28.1-36.9 / 31.6-39.3) · 40-50 M-94 INSIDE TODAY (the breakfast, 36.9-48.5 / 39.3-50.0) · 50-60 M-22 Barry's elevation (52.7-54.6 / 50.0-53.0) · 60-70 M-23 1841, the closing image. The one residual drift: the literary line ‘Inside today: a tessellated floor…’ starts at 48.5 s, 1.5 s before M-94 leaves the screen. RESOLUTION: M-94 (729 px), M-22 (709 px) and M-23 (632 px) are under the player's 760-px plate threshold and mount as small paper plates with their credit under them; M-95, M-96, M-97, M-20 are 1200-4000 px and are contained or filled. Nothing is upscaled anywhere — pickTreatment() caps the fit at 1.0. NARRATION CHANGED (Narrator to sign off, see review.notes): 'no camera has been inside for us' is now false and is gone from both tracks; the closing picture-by-picture enumeration is gone because seven equally-spaced images cannot keep a three-item promise spoken in five seconds; the 'look up at the first-floor windows' cue (written for a façade video) became 'Look down — they ran in the basement' so it lands on the kitchen plate (F-47); one new sentence describes the 2013 photograph while it is on screen. Earlier notes that still hold: no paper-knife (F-06); the coffee-room's nine windows are in the SOUTH garden wall, so 'nine' stays out of this scene (Quiz A follows, F-15); the linear cut opens on M-20 and scene 04 ends on the open-imagery arrival at the door, so the two do not repeat the same shot.",
      "review": {
       "fact_check": "pending",
       "rights": "pending",
       "qa": "pending",
-      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): opener now says whose club this is and what it is to Fogg (a first-time reader meets 'the Reform' cold otherwise); Reform Act line recast as the name's plain explanation; clear-English variant added; 'nine' still kept out (Quiz A follows). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track 'Its founders wanted political reform; that is the name' → 'Its founders had backed the Reform Act of 1832 — that is where the name comes from' (F-14: 1836, by Radicals and Whigs who had backed the 1832 Act — as simplified it sounded like a campaign for a reform already law); 'the architect's drawing' → 'the architect's plan of the front' (M-22 is an engraving of Barry's north elevation, not his hand). Linear cut now opens on s:0 ('This is the door of Fogg's club') and keeps s:2, so the video no longer starts on a dangling 'It is real, and still here…' and does explain the club's name; the Soyer kitchens and the closing Times line pay for the seconds, and the three insets are timed 38 / 9 / rest so 'the front today' is said over the front. A8 2026-08-19 (content-preparer): M-01 `use: player`, M-69c added (`use: linear`, `sa: true`); M-20 flagged `sa: true` for the rights-a6 §2.4 strip-list. D6 scene-developer 2026-08-19: cross-reference only — the retired scene 05 was named in production_notes as the holder of M-01; that shot now lives in the restructured scene 04 (`use: player`). Nothing else in this scene changed, and 06 still opens on M-20 in the film: scene 04 ends on the open-imagery arrival at the Reform door, not on this still."
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): opener now says whose club this is and what it is to Fogg (a first-time reader meets 'the Reform' cold otherwise); Reform Act line recast as the name's plain explanation; clear-English variant added; 'nine' still kept out (Quiz A follows). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track 'Its founders wanted political reform; that is the name' → 'Its founders had backed the Reform Act of 1832 — that is where the name comes from' (F-14: 1836, by Radicals and Whigs who had backed the 1832 Act — as simplified it sounded like a campaign for a reform already law); 'the architect's drawing' → 'the architect's plan of the front' (M-22 is an engraving of Barry's north elevation, not his hand). Linear cut now opens on s:0 ('This is the door of Fogg's club') and keeps s:2, so the video no longer starts on a dangling 'It is real, and still here…' and does explain the club's name; the Soyer kitchens and the closing Times line pay for the seconds, and the three insets are timed 38 / 9 / rest so 'the front today' is said over the front. A8 2026-08-19 (content-preparer): M-01 `use: player`, M-69c added (`use: linear`, `sa: true`); M-20 flagged `sa: true` for the rights-a6 §2.4 strip-list. D6 scene-developer 2026-08-19: cross-reference only — the retired scene 05 was named in production_notes as the holder of M-01; that shot now lives in the restructured scene 04 (`use: player`). Nothing else in this scene changed, and 06 still opens on M-20 in the film: scene 04 ends on the open-imagery arrival at the Reform door, not on this still. | 2026-08-20 founder playtest: title said 'Inside' over purely outdoor footage. We have no interior footage (the script itself says no camera has been inside), so the title was the lie, not the picture. Retitled to match the script's own opening line. | A9 2026-08-27 content-preparer: interior material found and wired (M-94..M-97; media/manifest.md §A9). Scene type video->photo (a video scene never shows its images in the player). Title restored to 'Inside the Reform — what Verne got right' — 4 of 7 pictures and 43 of 70 seconds are now inside the building, so the title is honest again; tour.json and i18n/zh-Hans.json updated to match. NARRATOR, PLEASE SIGN OFF ON FOUR SCRIPT EDITS: (1) '— no camera has been inside for us' deleted from both tracks (we now show a photograph from inside, and Fagan 1887 prints a photogravure of the library, M-100); (2) 'The front today; Barry's elevation. And here, the saloon engraved in 1841' -> 'Barry's elevation of the front' (clear: 'Now three pictures: ...' -> 'Then Barry's own drawing of the front') — an enumeration of three pictures spoken in five seconds cannot match seven images at ten seconds each; (3) 'Look up — the tall windows of the first floor' -> 'Look down — they ran in the basement, under all this' (clear: 'Look up at the tall windows' -> 'They were down in the basement'), so the cue lands on Soyer's kitchen plate instead of pointing outside at a façade we are no longer looking at — new fact F-47 (Fagan 1887, ch. VI); (4) one new sentence in the LITERARY track only, 'Inside today: a tessellated floor, marble busts, portraits between the columns', spoken over M-94 — F-15 gives the tessellated pavement, the busts and portraits are in the photograph; the clear track does not get it, because at clear-track pace it landed wholly on the elevation slot, and the plate's own credit line names the photograph anyway. Word counts were kept close to the old ones so the slot timings above still hold. RIGHTS: M-94 is CC BY-SA 3.0 (author + licence + file link in the attribution string, sa:true for the rights-a6 §2.4 strip-list); everything else added is PD by age. FACT-CHECK: F-47 added to the fact sheet (source [53], Fagan 1887) — note that Fagan's often-quoted 'the basement comprised the kitchen, scullery and various offices' on p. 50 describes SMIRKE'S REJECTED DESIGN; the basement claim here rests on his ch. VI description of the club as built."
      }
     },
     {
