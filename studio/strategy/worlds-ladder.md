@@ -1,5 +1,9 @@
 # Strategy — the Worlds Ladder (founder + Chief, 2026-08-19)
 
+> **Superseded in emphasis by `positioning.md` (2026-08-20):** rung 2 is now the PERMANENT identity —
+> 读万卷书，行万里路, a grid of works × places — not a stage on the way to rung 3. Rung 3 is an occasional guest,
+> reached through real-world anchors. The ladder below still governs media technique per rung.
+
 Yunyou tours are place-themed, but "place" spans three rungs. Each rung is a different production problem;
 the studio climbs deliberately, proving the engine on each rung before the next.
 
