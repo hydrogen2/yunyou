@@ -75,6 +75,26 @@ def studio_rules(s):
         elif tr in ('fill','none'):
             warns.append(f'{sid}: media[{i}].treatment "{tr}" overrides the automatic choice — only do this when the '
                          f'picture really does fill a 16:9 frame at its own resolution, else it plays as black bars')
+    # media stills on the scene clock (v0.8 player): a photo scene's images are scheduled at their own start_s
+    imgs=[(i,mm) for i,mm in enumerate(s.get('media') or []) if mm.get('kind')=='image']
+    def _num(v):
+        return v if isinstance(v,(int,float)) else None
+    for i,mm in imgs:
+        st,en=_num(mm.get('start_s')),_num(mm.get('end_s'))
+        if st is not None and en is not None and en<=st:
+            errs.append(f'{sid}: media[{i}].end_s {en} is not after start_s {st}')
+        if st is not None and d and st>=d:
+            warns.append(f'{sid}: media[{i}].start_s {st} is at or past duration_s {d} — that picture never comes up')
+    if typ=='photo' and imgs:
+        timed_i=[i for i,mm in imgs if _num(mm.get('start_s')) is not None or _num(mm.get('end_s')) is not None]
+        if timed_i and len(timed_i)!=len(imgs):
+            warns.append(f'{sid}: {len(timed_i)} of {len(imgs)} stills carry start_s/end_s — the player gives each untimed '
+                         f'picture the previous one\'s end_s, and shares a window between pictures that start together. '
+                         f'Time all of them, or none (none = the even division).')
+        firsts=[_num(mm.get('start_s')) for i,mm in imgs if _num(mm.get('start_s')) is not None]
+        if firsts and min(firsts)>0:
+            warns.append(f'{sid}: the earliest still starts at {min(firsts):g}s — a photo scene must show something at 0 s, '
+                         f'so the player pulls the first picture back to 0')
     # overlays: waypoint triggers + density (+ gloss shape)
     for i,o in enumerate(ov):
         if o.get('kind')=='gloss' and '—' not in o.get('text',''):

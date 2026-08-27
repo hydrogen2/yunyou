@@ -13,6 +13,9 @@
  *           is keyboard-navigable, and dismisses; the header/footer do not overflow a 280 px screen.
  *   pass 5  ?lang=zh-Hans — the list and the Continue button carry the locale's titles, not the English ones.
  *   pass 6  localStorage that throws (private mode) does not break the player; progress is simply not offered.
+ *   pass 7  (v0.8) the PICTURES obey the same clock: a photo scene restored mid-scene through the real
+ *           save/reload/Continue path shows the still authored for that second (not the first one), a jump
+ *           from the scene list re-arms the schedule, and a paused photo scene keeps its picture.
  *
  * Narration is proved with a fake speechSynthesis installed before the page loads (headless Chromium has no
  * voices, so the real one can prove nothing). Everything else is the real player.
@@ -358,6 +361,66 @@ const state = page => page.evaluate(() => ({
   await page.waitForSelector('#list:not([hidden])');
   ok(await page.evaluate(() => document.querySelectorAll('#listBody .scn').length) > 0, 'private mode: the scene list still works');
   ok(page.errors.length === 0, 'private mode: no uncaught page errors', page.errors.join(' | '));
+  await ctx.close();
+}
+
+// ============ pass 7 — v0.8: the pictures are on the scene clock too ==========================================
+// Until v0.8 a photo scene cycled its stills on a wall-clock setInterval: a restore or a jump started the cycle
+// over from picture 1 whatever the clock said, and a paused day went on changing pictures.
+{
+  const ctx = await newCtx(); const page = await open(ctx);
+  const PHOTO = await page.evaluate(() => scenes.findIndex(s => s.type === 'photo' && (s.media || []).filter(m => m.kind === 'image' && Number.isFinite(+m.start_s)).length >= 3));
+  ok(PHOTO >= 0, 'v0.8: the tour has a photo scene with authored per-picture timings', 'scene ' + (PHOTO + 1));
+  const slots = await page.evaluate(n => scenes[n].media.filter(m => m.kind === 'image').map(m => ({ s: +m.start_s, ref: m.ref, id: m.manifest_id || '' })), PHOTO);
+  const want = at => slots.filter(x => x.s <= at).slice(-1)[0];
+  const lastImage = page => page.evaluate(() => ({ ref: (window.__lastImage || {}).ref || '', el: elapsed }));
+
+  await page.click('#start');
+  await page.waitForFunction(() => started === true);
+  // …deep into the scene, then let the throttled save catch up, then reload and take the real Continue path
+  const AT = slots[Math.min(4, slots.length - 1)].s + 1;
+  await page.evaluate(([n, at]) => showScene(n, { at }), [PHOTO, AT]);
+  await sleep(4200);
+  await page.reload({ waitUntil: 'load' });
+  await page.waitForFunction(() => typeof scenes !== 'undefined' && scenes.length > 0);
+  ok(await page.locator('#continue').isVisible(), 'the photo scene was saved mid-scene');
+  await page.locator('#continue').click();
+  await page.waitForFunction(() => started === true);
+  await sleep(2200);
+  const back = await lastImage(page);
+  const w = want(back.el), wPrev = want(back.el - 2);       // tolerance: a boundary crossed while we were measuring
+  ok(back.el > AT - 3, 'Continue restored into the middle of the photo scene', back.el.toFixed(1) + 's');
+  ok(back.ref === w.ref || back.ref === wPrev.ref, `a restored photo scene shows the still authored for ${Math.round(back.el)} s (${w.id})`,
+    'got ' + String(back.ref).slice(-46));
+  ok(back.ref !== slots[0].ref, 'and NOT the first picture of the scene (the v0.7 bug)');
+
+  // a jump from the scene list re-arms the schedule from second 0
+  await page.click('#btnList');
+  await page.waitForSelector('#list:not([hidden])');
+  await page.click(`#listBody .scn[data-i="${PHOTO}"]`);
+  await sleep(2200);
+  const j = await lastImage(page);
+  ok(j.el < 4, 'the jump starts the scene at the top', j.el.toFixed(1) + 's');
+  ok(j.ref === slots[0].ref, 'a scene-list jump shows the FIRST authored still', 'got ' + String(j.ref).slice(-46));
+  await page.evaluate(t => seek(t), slots[2].s + 3);
+  await sleep(1800);
+  const k = await lastImage(page);
+  ok(k.ref === slots[2].ref, 'and the schedule still runs after the jump (slot 3 at its own second)',
+    'got ' + String(k.ref).slice(-46));
+
+  // a paused photo scene keeps its picture (the old interval kept firing on the wall clock)
+  await page.click('#btnPause');
+  await sleep(400);
+  const b4 = await lastImage(page);
+  await sleep(11500);
+  const af = await lastImage(page);
+  ok(af.ref === b4.ref && Math.abs(af.el - b4.el) < 0.6, 'a paused photo scene changes nothing at all',
+    `${String(b4.ref).slice(-24)} @${b4.el.toFixed(1)}s → ${String(af.ref).slice(-24)} @${af.el.toFixed(1)}s`);
+  await page.click('#btnPause');
+  await sleep(2000);
+  const on = await lastImage(page);
+  ok(on.el > af.el + 0.5, 'and it goes on from the same second when asked', `${af.el.toFixed(1)} → ${on.el.toFixed(1)}s`);
+  ok(page.errors.length === 0, 'no uncaught page errors in pass 7', page.errors.join(' | '));
   await ctx.close();
 }
 

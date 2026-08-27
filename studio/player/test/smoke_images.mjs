@@ -20,6 +20,13 @@
  *   pass 6  `media[].treatment` overrides: 'none' opts out (no backdrop, no drift), 'plate' forces the mount.
  *   pass 7  the drift never crosses 100 % of the honest size, and pausing the day stops it.
  *   pass 8  screenshots at three widths (280 Fold cover / 717 Fold open / 1280 desktop) into test/out/.
+ *   pass 9  (v0.8) a photo scene's stills run on the SCENE clock: the picture on screen at an authored second is
+ *           the picture the scene file authored for it; pausing freezes it (the old wall-clock interval kept
+ *           changing pictures while the day was stopped); a mid-scene restore lands on the right one; a scene
+ *           whose stills carry no timings still divides them evenly (the v0.7 fallback, unchanged).
+ *   pass 10 (v0.8) media[].fallback for stills: a still whose file dies swaps to its declared fallback, and so
+ *           does one that is merely too slow (scene 06's IIIF plate has ten seconds on screen and archive.org's
+ *           renderer is intermittently slow) — never a dead frame inside its own slot.
  *
  * NO VIDEO IS RENDERED and NO BILLABLE CALL IS MADE (founder RULE 1 + the "player only, do not render any video"
  * instruction for this task): every YouTube request is aborted at the network layer and the run asserts that no
@@ -287,6 +294,115 @@ for (const v of WIDTHS) {
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
   ok(overflow <= 1, `${v.tag} ${v.w}px: the page does not scroll sideways`, overflow + 'px');
   ok(page.errors.length === 0, `${v.tag}: no uncaught page errors`, page.errors.join(' | '));
+  await ctx.close();
+}
+
+// ============ pass 9 — v0.8: the stills of a photo scene run on the SCENE clock ================================
+// Scene 06 "Inside the Reform" was rebuilt around seven authored ten-second slots, each chosen to land on a named
+// sentence (the 1887 saloon over "a saloon two storeys high", Soyer's kitchens over the kitchens line). Until v0.8
+// the player cycled stills on a wall-clock setInterval that divided duration_s evenly and ignored start_s/end_s,
+// never re-synced after a pause or a jump, and kept changing pictures while the day was stopped.
+{
+  const ctx = await newCtx({ width: 1280, height: 720 });
+  const page = await open(ctx);
+  const i = await page.evaluate(() => scenes.findIndex(s => s.id === 'the-reform-club'));
+  ok(i >= 0, 'v0.8: the seven-slot photo scene (the-reform-club) is in the tour', 'index ' + i);
+  const slots = await page.evaluate(n => scenes[n].media.filter(m => m.kind === 'image')
+    .map(m => ({ s: m.start_s, e: m.end_s, ref: m.ref, id: m.manifest_id || m.ref.slice(-24) })), i);
+  ok(slots.length >= 2 && slots.every(x => Number.isFinite(x.s)),
+    'v0.8: its stills carry authored start_s (this test reads the scene file, not a copy of it)',
+    slots.map(x => `${x.id}@${x.s}`).join(' '));
+
+  await goScene(page, i, 1500);
+  for (const sl of slots) {
+    const end = Number.isFinite(sl.e) ? sl.e : sl.s + 10;
+    const at = sl.s + Math.max(1, Math.min(4, (end - sl.s) / 2));      // a second that is unambiguously inside the slot
+    await page.evaluate(t => seek(t), at);
+    await sleep(1600);
+    const cur = await page.evaluate(() => ({ ref: (window.__lastImage || {}).ref || '', el: elapsed }));
+    ok(cur.ref === sl.ref, `authored slot ${sl.id} (${sl.s}–${end} s) is the picture on screen at ${at} s`,
+      'got ' + String(cur.ref).slice(-46));
+  }
+
+  // pausing freezes the picture. The wait is deliberately longer than the old interval period (70 s / 7 = 10 s):
+  // on v0.7 the wall-clock timer fired twice inside this pause and the paused day changed picture twice.
+  await goScene(page, i, 1600);
+  await page.click('#btnPause');
+  await sleep(400);
+  const b4 = await page.evaluate(() => ({ ref: (window.__lastImage || {}).ref || '', el: elapsed, paused }));
+  ok(b4.paused === true, 'pause: the day is stopped', String(b4.paused));
+  await sleep(11500);
+  const af = await page.evaluate(() => ({ ref: (window.__lastImage || {}).ref || '', el: elapsed }));
+  ok(af.ref === b4.ref, 'a paused day does not change its picture (11.5 s, past two old interval ticks)',
+    String(b4.ref).slice(-40) + ' → ' + String(af.ref).slice(-40));
+  ok(Math.abs(af.el - b4.el) < 0.6, 'and the scene clock stayed where it was', `${b4.el.toFixed(1)} → ${af.el.toFixed(1)} s`);
+  await page.click('#btnPause');
+  await sleep(300);
+  ok(await page.evaluate(() => paused === false), 'and it goes on again when asked');
+
+  // a mid-scene restore (v0.6 showScene(i,{at})) lands on the picture authored for that second, not on the first one
+  const target = slots[Math.min(4, slots.length - 1)];
+  const restoreAt = target.s + 2;
+  await page.evaluate(([n, at]) => showScene(n, { at }), [i, restoreAt]);
+  await sleep(1800);
+  const rr = await page.evaluate(() => ({ ref: (window.__lastImage || {}).ref || '', el: elapsed }));
+  ok(rr.ref === target.ref, `a mid-scene restore at ${restoreAt} s lands on ${target.id}, not on slot 1`,
+    'got ' + String(rr.ref).slice(-46));
+  ok(rr.el >= restoreAt - 0.5, 'the restore really did start mid-scene', rr.el.toFixed(1) + ' s');
+
+  // the v0.7 fallback must not regress: a photo scene whose stills carry NO timings still divides them evenly
+  await page.evaluate(n => { scenes[n].media.filter(m => m.kind === 'image').forEach(m => { delete m.start_s; delete m.end_s; }); }, i);
+  await goScene(page, i, 1500);
+  const even = [];
+  for (const [k, at] of [[0, 4], [1, 14], [2, 24]]) {
+    await page.evaluate(t => seek(t), at);
+    await sleep(1500);
+    even.push(await page.evaluate(() => (window.__lastImage || {}).ref || ''));
+  }
+  ok(even[0] === slots[0].ref && even[1] === slots[1].ref && even[2] === slots[2].ref,
+    'no authored timings: the even division (duration/n, 8 s floor) is unchanged',
+    even.map(x => String(x).slice(-22)).join(' → '));
+
+  ok(page.errors.length === 0, 'no uncaught page errors in pass 9', page.errors.join(' | '));
+  await ctx.close();
+}
+{
+  // the same seven slots, photographed for the content roles: one frame per authored second
+  const ctx = await newCtx({ width: 1280, height: 720 });
+  const page = await open(ctx, { drift: false });
+  const i = await page.evaluate(() => scenes.findIndex(s => s.id === 'the-reform-club'));
+  const slots = await page.evaluate(n => scenes[n].media.filter(m => m.kind === 'image').map(m => m.start_s), i);
+  await goScene(page, i, 1500);
+  for (const [k, st] of slots.entries()) {
+    await page.evaluate(t => seek(t), st + 4);
+    await sleep(1700);
+    await page.screenshot({ path: path.join(OUT, `v08-reform-slot${k + 1}-at${st + 4}s.jpg`), quality: 82, type: 'jpeg' });
+  }
+  await ctx.close();
+}
+
+// ============ pass 10 — v0.8: media[].fallback for stills =====================================================
+// Scene 06's saloon plate is an IIIF crop rendered on demand by archive.org. It has a declared fallback (the full
+// page scan). v0.7 ignored media[].fallback for images entirely: a dead or slow file left a card or a blank slot.
+for (const mode of ['dead', 'slow']) {
+  const ctx = await newCtx({ width: 1280, height: 720 });
+  if (mode === 'dead') await ctx.route(u => /iiif\.archive\.org/.test(u.href ?? String(u)), r => r.abort());
+  else await ctx.route(u => /iiif\.archive\.org/.test(u.href ?? String(u)), async r => { await sleep(30000); r.abort(); });
+  const page = await open(ctx);
+  const i = await page.evaluate(() => scenes.findIndex(s => s.id === 'the-reform-club'));
+  const m = await page.evaluate(n => { const x = scenes[n].media.find(y => y.kind === 'image' && /iiif/.test(y.ref)); return x ? { ref: x.ref, fb: x.fallback } : null; }, i);
+  ok(!!(m && m.fb), 'the IIIF plate declares a media[].fallback', m && String(m.fb).slice(0, 60));
+  await page.evaluate(([n, at]) => showScene(n, { at }), [i, m ? 21 : 0]);
+  await page.click('#btnPause');                            // stop the day: the slot must not move on while we wait,
+  await sleep(mode === 'slow' ? 10000 : 3500);              // and the watchdog is on the wall clock, so it still fires
+  const s = await shot(page);
+  const main = s.imgs.find(x => /imgmain/.test(x.cls));
+  ok(!!main && main.complete && main.nw > 0, `a ${mode} still shows its fallback picture, not a dead frame`,
+    main ? `${main.nw}×${main.nh} ${String(main.src).slice(0, 54)}` : 'no image mounted');
+  ok(!!main && /archive\.org\/download/.test(main.src), `the fallback URL is the one the scene declared (${mode})`,
+    main && String(main.src).slice(0, 70));
+  ok(!s.hasCard, `a ${mode} still does not fall all the way to the "could not be loaded" card`);
+  ok(page.errors.length === 0, `nothing throws on the ${mode} fallback`, page.errors.join(' | '));
   await ctx.close();
 }
 

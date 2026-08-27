@@ -12,3 +12,4 @@ products/**/media/files/*
 www/serve.log
 .DS_Store
 www/config.json
+www/player-v07/

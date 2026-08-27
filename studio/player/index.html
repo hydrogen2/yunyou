@@ -398,6 +398,56 @@ const svgPoint=(svg,e)=>{ const p=svg.createSVGPoint(); p.x=e.clientX; p.y=e.cli
 let sched=null, sceneSerial=0, genHooks={}, pickOption=null, gameApi=null;
 function setSchedule(items){ sched={items:items.slice().sort((a,b)=>a.start-b.start), cur:-1, active:null}; schedTick(); }
 function schedTick(){ if(!sched) return; let k=-1; sched.items.forEach((it,i)=>{ if(elapsed>=it.start) k=i; }); if(k!==sched.cur){ sched.cur=k; if(k>=0){ sched.active=sched.items[k]; sched.items[k].fn(); } } if(k>=0&&sched.items[k].onTick) sched.items[k].onTick(elapsed); }
+// ---------- v0.8: stills on the scene clock ---------------------------------------------------------------------
+// A photo scene used to cycle its pictures on a wall-clock setInterval that divided duration_s evenly and ignored
+// the authored start_s/end_s. Three things were wrong with that: the pictures did not land where they were written
+// to land; the interval never re-synced after a pause, a jump or a mid-scene restore; and it kept changing pictures
+// while the day was stopped, which contradicts "one coherent pause" (v0.6). imageSlots() turns media[] into
+// schedule items on the SAME scene clock every other scene type uses.
+//   · authored  — any entry carrying start_s/end_s: each picture starts at its own second (a missing start_s
+//                 inherits the previous entry's end_s). Several entries authored over the SAME window share it
+//                 evenly, which is how a scene says "these two pictures, over this stretch".
+//   · fallback  — no entry carries any timing: the v0.7 even division, floor and wrap-around included, so nothing
+//                 that was authored without timings changes at all.
+// `until` (the first generated asset's start) bounds the list: pictures at or after it belong to the card, not to
+// the cycle. end_s bounds a slot but never blanks the frame — the last picture holds rather than leaving black.
+function imageSlots(imgs, duration, until){
+  const n=imgs.length; if(!n) return [];
+  const num=v=>{ const x=+v; return Number.isFinite(x)?x:null; };
+  const lim=(until!=null&&isFinite(until))?until:duration;
+  const timed=imgs.some(m=>num(m.start_s)!==null||num(m.end_s)!==null);
+  let seq=[];
+  if(!timed){                                                    // v0.7 parity: max(8 s, duration/n), wrapping
+    const step=Math.max(8, duration/n);
+    for(let i=0; i===0 || i*step < Math.max(duration,step)-0.001; i++) seq.push({start:i*step, end:null, m:imgs[i%n]});
+  } else {
+    let prev=0;
+    const raw=imgs.map((m,i)=>{ const st=num(m.start_s), en=num(m.end_s); const start=st!==null?st:prev;
+      prev = en!==null ? en : start; return {start:Math.max(0,start), end:en, m, i}; });
+    raw.sort((a,b)=>a.start-b.start||a.i-b.i);
+    for(let i=0;i<raw.length;){
+      let j=i; while(j+1<raw.length && Math.abs(raw[j+1].start-raw[i].start)<0.001) j++;
+      const grp=raw.slice(i,j+1);
+      if(grp.length===1) seq.push(grp[0]);
+      else {                                                     // one window, several pictures: divide it between them
+        const nextStart=(j+1<raw.length)?raw[j+1].start:null;
+        const ends=grp.map(g=>g.end).filter(e=>e!==null);
+        const gEnd=nextStart!==null?nextStart:(ends.length?Math.max.apply(null,ends):duration);
+        const step=Math.max(0.5,(gEnd-grp[0].start)/grp.length);
+        grp.forEach((g,k)=>seq.push({start:grp[0].start+k*step, end:g.end, m:g.m}));
+      }
+      i=j+1;
+    }
+    if(seq.length&&seq[0].start>0) seq[0].start=0;                // a photo scene is never a black frame at second 0
+  }
+  return seq.filter(x=>x.start<lim-0.001).sort((a,b)=>a.start-b.start);
+}
+// The items themselves: showImage() already re-checks sched.active after its Commons lookup, so a slow picture
+// cannot clobber the slot that replaced it. Nothing here holds a timer — pause, seek, jump and restore are the
+// scene clock's business, and the clock is stopped while the day is stopped.
+function photoItems(imgs, duration, until){
+  return imageSlots(imgs,duration,until).map(sl=>({ start:sl.start, m:sl.m, fn:()=>{ showImage(sl.m,true); } }));
+}
 function sceneCard(s, pendingIds){ $('#media').innerHTML=''; const ov=(s.overlays||[]).map(o=>`<div>${o.kind==='pin'?'📍 ':''}${o.text}</div>`).join('');
   card(`<h2>${s.title}</h2>${s.learning_goal?`<p><small>${s.learning_goal}</small></p>`:''}${ov?`<div style="margin-top:.6em;font-family:system-ui;font-size:.85em;color:#4a3d2f">${ov}</div>`:''}${pendingIds&&pendingIds.length?`<p><small>generated asset pending: ${pendingIds.join(', ')}</small></p>`:''}`); }
 function mkGen(m, s, opts={}){ const it={start:m.start_s||0, m}; it.fn=async()=>{ const ser=sceneSerial; const txt=await fetchGen(m.ref); if(ser!==sceneSerial||sched.active!==it) return;
@@ -425,7 +475,8 @@ const IMGCFG={ plate_max_px:760,      // long side at or under this = small arch
                plate_min_area:0.22,   // …but only if the mount still leaves the picture this much of the frame
                fill_coverage:0.90,    // a contained fit covering this much of the frame needs no help
                blur_px:36,            // backdrop blur at a 620-px-tall frame; scaled with the frame below
-               drift:true, drift_s:36, drift_from:0.94, drift_from_plate:0.97 };
+               drift:true, drift_s:36, drift_from:0.94, drift_from_plate:0.97,
+               fallback_after_s:6 };  // v0.8: a still that has a media[].fallback swaps to it after this long without loading
 if(qs.get('drift')==='0') IMGCFG.drift=false;
 const reduceMotion=()=>{ try{ return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } };
 const hash32=s=>{ let h=2166136261; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); } return h>>>0; };
@@ -521,17 +572,37 @@ function mountImage(m, url, info, ser){
     window.__lastImage={ ref:m.ref, url, nw, nh, treatment:treat, W, H };   // test / QA hook
   };
 
-  img.onload=()=>{ if(ser!==sceneSerial) return;
+  // v0.8: media[].fallback for stills. A dead file is not the only failure — scene 06's saloon plate is rendered on
+  // demand by archive.org's IIIF server, which is intermittently slow, and a picture that arrives after its ten-second
+  // slot has passed is as absent as one that 404s. So the fallback is tried on error AND on a watchdog
+  // (IMGCFG.fallback_after_s). One attempt, one console line, never a loop.
+  let triedFallback=false, fbTimer=null;
+  const clearFb=()=>{ if(fbTimer){ clearTimeout(fbTimer); fbTimer=null; } };
+  const useFallback=async why=>{
+    if(triedFallback||!m.fallback) return false; triedFallback=true; clearFb();
+    let fu=m.fallback, fw=0, fh=0;
+    if(isCommons(fu)){ try{ const fi=await commonsInfo(fu); fu=fi.url; fw=fi.w||0; fh=fi.h||0; }catch(e){} }
+    if(ser!==sceneSerial||!stage.isConnected) return true;
+    console.warn('[yunyou] still fell back ('+why+'):', m.manifest_id||m.ref, '→', fu);
+    url=fu; nw=fw; nh=fh;                                        // sizes belong to the file we are actually showing now
+    back.classList.remove('on'); back.removeAttribute('src');    // layout() re-points the ambient copy at the new URL
+    img.src=fu; layout(); return true;
+  };
+  img.onload=()=>{ if(ser!==sceneSerial) return; clearFb();
     if(img.naturalWidth && (img.naturalWidth!==nw || img.naturalHeight!==nh)){ nw=img.naturalWidth; nh=img.naturalHeight; }
     layout(); };
   // degrade: a deleted or blocked file leaves a named card, never an empty black frame
-  img.onerror=()=>{ if(ser!==sceneSerial) return; const s=scenes[idx]||{};
+  img.onerror=()=>{ if(ser!==sceneSerial) return; clearFb();
+    if(!triedFallback && m.fallback){ useFallback('load error'); return; }
+    const s=scenes[idx]||{};
     box.innerHTML=''; card(`<h2>${escHtml(s.title||'')}</h2><p><small>This picture could not be loaded.${att?' — '+escHtml(att):''}</small></p>`); };
   back.onload=()=>back.classList.add('on');
   back.onerror=()=>{ back.remove(); };                           // no ambient copy: the veil and the dark frame stay
 
   stage.appendChild(img); box.appendChild(stage);
   img.src=url;
+  if(m.fallback && +IMGCFG.fallback_after_s>0)
+    fbTimer=setTimeout(()=>{ if(ser!==sceneSerial||!stage.isConnected) return; if(!(img.complete&&img.naturalWidth)) useFallback('too slow'); }, +IMGCFG.fallback_after_s*1000);
   layout();                                                      // lay out now from the Commons size, refine on load
   try{ imgRO=new ResizeObserver(()=>layout()); imgRO.observe(box); }catch(e){}
   return stage;
@@ -607,7 +678,7 @@ async function shareCard(note){ const svg=$('#media svg.gen'); const title=scene
 // ---------- Renderers ----------
 function card(html){ const d=document.createElement('div'); d.className='fill'; d.innerHTML=`<div class="card">${html}</div>`; $('#media').appendChild(d); }
 // v0.7: every full-frame still goes through the treatment layer. The `kb` argument is kept so the call sites
-// (photoCycle, quiz, dialogue) need no edit; the drift is now decided by IMGCFG/reduced-motion, not by the caller,
+// (the photo schedule, quiz, dialogue) need no edit; the drift is now decided by IMGCFG/reduced-motion, not by the caller,
 // because a quiz that sits 80 s on one engraving needs the breath just as much as a photo scene does.
 async function showImage(m, kb=false){
   const ser=sceneSerial, me=sched&&sched.active;
@@ -1183,7 +1254,13 @@ async function showScene(i, opts){
   const script=pickScript(s); $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:''; // clear-English: variants.clear replaces script for TTS + captions when present
   const media=s.media||[]; const yt=media.find(m=>m.kind==='youtube'), img=media.filter(m=>m.kind==='image'), aud=media.find(m=>m.kind==='audio'&&isCommons(m.ref)), gen=media.filter(m=>m.kind==='generated');
   const genStarts=gen.map(g=>g.start_s||0), firstGen=gen.length?Math.min(...genStarts):Infinity;
-  const photoCycle=()=>{ const me=sched&&sched.active; showImage(img[0],true); if(img.length>1){ let k=0; const cyc=setInterval(()=>{ if(scenes[idx]!==s||(sched&&sched.active!==me)) return clearInterval(cyc); k=(k+1)%img.length; showImage(img[k],true); }, Math.max(8000, s.duration_s*1000/img.length)); } };
+  // v0.8: the stills of a photo scene are schedule items on the scene clock (see imageSlots) — no setInterval, so a
+  // pause freezes the picture, and a jump or a mid-scene restore lands on the picture that second was authored for.
+  const photoSchedule=until=>photoItems(img, s.duration_s||0, until);
+  // the generated card failed: fall back to the scene's own stills, across the whole scene, on the same clock.
+  // Deferred a turn because this runs from inside a schedule item's own fn (mkGen's), which must not be pulled
+  // out from under schedTick.
+  const photoFallback=()=>{ const items=photoSchedule(null); setTimeout(()=>{ if(scenes[idx]!==s||!items.length) return; setSchedule(items); },0); };
   try{
     if(s.type==='video' && yt){ await showYouTube(yt, at); }
     else if(s.type==='streetview'){ showStreetView(s); }
@@ -1191,9 +1268,10 @@ async function showScene(i, opts){
       if(gen.length){ setSchedule(gen.map(g=>mkGen(g,s,{ ok:(svg,it)=>{ if(/route-map|g-01/.test(g.ref)) wireG01(svg,it,g,s); }, fail:()=>{ if(/route-map/.test(g.ref)) leafletRouteMap(!/full-loop|enablers/.test(g.ref)); else sceneCard(s,[g.manifest_id]); } }))); }
       else if(media.find(m=>m.kind==='map')) showVictorianMap(media.find(m=>m.kind==='map')); else showRouteMap(true); }
     else if(s.type==='photo' && (img.length||gen.length)){
-      if(gen.length){ const items=gen.map(g=>mkGen(g,s,{ ok:svg=>{ if(/then-now|g-02/.test(g.ref)||svg.id==='g02') wireG02(svg); }, fail:()=> img.length? photoCycle() : sceneCard(s,[g.manifest_id]) }));
-        if(img.length && (img[0].start_s||0) < firstGen) items.push({start:img[0].start_s||0, fn:photoCycle}); setSchedule(items); }
-      else photoCycle(); }
+      if(gen.length){ const items=gen.map(g=>mkGen(g,s,{ ok:svg=>{ if(/then-now|g-02/.test(g.ref)||svg.id==='g02') wireG02(svg); }, fail:()=> img.length? photoFallback() : sceneCard(s,[g.manifest_id]) }));
+        if(img.length) items.push(...photoSchedule(firstGen));   // only the stills authored BEFORE the first card; the rest are its ingredients
+        setSchedule(items); }
+      else setSchedule(photoSchedule(null)); }
     else if(img.length && (s.type==='quiz'||s.type==='dialogue')){ await showImage(img[0], false); }
     else if(gen.length){ // card / interstitial / game with a generated asset
       const items=gen.map(g=>mkGen(g,s,{ ok:svg=>{ if(s.type==='game') wireG07(svg,s); else if(s.interaction&&(s.interaction.kind==='tap-to-find'||s.interaction.kind==='choice')) wireG04(svg); } }));

@@ -449,3 +449,122 @@ did not touch its output. To match, it needs, in rough order of value:
   different mounts) and there is no way for a scene to ask for a different one.
 - `deviceScaleFactor` is not considered: a 632-px plate shown at 632 CSS px on a 2× screen is still 2× in device
   pixels. That is unavoidable and universal, but the honesty claim is about CSS pixels, not physical ones.
+
+## 2026-08-27 — v0.8 (Engine): a photo scene's pictures run on the SCENE clock, and `media[].fallback` for stills
+**Brief:** the v0.7 agent found `photoCycle()` cycling stills on a wall-clock `setInterval` that divided `duration_s`
+evenly across the images and ignored each entry's authored `start_s`/`end_s`. Three consequences, one of them a tone
+bug: the pictures did not land where the scene wrote them to land; the interval never re-synced after a pause, a
+scene-list jump or a v0.6 mid-scene restore; and **it was not stopped by the pause state**, so a paused day went on
+changing pictures — the opposite of v0.6's "one coherent pause" and of `DECISIONS.md`'s unhurried tone.
+Player only. No video was rendered; the linear renderer is untouched.
+
+### What changed
+- **`photoCycle()` is gone.** A photo scene's stills are now items on the same scene-clock schedule
+  (`setSchedule()` / `schedTick()`) that every other scene type already uses. No timer of its own exists any more,
+  so pause, resume, `seek()`, a scene-list jump and `showScene(i,{at})` all carry the pictures with them for free.
+- **`imageSlots(imgs, duration, until)`** (new, 30 lines, pure) turns `media[]` into `{start, m}` slots:
+  - **authored** — any entry carrying `start_s`/`end_s`: each picture starts at its own second. A missing `start_s`
+    inherits the previous entry's `end_s`; several entries authored over the *same* window share that window evenly
+    (that is how a scene says "these two pictures, over this stretch", and it is what the old even division did).
+    The earliest slot is pulled back to 0 so a photo scene is never a black frame at second 0.
+  - **fallback** — no entry carries any timing: the v0.7 even division, `max(8 s, duration/n)`, wrap-around
+    included. Nothing authored without timings changes at all.
+  - `until` = the first generated asset's `start_s`. Stills at or after it are the card's ingredients, not the
+    cycle's (this preserves `then-and-now`, where both photographs live *inside* the G-02 SVG).
+  - `end_s` bounds a slot but never blanks the frame: the last picture holds rather than cutting to black.
+- **`media[].fallback` is honoured for images** (it was on the "still NOT done" list since v0.1.1). `mountImage()`
+  swaps to the declared fallback on a load error **and** on a watchdog — `images.fallback_after_s` (default 6 s),
+  because a picture that arrives after its ten-second slot has passed is as absent as one that 404s, and scene 06's
+  saloon plate is an IIIF crop rendered on demand by archive.org, whose renderer is intermittently slow. One
+  attempt, one console line, then the v0.7 named card if the fallback fails too. The ambient backdrop and the
+  treatment are re-picked from the fallback's own pixels, so the honesty rules still hold.
+- **Validator** (`studio/tools/validate.py`, in step, no schema change — `start_s`/`end_s`/`fallback` already
+  exist): `end_s` must be after `start_s`; a still whose `start_s` is at or past `duration_s` warns ("that picture
+  never comes up"); a **photo** scene that times only *some* of its stills warns (the fill-from-previous-end rule is
+  an interpretation, and authors should choose); a photo scene whose earliest still starts after 0 s warns that the
+  player pulls it back to 0. All 18 Day 1 scenes still validate clean (the one pre-existing WARN on
+  `count-the-steps` is the v0.4 camera-track note, unrelated).
+
+### What visibly changed, per scene (Day 1) — read this if you own the content
+- **06 `the-reform-club`** (the only multi-picture photo scene): the seven authored ten-second slots are now what
+  the player actually runs. Played straight through from 0 s **nothing moves** — 70 s ÷ 7 pictures happens to be
+  exactly the 10 s the slots were authored at, which is why this bug was invisible in a clean play-through. What
+  changed is everything else: **pause at 25 s and the 1887 saloon stays on screen** (v0.7 marched on to Soyer's
+  kitchens ten seconds later, while the day was stopped); jumping in from the scene list starts on M-20, not on
+  whatever the old interval had reached; **a mid-scene restore at 42 s comes back on M-94, the 2013 interior**, not
+  on the façade; and M-96 now falls back to the archive.org page scan if the IIIF renderer is slow, instead of
+  leaving its slot empty. The authored intent (`production_notes`: "adding or removing one image re-times the whole
+  scene — keep it at seven") **is no longer fragile**: the slots are read, not inferred, so an eighth picture will
+  not shift the other seven.
+- **08 `the-wager`**: unchanged on screen (one still 0–35 s, then the G-05 card). It is now the *schedule* that
+  ends the still at 35 s rather than the card happening to overwrite it.
+- **14 `then-and-now`**: unchanged (the G-02 card owns the whole 35 s; both photographs are inside the SVG). Its
+  degraded path — when the generated SVG is missing — is now on the scene clock too: M-24 at 0 s, M-26 at 17.5 s.
+- **Nothing else moved**, and nothing else *could*: `photoCycle` only ever ran on `type: "photo"` scenes, and Day 1
+  has exactly three. Scenes **02, 04, 13, 18** (`video`) and **12** (`map`) carry seven stills between them with
+  authored `start_s` windows that the player has never shown and still does not — the video branch ignores
+  `media[].kind: image` entirely (rights: we may not put our chrome over a YouTube embed) and the map branch draws
+  the route. Scenes **07, 16** (`quiz`) and **17** (`dialogue`) do show a still, but always `img[0]` for the whole
+  duration, timings unread. Both are real gaps — see "found, not fixed" — and neither is a `photoCycle` bug.
+
+### How to run / what to look at
+```bash
+node studio/player/test/smoke_images.mjs        # 158 checks (v0.7's 131 + pass 9 slots/pause/restore + pass 10 fallback)
+node studio/player/test/smoke_playback.mjs      # 83 checks (v0.6's 72 + pass 7 "the pictures obey the same clock")
+python3 studio/tools/validate.py products/around-the-world-80-days/day-01-london/scenes/*.scene.json
+```
+`studio/player/test/out/v08-reform-slot{1..7}-at<N>s.jpg` — one frame per authored second of scene 06, in order:
+the front today · Barry's ground plan · the 1887 saloon · Soyer's kitchens · inside today · the north elevation ·
+the 1841 corridors. Live: `https://178-104-53-233.sslip.io/player/?tour=/products/around-the-world-80-days/day-01-london/tour.json`
+→ ☰ → *Inside the Reform*, then press **space** at 25 s and watch the saloon stay put.
+
+### The tests
+- `smoke_images.mjs` **pass 9** reads the slots out of the scene file in the page (not a copy of them), seeks to a
+  second inside each one and asserts the authored picture is the one on screen; pauses and waits **11.5 s** — past
+  two of the old interval's ticks — to prove the picture and the clock both stand still; restores mid-scene with
+  `showScene(i,{at})` and asserts it lands on slot 5, not slot 1; then **deletes the timings in memory** and
+  asserts the even division still behaves exactly as v0.7 did. **Pass 10** kills `iiif.archive.org` (a) outright
+  and (b) by holding the response for 30 s, and asserts both end on the declared `archive.org/download` fallback
+  with no "could not be loaded" card.
+- `smoke_playback.mjs` **pass 7** does the same through the *real* v0.6 machinery: play into the photo scene, let
+  the throttled save land, reload, click **Continue**, assert the restored picture is the authored one; jump from
+  the scene list and assert it re-arms from slot 1 and still runs; pause 11.5 s and assert nothing at all changes.
+- Both suites keep the RULE 1 assertion (no billable Google API was called) and load no video.
+
+### Regression against baseline (v0.7 = `git show HEAD:studio/player/index.html`, served side by side at `/player-v07/`)
+| suite | baseline (v0.7) | v0.8 | delta |
+|---|---|---|---|
+| `smoke_images.mjs` | 131/131 PASS | **158/158 PASS** | +27 new checks, none broken |
+| `smoke_playback.mjs` | 72/72 PASS | **83/83 PASS** | +11 new checks, none broken |
+| `smoke_v03.mjs` | 18/22 (4 FAIL) | 18/22 (same 4 FAIL) | none — pre-existing since v0.6 (D5 flip) |
+| `smoke_generated.mjs` | 5 PASS / 3 FAIL | 5 PASS / 3 FAIL (same three) | none — pre-existing scene-numbering drift |
+
+`smoke_generated`'s `then-and-now` row differs in one detail *inside* an already-failing row: on the v0.8 run the
+free **Maps Embed** iframe answered 403 (verified by hand: that endpoint returns 200 with our referrer and 403
+without it, so it is a referrer/throttle artefact of running many headless sessions in an hour, not a code change).
+The row fails for the same real reason on both: the suite's index 14 is now the `streetview` scene, so it waits for
+an inlined SVG that scene never had. Nothing billable was called in any run.
+The v0.7 baseline snapshot lives at `www/player-v07/` (gitignored copy of the HEAD player) so any future release can
+be diffed the same way.
+
+### Found but NOT fixed
+- **Stills authored into `video`, `map` and `dialogue` scenes are still dead weight in the player.** Day 1 has
+  thirteen such stills — 02 Savile Row ×4, 04 count-the-steps ×4, 12 the-dash ×1, 13 Charing Cross ×2, 18 the boat
+  train ×2 — **seven of them with an explicit `start_s` window that nothing reads**. For video scenes this is a rights constraint, not an oversight — our chrome may not sit over a
+  YouTube embed — so the fix is a content/renderer decision (they are linear-cut material). For **map** scenes
+  (12 `the-dash`, M-29 authored 30–45 s) nothing forbids an inset and the schedule is already built; for
+  `quiz`/`dialogue` the player shows `img[0]` for the whole scene, which would change scene 07 the moment a
+  schedule is applied (its two stills are both authored 0–80 s, so the façade would replace the saloon halfway
+  through a quiz about the saloon). Both are one-line changes here and a content call there — flagged, not taken.
+- **No cross-fade between stills.** A slot change is a hard cut. On a chapter whose tone note says "unhurried", a
+  400 ms dissolve is probably right, but it interacts with the v0.7 backdrop layer (two blurred copies at once) and
+  wants a founder look before it ships.
+- **The linear renderer still cuts photo scenes its own way** (`studio/tools/render/`), so the film and the player
+  can disagree about when a picture changes. `imageSlots()` is 30 lines of pure arithmetic and is the obvious thing
+  to share, exactly like `pickTreatment()` in the v0.7 note — same proposal, same risk, still not done.
+- **The fallback watchdog runs on the wall clock, not the scene clock** (a download does not pause when the day
+  does). Correct, but it means a still can swap to its fallback while the traveller is away.
+- **Resolution is the schedule's 500 ms tick**, plus however long the file takes to arrive: a slot authored at
+  20 s lands at 20.0–20.5 s and then paints. That is the same granularity every other scheduled medium has had
+  since v0.2, and it is well inside a ten-second slot, but it is not frame-accurate and the linear cut will be.
+- **`window.__lastImage`** is now the only way a test can see which picture is up. It is a test hook, not an API.
