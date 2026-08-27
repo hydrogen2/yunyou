@@ -14,7 +14,7 @@
    "clear": "Calais, in the middle of the night. Before we get on the train, one question about it. Before any of this was built, how long did a letter from London take to reach India?"
   },
   "after_script_variants": {
-   "clear": "Three months, all the way round the Cape of Good Hope. So a question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut."
+   "clear": "Three months, round the Cape of Good Hope. So a question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut."
   }
  },
  "media": [
@@ -47,14 +47,7 @@
    "text": "Before any of this existed: London to India, by post — how long?",
    "position": "top",
    "until_s": 50,
-   "note": "Persists until answered."
-  },
-  {
-   "at_s": 20,
-   "kind": "caption",
-   "text": "Round the Cape: over 11,000 miles. Through Egypt: about 6,000.",
-   "position": "bottom",
-   "until_s": 34
+   "note": "Persists until answered. THE ONLY OVERLAY ON THIS SCENE, and deliberately: until G-206 comes up at 18 s the player draws its own scene card, and sceneCard() prints the text of EVERY overlay at once, ignoring at_s — so a reveal caption here would sit on screen from second zero and leak the answer (R5). The 11,000 / 6,000 mile comparison lives on G-206 instead."
   }
  ],
  "interaction": {
@@ -96,6 +89,6 @@
   "fact_check": "pending",
   "rights": "pending",
   "qa": "pending",
-  "notes": "Scene Developer + Narrator draft 2026-08-27. Timing: question spoken 0-16 s; wait state 20 s (pause_narration, honest budget); G-206 comes up at 18 s of scene clock, i.e. immediately after the answer resolves, timed against the reveal line 'Three months, round the Cape of Good Hope.'; the 11,000/6,000 caption at 20-34 s sits under 'A question and its answer took half a year.' R3: the mileages are on the card and in the caption and are NOT read aloud. F-64 is cited for the 'about three weeks' feedback and is hedged there ('roughly'); the sheet flags F-64 as possibly describing the later Peninsular Express, so no schedule is claimed for 1872."
+  "notes": "Scene Developer + Narrator draft 2026-08-27. Timing: question spoken 0-16 s; wait state 20 s (pause_narration, honest budget); G-206 comes up at 18 s of scene clock, i.e. immediately after the answer resolves, timed against the reveal line 'Three months, round the Cape of Good Hope.', and it carries the 11,000 / 6,000 mile comparison as labels. The scene has ONE overlay, the prompt — see the note on it. R3: the mileages are on the card and in the caption and are NOT read aloud. F-64 is cited for the 'about three weeks' feedback and is hedged there ('roughly'); the sheet flags F-64 as possibly describing the later Peninsular Express, so no schedule is claimed for 1872."
  }
 }

@@ -561,7 +561,9 @@ function mountImage(m, url, info, ser){
     const target=(treat==='plate')?plate:img, other=(treat==='plate')?img:plate;
     other.classList.remove('drift'); other.style.removeProperty('transform');
     target.classList.remove('drift');
-    if(IMGCFG.drift && !reduceMotion() && treat!=='none'){
+    // media[].drift:false lets one beat sit still without opting out of the treatment layer. Before this, the only
+    // way to stop the motion was treatment:'none', which also killed the backdrop and gave black bars.
+    if(IMGCFG.drift && m.drift!==false && !reduceMotion() && treat!=='none'){
       const h=hash32(String(m.ref||url));                        // stable per picture: the same still drifts the same way every time
       target.style.setProperty('--kb-from', String(treat==='plate'?IMGCFG.drift_from_plate:IMGCFG.drift_from));
       target.style.setProperty('--kb-s', IMGCFG.drift_s+'s');
