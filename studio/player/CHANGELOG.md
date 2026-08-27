@@ -315,3 +315,137 @@ that lands inside an `<iframe>` is ignored while a real loss of window focus pau
   those tests predates the D6 scene restructure. Worth a pass by whoever owns those suites.
 - The Street View `svChrome` ⏸ is now wired to the master pause, but with the D6 ladder (`embed → link`) no scene
   renders that chrome any more; it survives for the retired `js`/`stills`/`open` modes only.
+
+## 2026-08-27 — v0.7 (Engine): the image treatment layer — no more black bars
+**Brief (founder, from a rendered frame):** *"several of our images are portrait-orientation photographs or small
+archive plates (many under 750 px wide) … they sit in the middle with wide black bars and occupy maybe a third of
+the screen. It reads as a gap rather than a choice — and it is about to get worse, the Reform Club interior
+material now being added is 700–730 px wide."* Player only; no video was rendered and the renderer's output is
+unchanged (see "What the renderer would need" below).
+
+### What changed
+Every full-frame still now goes through **one entry point, `mountImage()`**, which reads the file's *real* pixels
+and the *real* frame and picks a treatment. `media[].treatment` overrides it; absent, existing scenes improve with
+no content edit. Three rules are not settings: **never stretch, never upscale past the file's own pixels, never
+crop the subject away.**
+
+| treatment | when it is chosen automatically | what you see |
+|---|---|---|
+| `fill` | a contained fit already covers ≥ 90 % of the frame **and** the file has the pixels for it | plain contain, nothing added |
+| `backdrop` | anything else that is big enough to carry the frame (portrait photographs, wide plates) | the bars are filled with an ambient, heavily blurred, darkened copy **of this same picture**, plus a soft vignette |
+| `plate` | long side ≤ 760 px — small period engravings, elevations, plans | a warm paper mount with a thin border and a printed caption line, sized to the picture's real pixels, on the ambient backdrop |
+| `none` | never automatic — opt-out only | bare frame, no backdrop, no motion |
+
+- **The backdrop is the same file**, drawn a second time with `filter: blur() saturate(1.12) brightness(.44)`.
+  Same URL ⇒ the browser's cache serves it ⇒ **no second download**, no canvas, no CORS, no dependency. If it fails
+  to load it simply removes itself and the dark frame stays.
+  It is rasterised at **a tenth of the frame and scaled back up 12.5×** (with a 25 % overscale so the blurred edge
+  never shows). Measured, headless, software rasteriser: a full-size 36-px blur cost a **212 ms one-off hitch** the
+  first time a still appeared; small-and-scaled it is **40 ms**, and the steady state is unchanged at 60 fps
+  (median frame 16.9 ms with the backdrop vs 16.7 ms without — a blurred layer is composited, not re-drawn). A
+  heavy blur throws that detail away anyway, so nothing is lost. `--yy-blur` is therefore the *local* radius; the
+  on-screen radius is 36 px at a 620-px-tall frame, floor 14 px, scaled with the frame.
+- **The plate** is the answer to "632 px will never fill a screen": it stops pretending to be a photograph and
+  becomes a document. `sizePlate()` computes the mount from the frame minus margin, paper padding and the measured
+  caption, and caps the scale at **1.0** — the picture is shown at its own pixels or smaller, never larger.
+  A mount that would leave the picture under `plate_min_area` (22 %) of the frame — which is what happens to a
+  474×700 plate on a 280-px Fold cover — **degrades to `backdrop`**, measured not guessed, because there the paper
+  costs more than it gives. An explicit `treatment: "plate"` is never overridden.
+- **Gentle motion, honestly.** The old Ken Burns was `object-fit: cover` + `scale(1.12)`: it *cropped the subject
+  away* to fill the frame, which is exactly what a chapter about looking at real things must not do. It is gone.
+  The new drift runs **0.94 → 1.00** of the honest size over 36 s, `ease-in-out infinite alternate`, with a ±0.9 %
+  translate whose direction is a stable hash of the media `ref` (the same still drifts the same way every run —
+  screenshots and, later, the renderer can match it). Because it *ends* at 100 % it can never invent resolution.
+  It honours `prefers-reduced-motion`, stops with `body.yy-paused`, and `?drift=0` holds everything dead still.
+- **Attribution is layout, not an overlay.** On a plate the credit *is* the caption line printed on the paper.
+  Elsewhere it is a label at the bottom of the frame, and the picture is **centred in what is left** rather than
+  being covered: a 100-character CC BY-SA line is four lines on a 280-px cover and it was landing across
+  Passepartout's legs. Under 420 px the label spans the full width instead of a 68 %-wide right-hand column.
+- **A real honesty bug, found and fixed.** `commonsUrl(ref, 1600)` asked Commons for a 1600-px thumbnail of a
+  632-px engraving, and Commons answers `thumbwidth: 1600` while handing back the original (`thumbnail_unscaled`).
+  The new `commonsInfo()` requests `iiprop=url|size|mime` and, when `thumbwidth > width`, takes the **file's own**
+  width/height as the truth. `commonsUrl()` survives as a one-line wrapper, so every old caller still works.
+- **Insets are clamped too.** An inset and its credit are now **one box** (`figure.imginsetwrap`), so the credit
+  cannot drift onto the picture as the frame changes: it is printed under the inset instead of hiding in `alt`.
+  Width is `min(46%, <the file's own pixels>)` with a 120-px floor — 22 % of a 2560-px window is 563 px and M-50 is
+  474 px wide (upscaling), while 22 % of a 280-px Fold is 62 px (invisible, and far too narrow for a credit line).
+- **Degradation:** a picture whose file cannot be fetched leaves a **named card** ("This picture could not be
+  loaded — <credit>"), not an empty black frame; a Commons API that refuses to answer costs the up-front size hint
+  and nothing else (the treatment is re-picked from `naturalWidth` on load); a `ResizeObserver` re-lays the mount
+  when the frame changes and disconnects itself when the stage leaves the DOM.
+
+### Schema / spec
+`scene.schema.json` → `media[].treatment: "backdrop" | "plate" | "fill" | "none"` (optional, `kind: "image"` only).
+`validate.py` errors on `treatment` set on a non-image entry and **warns** on `fill`/`none`, which are a promise
+about pixels that only a human can make. Documented in `studio/templates/scene-spec.md`. **No scene file, tour.json,
+manifest or locale was touched** — this is a migration-free change: every existing scene improves as it stands.
+Thresholds are config, not constants: `www/config.json` → `images: { plate_max_px, plate_min_area, fill_coverage,
+blur_px, drift, drift_s, drift_from, drift_from_plate }`, documented in `www/config.example.json`.
+
+### How to run / what to look at
+```bash
+node studio/player/test/smoke_images.mjs        # 131 checks, ALL PASS 2026-08-27
+```
+Screenshots land in `studio/player/test/out/v07-<width>-<scene>.jpg` at **280 px** (Fold cover), **717 px** (Fold
+open) and **1280 px** (desktop). Start with `v07-desktop-quiz-verne-saloon.jpg` — the 632-px 1841 saloon engraving,
+the exact picture the founder was looking at — then `v07-desktop-the-wager.jpg` (portrait, backdrop) and
+`v07-fold-cover-passepartout-on-the-platform.jpg` (the plate that correctly gives up and becomes a backdrop).
+Live: `https://178-104-53-233.sslip.io/player/?tour=/products/around-the-world-80-days/day-01-london/tour.json`
+then ☰ → scene 6, 7, 16.
+
+### Regression: nothing else moved
+`smoke_generated.mjs` was run against **v0.7 and against `git show HEAD:studio/player/index.html`** (served side by
+side) and gives the *identical* 5 PASS / 3 FAIL: `the-world-shrinks`, `pack-the-bag` and `then-and-now` fail the
+same way before and after, on the scene-numbering drift already recorded in the v0.6 entry. `smoke_playback.mjs`
+(v0.6, 72 checks) passes; it is timing-sensitive and flaked twice on a loaded machine (once on the away-detection
+clock tolerance, once on a `#btnPause` actionability timeout), each time in a *different* pass and each time
+passing on the next run, so neither is a v0.7 behaviour change — but it is worth knowing that suite is not stable
+under CPU contention.
+
+### The test (`studio/player/test/smoke_images.mjs`)
+Eight passes on the real scenes the founder named (`quiz-verne-saloon` carries the same Reform interior engraving
+that "at the door of the Reform" lists — scene 5 is a `video` scene, so the player never shows its M-22/M-23 plates
+at all). It asserts the treatment chosen matches the real pixels; that **no `<img>` under `#media` renders larger
+than its own `naturalWidth`/`naturalHeight` — transform included** — at every width; that nothing is stretched;
+that the attribution is visible, ≥ 10.5 px, inside the frame and **not across the subject**; that the backdrop is
+the same URL as the picture; that a dead file leaves a named card; that the overrides work; and that the drift
+never crosses 100 % and stops when the day stops. **Every YouTube request is aborted at the network layer** and the
+run asserts no billable Google API was called (RULE 1) — nothing was rendered and nothing was spent.
+
+### What the RENDERER would need to match this (NOT done — do not assume it is)
+`studio/tools/render/` still pillarboxes the same stills into 1920×1080 with black bars; this release deliberately
+did not touch its output. To match, it needs, in rough order of value:
+1. **The same backdrop**, which ffmpeg can do natively with no new dependency:
+   `[0:v]scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080,gblur=sigma=40,eq=brightness=-0.18[bg];[0:v]scale=…:force_original_aspect_ratio=decrease[fg];[bg][fg]overlay=(W-w)/2:(H-h)/2`.
+   `sigma≈40` and `brightness=-0.18` are the ffmpeg equivalents of the player's `blur(36px) … brightness(.44)`.
+2. **A "never upscale" clamp** on the foreground: `scale='min(iw,1920)':'min(ih,1080)':force_original_aspect_ratio=decrease`
+   plus the same `commonsInfo` truth about the file's real size, or a 632-px plate will be blown up to 1080 in the MP4.
+3. **The plate as a real asset**, not a CSS effect: the honest route is an SVG mount generated by
+   `studio/tools/gen/` (paper gradient + border + caption typeset in the studio faces) with the plate `<image>`
+   dropped in at 1:1, exported by `svg2png.mjs` — the renderer already inlines that kind of asset.
+4. **The drift as a `zoompan`** running 0.94 → 1.00 over the shot, seeded from the same `hash32(ref)` so a shot
+   drifts the same way in the film and in the player. The player exposes `?drift=0` so the renderer can take the
+   motion over completely rather than fighting it.
+5. **A treatment decision shared, not duplicated.** `pickTreatment()` is 8 lines of pure arithmetic; it should move
+   to a tiny shared module both the player and `render_linear.mjs` import, or the two will drift apart within a
+   chapter. That is a refactor with a real risk of breaking the render, so it is proposed, not done.
+
+### Still NOT done / known weak
+- **The backdrop is weakest on monochrome engravings** (`v07-desktop-the-wager.jpg`): a blurred copy of a grey
+  plate is a grey wash. It is better than black — the frame stops reading as a hole — but it is not the win that
+  the same treatment is on a colour photograph. A warm paper-toned tint under the blur, or simply using the plate
+  mount for the big Hetzel plates too, is worth a founder look.
+- **`treatment` is not in the locale layer**, so a translated chapter cannot re-caption a plate. The caption is the
+  attribution string from the scene, which is deliberately not translated (author names and licence codes are not
+  translatable), but the surrounding words one day will be.
+- **`then-and-now` (G-02) and the other generated cards are untouched** — they are inlined SVGs, not `<img>`s, so
+  the treatment layer never sees them. A 3840×2160 card is fine; a small one would still letterbox.
+- **Scene 5, "at the door of the Reform", shows none of this**: it is a `video` scene, and the player's video branch
+  ignores `media[].kind: image` entirely, so M-22 (709 px) and M-23 (632 px) are linear-cut material only. QA asked
+  for them as insets over the façade on a Fold (`review/qa.md`, scene 06). Wiring stills into a video scene is a
+  renderer/content decision and it would put our chrome over a YouTube embed, which rights forbids — flagged, not
+  taken.
+- The plate's paper is one fixed gradient. Period material varies (an 1841 aquatint and an 1872 line engraving want
+  different mounts) and there is no way for a scene to ask for a different one.
+- `deviceScaleFactor` is not considered: a 632-px plate shown at 632 CSS px on a 2× screen is still 2× in device
+  pixels. That is unavoidable and universal, but the honesty claim is about CSS pixels, not physical ones.

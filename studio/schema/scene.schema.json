@@ -188,6 +188,16 @@
           "sa": {
             "type": "boolean",
             "description": "True if this item is derived from CC BY-SA material — the strip-list flag from review/rights-a6.md §2.4."
+          },
+          "treatment": {
+            "type": "string",
+            "enum": [
+              "backdrop",
+              "plate",
+              "fill",
+              "none"
+            ],
+            "description": "kind 'image' only. How the player presents a still that does not fill the frame. Omit and the player decides from the file's real pixels and the real frame — that is the right answer nearly always. 'backdrop' = fill the bars with a blurred, darkened copy of this same picture; 'plate' = mount it on warm paper with a caption line (small period engravings, elevations, plans); 'fill' = plain contain, no backdrop; 'none' = opt out of the treatment layer entirely (black bars, no motion). Nothing is ever stretched, upscaled past the file's own pixels or cropped, whichever is chosen. Added v0.7 (player); scenes without the key are unaffected."
           }
         }
       }

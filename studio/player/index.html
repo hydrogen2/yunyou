@@ -19,9 +19,58 @@
   #stage { flex:1; min-height:0; display:flex; flex-direction:column; }
   #media { position:relative; flex:1 1 55%; min-height:34vh; background:#000; overflow:hidden; }
   #media iframe, #media img, #media video, #media .fill { position:absolute; inset:0; width:100%; height:100%; border:0; }
-  #media img { object-fit:contain; background:#000; }
-  #media img.kenburns { object-fit:cover; animation:kb 30s ease-in-out infinite alternate; }
-  @keyframes kb { from { transform:scale(1) translate(0,0);} to { transform:scale(1.12) translate(-2%,-1.5%);} }
+  #media img { object-fit:contain; }
+  /* ---- v0.7 · the image treatment layer -------------------------------------------------------------------
+     Many of our pictures are portrait photographs or small archive plates (474–760 px). Dropped into a 16:9 frame
+     with object-fit:contain they sat in wide black bars and read as a GAP rather than a choice. Three treatments,
+     picked from the file's real pixels and the real frame (see pickTreatment in the script):
+       fill      the picture already fills this frame at honest size — contain, nothing added
+       backdrop  the bars are filled with an ambient, heavily blurred, darkened copy OF THE SAME PICTURE
+       plate     small period engravings, elevations and plans are mounted on warm paper with a caption line,
+                 sized to their real pixels — a document on a table, not a small floating rectangle
+     and three things none of them ever do: stretch, upscale past the file's own pixels, or crop the subject away.
+     The drift starts BELOW 100 % and ends at 100 %, so the motion can never invent resolution. */
+  #media .imgstage { position:absolute; inset:0; overflow:hidden; display:flex; align-items:center; justify-content:center; background:#000; }
+  /* The ambient layer is drawn at a TENTH of the frame and scaled back up: a 36-px blur over 768x620 costs a
+     ~200 ms one-off rasterisation on a software renderer, and the same blur over 77x62 costs almost nothing —
+     a heavy blur throws that detail away anyway, so there is nothing to lose. --yy-blur is the LOCAL radius. */
+  #media .imgstage .imgback { position:absolute; inset:auto; left:0; top:0; width:10%; height:10%;
+        object-fit:cover; object-position:center; transform-origin:0 0; transform:scale(12.5) translate(-10%,-10%);
+        filter:blur(var(--yy-blur,3.6px)) saturate(1.12) brightness(.44);
+        opacity:0; transition:opacity .7s ease-out; }
+  #media .imgstage .imgback.on { opacity:1; }
+  #media .imgstage .imgveil { position:absolute; inset:0; pointer-events:none;
+        background:radial-gradient(ellipse at 50% 44%, rgba(0,0,0,0) 30%, rgba(6,5,8,.5) 100%); }
+  #media .imgstage .imgmain { position:relative; inset:auto; width:auto; height:auto; max-width:100%; max-height:100%;
+        object-fit:contain; background:transparent; display:block; }
+  #media .imgstage[data-treatment="backdrop"] .imgmain { box-shadow:0 18px 60px rgba(0,0,0,.55); }
+  /* the paper mount: an engraving is a document, so it is presented as one */
+  #media .imgplate { position:relative; margin:0; display:flex; flex-direction:column; gap:.55em; max-width:100%; max-height:100%;
+        padding:var(--yy-pad,20px); background:linear-gradient(163deg,#f7f0de 0%,#f0e6ce 55%,#e6dabc 100%); color:#3a2f22;
+        border:1px solid rgba(58,44,26,.34); border-radius:3px;
+        box-shadow:0 26px 72px rgba(0,0,0,.62), 0 1px 0 rgba(255,255,255,.35) inset; }
+  #media .imgplate .imgmain { border:1px solid rgba(58,44,26,.42); }
+  #media .imgplate .imgcredit { position:static; max-width:100%; background:none; color:#5d4c37; padding:0; border-radius:0;
+        font:italic clamp(10.5px,1.5vmin,13px)/1.35 Georgia,'Times New Roman',serif; text-align:left; text-shadow:none; }
+  #media .imgcredit { position:absolute; right:8px; bottom:6px; z-index:3; max-width:68%; text-align:right;
+        font:11.5px/1.45 system-ui,sans-serif; color:var(--ink); background:rgba(8,7,10,.66); padding:3px 8px; border-radius:5px;
+        text-shadow:0 1px 2px rgba(0,0,0,.65); }
+  /* a Fold cover is 280 px: a right-aligned 68 %-wide credit becomes a six-line column over half the picture.
+     Below 420 px it is a full-width label along the bottom instead — the same words, a third of the height. */
+  @media (max-width:420px) { #media .imgcredit { left:6px; right:6px; bottom:5px; max-width:none; text-align:left; font-size:10.5px; } }
+  /* an inset and its credit are ONE box, so the credit cannot drift onto the picture as the frame changes */
+  #media .imginsetwrap { position:absolute; inset:auto; right:2vmin; bottom:2vmin; width:22%; min-width:120px; z-index:3; margin:0;
+        display:flex; flex-direction:column; gap:3px; }   /* 22 % of a 280-px Fold is 62 px — too small to see and far too narrow for a credit */
+  #media .imginsetwrap .imginset { position:static; inset:auto; width:100%; height:auto; display:block;
+        border-radius:6px; border:1px solid rgba(246,239,220,.3); box-shadow:0 10px 30px rgba(0,0,0,.65); }
+  #media .imginsetcap { text-align:right; color:var(--ink); font:10.5px/1.35 system-ui,sans-serif;
+        text-shadow:0 1px 2px rgba(0,0,0,.9); pointer-events:none; }
+  /* gentle motion: 0.94 → 1.00 of the honest size over 36 s, and back. Never above 1.00 — that would be upscaling. */
+  @keyframes yy-drift { from { transform:scale(var(--kb-from,.94)) translate(var(--kb-dx,0%),var(--kb-dy,0%)); }
+                        to   { transform:scale(1) translate(0,0); } }
+  #media .drift { animation:yy-drift var(--kb-s,36s) ease-in-out infinite alternate; will-change:transform; }
+  @media (prefers-reduced-motion: reduce) { #media .drift { animation:none; } }
+  #media img.kenburns { object-fit:contain; }   /* legacy alias: the crop-to-cover Ken Burns is gone — it cut the subject away */
   #media .fill { display:flex; align-items:center; justify-content:center; padding:5vmin; text-align:center; }
   .card { background:linear-gradient(160deg,#f4ecd8,#e7dcc0); color:#2a2118; border-radius:14px; padding:6vmin 7vmin; max-width:820px; box-shadow:0 20px 60px rgba(0,0,0,.6); font-size:clamp(15px,2.4vmin,22px); text-align:left; }
   .card h2 { margin:0 0 .5em; font-weight:600; font-size:1.25em; letter-spacing:.02em; }
@@ -95,7 +144,7 @@
   #pausebar[hidden] { display:none; }
   #pausebar .t { flex:1; min-width:0; color:var(--dim); }
   #pausebar .t b { color:var(--ink); font-weight:600; }
-  body.yy-paused #media img.kenburns { animation-play-state:paused; }   /* Ken Burns stops with everything else */
+  body.yy-paused #media .drift { animation-play-state:paused; }         /* the still's drift stops with everything else */
   body.yy-paused #media .svstill, body.yy-paused #media .svopen { transition:none; }
   body.yy-paused #prog i { transition:none; }
   #btnPause { min-width:5.4em; }
@@ -256,14 +305,30 @@ function agoText(ms){ const s=Math.max(0,Math.round((Date.now()-ms)/1000));
   const h=Math.round(m/60); if(h<36) return h+' hour'+(h===1?'':'s')+' ago'; const d=Math.round(h/24); return d+' day'+(d===1?'':'s')+' ago'; }
 const fmtDur=sec=>{ sec=Math.max(0,Math.round(sec)); const m=Math.floor(sec/60), r=sec%60; return m? m+':'+String(r).padStart(2,'0') : sec+'s'; };
 
-// ---------- Commons: File: page URL → direct file URL ----------
-async function commonsUrl(pageUrl, width=1600){
-  const m=pageUrl.match(/File:(.+)$/); if(!m) return pageUrl; const title='File:'+decodeURIComponent(m[1]);
-  const key=title+width; if(commonsCache[key]) return commonsCache[key];
-  const api=`https://commons.wikimedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=imageinfo&iiprop=url|mime&iiurlwidth=${width}&format=json&origin=*`;
+// ---------- Commons: File: page URL → direct file URL + its REAL pixel size ----------
+// v0.7: we now ask for `size` as well as `url`, for two reasons.
+//  1. The treatment layer needs the real pixels BEFORE the picture is on screen, so a 632-px engraving is mounted
+//     as a plate rather than flashing up letterboxed and then re-laying out.
+//  2. Commons will happily answer `iiurlwidth=1600` for a 632-px file: it reports thumbwidth 1600 and hands back
+//     the ORIGINAL (`thumbnail_unscaled`). Believing that number is how a small plate ends up claiming a
+//     resolution it does not have. When thumbwidth > width we take the file's own width/height as the truth.
+async function commonsInfo(pageUrl, width=1600){
+  const m=pageUrl.match(/File:(.+)$/); if(!m) return {url:pageUrl, w:0, h:0};
+  const title='File:'+decodeURIComponent(m[1]);
+  const key=title+'|'+width; if(commonsCache[key]) return commonsCache[key];
+  const api=`https://commons.wikimedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=imageinfo&iiprop=url|size|mime&iiurlwidth=${width}&format=json&origin=*`;
   try{ const r=await fetch(api); const j=await r.json(); const p=Object.values(j.query.pages)[0]; const ii=p.imageinfo&&p.imageinfo[0];
-    const url= ii ? (ii.mime&&ii.mime.startsWith('audio') ? ii.url : (ii.thumburl||ii.url)) : pageUrl; commonsCache[key]=url; return url; }catch(e){ return pageUrl; }
+    if(!ii) return {url:pageUrl, w:0, h:0};
+    const audio=!!(ii.mime&&ii.mime.startsWith('audio'));
+    const upscaled = !!(ii.thumbwidth && ii.width && ii.thumbwidth > ii.width);   // the file is smaller than we asked for
+    const info = audio ? {url:ii.url, w:0, h:0, natw:0, nath:0}
+                       : { url: (upscaled || !ii.thumburl) ? ii.url : ii.thumburl,
+                           w: upscaled ? ii.width  : (ii.thumbwidth  || ii.width  || 0),
+                           h: upscaled ? ii.height : (ii.thumbheight || ii.height || 0),
+                           natw: ii.width||0, nath: ii.height||0 };
+    commonsCache[key]=info; return info; }catch(e){ return {url:pageUrl, w:0, h:0}; }
 }
+async function commonsUrl(pageUrl, width=1600){ return (await commonsInfo(pageUrl,width)).url; }   // every old caller still works
 const isCommons=u=>/commons\.wikimedia\.org\/wiki\/File:/.test(u);
 
 // ---------- YouTube ----------
@@ -337,7 +402,140 @@ function sceneCard(s, pendingIds){ $('#media').innerHTML=''; const ov=(s.overlay
   card(`<h2>${s.title}</h2>${s.learning_goal?`<p><small>${s.learning_goal}</small></p>`:''}${ov?`<div style="margin-top:.6em;font-family:system-ui;font-size:.85em;color:#4a3d2f">${ov}</div>`:''}${pendingIds&&pendingIds.length?`<p><small>generated asset pending: ${pendingIds.join(', ')}</small></p>`:''}`); }
 function mkGen(m, s, opts={}){ const it={start:m.start_s||0, m}; it.fn=async()=>{ const ser=sceneSerial; const txt=await fetchGen(m.ref); if(ser!==sceneSerial||sched.active!==it) return;
     if(!txt){ (opts.fail||(()=>sceneCard(s,[m.manifest_id])))(); return; } const svg=inlineSvg(txt,m.ref); if(!svg){ (opts.fail||(()=>sceneCard(s,[m.manifest_id])))(); return; } it.svg=svg; try{ opts.ok&&opts.ok(svg,it); }catch(e){ console.error(e); } }; return it; }
-async function insetImage(m){ const im=document.createElement('img'); im.src=await commonsUrl(m.ref,800); im.alt=m.attribution||''; im.style.cssText='position:absolute;inset:auto;right:2vmin;bottom:2vmin;width:22%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.6)'; $('#media').appendChild(im); }
+// v0.7: an inset is still an inset, but it may not claim pixels it does not have: `max-width` is clamped to the
+// file's own width (22 % of a 2560-px window is 563 px, and M-50 is 474 px wide), and a BY / BY-SA inset now
+// carries its credit under it instead of only in `alt`.
+async function insetImage(m){
+  const info = isCommons(m.ref) ? await commonsInfo(m.ref,800) : {url:m.ref, w:0, h:0};
+  const wrap=document.createElement('figure'); wrap.className='imginsetwrap';
+  const im=document.createElement('img'); im.className='imginset'; im.src=info.url; im.alt=m.attribution||''; im.decoding='async';
+  if(info.w) wrap.style.maxWidth='min(46%, '+info.w+'px)';                 // never wider than the file's own pixels, never more than half the frame
+  im.onerror=()=>wrap.remove();                                           // a deleted file must not leave a broken box
+  wrap.appendChild(im);
+  if(m.attribution){ const cap=document.createElement('figcaption'); cap.className='imginsetcap'; cap.textContent=m.attribution; wrap.appendChild(cap); }
+  $('#media').appendChild(wrap);
+}
+
+// ---------- v0.7: the image treatment layer -------------------------------------------------------------------
+// One entry point (mountImage) for every still the player shows full-frame. It reads the picture's REAL pixels and
+// the REAL frame and picks one of four treatments; `media[].treatment` in the scene overrides it.
+// Config, not hard-coded: /config.json may carry an `images` object with any of these keys; ?drift=0 holds every
+// still dead still (the screenshot test and, later, the renderer).
+const IMGCFG={ plate_max_px:760,      // long side at or under this = small archive material → the paper mount
+               plate_min_area:0.22,   // …but only if the mount still leaves the picture this much of the frame
+               fill_coverage:0.90,    // a contained fit covering this much of the frame needs no help
+               blur_px:36,            // backdrop blur at a 620-px-tall frame; scaled with the frame below
+               drift:true, drift_s:36, drift_from:0.94, drift_from_plate:0.97 };
+if(qs.get('drift')==='0') IMGCFG.drift=false;
+const reduceMotion=()=>{ try{ return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } };
+const hash32=s=>{ let h=2166136261; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); } return h>>>0; };
+
+// Which treatment? Aspect ratio and pixel size decide, so existing scenes improve with no content edit.
+function pickTreatment(m, nw, nh, W, H){
+  const forced=String((m&&m.treatment)||'').toLowerCase();
+  if(forced==='backdrop'||forced==='plate'||forced==='fill'||forced==='none') return forced;
+  if(!(nw>0&&nh>0&&W>0&&H>0)) return 'backdrop';                 // unknown size: the backdrop is never wrong
+  const ia=nw/nh, ca=W/H;
+  const coverage=Math.min(ia/ca, ca/ia);                         // share of the frame a contained fit would cover
+  const fit=Math.min(W/nw, H/nh);                                // > 1 means it would have to be upscaled to fill
+  if(coverage>=IMGCFG.fill_coverage && fit<=1.02) return 'fill';
+  if(Math.max(nw,nh)<=IMGCFG.plate_max_px) return 'plate';       // it can never fill a modern frame honestly
+  return 'backdrop';
+}
+
+let imgRO=null;   // one ResizeObserver at a time: the mounted still re-lays itself out when the frame changes
+function mountImage(m, url, info, ser){
+  const box=$('#media'); box.innerHTML='';
+  if(imgRO){ try{ imgRO.disconnect(); }catch(e){} imgRO=null; }
+  const att=m.attribution||'';
+  const stage=document.createElement('div'); stage.className='imgstage'; stage.dataset.treatment='pending';
+  const back=document.createElement('img'); back.className='imgback'; back.alt=''; back.decoding='async'; back.setAttribute('aria-hidden','true');
+  const veil=document.createElement('div'); veil.className='imgveil';
+  const img=document.createElement('img'); img.className='imgmain'; img.decoding='async'; img.alt=att||(m.note||'');
+  const plate=document.createElement('figure'); plate.className='imgplate';
+  const cap=document.createElement('figcaption'); cap.className='imgcredit'; cap.textContent=att;
+  const corner=document.createElement('div'); corner.className='imgcredit'; corner.textContent=att;
+  let nw=(info&&info.w)||0, nh=(info&&info.h)||0, treat='backdrop';
+
+  // the paper mount is sized to the picture's own pixels (never above them), inside the frame it has
+  const sizePlate=(W,H)=>{
+    const pad=Math.max(9, Math.round(Math.min(W,H)*0.028));
+    plate.style.setProperty('--yy-pad', pad+'px');
+    const margin=Math.max(7, Math.round(Math.min(W,H)*0.036));
+    const fit=capH=>{ const availW=Math.max(40, W-2*margin-2*pad-2), availH=Math.max(40, H-2*margin-2*pad-2-capH);
+      const k=Math.min(1, availW/nw, availH/nh);                 // k is capped at 1: the plate is never upscaled
+      img.style.width=Math.round(nw*k)+'px'; img.style.height=Math.round(nh*k)+'px';
+      cap.style.width=Math.round(nw*k)+'px'; return Math.round(nw*k); };
+    fit(att?28:0);                                               // first pass: guess the caption height…
+    if(att) fit(Math.min(H*0.3, cap.getBoundingClientRect().height+8));   // …then measure it and settle
+  };
+
+  const layout=()=>{
+    if(!stage.isConnected){ if(imgRO){ try{ imgRO.disconnect(); }catch(e){} imgRO=null; } return; }
+    const W=box.clientWidth||0, H=box.clientHeight||0;
+    treat=pickTreatment(m,nw,nh,W,H);
+    stage.dataset.treatment=treat; stage.dataset.nw=String(nw); stage.dataset.nh=String(nh);
+    const wantBack=(treat==='backdrop'||treat==='plate');
+    if(wantBack){ if(!back.parentNode) stage.insertBefore(back, stage.firstChild);
+                  if(!back.src) back.src=url;                    // same URL as the picture: already cached, no second fetch
+                  if(!veil.parentNode) stage.insertBefore(veil, back.nextSibling);
+                  // …so the radius set here is a TENTH of the on-screen radius (the layer is scaled 12.5x, with 25% overscale)
+                  stage.style.setProperty('--yy-blur', (Math.max(14, IMGCFG.blur_px*Math.min(W,H)/620)/12.5).toFixed(2)+'px'); }
+    else { back.remove(); veil.remove(); }
+    const place=t=>{ if(t==='plate'){
+        if(img.parentNode!==plate) plate.appendChild(img);
+        if(att && cap.parentNode!==plate) plate.appendChild(cap);
+        if(plate.parentNode!==stage) stage.appendChild(plate);
+        corner.remove(); sizePlate(W,H);
+      } else {
+        plate.remove(); cap.remove();
+        img.style.width=''; img.style.height=''; img.style.maxHeight=''; img.style.marginBottom='';
+        if(img.parentNode!==stage) stage.appendChild(img);
+        if(att && corner.parentNode!==stage) stage.appendChild(corner);
+        // The credit is part of the LAYOUT, not something dropped on top of the picture. A 100-character CC BY-SA
+        // line is four lines on a 280-px Fold cover, and it was landing across Passepartout's legs. The band is
+        // reserved at the bottom of the frame (it sits on the ambient backdrop) and the picture is centred in what
+        // is left — smaller, but whole, and the credit is never read against the subject.
+        if(att){ const ch=corner.offsetHeight||0;
+          if(ch>0 && H>ch+80){ img.style.maxHeight=(H-ch-12)+'px'; img.style.marginBottom=(ch+12)+'px'; } }
+      } };
+    place(treat);
+    // A paper mount costs a margin, two paper edges and a caption line. On a Fold cover (#media is ~280×222) that
+    // leaves a 474×700 plate at 14 % of the frame — the mount is then taking more than it gives, and the ambient
+    // backdrop shows far more picture. Measured, not guessed, and never overrides an explicit `treatment`.
+    if(treat==='plate' && !(m&&m.treatment) && (img.offsetWidth*img.offsetHeight)/(W*H) < IMGCFG.plate_min_area){
+      treat='backdrop'; stage.dataset.treatment='backdrop'; place('backdrop');
+    }
+    // gentle motion, on whichever box is the picture now. Subtle by the tone spec (positioning.md, "The chill").
+    const target=(treat==='plate')?plate:img, other=(treat==='plate')?img:plate;
+    other.classList.remove('drift'); other.style.removeProperty('transform');
+    target.classList.remove('drift');
+    if(IMGCFG.drift && !reduceMotion() && treat!=='none'){
+      const h=hash32(String(m.ref||url));                        // stable per picture: the same still drifts the same way every time
+      target.style.setProperty('--kb-from', String(treat==='plate'?IMGCFG.drift_from_plate:IMGCFG.drift_from));
+      target.style.setProperty('--kb-s', IMGCFG.drift_s+'s');
+      target.style.setProperty('--kb-dx', (((h&1)?1:-1)*0.9)+'%');
+      target.style.setProperty('--kb-dy', ((((h>>1)&1)?1:-1)*0.7)+'%');
+      target.classList.add('drift');
+    }
+    window.__lastImage={ ref:m.ref, url, nw, nh, treatment:treat, W, H };   // test / QA hook
+  };
+
+  img.onload=()=>{ if(ser!==sceneSerial) return;
+    if(img.naturalWidth && (img.naturalWidth!==nw || img.naturalHeight!==nh)){ nw=img.naturalWidth; nh=img.naturalHeight; }
+    layout(); };
+  // degrade: a deleted or blocked file leaves a named card, never an empty black frame
+  img.onerror=()=>{ if(ser!==sceneSerial) return; const s=scenes[idx]||{};
+    box.innerHTML=''; card(`<h2>${escHtml(s.title||'')}</h2><p><small>This picture could not be loaded.${att?' — '+escHtml(att):''}</small></p>`); };
+  back.onload=()=>back.classList.add('on');
+  back.onerror=()=>{ back.remove(); };                           // no ambient copy: the veil and the dark frame stay
+
+  stage.appendChild(img); box.appendChild(stage);
+  img.src=url;
+  layout();                                                      // lay out now from the Commons size, refine on load
+  try{ imgRO=new ResizeObserver(()=>layout()); imgRO.observe(box); }catch(e){}
+  return stage;
+}
 
 // G-01 route map: layers L0 base, L1..L9 legs (cumulative reveal across the media window), L10 enablers; .hit[data-leg] taps → option leg-1
 function wireG01(svg,it,m,s){
@@ -408,7 +606,15 @@ async function shareCard(note){ const svg=$('#media svg.gen'); const title=scene
 
 // ---------- Renderers ----------
 function card(html){ const d=document.createElement('div'); d.className='fill'; d.innerHTML=`<div class="card">${html}</div>`; $('#media').appendChild(d); }
-async function showImage(m, kb=false){ const ser=sceneSerial, me=sched&&sched.active; const img=document.createElement('img'); if(kb) img.className='kenburns'; img.src= isCommons(m.ref)? await commonsUrl(m.ref):m.ref; if(ser!==sceneSerial||(sched&&sched.active!==me)) return; /* scene changed or the media schedule moved on (e.g. a generated card) while the Commons lookup was in flight */ img.alt=m.attribution||''; $('#media').innerHTML=''; $('#media').appendChild(img); if(m.attribution){ const a=document.createElement('div'); a.className='muted'; a.style.cssText='position:absolute;right:8px;bottom:6px;font-size:11px;background:rgba(0,0,0,.5);padding:2px 6px;border-radius:4px'; a.textContent=m.attribution; $('#media').appendChild(a);} }
+// v0.7: every full-frame still goes through the treatment layer. The `kb` argument is kept so the call sites
+// (photoCycle, quiz, dialogue) need no edit; the drift is now decided by IMGCFG/reduced-motion, not by the caller,
+// because a quiz that sits 80 s on one engraving needs the breath just as much as a photo scene does.
+async function showImage(m, kb=false){
+  const ser=sceneSerial, me=sched&&sched.active;
+  const info = isCommons(m.ref) ? await commonsInfo(m.ref) : {url:m.ref, w:0, h:0};
+  if(ser!==sceneSerial||(sched&&sched.active!==me)) return;  /* scene changed or the media schedule moved on (e.g. a generated card) while the Commons lookup was in flight */
+  mountImage(m, info.url, info, ser);
+}
 function mapsLink(ref){ const [lat,lng,h,p,fov]=String(ref).split(',').map(Number); return `https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=${lat},${lng}&heading=${h||0}&pitch=${p||0}&fov=${fov||90}`; }
 
 // ================= Street View v0.4 — cinematic auto-walk =================
@@ -1100,6 +1306,7 @@ fetch('/config.json').then(r=>r.ok?r.json():null).then(c=>{
   if(c&&c.maps_api_key){ if(!own) LS.set('yy-gkey',c.maps_api_key);
     if(!own){ $('#gkeyRow').style.display='none'; $('#gkeyOk').style.display='block'; } }
   if(c&&c.streetview&&typeof c.streetview==='object') Object.assign(SVCFG,c.streetview);
+  if(c&&c.images&&typeof c.images==='object'){ Object.assign(IMGCFG,c.images); if(qs.get('drift')==='0') IMGCFG.drift=false; }   // v0.7 image treatment thresholds — see www/config.example.json
   SVCFG.billing_ack = (c && c.billing_ack===true);   // RULE 1: billable SKUs stay locked unless the config says so explicitly
   SVCFG.mode = svModeAllowed(c);                      // and the mode itself is gated the same way // mode/step_m/max_stills/fade_ms/resume_after_s — see www/config.example.json
 }).catch(()=>{});

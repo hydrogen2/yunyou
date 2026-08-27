@@ -71,6 +71,22 @@ Checklist before handing to review:
 - [ ] **archive and CC-marked footage sets `audio: "mute"` unless QA has listened.** A public-domain film may carry an
       uploader-added soundtrack that is not public domain, and a CC-marked upload may contain music the uploader could
       not sublicense; the bed comes from the chapter's own CC0/PD audio instead (standing rule, `rights-a6.md` §1.1)
+- [ ] **you do not have to say how a still is framed.** The player's image treatment layer (v0.7) reads the file's
+      real pixel size and the real frame and picks one of three presentations, so a portrait photograph or a 632-px
+      engraving fills the screen with something that belongs to the picture instead of black bars:
+      `backdrop` (an ambient, heavily blurred, darkened copy of *this same picture* behind it), `plate` (small period
+      engravings, elevations and plans mounted on warm paper with a caption line, sized to their real pixels — a
+      document, not a floating rectangle) or `fill` (it already fills the frame; nothing added). All three carry a
+      very slow drift that starts *below* 100 % and ends *at* 100 %, so the motion can never invent resolution.
+      Nothing is ever stretched, upscaled past the file's own pixels, or cropped to fit — that is a studio rule, not
+      a setting. **Leave `treatment` out and you get the right answer nearly always.**
+- [ ] **`media[].treatment`** (`kind: "image"` only) forces one of `backdrop` | `plate` | `fill` | `none` when the
+      automatic choice is wrong for a reason you can name in `note`. Use it when: a *large* modern photograph is
+      really an archive document and should be mounted (`plate`); a picture whose edges matter must not be pushed
+      into (`fill`); or a scene deliberately wants the bare black frame (`none`, which also stops the drift). Never
+      set `fill` on something that cannot fill 16:9 at its own resolution — you are only asking for black bars back.
+      The attribution is part of the treatment: on a plate it is the caption line under the picture, elsewhere a chip
+      in the corner. It is never optional, and never removable by a `treatment` choice.
 - [ ] **anything derived from CC BY-SA material carries `sa: true`** — the strip-list flag from `rights-a6.md` §2.4, so
       that a future change to the studio's own output licence is a generated list rather than an archaeology project
 - [ ] quiz has 3–4 options, exactly one correct, feedback on every option

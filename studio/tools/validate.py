@@ -66,6 +66,15 @@ def studio_rules(s):
         errs.append(f'{sid}: interaction.pause_narration:true requires interaction.timeout_s (honest wait budget)')
     if it.get('timeout_s') and it.get('kind') in (None,'none'):
         warns.append(f'{sid}: timeout_s set but interaction.kind is none')
+    # media[].treatment (v0.7 player image treatment layer): image-only, and 'fill'/'none' are a promise about pixels
+    for i,mm in enumerate(s.get('media') or []):
+        tr=mm.get('treatment')
+        if tr is None: continue
+        if mm.get('kind')!='image':
+            errs.append(f'{sid}: media[{i}].treatment is for kind "image" only (this one is "{mm.get("kind")}")')
+        elif tr in ('fill','none'):
+            warns.append(f'{sid}: media[{i}].treatment "{tr}" overrides the automatic choice — only do this when the '
+                         f'picture really does fill a 16:9 frame at its own resolution, else it plays as black bars')
     # overlays: waypoint triggers + density (+ gloss shape)
     for i,o in enumerate(ov):
         if o.get('kind')=='gloss' and '—' not in o.get('text',''):

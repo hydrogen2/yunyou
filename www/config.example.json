@@ -11,6 +11,23 @@
     "smooth_s": 1.05,
     "base_zoom": 0.85
   },
+  "images": {
+    "plate_max_px": 760,
+    "fill_coverage": 0.90,
+    "blur_px": 36,
+    "drift": true,
+    "drift_s": 36,
+    "drift_from": 0.94,
+    "drift_from_plate": 0.97
+  },
+  "_images_help": {
+    "what": "v0.7 image treatment layer. Stills that cannot fill the frame honestly get an ambient blurred backdrop derived from the picture itself; small archive plates get a warm paper mount with a caption. Nothing is ever stretched, upscaled past its own pixels, or cropped. Per-scene override: media[].treatment = backdrop | plate | fill | none.",
+    "plate_max_px": "long side at or under this many real pixels = small archive material → the paper mount.",
+    "fill_coverage": "a contained fit covering at least this much of the frame is left alone (treatment 'fill').",
+    "blur_px": "backdrop blur radius at a 620-px-tall frame; scaled with the frame.",
+    "drift": "the slow 0.94 → 1.00 breath on a still. false, or ?drift=0 in the URL, holds every still dead still (screenshot tests, and the linear renderer when it takes over the motion).",
+    "drift_from": "where the breath starts, as a fraction of the honest size. Must be <= 1: above 1 would be upscaling."
+  },
   "_streetview_help": {
     "mode": "open (our own cached open imagery → embed → link) | embed | link | js | stills. 'auto' behaves as 'open'. Per-browser override: localStorage['yy-sv-mode'].",
     "cost": "open, embed and link call nothing billable. 'js' (Dynamic Street View) and 'stills' (Street View Static) are BILLABLE and are refused unless this file also sets billing_ack: true.",
