@@ -1,0 +1,108 @@
+{
+ "id": "the-fourth-date",
+ "type": "map",
+ "title": "A fourth date — and the only one he goes through",
+ "subtopic": "5 — The Alps: the map beat",
+ "duration_s": 85,
+ "learning_goal": "See the tunnel in section and the four dates that made the eighty days thinkable; know that Fréjus is the only one Fogg physically travels through — and that the same tunnel reopened in March 2025.",
+ "narration": {
+  "script": "Here is the mountain, cut through. The thin line over the top is the way they went the year before. The straight one under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railroad, joined in 1869. The last rail link across India, 1870. Three doors that opened within ten months, and made eighty days thinkable.\n\nHere is a fourth. The seventeenth of September, 1871. And it is the only one of the four that Fogg physically goes through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months; it reopened on the thirty-first of March, 2025.",
+  "timing": "over",
+  "voice": "guide",
+  "starts_at_s": 8,
+  "variants": {
+   "clear": "Here is the mountain, cut in half. The thin line over the top is the way they went the year before. The straight line under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railway, joined coast to coast in 1869. The last railway link across India, 1870. Three doors, all opened within ten months, and they made eighty days possible.\n\nHere is a fourth. The seventeenth of September, 1871. And it is the only one of the four that Fogg actually travels through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months. It reopened on the thirty-first of March, 2025."
+  }
+ },
+ "media": [
+  {
+   "kind": "generated",
+   "ref": "generated/g-202/frejus-section.svg",
+   "license": "generated",
+   "manifest_id": "G-202",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 0,
+   "end_s": 44,
+   "note": "SPEC (G-202) — the chapter's one must-have generated asset, and it replaces M-206 (which is the wrong tunnel). A SECTION THROUGH THE MOUNTAIN: Modane at left (1,057 m), Bardonecchia at right (1,263 m), the bore at a mean 1,123 m, the summit ridge above it, and the pass road with the Fell railway drawn OVER THE TOP in thin ink as the thing it replaced. RUNDOWN CORRECTION APPLIED: the length must be shown TWICE, not once — 'about 12.8 km at opening (1871)' and '13.7 km today' (F-69). The manifest's spec said only 13.7 km, which would date the 1871 tunnel with a modern figure. Callouts, ≤ 8 words each: 'started 1857' · 'two headings, no shaft' · 'compressed-air drills' · 'met 26 Dec 1870' · 'open 17 Sept 1871' · '13 years, not 71'. The callouts carry these numbers so the guide never says them twice. FIRST 8 SECONDS IN SILENCE (narration.starts_at_s = 8): the traveller reads the drawing before anyone talks over it."
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/g-201/europe-legs_L5-L8.svg",
+   "license": "generated",
+   "manifest_id": "G-201",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 44,
+   "end_s": 56,
+   "note": "SPEC (G-201, layers L5-L8). Paris -> Mâcon -> Culoz -> Chambéry -> Modane -> the tunnel -> Bardonecchia -> Turin drawn onto the Europe map, with the tunnel callout (L8) lit. Present the route as 'the line ran through', never 'his train stopped at' (F-74 is med; no October 1872 timetable exists). Same corrected times as scene 01. RUNDOWN DEVIATION: the rundown assigned L5 to scene 05 and L7-L8 here; L5 could not live in scene 05 without deleting that scene's second still (see scene 05's notes), so the Alpine legs are revealed together here, between the section and the enabler map."
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/g-203/enablers_four-dates.svg",
+   "license": "generated",
+   "manifest_id": "G-203",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 56,
+   "end_s": 85,
+   "note": "SPEC (G-203). Extends Day 1's enabler layer (G-01 L10). Day 1 lit THREE dated pins — Suez 17 Nov 1869, Promontory 10 May 1869, Jabalpur 7 Mar 1870 (Day-1 F-33). A FOURTH pin lands here: 'Fréjus / Mont Cenis tunnel · 17 Sept 1871' at 45.14 N, 6.68 E, in the same style. Deliver as a new layer in the existing master so later chapters inherit it. Rundown Decision 3, taken as recommended: the narration says 'a fourth', and the payoff is that Fréjus is the only one of the four Fogg physically goes through."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 30,
+   "kind": "caption",
+   "text": "About 12.8 km when it opened · 13.7 km today",
+   "position": "bottom",
+   "until_s": 42,
+   "note": "The rundown's correction, carried in the scene as well as on the diagram so the pair of figures survives even if G-202 is re-cut."
+  },
+  {
+   "at_s": 58,
+   "kind": "caption",
+   "text": "Suez 1869 · Promontory 1869 · Jabalpur 1870",
+   "position": "bottom",
+   "until_s": 70
+  },
+  {
+   "at_s": 66,
+   "kind": "pin",
+   "text": "Fréjus / Mont Cenis · 17 Sept 1871",
+   "position": "bl",
+   "until_s": 80,
+   "geo": "45.14,6.68"
+  },
+  {
+   "at_s": 74,
+   "kind": "caption",
+   "text": "Closed by a rockfall for 19 months; reopened 31 March 2025",
+   "position": "bottom",
+   "until_s": 85,
+   "note": "Content Preparer to re-check the service is running at publication (F-75's own instruction)."
+  }
+ ],
+ "interaction": {
+  "kind": "none"
+ },
+ "transition": {
+  "in": "dissolve from the portal",
+  "out": "cut to black, then the portrait",
+  "music_cue": "none — and nothing at all into scene 10"
+ },
+ "next": "sommeiller",
+ "sources": [
+  "F-48",
+  "F-69",
+  "F-70",
+  "F-71",
+  "F-73",
+  "F-74",
+  "F-75",
+  "F-33"
+ ],
+ "production_notes": "SEGMENT 5, last third (85 s; 164 words, and the segment totals 375 against its 385 ceiling). Narration starts at 8 s: G-202 holds in silence first, and the traveller reads the drawing. The guide then says NONE of the diagram's callout numbers a second time (R3) — the words over the section are about the two lines, not the dates. THE FOURTH PIN, not the third: the brief calls Fréjus the third enabler, but Day 1 actually lit three (F-33), so the map shows four and the narration says 'a fourth' — rundown Decision 3, taken as recommended, with the payoff moved to Fréjus being the only one Fogg travels through and the only one named in his own printed route (F-48). The line that closes the act is 'He goes through it in the dark, asleep, and the book never mentions it.' The present-day tail is the chapter's most useful fact and is deliberately last, and actionable. F-33 in `sources` is a DAY-1 fact id.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-8 G-202 in SILENCE; 8-44 G-202 — 'Here is the mountain, cut through…' through '…dark the whole way', with the 12.8/13.7 km caption at 30-42 s; 44-56 G-201 L5-L8 — 'On day one we lit three dates…' as the Alpine legs draw; 56-85 G-203 — 'Here is a fourth. The seventeenth of September, 1871.' with the Suez/Promontory/Jabalpur caption at 58 s and the Fréjus pin landing at 66 s, then the 2025 tail from ~74 s. Four timed overlays against a ceiling of six. The route through Chambéry and Modane is drawn as a LINE, never as a list of his stops (F-74 is med and the sheet's gap list forbids naming his stations)."
+ }
+}

@@ -1,0 +1,1820 @@
+{
+ "id": "around-the-world-80-days",
+ "title": "Around the World in 80 Days",
+ "tagline": "Retrace Phileas Fogg's 1872 route — today's streets, Verne's guidebook.",
+ "world": "verne",
+ "guide_persona": "guide",
+ "style": "yunyou-v0",
+ "drip": "daily",
+ "chapters": [
+  {
+   "id": "day-02-to-brindisi",
+   "title": "Day 2 · Dover, Calais, Paris, the Alps — to Brindisi",
+   "hook": "Verne wrote a novel about going round the world and then skipped Europe. Everything the book says about the next three days is seven lines in a notebook, and it takes twenty seconds to read.",
+   "recap": "Yesterday in London, a gentleman named Phileas Fogg bet half his fortune that he could travel round the world in eighty days, and left at a quarter to nine at night with a French servant, Passepartout. Today we follow them to Dover, across the Channel, through Paris, under the Alps and down to the heel of Italy — and stop at everything they went past.",
+   "place": "Dover · Calais · Paris · Fréjus · Turin · Brindisi",
+   "geo": "45.1400,6.6800",
+   "scenes": [
+    {
+     "id": "the-notebook",
+     "type": "interstitial",
+     "title": "Day 2 · everything Verne wrote about the next three days",
+     "subtopic": "1 — The notebook: everything Verne wrote",
+     "duration_s": 95,
+     "learning_goal": "Know who Fogg is, what he bet, and that the whole crossing of Europe exists in the novel as seven timestamps; feel the size of the gap we are about to walk into.",
+     "narration": {
+      "script": "Day two. For anyone joining us here: in Jules Verne's novel of 1872, a London gentleman, Phileas Fogg, bets half his fortune that he can go round the world in eighty days. He left London last night at a quarter to nine, with a French servant, Passepartout.\n\nThe route was printed in the newspaper the night of the bet. Its first line reads: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nHere is everything Verne tells us about those seven days. Fogg keeps a notebook. It opens: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nIt ends: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nThat is the whole of it. Seven lines, for three thousand kilometres.",
+      "timing": "over",
+      "voice": "guide",
+      "starts_at_s": 8,
+      "variants": {
+       "clear": "Day two. If you have just joined us, here is the story so far. In 1872 the French writer Jules Verne published a novel. In it, a London gentleman named Phileas Fogg bets half his money that he can travel around the world in eighty days. He left London last night at a quarter to nine, with a French servant named Passepartout.\n\nThe route was printed in the newspaper on the night of the bet. The first line says: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nAnd here is everything the novel tells us about those days. Fogg keeps a notebook. The first line: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nThe last line: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nThat is all of it. Seven lines for three thousand kilometres."
+      }
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-201/europe-legs_L0-L1.svg",
+       "license": "generated",
+       "manifest_id": "G-201",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 0,
+       "end_s": 40,
+       "note": "SPEC (G-201, layers L0+L1). Europe leg map, London -> Brindisi, cream #efe6d3 paper, sepia coastline #5b4a3a, one warm-red accent #b03a2e, Playfair for places / Source Sans 3 for times, no modern borders, colour never the only signal. L0 = base with the seven stops unlit. L1 = the London -> Dover rail leg drawn, London labelled '8:45 pm, Wed 2 Oct'. RUNDOWN CORRECTION APPLIED to the master spec: Brindisi is 'arr 4 pm, SATURDAY 5 October' and Turin is the 4th (the manifest's '4 p.m. 4 Oct' is wrong against F-50). Title card sits over this frame for the first 8 s."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_08.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-250",
+       "attribution": "Neuville & Benett, plate 08, Hetzel illustrated edition 1873 (Wikimedia Commons, public domain)",
+       "start_s": 28,
+       "end_s": 40,
+       "note": "The street crowd reading the newspaper (ch. V). 480x700 portrait -> the player mounts it as an inset over the G-201 card at 28 s (interstitial branch). Timed against the sentence 'The route was printed in the newspaper the night of the bet.'"
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-204/telegraph-first-line.svg",
+       "license": "generated",
+       "manifest_id": "G-204",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 40,
+       "end_s": 52,
+       "note": "SPEC (G-204). The Daily Telegraph estimate, FIRST LINE ONLY, set as a newspaper column in the Day-1 card style: 'From London to Suez, viA Mont Cenis and Brindisi, by rail and steamboats ......... 7 days' (F-48). The remaining rows of the table ghosted at 20 % so the traveller sees it is the first line of a longer list. Pairs with M-250."
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-208/notebook_reveal_a.svg",
+       "license": "generated",
+       "manifest_id": "G-208a",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 52,
+       "end_s": 95,
+       "note": "SPEC (G-208, state a). Fogg's notebook, seven lines, REVEALED ONE AT A TIME, in the Day-1 card style (ruled page, ink). Line 1 lands at 52 s under the guide's voice; lines 2-6 land at 62, 65, 68, 71, 74 s IN SILENCE, about 3 s apart; line 7 lands at 78 s under the guide's voice. Text is F-50 verbatim, time style '8:45 pm' per R1. LOAD-BEARING SILENCE 60-78 s: the five middle lines are read by the traveller, not by the guide. Do not add music stings to the reveals."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+       "license": "public-domain",
+       "manifest_id": "M-41",
+       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+       "start_s": 8,
+       "end_s": 95,
+       "note": "Day 1's route theme, low and ducked - the bookend that opens and closes every chapter (world-bible). Out under the notebook reveal from 60 s."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "lower-third",
+       "text": "Day 2 · Dover · Calais · Paris · the Alps · Brindisi · 3–5 October 1872",
+       "position": "bottom",
+       "until_s": 8
+      },
+      {
+       "at_s": 30,
+       "kind": "caption",
+       "text": "Verne's own illustrator skipped Europe too: London, then Egypt.",
+       "position": "bottom",
+       "until_s": 40,
+       "note": "GO DEEPER, and CONDITIONAL: F-109 is med and the Fact-Checker must confirm no European plate exists elsewhere in the Neuville/Benett set. If it fails, CUT this caption — do not soften it (rundown's own instruction)."
+      },
+      {
+       "at_s": 44,
+       "kind": "caption",
+       "text": "The route, printed the night of the bet — 7 days to Suez",
+       "position": "bottom",
+       "until_s": 52
+      },
+      {
+       "at_s": 84,
+       "kind": "caption",
+       "text": "≈ 67 hours by the printed times — our arithmetic on Verne's figures",
+       "position": "bottom",
+       "until_s": 95,
+       "note": "F-51 is our computation, not a quoted number, so it is a caption and is never spoken (R3)."
+      },
+      {
+       "at_s": 56,
+       "kind": "gloss",
+       "text": "valet — a gentleman's personal manservant",
+       "position": "tl",
+       "until_s": 70
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut from black",
+      "out": "dissolve to the pier",
+      "music_cue": "M-41 in at 8 s, out at 60 s under the silent notebook lines"
+     },
+     "next": "dover-and-the-sea",
+     "sources": [
+      "F-48",
+      "F-49",
+      "F-50",
+      "F-51",
+      "F-109",
+      "F-11",
+      "F-12"
+     ],
+     "production_notes": "SEGMENT 1 (95 s, fill 55 %, ceiling 125 words). Player branch: type 'interstitial' with generated media -> the gen cards run on the scene clock and M-250 comes up as an INSET over the card at 28 s (this is how Day-1's cold open behaves with M-34; it is not a full-frame plate). Beat map: 0-8 title over G-201 L0; 8-28 the recap over the map as leg 1 draws; 28-40 the newspaper (M-250 inset); 40-52 G-204, the Telegraph's first line read aloud; 52-95 G-208a, the notebook. THE FIRST OF THE THREE LOAD-BEARING SILENCES: lines 2-6 of the notebook are revealed unspoken, 60-78 s, about 3 s apart. The guide reads line one and line seven ONLY. F-11/F-12 in `sources` are DAY-1 fact ids (the recap), not this sheet's. ENGINE LIMIT, stated honestly: the player speaks `script` continuously from `starts_at_s`, so it has no way to hold a pause inside a script. The authored silence is real in the timeline (media windows, overlay windows, the linear cut sheet) and the scene is written short enough that the seconds exist; in the player the unspoken seconds currently pool at the tail rather than in the middle. One-line engine request: `narration.pauses: [{at_s, hold_s}]` honoured by speak(), which would make every authored silence in this chapter land where it was written.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27; not yet fact-checked, rights-reviewed or QA'd. SLOT TIMINGS, and the sentence each is timed against: 0-40 G-201 L0+L1 — 0-8 the title card, then 'For anyone joining us here…' through '…with a French servant, Passepartout.' as leg 1 draws; 28-40 M-250 (inset) — 'The route was printed in the newspaper the night of the bet.'; 40-52 G-204 — 'Its first line reads: London to Suez, by way of Mont Cenis and Brindisi…'; 52-95 G-208a — line 1 at 52 s under 'It opens: Left London, Wednesday, October the second…', lines 2-6 at 62/65/68/71/74 s in SILENCE, line 7 at 78 s under 'It ends: Sailed on the Mongolia…', and the closing 'That is the whole of it' at 84 s over the completed page. OPEN FOR THE FACT-CHECKER: the F-109 caption at 30-40 s is conditional (see the overlay note). The 67-hour figure is a caption only, never spoken, because it is our arithmetic (F-51)."
+     }
+    },
+    {
+     "id": "dover-and-the-sea",
+     "type": "photo",
+     "title": "Dover — the train ran out to the ship",
+     "subtopic": "2 — Dover, and the hour and a quarter of open sea",
+     "duration_s": 130,
+     "learning_goal": "Know that the boat train ran out along the Admiralty Pier so you stepped from carriage to deck, that the cliffs are chalk and France is 32 km off, and that the crossing was a byword for misery; feel cold air and open water.",
+     "narration": {
+      "script": "Dover, and a night boat. Charles Dickens made this crossing in 1863 and wrote it down. Waiting on the deck, he watches the train come to him: 'A screech, a bell, and two red eyes come gliding down the Admiralty Pier.'\n\nThe railway ran out along the pier, over the water, to where the steamer lay. By Fogg's night the rails ran out along it, so his boat train would have set him down beside the ship — carriage to deck, without touching a street.\n\nAbove the harbour, the cliffs. Chalk, about a hundred metres high, and something like a hundred million years old. France is thirty-two kilometres away, and on a clear day you can see it. The French call this water la Manche — the sleeve. Verne never mentions any of it.\n\nAn hour and a quarter of open water. Dickens again, on his fellow passengers: they 'lie about in melancholy bundles, as if they were sorted out for the laundress.' One man holds an umbrella upright the whole way over.\n\nOur pictures are daylight, and a lifetime late. Fogg crossed in the middle of the night.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "Dover, and a night boat. Charles Dickens crossed here in 1863 and wrote about it. He stands on the deck and watches the train come to him: 'A screech, a bell, and two red eyes come gliding down the Admiralty Pier.'\n\nThe railway ran out along the pier, over the water, to the ship. On Fogg's night the rails ran out along it too, so his train would have stopped beside the steamer. You stepped from the carriage onto the deck, without walking down a street.\n\nAbove the harbour are the cliffs. White chalk, about a hundred metres high, and roughly a hundred million years old. France is thirty-two kilometres away. On a clear day you can see it. The French call this water la Manche — the sleeve. Verne never mentions any of this.\n\nAn hour and a quarter of open sea. Dickens again, about the other passengers: they 'lie about in melancholy bundles, as if they were sorted out for the laundress.' One man holds his umbrella up the whole way over.\n\nOur pictures are daylight, and a lifetime too late. Fogg crossed in the middle of the night."
+      }
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Dover_Admiralty_Pier_railway_station.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-220",
+       "attribution": "Dover Admiralty Pier railway station — The Rapid Photo Printing Co., postcard (Wikimedia Commons, public domain)",
+       "start_s": 0,
+       "end_s": 24,
+       "note": "1614x1046. The pier running out to sea with track along it, signal box, sheds, steamers alongside. Slot 1/6, under Dickens's arrival."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Dover_Admiralty_Pier_station_(postcard).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-221",
+       "attribution": "Dover Admiralty Pier station — A & G Taylor, London, c.1905 (Wikimedia Commons, public domain)",
+       "start_s": 24,
+       "end_s": 45,
+       "note": "1518x930, sepia; the rails curve out along the pier toward the sea. Slot 2/6, the second angle, under 'carriage to deck, without touching a street'."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:White_Cliffs_of_Dover_-_geograph.org.uk_-_2168790.jpg",
+       "license": "cc-by-sa-2.0",
+       "manifest_id": "M-223",
+       "attribution": "Peter Randall-Cook (1995) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+       "start_s": 45,
+       "end_s": 58,
+       "note": "1024x495. The chalk face low from the sea in evening light — the cliffs as a departing passenger sees them. Slot 3/6.",
+       "sa": true
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:The_White_Cliffs_of_Dover_-_geograph.org.uk_-_106444.jpg",
+       "license": "cc-by-sa-2.0",
+       "manifest_id": "M-224",
+       "attribution": "Colin Smith (Oct 1999) / geograph.org.uk · CC BY-SA 2.0",
+       "start_s": 58,
+       "end_s": 70,
+       "note": "428x640 portrait — under the plate threshold, so the player mounts it small on paper. No punch-in. Slot 4/6, and it holds through the 8 silent seconds at the end of the cliffs beat.",
+       "sa": true
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Ebenezer_Colls_-_A_heavy_swell_off_Dover_Harbour,_with_a_Channel_packet_coming_in.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-222",
+       "attribution": "Ebenezer Colls, 'A heavy swell off Dover Harbour, with a Channel packet coming in', 1866 (Wikimedia Commons, public domain)",
+       "start_s": 70,
+       "end_s": 105,
+       "note": "2580x1690 oil painting, six years before Fogg and exactly his crossing. Slot 5/6. THE PLAYER'S SEA: it holds alone and silent from 70 to 82 s with only the wave bed. In the rendered film this window is M-201 instead (see that entry).",
+       "use": "player"
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Ferry_Berlioz_leaving_Dover_-_geograph.org.uk_-_4227721.jpg",
+       "license": "cc-by-sa-2.0",
+       "manifest_id": "M-225",
+       "attribution": "The Carlisle Kid (27 Sep 2014) / geograph.org.uk · CC BY-SA 2.0",
+       "start_s": 105,
+       "end_s": 130,
+       "note": "1024x564. A modern ferry under way with the cliffs behind. Slot 6/6, under 'Our pictures are daylight, and a lifetime late.' — which is the honesty line, and is true of this photograph as well as of the archive film the video uses here.",
+       "sa": true,
+       "use": "player"
+      },
+      {
+       "kind": "footage",
+       "ref": "https://upload.wikimedia.org/wikipedia/commons/8/85/Rough_Sea_at_Dover_1896_Birt_Acres_Robert_W_Paul.webm",
+       "license": "public-domain",
+       "manifest_id": "M-201",
+       "attribution": "'Rough Sea at Dover' — Birt Acres & Robert W. Paul, 1895 or 1896 (Wikimedia Commons, public domain)",
+       "start_s": 70,
+       "end_s": 105,
+       "note": "17.5 s of heavy sea breaking over Dover's Admiralty Pier — the same pier as M-220/M-221. Loop x2 to fill 70-105 s. MUTED: ffprobe finds an audio stream although the page says otherwise, and an uploader-added track over PD film is not licensed to us (rights-a6 §1.1); the bed is M-253. Caption it '1895 or 1896', never a bare year (the file page disagrees with its own category). LINEAR ONLY — the player has no renderer for kind 'footage', so the player plays M-222 in this window instead.",
+       "audio": "mute",
+       "use": "linear"
+      },
+      {
+       "kind": "footage",
+       "ref": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Entre_Calais_et_Douvres_%281897%29.webm",
+       "license": "public-domain",
+       "manifest_id": "M-202",
+       "attribution": "'Entre Calais et Douvres' — Georges Méliès, Star Film 112, 1897 (Wikimedia Commons, public domain)",
+       "start_s": 105,
+       "end_s": 130,
+       "note": "Source in/out 0:08-0:43 (0:00-0:07 is the uploader's modern title card). A studio-built deck rocking under a painted sky: a TRICK FILM, not documentary, and the film's caption must say so — 'Méliès's joke about the crossing, filmed 25 years later'. LINEAR ONLY. That caption therefore lives in the cut sheet and in these notes and NOT in `overlays`: the player never shows this film, and an on-screen caption naming a film the traveller cannot see would be a lie on the frame.",
+       "audio": "mute",
+       "use": "linear"
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Sea_waves.wav",
+       "license": "cc-by-sa-4.0",
+       "manifest_id": "M-253",
+       "attribution": "Waves hitting the shore — Ganesh Mohan T (Wikimedia Commons, CC BY-SA 4.0)",
+       "start_s": 45,
+       "end_s": 130,
+       "note": "Loop 20 s with a 2 s crossfade. The bed under the cliffs and the whole sea beat, and the ONLY sound in the 12 silent seconds from 70 to 82.",
+       "sa": true
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Fog_signal_Bremerhaven.ogg",
+       "license": "cc0",
+       "manifest_id": "M-252",
+       "attribution": "Foghorn near the Nordschleuse, Bremerhaven — Tvabutzku1234 (Wikimedia Commons, CC0)",
+       "start_s": 122,
+       "end_s": 130,
+       "note": "One foghorn, 8 s, under the last silence. Second audio entry: the player beds only the first commons audio item, so this one is for the film.",
+       "use": "linear"
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 6,
+       "kind": "caption",
+       "text": "Dover, Admiralty Pier — the boat train ran out to the ship",
+       "position": "bottom",
+       "until_s": 20
+      },
+      {
+       "at_s": 30,
+       "kind": "caption",
+       "text": "Rails onto the pier from 1861; by 1872 the pier ran about 640 m",
+       "position": "bottom",
+       "until_s": 44,
+       "note": "F-76 is med (doverhistorian.com blocked the fetch). The caption states the pier, not the train."
+      },
+      {
+       "at_s": 48,
+       "kind": "caption",
+       "text": "Chalk, ~110 m high, ~13 km either side of Dover — France 32 km off",
+       "position": "bottom",
+       "until_s": 60
+      },
+      {
+       "at_s": 88,
+       "kind": "caption",
+       "text": "Charles Dickens, 'The Calais Night Mail', 1863",
+       "position": "bottom",
+       "until_s": 100
+      },
+      {
+       "at_s": 112,
+       "kind": "caption",
+       "text": "Dover–Calais today: about 90 minutes, up to 30 sailings a day",
+       "position": "bottom",
+       "until_s": 126
+      },
+      {
+       "at_s": 52,
+       "kind": "gloss",
+       "text": "la Manche — French for the Channel; it means 'the sleeve'",
+       "position": "bl",
+       "until_s": 66
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "dissolve from the notebook",
+      "out": "cut to the quiz card",
+      "music_cue": "no music; M-253 wave bed from 45 s, foghorn tail in the film"
+     },
+     "next": "quiz-three-months",
+     "sources": [
+      "F-76",
+      "F-77",
+      "F-78",
+      "F-89",
+      "F-90",
+      "F-94"
+     ],
+     "production_notes": "SEGMENT 2 (130 s, fill 60 %, ceiling 185 words). Three beats: pier 0-45, cliffs 45-70, sea 70-130. THE SECOND LOAD-BEARING SILENCE: 70-82 s, the sea holds with the wave bed and nothing else. There is a second, smaller authored silence at 62-70 s, after the cliffs. DO NOT staged this at Dover Priory station (the fact sheet's own instruction) — the beat is the pier. TWO MEDIA ENTRIES PER SHOT, the A8 pattern: the sea window 70-105 s is M-201 in the film and M-222 in the player; 105-130 s is M-202 (Méliès) in the film and M-225 in the player. That is why the Méliès identification is in these notes and in the cut sheet and not in an overlay. LINEAR CUT (105 s): drop the 'Dover-Calais today' line and M-225; run M-201 x2 then Méliès 0:08-0:43 with the caption 'Georges Méliès, 1897 — a studio joke about the crossing' and the honesty caption 'Our film is daylight. Fogg crossed in the middle of the night.' RIGHTS: M-223/M-224/M-225 are CC BY-SA 2.0 and M-253 CC BY-SA 4.0 — all four carry `sa: true` for the rights-a6 §2.4 strip-list. ONE FACT ADDED beyond the rundown's list for this segment: F-78 (about 90 minutes, up to ~30 sailings), as the caption under M-225, because the player's last still is a modern ferry and it should say what it is. It is a caption, not narration, and it is hedged 'about'.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-24 M-220 — 'Dover, and a night boat' through Dickens's 'two red eyes come gliding down the Admiralty Pier'; 24-45 M-221 — 'The railway ran out along the pier…' through '…carriage to deck, without touching a street'; 45-58 M-223 — 'Above the harbour, the cliffs. Chalk, about a hundred metres high…'; 58-70 M-224 — 'The French call this water la Manche — the sleeve. Verne never mentions any of it.', then holds through 8 silent seconds; 70-105 M-222 (player) / M-201 (film) — 12 SILENT SECONDS first, then from 82 s 'An hour and a quarter of open water' through '…the whole way over'; 105-130 M-225 (player) / M-202 (film) — 'Our pictures are daylight, and a lifetime late. Fogg crossed in the middle of the night.' The gloss chip is legitimate because the guide says 'la Manche' out loud at ~56 s (rule: never gloss a word the traveller does not hear). NARRATOR NOTE: Dickens is named before each of his two quotations and both are under 20 words (persona §5); the pier claim is hedged to match F-76's confidence ('would have set him down')."
+     }
+    },
+    {
+     "id": "quiz-three-months",
+     "type": "quiz",
+     "title": "Quiz — a letter from London to India",
+     "subtopic": "3 — Calais: why this route exists (Quiz C)",
+     "duration_s": 50,
+     "learning_goal": "Know why a train to the heel of Italy counted as a short cut to India.",
+     "narration": {
+      "script": "Calais, in the middle of the night. Before we board — one question about the train we are about to catch. Before any of this existed, how long did a letter from London take to reach India?",
+      "timing": "over",
+      "voice": "guide",
+      "after_script": "Three months, round the Cape of Good Hope. A question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut.",
+      "variants": {
+       "clear": "Calais, in the middle of the night. Before we get on the train, one question about it. Before any of this was built, how long did a letter from London take to reach India?"
+      },
+      "after_script_variants": {
+       "clear": "Three months, all the way round the Cape of Good Hope. So a question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut."
+      }
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-206/cape-versus-overland.svg",
+       "license": "generated",
+       "manifest_id": "G-206",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 18,
+       "end_s": 50,
+       "note": "SPEC (G-206). One frame, two routes, same style bible as G-01/G-201 (cream #efe6d3 paper, sepia coastline #5b4a3a, one warm-red accent #b03a2e, colour never the only signal, every route also distinguished by line weight/dash so colour is never the only signal). ROUTE A, thin sepia: London -> round the Cape of Good Hope -> Bombay, labelled 'over 11,000 miles · about 3 months'. ROUTE B, warm red: London -> across Europe -> Egypt -> Red Sea -> Bombay, labelled '≈ 6,000 miles · 35-45 days (Waghorn, 1830s)'. One line of small type at the foot: 'and after the Suez Canal, 1869, the ship goes straight through.' Facts: F-62, F-66. REVEAL ONLY — start_s 18 keeps it off screen until the answer is given, so the card cannot give the quiz away (R5).",
+       "fallback": "M-228"
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Parovoz_sound.ogg",
+       "license": "public-domain",
+       "manifest_id": "M-255",
+       "attribution": "Steam whistle (Wikimedia Commons, public domain)",
+       "start_s": 0,
+       "end_s": 4,
+       "note": "3.4 s whistle sting on the cut into Calais. The PD spare, chosen over the CC BY-SA 4.0 primary so this scene carries no share-alike obligation."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "prompt",
+       "text": "Before any of this existed: London to India, by post — how long?",
+       "position": "top",
+       "until_s": 50,
+       "note": "Persists until answered."
+      },
+      {
+       "at_s": 20,
+       "kind": "caption",
+       "text": "Round the Cape: over 11,000 miles. Through Egypt: about 6,000.",
+       "position": "bottom",
+       "until_s": 34
+      }
+     ],
+     "interaction": {
+      "kind": "choice",
+      "prompt": "Before any of this existed, how long did a letter from London take to reach India?",
+      "options": [
+       {
+        "text": "About three weeks",
+        "correct": false,
+        "feedback": "Not yet. Three weeks is roughly what it took after everything in this chapter had been built — the railways, the canal, the steamers."
+       },
+       {
+        "text": "About six weeks",
+        "correct": false,
+        "feedback": "That was the new way, and it was a marvel. In the 1830s Thomas Waghorn pieced together a route through Egypt — ship, river, camels and carriages across the desert, ship again — and got it down to about six weeks."
+       },
+       {
+        "text": "About three months",
+        "correct": true,
+        "feedback": "Round the Cape of Good Hope: over eleven thousand miles, and about three months each way."
+       }
+      ],
+      "pause_narration": true,
+      "timeout_s": 20
+     },
+     "transition": {
+      "in": "whistle sting, cut",
+      "out": "dissolve to the maritime station",
+      "music_cue": "M-255, 3 s, once"
+     },
+     "next": "calais-the-indian-mail",
+     "sources": [
+      "F-62",
+      "F-64",
+      "F-66"
+     ],
+     "production_notes": "SEGMENT 3, first half (50 s of the segment's 130; segment fill 70 %, segment ceiling 215 words — this scene spends 68 of them). Quiz C from the rundown, verbatim in shape. QUIZ FIRST, THEN THE ANSWER BECOMES THE SEGMENT: nothing in the two minutes before this scene uses the words 'three months' or 'the Cape' (R5), which is also why G-206 does not come up until 18 s — the card carries the durations as labels and would give the answer away if it opened the scene. Player branch: type 'quiz' with a generated asset and NO image entries -> the scene card holds from 0 s (title + learning goal, both written spoiler-free) and G-206 replaces it at 18 s. Do NOT add M-228 as an `image` entry here: the player's quiz branch shows img[0] immediately and would suppress the generated card; M-228 is recorded as G-206's `fallback` instead. TONE: soft, skippable, teaching in the feedback and not in the score (positioning — never school). Every option teaches; the 'six weeks' distractor is the interesting wrong answer and gets the longest feedback.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. Timing: question spoken 0-16 s; wait state 20 s (pause_narration, honest budget); G-206 comes up at 18 s of scene clock, i.e. immediately after the answer resolves, timed against the reveal line 'Three months, round the Cape of Good Hope.'; the 11,000/6,000 caption at 20-34 s sits under 'A question and its answer took half a year.' R3: the mileages are on the card and in the caption and are NOT read aloud. F-64 is cited for the 'about three weeks' feedback and is hedged there ('roughly'); the sheet flags F-64 as possibly describing the later Peninsular Express, so no schedule is claimed for 1872."
+     }
+    },
+    {
+     "id": "calais-the-indian-mail",
+     "type": "photo",
+     "title": "Calais — the train this whole route exists for",
+     "subtopic": "3 — Calais: the Indian Mail",
+     "duration_s": 80,
+     "learning_goal": "Know that our train is the Indian Mail, that it could only run because rails reached Brindisi in 1865 and the canal opened in 1869, and that the first P&O sailing from Brindisi was two years before Fogg; feel the border arrive as a sound.",
+     "narration": {
+      "script": "The boat comes alongside the Railway Station Quay — le quai — and hands you straight to the train. Customs officers in green and grey; hotel touts shouting English as the French hear it; hot coffee at one in the morning.\n\nAnd this is the train. The French call it la malle des Indes — the India mail. It runs from Calais to Brindisi to meet a ship, and it exists because of three dates: rails reached the heel of Italy in 1865, the Suez Canal opened in 1869, and the first steamer left Brindisi for India in October 1870. Two years before Fogg.\n\nIn the novel, when the bank is robbed, detectives are sent to six ports. Brindisi is one of them, and nobody needs it explained.\n\nOne last thing about the night line to Paris. It runs through Amiens — where Jules Verne had been living for a year, writing this book.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "The boat comes in beside the railway station quay — le quai — and hands you straight to the train. Customs officers in green and grey. Hotel touts shouting English the way the French hear it. Hot coffee at one in the morning.\n\nAnd this is the train. In French it is la malle des Indes, the India mail. It runs from Calais to Brindisi to meet a ship. It exists because of three dates: the railway reached the heel of Italy in 1865, the Suez Canal opened in 1869, and the first steamer left Brindisi for India in October 1870. Two years before Fogg.\n\nIn the novel, when the bank is robbed, the police send detectives to six ports. Brindisi is one of them, and nobody needs it explained.\n\nOne last thing about the night train to Paris. It runs through Amiens — and Jules Verne had been living in Amiens for a year, writing this book."
+      }
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Calais.Gare_maritime,_vers_1890.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-226",
+       "attribution": "Calais, Gare Maritime, c.1890 (Wikimedia Commons, public domain)",
+       "start_s": 0,
+       "end_s": 24,
+       "note": "990x723. The maritime station standing on the water with ships either side — the building the boat train ran into. Slot 1/3."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:La_Malle_des_Indes.jpg",
+       "license": "cc-by-sa-3.0",
+       "manifest_id": "M-227",
+       "attribution": "'La Malle des Indes', PLM postcard — scan: Logan / Wikimedia Commons · CC BY-SA 3.0",
+       "start_s": 24,
+       "end_s": 48,
+       "note": "800x515. THE CHAPTER'S KEYSTONE ARTEFACT. A wind-cutter locomotive at speed with its train; the printed caption is the beat, so hold it 24 s — long enough to read. Slot 2/3. The underlying postcard is period and almost certainly PD, but the Commons page licenses the uploader's scan CC BY-SA 3.0: attribute as stated and carry sa: true unless Rights concludes the PD original governs (manifest Decision 2, rundown Decision 5).",
+       "sa": true
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Overland_Indian_Mail_1844.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-228",
+       "attribution": "'Overland Indian Mail' — Illustrated London News engraving, 1844 (Wikimedia Commons, public domain)",
+       "start_s": 48,
+       "end_s": 64,
+       "note": "959x446, wide letterbox — good under a caption strip. A packet boat carrying the Indian mail, a generation before Fogg. Slot 3/3."
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-201/europe-legs_L2-L4.svg",
+       "license": "generated",
+       "manifest_id": "G-201",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 64,
+       "end_s": 80,
+       "note": "SPEC (G-201, layers L2-L4). The Dover -> Calais packet leg and the Calais -> Paris rail leg drawn onto the map, with Amiens marked as a small unnumbered dot on the line (no label beyond the name). Same style bible and the same corrected times as the L0-L1 state in scene 01 (Brindisi 4 pm SATURDAY 5 October; Turin the 4th). RUNDOWN DEVIATION, deliberate: the rundown put L2-L3 in scene 02 and L4 here. Scene 02 is a `photo` scene whose stills run to the last second, and in the player a generated card inside a photo scene DROPS every still authored at or after the card's start — so a map card in scene 02 would have deleted the cliffs and the sea. The legs are folded into one reveal here instead."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Parovoz_sound.ogg",
+       "license": "public-domain",
+       "manifest_id": "M-255",
+       "attribution": "Steam whistle (Wikimedia Commons, public domain)",
+       "start_s": 62,
+       "end_s": 66,
+       "note": "One 3 s whistle under the cut to the 1844 engraving. PD spare, not the CC BY-SA primary."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 8,
+       "kind": "caption",
+       "text": "Touts on the quay, 1863: 'Angaishe ouse!' · 'Your baggage, registair froo, Sir?'",
+       "position": "bottom",
+       "until_s": 22,
+       "note": "Dickens, F-91 — the border arrives in the touts' mouths, not in a lesson. Captioned, not spoken."
+      },
+      {
+       "at_s": 28,
+       "kind": "caption",
+       "text": "Printed on the card: 'the Calais–Brindisi express … carrying only the despatches for India, once a week, with no passengers at all'",
+       "position": "bottom",
+       "until_s": 42,
+       "note": "A translation of M-227's own printed caption (F-108). It is quoted as the card's words, never asserted."
+      },
+      {
+       "at_s": 43,
+       "kind": "pin",
+       "text": "Go deeper: the card says 'no passengers' — but can anyone date the card?",
+       "position": "tr",
+       "until_s": 48,
+       "note": "F-108 is high that the card SAYS this and low/unverified that it describes October 1872 ('Machine Coupe-Vent' locomotives suggest the 1890s). Founder's standing instruction: this may appear only as a go-deeper pin phrased as an open question, and never as narration. If an 1871-72 Indian Mail timetable is ever found, it promotes to a spine beat."
+      },
+      {
+       "at_s": 50,
+       "kind": "caption",
+       "text": "The idea, thirty years earlier — Illustrated London News, 1844",
+       "position": "bottom",
+       "until_s": 62
+      },
+      {
+       "at_s": 66,
+       "kind": "caption",
+       "text": "Calais → Amiens → Paris, through the night",
+       "position": "bottom",
+       "until_s": 78
+      },
+      {
+       "at_s": 14,
+       "kind": "gloss",
+       "text": "le quai — the quay, and also a railway platform",
+       "position": "bl",
+       "until_s": 26
+      },
+      {
+       "at_s": 32,
+       "kind": "gloss",
+       "text": "la malle des Indes — the Indian Mail: Britain's post to India",
+       "position": "bl",
+       "until_s": 46
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "dissolve from the quiz card",
+      "out": "cut to Paris, morning",
+      "music_cue": "M-255 whistle at 62 s; otherwise no music"
+     },
+     "next": "paris-eighty-minutes",
+     "sources": [
+      "F-60",
+      "F-63",
+      "F-65",
+      "F-66",
+      "F-79",
+      "F-80",
+      "F-91",
+      "F-94",
+      "F-108"
+     ],
+     "production_notes": "SEGMENT 3, second half (80 s; the segment's ceiling is 215 words and this scene spends 147 of the 68 the quiz did not). NO LISTS ALOUD (style guide, persona §2.6): Verne's six ports are counted, not recited — 'detectives are sent to six ports. Brindisi is one of them.' The three dates ARE spoken because three is the limit of a breath and they are the argument of the segment. F-108 IS NOT NARRATED anywhere: the postcard's printed claim is a caption (a quotation of the artefact) plus one go-deeper pin phrased as an open question, exactly as instructed; the guide never says the train carried no passengers. AMIENS: 'where Jules Verne had been living for a year, writing this book' — never 'the house he wrote it in' (F-80's own note: the museum house is the one he took in 1882). GLOSS CHIPS: only two, and both gloss words the guide actually speaks — 'le quai' at ~6 s and 'la malle des Indes' at ~26 s. The rundown also asked for 'la douane' and 'le buffet'; both are CUT, because the guide says 'customs officers' and 'hot coffee' in English and a chip may never gloss a word the traveller does not hear.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-24 M-226 — 'The boat comes alongside the Railway Station Quay — le quai —' through '…hot coffee at one in the morning.'; 24-48 M-227 — 'And this is the train. The French call it la malle des Indes…' through '…Two years before Fogg.' (the postcard is held 24 s so its printed caption can be read, per the rundown's ≥ 12 s); 48-64 M-228 — 'In the novel, when the bank is robbed, detectives are sent to six ports…'; 64-80 G-201 L2-L4 — 'One last thing about the night line to Paris. It runs through Amiens…' as the Calais-Paris leg draws. Six timed overlays in 80 s is the schema ceiling exactly (80//15 + 1 = 6); the two gloss chips are exempt. RIGHTS: M-227 carries sa: true pending rundown Decision 5."
+     }
+    },
+    {
+     "id": "paris-eighty-minutes",
+     "type": "photo",
+     "title": "Paris — eighty minutes, through the window of a cab",
+     "subtopic": "4 — Paris: eighty minutes, in the rain",
+     "duration_s": 85,
+     "learning_goal": "Know that Passepartout is a Parisian who is driven across his own city between two stations without stopping, and that neither station looked the way we picture it; feel the comedy before the sadness.",
+     "narration": {
+      "script": "Twenty past seven on Thursday morning, and the train comes into the Gare du Nord — the North station. Passepartout is a Parisian. He left France five years ago, and last night, on the boat train, he was hoping for exactly this: it would do his eyes good, he thinks, to see Paris once more.\n\nHe gets eighty minutes. The next train leaves from the Gare de Lyon, four kilometres away across the city, and the two of them cross it by cab, in driving rain.\n\nTwo dates while we cross. The station he arrives at is eight years old; this front was finished in 1864. The station he leaves from had burned sixteen months earlier, in the Commune — and the Gare de Lyon everybody photographs, clock tower and all, is 1900. Nobody in 1872 ever saw it.\n\nEighty minutes. He does not get out.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "Twenty past seven on Thursday morning. The train comes into the Gare du Nord — the North station. Passepartout is a Parisian. He left France five years ago, and last night on the train he was hoping for exactly this. It would do his eyes good, he thinks, to see Paris once more.\n\nHe gets eighty minutes. The next train leaves from the Gare de Lyon, four kilometres away on the other side of the city. The two of them cross Paris in a horse-cab, in heavy rain.\n\nTwo dates while we cross. The station he arrives at is eight years old: this front was finished in 1864. The station he leaves from had burned down sixteen months earlier, during the Commune. And the Gare de Lyon that everybody photographs, with the clock tower, is from 1900. Nobody in 1872 ever saw it.\n\nEighty minutes. He does not get out."
+      }
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:La_gare_du_Nord,_place_de_Roubaix,_10%C3%A8me_arrondissement,_Paris._D.8021(273)(2).jpg",
+       "license": "cc0",
+       "manifest_id": "M-232",
+       "attribution": "Léon Leymonnerye, 'Gare du Nord, Place Roubaix', 1875 — Paris Musées (CC0)",
+       "start_s": 0,
+       "end_s": 42,
+       "note": "3000x2468. A precise pencil-and-wash elevation of Hittorff's front with the artist's handwritten note beneath. CC0, so no obligation. 1875, three years after Fogg — near enough that the façade is the one he arrived under. Slot 1/2."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Paris,_la_gare_du_Nord.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-231",
+       "attribution": "Gare du Nord, Paris, second half of the 19th century — publisher P. Hélaine, 206 rue de Rivoli (Wikimedia Commons, public domain)",
+       "start_s": 42,
+       "end_s": 85,
+       "note": "CAREFUL: the 8015x4008 file is a STEREO CARD, two ~3,400 px half-frames on an orange mount with the publisher's imprint down both sides. Crop ONE half (≈3400x3700) before use, or mount both halves as a wiggle-stereo plate, which is a period way to show a period station. Do not show the mount. Slot 2/2."
+      },
+      {
+       "kind": "footage",
+       "ref": "https://upload.wikimedia.org/wikipedia/commons/5/5a/A_Trip_Through_Paris%2C_France%2C_Late_1890s.webm",
+       "license": "public-domain",
+       "manifest_id": "M-203",
+       "attribution": "Lumière company films of Paris, remastered by Guy Jones (Wikimedia Commons, PD-France + PD-US-expired)",
+       "start_s": 50,
+       "end_s": 68,
+       "note": "Source in/out 2:03-2:21 — the horse cabs crossing a boulevard at 2:10. This is literally 'the Paris Passepartout is driven across and does not see'. LINEAR ONLY (the player has no renderer for kind 'footage'). CAPTION THE DECADE, never '1872': the shot is 1890s. Trim the 0:00-0:07 modern title card. No audio stream; the uploader's added music was removed on upload to Commons.",
+       "audio": "mute",
+       "use": "linear"
+      },
+      {
+       "kind": "footage",
+       "ref": "https://upload.wikimedia.org/wikipedia/commons/5/5a/A_Trip_Through_Paris%2C_France%2C_Late_1890s.webm",
+       "license": "public-domain",
+       "manifest_id": "M-203",
+       "attribution": "Lumière company films of Paris, remastered by Guy Jones (Wikimedia Commons, PD-France + PD-US-expired)",
+       "start_s": 68,
+       "end_s": 85,
+       "note": "Source in/out 2:33-2:50 — Place de la Concorde, 1897. LINEAR ONLY. Caption 'Paris, 1897' — never 1872.",
+       "audio": "mute",
+       "use": "linear"
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 6,
+       "kind": "caption",
+       "text": "Gare du Nord — Hittorff's front, finished 1864",
+       "position": "bottom",
+       "until_s": 20
+      },
+      {
+       "at_s": 24,
+       "kind": "pin",
+       "text": "Go deeper: Towle's English says 'a car'. Verne wrote fiacre — a horse-cab.",
+       "position": "tr",
+       "until_s": 38,
+       "note": "F-54. The spine says 'cab' plainly; this correction is optional layer, per the newcomer rule, and it explains the French word itself so no gloss chip is needed."
+      },
+      {
+       "at_s": 46,
+       "kind": "caption",
+       "text": "≈ 4 km across Paris · 7:20 am → 8:40 am · driving rain",
+       "position": "bottom",
+       "until_s": 60
+      },
+      {
+       "at_s": 64,
+       "kind": "caption",
+       "text": "Gare de Lyon: burnt in the Commune, 1871. Today's station is 1900.",
+       "position": "bottom",
+       "until_s": 78
+      },
+      {
+       "at_s": 10,
+       "kind": "gloss",
+       "text": "la gare — the station; Gare du Nord is the North station",
+       "position": "bl",
+       "until_s": 24
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "dissolve to the card",
+      "music_cue": "none — there is no music anywhere in segment 4"
+     },
+     "next": "what-he-did-not-see",
+     "sources": [
+      "F-50",
+      "F-51",
+      "F-53",
+      "F-54",
+      "F-56",
+      "F-81",
+      "F-82",
+      "F-94"
+     ],
+     "production_notes": "SEGMENT 4, first half (85 s; segment fill 65 %, segment ceiling 325 words — video 141 here, card 184 next). TYPE CHANGED video -> photo, and this is load-bearing. The rundown calls scene 05 a `video` scene, but Day 2 has NO YouTube anywhere (the Content Preparer landed every beat at rungs 1-3), and in the player a `video` scene with no `youtube` entry falls through to a text scene card with a small inset — the same failure Day 1 hit from the other side ('Inside the Reform' over outdoor footage). As a `photo` scene the two stills mount full-frame on the scene clock and the Lumière shots stay in the file as `use: linear` for the rendered cut. PLAIN TELLING ONLY (newcomer rule): the guide says 'cab', and the fiacre mistranslation is a go-deeper pin, not spine. NO MUSIC in this segment, before or under the taps. RUNDOWN DEVIATION: G-201's L5 leg is not revealed here — see scene 09, where it sits between the tunnel section and the enabler map (a generated card inside this photo scene would drop the still authored after it).",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-42 M-232 (Hittorff's front, drawn 1875) — 'Twenty past seven on Thursday morning, and the train comes into the Gare du Nord' through '…to see Paris once more.'; 42-85 M-231 (the stereo card, one half cropped) — 'He gets eighty minutes…' through the two dates and the closing 'Eighty minutes. He does not get out.' In the film the last 35 s are M-203 instead (horse cabs at 2:10, then Concorde at 2:33), captioned by decade. The gloss chip is legitimate: the guide says 'Gare du Nord' aloud at ~5 s and the chip explains 'la gare'. No chip for 'fiacre' — the guide never says it; the go-deeper pin carries and explains the word instead. HEDGES KEPT IN BOTH TRACKS: 'he thinks' on Passepartout's hope (F-56 is his own consoling thought, not a fact about the city), and the Gare de Lyon date is stated as what nobody in 1872 saw rather than as a claim about the 1855 hall."
+     }
+    },
+    {
+     "id": "what-he-did-not-see",
+     "type": "card",
+     "title": "Eighty minutes of Paris — the things he asked for",
+     "subtopic": "4 — Paris: what he did not see",
+     "duration_s": 125,
+     "learning_goal": "Know the two places Passepartout names and the one Verne does not; feel that the traveller is the one who gets to stop.",
+     "narration": {
+      "script": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord, twenty to nine at the Gare de Lyon, and four kilometres of Paris in between, in the rain.\n\nIn the novel, Passepartout names two things he wishes he could see. Neither of them is on the road between the two stations. They are on the card, in grey. There is a third name in grey as well, and that one is ours. Tap any of them.",
+      "timing": "over",
+      "voice": "guide",
+      "after_script": "He asked for a cemetery and a circus. We can go to one of them.",
+      "variants": {
+       "clear": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord. Twenty to nine at the Gare de Lyon. Four kilometres of Paris in between, in the rain.\n\nIn the book, Passepartout names two places he wishes he could see. Neither one is on the road between the two stations. They are on the card, in grey. There is a third name in grey too, and that one is ours. Tap any of them."
+      },
+      "after_script_variants": {
+       "clear": "He asked for a cemetery and a circus. We can still go to one of them."
+      }
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-205/eighty-minutes-of-paris.svg",
+       "license": "generated",
+       "manifest_id": "G-205",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 0,
+       "end_s": 125,
+       "note": "SPEC (G-205). Card title 'Eighty minutes of Paris'. A clock face with two hands set at 7:20 and 8:40. Under it, three lines in the Day-1 card style: '7:20 am — Gare du Nord' / '≈ 4 km across the city, by cab, in driving rain' / '8:40 am — Gare de Lyon'. Then THREE NAMES IN GHOSTED TYPE, tappable, in any order: 'Père-Lachaise' with Verne's line beneath it — \"How I regret not having seen once more Père la Chaise…\" (Towle's spelling INSIDE the quotation only; house spelling Père-Lachaise everywhere else); 'the circus in the Champs-Élysées' with \"…and the circus in the Champs Elysées!\"; and third, unlabelled until tapped, 'the Tuileries', with the caption 'he does not mention this one'. Footer line: 'Neither of the two he named is on the road between the stations.' THE CARD MUST BE FULLY LEGIBLE WITH NO PHOTOGRAPHS AT ALL — the four reveal plates (M-256 Tuileries in ruins, M-257 Père-Lachaise / Mur des Fédérés, M-258 Cirque des Champs-Élysées engraving, M-259 rue du Cirque today) are REQUESTED, not landed, and have no refs in the manifest, so they are deliberately NOT media entries here. When the Content Preparer lands them, add each as an image with start_s at its tap and a note, and the card loses nothing if they never arrive. Facts: F-53, F-55, F-83, F-84, F-85."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "prompt",
+       "text": "Tap a name on the card",
+       "position": "top",
+       "until_s": 14
+      },
+      {
+       "at_s": 112,
+       "kind": "caption",
+       "text": "He asked for a cemetery and a circus. We can go to one of them.",
+       "position": "bottom",
+       "until_s": 125,
+       "note": "The closing line, ALSO carried as a caption. Engine reason: the player speaks `after_script` only when a graded interaction resolves, and these are info taps with no right answer (they must not feel like a test — positioning: never school). The line therefore lives in after_script for the record and the linear cut, and as this caption so the traveller meets it in the right place. Engine request: speak after_script for ungraded tap-to-find too, on resolve or on timeout."
+      }
+     ],
+     "interaction": {
+      "kind": "tap-to-find",
+      "prompt": "Tap a name. Any order — there is no right answer here.",
+      "options": [
+       {
+        "text": "Père-Lachaise",
+        "feedback": "The cemetery. He wants to see it once more — he is a Parisian. And seventeen months before this morning, against its south-east wall, about a hundred and forty-seven Communards were shot and buried there in a common grave."
+       },
+       {
+        "text": "The circus in the Champs-Élysées",
+        "feedback": "A real building: sixteen sides, forty-two metres across, on the Champs-Élysées from 1841. The Empress's circus until the Empire fell in 1870; pulled down about 1900. All that is left is the street name — and he was a circus rider himself."
+       },
+       {
+        "text": "The Tuileries",
+        "feedback": "The one he does not name. The palace in the middle of Paris burned in May 1871, and was left standing as an empty shell behind a fence for another eleven years. A Frenchman wrote this book that year. He does not mention it."
+       }
+      ],
+      "pause_narration": true,
+      "timeout_s": 12
+     },
+     "transition": {
+      "in": "dissolve",
+      "out": "cut to the night train, climbing",
+      "music_cue": "none — no music at all under the taps, and none changes when the wall is named"
+     },
+     "next": "quiz-over-the-alps",
+     "sources": [
+      "F-53",
+      "F-55",
+      "F-83",
+      "F-84",
+      "F-85",
+      "F-04"
+     ],
+     "production_notes": "SEGMENT 4, second half (125 s; the chapter's one tap interaction). Three taps, any order, `pause_narration` with an honest 12 s per tap; the card auto-completes when the scene clock runs out. NO CORRECT ANSWERS: these are info taps. A right answer here would turn a man's homesickness into a test, which the tone spec forbids. NO MORALISING AND NO MUSIC CHANGE on tap 1: the wall and the hundred and forty-seven are said once, quietly, and the feedback stops. Tap 2 pays off Day-1 F-04 (Passepartout was a circus rider) in six words at the end, so the joke is his, not ours. Tap 3 is the beat the chapter is really about and its last two sentences are the guide's whole comment. WORD BUDGET: script 78 + after_script 15 + three feedback blocks 111 = 204 spoken words in the scene; with scene 05's 141 the segment spends 345 against a 325 ceiling — 6 % over, and I am declaring it rather than cutting the wall or the circus rider. If the founder wants it inside the line, cut the last sentence of tap 2's feedback ('and he was a circus rider himself', 7 words) and the second sentence of tap 3's ('A Frenchman wrote this book that year.', 7 words) — but tap 3's is the chapter's thesis and I would cut scene 05's 'Two dates while we cross' instead. FOUR PLATES ARE MISSING BY DESIGN, not by oversight: see the G-205 spec.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. One card holds the whole 125 s, so there are no image slots to time; the beats are the taps. Timed against sentences: the prompt overlay 0-14 s sits under 'Tap any of them.'; the closing caption 112-125 s carries the same words as `after_script`. The card's own ghosted quotations use Towle's 'Père la Chaise' spelling INSIDE the quotation only and the house spelling everywhere else (fact sheet's house-spelling rule). F-04 in `sources` is a DAY-1 fact id (Passepartout's circus past). OPEN: whether the founder wants the 6 % segment overspend (see production_notes) or the two cuts named there."
+     }
+    },
+    {
+     "id": "quiz-over-the-alps",
+     "type": "quiz",
+     "title": "Quiz — Thursday night, and the train is climbing",
+     "subtopic": "5 — The Alps (Quiz D)",
+     "duration_s": 45,
+     "learning_goal": "Know that until 1871 the mail for India crossed the Alps on the surface, and feel how new the way through is.",
+     "narration": {
+      "script": "It is Thursday night, and the train is climbing. Two years before Fogg, how did this train get to the other side of the Alps?",
+      "timing": "over",
+      "voice": "guide",
+      "after_script": "Over the top: seventy-seven kilometres of railway laid beside the mountain road, and about five hours. In 1867 you crossed these mountains in the open air. In 1872 you slept through them.",
+      "variants": {
+       "clear": "It is Thursday night, and the train is climbing. Two years before Fogg, how did this train get to the other side of the Alps?"
+      },
+      "after_script_variants": {
+       "clear": "Over the top. Seventy-seven kilometres of railway, laid beside the mountain road, and about five hours to cross. In 1867 you crossed these mountains in the open air. In 1872 you slept through them."
+      }
+     },
+     "media": [],
+     "overlays": [
+      {
+       "at_s": 0,
+       "kind": "prompt",
+       "text": "Two years before Fogg: how did this train cross the Alps?",
+       "position": "top",
+       "until_s": 45,
+       "note": "Persists until answered."
+      },
+      {
+       "at_s": 24,
+       "kind": "caption",
+       "text": "Mont Cenis Pass Railway, 1868–71 · 77 km · summit 2,283 m · 1 in 11",
+       "position": "bottom",
+       "until_s": 40,
+       "note": "R3: the numbers are on screen, so the guide reads only 'seventy-seven kilometres' and 'about five hours'."
+      }
+     ],
+     "interaction": {
+      "kind": "choice",
+      "prompt": "Two years before Fogg, how did this train get to the other side of the Alps?",
+      "options": [
+       {
+        "text": "Everyone changed to a coach in summer, and a sledge in winter",
+        "correct": false,
+        "feedback": "True until 1868 — and it is why crossing the Alps was a story people told for the rest of their lives."
+       },
+       {
+        "text": "A railway laid along the mountain road over the pass, gripping a third rail in the middle",
+        "correct": true,
+        "feedback": "Seventy-seven kilometres over the top, a summit at 2,283 metres, gradients of one in eleven, about five hours — and the mail for India went over it."
+       },
+       {
+        "text": "The carriages were carried through a tunnel on flat wagons",
+        "correct": false,
+        "feedback": "There was no tunnel yet. That is what the next few minutes are about."
+       }
+      ],
+      "pause_narration": true,
+      "timeout_s": 20
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the Fell train, then the works",
+      "music_cue": "none; no sting on the opening date"
+     },
+     "next": "the-hole-through-the-mountain",
+     "sources": [
+      "F-69",
+      "F-73"
+     ],
+     "production_notes": "SEGMENT 5, first third (45 s of 215; segment fill 75 % — the chapter maximum — and a 385-word ceiling, of which this scene spends 57). QUIZ FIRST so the Fell railway is a discovery rather than a lecture. NO MEDIA ENTRIES, deliberately: the player's quiz branch shows media[0] of kind image the instant the scene opens, and the only honest picture for this question — M-240, the Fell train — is the ANSWER. The rundown asks for M-240 'in the feedback', which the player cannot do (feedback is text), so M-240 opens the NEXT scene instead, at 0-10 s, under a caption naming the Fell railway: the answer image lands about two seconds after the reveal is spoken, which is as close to the rundown's intent as the engine allows. With no media the player draws its own scene card from `title` + `learning_goal` + overlays, so all three are written spoiler-free (R5: no wording from the correct option appears in the two minutes before it). The 'one in eleven' gradient and the summit height are on the caption and are not read aloud (R3).",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. No stills, so no slot timings. Beat timing: question spoken 0-11 s; 20 s wait state; reveal from ~13 s of scene clock with the caption at 24-40 s under 'seventy-seven kilometres of railway laid beside the mountain road'. The guide tail — 'In 1867 you crossed these mountains in the open air. In 1872 you slept through them.' — is the rundown's own line and is the hinge of the segment. F-73 supports every number in the correct option's feedback."
+     }
+    },
+    {
+     "id": "the-hole-through-the-mountain",
+     "type": "photo",
+     "title": "The hole through the mountain",
+     "subtopic": "5 — The Alps: the tunnel",
+     "duration_s": 85,
+     "learning_goal": "Know that the Fréjus tunnel was dug from both ends between 1857 and 1870, opened thirteen months before Fogg's train, and was the longest in the world until 1882 — and that a machine is why it took thirteen years, not seventy-one.",
+     "narration": {
+      "script": "That was the way over. This is the way through.\n\nThey began in 1857, from both ends, with nothing in the middle: no shaft, no daylight, two teams walking towards each other under the mountain. By hand it would reportedly have taken about seventy-one years.\n\nSo Germain Sommeiller's crews used a machine he had to invent first — a compressed-air drill, ten of them mounted in one frame. And the air that drove the drills, coming out of them, was the air the men breathed.\n\nThe two headings met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871: thirteen months before Fogg's train. Nobody had ever made a hole in the world this long, and nobody made a longer one until 1882.\n\nAnd here it is now. The Italians call it simply il traforo — the tunnel. Same arch, same hole, still the way through.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "That was the way over. This is the way through.\n\nThey started in 1857, from both ends, with nothing in the middle: no shaft, no daylight, two teams of men walking towards each other under the mountain. By hand, people said, it would have taken about seventy-one years.\n\nSo Germain Sommeiller's men used a machine that he had to invent first — a compressed-air drill, ten of them held in one frame. And the air that drove the drills came out of them and became the air the men breathed.\n\nThe two ends met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871 — thirteen months before Fogg's train. Nobody had ever made a hole this long, and nobody made a longer one until 1882.\n\nAnd here it is today. Italians call it simply il traforo — the tunnel. Same arch, same hole, still the way through."
+      }
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Chemin_de_fer_du_Mont-Cenis.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-240",
+       "attribution": "'Chemin de fer du Mont-Cenis', 1868 (Wikimedia Commons, public domain)",
+       "start_s": 0,
+       "end_s": 10,
+       "note": "698x474 — the Fell railway over the pass, the stopgap the tunnel replaced. Small: the player mounts it as a paper plate, no punch-in. THIS IS QUIZ D'S ANSWER IMAGE, moved here from the quiz's feedback because the player cannot show a picture in feedback text; it lands about two seconds after the reveal is spoken. Slot 1/6."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:L%27Illustration_1862_gravure_Percement_du_Mont_Cenis_04,_Entr%C3%A9e_du_tunnel.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-233",
+       "attribution": "L'Illustration, 1862 — 'Percement du Mont Cenis: Entrée du tunnel' (Wikimedia Commons, public domain)",
+       "start_s": 10,
+       "end_s": 28,
+       "note": "3488x4891 portrait. The works at the portal: the arch, spoil wagons on rails, sheds, the mountain rising behind. Ten years into a thirteen-year dig. Slot 2/6."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:L%27Illustration_1862_gravure_Percement_du_Mont_Cenis_03,_Machine_%C3%A0_forer.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-234",
+       "attribution": "L'Illustration, 1862 — 'Machine à forer', the pneumatic drill (Wikimedia Commons, public domain)",
+       "start_s": 28,
+       "end_s": 44,
+       "note": "4257x3210. One man holding a compressed-air drill in its frame against the rock face. The picture for 'the machine that made it possible'. Slot 3/6."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:L%27Illustration_1862_gravure_Percement_du_Mont_Cenis_02,_ouvriers_foreurs.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-235",
+       "attribution": "L'Illustration, 1862 — 'Ouvriers foreurs' (Wikimedia Commons, public domain)",
+       "start_s": 44,
+       "end_s": 58,
+       "note": "7072x2767 — a 2.5:1 strip of the drilling gang, made for a slow lateral pan under the narration. Content not individually viewed at full size (thumbnail only); title and set unambiguous. Slot 4/6."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Eisenbahn-tunnel-mont-cenis-1871.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-237",
+       "attribution": "Illustrirte Zeitung, 1871 — the opening of the Mont Cenis railway tunnel (Wikimedia Commons, public domain)",
+       "start_s": 58,
+       "end_s": 72,
+       "note": "929x680 — a crowd and a train at the portal in a snowy valley: the 17 September 1871 opening. THE KEYSTONE PLATE. Small, so the player mounts it as paper. Slot 5/6."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Bardonecchia_(TO)_-_portale_sud_del_traforo_ferroviario_del_Frejus.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-239",
+       "attribution": "Fréjus rail tunnel, south (Italian) portal at Bardonecchia, today — K. Weise (Wikimedia Commons, public domain)",
+       "start_s": 72,
+       "end_s": 85,
+       "note": "3488x2616. The stone arch with its two turrets, catenary, the running rails entering the dark. THEN/NOW: cross-fade from M-237 at 72 s rather than cutting — the two frames are the same hole 150 years apart, and the dissolve is the whole point. (This becomes a `timeline` scene the day the Engine ships that type; no script changes needed.) Slot 6/6."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 2,
+       "kind": "caption",
+       "text": "Over the pass: the Fell railway, 1868–1871",
+       "position": "bottom",
+       "until_s": 12
+      },
+      {
+       "at_s": 14,
+       "kind": "caption",
+       "text": "Fréjus (Mont Cenis) tunnel, begun 1857 — Modane to Bardonecchia",
+       "position": "bottom",
+       "until_s": 26
+      },
+      {
+       "at_s": 46,
+       "kind": "caption",
+       "text": "Ten drills in one frame, air at 7 atmospheres, up to 80 holes a blast",
+       "position": "bottom",
+       "until_s": 58
+      },
+      {
+       "at_s": 60,
+       "kind": "caption",
+       "text": "17 September 1871 — the opening",
+       "position": "bottom",
+       "until_s": 70
+      },
+      {
+       "at_s": 74,
+       "kind": "caption",
+       "text": "Bardonecchia, the south portal today",
+       "position": "bottom",
+       "until_s": 85
+      },
+      {
+       "at_s": 66,
+       "kind": "gloss",
+       "text": "il traforo — Italian for the tunnel",
+       "position": "bl",
+       "until_s": 80
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut from the quiz card",
+      "out": "dissolve to the section diagram",
+      "music_cue": "none"
+     },
+     "next": "the-fourth-date",
+     "sources": [
+      "F-69",
+      "F-70",
+      "F-71",
+      "F-73"
+     ],
+     "production_notes": "SEGMENT 5, second third (85 s; 154 words of the segment's 385). This is the chapter's one genuinely information-dense beat and it sits at the density ceiling, so every number that a caption or the next scene's diagram carries is NOT read aloud (R3): the length, the mean altitude, the air pressure and the hole count are on captions; '13 years, not 71' is a callout on G-202 in the next scene, so the guide says the seventy-one only once, here, hedged as 'reportedly' exactly as F-71 hedges it. NO SUPERLATIVE PILE-UP on F-70: 'nobody had ever made a hole in the world this long, and nobody made a longer one until 1882' — plainly, once. THE GLOSS CHIP IS EARNED: the guide says 'il traforo' out loud at ~66 s. M-205 (the CC BY 3.0 drone footage of the Alps) is deliberately NOT in this scene: it is winter footage and Fogg crosses in early October, and the player cannot show `footage` anyway; if the linear cut wants the mass of the mountain, use 0:15-0:30 or 4:15-4:30 with the burn-in 'Electric Life · CC BY 3.0 · trimmed' and never under a line about the season. M-206 (the Fréjus ROAD tunnel drive, 1980) is rejected — same mountain, wrong hole (rundown Decision 6).",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-10 M-240 — 'That was the way over.' (and it is the picture the quiz's answer earned); 10-28 M-233 — 'This is the way through.' and 'They began in 1857, from both ends, with nothing in the middle…'; 28-44 M-234 — 'So Germain Sommeiller's crews used a machine he had to invent first…'; 44-58 M-235 — '…the air that drove the drills, coming out of them, was the air the men breathed.'; 58-72 M-237 — 'The two headings met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871…'; 72-85 M-239, cross-faded from M-237 — 'And here it is now… Same arch, same hole, still the way through.' Five timed captions in 85 s against a ceiling of six; the gloss chip is exempt. FACT-CHECKER: 'about seventy-one years' carries F-71's own 'reportedly' in BOTH tracks (the clear track says 'people said'), and the qualifier travels with the claim."
+     }
+    },
+    {
+     "id": "the-fourth-date",
+     "type": "map",
+     "title": "A fourth date — and the only one he goes through",
+     "subtopic": "5 — The Alps: the map beat",
+     "duration_s": 85,
+     "learning_goal": "See the tunnel in section and the four dates that made the eighty days thinkable; know that Fréjus is the only one Fogg physically travels through — and that the same tunnel reopened in March 2025.",
+     "narration": {
+      "script": "Here is the mountain, cut through. The thin line over the top is the way they went the year before. The straight one under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railroad, joined in 1869. The last rail link across India, 1870. Three doors that opened within ten months, and made eighty days thinkable.\n\nHere is a fourth. The seventeenth of September, 1871. And it is the only one of the four that Fogg physically goes through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months; it reopened on the thirty-first of March, 2025.",
+      "timing": "over",
+      "voice": "guide",
+      "starts_at_s": 8,
+      "variants": {
+       "clear": "Here is the mountain, cut in half. The thin line over the top is the way they went the year before. The straight line under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railway, joined coast to coast in 1869. The last railway link across India, 1870. Three doors, all opened within ten months, and they made eighty days possible.\n\nHere is a fourth. The seventeenth of September, 1871. And it is the only one of the four that Fogg actually travels through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months. It reopened on the thirty-first of March, 2025."
+      }
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-202/frejus-section.svg",
+       "license": "generated",
+       "manifest_id": "G-202",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 0,
+       "end_s": 44,
+       "note": "SPEC (G-202) — the chapter's one must-have generated asset, and it replaces M-206 (which is the wrong tunnel). A SECTION THROUGH THE MOUNTAIN: Modane at left (1,057 m), Bardonecchia at right (1,263 m), the bore at a mean 1,123 m, the summit ridge above it, and the pass road with the Fell railway drawn OVER THE TOP in thin ink as the thing it replaced. RUNDOWN CORRECTION APPLIED: the length must be shown TWICE, not once — 'about 12.8 km at opening (1871)' and '13.7 km today' (F-69). The manifest's spec said only 13.7 km, which would date the 1871 tunnel with a modern figure. Callouts, ≤ 8 words each: 'started 1857' · 'two headings, no shaft' · 'compressed-air drills' · 'met 26 Dec 1870' · 'open 17 Sept 1871' · '13 years, not 71'. The callouts carry these numbers so the guide never says them twice. FIRST 8 SECONDS IN SILENCE (narration.starts_at_s = 8): the traveller reads the drawing before anyone talks over it."
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-201/europe-legs_L5-L8.svg",
+       "license": "generated",
+       "manifest_id": "G-201",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 44,
+       "end_s": 56,
+       "note": "SPEC (G-201, layers L5-L8). Paris -> Mâcon -> Culoz -> Chambéry -> Modane -> the tunnel -> Bardonecchia -> Turin drawn onto the Europe map, with the tunnel callout (L8) lit. Present the route as 'the line ran through', never 'his train stopped at' (F-74 is med; no October 1872 timetable exists). Same corrected times as scene 01. RUNDOWN DEVIATION: the rundown assigned L5 to scene 05 and L7-L8 here; L5 could not live in scene 05 without deleting that scene's second still (see scene 05's notes), so the Alpine legs are revealed together here, between the section and the enabler map."
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-203/enablers_four-dates.svg",
+       "license": "generated",
+       "manifest_id": "G-203",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 56,
+       "end_s": 85,
+       "note": "SPEC (G-203). Extends Day 1's enabler layer (G-01 L10). Day 1 lit THREE dated pins — Suez 17 Nov 1869, Promontory 10 May 1869, Jabalpur 7 Mar 1870 (Day-1 F-33). A FOURTH pin lands here: 'Fréjus / Mont Cenis tunnel · 17 Sept 1871' at 45.14 N, 6.68 E, in the same style. Deliver as a new layer in the existing master so later chapters inherit it. Rundown Decision 3, taken as recommended: the narration says 'a fourth', and the payoff is that Fréjus is the only one of the four Fogg physically goes through."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 30,
+       "kind": "caption",
+       "text": "About 12.8 km when it opened · 13.7 km today",
+       "position": "bottom",
+       "until_s": 42,
+       "note": "The rundown's correction, carried in the scene as well as on the diagram so the pair of figures survives even if G-202 is re-cut."
+      },
+      {
+       "at_s": 58,
+       "kind": "caption",
+       "text": "Suez 1869 · Promontory 1869 · Jabalpur 1870",
+       "position": "bottom",
+       "until_s": 70
+      },
+      {
+       "at_s": 66,
+       "kind": "pin",
+       "text": "Fréjus / Mont Cenis · 17 Sept 1871",
+       "position": "bl",
+       "until_s": 80,
+       "geo": "45.14,6.68"
+      },
+      {
+       "at_s": 74,
+       "kind": "caption",
+       "text": "Closed by a rockfall for 19 months; reopened 31 March 2025",
+       "position": "bottom",
+       "until_s": 85,
+       "note": "Content Preparer to re-check the service is running at publication (F-75's own instruction)."
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "dissolve from the portal",
+      "out": "cut to black, then the portrait",
+      "music_cue": "none — and nothing at all into scene 10"
+     },
+     "next": "sommeiller",
+     "sources": [
+      "F-48",
+      "F-69",
+      "F-70",
+      "F-71",
+      "F-73",
+      "F-74",
+      "F-75",
+      "F-33"
+     ],
+     "production_notes": "SEGMENT 5, last third (85 s; 164 words, and the segment totals 375 against its 385 ceiling). Narration starts at 8 s: G-202 holds in silence first, and the traveller reads the drawing. The guide then says NONE of the diagram's callout numbers a second time (R3) — the words over the section are about the two lines, not the dates. THE FOURTH PIN, not the third: the brief calls Fréjus the third enabler, but Day 1 actually lit three (F-33), so the map shows four and the narration says 'a fourth' — rundown Decision 3, taken as recommended, with the payoff moved to Fréjus being the only one Fogg travels through and the only one named in his own printed route (F-48). The line that closes the act is 'He goes through it in the dark, asleep, and the book never mentions it.' The present-day tail is the chapter's most useful fact and is deliberately last, and actionable. F-33 in `sources` is a DAY-1 fact id.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-8 G-202 in SILENCE; 8-44 G-202 — 'Here is the mountain, cut through…' through '…dark the whole way', with the 12.8/13.7 km caption at 30-42 s; 44-56 G-201 L5-L8 — 'On day one we lit three dates…' as the Alpine legs draw; 56-85 G-203 — 'Here is a fourth. The seventeenth of September, 1871.' with the Suez/Promontory/Jabalpur caption at 58 s and the Fréjus pin landing at 66 s, then the 2025 tail from ~74 s. Four timed overlays against a ceiling of six. The route through Chambéry and Modane is drawn as a LINE, never as a list of his stops (F-74 is med and the sheet's gap list forbids naming his stations)."
+     }
+    },
+    {
+     "id": "sommeiller",
+     "type": "photo",
+     "title": "Germain Sommeiller",
+     "subtopic": "6 — Sommeiller",
+     "duration_s": 55,
+     "learning_goal": "Know that the man who invented the drill that made the tunnel possible died two months before it opened. Nothing else.",
+     "narration": {
+      "script": "Germain Sommeiller. A Savoyard engineer, who chose Italy when Savoy went to France. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place where he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia.",
+      "timing": "over",
+      "voice": "guide",
+      "starts_at_s": 4,
+      "variants": {
+       "clear": "Germain Sommeiller. An engineer from Savoy, who chose to become Italian when Savoy became French. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place where he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia."
+      }
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:L%27Illustration_1862_gravure_Percement_du_Mont_Cenis_03,_Machine_%C3%A0_forer.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-234",
+       "attribution": "L'Illustration, 1862 — 'Machine à forer', the pneumatic drill (Wikimedia Commons, public domain)",
+       "start_s": 0,
+       "end_s": 55,
+       "note": "THE MACHINE AS THE PORTRAIT. M-260 (a Sommeiller portrait from Commons) is requested but not landed and has no ref in the manifest, so it is not a media entry; the rundown's own fallback is to hold the drill still and let it be him, and it calls that fallback good rather than a compromise. `treatment: none` is deliberate: 4257x3210 is 4:3, so this sits in the frame with black either side, dead still. No push-in, no ken-burns, no drift — the fact sheet's own instruction is that this one needs no decoration. If M-260 lands, swap the ref and keep everything else.",
+       "treatment": "none"
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 6,
+       "kind": "caption",
+       "text": "Germain Sommeiller · 1815–1871",
+       "position": "bottom",
+       "until_s": 20
+      },
+      {
+       "at_s": 22,
+       "kind": "caption",
+       "text": "Patented the compressed-air drill · fourteen years on this tunnel",
+       "position": "bottom",
+       "until_s": 36
+      },
+      {
+       "at_s": 38,
+       "kind": "caption",
+       "text": "Died 11 July 1871 · the tunnel opened 17 September 1871",
+       "position": "bottom",
+       "until_s": 52
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut from the map, on black",
+      "out": "cut to Turin, morning",
+      "music_cue": "NONE. No bed, no music, no sting — not at the start, not at the end."
+     },
+     "next": "turin-forty-five-minutes",
+     "sources": [
+      "F-71",
+      "F-72"
+     ],
+     "production_notes": "SEGMENT 6 (55 s, fill 45 % — the lowest in the chapter, deliberately — ceiling 55 words, and it spends exactly 55). THE THIRD LOAD-BEARING SILENCE: fifteen seconds after 'two months before it opened', with no music sting and no next sentence. Then nine words, and the scene ends. TYPE: the rundown says `card (photo plate)`; the file says `photo`, because in the player a `card` scene with an image and no generated asset draws a text card with a small inset in the corner — which is the opposite of what this beat needs. As `photo` the plate mounts full-frame and sits still. AUDIO: nothing. This is the only scene in the chapter with no audio entry at all, and that is the point. ENGINE LIMIT (same as scene 01): the player speaks `script` straight through, so the fifteen seconds currently pool at the tail instead of falling between the two paragraphs; the double line break is the record of where they belong, and the linear cut sheet must hold them there. The scene is short enough that the silence exists either way — 55 words in 55 seconds.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. One plate, the whole scene, so the slot timing is the beat timing: speech starts at 4 s (four seconds of the drill before anyone speaks) and runs to about 26 s, the caption at 38-52 s carries the two dates so the guide says them once each and not twice (R3), and 15 s of nothing follow 'two months before it opened' before the last line, 'There is a street named after him in Bardonecchia.' NARRATOR: no adjectives, no elegy, no 'sadly'. The facts are the whole of it (F-72's own note: it needs no decoration). VALIDATOR: `treatment: none` raises an advisory WARN by design — it is the only way to stop the drift layer, and stopping it is the instruction."
+     }
+    },
+    {
+     "id": "turin-forty-five-minutes",
+     "type": "streetview",
+     "title": "Turin — forty-five minutes, one kilometre",
+     "subtopic": "7 — Turin (Street View stop-and-look 1 of 2)",
+     "duration_s": 90,
+     "learning_goal": "Find three things at Porta Nuova without being told where to point — the name, the clock, and the fact that the rails end here — and learn that the world's oldest museum of ancient Egypt is a walk away from a man on his way to Egypt.",
+     "narration": {
+      "script": "Twenty-five to seven in the morning, and Turin. Fogg has forty-five minutes. Three things to find. First: read the name across the front of the station. Second: find the clock. Third: look at how the building closes the end of the square — the rails stop here, and everybody has to turn round.\n\nTorino Porta Nuova. When Fogg waited here it was four years finished. And the city itself had just lost something: Turin was the capital of Italy from 1861 to 1865, and had been an ordinary city again for seven years.\n\nNow the pin. About nine hundred metres that way — and you cannot see it from here — is the oldest museum in the world devoted entirely to ancient Egypt. It was founded in 1824. Fogg is on his way to Egypt. He has forty-five minutes.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "Twenty-five to seven in the morning, in Turin. Fogg has forty-five minutes here. Three things to find. First: read the name across the front of the station. Second: find the clock. Third: look at how the building closes the end of the square — the rails stop here, and everyone has to turn round.\n\nTorino Porta Nuova. When Fogg waited here, the station was four years old. And the city had just lost something too: Turin was the capital of Italy from 1861 to 1865, and had been an ordinary city again for seven years.\n\nNow the pin. About nine hundred metres in that direction — you cannot see it from here — is the oldest museum in the world about ancient Egypt, and only about ancient Egypt. It was founded in 1824. Fogg is on his way to Egypt. He has forty-five minutes."
+      }
+     },
+     "media": [
+      {
+       "kind": "streetview",
+       "ref": "45.063200,7.679200,190,4,90",
+       "license": "google-maps-embed",
+       "manifest_id": "M-216",
+       "attribution": "Google Street View (Maps Embed API)",
+       "note": "Piazza Carlo Felice, looking south at the front of Torino Porta Nuova, façade about 90-160 m ahead (the station node F-104 at 45.06189,7.67837 bears 204° / 160 m from this point; the front is wide, so 190° holds it). Maps EMBED, the free SKU, drag to look — no programmatic camera and therefore nothing billable (RULE 1, D3, D6). Pano availability is EXPECTED (main city square) and QA confirms it in the player: the founder's key is referrer-restricted, so the metadata endpoint answers REQUEST_DENIED and the manifest could not check. Fallback ladder if the pano is missing: M-242 held under the same task read as a pan, then the 'open in Google Maps' button.",
+       "fallback": "M-242"
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Brogi,_Giacomo_(1822-1881)_-_n._3072_-_Torino_-_La_Stazione_e_il_giardino.jpg",
+       "license": "public-domain",
+       "manifest_id": "M-242",
+       "attribution": "Giacomo Brogi, 'Torino — La Stazione e il giardino', before 1881 (Wikimedia Commons, public domain)",
+       "start_s": 0,
+       "end_s": 90,
+       "note": "790x510 — Porta Nuova's front across the garden, a photograph from within a decade of Fogg's 6:35 am arrival. Paper plate, no punch-in. DECLARED FALLBACK for the pano and the linear cut's opening frame; it is not shown while the pano is up.",
+       "use": "linear"
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Brogi,_Giacomo_-_Die_Haupthalle_des_Bahnhofs_von_Turin_(Zeno_Fotografie).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-243",
+       "attribution": "Giacomo Brogi, the great hall of Turin station, c.1880 (Wikimedia Commons, public domain)",
+       "start_s": 0,
+       "end_s": 90,
+       "note": "1576x1136 — the iron-and-glass train shed from the buffer stops, trains under the arch, daylight at the far end. THE INSERT AFTER THE TASK RESOLVES: it is the proof of the third find (the rails end at the buffers) and it is the best Turin plate we have. In the player it cannot share the frame with a Street View embed, so it belongs to the linear cut and to the fallback ladder; if QA wants it in the player, the honest way is a two-second cut-away after the look budget expires, which the engine does not have today.",
+       "use": "linear"
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 2,
+       "kind": "prompt",
+       "text": "Three things to find: the name, the clock, and where the rails stop",
+       "position": "top",
+       "until_s": 30
+      },
+      {
+       "at_s": 16,
+       "kind": "caption",
+       "text": "Torino Porta Nuova — begun 1861, opened Dec 1864, finished 1868",
+       "position": "bottom",
+       "until_s": 30
+      },
+      {
+       "at_s": 46,
+       "kind": "caption",
+       "text": "Capital of Italy, 1861–1865 — and an ordinary city again by 1872",
+       "position": "bottom",
+       "until_s": 58
+      },
+      {
+       "at_s": 62,
+       "kind": "pin",
+       "text": "Museo Egizio — about 900 m · founded 1824",
+       "position": "bl",
+       "until_s": 78,
+       "note": "No geo: the museum is behind buildings from this pano, so this is a plain corner pin and the script says out loud that you cannot see it from here (the Day-1 Charles I precedent)."
+      },
+      {
+       "at_s": 30,
+       "kind": "gloss",
+       "text": "Torino — Italian for Turin; the station is Torino Porta Nuova",
+       "position": "bl",
+       "until_s": 44
+      }
+     ],
+     "camera": [
+      {
+       "at_s": 0,
+       "look_at": "45.06189,7.67837",
+       "heading": 190,
+       "pitch": 4,
+       "zoom": 0.7,
+       "hold_s": 14,
+       "ease_s": 0,
+       "label": "the whole front of Porta Nuova across Piazza Carlo Felice"
+      },
+      {
+       "at_s": 14,
+       "look_at": "45.06189,7.67837",
+       "heading": 190,
+       "pitch": 8,
+       "zoom": 2.0,
+       "hold_s": 16,
+       "ease_s": 2.5,
+       "label": "find it 1/3: the name across the front, tight"
+      },
+      {
+       "at_s": 30,
+       "look_at": "45.06189,7.67837",
+       "heading": 190,
+       "pitch": 14,
+       "zoom": 2.4,
+       "hold_s": 14,
+       "ease_s": 2.5,
+       "label": "find it 2/3: the clock on the front"
+      },
+      {
+       "at_s": 44,
+       "look_at": "45.06189,7.67837",
+       "heading": 190,
+       "pitch": 2,
+       "zoom": 0.4,
+       "hold_s": 18,
+       "ease_s": 3,
+       "label": "find it 3/3: pull wide — the building closes the end of the square, because the line stops here"
+      },
+      {
+       "at_s": 62,
+       "look_at": "45.06844,7.68435",
+       "heading": 35,
+       "pitch": 0,
+       "zoom": 0.6,
+       "hold_s": 16,
+       "ease_s": 3,
+       "label": "turn to the Museo Egizio: F-105 at 45.06844,7.68435 bears 035° / about 870 m from the station front (the rundown's '060°' does not survive the arithmetic). Behind buildings — the find is the direction and the fact, not a sight of it."
+      },
+      {
+       "at_s": 78,
+       "look_at": "45.06189,7.67837",
+       "heading": 190,
+       "pitch": 6,
+       "zoom": 0.7,
+       "hold_s": 12,
+       "ease_s": 2.5,
+       "label": "settle back on the front under 'He has forty-five minutes.'"
+      }
+     ],
+     "interaction": {
+      "kind": "look",
+      "prompt": "Drag the view. Three things to find: the station's name across the front, the clock, and the reason everybody here has to turn round.",
+      "pause_narration": true,
+      "timeout_s": 30
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the harbour",
+      "music_cue": "none"
+     },
+     "next": "thirty-three-hours",
+     "sources": [
+      "F-50",
+      "F-51",
+      "F-86",
+      "F-87",
+      "F-95",
+      "F-104",
+      "F-105"
+     ],
+     "production_notes": "SEGMENT 7 (90 s, fill 70 %, ceiling 150 words; it spends 134). STOP-AND-LOOK #1 OF 2 — and two is the whole chapter's budget (D6). There is a real task with three named finds, all said out loud, which is what earns Street View here: no walking, no route, no waypoint transport. The stop's coordinates live on the M-216 media entry, exactly as Day-1 scene 15 does since D6; there is deliberately no `interaction.route`, because a route of one is transport grammar. Player: Maps EMBED (drag to look), free SKU, nothing billable. THE CAMERA TRACK IS THE FILM'S VERSION and the player's guided version: six cues, each within 3 s of the overlay that names the same thing. THE MUSEO EGIZIO BEARING IS RECOMPUTED: the rundown says 060°, but F-104 -> F-105 is 033° at 865 m and this camera point -> F-105 is 035° at about 710 m, so the cue uses look_at (which the runtime aims from wherever the pano actually is) and the narration says 'about nine hundred metres' — F-87's own 'about 1 km' measured from the station, not from the pavement we are standing on. WHY THE PAYOFF IS IN `script` AND NOT `after_script`: the player speaks `after_script` only when a graded interaction resolves; a `look` scene has no options, so an after_script here would never be heard and the Egypt joke — the whole reason for the stop — would be lost. It is in `script`, after the finds, and the 30 s look budget follows the words. Known engine stall, inherited from Day-1 scene 15: `tick()`'s needsInput test exempts only `walk` on a streetview scene, so this scene waits for ▶ rather than auto-advancing. THE SALA GONIN (F-86) is a caption candidate only and is NOT in this scene: public access is unverified (fact sheet gap) and we do not send anyone anywhere we have not checked. LINEAR CUT (70 s): a slow pan over the same view following the camera cues, the words unchanged, the guide naming what the player-traveller would have found — D6's own adaptation rule — then M-243 as the insert on 'the rails stop here'. M-204 (Turin 1911) is unwatched and must not be cut in on anyone's word.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. CUE/OVERLAY TIMINGS, and the sentence each is timed against: 0 the whole front, under 'Twenty-five to seven in the morning, and Turin'; 14 tight on the name, under 'read the name across the front of the station'; 30 the clock, under 'Second: find the clock'; 44 wide, under 'look at how the building closes the end of the square'; 62 turn towards the museum, under 'Now the pin. About nine hundred metres that way'; 78 settle back, under 'He has forty-five minutes.' Every pin and caption has a cue within 3 s. The two stills are `use: linear` and are not on the player's clock — they are the fallback and the film. GLOSS: the chip glosses 'Torino', which the guide says out loud at ~30 s. The rundown's 'il binario' chip is CUT: the guide never says the word, and a chip may not gloss a word the traveller does not hear. QA MUST CONFIRM the pano exists at 45.063200,7.679200 (the founder's key is referrer-restricted, so nobody could check from the studio) and that the station name and the clock are legible at the authored zooms."
+     }
+    },
+    {
+     "id": "thirty-three-hours",
+     "type": "photo",
+     "title": "Thirty-three hours, and two lines",
+     "subtopic": "8 — Brindisi: the longest leg",
+     "duration_s": 45,
+     "learning_goal": "Know that the longest single leg of the chapter — the whole length of Italy — is two lines in the notebook, and that we cannot say which stations he passed.",
+     "narration": {
+      "script": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Nearly thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the rails reached the heel in 1865; which stations he stopped at, nobody has told us.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Almost thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the railway reached the heel of Italy in 1865. Which stations his train stopped at, nobody has told us."
+      }
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Brindisi_%E2%80%93_Veduta_generale_del_Porto_(xilografia).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-246",
+       "attribution": "'Brindisi — Veduta generale del Porto', wood engraving, 1899 (Wikimedia Commons, public domain)",
+       "start_s": 0,
+       "end_s": 24,
+       "note": "2088x1679 — the whole harbour from above the town: the inner basin, the moles, a steamer at anchor. Establishes the port before M-245 goes close. Slot 1/2."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Brindisi_%E2%80%93_Stazione_di_sbarco_presso_il_Porto_(xilografia).jpg",
+       "license": "public-domain",
+       "manifest_id": "M-245",
+       "attribution": "'Brindisi — Stazione di sbarco presso il Porto', wood engraving, 1899 (Wikimedia Commons, public domain)",
+       "start_s": 24,
+       "end_s": 45,
+       "note": "2095x1525 — the landing station at the harbour: rails and a train on the quay, sheds, a steamer alongside with smoke up. Exactly the moment the chapter ends on. Slot 2/2."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 4,
+       "kind": "caption",
+       "text": "Turin 7:20 am Friday → Brindisi 4:00 pm Saturday · ≈ 33 hours",
+       "position": "bottom",
+       "until_s": 18
+      },
+      {
+       "at_s": 28,
+       "kind": "caption",
+       "text": "Rails reached Brindisi in 1865 — which is why the port could be the port",
+       "position": "bottom",
+       "until_s": 42
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the columns",
+      "music_cue": "none"
+     },
+     "next": "the-end-of-the-appian-way",
+     "sources": [
+      "F-50",
+      "F-51",
+      "F-65"
+     ],
+     "production_notes": "SEGMENT 8, first third (45 s; the segment's ceiling is 205 words and this scene spends 44). THE HONEST THINNESS IS THE POINT: the fact sheet cannot name a single station between Turin and the heel (its Gaps list forbids using the later Peninsular Express stop list), so the guide says so out loud rather than padding — 'which stations he stopped at, nobody has told us'. That sentence is also the chapter's argument in miniature. NO anachronisms: no wagons-lits, no dining car; those belong to the 1890s and Fogg sat up all night in a compartment.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-24 M-246 (the harbour, wide) — 'Twenty past seven, Friday morning, Turin… the whole length of Italy.'; 24-45 M-245 (the landing station, rails and a steamer) — 'The notebook gives it two lines. We know the rails reached the heel in 1865…' Two timed captions in 45 s against a ceiling of four. Both engravings are 1899, i.e. 27 years after Fogg — the captions state facts about 1865 and 1872 and never date the pictures to his day."
+     }
+    },
+    {
+     "id": "the-end-of-the-appian-way",
+     "type": "streetview",
+     "title": "The end of the Appian Way",
+     "subtopic": "8 — Brindisi (Street View stop-and-look 2 of 2)",
+     "duration_s": 50,
+     "learning_goal": "Find the base of the lost second column and the steps down to the water, and know that Rome's road east ends 150 m from the quay where Britain's mail for India was put on a ship.",
+     "narration": {
+      "script": "Last stop before the sea. Two things to find. Above you, le colonne romane — the Roman columns, though only one of them is still standing. Find the other: there is a base, and nothing more. Then find the steps down to the water.\n\nIt fell in 1582; the pieces went to Lecce. This is the end of the Appian Way, Rome's road east. A hundred and fifty metres along that quay, Britain's mail for India got on a ship. And Virgil died in this town.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "Last stop before the sea. Two things to find. Above you are le colonne romane — the Roman columns — although only one of them is still standing. Find the other one: there is a base, and nothing else. Then find the steps down to the water.\n\nIt fell in 1582, and the pieces were taken to Lecce. This is the end of the Appian Way, Rome's road to the east. A hundred and fifty metres along that quay, Britain's mail for India was put on a ship. And Virgil died in this town."
+      }
+     },
+     "media": [
+      {
+       "kind": "streetview",
+       "ref": "40.641103,17.946741,49,10,90",
+       "license": "google-maps-embed",
+       "manifest_id": "M-215",
+       "attribution": "Google Street View (Maps Embed API)",
+       "note": "Piazzetta Colonne Romane, at the head of the harbour steps. The standing column (F-106, 40.64112,17.94685) bears about 078° at 9 m; the Scalinata Virgiliana runs down to the water at 049°, about 21 m; the Stazione Marittima (F-107, 40.64033,17.94843) bears about 121° at 166 m. Maps EMBED, free SKU, drag to look — nothing billable (RULE 1, D3, D6). Pano availability EXPECTED (public piazzetta); QA confirms in the player, because the studio's key is referrer-restricted. Fallback if the pano is missing: M-248 with the same task read as a tilt-up.",
+       "fallback": "M-248"
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Colonne_Romane_Brindisi.jpg",
+       "license": "cc-by-sa-4.0",
+       "manifest_id": "M-248",
+       "attribution": "Roman column, Brindisi — Mariateresamargherito, 2025 (Wikimedia Commons, CC BY-SA 4.0)",
+       "start_s": 0,
+       "end_s": 50,
+       "note": "1706x2560 portrait — the fluted white column against deep blue sky, capital lit. DECLARED FALLBACK for the pano, and the linear cut's tilt-up. Not shown while the pano is up.",
+       "sa": true,
+       "use": "linear"
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Sea_waves.wav",
+       "license": "cc-by-sa-4.0",
+       "manifest_id": "M-253",
+       "attribution": "Waves hitting the shore — Ganesh Mohan T (Wikimedia Commons, CC BY-SA 4.0)",
+       "start_s": 0,
+       "end_s": 50,
+       "note": "The same wave bed as the Channel, very low — the chapter's water bookend. Loop with a 2 s crossfade.",
+       "sa": true
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 4,
+       "kind": "caption",
+       "text": "Two Roman columns marked the end of the road. One is left.",
+       "position": "bottom",
+       "until_s": 18
+      },
+      {
+       "at_s": 20,
+       "kind": "pin",
+       "text": "The lost column — fell 1582, the pieces went to Lecce",
+       "position": "bl",
+       "until_s": 32
+      },
+      {
+       "at_s": 34,
+       "kind": "pin",
+       "text": "Stazione Marittima — about 150 m · where the Indian Mail met the ship",
+       "position": "br",
+       "until_s": 48,
+       "geo": "40.64033,17.94843"
+      }
+     ],
+     "camera": [
+      {
+       "at_s": 0,
+       "look_at": "40.64112,17.94685",
+       "heading": 78,
+       "pitch": 34,
+       "zoom": 0.5,
+       "hold_s": 6,
+       "ease_s": 0,
+       "label": "the standing column, full height, 9 m away — 18.74 m of it"
+      },
+      {
+       "at_s": 6,
+       "look_at": "40.64112,17.94685",
+       "heading": 78,
+       "pitch": -6,
+       "zoom": 1.4,
+       "hold_s": 14,
+       "ease_s": 2,
+       "label": "find it 1/2: down to the pavement beside it — the plinth of the second column, all that is left"
+      },
+      {
+       "at_s": 20,
+       "look_at": "40.64123,17.94693",
+       "heading": 49,
+       "pitch": -8,
+       "zoom": 0.7,
+       "hold_s": 14,
+       "ease_s": 2.5,
+       "label": "find it 2/2: the Scalinata Virgiliana, the steps down to the water, 049° / about 21 m"
+      },
+      {
+       "at_s": 34,
+       "look_at": "40.64033,17.94843",
+       "heading": 121,
+       "pitch": -2,
+       "zoom": 1.2,
+       "hold_s": 14,
+       "ease_s": 3,
+       "label": "along the quay to the Stazione Marittima (F-107), 121° / 166 m — where Britain's mail for India got on a ship"
+      }
+     ],
+     "interaction": {
+      "kind": "look",
+      "prompt": "Drag the view. Two things to find: the base of the column that is missing, and the steps down to the water.",
+      "pause_narration": true,
+      "timeout_s": 30
+     },
+     "transition": {
+      "in": "cut",
+      "out": "cut to the steamer",
+      "music_cue": "M-253 low, continues into 14 under the horn"
+     },
+     "next": "the-mongolia",
+     "sources": [
+      "F-63",
+      "F-88",
+      "F-95",
+      "F-106",
+      "F-107"
+     ],
+     "production_notes": "SEGMENT 8, second third (50 s; 84 words). STOP-AND-LOOK #2 OF 2, and that is the D6 budget for the chapter — do not add a third. Two named finds, both said out loud, and the payoff is the chapter's closing image: Rome's road east ends 150 m from the quay where Britain's road east began. The stop's coordinates are on the M-215 media entry; no `interaction.route`, no walking. VIRGIL GETS ONE LINE AND NO MORE (the rundown's instruction) and it is deliberately last, so the scene ends on a town rather than on an argument. THE COLUMN'S HEIGHT (18.74 m, F-88) is NOT spoken — it is a caption candidate for the film; the guide says 'above you' and lets the tilt-up do it. As in scene 11, the payoff sits in `script` rather than `after_script`, because the player speaks `after_script` only for graded interactions and a `look` scene has none. Same known engine stall as Day-1 scene 15 (a `look` scene waits for ▶). LINEAR CUT (40 s): M-211 (Mapillary pano, licence unresolved — rundown Decision 4) as a slow pan right-to-left ending on the column, or M-248 as a tilt-up if the Mapillary question is answered no; either way the words are unchanged and the guide names what the player-traveller would have found.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. CUE/OVERLAY TIMINGS, and the sentence each is timed against: 0 the standing column full height, under 'Above you, le colonne romane'; 6 down to the pavement, under 'Find the other: there is a base, and nothing more'; 20 the steps, under 'Then find the steps down to the water' (and the lost-column pin lands with it); 34 along the quay, under 'A hundred and fifty metres along that quay…'. Every pin and caption has a cue within 3 s. Bearings and distances are computed from the fact sheet's own coordinates (F-106, F-107) and from the stop, not copied: column 078°/9 m, steps 049°/21 m, Stazione Marittima 121°/166 m — the last agrees with F-88/F-107's 'about 150 m'. GLOSS: 'le colonne romane' is spoken at ~5 s, so the chip is earned. RIGHTS: M-248 and the M-253 bed are both share-alike and carry sa: true."
+     }
+    },
+    {
+     "id": "the-mongolia",
+     "type": "photo",
+     "title": "Five o'clock — the Mongolia sails",
+     "subtopic": "8 — Brindisi: the ship",
+     "duration_s": 50,
+     "learning_goal": "Know that the ship at the end of the leg is a real scheduled mail steamer, hedged where the record is thin; feel Europe closing behind us.",
+     "narration": {
+      "script": "Four o'clock, Saturday afternoon. One hour. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia: in the novel, iron, two thousand eight hundred tons, taking on the Indian mail. A real P&O Mongolia did exist, launched in 1865, about three thousand tons. Whether she was on this run that Saturday, nobody has shown us. Five o'clock. She sails.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "Four o'clock, Saturday afternoon. One hour to wait. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia. In the novel she is iron, two thousand eight hundred tons, and she takes on the Indian mail here. A real P&O ship called Mongolia did exist: launched in 1865, about three thousand tons. Whether she was on this route that Saturday, nobody has shown us. Five o'clock. She sails."
+      }
+     },
+     "media": [
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:P.%26.O._S.S._Hindostan_Leaving_Southampton,_24th_September,_1842_to_open_the_Indian_Mail_Service_RMG_PU6712.tiff",
+       "license": "public-domain",
+       "manifest_id": "M-229",
+       "attribution": "P&O SS Hindostan leaving Southampton, 24 September 1842, to open the Indian Mail service — Royal Museums Greenwich PU6712 (public domain)",
+       "start_s": 0,
+       "end_s": 22,
+       "note": "4000x2678. THE COMPANY, NOT THE SHIP: Fogg boards the Mongolia at Brindisi and this is the Hindostan of 1842, so the caption must say so. Slot 1/2."
+      },
+      {
+       "kind": "image",
+       "ref": "https://commons.wikimedia.org/wiki/File:Colonne_Romane_Brindisi.jpg",
+       "license": "cc-by-sa-4.0",
+       "manifest_id": "M-248",
+       "attribution": "Roman column, Brindisi — Mariateresamargherito, 2025 (Wikimedia Commons, CC BY-SA 4.0)",
+       "start_s": 22,
+       "end_s": 36,
+       "note": "1706x2560 portrait, tilt up the column. The closing image of the place: the column stays, the ship goes. Slot 2/2.",
+       "sa": true
+      },
+      {
+       "kind": "generated",
+       "ref": "generated/g-201/europe-legs_L9.svg",
+       "license": "generated",
+       "manifest_id": "G-201",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 36,
+       "end_s": 50,
+       "note": "SPEC (G-201, layer L9). The sea leg drawn leaving the frame to the SOUTH-EAST, towards Suez, at 30 % opacity — the hand-off to Day 3. Brindisi's label reads 'arr 4 pm · sailed 5 pm · Saturday 5 October 1872'. RUNDOWN CORRECTION APPLIED: the manifest's master spec said 'Brindisi 4 p.m. 4 Oct'; F-50 gives SATURDAY 5 OCTOBER for the arrival and the sailing, and Turin is the 4th. Fix it in the master, not only here."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Cruise_ship_Albatros_ship_horn.ogg",
+       "license": "cc0",
+       "manifest_id": "M-251",
+       "attribution": "Ship's horn, MS Albatros, Bremerhaven — Tvabutzku1234 (Wikimedia Commons, CC0)",
+       "start_s": 40,
+       "end_s": 46,
+       "note": "One horn, about 5 s, once, on 'She sails.' CC0, no obligation. Do not repeat it."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 6,
+       "kind": "caption",
+       "text": "P&O opened the Indian Mail service in 1842 — this is the company, not the ship",
+       "position": "bottom",
+       "until_s": 20
+      },
+      {
+       "at_s": 24,
+       "kind": "caption",
+       "text": "'…two thousand eight hundred tons burden' — the Mongolia in the novel",
+       "position": "bottom",
+       "until_s": 34
+      },
+      {
+       "at_s": 38,
+       "kind": "caption",
+       "text": "Sailed 5:00 pm, Saturday 5 October 1872 — next stop Suez",
+       "position": "bottom",
+       "until_s": 50
+      },
+      {
+       "at_s": 10,
+       "kind": "gloss",
+       "text": "la stazione marittima — the harbour station, where the train meets the ship",
+       "position": "bl",
+       "until_s": 24
+      }
+     ],
+     "interaction": {
+      "kind": "none"
+     },
+     "transition": {
+      "in": "cut",
+      "out": "dissolve to the souvenir card",
+      "music_cue": "M-251 horn once at 40 s; M-253 bed out under it"
+     },
+     "next": "souvenir-the-notebook",
+     "sources": [
+      "F-50",
+      "F-51",
+      "F-58",
+      "F-59",
+      "F-63",
+      "F-95"
+     ],
+     "production_notes": "SEGMENT 8, last third (50 s; 71 words — the segment totals 199 against its 205 ceiling). THE CHAPTER ENDS ON DEPARTURE (rundown Decision 1, built as recommended): horn, the ship leaves, the sea leg draws south-east, and Day 3 opens at sea. Reversing it costs one edit — cut at 36 s, drop M-251, end on the column. HEDGING IS THE WHOLE CRAFT OF THIS SCENE: F-59 is med, so the real ship is 'about three thousand tons' and 'a real P&O Mongolia did exist', and the sentence 'Whether she was on this run that Saturday, nobody has shown us' is in BOTH tracks, because the qualifier travels with the claim. NEVER state a master or a passenger list (the fact sheet's own instruction). Verne's '2,800 tons' is quoted as the novel's figure, in a caption, and the guide attributes it aloud with 'in the novel'.",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-22 M-229 — 'Four o'clock, Saturday afternoon…' through '…taking on the Indian mail.'; 22-36 M-248, tilt up — 'A real P&O Mongolia did exist, launched in 1865, about three thousand tons. Whether she was on this run that Saturday, nobody has shown us.'; 36-50 G-201 L9 — 'Five o'clock. She sails.', horn at 40 s, and the sea leg draws off the frame to the south-east. The gloss chip is earned: the guide says 'stazione marittima' at ~8 s. RIGHTS: M-248 is CC BY-SA 4.0 and carries sa: true."
+     }
+    },
+    {
+     "id": "souvenir-the-notebook",
+     "type": "card",
+     "title": "Souvenir — Fogg's notebook, and yours",
+     "subtopic": "9 — Souvenir and send-off",
+     "duration_s": 55,
+     "learning_goal": "Take away the seven lines with a blank column beside them, and one train that can still be booked; feel quiet satisfaction at having stopped where Fogg did not.",
+     "narration": {
+      "script": "Six days from here, at Suez, Fogg works out that he is exactly on time. Then Verne writes the sharpest sentence in the book about him. Fogg breakfasts in his cabin, never once thinking of inspecting the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, and an empty column headed 'what I saw'. On the back, the one thing here you can still book — Paris to Turin, through Sommeiller's tunnel.",
+      "timing": "over",
+      "voice": "guide",
+      "variants": {
+       "clear": "Six days from here, at Suez, Fogg works out that he is exactly on time. Then Verne writes the sharpest sentence in the whole book about him. Fogg eats breakfast in his cabin and never thinks of going to look at the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, and an empty column headed 'what I saw'. On the back, the one thing here you can still book — Paris to Turin, through Sommeiller's tunnel."
+      }
+     },
+     "media": [
+      {
+       "kind": "generated",
+       "ref": "generated/g-208/notebook_card_b_printable.svg",
+       "license": "generated",
+       "manifest_id": "G-208b",
+       "attribution": "Yunyou studio, generated",
+       "start_s": 0,
+       "end_s": 55,
+       "note": "SPEC (G-208, state b) — PRINTABLE. Fogg's seven lines exactly as the novel prints them (F-50), left column: left London 8:45 pm Wednesday · reached Paris 7:20 am · left Paris 8:40 am · reached Turin by Mont Cenis 6:35 am Friday · left Turin 7:20 am · arrived Brindisi 4 pm Saturday · sailed on the Mongolia 5 pm. RIGHT-HAND COLUMN EMPTY, headed 'what I saw'. Time style '8:45 pm' per R1; dates 'Saturday 5 October 1872'. ON THE BACK: 'Paris to Turin, still through the Fréjus tunnel. Closed by a rockfall for nineteen months; reopened 31 March 2025.' and one line under it: 'Sommeiller's tunnel, 154 years old, and still the way through.' Typeset from G-204's newspaper style. Saveable/printable PNG — this is the chapter's end frame."
+      },
+      {
+       "kind": "audio",
+       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+       "license": "public-domain",
+       "manifest_id": "M-41",
+       "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+       "start_s": 0,
+       "end_s": 55,
+       "note": "The route theme's tail — bookend with scene 01 and with Day 1, per the world bible. Out on the last caption."
+      }
+     ],
+     "overlays": [
+      {
+       "at_s": 8,
+       "kind": "caption",
+       "text": "Jules Verne, ch. VII — six and a half days out, and exactly on time",
+       "position": "bottom",
+       "until_s": 22
+      },
+      {
+       "at_s": 30,
+       "kind": "caption",
+       "text": "Paris → Turin still runs through Sommeiller's tunnel · reopened 31 Mar 2025",
+       "position": "bottom",
+       "until_s": 46
+      },
+      {
+       "at_s": 48,
+       "kind": "caption",
+       "text": "Next: at sea.",
+       "position": "bottom",
+       "until_s": 55
+      }
+     ],
+     "interaction": {
+      "kind": "save",
+      "prompt": "Keep the card — seven lines, and a blank column for your own."
+     },
+     "transition": {
+      "in": "dissolve",
+      "out": "hold on the card — chapter end frame",
+      "music_cue": "M-41 tail, out on 'Next: at sea.'"
+     },
+     "next": "",
+     "sources": [
+      "F-50",
+      "F-52",
+      "F-75"
+     ],
+     "production_notes": "SEGMENT 9 (55 s, fill 70 %, ceiling 90 words; it spends 89). The quotation is the one the whole chapter has been earning and it is attributed and placed before it is spoken — 'Then Verne writes…' — and only the best clause is read aloud (18 words, inside the persona's 20-word ceiling); the rest of F-52 is on the card. `interaction.kind: save`, so the runtime offers keep/download and asks for no answer. NOTE that the player speaks `after_script` only for graded interactions, so this scene keeps every word in `script`, exactly as Day-1's souvenir does. THE SOUVENIR IS THE CHAPTER'S THESIS AS AN OBJECT (rundown Decision 10, taken as recommended): his seven lines, and a blank column headed 'what I saw', which the traveller has just spent twenty minutes filling. The back is the only bookable thing in the chapter, and the Content Preparer must re-check the service is running at publication (F-75).",
+     "review": {
+      "fact_check": "pending",
+      "rights": "pending",
+      "qa": "pending",
+      "notes": "Scene Developer + Narrator draft 2026-08-27. One card holds the whole 55 s. Beat timings, and the sentence each is against: caption 8-22 s under 'Six days from here, at Suez, Fogg works out that he is exactly on time'; the card's back is shown from ~30 s under 'the one thing here you can still book — Paris to Turin, through Sommeiller's tunnel'; 'Next: at sea.' lands at 48 s as the last frame. Verne is named before the quotation and the quotation is Towle's wording, read as printed (persona §5). Three timed captions in 55 s against a ceiling of four."
+     }
+    }
+   ]
+  }
+ ],
+ "linear_cut": {
+  "target_minutes": 15,
+  "platforms": [
+   "youtube",
+   "bilibili"
+  ]
+ }
+}

@@ -1,0 +1,73 @@
+{
+ "id": "sommeiller",
+ "type": "photo",
+ "title": "Germain Sommeiller",
+ "subtopic": "6 — Sommeiller",
+ "duration_s": 55,
+ "learning_goal": "Know that the man who invented the drill that made the tunnel possible died two months before it opened. Nothing else.",
+ "narration": {
+  "script": "Germain Sommeiller. A Savoyard engineer, who chose Italy when Savoy went to France. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place where he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia.",
+  "timing": "over",
+  "voice": "guide",
+  "starts_at_s": 4,
+  "variants": {
+   "clear": "Germain Sommeiller. An engineer from Savoy, who chose to become Italian when Savoy became French. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place where he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia."
+  }
+ },
+ "media": [
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:L%27Illustration_1862_gravure_Percement_du_Mont_Cenis_03,_Machine_%C3%A0_forer.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-234",
+   "attribution": "L'Illustration, 1862 — 'Machine à forer', the pneumatic drill (Wikimedia Commons, public domain)",
+   "start_s": 0,
+   "end_s": 55,
+   "note": "THE MACHINE AS THE PORTRAIT. M-260 (a Sommeiller portrait from Commons) is requested but not landed and has no ref in the manifest, so it is not a media entry; the rundown's own fallback is to hold the drill still and let it be him, and it calls that fallback good rather than a compromise. `treatment: none` is deliberate: 4257x3210 is 4:3, so this sits in the frame with black either side, dead still. No push-in, no ken-burns, no drift — the fact sheet's own instruction is that this one needs no decoration. If M-260 lands, swap the ref and keep everything else.",
+   "treatment": "none"
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 6,
+   "kind": "caption",
+   "text": "Germain Sommeiller · 1815–1871",
+   "position": "bottom",
+   "until_s": 20
+  },
+  {
+   "at_s": 22,
+   "kind": "caption",
+   "text": "Patented the compressed-air drill · fourteen years on this tunnel",
+   "position": "bottom",
+   "until_s": 36
+  },
+  {
+   "at_s": 38,
+   "kind": "caption",
+   "text": "Died 11 July 1871 · the tunnel opened 17 September 1871",
+   "position": "bottom",
+   "until_s": 52
+  }
+ ],
+ "interaction": {
+  "kind": "none"
+ },
+ "transition": {
+  "in": "cut from the map, on black",
+  "out": "cut to Turin, morning",
+  "music_cue": "NONE. No bed, no music, no sting — not at the start, not at the end."
+ },
+ "next": "turin-forty-five-minutes",
+ "sources": [
+  "F-71",
+  "F-72"
+ ],
+ "production_notes": "SEGMENT 6 (55 s, fill 45 % — the lowest in the chapter, deliberately — ceiling 55 words, and it spends exactly 55). THE THIRD LOAD-BEARING SILENCE: fifteen seconds after 'two months before it opened', with no music sting and no next sentence. Then nine words, and the scene ends. TYPE: the rundown says `card (photo plate)`; the file says `photo`, because in the player a `card` scene with an image and no generated asset draws a text card with a small inset in the corner — which is the opposite of what this beat needs. As `photo` the plate mounts full-frame and sits still. AUDIO: nothing. This is the only scene in the chapter with no audio entry at all, and that is the point. ENGINE LIMIT (same as scene 01): the player speaks `script` straight through, so the fifteen seconds currently pool at the tail instead of falling between the two paragraphs; the double line break is the record of where they belong, and the linear cut sheet must hold them there. The scene is short enough that the silence exists either way — 55 words in 55 seconds.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. One plate, the whole scene, so the slot timing is the beat timing: speech starts at 4 s (four seconds of the drill before anyone speaks) and runs to about 26 s, the caption at 38-52 s carries the two dates so the guide says them once each and not twice (R3), and 15 s of nothing follow 'two months before it opened' before the last line, 'There is a street named after him in Bardonecchia.' NARRATOR: no adjectives, no elegy, no 'sadly'. The facts are the whole of it (F-72's own note: it needs no decoration). VALIDATOR: `treatment: none` raises an advisory WARN by design — it is the only way to stop the drift layer, and stopping it is the instruction."
+ }
+}

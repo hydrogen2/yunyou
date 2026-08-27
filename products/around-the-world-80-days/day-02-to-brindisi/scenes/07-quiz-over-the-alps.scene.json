@@ -1,0 +1,79 @@
+{
+ "id": "quiz-over-the-alps",
+ "type": "quiz",
+ "title": "Quiz — Thursday night, and the train is climbing",
+ "subtopic": "5 — The Alps (Quiz D)",
+ "duration_s": 45,
+ "learning_goal": "Know that until 1871 the mail for India crossed the Alps on the surface, and feel how new the way through is.",
+ "narration": {
+  "script": "It is Thursday night, and the train is climbing. Two years before Fogg, how did this train get to the other side of the Alps?",
+  "timing": "over",
+  "voice": "guide",
+  "after_script": "Over the top: seventy-seven kilometres of railway laid beside the mountain road, and about five hours. In 1867 you crossed these mountains in the open air. In 1872 you slept through them.",
+  "variants": {
+   "clear": "It is Thursday night, and the train is climbing. Two years before Fogg, how did this train get to the other side of the Alps?"
+  },
+  "after_script_variants": {
+   "clear": "Over the top. Seventy-seven kilometres of railway, laid beside the mountain road, and about five hours to cross. In 1867 you crossed these mountains in the open air. In 1872 you slept through them."
+  }
+ },
+ "media": [],
+ "overlays": [
+  {
+   "at_s": 0,
+   "kind": "prompt",
+   "text": "Two years before Fogg: how did this train cross the Alps?",
+   "position": "top",
+   "until_s": 45,
+   "note": "Persists until answered."
+  },
+  {
+   "at_s": 24,
+   "kind": "caption",
+   "text": "Mont Cenis Pass Railway, 1868–71 · 77 km · summit 2,283 m · 1 in 11",
+   "position": "bottom",
+   "until_s": 40,
+   "note": "R3: the numbers are on screen, so the guide reads only 'seventy-seven kilometres' and 'about five hours'."
+  }
+ ],
+ "interaction": {
+  "kind": "choice",
+  "prompt": "Two years before Fogg, how did this train get to the other side of the Alps?",
+  "options": [
+   {
+    "text": "Everyone changed to a coach in summer, and a sledge in winter",
+    "correct": false,
+    "feedback": "True until 1868 — and it is why crossing the Alps was a story people told for the rest of their lives."
+   },
+   {
+    "text": "A railway laid along the mountain road over the pass, gripping a third rail in the middle",
+    "correct": true,
+    "feedback": "Seventy-seven kilometres over the top, a summit at 2,283 metres, gradients of one in eleven, about five hours — and the mail for India went over it."
+   },
+   {
+    "text": "The carriages were carried through a tunnel on flat wagons",
+    "correct": false,
+    "feedback": "There was no tunnel yet. That is what the next few minutes are about."
+   }
+  ],
+  "pause_narration": true,
+  "timeout_s": 20
+ },
+ "transition": {
+  "in": "cut",
+  "out": "cut to the Fell train, then the works",
+  "music_cue": "none; no sting on the opening date"
+ },
+ "next": "the-hole-through-the-mountain",
+ "sources": [
+  "F-69",
+  "F-73"
+ ],
+ "production_notes": "SEGMENT 5, first third (45 s of 215; segment fill 75 % — the chapter maximum — and a 385-word ceiling, of which this scene spends 57). QUIZ FIRST so the Fell railway is a discovery rather than a lecture. NO MEDIA ENTRIES, deliberately: the player's quiz branch shows media[0] of kind image the instant the scene opens, and the only honest picture for this question — M-240, the Fell train — is the ANSWER. The rundown asks for M-240 'in the feedback', which the player cannot do (feedback is text), so M-240 opens the NEXT scene instead, at 0-10 s, under a caption naming the Fell railway: the answer image lands about two seconds after the reveal is spoken, which is as close to the rundown's intent as the engine allows. With no media the player draws its own scene card from `title` + `learning_goal` + overlays, so all three are written spoiler-free (R5: no wording from the correct option appears in the two minutes before it). The 'one in eleven' gradient and the summit height are on the caption and are not read aloud (R3).",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. No stills, so no slot timings. Beat timing: question spoken 0-11 s; 20 s wait state; reveal from ~13 s of scene clock with the caption at 24-40 s under 'seventy-seven kilometres of railway laid beside the mountain road'. The guide tail — 'In 1867 you crossed these mountains in the open air. In 1872 you slept through them.' — is the rundown's own line and is the hinge of the segment. F-73 supports every number in the correct option's feedback."
+ }
+}

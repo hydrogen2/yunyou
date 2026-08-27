@@ -1,0 +1,142 @@
+{
+ "id": "the-end-of-the-appian-way",
+ "type": "streetview",
+ "title": "The end of the Appian Way",
+ "subtopic": "8 — Brindisi (Street View stop-and-look 2 of 2)",
+ "duration_s": 50,
+ "learning_goal": "Find the base of the lost second column and the steps down to the water, and know that Rome's road east ends 150 m from the quay where Britain's mail for India was put on a ship.",
+ "narration": {
+  "script": "Last stop before the sea. Two things to find. Above you, le colonne romane — the Roman columns, though only one of them is still standing. Find the other: there is a base, and nothing more. Then find the steps down to the water.\n\nIt fell in 1582; the pieces went to Lecce. This is the end of the Appian Way, Rome's road east. A hundred and fifty metres along that quay, Britain's mail for India got on a ship. And Virgil died in this town.",
+  "timing": "over",
+  "voice": "guide",
+  "variants": {
+   "clear": "Last stop before the sea. Two things to find. Above you are le colonne romane — the Roman columns — although only one of them is still standing. Find the other one: there is a base, and nothing else. Then find the steps down to the water.\n\nIt fell in 1582, and the pieces were taken to Lecce. This is the end of the Appian Way, Rome's road to the east. A hundred and fifty metres along that quay, Britain's mail for India was put on a ship. And Virgil died in this town."
+  }
+ },
+ "media": [
+  {
+   "kind": "streetview",
+   "ref": "40.641103,17.946741,49,10,90",
+   "license": "google-maps-embed",
+   "manifest_id": "M-215",
+   "attribution": "Google Street View (Maps Embed API)",
+   "note": "Piazzetta Colonne Romane, at the head of the harbour steps. The standing column (F-106, 40.64112,17.94685) bears about 078° at 9 m; the Scalinata Virgiliana runs down to the water at 049°, about 21 m; the Stazione Marittima (F-107, 40.64033,17.94843) bears about 121° at 166 m. Maps EMBED, free SKU, drag to look — nothing billable (RULE 1, D3, D6). Pano availability EXPECTED (public piazzetta); QA confirms in the player, because the studio's key is referrer-restricted. Fallback if the pano is missing: M-248 with the same task read as a tilt-up.",
+   "fallback": "M-248"
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Colonne_Romane_Brindisi.jpg",
+   "license": "cc-by-sa-4.0",
+   "manifest_id": "M-248",
+   "attribution": "Roman column, Brindisi — Mariateresamargherito, 2025 (Wikimedia Commons, CC BY-SA 4.0)",
+   "start_s": 0,
+   "end_s": 50,
+   "note": "1706x2560 portrait — the fluted white column against deep blue sky, capital lit. DECLARED FALLBACK for the pano, and the linear cut's tilt-up. Not shown while the pano is up.",
+   "sa": true,
+   "use": "linear"
+  },
+  {
+   "kind": "audio",
+   "ref": "https://commons.wikimedia.org/wiki/File:Sea_waves.wav",
+   "license": "cc-by-sa-4.0",
+   "manifest_id": "M-253",
+   "attribution": "Waves hitting the shore — Ganesh Mohan T (Wikimedia Commons, CC BY-SA 4.0)",
+   "start_s": 0,
+   "end_s": 50,
+   "note": "The same wave bed as the Channel, very low — the chapter's water bookend. Loop with a 2 s crossfade.",
+   "sa": true
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 4,
+   "kind": "caption",
+   "text": "Two Roman columns marked the end of the road. One is left.",
+   "position": "bottom",
+   "until_s": 18
+  },
+  {
+   "at_s": 20,
+   "kind": "pin",
+   "text": "The lost column — fell 1582, the pieces went to Lecce",
+   "position": "bl",
+   "until_s": 32
+  },
+  {
+   "at_s": 34,
+   "kind": "pin",
+   "text": "Stazione Marittima — about 150 m · where the Indian Mail met the ship",
+   "position": "br",
+   "until_s": 48,
+   "geo": "40.64033,17.94843"
+  }
+ ],
+ "camera": [
+  {
+   "at_s": 0,
+   "look_at": "40.64112,17.94685",
+   "heading": 78,
+   "pitch": 34,
+   "zoom": 0.5,
+   "hold_s": 6,
+   "ease_s": 0,
+   "label": "the standing column, full height, 9 m away — 18.74 m of it"
+  },
+  {
+   "at_s": 6,
+   "look_at": "40.64112,17.94685",
+   "heading": 78,
+   "pitch": -6,
+   "zoom": 1.4,
+   "hold_s": 14,
+   "ease_s": 2,
+   "label": "find it 1/2: down to the pavement beside it — the plinth of the second column, all that is left"
+  },
+  {
+   "at_s": 20,
+   "look_at": "40.64123,17.94693",
+   "heading": 49,
+   "pitch": -8,
+   "zoom": 0.7,
+   "hold_s": 14,
+   "ease_s": 2.5,
+   "label": "find it 2/2: the Scalinata Virgiliana, the steps down to the water, 049° / about 21 m"
+  },
+  {
+   "at_s": 34,
+   "look_at": "40.64033,17.94843",
+   "heading": 121,
+   "pitch": -2,
+   "zoom": 1.2,
+   "hold_s": 14,
+   "ease_s": 3,
+   "label": "along the quay to the Stazione Marittima (F-107), 121° / 166 m — where Britain's mail for India got on a ship"
+  }
+ ],
+ "interaction": {
+  "kind": "look",
+  "prompt": "Drag the view. Two things to find: the base of the column that is missing, and the steps down to the water.",
+  "pause_narration": true,
+  "timeout_s": 30
+ },
+ "transition": {
+  "in": "cut",
+  "out": "cut to the steamer",
+  "music_cue": "M-253 low, continues into 14 under the horn"
+ },
+ "next": "the-mongolia",
+ "sources": [
+  "F-63",
+  "F-88",
+  "F-95",
+  "F-106",
+  "F-107"
+ ],
+ "production_notes": "SEGMENT 8, second third (50 s; 84 words). STOP-AND-LOOK #2 OF 2, and that is the D6 budget for the chapter — do not add a third. Two named finds, both said out loud, and the payoff is the chapter's closing image: Rome's road east ends 150 m from the quay where Britain's road east began. The stop's coordinates are on the M-215 media entry; no `interaction.route`, no walking. VIRGIL GETS ONE LINE AND NO MORE (the rundown's instruction) and it is deliberately last, so the scene ends on a town rather than on an argument. THE COLUMN'S HEIGHT (18.74 m, F-88) is NOT spoken — it is a caption candidate for the film; the guide says 'above you' and lets the tilt-up do it. As in scene 11, the payoff sits in `script` rather than `after_script`, because the player speaks `after_script` only for graded interactions and a `look` scene has none. Same known engine stall as Day-1 scene 15 (a `look` scene waits for ▶). LINEAR CUT (40 s): M-211 (Mapillary pano, licence unresolved — rundown Decision 4) as a slow pan right-to-left ending on the column, or M-248 as a tilt-up if the Mapillary question is answered no; either way the words are unchanged and the guide names what the player-traveller would have found.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. CUE/OVERLAY TIMINGS, and the sentence each is timed against: 0 the standing column full height, under 'Above you, le colonne romane'; 6 down to the pavement, under 'Find the other: there is a base, and nothing more'; 20 the steps, under 'Then find the steps down to the water' (and the lost-column pin lands with it); 34 along the quay, under 'A hundred and fifty metres along that quay…'. Every pin and caption has a cue within 3 s. Bearings and distances are computed from the fact sheet's own coordinates (F-106, F-107) and from the stop, not copied: column 078°/9 m, steps 049°/21 m, Stazione Marittima 121°/166 m — the last agrees with F-88/F-107's 'about 150 m'. GLOSS: 'le colonne romane' is spoken at ~5 s, so the chip is earned. RIGHTS: M-248 and the M-253 bed are both share-alike and carry sa: true."
+ }
+}

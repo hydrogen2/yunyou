@@ -1,0 +1,75 @@
+{
+ "id": "thirty-three-hours",
+ "type": "photo",
+ "title": "Thirty-three hours, and two lines",
+ "subtopic": "8 — Brindisi: the longest leg",
+ "duration_s": 45,
+ "learning_goal": "Know that the longest single leg of the chapter — the whole length of Italy — is two lines in the notebook, and that we cannot say which stations he passed.",
+ "narration": {
+  "script": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Nearly thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the rails reached the heel in 1865; which stations he stopped at, nobody has told us.",
+  "timing": "over",
+  "voice": "guide",
+  "variants": {
+   "clear": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Almost thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the railway reached the heel of Italy in 1865. Which stations his train stopped at, nobody has told us."
+  }
+ },
+ "media": [
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Brindisi_%E2%80%93_Veduta_generale_del_Porto_(xilografia).jpg",
+   "license": "public-domain",
+   "manifest_id": "M-246",
+   "attribution": "'Brindisi — Veduta generale del Porto', wood engraving, 1899 (Wikimedia Commons, public domain)",
+   "start_s": 0,
+   "end_s": 24,
+   "note": "2088x1679 — the whole harbour from above the town: the inner basin, the moles, a steamer at anchor. Establishes the port before M-245 goes close. Slot 1/2."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Brindisi_%E2%80%93_Stazione_di_sbarco_presso_il_Porto_(xilografia).jpg",
+   "license": "public-domain",
+   "manifest_id": "M-245",
+   "attribution": "'Brindisi — Stazione di sbarco presso il Porto', wood engraving, 1899 (Wikimedia Commons, public domain)",
+   "start_s": 24,
+   "end_s": 45,
+   "note": "2095x1525 — the landing station at the harbour: rails and a train on the quay, sheds, a steamer alongside with smoke up. Exactly the moment the chapter ends on. Slot 2/2."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 4,
+   "kind": "caption",
+   "text": "Turin 7:20 am Friday → Brindisi 4:00 pm Saturday · ≈ 33 hours",
+   "position": "bottom",
+   "until_s": 18
+  },
+  {
+   "at_s": 28,
+   "kind": "caption",
+   "text": "Rails reached Brindisi in 1865 — which is why the port could be the port",
+   "position": "bottom",
+   "until_s": 42
+  }
+ ],
+ "interaction": {
+  "kind": "none"
+ },
+ "transition": {
+  "in": "cut",
+  "out": "cut to the columns",
+  "music_cue": "none"
+ },
+ "next": "the-end-of-the-appian-way",
+ "sources": [
+  "F-50",
+  "F-51",
+  "F-65"
+ ],
+ "production_notes": "SEGMENT 8, first third (45 s; the segment's ceiling is 205 words and this scene spends 44). THE HONEST THINNESS IS THE POINT: the fact sheet cannot name a single station between Turin and the heel (its Gaps list forbids using the later Peninsular Express stop list), so the guide says so out loud rather than padding — 'which stations he stopped at, nobody has told us'. That sentence is also the chapter's argument in miniature. NO anachronisms: no wagons-lits, no dining car; those belong to the 1890s and Fogg sat up all night in a compartment.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-24 M-246 (the harbour, wide) — 'Twenty past seven, Friday morning, Turin… the whole length of Italy.'; 24-45 M-245 (the landing station, rails and a steamer) — 'The notebook gives it two lines. We know the rails reached the heel in 1865…' Two timed captions in 45 s against a ceiling of four. Both engravings are 1899, i.e. 27 years after Fogg — the captions state facts about 1865 and 1872 and never date the pictures to his day."
+ }
+}

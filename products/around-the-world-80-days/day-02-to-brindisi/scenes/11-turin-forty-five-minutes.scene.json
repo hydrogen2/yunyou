@@ -1,0 +1,177 @@
+{
+ "id": "turin-forty-five-minutes",
+ "type": "streetview",
+ "title": "Turin — forty-five minutes, one kilometre",
+ "subtopic": "7 — Turin (Street View stop-and-look 1 of 2)",
+ "duration_s": 90,
+ "learning_goal": "Find three things at Porta Nuova without being told where to point — the name, the clock, and the fact that the rails end here — and learn that the world's oldest museum of ancient Egypt is a walk away from a man on his way to Egypt.",
+ "narration": {
+  "script": "Twenty-five to seven in the morning, and Turin. Fogg has forty-five minutes. Three things to find. First: read the name across the front of the station. Second: find the clock. Third: look at how the building closes the end of the square — the rails stop here, and everybody has to turn round.\n\nTorino Porta Nuova. When Fogg waited here it was four years finished. And the city itself had just lost something: Turin was the capital of Italy from 1861 to 1865, and had been an ordinary city again for seven years.\n\nNow the pin. About nine hundred metres that way — and you cannot see it from here — is the oldest museum in the world devoted entirely to ancient Egypt. It was founded in 1824. Fogg is on his way to Egypt. He has forty-five minutes.",
+  "timing": "over",
+  "voice": "guide",
+  "variants": {
+   "clear": "Twenty-five to seven in the morning, in Turin. Fogg has forty-five minutes here. Three things to find. First: read the name across the front of the station. Second: find the clock. Third: look at how the building closes the end of the square — the rails stop here, and everyone has to turn round.\n\nTorino Porta Nuova. When Fogg waited here, the station was four years old. And the city had just lost something too: Turin was the capital of Italy from 1861 to 1865, and had been an ordinary city again for seven years.\n\nNow the pin. About nine hundred metres in that direction — you cannot see it from here — is the oldest museum in the world about ancient Egypt, and only about ancient Egypt. It was founded in 1824. Fogg is on his way to Egypt. He has forty-five minutes."
+  }
+ },
+ "media": [
+  {
+   "kind": "streetview",
+   "ref": "45.063200,7.679200,190,4,90",
+   "license": "google-maps-embed",
+   "manifest_id": "M-216",
+   "attribution": "Google Street View (Maps Embed API)",
+   "note": "Piazza Carlo Felice, looking south at the front of Torino Porta Nuova, façade about 90-160 m ahead (the station node F-104 at 45.06189,7.67837 bears 204° / 160 m from this point; the front is wide, so 190° holds it). Maps EMBED, the free SKU, drag to look — no programmatic camera and therefore nothing billable (RULE 1, D3, D6). Pano availability is EXPECTED (main city square) and QA confirms it in the player: the founder's key is referrer-restricted, so the metadata endpoint answers REQUEST_DENIED and the manifest could not check. Fallback ladder if the pano is missing: M-242 held under the same task read as a pan, then the 'open in Google Maps' button.",
+   "fallback": "M-242"
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Brogi,_Giacomo_(1822-1881)_-_n._3072_-_Torino_-_La_Stazione_e_il_giardino.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-242",
+   "attribution": "Giacomo Brogi, 'Torino — La Stazione e il giardino', before 1881 (Wikimedia Commons, public domain)",
+   "start_s": 0,
+   "end_s": 90,
+   "note": "790x510 — Porta Nuova's front across the garden, a photograph from within a decade of Fogg's 6:35 am arrival. Paper plate, no punch-in. DECLARED FALLBACK for the pano and the linear cut's opening frame; it is not shown while the pano is up.",
+   "use": "linear"
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Brogi,_Giacomo_-_Die_Haupthalle_des_Bahnhofs_von_Turin_(Zeno_Fotografie).jpg",
+   "license": "public-domain",
+   "manifest_id": "M-243",
+   "attribution": "Giacomo Brogi, the great hall of Turin station, c.1880 (Wikimedia Commons, public domain)",
+   "start_s": 0,
+   "end_s": 90,
+   "note": "1576x1136 — the iron-and-glass train shed from the buffer stops, trains under the arch, daylight at the far end. THE INSERT AFTER THE TASK RESOLVES: it is the proof of the third find (the rails end at the buffers) and it is the best Turin plate we have. In the player it cannot share the frame with a Street View embed, so it belongs to the linear cut and to the fallback ladder; if QA wants it in the player, the honest way is a two-second cut-away after the look budget expires, which the engine does not have today.",
+   "use": "linear"
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 2,
+   "kind": "prompt",
+   "text": "Three things to find: the name, the clock, and where the rails stop",
+   "position": "top",
+   "until_s": 30
+  },
+  {
+   "at_s": 16,
+   "kind": "caption",
+   "text": "Torino Porta Nuova — begun 1861, opened Dec 1864, finished 1868",
+   "position": "bottom",
+   "until_s": 30
+  },
+  {
+   "at_s": 46,
+   "kind": "caption",
+   "text": "Capital of Italy, 1861–1865 — and an ordinary city again by 1872",
+   "position": "bottom",
+   "until_s": 58
+  },
+  {
+   "at_s": 62,
+   "kind": "pin",
+   "text": "Museo Egizio — about 900 m · founded 1824",
+   "position": "bl",
+   "until_s": 78,
+   "note": "No geo: the museum is behind buildings from this pano, so this is a plain corner pin and the script says out loud that you cannot see it from here (the Day-1 Charles I precedent)."
+  },
+  {
+   "at_s": 30,
+   "kind": "gloss",
+   "text": "Torino — Italian for Turin; the station is Torino Porta Nuova",
+   "position": "bl",
+   "until_s": 44
+  }
+ ],
+ "camera": [
+  {
+   "at_s": 0,
+   "look_at": "45.06189,7.67837",
+   "heading": 190,
+   "pitch": 4,
+   "zoom": 0.7,
+   "hold_s": 14,
+   "ease_s": 0,
+   "label": "the whole front of Porta Nuova across Piazza Carlo Felice"
+  },
+  {
+   "at_s": 14,
+   "look_at": "45.06189,7.67837",
+   "heading": 190,
+   "pitch": 8,
+   "zoom": 2.0,
+   "hold_s": 16,
+   "ease_s": 2.5,
+   "label": "find it 1/3: the name across the front, tight"
+  },
+  {
+   "at_s": 30,
+   "look_at": "45.06189,7.67837",
+   "heading": 190,
+   "pitch": 14,
+   "zoom": 2.4,
+   "hold_s": 14,
+   "ease_s": 2.5,
+   "label": "find it 2/3: the clock on the front"
+  },
+  {
+   "at_s": 44,
+   "look_at": "45.06189,7.67837",
+   "heading": 190,
+   "pitch": 2,
+   "zoom": 0.4,
+   "hold_s": 18,
+   "ease_s": 3,
+   "label": "find it 3/3: pull wide — the building closes the end of the square, because the line stops here"
+  },
+  {
+   "at_s": 62,
+   "look_at": "45.06844,7.68435",
+   "heading": 35,
+   "pitch": 0,
+   "zoom": 0.6,
+   "hold_s": 16,
+   "ease_s": 3,
+   "label": "turn to the Museo Egizio: F-105 at 45.06844,7.68435 bears 035° / about 870 m from the station front (the rundown's '060°' does not survive the arithmetic). Behind buildings — the find is the direction and the fact, not a sight of it."
+  },
+  {
+   "at_s": 78,
+   "look_at": "45.06189,7.67837",
+   "heading": 190,
+   "pitch": 6,
+   "zoom": 0.7,
+   "hold_s": 12,
+   "ease_s": 2.5,
+   "label": "settle back on the front under 'He has forty-five minutes.'"
+  }
+ ],
+ "interaction": {
+  "kind": "look",
+  "prompt": "Drag the view. Three things to find: the station's name across the front, the clock, and the reason everybody here has to turn round.",
+  "pause_narration": true,
+  "timeout_s": 30
+ },
+ "transition": {
+  "in": "cut",
+  "out": "cut to the harbour",
+  "music_cue": "none"
+ },
+ "next": "thirty-three-hours",
+ "sources": [
+  "F-50",
+  "F-51",
+  "F-86",
+  "F-87",
+  "F-95",
+  "F-104",
+  "F-105"
+ ],
+ "production_notes": "SEGMENT 7 (90 s, fill 70 %, ceiling 150 words; it spends 134). STOP-AND-LOOK #1 OF 2 — and two is the whole chapter's budget (D6). There is a real task with three named finds, all said out loud, which is what earns Street View here: no walking, no route, no waypoint transport. The stop's coordinates live on the M-216 media entry, exactly as Day-1 scene 15 does since D6; there is deliberately no `interaction.route`, because a route of one is transport grammar. Player: Maps EMBED (drag to look), free SKU, nothing billable. THE CAMERA TRACK IS THE FILM'S VERSION and the player's guided version: six cues, each within 3 s of the overlay that names the same thing. THE MUSEO EGIZIO BEARING IS RECOMPUTED: the rundown says 060°, but F-104 -> F-105 is 033° at 865 m and this camera point -> F-105 is 035° at about 710 m, so the cue uses look_at (which the runtime aims from wherever the pano actually is) and the narration says 'about nine hundred metres' — F-87's own 'about 1 km' measured from the station, not from the pavement we are standing on. WHY THE PAYOFF IS IN `script` AND NOT `after_script`: the player speaks `after_script` only when a graded interaction resolves; a `look` scene has no options, so an after_script here would never be heard and the Egypt joke — the whole reason for the stop — would be lost. It is in `script`, after the finds, and the 30 s look budget follows the words. Known engine stall, inherited from Day-1 scene 15: `tick()`'s needsInput test exempts only `walk` on a streetview scene, so this scene waits for ▶ rather than auto-advancing. THE SALA GONIN (F-86) is a caption candidate only and is NOT in this scene: public access is unverified (fact sheet gap) and we do not send anyone anywhere we have not checked. LINEAR CUT (70 s): a slow pan over the same view following the camera cues, the words unchanged, the guide naming what the player-traveller would have found — D6's own adaptation rule — then M-243 as the insert on 'the rails stop here'. M-204 (Turin 1911) is unwatched and must not be cut in on anyone's word.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. CUE/OVERLAY TIMINGS, and the sentence each is timed against: 0 the whole front, under 'Twenty-five to seven in the morning, and Turin'; 14 tight on the name, under 'read the name across the front of the station'; 30 the clock, under 'Second: find the clock'; 44 wide, under 'look at how the building closes the end of the square'; 62 turn towards the museum, under 'Now the pin. About nine hundred metres that way'; 78 settle back, under 'He has forty-five minutes.' Every pin and caption has a cue within 3 s. The two stills are `use: linear` and are not on the player's clock — they are the fallback and the film. GLOSS: the chip glosses 'Torino', which the guide says out loud at ~30 s. The rundown's 'il binario' chip is CUT: the guide never says the word, and a chip may not gloss a word the traveller does not hear. QA MUST CONFIRM the pano exists at 45.063200,7.679200 (the founder's key is referrer-restricted, so nobody could check from the studio) and that the station name and the clock are legible at the authored zooms."
+ }
+}

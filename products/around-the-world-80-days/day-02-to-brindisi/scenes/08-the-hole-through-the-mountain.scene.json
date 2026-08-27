@@ -1,0 +1,144 @@
+{
+ "id": "the-hole-through-the-mountain",
+ "type": "photo",
+ "title": "The hole through the mountain",
+ "subtopic": "5 — The Alps: the tunnel",
+ "duration_s": 85,
+ "learning_goal": "Know that the Fréjus tunnel was dug from both ends between 1857 and 1870, opened thirteen months before Fogg's train, and was the longest in the world until 1882 — and that a machine is why it took thirteen years, not seventy-one.",
+ "narration": {
+  "script": "That was the way over. This is the way through.\n\nThey began in 1857, from both ends, with nothing in the middle: no shaft, no daylight, two teams walking towards each other under the mountain. By hand it would reportedly have taken about seventy-one years.\n\nSo Germain Sommeiller's crews used a machine he had to invent first — a compressed-air drill, ten of them mounted in one frame. And the air that drove the drills, coming out of them, was the air the men breathed.\n\nThe two headings met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871: thirteen months before Fogg's train. Nobody had ever made a hole in the world this long, and nobody made a longer one until 1882.\n\nAnd here it is now. The Italians call it simply il traforo — the tunnel. Same arch, same hole, still the way through.",
+  "timing": "over",
+  "voice": "guide",
+  "variants": {
+   "clear": "That was the way over. This is the way through.\n\nThey started in 1857, from both ends, with nothing in the middle: no shaft, no daylight, two teams of men walking towards each other under the mountain. By hand, people said, it would have taken about seventy-one years.\n\nSo Germain Sommeiller's men used a machine that he had to invent first — a compressed-air drill, ten of them held in one frame. And the air that drove the drills came out of them and became the air the men breathed.\n\nThe two ends met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871 — thirteen months before Fogg's train. Nobody had ever made a hole this long, and nobody made a longer one until 1882.\n\nAnd here it is today. Italians call it simply il traforo — the tunnel. Same arch, same hole, still the way through."
+  }
+ },
+ "media": [
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Chemin_de_fer_du_Mont-Cenis.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-240",
+   "attribution": "'Chemin de fer du Mont-Cenis', 1868 (Wikimedia Commons, public domain)",
+   "start_s": 0,
+   "end_s": 10,
+   "note": "698x474 — the Fell railway over the pass, the stopgap the tunnel replaced. Small: the player mounts it as a paper plate, no punch-in. THIS IS QUIZ D'S ANSWER IMAGE, moved here from the quiz's feedback because the player cannot show a picture in feedback text; it lands about two seconds after the reveal is spoken. Slot 1/6."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:L%27Illustration_1862_gravure_Percement_du_Mont_Cenis_04,_Entr%C3%A9e_du_tunnel.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-233",
+   "attribution": "L'Illustration, 1862 — 'Percement du Mont Cenis: Entrée du tunnel' (Wikimedia Commons, public domain)",
+   "start_s": 10,
+   "end_s": 28,
+   "note": "3488x4891 portrait. The works at the portal: the arch, spoil wagons on rails, sheds, the mountain rising behind. Ten years into a thirteen-year dig. Slot 2/6."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:L%27Illustration_1862_gravure_Percement_du_Mont_Cenis_03,_Machine_%C3%A0_forer.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-234",
+   "attribution": "L'Illustration, 1862 — 'Machine à forer', the pneumatic drill (Wikimedia Commons, public domain)",
+   "start_s": 28,
+   "end_s": 44,
+   "note": "4257x3210. One man holding a compressed-air drill in its frame against the rock face. The picture for 'the machine that made it possible'. Slot 3/6."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:L%27Illustration_1862_gravure_Percement_du_Mont_Cenis_02,_ouvriers_foreurs.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-235",
+   "attribution": "L'Illustration, 1862 — 'Ouvriers foreurs' (Wikimedia Commons, public domain)",
+   "start_s": 44,
+   "end_s": 58,
+   "note": "7072x2767 — a 2.5:1 strip of the drilling gang, made for a slow lateral pan under the narration. Content not individually viewed at full size (thumbnail only); title and set unambiguous. Slot 4/6."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Eisenbahn-tunnel-mont-cenis-1871.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-237",
+   "attribution": "Illustrirte Zeitung, 1871 — the opening of the Mont Cenis railway tunnel (Wikimedia Commons, public domain)",
+   "start_s": 58,
+   "end_s": 72,
+   "note": "929x680 — a crowd and a train at the portal in a snowy valley: the 17 September 1871 opening. THE KEYSTONE PLATE. Small, so the player mounts it as paper. Slot 5/6."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Bardonecchia_(TO)_-_portale_sud_del_traforo_ferroviario_del_Frejus.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-239",
+   "attribution": "Fréjus rail tunnel, south (Italian) portal at Bardonecchia, today — K. Weise (Wikimedia Commons, public domain)",
+   "start_s": 72,
+   "end_s": 85,
+   "note": "3488x2616. The stone arch with its two turrets, catenary, the running rails entering the dark. THEN/NOW: cross-fade from M-237 at 72 s rather than cutting — the two frames are the same hole 150 years apart, and the dissolve is the whole point. (This becomes a `timeline` scene the day the Engine ships that type; no script changes needed.) Slot 6/6."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 2,
+   "kind": "caption",
+   "text": "Over the pass: the Fell railway, 1868–1871",
+   "position": "bottom",
+   "until_s": 12
+  },
+  {
+   "at_s": 14,
+   "kind": "caption",
+   "text": "Fréjus (Mont Cenis) tunnel, begun 1857 — Modane to Bardonecchia",
+   "position": "bottom",
+   "until_s": 26
+  },
+  {
+   "at_s": 46,
+   "kind": "caption",
+   "text": "Ten drills in one frame, air at 7 atmospheres, up to 80 holes a blast",
+   "position": "bottom",
+   "until_s": 58
+  },
+  {
+   "at_s": 60,
+   "kind": "caption",
+   "text": "17 September 1871 — the opening",
+   "position": "bottom",
+   "until_s": 70
+  },
+  {
+   "at_s": 74,
+   "kind": "caption",
+   "text": "Bardonecchia, the south portal today",
+   "position": "bottom",
+   "until_s": 85
+  },
+  {
+   "at_s": 66,
+   "kind": "gloss",
+   "text": "il traforo — Italian for the tunnel",
+   "position": "bl",
+   "until_s": 80
+  }
+ ],
+ "interaction": {
+  "kind": "none"
+ },
+ "transition": {
+  "in": "cut from the quiz card",
+  "out": "dissolve to the section diagram",
+  "music_cue": "none"
+ },
+ "next": "the-fourth-date",
+ "sources": [
+  "F-69",
+  "F-70",
+  "F-71",
+  "F-73"
+ ],
+ "production_notes": "SEGMENT 5, second third (85 s; 154 words of the segment's 385). This is the chapter's one genuinely information-dense beat and it sits at the density ceiling, so every number that a caption or the next scene's diagram carries is NOT read aloud (R3): the length, the mean altitude, the air pressure and the hole count are on captions; '13 years, not 71' is a callout on G-202 in the next scene, so the guide says the seventy-one only once, here, hedged as 'reportedly' exactly as F-71 hedges it. NO SUPERLATIVE PILE-UP on F-70: 'nobody had ever made a hole in the world this long, and nobody made a longer one until 1882' — plainly, once. THE GLOSS CHIP IS EARNED: the guide says 'il traforo' out loud at ~66 s. M-205 (the CC BY 3.0 drone footage of the Alps) is deliberately NOT in this scene: it is winter footage and Fogg crosses in early October, and the player cannot show `footage` anyway; if the linear cut wants the mass of the mountain, use 0:15-0:30 or 4:15-4:30 with the burn-in 'Electric Life · CC BY 3.0 · trimmed' and never under a line about the season. M-206 (the Fréjus ROAD tunnel drive, 1980) is rejected — same mountain, wrong hole (rundown Decision 6).",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-10 M-240 — 'That was the way over.' (and it is the picture the quiz's answer earned); 10-28 M-233 — 'This is the way through.' and 'They began in 1857, from both ends, with nothing in the middle…'; 28-44 M-234 — 'So Germain Sommeiller's crews used a machine he had to invent first…'; 44-58 M-235 — '…the air that drove the drills, coming out of them, was the air the men breathed.'; 58-72 M-237 — 'The two headings met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871…'; 72-85 M-239, cross-faded from M-237 — 'And here it is now… Same arch, same hole, still the way through.' Five timed captions in 85 s against a ceiling of six; the gloss chip is exempt. FACT-CHECKER: 'about seventy-one years' carries F-71's own 'reportedly' in BOTH tracks (the clear track says 'people said'), and the qualifier travels with the claim."
+ }
+}

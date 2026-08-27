@@ -1,0 +1,101 @@
+{
+ "id": "quiz-three-months",
+ "type": "quiz",
+ "title": "Quiz — a letter from London to India",
+ "subtopic": "3 — Calais: why this route exists (Quiz C)",
+ "duration_s": 50,
+ "learning_goal": "Know why a train to the heel of Italy counted as a short cut to India.",
+ "narration": {
+  "script": "Calais, in the middle of the night. Before we board — one question about the train we are about to catch. Before any of this existed, how long did a letter from London take to reach India?",
+  "timing": "over",
+  "voice": "guide",
+  "after_script": "Three months, round the Cape of Good Hope. A question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut.",
+  "variants": {
+   "clear": "Calais, in the middle of the night. Before we get on the train, one question about it. Before any of this was built, how long did a letter from London take to reach India?"
+  },
+  "after_script_variants": {
+   "clear": "Three months, all the way round the Cape of Good Hope. So a question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut."
+  }
+ },
+ "media": [
+  {
+   "kind": "generated",
+   "ref": "generated/g-206/cape-versus-overland.svg",
+   "license": "generated",
+   "manifest_id": "G-206",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 18,
+   "end_s": 50,
+   "note": "SPEC (G-206). One frame, two routes, same style bible as G-01/G-201 (cream #efe6d3 paper, sepia coastline #5b4a3a, one warm-red accent #b03a2e, colour never the only signal, every route also distinguished by line weight/dash so colour is never the only signal). ROUTE A, thin sepia: London -> round the Cape of Good Hope -> Bombay, labelled 'over 11,000 miles · about 3 months'. ROUTE B, warm red: London -> across Europe -> Egypt -> Red Sea -> Bombay, labelled '≈ 6,000 miles · 35-45 days (Waghorn, 1830s)'. One line of small type at the foot: 'and after the Suez Canal, 1869, the ship goes straight through.' Facts: F-62, F-66. REVEAL ONLY — start_s 18 keeps it off screen until the answer is given, so the card cannot give the quiz away (R5).",
+   "fallback": "M-228"
+  },
+  {
+   "kind": "audio",
+   "ref": "https://commons.wikimedia.org/wiki/File:Parovoz_sound.ogg",
+   "license": "public-domain",
+   "manifest_id": "M-255",
+   "attribution": "Steam whistle (Wikimedia Commons, public domain)",
+   "start_s": 0,
+   "end_s": 4,
+   "note": "3.4 s whistle sting on the cut into Calais. The PD spare, chosen over the CC BY-SA 4.0 primary so this scene carries no share-alike obligation."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 0,
+   "kind": "prompt",
+   "text": "Before any of this existed: London to India, by post — how long?",
+   "position": "top",
+   "until_s": 50,
+   "note": "Persists until answered."
+  },
+  {
+   "at_s": 20,
+   "kind": "caption",
+   "text": "Round the Cape: over 11,000 miles. Through Egypt: about 6,000.",
+   "position": "bottom",
+   "until_s": 34
+  }
+ ],
+ "interaction": {
+  "kind": "choice",
+  "prompt": "Before any of this existed, how long did a letter from London take to reach India?",
+  "options": [
+   {
+    "text": "About three weeks",
+    "correct": false,
+    "feedback": "Not yet. Three weeks is roughly what it took after everything in this chapter had been built — the railways, the canal, the steamers."
+   },
+   {
+    "text": "About six weeks",
+    "correct": false,
+    "feedback": "That was the new way, and it was a marvel. In the 1830s Thomas Waghorn pieced together a route through Egypt — ship, river, camels and carriages across the desert, ship again — and got it down to about six weeks."
+   },
+   {
+    "text": "About three months",
+    "correct": true,
+    "feedback": "Round the Cape of Good Hope: over eleven thousand miles, and about three months each way."
+   }
+  ],
+  "pause_narration": true,
+  "timeout_s": 20
+ },
+ "transition": {
+  "in": "whistle sting, cut",
+  "out": "dissolve to the maritime station",
+  "music_cue": "M-255, 3 s, once"
+ },
+ "next": "calais-the-indian-mail",
+ "sources": [
+  "F-62",
+  "F-64",
+  "F-66"
+ ],
+ "production_notes": "SEGMENT 3, first half (50 s of the segment's 130; segment fill 70 %, segment ceiling 215 words — this scene spends 68 of them). Quiz C from the rundown, verbatim in shape. QUIZ FIRST, THEN THE ANSWER BECOMES THE SEGMENT: nothing in the two minutes before this scene uses the words 'three months' or 'the Cape' (R5), which is also why G-206 does not come up until 18 s — the card carries the durations as labels and would give the answer away if it opened the scene. Player branch: type 'quiz' with a generated asset and NO image entries -> the scene card holds from 0 s (title + learning goal, both written spoiler-free) and G-206 replaces it at 18 s. Do NOT add M-228 as an `image` entry here: the player's quiz branch shows img[0] immediately and would suppress the generated card; M-228 is recorded as G-206's `fallback` instead. TONE: soft, skippable, teaching in the feedback and not in the score (positioning — never school). Every option teaches; the 'six weeks' distractor is the interesting wrong answer and gets the longest feedback.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. Timing: question spoken 0-16 s; wait state 20 s (pause_narration, honest budget); G-206 comes up at 18 s of scene clock, i.e. immediately after the answer resolves, timed against the reveal line 'Three months, round the Cape of Good Hope.'; the 11,000/6,000 caption at 20-34 s sits under 'A question and its answer took half a year.' R3: the mileages are on the card and in the caption and are NOT read aloud. F-64 is cited for the 'about three weeks' feedback and is hedged there ('roughly'); the sheet flags F-64 as possibly describing the later Peninsular Express, so no schedule is claimed for 1872."
+ }
+}

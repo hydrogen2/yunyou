@@ -1,0 +1,150 @@
+{
+ "id": "calais-the-indian-mail",
+ "type": "photo",
+ "title": "Calais — the train this whole route exists for",
+ "subtopic": "3 — Calais: the Indian Mail",
+ "duration_s": 80,
+ "learning_goal": "Know that our train is the Indian Mail, that it could only run because rails reached Brindisi in 1865 and the canal opened in 1869, and that the first P&O sailing from Brindisi was two years before Fogg; feel the border arrive as a sound.",
+ "narration": {
+  "script": "The boat comes alongside the Railway Station Quay — le quai — and hands you straight to the train. Customs officers in green and grey; hotel touts shouting English as the French hear it; hot coffee at one in the morning.\n\nAnd this is the train. The French call it la malle des Indes — the India mail. It runs from Calais to Brindisi to meet a ship, and it exists because of three dates: rails reached the heel of Italy in 1865, the Suez Canal opened in 1869, and the first steamer left Brindisi for India in October 1870. Two years before Fogg.\n\nIn the novel, when the bank is robbed, detectives are sent to six ports. Brindisi is one of them, and nobody needs it explained.\n\nOne last thing about the night line to Paris. It runs through Amiens — where Jules Verne had been living for a year, writing this book.",
+  "timing": "over",
+  "voice": "guide",
+  "variants": {
+   "clear": "The boat comes in beside the railway station quay — le quai — and hands you straight to the train. Customs officers in green and grey. Hotel touts shouting English the way the French hear it. Hot coffee at one in the morning.\n\nAnd this is the train. In French it is la malle des Indes, the India mail. It runs from Calais to Brindisi to meet a ship. It exists because of three dates: the railway reached the heel of Italy in 1865, the Suez Canal opened in 1869, and the first steamer left Brindisi for India in October 1870. Two years before Fogg.\n\nIn the novel, when the bank is robbed, the police send detectives to six ports. Brindisi is one of them, and nobody needs it explained.\n\nOne last thing about the night train to Paris. It runs through Amiens — and Jules Verne had been living in Amiens for a year, writing this book."
+  }
+ },
+ "media": [
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Calais.Gare_maritime,_vers_1890.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-226",
+   "attribution": "Calais, Gare Maritime, c.1890 (Wikimedia Commons, public domain)",
+   "start_s": 0,
+   "end_s": 24,
+   "note": "990x723. The maritime station standing on the water with ships either side — the building the boat train ran into. Slot 1/3."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:La_Malle_des_Indes.jpg",
+   "license": "cc-by-sa-3.0",
+   "manifest_id": "M-227",
+   "attribution": "'La Malle des Indes', PLM postcard — scan: Logan / Wikimedia Commons · CC BY-SA 3.0",
+   "start_s": 24,
+   "end_s": 48,
+   "note": "800x515. THE CHAPTER'S KEYSTONE ARTEFACT. A wind-cutter locomotive at speed with its train; the printed caption is the beat, so hold it 24 s — long enough to read. Slot 2/3. The underlying postcard is period and almost certainly PD, but the Commons page licenses the uploader's scan CC BY-SA 3.0: attribute as stated and carry sa: true unless Rights concludes the PD original governs (manifest Decision 2, rundown Decision 5).",
+   "sa": true
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Overland_Indian_Mail_1844.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-228",
+   "attribution": "'Overland Indian Mail' — Illustrated London News engraving, 1844 (Wikimedia Commons, public domain)",
+   "start_s": 48,
+   "end_s": 64,
+   "note": "959x446, wide letterbox — good under a caption strip. A packet boat carrying the Indian mail, a generation before Fogg. Slot 3/3."
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/g-201/europe-legs_L2-L4.svg",
+   "license": "generated",
+   "manifest_id": "G-201",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 64,
+   "end_s": 80,
+   "note": "SPEC (G-201, layers L2-L4). The Dover -> Calais packet leg and the Calais -> Paris rail leg drawn onto the map, with Amiens marked as a small unnumbered dot on the line (no label beyond the name). Same style bible and the same corrected times as the L0-L1 state in scene 01 (Brindisi 4 pm SATURDAY 5 October; Turin the 4th). RUNDOWN DEVIATION, deliberate: the rundown put L2-L3 in scene 02 and L4 here. Scene 02 is a `photo` scene whose stills run to the last second, and in the player a generated card inside a photo scene DROPS every still authored at or after the card's start — so a map card in scene 02 would have deleted the cliffs and the sea. The legs are folded into one reveal here instead."
+  },
+  {
+   "kind": "audio",
+   "ref": "https://commons.wikimedia.org/wiki/File:Parovoz_sound.ogg",
+   "license": "public-domain",
+   "manifest_id": "M-255",
+   "attribution": "Steam whistle (Wikimedia Commons, public domain)",
+   "start_s": 62,
+   "end_s": 66,
+   "note": "One 3 s whistle under the cut to the 1844 engraving. PD spare, not the CC BY-SA primary."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 8,
+   "kind": "caption",
+   "text": "Touts on the quay, 1863: 'Angaishe ouse!' · 'Your baggage, registair froo, Sir?'",
+   "position": "bottom",
+   "until_s": 22,
+   "note": "Dickens, F-91 — the border arrives in the touts' mouths, not in a lesson. Captioned, not spoken."
+  },
+  {
+   "at_s": 28,
+   "kind": "caption",
+   "text": "Printed on the card: 'the Calais–Brindisi express … carrying only the despatches for India, once a week, with no passengers at all'",
+   "position": "bottom",
+   "until_s": 42,
+   "note": "A translation of M-227's own printed caption (F-108). It is quoted as the card's words, never asserted."
+  },
+  {
+   "at_s": 43,
+   "kind": "pin",
+   "text": "Go deeper: the card says 'no passengers' — but can anyone date the card?",
+   "position": "tr",
+   "until_s": 48,
+   "note": "F-108 is high that the card SAYS this and low/unverified that it describes October 1872 ('Machine Coupe-Vent' locomotives suggest the 1890s). Founder's standing instruction: this may appear only as a go-deeper pin phrased as an open question, and never as narration. If an 1871-72 Indian Mail timetable is ever found, it promotes to a spine beat."
+  },
+  {
+   "at_s": 50,
+   "kind": "caption",
+   "text": "The idea, thirty years earlier — Illustrated London News, 1844",
+   "position": "bottom",
+   "until_s": 62
+  },
+  {
+   "at_s": 66,
+   "kind": "caption",
+   "text": "Calais → Amiens → Paris, through the night",
+   "position": "bottom",
+   "until_s": 78
+  },
+  {
+   "at_s": 14,
+   "kind": "gloss",
+   "text": "le quai — the quay, and also a railway platform",
+   "position": "bl",
+   "until_s": 26
+  },
+  {
+   "at_s": 32,
+   "kind": "gloss",
+   "text": "la malle des Indes — the Indian Mail: Britain's post to India",
+   "position": "bl",
+   "until_s": 46
+  }
+ ],
+ "interaction": {
+  "kind": "none"
+ },
+ "transition": {
+  "in": "dissolve from the quiz card",
+  "out": "cut to Paris, morning",
+  "music_cue": "M-255 whistle at 62 s; otherwise no music"
+ },
+ "next": "paris-eighty-minutes",
+ "sources": [
+  "F-60",
+  "F-63",
+  "F-65",
+  "F-66",
+  "F-79",
+  "F-80",
+  "F-91",
+  "F-94",
+  "F-108"
+ ],
+ "production_notes": "SEGMENT 3, second half (80 s; the segment's ceiling is 215 words and this scene spends 147 of the 68 the quiz did not). NO LISTS ALOUD (style guide, persona §2.6): Verne's six ports are counted, not recited — 'detectives are sent to six ports. Brindisi is one of them.' The three dates ARE spoken because three is the limit of a breath and they are the argument of the segment. F-108 IS NOT NARRATED anywhere: the postcard's printed claim is a caption (a quotation of the artefact) plus one go-deeper pin phrased as an open question, exactly as instructed; the guide never says the train carried no passengers. AMIENS: 'where Jules Verne had been living for a year, writing this book' — never 'the house he wrote it in' (F-80's own note: the museum house is the one he took in 1882). GLOSS CHIPS: only two, and both gloss words the guide actually speaks — 'le quai' at ~6 s and 'la malle des Indes' at ~26 s. The rundown also asked for 'la douane' and 'le buffet'; both are CUT, because the guide says 'customs officers' and 'hot coffee' in English and a chip may never gloss a word the traveller does not hear.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-24 M-226 — 'The boat comes alongside the Railway Station Quay — le quai —' through '…hot coffee at one in the morning.'; 24-48 M-227 — 'And this is the train. The French call it la malle des Indes…' through '…Two years before Fogg.' (the postcard is held 24 s so its printed caption can be read, per the rundown's ≥ 12 s); 48-64 M-228 — 'In the novel, when the bank is robbed, detectives are sent to six ports…'; 64-80 G-201 L2-L4 — 'One last thing about the night line to Paris. It runs through Amiens…' as the Calais-Paris leg draws. Six timed overlays in 80 s is the schema ceiling exactly (80//15 + 1 = 6); the two gloss chips are exempt. RIGHTS: M-227 carries sa: true pending rundown Decision 5."
+ }
+}

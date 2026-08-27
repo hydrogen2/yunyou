@@ -1,0 +1,126 @@
+{
+ "id": "paris-eighty-minutes",
+ "type": "photo",
+ "title": "Paris — eighty minutes, through the window of a cab",
+ "subtopic": "4 — Paris: eighty minutes, in the rain",
+ "duration_s": 85,
+ "learning_goal": "Know that Passepartout is a Parisian who is driven across his own city between two stations without stopping, and that neither station looked the way we picture it; feel the comedy before the sadness.",
+ "narration": {
+  "script": "Twenty past seven on Thursday morning, and the train comes into the Gare du Nord — the North station. Passepartout is a Parisian. He left France five years ago, and last night, on the boat train, he was hoping for exactly this: it would do his eyes good, he thinks, to see Paris once more.\n\nHe gets eighty minutes. The next train leaves from the Gare de Lyon, four kilometres away across the city, and the two of them cross it by cab, in driving rain.\n\nTwo dates while we cross. The station he arrives at is eight years old; this front was finished in 1864. The station he leaves from had burned sixteen months earlier, in the Commune — and the Gare de Lyon everybody photographs, clock tower and all, is 1900. Nobody in 1872 ever saw it.\n\nEighty minutes. He does not get out.",
+  "timing": "over",
+  "voice": "guide",
+  "variants": {
+   "clear": "Twenty past seven on Thursday morning. The train comes into the Gare du Nord — the North station. Passepartout is a Parisian. He left France five years ago, and last night on the train he was hoping for exactly this. It would do his eyes good, he thinks, to see Paris once more.\n\nHe gets eighty minutes. The next train leaves from the Gare de Lyon, four kilometres away on the other side of the city. The two of them cross Paris in a horse-cab, in heavy rain.\n\nTwo dates while we cross. The station he arrives at is eight years old: this front was finished in 1864. The station he leaves from had burned down sixteen months earlier, during the Commune. And the Gare de Lyon that everybody photographs, with the clock tower, is from 1900. Nobody in 1872 ever saw it.\n\nEighty minutes. He does not get out."
+  }
+ },
+ "media": [
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:La_gare_du_Nord,_place_de_Roubaix,_10%C3%A8me_arrondissement,_Paris._D.8021(273)(2).jpg",
+   "license": "cc0",
+   "manifest_id": "M-232",
+   "attribution": "Léon Leymonnerye, 'Gare du Nord, Place Roubaix', 1875 — Paris Musées (CC0)",
+   "start_s": 0,
+   "end_s": 42,
+   "note": "3000x2468. A precise pencil-and-wash elevation of Hittorff's front with the artist's handwritten note beneath. CC0, so no obligation. 1875, three years after Fogg — near enough that the façade is the one he arrived under. Slot 1/2."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Paris,_la_gare_du_Nord.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-231",
+   "attribution": "Gare du Nord, Paris, second half of the 19th century — publisher P. Hélaine, 206 rue de Rivoli (Wikimedia Commons, public domain)",
+   "start_s": 42,
+   "end_s": 85,
+   "note": "CAREFUL: the 8015x4008 file is a STEREO CARD, two ~3,400 px half-frames on an orange mount with the publisher's imprint down both sides. Crop ONE half (≈3400x3700) before use, or mount both halves as a wiggle-stereo plate, which is a period way to show a period station. Do not show the mount. Slot 2/2."
+  },
+  {
+   "kind": "footage",
+   "ref": "https://upload.wikimedia.org/wikipedia/commons/5/5a/A_Trip_Through_Paris%2C_France%2C_Late_1890s.webm",
+   "license": "public-domain",
+   "manifest_id": "M-203",
+   "attribution": "Lumière company films of Paris, remastered by Guy Jones (Wikimedia Commons, PD-France + PD-US-expired)",
+   "start_s": 50,
+   "end_s": 68,
+   "note": "Source in/out 2:03-2:21 — the horse cabs crossing a boulevard at 2:10. This is literally 'the Paris Passepartout is driven across and does not see'. LINEAR ONLY (the player has no renderer for kind 'footage'). CAPTION THE DECADE, never '1872': the shot is 1890s. Trim the 0:00-0:07 modern title card. No audio stream; the uploader's added music was removed on upload to Commons.",
+   "audio": "mute",
+   "use": "linear"
+  },
+  {
+   "kind": "footage",
+   "ref": "https://upload.wikimedia.org/wikipedia/commons/5/5a/A_Trip_Through_Paris%2C_France%2C_Late_1890s.webm",
+   "license": "public-domain",
+   "manifest_id": "M-203",
+   "attribution": "Lumière company films of Paris, remastered by Guy Jones (Wikimedia Commons, PD-France + PD-US-expired)",
+   "start_s": 68,
+   "end_s": 85,
+   "note": "Source in/out 2:33-2:50 — Place de la Concorde, 1897. LINEAR ONLY. Caption 'Paris, 1897' — never 1872.",
+   "audio": "mute",
+   "use": "linear"
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 6,
+   "kind": "caption",
+   "text": "Gare du Nord — Hittorff's front, finished 1864",
+   "position": "bottom",
+   "until_s": 20
+  },
+  {
+   "at_s": 24,
+   "kind": "pin",
+   "text": "Go deeper: Towle's English says 'a car'. Verne wrote fiacre — a horse-cab.",
+   "position": "tr",
+   "until_s": 38,
+   "note": "F-54. The spine says 'cab' plainly; this correction is optional layer, per the newcomer rule, and it explains the French word itself so no gloss chip is needed."
+  },
+  {
+   "at_s": 46,
+   "kind": "caption",
+   "text": "≈ 4 km across Paris · 7:20 am → 8:40 am · driving rain",
+   "position": "bottom",
+   "until_s": 60
+  },
+  {
+   "at_s": 64,
+   "kind": "caption",
+   "text": "Gare de Lyon: burnt in the Commune, 1871. Today's station is 1900.",
+   "position": "bottom",
+   "until_s": 78
+  },
+  {
+   "at_s": 10,
+   "kind": "gloss",
+   "text": "la gare — the station; Gare du Nord is the North station",
+   "position": "bl",
+   "until_s": 24
+  }
+ ],
+ "interaction": {
+  "kind": "none"
+ },
+ "transition": {
+  "in": "cut",
+  "out": "dissolve to the card",
+  "music_cue": "none — there is no music anywhere in segment 4"
+ },
+ "next": "what-he-did-not-see",
+ "sources": [
+  "F-50",
+  "F-51",
+  "F-53",
+  "F-54",
+  "F-56",
+  "F-81",
+  "F-82",
+  "F-94"
+ ],
+ "production_notes": "SEGMENT 4, first half (85 s; segment fill 65 %, segment ceiling 325 words — video 141 here, card 184 next). TYPE CHANGED video -> photo, and this is load-bearing. The rundown calls scene 05 a `video` scene, but Day 2 has NO YouTube anywhere (the Content Preparer landed every beat at rungs 1-3), and in the player a `video` scene with no `youtube` entry falls through to a text scene card with a small inset — the same failure Day 1 hit from the other side ('Inside the Reform' over outdoor footage). As a `photo` scene the two stills mount full-frame on the scene clock and the Lumière shots stay in the file as `use: linear` for the rendered cut. PLAIN TELLING ONLY (newcomer rule): the guide says 'cab', and the fiacre mistranslation is a go-deeper pin, not spine. NO MUSIC in this segment, before or under the taps. RUNDOWN DEVIATION: G-201's L5 leg is not revealed here — see scene 09, where it sits between the tunnel section and the enabler map (a generated card inside this photo scene would drop the still authored after it).",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-42 M-232 (Hittorff's front, drawn 1875) — 'Twenty past seven on Thursday morning, and the train comes into the Gare du Nord' through '…to see Paris once more.'; 42-85 M-231 (the stereo card, one half cropped) — 'He gets eighty minutes…' through the two dates and the closing 'Eighty minutes. He does not get out.' In the film the last 35 s are M-203 instead (horse cabs at 2:10, then Concorde at 2:33), captioned by decade. The gloss chip is legitimate: the guide says 'Gare du Nord' aloud at ~5 s and the chip explains 'la gare'. No chip for 'fiacre' — the guide never says it; the go-deeper pin carries and explains the word instead. HEDGES KEPT IN BOTH TRACKS: 'he thinks' on Passepartout's hope (F-56 is his own consoling thought, not a fact about the city), and the Gare de Lyon date is stated as what nobody in 1872 saw rather than as a claim about the 1855 hall."
+ }
+}

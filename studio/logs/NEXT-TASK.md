@@ -1,35 +1,42 @@
-# NEXT TASK (founder instruction, 2026-08-19 ~10:15 UTC)
+# NEXT TASK — handoff (written 2026-08-20, session ending)
 
-**Goal: a full `/watch` cut that CONTAINS the street walking.** Today's video has no walk at all — scenes 04
-(`count-the-steps`, Savile Row → the Reform Club) and 15 (`look-up-the-cross`) are marked interactive-only, and
-scene 05 is a substitute. C1a now makes the walk renderable into video (`panowalk` visual kind, cached Mapillary
-frames under `products/**/media/files/panos/`, shared move module `studio/player/panomove.mjs`).
+## State
+**Day 1 (`day-01-london`) — done and live.** Player has everything; the /watch video is STALE (older title,
+none of the recent picture work). The founder has NOT asked for a re-render — do not render without being asked.
+**Day 2 (`day-02-to-brindisi`) — three of four content steps done and committed:**
+- `research/fact-sheet.md` — F-48…F-109 ✓
+- `media/manifest.md` — M-201…, 10/10 beats downloadable, ZERO embeds needed ✓
+- `rundown/rundown.md` — 15 scenes, 18:45, density budgeted per segment ✓
+- `scenes/` — **NOT DONE.** A scene-build agent was in flight when the session ended and had written
+  nothing (0/15), so nothing is half-finished. **Re-run that step.**
 
-## Do, in order
-1. **Re-pace scene 04 before putting it in the film.** It currently asks 91–112 m of street per 15 s beat (~7 m/s,
-   a bicycle) — the frames are walking-grade, the scene timing is not. Fix by lengthening the beats or shortening the
-   legs so each stop plays at ~1.5–3.5 m/s. Evidence it works: the Reform stop (45 s → 3.5 m/s) and scene 15
-   (1.7 m/s) already read as a walk. `studio/tools/panowalk/fetch.mjs` prints `pace` per stop; `frames.json` carries
-   `pace_reads_as`. This is a Scene Developer / Rundown decision — keep the words, change the timing.
-   Note stop w00 (Savile Row) legitimately falls back to `embed` (the named building is 57–70° off every camera
-   heading there); decide whether the linear cut skips that leg or uses a still.
-2. **Add scenes 04 and 15 to the linear cut**: `scenes/README.md` linear table + `studio/tools/render/cuts/day-01-london.json`
-   (visual kind `panowalk`). Scene 05 may become redundant once 04 is in the film — check for duplication with
-   the Pall Mall material and cut or shorten it.
-3. **Re-render** `cd studio/tools/render && node render_linear.mjs <tour.json> --track clear`, then regenerate
-   `linear/watch.json` from the render log (chapters = the `at` column; set `track: clear`), and update
-   `review/publish-record.md`.
-4. Tell the founder the new duration and what the walk looks like — honestly: walk or hyperlapse, per stop.
+## Do next: build Day 2's scenes
+Dispatch a `yunyou-scene-developer` acting as Scene Developer AND Narrator. It must read: studio/roles/_common.md,
+scene-developer.md, narrator.md, studio/templates/scene-spec.md, studio/schema/scene.schema.json,
+products/around-the-world-80-days/DECISIONS.md (all rules; D5 clear-English default, D6 Street View = stop-and-look
+only), studio/strategy/positioning.md (tone is a HARD constraint), shared/style-guide.md, shared/personas/guide.md,
+and Day 2's three completed documents above. Use day-01-london/scenes/06-the-reform-club.scene.json and
+15-look-up-the-cross.scene.json as house shape.
+Requirements: every scene needs `narration.script` AND `narration.variants.clear` · respect the rundown's per-segment
+density budgets · **the three named silences must survive** (the notebook lines unspoken, the sea under the Dover
+film, fifteen seconds after Sommeiller's death) · photo scenes carry explicit per-still `start_s`/`end_s` (the player
+honours them since v0.8) and note which sentence each slot is timed against · the two Street View scenes (11 Turin,
+13 Brindisi) use `interaction.kind: "look"` + a `camera` cue track and NAME what to find · gloss chips ≤ 12 words,
+never for a word the traveller does not hear · **F-108 (the PLM "no passengers" postcard) may appear only as a
+go-deeper open question, never as narration** · apply the rundown's two generated-asset corrections.
+Then assemble `day-02-to-brindisi/tour.json`, write `scenes/README.md`, and run
+`python3 studio/tools/validate.py products/around-the-world-80-days/day-02-to-brindisi/scenes/*.scene.json products/around-the-world-80-days/day-02-to-brindisi/tour.json`.
+After that: light Fact-Check + QA, then tell the founder. Player only.
 
-## Constraints
-- **RULE 1: never incur cost.** Player/renderer must stay on free paths (`open` → `embed` → `link`); billable Google
-  SKUs are gated behind `billing_ack` and the founder's key no longer permits them. Never create accounts.
-- Do not screen-record or cache Google Street View; open imagery only in the MP4.
-- Server must be up for renders (it screenshots the player): if 443 is dead, restart with the letsencrypt cert
-  (see `studio/tools/studio_run.sh`).
+## Standing rules that bite
+- **RULE 1: never incur any cost, never create accounts.** Google key is restricted to Maps Embed (free); Mapillary
+  token is free. Billable modes are gated behind `billing_ack` and must stay off.
+- **Never download from YouTube.** Commons-hosted licence-reviewed copies and PD/CC files only.
+- Production cron stays **PAUSED** until the founder says otherwise (the one active crontab line is a different project).
 
-## Still open (do NOT block on these)
-- **Rights: Mapillary licence.** Their API exposes NO per-image licence field (verified). Terms say CC BY-SA by
-  default, some CC BY-NC-SA; NC is a hard stop under D4. Frames are classed `unknown` and ship only behind
-  `--accept-unknown-licence`, with an honest burned credit. Must be settled before any PUBLIC release.
-- Founder feedback on the writing/pacing of the current cut is still the highest-value input.
+## Open, non-blocking
+- Mapillary exposes no per-image licence — Rights must settle before ANY open-imagery frame enters an MP4.
+- Chinese UI chrome still English (locale carries content strings only; UI strings need their own table).
+- Four Day-1 Reform Club script edits want Narrator sign-off (listed in that scene's `review.notes`).
+- Renderer needs a never-upscale clamp + the v0.7 treatment before the next video render, or small plates get blown up.
+- 13 stills in video/map/quiz/dialogue scenes have timings nothing reads (see player CHANGELOG v0.8).

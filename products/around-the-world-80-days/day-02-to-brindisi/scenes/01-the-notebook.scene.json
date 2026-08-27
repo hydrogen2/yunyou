@@ -1,0 +1,133 @@
+{
+ "id": "the-notebook",
+ "type": "interstitial",
+ "title": "Day 2 · everything Verne wrote about the next three days",
+ "subtopic": "1 — The notebook: everything Verne wrote",
+ "duration_s": 95,
+ "learning_goal": "Know who Fogg is, what he bet, and that the whole crossing of Europe exists in the novel as seven timestamps; feel the size of the gap we are about to walk into.",
+ "narration": {
+  "script": "Day two. For anyone joining us here: in Jules Verne's novel of 1872, a London gentleman, Phileas Fogg, bets half his fortune that he can go round the world in eighty days. He left London last night at a quarter to nine, with a French servant, Passepartout.\n\nThe route was printed in the newspaper the night of the bet. Its first line reads: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nHere is everything Verne tells us about those seven days. Fogg keeps a notebook. It opens: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nIt ends: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nThat is the whole of it. Seven lines, for three thousand kilometres.",
+  "timing": "over",
+  "voice": "guide",
+  "starts_at_s": 8,
+  "variants": {
+   "clear": "Day two. If you have just joined us, here is the story so far. In 1872 the French writer Jules Verne published a novel. In it, a London gentleman named Phileas Fogg bets half his money that he can travel around the world in eighty days. He left London last night at a quarter to nine, with a French servant named Passepartout.\n\nThe route was printed in the newspaper on the night of the bet. The first line says: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nAnd here is everything the novel tells us about those days. Fogg keeps a notebook. The first line: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nThe last line: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nThat is all of it. Seven lines for three thousand kilometres."
+  }
+ },
+ "media": [
+  {
+   "kind": "generated",
+   "ref": "generated/g-201/europe-legs_L0-L1.svg",
+   "license": "generated",
+   "manifest_id": "G-201",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 0,
+   "end_s": 40,
+   "note": "SPEC (G-201, layers L0+L1). Europe leg map, London -> Brindisi, cream #efe6d3 paper, sepia coastline #5b4a3a, one warm-red accent #b03a2e, Playfair for places / Source Sans 3 for times, no modern borders, colour never the only signal. L0 = base with the seven stops unlit. L1 = the London -> Dover rail leg drawn, London labelled '8:45 pm, Wed 2 Oct'. RUNDOWN CORRECTION APPLIED to the master spec: Brindisi is 'arr 4 pm, SATURDAY 5 October' and Turin is the 4th (the manifest's '4 p.m. 4 Oct' is wrong against F-50). Title card sits over this frame for the first 8 s."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_08.jpg",
+   "license": "public-domain",
+   "manifest_id": "M-250",
+   "attribution": "Neuville & Benett, plate 08, Hetzel illustrated edition 1873 (Wikimedia Commons, public domain)",
+   "start_s": 28,
+   "end_s": 40,
+   "note": "The street crowd reading the newspaper (ch. V). 480x700 portrait -> the player mounts it as an inset over the G-201 card at 28 s (interstitial branch). Timed against the sentence 'The route was printed in the newspaper the night of the bet.'"
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/g-204/telegraph-first-line.svg",
+   "license": "generated",
+   "manifest_id": "G-204",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 40,
+   "end_s": 52,
+   "note": "SPEC (G-204). The Daily Telegraph estimate, FIRST LINE ONLY, set as a newspaper column in the Day-1 card style: 'From London to Suez, viA Mont Cenis and Brindisi, by rail and steamboats ......... 7 days' (F-48). The remaining rows of the table ghosted at 20 % so the traveller sees it is the first line of a longer list. Pairs with M-250."
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/g-208/notebook_reveal_a.svg",
+   "license": "generated",
+   "manifest_id": "G-208a",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 52,
+   "end_s": 95,
+   "note": "SPEC (G-208, state a). Fogg's notebook, seven lines, REVEALED ONE AT A TIME, in the Day-1 card style (ruled page, ink). Line 1 lands at 52 s under the guide's voice; lines 2-6 land at 62, 65, 68, 71, 74 s IN SILENCE, about 3 s apart; line 7 lands at 78 s under the guide's voice. Text is F-50 verbatim, time style '8:45 pm' per R1. LOAD-BEARING SILENCE 60-78 s: the five middle lines are read by the traveller, not by the guide. Do not add music stings to the reveals."
+  },
+  {
+   "kind": "audio",
+   "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+   "license": "public-domain",
+   "manifest_id": "M-41",
+   "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+   "start_s": 8,
+   "end_s": 95,
+   "note": "Day 1's route theme, low and ducked - the bookend that opens and closes every chapter (world-bible). Out under the notebook reveal from 60 s."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 0,
+   "kind": "lower-third",
+   "text": "Day 2 · Dover · Calais · Paris · the Alps · Brindisi · 3–5 October 1872",
+   "position": "bottom",
+   "until_s": 8
+  },
+  {
+   "at_s": 30,
+   "kind": "caption",
+   "text": "Verne's own illustrator skipped Europe too: London, then Egypt.",
+   "position": "bottom",
+   "until_s": 40,
+   "note": "GO DEEPER, and CONDITIONAL: F-109 is med and the Fact-Checker must confirm no European plate exists elsewhere in the Neuville/Benett set. If it fails, CUT this caption — do not soften it (rundown's own instruction)."
+  },
+  {
+   "at_s": 44,
+   "kind": "caption",
+   "text": "The route, printed the night of the bet — 7 days to Suez",
+   "position": "bottom",
+   "until_s": 52
+  },
+  {
+   "at_s": 84,
+   "kind": "caption",
+   "text": "≈ 67 hours by the printed times — our arithmetic on Verne's figures",
+   "position": "bottom",
+   "until_s": 95,
+   "note": "F-51 is our computation, not a quoted number, so it is a caption and is never spoken (R3)."
+  },
+  {
+   "at_s": 56,
+   "kind": "gloss",
+   "text": "valet — a gentleman's personal manservant",
+   "position": "tl",
+   "until_s": 70
+  }
+ ],
+ "interaction": {
+  "kind": "none"
+ },
+ "transition": {
+  "in": "cut from black",
+  "out": "dissolve to the pier",
+  "music_cue": "M-41 in at 8 s, out at 60 s under the silent notebook lines"
+ },
+ "next": "dover-and-the-sea",
+ "sources": [
+  "F-48",
+  "F-49",
+  "F-50",
+  "F-51",
+  "F-109",
+  "F-11",
+  "F-12"
+ ],
+ "production_notes": "SEGMENT 1 (95 s, fill 55 %, ceiling 125 words). Player branch: type 'interstitial' with generated media -> the gen cards run on the scene clock and M-250 comes up as an INSET over the card at 28 s (this is how Day-1's cold open behaves with M-34; it is not a full-frame plate). Beat map: 0-8 title over G-201 L0; 8-28 the recap over the map as leg 1 draws; 28-40 the newspaper (M-250 inset); 40-52 G-204, the Telegraph's first line read aloud; 52-95 G-208a, the notebook. THE FIRST OF THE THREE LOAD-BEARING SILENCES: lines 2-6 of the notebook are revealed unspoken, 60-78 s, about 3 s apart. The guide reads line one and line seven ONLY. F-11/F-12 in `sources` are DAY-1 fact ids (the recap), not this sheet's. ENGINE LIMIT, stated honestly: the player speaks `script` continuously from `starts_at_s`, so it has no way to hold a pause inside a script. The authored silence is real in the timeline (media windows, overlay windows, the linear cut sheet) and the scene is written short enough that the seconds exist; in the player the unspoken seconds currently pool at the tail rather than in the middle. One-line engine request: `narration.pauses: [{at_s, hold_s}]` honoured by speak(), which would make every authored silence in this chapter land where it was written.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27; not yet fact-checked, rights-reviewed or QA'd. SLOT TIMINGS, and the sentence each is timed against: 0-40 G-201 L0+L1 — 0-8 the title card, then 'For anyone joining us here…' through '…with a French servant, Passepartout.' as leg 1 draws; 28-40 M-250 (inset) — 'The route was printed in the newspaper the night of the bet.'; 40-52 G-204 — 'Its first line reads: London to Suez, by way of Mont Cenis and Brindisi…'; 52-95 G-208a — line 1 at 52 s under 'It opens: Left London, Wednesday, October the second…', lines 2-6 at 62/65/68/71/74 s in SILENCE, line 7 at 78 s under 'It ends: Sailed on the Mongolia…', and the closing 'That is the whole of it' at 84 s over the completed page. OPEN FOR THE FACT-CHECKER: the F-109 caption at 30-40 s is conditional (see the overlay note). The 67-hour figure is a caption only, never spoken, because it is our arithmetic (F-51)."
+ }
+}

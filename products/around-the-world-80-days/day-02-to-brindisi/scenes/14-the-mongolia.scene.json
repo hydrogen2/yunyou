@@ -1,0 +1,113 @@
+{
+ "id": "the-mongolia",
+ "type": "photo",
+ "title": "Five o'clock — the Mongolia sails",
+ "subtopic": "8 — Brindisi: the ship",
+ "duration_s": 50,
+ "learning_goal": "Know that the ship at the end of the leg is a real scheduled mail steamer, hedged where the record is thin; feel Europe closing behind us.",
+ "narration": {
+  "script": "Four o'clock, Saturday afternoon. One hour. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia: in the novel, iron, two thousand eight hundred tons, taking on the Indian mail. A real P&O Mongolia did exist, launched in 1865, about three thousand tons. Whether she was on this run that Saturday, nobody has shown us. Five o'clock. She sails.",
+  "timing": "over",
+  "voice": "guide",
+  "variants": {
+   "clear": "Four o'clock, Saturday afternoon. One hour to wait. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia. In the novel she is iron, two thousand eight hundred tons, and she takes on the Indian mail here. A real P&O ship called Mongolia did exist: launched in 1865, about three thousand tons. Whether she was on this route that Saturday, nobody has shown us. Five o'clock. She sails."
+  }
+ },
+ "media": [
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:P.%26.O._S.S._Hindostan_Leaving_Southampton,_24th_September,_1842_to_open_the_Indian_Mail_Service_RMG_PU6712.tiff",
+   "license": "public-domain",
+   "manifest_id": "M-229",
+   "attribution": "P&O SS Hindostan leaving Southampton, 24 September 1842, to open the Indian Mail service — Royal Museums Greenwich PU6712 (public domain)",
+   "start_s": 0,
+   "end_s": 22,
+   "note": "4000x2678. THE COMPANY, NOT THE SHIP: Fogg boards the Mongolia at Brindisi and this is the Hindostan of 1842, so the caption must say so. Slot 1/2."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Colonne_Romane_Brindisi.jpg",
+   "license": "cc-by-sa-4.0",
+   "manifest_id": "M-248",
+   "attribution": "Roman column, Brindisi — Mariateresamargherito, 2025 (Wikimedia Commons, CC BY-SA 4.0)",
+   "start_s": 22,
+   "end_s": 36,
+   "note": "1706x2560 portrait, tilt up the column. The closing image of the place: the column stays, the ship goes. Slot 2/2.",
+   "sa": true
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/g-201/europe-legs_L9.svg",
+   "license": "generated",
+   "manifest_id": "G-201",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 36,
+   "end_s": 50,
+   "note": "SPEC (G-201, layer L9). The sea leg drawn leaving the frame to the SOUTH-EAST, towards Suez, at 30 % opacity — the hand-off to Day 3. Brindisi's label reads 'arr 4 pm · sailed 5 pm · Saturday 5 October 1872'. RUNDOWN CORRECTION APPLIED: the manifest's master spec said 'Brindisi 4 p.m. 4 Oct'; F-50 gives SATURDAY 5 OCTOBER for the arrival and the sailing, and Turin is the 4th. Fix it in the master, not only here."
+  },
+  {
+   "kind": "audio",
+   "ref": "https://commons.wikimedia.org/wiki/File:Cruise_ship_Albatros_ship_horn.ogg",
+   "license": "cc0",
+   "manifest_id": "M-251",
+   "attribution": "Ship's horn, MS Albatros, Bremerhaven — Tvabutzku1234 (Wikimedia Commons, CC0)",
+   "start_s": 40,
+   "end_s": 46,
+   "note": "One horn, about 5 s, once, on 'She sails.' CC0, no obligation. Do not repeat it."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 6,
+   "kind": "caption",
+   "text": "P&O opened the Indian Mail service in 1842 — this is the company, not the ship",
+   "position": "bottom",
+   "until_s": 20
+  },
+  {
+   "at_s": 24,
+   "kind": "caption",
+   "text": "'…two thousand eight hundred tons burden' — the Mongolia in the novel",
+   "position": "bottom",
+   "until_s": 34
+  },
+  {
+   "at_s": 38,
+   "kind": "caption",
+   "text": "Sailed 5:00 pm, Saturday 5 October 1872 — next stop Suez",
+   "position": "bottom",
+   "until_s": 50
+  },
+  {
+   "at_s": 10,
+   "kind": "gloss",
+   "text": "la stazione marittima — the harbour station, where the train meets the ship",
+   "position": "bl",
+   "until_s": 24
+  }
+ ],
+ "interaction": {
+  "kind": "none"
+ },
+ "transition": {
+  "in": "cut",
+  "out": "dissolve to the souvenir card",
+  "music_cue": "M-251 horn once at 40 s; M-253 bed out under it"
+ },
+ "next": "souvenir-the-notebook",
+ "sources": [
+  "F-50",
+  "F-51",
+  "F-58",
+  "F-59",
+  "F-63",
+  "F-95"
+ ],
+ "production_notes": "SEGMENT 8, last third (50 s; 71 words — the segment totals 199 against its 205 ceiling). THE CHAPTER ENDS ON DEPARTURE (rundown Decision 1, built as recommended): horn, the ship leaves, the sea leg draws south-east, and Day 3 opens at sea. Reversing it costs one edit — cut at 36 s, drop M-251, end on the column. HEDGING IS THE WHOLE CRAFT OF THIS SCENE: F-59 is med, so the real ship is 'about three thousand tons' and 'a real P&O Mongolia did exist', and the sentence 'Whether she was on this run that Saturday, nobody has shown us' is in BOTH tracks, because the qualifier travels with the claim. NEVER state a master or a passenger list (the fact sheet's own instruction). Verne's '2,800 tons' is quoted as the novel's figure, in a caption, and the guide attributes it aloud with 'in the novel'.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. SLOT TIMINGS, and the sentence each is timed against: 0-22 M-229 — 'Four o'clock, Saturday afternoon…' through '…taking on the Indian mail.'; 22-36 M-248, tilt up — 'A real P&O Mongolia did exist, launched in 1865, about three thousand tons. Whether she was on this run that Saturday, nobody has shown us.'; 36-50 G-201 L9 — 'Five o'clock. She sails.', horn at 40 s, and the sea leg draws off the frame to the south-east. The gloss chip is earned: the guide says 'stazione marittima' at ~8 s. RIGHTS: M-248 is CC BY-SA 4.0 and carries sa: true."
+ }
+}

@@ -1,0 +1,90 @@
+{
+ "id": "what-he-did-not-see",
+ "type": "card",
+ "title": "Eighty minutes of Paris — the things he asked for",
+ "subtopic": "4 — Paris: what he did not see",
+ "duration_s": 125,
+ "learning_goal": "Know the two places Passepartout names and the one Verne does not; feel that the traveller is the one who gets to stop.",
+ "narration": {
+  "script": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord, twenty to nine at the Gare de Lyon, and four kilometres of Paris in between, in the rain.\n\nIn the novel, Passepartout names two things he wishes he could see. Neither of them is on the road between the two stations. They are on the card, in grey. There is a third name in grey as well, and that one is ours. Tap any of them.",
+  "timing": "over",
+  "voice": "guide",
+  "after_script": "He asked for a cemetery and a circus. We can go to one of them.",
+  "variants": {
+   "clear": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord. Twenty to nine at the Gare de Lyon. Four kilometres of Paris in between, in the rain.\n\nIn the book, Passepartout names two places he wishes he could see. Neither one is on the road between the two stations. They are on the card, in grey. There is a third name in grey too, and that one is ours. Tap any of them."
+  },
+  "after_script_variants": {
+   "clear": "He asked for a cemetery and a circus. We can still go to one of them."
+  }
+ },
+ "media": [
+  {
+   "kind": "generated",
+   "ref": "generated/g-205/eighty-minutes-of-paris.svg",
+   "license": "generated",
+   "manifest_id": "G-205",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 0,
+   "end_s": 125,
+   "note": "SPEC (G-205). Card title 'Eighty minutes of Paris'. A clock face with two hands set at 7:20 and 8:40. Under it, three lines in the Day-1 card style: '7:20 am — Gare du Nord' / '≈ 4 km across the city, by cab, in driving rain' / '8:40 am — Gare de Lyon'. Then THREE NAMES IN GHOSTED TYPE, tappable, in any order: 'Père-Lachaise' with Verne's line beneath it — \"How I regret not having seen once more Père la Chaise…\" (Towle's spelling INSIDE the quotation only; house spelling Père-Lachaise everywhere else); 'the circus in the Champs-Élysées' with \"…and the circus in the Champs Elysées!\"; and third, unlabelled until tapped, 'the Tuileries', with the caption 'he does not mention this one'. Footer line: 'Neither of the two he named is on the road between the stations.' THE CARD MUST BE FULLY LEGIBLE WITH NO PHOTOGRAPHS AT ALL — the four reveal plates (M-256 Tuileries in ruins, M-257 Père-Lachaise / Mur des Fédérés, M-258 Cirque des Champs-Élysées engraving, M-259 rue du Cirque today) are REQUESTED, not landed, and have no refs in the manifest, so they are deliberately NOT media entries here. When the Content Preparer lands them, add each as an image with start_s at its tap and a note, and the card loses nothing if they never arrive. Facts: F-53, F-55, F-83, F-84, F-85."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 0,
+   "kind": "prompt",
+   "text": "Tap a name on the card",
+   "position": "top",
+   "until_s": 14
+  },
+  {
+   "at_s": 112,
+   "kind": "caption",
+   "text": "He asked for a cemetery and a circus. We can go to one of them.",
+   "position": "bottom",
+   "until_s": 125,
+   "note": "The closing line, ALSO carried as a caption. Engine reason: the player speaks `after_script` only when a graded interaction resolves, and these are info taps with no right answer (they must not feel like a test — positioning: never school). The line therefore lives in after_script for the record and the linear cut, and as this caption so the traveller meets it in the right place. Engine request: speak after_script for ungraded tap-to-find too, on resolve or on timeout."
+  }
+ ],
+ "interaction": {
+  "kind": "tap-to-find",
+  "prompt": "Tap a name. Any order — there is no right answer here.",
+  "options": [
+   {
+    "text": "Père-Lachaise",
+    "feedback": "The cemetery. He wants to see it once more — he is a Parisian. And seventeen months before this morning, against its south-east wall, about a hundred and forty-seven Communards were shot and buried there in a common grave."
+   },
+   {
+    "text": "The circus in the Champs-Élysées",
+    "feedback": "A real building: sixteen sides, forty-two metres across, on the Champs-Élysées from 1841. The Empress's circus until the Empire fell in 1870; pulled down about 1900. All that is left is the street name — and he was a circus rider himself."
+   },
+   {
+    "text": "The Tuileries",
+    "feedback": "The one he does not name. The palace in the middle of Paris burned in May 1871, and was left standing as an empty shell behind a fence for another eleven years. A Frenchman wrote this book that year. He does not mention it."
+   }
+  ],
+  "pause_narration": true,
+  "timeout_s": 12
+ },
+ "transition": {
+  "in": "dissolve",
+  "out": "cut to the night train, climbing",
+  "music_cue": "none — no music at all under the taps, and none changes when the wall is named"
+ },
+ "next": "quiz-over-the-alps",
+ "sources": [
+  "F-53",
+  "F-55",
+  "F-83",
+  "F-84",
+  "F-85",
+  "F-04"
+ ],
+ "production_notes": "SEGMENT 4, second half (125 s; the chapter's one tap interaction). Three taps, any order, `pause_narration` with an honest 12 s per tap; the card auto-completes when the scene clock runs out. NO CORRECT ANSWERS: these are info taps. A right answer here would turn a man's homesickness into a test, which the tone spec forbids. NO MORALISING AND NO MUSIC CHANGE on tap 1: the wall and the hundred and forty-seven are said once, quietly, and the feedback stops. Tap 2 pays off Day-1 F-04 (Passepartout was a circus rider) in six words at the end, so the joke is his, not ours. Tap 3 is the beat the chapter is really about and its last two sentences are the guide's whole comment. WORD BUDGET: script 78 + after_script 15 + three feedback blocks 111 = 204 spoken words in the scene; with scene 05's 141 the segment spends 345 against a 325 ceiling — 6 % over, and I am declaring it rather than cutting the wall or the circus rider. If the founder wants it inside the line, cut the last sentence of tap 2's feedback ('and he was a circus rider himself', 7 words) and the second sentence of tap 3's ('A Frenchman wrote this book that year.', 7 words) — but tap 3's is the chapter's thesis and I would cut scene 05's 'Two dates while we cross' instead. FOUR PLATES ARE MISSING BY DESIGN, not by oversight: see the G-205 spec.",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. One card holds the whole 125 s, so there are no image slots to time; the beats are the taps. Timed against sentences: the prompt overlay 0-14 s sits under 'Tap any of them.'; the closing caption 112-125 s carries the same words as `after_script`. The card's own ghosted quotations use Towle's 'Père la Chaise' spelling INSIDE the quotation only and the house spelling everywhere else (fact sheet's house-spelling rule). F-04 in `sources` is a DAY-1 fact id (Passepartout's circus past). OPEN: whether the founder wants the 6 % segment overspend (see production_notes) or the two cuts named there."
+ }
+}

@@ -1,0 +1,83 @@
+{
+ "id": "souvenir-the-notebook",
+ "type": "card",
+ "title": "Souvenir — Fogg's notebook, and yours",
+ "subtopic": "9 — Souvenir and send-off",
+ "duration_s": 55,
+ "learning_goal": "Take away the seven lines with a blank column beside them, and one train that can still be booked; feel quiet satisfaction at having stopped where Fogg did not.",
+ "narration": {
+  "script": "Six days from here, at Suez, Fogg works out that he is exactly on time. Then Verne writes the sharpest sentence in the book about him. Fogg breakfasts in his cabin, never once thinking of inspecting the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, and an empty column headed 'what I saw'. On the back, the one thing here you can still book — Paris to Turin, through Sommeiller's tunnel.",
+  "timing": "over",
+  "voice": "guide",
+  "variants": {
+   "clear": "Six days from here, at Suez, Fogg works out that he is exactly on time. Then Verne writes the sharpest sentence in the whole book about him. Fogg eats breakfast in his cabin and never thinks of going to look at the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, and an empty column headed 'what I saw'. On the back, the one thing here you can still book — Paris to Turin, through Sommeiller's tunnel."
+  }
+ },
+ "media": [
+  {
+   "kind": "generated",
+   "ref": "generated/g-208/notebook_card_b_printable.svg",
+   "license": "generated",
+   "manifest_id": "G-208b",
+   "attribution": "Yunyou studio, generated",
+   "start_s": 0,
+   "end_s": 55,
+   "note": "SPEC (G-208, state b) — PRINTABLE. Fogg's seven lines exactly as the novel prints them (F-50), left column: left London 8:45 pm Wednesday · reached Paris 7:20 am · left Paris 8:40 am · reached Turin by Mont Cenis 6:35 am Friday · left Turin 7:20 am · arrived Brindisi 4 pm Saturday · sailed on the Mongolia 5 pm. RIGHT-HAND COLUMN EMPTY, headed 'what I saw'. Time style '8:45 pm' per R1; dates 'Saturday 5 October 1872'. ON THE BACK: 'Paris to Turin, still through the Fréjus tunnel. Closed by a rockfall for nineteen months; reopened 31 March 2025.' and one line under it: 'Sommeiller's tunnel, 154 years old, and still the way through.' Typeset from G-204's newspaper style. Saveable/printable PNG — this is the chapter's end frame."
+  },
+  {
+   "kind": "audio",
+   "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+   "license": "public-domain",
+   "manifest_id": "M-41",
+   "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
+   "start_s": 0,
+   "end_s": 55,
+   "note": "The route theme's tail — bookend with scene 01 and with Day 1, per the world bible. Out on the last caption."
+  }
+ ],
+ "overlays": [
+  {
+   "at_s": 8,
+   "kind": "caption",
+   "text": "Jules Verne, ch. VII — six and a half days out, and exactly on time",
+   "position": "bottom",
+   "until_s": 22
+  },
+  {
+   "at_s": 30,
+   "kind": "caption",
+   "text": "Paris → Turin still runs through Sommeiller's tunnel · reopened 31 Mar 2025",
+   "position": "bottom",
+   "until_s": 46
+  },
+  {
+   "at_s": 48,
+   "kind": "caption",
+   "text": "Next: at sea.",
+   "position": "bottom",
+   "until_s": 55
+  }
+ ],
+ "interaction": {
+  "kind": "save",
+  "prompt": "Keep the card — seven lines, and a blank column for your own."
+ },
+ "transition": {
+  "in": "dissolve",
+  "out": "hold on the card — chapter end frame",
+  "music_cue": "M-41 tail, out on 'Next: at sea.'"
+ },
+ "next": "",
+ "sources": [
+  "F-50",
+  "F-52",
+  "F-75"
+ ],
+ "production_notes": "SEGMENT 9 (55 s, fill 70 %, ceiling 90 words; it spends 89). The quotation is the one the whole chapter has been earning and it is attributed and placed before it is spoken — 'Then Verne writes…' — and only the best clause is read aloud (18 words, inside the persona's 20-word ceiling); the rest of F-52 is on the card. `interaction.kind: save`, so the runtime offers keep/download and asks for no answer. NOTE that the player speaks `after_script` only for graded interactions, so this scene keeps every word in `script`, exactly as Day-1's souvenir does. THE SOUVENIR IS THE CHAPTER'S THESIS AS AN OBJECT (rundown Decision 10, taken as recommended): his seven lines, and a blank column headed 'what I saw', which the traveller has just spent twenty minutes filling. The back is the only bookable thing in the chapter, and the Content Preparer must re-check the service is running at publication (F-75).",
+ "review": {
+  "fact_check": "pending",
+  "rights": "pending",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator draft 2026-08-27. One card holds the whole 55 s. Beat timings, and the sentence each is against: caption 8-22 s under 'Six days from here, at Suez, Fogg works out that he is exactly on time'; the card's back is shown from ~30 s under 'the one thing here you can still book — Paris to Turin, through Sommeiller's tunnel'; 'Next: at sea.' lands at 48 s as the last frame. Verne is named before the quotation and the quotation is Towle's wording, read as printed (persona §5). Three timed captions in 55 s against a ceiling of four."
+ }
+}
