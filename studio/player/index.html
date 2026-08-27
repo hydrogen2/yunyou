@@ -57,6 +57,8 @@
   #cover label { font-family:system-ui,sans-serif; font-size:12px; color:var(--dim); display:block; margin-top:22px; }
   #cover input { background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:6px 8px; width:min(90vw,420px); font:13px system-ui; }
   #cover select { background:var(--panel); border:1px solid var(--line); color:var(--ink); border-radius:8px; padding:6px 8px; font:13px system-ui; }
+  #cover .btn { max-width:min(92vw,560px); white-space:normal; }   /* "Continue — scene 7: …" wraps instead of overflowing */
+  #continue[hidden], #continueNote[hidden] { display:none; }
   .leaflet-container { background:#e9e2d0; }
   .genwrap { position:absolute; inset:0; background:#efe6d3; display:flex; align-items:center; justify-content:center; }
   .genwrap svg.gen { width:100%; height:100%; display:block; touch-action:none; }
@@ -84,11 +86,63 @@
   #media .svcredit { position:absolute; left:8px; bottom:8px; z-index:3; font:11px/1.5 system-ui,sans-serif; color:var(--ink); background:rgba(13,12,14,.62); padding:3px 8px; border-radius:5px; max-width:72%; }
   #media .svcredit a { color:var(--accent); text-decoration:none; }
   @media (min-aspect-ratio: 4/3) { #stage { flex-direction:row; } #media { flex:1 1 60%; min-height:0; } #right { flex:1 1 40%; display:flex; flex-direction:column; min-width:0; } #panel { max-height:none; flex:1; } }
+
+  /* ---- v0.6: pause, resume, the scene list ------------------------------------------------------------------
+     The paused state is announced OUTSIDE the media box (rights: nothing of ours is ever drawn over a YouTube
+     player or over Google's Street View attribution), in a strip above the footer. */
+  #pausebar { display:flex; align-items:center; gap:10px; padding:9px 12px; border-top:1px solid var(--line);
+              background:#1b1710; font-family:system-ui,sans-serif; font-size:13px; color:var(--ink); }
+  #pausebar[hidden] { display:none; }
+  #pausebar .t { flex:1; min-width:0; color:var(--dim); }
+  #pausebar .t b { color:var(--ink); font-weight:600; }
+  body.yy-paused #media img.kenburns { animation-play-state:paused; }   /* Ken Burns stops with everything else */
+  body.yy-paused #media .svstill, body.yy-paused #media .svopen { transition:none; }
+  body.yy-paused #prog i { transition:none; }
+  #btnPause { min-width:5.4em; }
+  /* the scene list: a side sheet on a wide screen, a bottom sheet on a narrow one */
+  #list { position:fixed; inset:0; z-index:22; background:rgba(6,5,8,.6); display:flex; justify-content:flex-end;
+          font-family:system-ui,sans-serif; }
+  #list[hidden] { display:none; }
+  #list .sheet { background:var(--panel); border-left:1px solid var(--line); width:min(430px,92vw); display:flex; flex-direction:column; max-height:100%; }
+  #listHead { display:flex; align-items:center; gap:8px; padding:12px 14px; border-bottom:1px solid var(--line); }
+  #listHead h2 { margin:0; font:600 15px/1.3 system-ui,sans-serif; color:var(--ink); }
+  #listHead .sub { display:block; font-weight:400; font-size:11.5px; color:var(--dim); letter-spacing:.02em; }
+  #listBody { flex:1; overflow:auto; padding:6px; }
+  .scn { display:flex; gap:10px; width:100%; text-align:left; background:transparent; border:0; border-radius:10px;
+         color:var(--ink); font:inherit; padding:9px 10px; cursor:pointer; }
+  .scn:hover { background:#201e25; }
+  .scn:focus-visible { outline:2px solid var(--accent); outline-offset:-2px; }
+  .scn .n { color:var(--dim); font:12px/1.6 system-ui,sans-serif; font-variant-numeric:tabular-nums; min-width:2em; }
+  .scn .t { flex:1; min-width:0; }
+  .scn .t b { display:block; font:500 15px/1.3 system-ui,sans-serif; overflow-wrap:anywhere; }
+  .scn .t small { color:var(--dim); font-size:11.5px; }
+  .scn[aria-current="true"] { background:#241d12; }
+  .scn[aria-current="true"] .t b { color:var(--accent); }
+  .scn[aria-current="true"] .n::before { content:'▸ '; color:var(--accent); }
+  @media (max-width:560px) { #list { align-items:flex-end; }
+    #list .sheet { width:100%; max-height:82dvh; border-left:0; border-top:1px solid var(--line); border-radius:14px 14px 0 0; } }
+  /* ---- narrow screens (a Fold cover is ~320 px, some are 280) : the chrome must not overflow ---- */
+  header { flex-wrap:nowrap; }
+  header b { flex:0 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+  header .sp { flex:1 1 0; min-width:0; }
+  header button { flex:none; }
+  #clock { font-variant-numeric:tabular-nums; white-space:nowrap; }
+  @media (max-width:520px) {
+    header { gap:5px; padding:6px 8px; }
+    header button, footer .btn { padding:6px 8px; }
+    #hScene { display:none; }          /* the scene number lives in the list and the footer clock */
+    .lbl { display:none; }             /* button labels collapse to their glyph */
+    footer { gap:6px; padding:6px 8px; }
+    #btnPause { min-width:0; }
+    #pausebar { padding:8px; gap:8px; }
+  }
 </style>
 </head>
 <body>
 <div id="cover">
   <div id="coverTitle"><h1>Yunyou 云游</h1><p>loading tour…</p></div>
+  <button class="btn primary" id="continue" hidden style="font-size:18px;padding:12px 26px;margin-bottom:10px">▶ Continue</button>
+  <p class="muted" id="continueNote" hidden style="margin:0 0 12px;font-size:12px"></p>
   <button class="btn primary" id="start" style="font-size:18px;padding:12px 26px">▶ Start the day</button>
   <label>Language / 语言 <select id="lang"><option value="en">English</option><option value="zh-Hans">简体中文</option></select></label>
   <label>Narration voice <select id="voice"></select> <select id="rate" title="narration speed"><option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1.0×</option><option value="1.1">1.1×</option></select> <button class="btn" id="testVoice">test</button></label>
@@ -100,7 +154,7 @@
 
 <div id="app">
   <header><b id="hTitle">Yunyou</b><span id="hScene"></span><span class="sp"></span>
-    <button id="btnWho" title="who's who — the people in this story" hidden>👥 who's who</button><button id="btnCap" title="captions">CC</button><button id="btnMute" title="narration on/off">🔈</button><button id="btnList">☰</button></header>
+    <button id="btnWho" title="who's who — the people in this story" hidden>👥<span class="lbl"> who's who</span></button><button id="btnCap" title="captions">CC</button><button id="btnMute" title="narration on/off">🔈</button><button id="btnList" title="the scenes of this day" aria-haspopup="dialog" aria-expanded="false">☰<span class="lbl"> scenes</span></button></header>
   <div id="stage">
     <div id="media"></div>
     <div id="right">
@@ -108,7 +162,15 @@
       <div id="panel"><p id="title"></p><p id="script"></p><div id="interaction"></div></div>
     </div>
   </div>
-  <footer><button class="btn" id="prev">‹ Back</button><div id="prog"><i></i></div><span id="clock"></span><span id="countdown"></span><button class="btn primary" id="next">Next ›</button></footer>
+  <div id="pausebar" hidden><span class="t" id="pauseText"></span><button class="btn primary" id="pauseGo">▶ Go on</button></div>
+  <footer><button class="btn" id="prev" title="the scene before">‹<span class="lbl"> Back</span></button><button class="btn" id="btnPause" title="pause / resume (spacebar)" aria-pressed="false">⏸<span class="lbl"> Pause</span></button><div id="prog"><i></i></div><span id="clock"></span><span id="countdown"></span><button class="btn primary" id="next" title="the next scene"><span class="lbl">Next </span>›</button></footer>
+</div>
+
+<div id="list" hidden role="dialog" aria-modal="true" aria-labelledby="listTitle">
+  <div class="sheet">
+    <div id="listHead"><h2 id="listTitle">The scenes<span class="sub" id="listSub"></span></h2><span class="sp" style="flex:1"></span><button class="btn" id="listClose" aria-label="close the scene list">Close</button></div>
+    <div id="listBody" role="list"></div>
+  </div>
 </div>
 
 <div id="who" hidden role="dialog" aria-modal="true" aria-labelledby="whoTitle">
@@ -124,6 +186,75 @@ const $=s=>document.querySelector(s);
 let tour, scenes=[], idx=0, timer=null, t0=0, elapsed=0, paused=false, captions=true, narrate=true, ytPlayer=null, ytReady=false, bed=null, map=null;
 const commonsCache={};
 let LOCALE=null;                       // active locale object (null = English)
+let started=false;                     // the cover is gone and a scene is running
+
+// ---------- localStorage that cannot throw (private mode, disabled storage, sandboxed iframe) ----------
+const LS={ get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+           set(k,v){ try{ localStorage.setItem(k,v); return true; }catch(e){ return false; } },
+           del(k){ try{ localStorage.removeItem(k); }catch(e){} } };
+
+// ---------- pause / resume (v0.6) ----------
+// One master switch, and everything that moves is under it: the scene clock (tick), the narration
+// (speechSynthesis), the audio bed, YouTube, the Street View embed's timeline, the pano/Ken-Burns animation and
+// the interaction countdown. Reasons stack, so a card opening or an interaction wait can never un-pause a stop the
+// traveller asked for. Tone (studio/strategy/positioning.md): stopping is normal, the day simply waits.
+const pauseReasons=new Set();                 // 'user' | 'away' | 'sheet' (list / who's-who) | 'wait' (interaction countdown)
+const HARD=['user','away','sheet'];           // a traveller-facing stop: even the interaction countdown holds
+function hardPaused(){ return HARD.some(r=>pauseReasons.has(r)); }
+function pauseFor(r){ if(pauseReasons.has(r)) return; pauseReasons.add(r); applyPause(); }
+function resumeFrom(r){ if(!pauseReasons.delete(r)) return; applyPause(); }
+function togglePause(){ if(hardPaused()){ pauseReasons.delete('user'); pauseReasons.delete('away'); applyPause(); } else pauseFor('user'); }
+let ytSelfCmd=0;                              // ignore the state-change echo of our own pause/play
+function ytCmd(what){ if(!ytPlayer||typeof ytPlayer.pauseVideo!=='function') return;
+  try{ ytSelfCmd=performance.now(); if(what==='pause') ytPlayer.pauseVideo(); else if(scenes[idx]&&scenes[idx].type==='video') ytPlayer.playVideo(); }catch(e){} }
+function applyPause(){
+  const want=pauseReasons.size>0;
+  if(want!==paused){
+    paused=want;
+    if(paused){
+      try{ if(speechSynthesis.speaking||speechSynthesis.pending) speechSynthesis.pause(); }catch(e){}
+      try{ bed&&bed.pause(); }catch(e){}
+      ytCmd('pause');
+    } else {
+      t0=performance.now()-elapsed*1000;                       // the clock picks up at the same second, not at 0
+      try{ speechSynthesis.resume(); }catch(e){}
+      try{ if(bed) bed.play().catch(()=>{}); }catch(e){}
+      ytCmd('play');
+    }
+    document.body.classList.toggle('yy-paused',paused);         // CSS animations (Ken Burns, cross-fades) stop too
+    saveProgress(true);
+  }
+  paintPause();
+}
+function paintPause(){
+  const stopped=hardPaused(), b=$('#btnPause');
+  if(b){ b.innerHTML=(stopped?'▶<span class="lbl"> Go on</span>':'⏸<span class="lbl"> Pause</span>');
+    b.setAttribute('aria-pressed',stopped?'true':'false'); b.title=(stopped?'go on':'pause')+' (spacebar)'; }
+  const sv=document.querySelector('#svPause'); if(sv) sv.textContent=stopped?'▶':'⏸';
+  const bar=$('#pausebar');
+  if(bar){ bar.hidden=!stopped;
+    if(stopped) $('#pauseText').innerHTML= pauseReasons.has('away')
+      ? '<b>Paused</b> — you stepped away, so the day waited for you.'
+      : '<b>Paused</b> — the day waits. Take your time.'; }
+}
+
+// ---------- progress: where the traveller had got to (v0.6) ----------
+// Keyed by tour URL so chapters and products never collide. Written at most every 2 s, and on every stop.
+const PROG_KEY='yy-progress:'+TOUR_URL;
+let lastSave=0;
+function saveProgress(force){
+  if(!started||!scenes.length) return; const s=scenes[idx]; if(!s) return;
+  const now=Date.now(); if(!force && now-lastSave<2000) return; lastSave=now;
+  LS.set(PROG_KEY, JSON.stringify({ tourUrl:TOUR_URL, sceneId:s.id, sceneNo:idx+1, sceneTitle:s.title,
+    elapsed:Math.round(elapsed*10)/10, lang:(LOCALE&&(LOCALE.locale||''))||'en', clearEnglish, rate:ttsRate(), savedAt:now }));
+}
+function loadProgress(){ const raw=LS.get(PROG_KEY); if(!raw) return null;
+  try{ const p=JSON.parse(raw); return (p&&p.tourUrl===TOUR_URL&&p.sceneId)?p:null; }catch(e){ return null; } }
+function clearProgress(){ lastSave=0; LS.del(PROG_KEY); }
+function agoText(ms){ const s=Math.max(0,Math.round((Date.now()-ms)/1000));
+  if(s<90) return 'a moment ago'; const m=Math.round(s/60); if(m<60) return m+' minute'+(m===1?'':'s')+' ago';
+  const h=Math.round(m/60); if(h<36) return h+' hour'+(h===1?'':'s')+' ago'; const d=Math.round(h/24); return d+' day'+(d===1?'':'s')+' ago'; }
+const fmtDur=sec=>{ sec=Math.max(0,Math.round(sec)); const m=Math.floor(sec/60), r=sec%60; return m? m+':'+String(r).padStart(2,'0') : sec+'s'; };
 
 // ---------- Commons: File: page URL → direct file URL ----------
 async function commonsUrl(pageUrl, width=1600){
@@ -137,18 +268,24 @@ const isCommons=u=>/commons\.wikimedia\.org\/wiki\/File:/.test(u);
 
 // ---------- YouTube ----------
 function loadYT(){ return new Promise(res=>{ if(window.YT&&YT.Player) return res(); const s=document.createElement('script'); s.src='https://www.youtube.com/iframe_api'; document.head.appendChild(s); window.onYouTubeIframeAPIReady=()=>res(); }); }
-async function showYouTube(m){
+async function showYouTube(m, offset=0){
   await loadYT(); const host=document.createElement('div'); host.id='yt'; $('#media').appendChild(host);
-  ytPlayer=new YT.Player('yt',{videoId:m.ref, playerVars:{start:m.start_s||0, end:m.end_s||undefined, autoplay:1, controls:1, rel:0, modestbranding:1, playsinline:1, iv_load_policy:3},
-    events:{ onReady:e=>{ e.target.setVolume(35); e.target.playVideo(); }, onStateChange:e=>{ if(e.data===YT.PlayerState.ENDED){ /* keep last frame */ } } }});
+  const start=Math.round((m.start_s||0)+Math.max(0,offset));                 // mid-scene restore: the clip starts where the day stopped
+  ytPlayer=new YT.Player('yt',{videoId:m.ref, playerVars:{start, end:m.end_s||undefined, autoplay:paused?0:1, controls:1, rel:0, modestbranding:1, playsinline:1, iv_load_policy:3},
+    events:{ onReady:e=>{ e.target.setVolume(35); if(paused){ try{e.target.pauseVideo();}catch(_){} } else e.target.playVideo(); },
+      // the player's own ⏸ is a pause of the whole day: a video that stops while the clock runs is exactly the
+      // incoherence this release is about. Our own commands are ignored (ytSelfCmd) so this cannot loop.
+      onStateChange:e=>{ const mine=performance.now()-ytSelfCmd<900;
+        if(e.data===YT.PlayerState.PAUSED && !mine && !paused) pauseFor('user');
+        else if(e.data===YT.PlayerState.PLAYING && !mine && paused && !pauseReasons.has('sheet')){ pauseReasons.delete('user'); pauseReasons.delete('away'); applyPause(); } } }});
 }
 
 // ---------- TTS ----------
 // clear-English + speed: yy-clear picks narration.variants.clear when present; rate = yy-rate if the traveller chose one, else 0.9 in clear mode / 1.0
-let clearEnglish=(localStorage.getItem('yy-clear')??'1')==='1';   // DEFAULT ON (founder decision 2026-08-19: clear English is the default in player and video; the literary track is the opt-out)
-function ttsRate(){ const r=parseFloat(localStorage.getItem('yy-rate')); if(r>=0.5&&r<=2) return r; return clearEnglish?0.9:1.0; }
+let clearEnglish=(LS.get('yy-clear')??'1')==='1';   // DEFAULT ON (founder decision 2026-08-19: clear English is the default in player and video; the literary track is the opt-out)
+function ttsRate(){ const r=parseFloat(LS.get('yy-rate')); if(r>=0.5&&r<=2) return r; return clearEnglish?0.9:1.0; }
 function pickScript(s){ const n=(s&&s.narration)||{}; return (clearEnglish&&n.variants&&typeof n.variants.clear==='string')?n.variants.clear:(n.script||''); }
-let voices=[], voiceName=localStorage.getItem('yy-voice')||''; // cached: the #voice select lives on the cover, which is removed on start
+let voices=[], voiceName=LS.get('yy-voice')||''; // cached: the #voice select lives on the cover, which is removed on start
 function loadVoices(){ voices=speechSynthesis.getVoices(); const sel=$('#voice'); if(!sel) return; sel.innerHTML='';
   // voice list follows the active locale: a Chinese script read by an English voice is unusable
   const hint=(LOCALE&&LOCALE.tts&&LOCALE.tts.voice_hint)||'en-GB';
@@ -161,15 +298,20 @@ function speak(text, onBoundary, onEnd){
   speechSynthesis.cancel(); if(!narrate||!text){ onEnd&&setTimeout(onEnd,0); return; }
   const u=new SpeechSynthesisUtterance(text); const v=voices.find(v=>v.name===voiceName); if(v) u.voice=v; u.rate=ttsRate(); u.pitch=1.0;
   u.onboundary=e=>onBoundary&&onBoundary(e.charIndex); let ended=false; u.onend=()=>{ if(ended) return; ended=true; onEnd&&onEnd(); }; u.onerror=e=>{ if(ended) return; ended=true; if(e.error!=='canceled'&&e.error!=='interrupted'){ console.warn('tts error',e.error); onEnd&&onEnd(); } }; // cancel() never fires onEnd (scene change is guarded by sceneSerial); real failures (no voice, not-allowed…) count as 'said'
-  window.__lastUtter=u; speechSynthesis.speak(u);
-  setTimeout(()=>{ if(!ended&&!speechSynthesis.speaking&&!speechSynthesis.pending){ ended=true; onEnd&&onEnd(); } },1500); // no voice / TTS silently refused (headless, some Android): behave as if the line had been read
+  window.__lastUtter=u; try{ if(!paused) speechSynthesis.resume(); }catch(e){}   // a previous pause() leaves the queue paused in Chrome; never speak over a paused day
+  speechSynthesis.speak(u);
+  // no voice / TTS silently refused (headless, some Android): behave as if the line had been read. While the day is
+  // paused nothing is speaking BY DESIGN, so the check waits rather than declaring the line over.
+  const guard=()=>{ if(ended) return; if(paused) return setTimeout(guard,1500);
+    if(!speechSynthesis.speaking&&!speechSynthesis.pending){ ended=true; onEnd&&onEnd(); } };
+  setTimeout(guard,1500);
 }
 // gloss chips interrupt the narration to speak a definition; pendingNarrEnd keeps the scene's wait-state logic (countdown, after_script) alive across the interruption
 let pendingNarrEnd=null;
 function speakGloss(text){ const fin=pendingNarrEnd; pendingNarrEnd=null; speak(text, null, ()=>{ fin&&fin(); }); }
 
 // ---------- Audio bed ----------
-async function playBed(m){ stopBed(); if(!isCommons(m.ref)) return; const url=await commonsUrl(m.ref); bed=new Audio(url); bed.volume=0.18; bed.loop=true; bed.play().catch(()=>{}); }
+async function playBed(m){ stopBed(); if(!isCommons(m.ref)) return; const url=await commonsUrl(m.ref); bed=new Audio(url); bed.volume=0.18; bed.loop=true; if(!paused) bed.play().catch(()=>{}); }
 function stopBed(){ if(bed){ bed.pause(); bed=null; } }
 
 // ---------- Generated assets (SVG, inlined) ----------
@@ -283,7 +425,7 @@ function mapsLink(ref){ const [lat,lng,h,p,fov]=String(ref).split(',').map(Numbe
 const SVCFG={ mode:'auto', step_m:12, max_stills:60, fade_ms:380, resume_after_s:4, smooth_s:1.05, radius_m:60, base_zoom:0.85 };
 let svRun=null, svAuthFailed=false, svJsPromise=null;
 window.gm_authFailure=()=>{ svAuthFailed=true; svJsPromise=null; if(svRun&&svRun.onAuthFail) svRun.onAuthFail(); };
-const svKey=()=>localStorage.getItem('yy-gkey')||'';
+const svKey=()=>LS.get('yy-gkey')||'';
 const D2R=Math.PI/180, R2D=180/Math.PI, EARTH_M=6371000;
 function svDist(a,b){ const la1=a.lat*D2R,la2=b.lat*D2R,dla=(b.lat-a.lat)*D2R,dlo=(b.lng-a.lng)*D2R;
   const h=Math.sin(dla/2)**2+Math.cos(la1)*Math.cos(la2)*Math.sin(dlo/2)**2; return 2*EARTH_M*Math.asin(Math.min(1,Math.sqrt(h))); }
@@ -355,7 +497,8 @@ function svChrome(box, plan, ctl){
   const bar=document.createElement('div'); bar.className='svbar';
   const bP=document.createElement('button'); bP.className='btn svbtn'; bP.id='svPause'; bP.textContent='⏸'; bP.title='pause';
   bP.setAttribute('aria-label','pause the walk');
-  bP.onclick=()=>{ paused=!paused; bP.textContent=paused?'▶':'⏸'; try{ paused?speechSynthesis.pause():speechSynthesis.resume(); }catch(e){} };
+  bP.onclick=()=>{ togglePause(); };                       // v0.6: the same master pause as the footer and the spacebar
+  bP.textContent=hardPaused()?'▶':'⏸';
   const bR=document.createElement('button'); bR.className='btn svbtn'; bR.id='svReplay'; bR.textContent='↻'; bR.title='replay the walk';
   bR.setAttribute('aria-label','replay the walk'); bR.onclick=()=>showScene(idx);
   bar.append(bP,bR);
@@ -539,7 +682,7 @@ function svEmbedUrl(key, lat, lng, heading, pitch, fov){
     +'&location='+lat+','+lng+'&heading='+(heading||0)+'&pitch='+(pitch||0)+'&fov='+(fov||90);
 }
 async function svEmbed(plan, box, ctl){
-  const key=localStorage.getItem('yy-gkey');
+  const key=LS.get('yy-gkey');
   if(!key) throw new Error('no maps key');
   // one timeline entry per stop arrival and per camera cue, in time order
   const marks=[];
@@ -561,6 +704,7 @@ async function svEmbed(plan, box, ctl){
   go(0);
   ctl.mode='embed';
   const tick=()=>{ if(ctl.dead) return; ctl.raf=requestAnimationFrame(tick);
+    if(paused||document.hidden) return;                               // v0.6: the embed's own timeline stops with the day
     if(ctl.userActive||elapsed<ctl.userUntil) return;                 // traveller is looking around inside the iframe
     let want=shown; for(let i=0;i<marks.length;i++) if(elapsed>=marks[i].t) want=i;
     if(want!==shown) go(want); };
@@ -641,7 +785,7 @@ async function svOpen(plan, box, ctl, scene){
     layers.forEach(l=>l.classList.remove('on')); credit.style.display='none';
     gapBox.style.display='block';
     if(gapFrame===leg.k) return; gapFrame=leg.k;
-    const st=leg.stop, key=localStorage.getItem('yy-gkey');
+    const st=leg.stop, key=LS.get('yy-gkey');
     const cam=svCameraAt(plan, Math.min(leg.t1-0.1, leg.t0+1));
     if(key){ gapBox.innerHTML='<iframe allow="accelerometer; gyroscope" referrerpolicy="no-referrer-when-downgrade" src="'+
         svEmbedUrl(key, st.lat, st.lng, Math.round(cam.heading), Math.round(cam.pitch||0), Math.round(svZoomToFov(cam.zoom)))+'"></iframe>'+
@@ -709,7 +853,7 @@ async function showStreetView(s){
   const ser=sceneSerial;
   box.innerHTML='<div class="fill"><div class="muted">Street View — connecting…</div></div>';
   ctl.onAuthFail=()=>{ if(ctl.dead||ctl.mode!=='js') return; ctl.mode=null; box.innerHTML=''; svBegin('stills'); };
-  const want=(localStorage.getItem('yy-sv-mode')||SVCFG.mode||'auto').toLowerCase();
+  const want=(LS.get('yy-sv-mode')||SVCFG.mode||'auto').toLowerCase();
   // FREE-FIRST ladder (RULE 1): open (our own cached CC BY-SA frames — costs nothing, and the same pixels go in the
   // video) → embed (Maps Embed API, free and unlimited) → the link card.
   // 'js'/'stills' hit billable SKUs and are only reachable when config.billing_ack === true (svModeAllowed gates it).
@@ -766,7 +910,9 @@ function showVictorianMap(m){ showImage(m,true); }
 
 let interactionResolved=false, cdTimer=null;
 function clearCountdown(){ if(cdTimer){ clearInterval(cdTimer); cdTimer=null; } $('#countdown').textContent=''; }
-function startCountdown(sec, onTimeout){ clearCountdown(); let left=sec; const show=()=>$('#countdown').textContent=`· ${left}s`; show(); cdTimer=setInterval(()=>{ left--; if(left<=0){ clearCountdown(); onTimeout&&onTimeout(); } else show(); },1000); }
+// the countdown is part of the scene clock: it holds while the traveller has stopped the day (hardPaused), and only
+// runs while the wait itself is what is pausing things
+function startCountdown(sec, onTimeout){ clearCountdown(); let left=sec; const show=()=>$('#countdown').textContent=`· ${left}s`; show(); cdTimer=setInterval(()=>{ if(hardPaused()) return; left--; if(left<=0){ clearCountdown(); onTimeout&&onTimeout(); } else show(); },1000); }
 function renderInteraction(s){
   const box=$('#interaction'); box.innerHTML=''; pickOption=null; gameApi=null; interactionResolved=false; clearCountdown(); const it=s.interaction; if(!it||it.kind==='none') return;
   const after=()=>{ const n=s.narration||{};
@@ -781,7 +927,7 @@ function renderInteraction(s){
       else { box.querySelectorAll('.opt').forEach(x=>x.classList.remove('picked')); b.classList.add('picked'); box.querySelectorAll('.fb').forEach(x=>x.remove()); }
       const f=document.createElement('div'); f.className='fb'; f.textContent=o.feedback||(o.correct?'Yes.':'Not quite.'); box.appendChild(f); f.scrollIntoView({block:'nearest',behavior:'smooth'}); const a=after(); speak(f.textContent, null, ()=>{ if(a&&graded) speak(a); }); if(o.goto) box.dataset.goto=o.goto; genHooks.onPick&&genHooks.onPick(i); }; box.appendChild(b); });
     pickOption=i=>{ const b=box.querySelectorAll('.opt')[i]; if(b&&!b.disabled) b.click(); };
-    box.autoResolve=()=>{ const k=(it.options||[]).findIndex(o=>o.correct); if(k>=0&&pickOption) pickOption(k); else { paused=false; } };
+    box.autoResolve=()=>{ const k=(it.options||[]).findIndex(o=>o.correct); if(k>=0&&pickOption) pickOption(k); else { resumeFrom('wait'); } };
   } else if(it.kind==='drag'){
     if(it.options){ const list=document.createElement('div'); const need=it.options.filter(o=>o.correct).length; let done=false, wrongN=0;
       const fbLine=txt=>{ box.querySelectorAll('.fb.tmp').forEach(x=>x.remove()); const f=document.createElement('div'); f.className='fb tmp'; f.textContent=txt; box.appendChild(f); speak(txt); };
@@ -819,16 +965,21 @@ function renderOverlays(s, t){
   if(!box.children.length){ box.innerHTML='<span class="muted">'+(s.subtopic||'')+'</span>'; }
 }
 
-async function showScene(i){
-  clearInterval(timer); sceneSerial++; svStop(); sched=null; genHooks={}; pendingNarrEnd=null; clearCountdown(); speechSynthesis.cancel(); stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
-  idx=Math.max(0,Math.min(scenes.length-1,i)); const s=scenes[idx]; elapsed=0; paused=false; const ser=sceneSerial;
+// showScene(i, {at}) — `at` starts the scene mid-way (restored progress, or a caption toggle that must not rewind).
+// Everything on the scene clock follows: the media schedule, the overlays, the walk, the YouTube in-point, the narration.
+async function showScene(i, opts){
+  clearInterval(timer); sceneSerial++; svStop(); sched=null; genHooks={}; pendingNarrEnd=null; clearCountdown(); speechSynthesis.cancel(); try{ speechSynthesis.resume(); }catch(e){} stopBed(); if(ytPlayer){ try{ytPlayer.destroy();}catch(e){} ytPlayer=null; } if(map){ map.remove(); map=null; }
+  idx=Math.max(0,Math.min(scenes.length-1,i)); const s=scenes[idx]; const ser=sceneSerial;
+  const at=Math.max(0,Math.min((opts&&+opts.at)||0, Math.max(0,(s.duration_s||60)-2)));
+  elapsed=at; t0=performance.now()-elapsed*1000;
+  ['user','away','wait'].forEach(r=>pauseReasons.delete(r)); applyPause();   // a jump is a fresh start; an open sheet keeps its hold
   $('#hScene').textContent=`scene ${idx+1}/${scenes.length} · ${s.type} · ${s.duration_s}s`; $('#title').textContent=s.title; $('#media').innerHTML='';
   const script=pickScript(s); $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:''; // clear-English: variants.clear replaces script for TTS + captions when present
   const media=s.media||[]; const yt=media.find(m=>m.kind==='youtube'), img=media.filter(m=>m.kind==='image'), aud=media.find(m=>m.kind==='audio'&&isCommons(m.ref)), gen=media.filter(m=>m.kind==='generated');
   const genStarts=gen.map(g=>g.start_s||0), firstGen=gen.length?Math.min(...genStarts):Infinity;
   const photoCycle=()=>{ const me=sched&&sched.active; showImage(img[0],true); if(img.length>1){ let k=0; const cyc=setInterval(()=>{ if(scenes[idx]!==s||(sched&&sched.active!==me)) return clearInterval(cyc); k=(k+1)%img.length; showImage(img[k],true); }, Math.max(8000, s.duration_s*1000/img.length)); } };
   try{
-    if(s.type==='video' && yt){ await showYouTube(yt); }
+    if(s.type==='video' && yt){ await showYouTube(yt, at); }
     else if(s.type==='streetview'){ showStreetView(s); }
     else if(s.type==='map'){
       if(gen.length){ setSchedule(gen.map(g=>mkGen(g,s,{ ok:(svg,it)=>{ if(/route-map|g-01/.test(g.ref)) wireG01(svg,it,g,s); }, fail:()=>{ if(/route-map/.test(g.ref)) leafletRouteMap(!/full-loop|enablers/.test(g.ref)); else sceneCard(s,[g.manifest_id]); } }))); }
@@ -849,31 +1000,87 @@ async function showScene(i){
     }
   }catch(e){ console.error(e); card(`<h2>${s.title}</h2><p><small>media failed: ${e.message}</small></p>`); }
   if(aud && s.type!=='video') playBed(aud);
-  renderInteraction(s); renderOverlays(s,0);
+  renderInteraction(s); renderOverlays(s,at);
   // narration + timer (narration.starts_at_s honoured; pause_narration/timeout_s: countdown after the script, auto-resolve on timeout)
-  const it=s.interaction; const onEnd=()=>{ if(ser!==sceneSerial||!it||it.kind==='none'||interactionResolved) return; if(it.pause_narration&&it.timeout_s){ paused=true; startCountdown(it.timeout_s, ()=>{ if(ser!==sceneSerial) return; const box=$('#interaction'); if(box.autoResolve) box.autoResolve(); else paused=false; }); } };
+  const it=s.interaction; const onEnd=()=>{ if(ser!==sceneSerial||!it||it.kind==='none'||interactionResolved) return; if(it.pause_narration&&it.timeout_s){ pauseFor('wait'); startCountdown(it.timeout_s, ()=>{ if(ser!==sceneSerial) return; const box=$('#interaction'); if(box.autoResolve) box.autoResolve(); else resumeFrom('wait'); }); } };
   const endOnce=()=>{ pendingNarrEnd=null; onEnd(); };
-  const startTts=()=>{ if(ser!==sceneSerial) return; pendingNarrEnd=endOnce; speak(script, ci=>{ if(!captions) return; $('#script').innerHTML=`<span class="said">${script.slice(0,ci)}</span><span class="unsaid">${script.slice(ci)}</span>`; }, endOnce); };
-  const delay=(s.narration&&s.narration.starts_at_s)||0; if(delay>0) setTimeout(startTts, delay*1000); else startTts();
-  t0=performance.now(); timer=setInterval(tick,500); tick();
+  const delay=(s.narration&&s.narration.starts_at_s)||0;
+  const startTts=()=>{ if(ser!==sceneSerial) return; pendingNarrEnd=endOnce;
+    const cut=speechSplit(script, at-delay, ttsRate());                       // resumed mid-scene: pick the line up, do not start the scene over
+    if(cut.said&&captions) $('#script').innerHTML=`<span class="said">${cut.said}</span><span class="unsaid">${cut.rest}</span>`;
+    if(!cut.rest) return endOnce();                                           // the guide had already finished this scene's words
+    const base=cut.said.length;
+    speak(cut.rest, ci=>{ if(!captions) return; $('#script').innerHTML=`<span class="said">${script.slice(0,base+ci)}</span><span class="unsaid">${script.slice(base+ci)}</span>`; }, endOnce); };
+  const wait=Math.max(0,delay-at); if(wait>0) setTimeout(startTts, wait*1000); else startTts();
+  timer=setInterval(tick,500); tick(); saveProgress(true);
 }
-function tick(){ const s=scenes[idx]; if(paused) t0=performance.now()-elapsed*1000; else elapsed=(performance.now()-t0)/1000; $('#prog i').style.width=Math.min(100,elapsed/s.duration_s*100)+'%'; $('#clock').textContent=`${Math.floor(elapsed)}s / ${s.duration_s}s`; if(paused) return; renderOverlays(s,elapsed); schedTick();
+// Where would the voice be after `seconds` of reading? An estimate (words or CJK characters per second at this rate),
+// snapped BACK to a sentence start, so a restored scene never resumes in the middle of a clause. Cheap, honest, and
+// silent when the estimate says the narration was already over.
+function speechSplit(script, seconds, rate){
+  script=script||''; if(!(seconds>0)||!script) return {said:'', rest:script};
+  const cjk=(script.match(/[\u3400-\u9fff\u3040-\u30ff]/g)||[]).length;
+  const est = cjk > script.length*0.3 ? cjk/(4.2*(rate||1)) : (script.split(/\s+/).filter(Boolean).length)/(2.6*(rate||1));
+  if(seconds>=est*0.97) return {said:script, rest:''};
+  const ci=Math.floor(script.length*Math.min(1,seconds/est));
+  let cut=-1; ['. ','! ','? ','。','！','？','\n'].forEach(mk=>{ const k=script.lastIndexOf(mk,ci); if(k>cut) cut=k+mk.length; });
+  return cut>0 ? {said:script.slice(0,cut), rest:script.slice(cut)} : {said:'', rest:script};
+}
+function tick(){ const s=scenes[idx]; if(!s) return; if(paused) t0=performance.now()-elapsed*1000; else elapsed=(performance.now()-t0)/1000; $('#prog i').style.width=Math.min(100,elapsed/s.duration_s*100)+'%'; $('#clock').textContent=`${paused?'⏸ ':''}${Math.floor(elapsed)}s / ${s.duration_s}s`; if(paused) return; saveProgress(); renderOverlays(s,elapsed); schedTick();
   const needsInput = s.interaction && s.interaction.kind!=='none' && !(s.interaction.kind==='walk'&&s.type==='streetview'); // v0.4: the auto-walk needs no input, so a streetview scene plays out and hands on like a video
   if(s.type==='game' && elapsed>=s.duration_s && gameApi && !gameApi.done) gameApi.close();
   if(elapsed>=s.duration_s && !needsInput && !speechSynthesis.speaking){ next(); } }
-function pauseTimer(){ paused=true; }
-function resumeTimer(){ paused=false; } // interaction resolved: the scene clock (media schedule, overlays) runs on; auto-advance stays off for scenes that need input
-function seek(sec){ elapsed=Math.max(0,sec); t0=performance.now()-elapsed*1000; paused=false; tick(); } // test/render hook: jump the scene clock (media schedule + overlays follow)
+function pauseTimer(){ pauseFor('wait'); }
+function resumeTimer(){ resumeFrom('wait'); } // interaction resolved: the scene clock (media schedule, overlays) runs on; auto-advance stays off for scenes that need input
+function seek(sec){ elapsed=Math.max(0,sec); t0=performance.now()-elapsed*1000; pauseReasons.clear(); applyPause(); tick(); } // test/render hook: jump the scene clock (media schedule + overlays follow)
 function next(){ const g=$('#interaction').dataset.goto; const j= g ? scenes.findIndex(x=>x.id===g) : -1; if(j>=0) return showScene(j); const nx=scenes[idx].next; const k= nx? scenes.findIndex(x=>x.id===nx) : -1; showScene(k>=0?k:idx+1); }
 $('#next').onclick=next; $('#prev').onclick=()=>showScene(idx-1);
-$('#btnCap').onclick=()=>{ captions=!captions; $('#btnCap').style.opacity=captions?1:.4; showScene(idx); };
+$('#btnCap').onclick=()=>{ captions=!captions; $('#btnCap').style.opacity=captions?1:.4; showScene(idx,{at:elapsed}); };   // v0.6: toggling captions no longer rewinds the scene
 $('#btnMute').onclick=()=>{ narrate=!narrate; $('#btnMute').textContent=narrate?'🔈':'🔇'; if(!narrate) speechSynthesis.cancel(); };
-$('#btnList').onclick=()=>{ const n=prompt('Jump to scene number (1–'+scenes.length+'):\n'+scenes.map((s,i)=>`${i+1}. ${s.title}`).join('\n')); if(n) showScene(parseInt(n,10)-1); };
-$('#testVoice').onclick=()=>{ voiceName=$('#voice').value; localStorage.setItem('yy-voice',voiceName); speak('It is Wednesday, the second of October, eighteen seventy-two. We have a train to catch.'); };
-$('#voice').onchange=()=>{ voiceName=$('#voice').value; localStorage.setItem('yy-voice',voiceName); };
-$('#rate').value=String(ttsRate()); $('#rate').onchange=e=>localStorage.setItem('yy-rate',e.target.value);
+// ---------- the scene list (v0.6; replaces a prompt() nobody could use on a phone) ----------
+// Titles come straight from `scenes[]`, which the locale overlay has already rewritten — the list is localised for
+// free and nothing is translated twice. Opening it stops the day (a list is a place to stand still and look).
+let listPrevFocus=null;
+function buildList(){
+  const body=$('#listBody'); body.innerHTML='';
+  const total=scenes.reduce((a,s)=>a+(+s.duration_s||0),0);
+  $('#listSub').textContent=`${scenes.length} scenes · about ${Math.round(total/60)} minutes · tap one to go there`;
+  scenes.forEach((s,i)=>{
+    const b=document.createElement('button'); b.type='button'; b.className='scn'; b.dataset.i=String(i); b.setAttribute('role','listitem');
+    if(i===idx) b.setAttribute('aria-current','true');
+    const n=document.createElement('span'); n.className='n'; n.textContent=(i+1)+'.';
+    const t=document.createElement('span'); t.className='t';
+    const ttl=document.createElement('b'); ttl.textContent=s.title||s.id;                      // localised title, verbatim
+    const meta=document.createElement('small'); meta.textContent=`${s.type} · ${fmtDur(s.duration_s||0)}${i===idx?' · here now':''}`;
+    t.append(ttl,meta); b.append(n,t);
+    b.onclick=()=>{ closeList(true); showScene(i); };
+    body.appendChild(b); });
+}
+function openList(){ if(!scenes.length) return; listPrevFocus=document.activeElement; buildList();
+  $('#list').hidden=false; $('#btnList').setAttribute('aria-expanded','true'); pauseFor('sheet');
+  const cur=$('#listBody .scn[aria-current="true"]')||$('#listBody .scn');
+  if(cur){ cur.focus(); try{ cur.scrollIntoView({block:'center'}); }catch(e){} } }
+function closeList(jumping){ if($('#list').hidden) return; $('#list').hidden=true; $('#btnList').setAttribute('aria-expanded','false');
+  resumeFrom('sheet'); if(!jumping&&listPrevFocus){ try{ listPrevFocus.focus(); }catch(e){} } listPrevFocus=null; }
+$('#btnList').onclick=()=>{ $('#list').hidden? openList() : closeList(); };
+$('#listClose').onclick=()=>closeList();
+$('#list').addEventListener('click',e=>{ if(e.target===$('#list')) closeList(); });     // tap the dim to dismiss
+$('#list').addEventListener('keydown',e=>{
+  const items=[...$('#listBody').querySelectorAll('.scn')], at=items.indexOf(document.activeElement);
+  if(e.key==='Escape'){ e.preventDefault(); closeList(); }
+  else if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); const d=e.key==='ArrowDown'?1:-1;
+    const nx=items[Math.max(0,Math.min(items.length-1,(at<0?0:at+d)))]; nx&&nx.focus(); }
+  else if(e.key==='Home'&&items.length){ e.preventDefault(); items[0].focus(); }
+  else if(e.key==='End'&&items.length){ e.preventDefault(); items[items.length-1].focus(); }
+  e.stopPropagation();                                                                   // arrows/space never leak to the scene keys
+});
+$('#btnPause').onclick=()=>togglePause();
+$('#pauseGo').onclick=()=>togglePause();
+$('#testVoice').onclick=()=>{ voiceName=$('#voice').value; LS.set('yy-voice',voiceName); speak('It is Wednesday, the second of October, eighteen seventy-two. We have a train to catch.'); };
+$('#voice').onchange=()=>{ voiceName=$('#voice').value; LS.set('yy-voice',voiceName); };
+$('#rate').value=String(ttsRate()); $('#rate').onchange=e=>LS.set('yy-rate',e.target.value);
 $('#clearEn').checked=clearEnglish;
-$('#clearEn').onchange=e=>{ clearEnglish=e.target.checked; localStorage.setItem('yy-clear',clearEnglish?'1':'0'); if(!localStorage.getItem('yy-rate')) $('#rate').value=String(ttsRate()); }; // no explicit speed chosen → clear mode defaults the dial to 0.9
+$('#clearEn').onchange=e=>{ clearEnglish=e.target.checked; LS.set('yy-clear',clearEnglish?'1':'0'); if(!LS.get('yy-rate')) $('#rate').value=String(ttsRate()); }; // no explicit speed chosen → clear mode defaults the dial to 0.9
 // Maps key: server config first (www/config.json, gitignored — never committed), then whatever the traveller pasted.
 // Maps key: server config (www/config.json, gitignored) supplies it, so the traveller never needs to paste one.
 // The input stays available as an override for self-hosted copies — hidden unless there is no server key or the traveller asks.
@@ -889,18 +1096,18 @@ function svModeAllowed(cfg){
   return m;
 }
 fetch('/config.json').then(r=>r.ok?r.json():null).then(c=>{
-  const own=localStorage.getItem('yy-own-gkey')==='1';
-  if(c&&c.maps_api_key){ if(!own) localStorage.setItem('yy-gkey',c.maps_api_key);
+  const own=LS.get('yy-own-gkey')==='1';
+  if(c&&c.maps_api_key){ if(!own) LS.set('yy-gkey',c.maps_api_key);
     if(!own){ $('#gkeyRow').style.display='none'; $('#gkeyOk').style.display='block'; } }
   if(c&&c.streetview&&typeof c.streetview==='object') Object.assign(SVCFG,c.streetview);
   SVCFG.billing_ack = (c && c.billing_ack===true);   // RULE 1: billable SKUs stay locked unless the config says so explicitly
   SVCFG.mode = svModeAllowed(c);                      // and the mode itself is gated the same way // mode/step_m/max_stills/fade_ms/resume_after_s — see www/config.example.json
 }).catch(()=>{});
-$('#gkeyEdit')?.addEventListener('click',e=>{ e.preventDefault(); localStorage.setItem('yy-own-gkey','1'); localStorage.removeItem('yy-gkey'); $('#gkeyOk').style.display='none'; $('#gkeyRow').style.display='block'; $('#gkey').value=''; });
-$('#gkey').value=localStorage.getItem('yy-gkey')||''; $('#gkey').onchange=e=>localStorage.setItem('yy-gkey',e.target.value.trim());
+$('#gkeyEdit')?.addEventListener('click',e=>{ e.preventDefault(); LS.set('yy-own-gkey','1'); LS.del('yy-gkey'); $('#gkeyOk').style.display='none'; $('#gkeyRow').style.display='block'; $('#gkey').value=''; });
+$('#gkey').value=LS.get('yy-gkey')||''; $('#gkey').onchange=e=>LS.set('yy-gkey',e.target.value.trim());
 
 // ---------- who's who (cast card; product-level shared/whos-who.json — button hidden if the file is missing) ----------
-let whoData=null, whoPrevPaused=false;
+let whoData=null;
 const escHtml=t=>String(t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 async function loadWhosWho(){
   const ref=(tour&&tour.whos_who)||'../shared/whos-who.json'; const url=/^(https?:)?\//.test(ref)?ref:TOUR_DIR+ref;
@@ -908,16 +1115,39 @@ async function loadWhosWho(){
     if(j&&Array.isArray(j.entries)&&j.entries.length){ whoData=j; $('#btnWho').hidden=false; } }
   catch(e){ console.warn('no whos-who card:',e.message); }
 }
-function openWho(){ if(!whoData) return; whoPrevPaused=paused; paused=true; try{ speechSynthesis.pause(); }catch(e){}
+function openWho(){ if(!whoData) return; pauseFor('sheet');    // v0.6: a real pause — the interaction countdown holds too (v0.3 bug)
   $('#whoTitle').textContent=whoData.title||"Who's who";
   $('#whoBody').innerHTML=whoData.entries.map(en=>`<p><b>${escHtml(en.name)}</b> — ${escHtml(en.who)}</p>`).join('');
   $('#who').hidden=false; $('#whoClose').focus(); }
-function closeWho(){ $('#who').hidden=true; paused=whoPrevPaused; try{ speechSynthesis.resume(); }catch(e){} $('#btnWho').focus(); }
+function closeWho(){ $('#who').hidden=true; resumeFrom('sheet'); $('#btnWho').focus(); }
 $('#btnWho').onclick=openWho; $('#whoClose').onclick=closeWho;
 $('#who').addEventListener('click',e=>{ if(e.target===$('#who')) closeWho(); });
 
 document.addEventListener('keydown',e=>{ if(!$('#who').hidden){ if(e.key==='Escape') closeWho(); return; } // modal open: keys stay in the card
-  if(e.key==='ArrowRight') next(); if(e.key==='ArrowLeft') showScene(idx-1); if(e.key===' '){ paused=!paused; e.preventDefault(); } });
+  if(!$('#list').hidden) return;                                        // the sheet handles its own keys
+  if($('#cover')) return;                                               // the cover is up: keys belong to its form
+  const tag=(e.target&&e.target.tagName)||'';
+  if(/^(INPUT|SELECT|TEXTAREA)$/.test(tag)||e.metaKey||e.ctrlKey||e.altKey) return;
+  if(e.key==='ArrowRight'){ next(); }
+  else if(e.key==='ArrowLeft'){ showScene(idx-1); }
+  else if(e.key===' '||e.key==='Spacebar'||e.key==='k'){
+    if(tag==='BUTTON'&&e.key!=='k') return;                             // space belongs to the button under the finger
+    e.preventDefault(); togglePause(); } });
+
+// ---------- the traveller leaves (v0.6) ----------
+// Going away is not a mistake to be recovered from silently: the day stops, and it is still stopped when they come
+// back — an hour later or a week later — so nothing is missed and nothing shouts.
+document.addEventListener('visibilitychange',()=>{
+  if(document.hidden){ saveProgress(true); if(started) pauseFor('away'); }
+  else paintPause();                                                    // back: they see the paused state and decide
+});
+window.addEventListener('pagehide',()=>saveProgress(true));
+window.addEventListener('blur',()=>{ setTimeout(()=>{                   // another window/app took the focus
+  if(!started||document.hidden||hardPaused()) return;
+  const ae=document.activeElement;
+  if(ae&&ae.tagName==='IFRAME') return;                                 // focus went INTO the YouTube / Street View embed: they are still here
+  if(document.hasFocus()) return;
+  pauseFor('away'); },250); });
 
 (async()=>{
   // ---- i18n: a locale is an index-addressed OVERLAY applied to the tour in memory, so every render path below
@@ -951,18 +1181,35 @@ document.addEventListener('keydown',e=>{ if(!$('#who').hidden){ if(e.key==='Esca
     catch(e){ console.info('locale '+code+' unavailable'); return null; }
   }
   try{ tour=await (await fetch(TOUR_URL)).json(); }catch(e){ $('#coverTitle').innerHTML='<h1>Yunyou</h1><p>Could not load '+TOUR_URL+'</p>'; return; }
-  const wantLang=(qs.get('lang')||localStorage.getItem('yy-lang')||'en');
+  const wantLang=(qs.get('lang')||LS.get('yy-lang')||'en');
   const langSel=$('#lang'); if(langSel){ langSel.value=wantLang;
-    langSel.onchange=e=>{ const v=e.target.value; localStorage.setItem('yy-lang',v);
+    langSel.onchange=e=>{ const v=e.target.value; LS.set('yy-lang',v);
       const u=new URL(location.href); if(v==='en') u.searchParams.delete('lang'); else u.searchParams.set('lang',v); location.href=u.toString(); }; }
   LOCALE=await loadLocale(wantLang);
-  if(LOCALE){ applyLocale(tour, LOCALE); localStorage.setItem('yy-lang', wantLang); voiceName=null; loadVoices();
+  if(LOCALE){ applyLocale(tour, LOCALE); LS.set('yy-lang', wantLang); voiceName=null; loadVoices();
     document.documentElement.lang = LOCALE.locale || wantLang; }
   const ch=tour.chapters[0]; scenes=ch.scenes; $('#hTitle').textContent=tour.title;
   const recap= typeof ch.recap==='string'&&ch.recap ? `<p class="muted" style="max-width:560px"><span style="letter-spacing:.18em;text-transform:uppercase;font-size:11px;color:var(--accent)">Previously</span><br>${ch.recap}</p>` : '';
   $('#coverTitle').innerHTML=`<p class="muted" style="letter-spacing:.2em;text-transform:uppercase">${tour.title}</p><h1>${ch.title}</h1><p>${ch.hook}</p>${recap}<p class="muted">${scenes.length} scenes · about ${Math.round(scenes.reduce((a,s)=>a+s.duration_s,0)/60)} minutes · headphones recommended</p>`;
   loadWhosWho();
-  $('#start').onclick=()=>{ voiceName=$('#voice').value; localStorage.setItem('yy-voice',voiceName); $('#cover').remove(); showScene(0); };
+  // ---- start / continue (v0.6) ----
+  const begin=(i,at)=>{ const sel=$('#voice'); if(sel&&sel.value){ voiceName=sel.value; LS.set('yy-voice',voiceName); }
+    started=true; const cov=$('#cover'); if(cov) cov.remove(); paintPause(); showScene(i,{at:at||0}); };
+  $('#start').onclick=()=>{ clearProgress(); begin(0,0); };
+  const prog=loadProgress();
+  if(prog){
+    const j=scenes.findIndex(x=>x.id===prog.sceneId);
+    if(j>=0){
+      const btn=$('#continue'); btn.hidden=false;
+      btn.textContent=`▶ Continue — scene ${j+1}: ${scenes[j].title}`;      // localised title: the overlay is already applied
+      btn.onclick=()=>begin(j, prog.elapsed);
+      const note=$('#continueNote'); note.hidden=false;
+      note.textContent=`saved ${agoText(prog.savedAt)} · ${fmtDur(prog.elapsed)} into that scene`;
+      $('#start').textContent='Start the day again from the beginning';
+      $('#start').classList.remove('primary');
+      window.__progress=prog;                                              // test/QA hook
+    } else clearProgress();                                                // the tour changed under the save: drop it quietly
+  }
 })();
 </script>
 </body>

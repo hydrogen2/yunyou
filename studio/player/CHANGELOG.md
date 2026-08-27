@@ -219,3 +219,99 @@ inside a 360° frame), scene 15 at 4 s (the Eleanor Cross centre-frame against t
 - Scene 04's cue list was authored for Google panoramas; w00's named look-at is unreachable from open imagery. That is
   a content decision (re-point the cue, or keep the embed) — Engine does not touch cues.
 - `--max-frames 14` per stop is a cost-free but disk-heavy default (360° originals are ~1.5 MB each).
+
+## 2026-08-20 — v0.6 (engine-tools): pause, "the day waits", saved progress, and a scene list you can actually use
+
+Founder playtest, verbatim: *"it seems i cannot pause (i go away from the browser and come back the clock still
+ticking) and save my progress.. also no way to jump to scenes."* Read against `studio/strategy/positioning.md`
+("no urgency… the traveller may stop at any time… silence is content"), these are not media-player features — they
+are the tone made real. Stopping is the normal state of a day out, not an interruption to recover from.
+(Unlogged before this entry: the i18n locale layer of 2026-08-19/20 — `?lang=`, the cover picker, locale-aware voice
+selection. v0.6 builds the scene list on top of it.)
+
+### 1. One master pause, and it stops everything at once
+`pauseReasons` (a Set of `user` | `away` | `sheet` | `wait`) drives the single `paused` flag every loop already
+watches. Reasons stack, so an interaction countdown or an open card can never un-pause a stop the traveller asked
+for. On the way in: `speechSynthesis.pause()` (mid-word, not mid-scene), the Commons audio bed, YouTube
+(`pauseVideo`), and `body.yy-paused` freezes the Ken-Burns `animation-play-state` and the cross-fade transitions.
+The rAF loops (`svLive`, `svStills`, `svOpen`) already checked `paused`; **`svEmbed`'s mark timeline did not** and
+now does. On the way out the scene clock is rebased (`t0 = now − elapsed`), so **resuming continues at the same
+second, never at the scene start**. A half-paused scene — voice stopped, clock running — is no longer reachable.
+- **Controls:** a footer `⏸ Pause / ▶ Go on` button (`aria-pressed`), the **spacebar** (and `k`), the Street View
+  chrome's own `⏸`, and the strip's "Go on". Space no longer double-fires when a button has focus, and never
+  steals a keystroke from an input or from the scene list.
+- **Where the paused state is shown:** a strip *above the footer*, never over the media — rights, not taste: we may
+  not overlay a YouTube player, and Google's Street View logo and ©-line must stay clear (M-37/38/39).
+- **Interaction waits are a pause reason now**, so `pause_narration` + `timeout_s` behaves as before while playing,
+  but the countdown *holds* while the traveller has stopped the day. That also fixes the v0.3 bug in the changelog
+  ("a running interaction countdown does NOT pause" behind the who's-who card).
+- **The YouTube player's own ⏸ pauses the whole day** (and its ▶ resumes it), guarded against echoing our own
+  commands. A video that stops while the guide keeps talking is exactly the incoherence this release is about.
+
+### 2. Leaving the page pauses it — the actual bug they hit
+`visibilitychange → hidden` pauses with reason `away` and writes progress; **coming back does not resume**. The
+strip explains itself ("Paused — you stepped away, so the day waited for you") and waits for a deliberate tap: they
+may have been gone an hour. `blur` pauses too, but only after a 250 ms re-check that focus did **not** go into an
+`<iframe>` — clicking inside the YouTube or Street View embed blurs the window, and pausing there would be maddening.
+
+### 3. Saved progress, keyed by tour
+`{tourUrl, sceneId, sceneNo, sceneTitle, elapsed, lang, clearEnglish, rate, savedAt}` under
+`yy-progress:<TOUR_URL>` — per tour URL, so chapters and products never collide. Written at most once per 2 s from
+`tick()`, plus forced on every pause, scene change, `visibilitychange` and `pagehide`. On the cover, a saved day
+offers **"▶ Continue — scene 7: The wager — twenty thousand at Baring's"** (localised title, straight from the tour
+in memory) with "saved 20 minutes ago · 1:04 into that scene"; "Start the day again from the beginning" stays and
+clears the save. A save whose `sceneId` no longer exists is dropped silently.
+- **Restore lands mid-scene, not at its start:** `showScene(i, {at})` seeds `elapsed`, so the media schedule, the
+  overlays, the walk and the YouTube in-point (`start = start_s + at`) all arrive at the same moment. The narration
+  cannot literally resume mid-utterance after a reload, so `speechSplit()` estimates where the voice had got to
+  (words/s, or CJK characters/s, at the current rate), snaps **back** to a sentence start, marks the earlier text as
+  already said in the caption panel and reads the rest. If the estimate says the guide had finished, it stays quiet.
+- Free bonus from the same plumbing: toggling **CC** no longer rewinds the scene.
+- **All localStorage access goes through `LS.get/set/del`**, which swallow the exception private mode throws — the
+  player boots, plays, pauses and lists scenes with storage disabled; it just cannot offer Continue.
+
+### 4. A real scene list (the `prompt()` is gone)
+`#btnList` opens an in-page sheet — side panel on a wide screen, bottom sheet under 560 px: number, **localised**
+title, `type · m:ss`, the current scene marked (`aria-current`, accent, "here now"). Tap to jump; opening it stops
+the day; Escape / Close / a tap on the dim dismisses it; focus opens **on the current scene**, ArrowUp/Down/Home/End
+move, and no key leaks out to the scene shortcuts. Titles are read from `scenes[i].title`, which the locale overlay
+has already rewritten — the list is localised for free and nothing is translated twice.
+
+### 5. Narrow-screen chrome
+The header cannot overflow any more: the chapter title ellipsises, the spacer can shrink, buttons never shrink, and
+under 520 px the labels collapse to their glyph and `#hScene` (which the list now carries) hides. Measured at
+**280 px** (Fold cover): header, footer and document all overflow by 0 px.
+
+### How to run / what to look at
+```bash
+node studio/player/test/smoke_playback.mjs      # 72 checks, ALL PASS 2026-08-20 (must run against the deployed host)
+node studio/player/test/smoke_v03.mjs           # v0.3 features — unchanged by this release (4 pre-existing failures, see below)
+```
+Look at `studio/player/test/out/v06-*.jpg`: the scene list at 1280 px and at 280 px, the list in 简体中文, the cover
+with Continue, and a paused Street View scene (the strip is below the media; Google's logo and ©-line are clear).
+
+### The test (`studio/player/test/smoke_playback.mjs`, 72 checks)
+Six passes against `https://178-104-53-233.sslip.io/player/`. Narration is proved with a **fake `speechSynthesis`**
+installed before the page loads (headless Chromium has no voices, so the real one can prove nothing): its
+`charIndex` only advances while it is really speaking. Proves the clock **and** the narration freeze together and
+resume from the same second (not a re-`speak`); `visibilitychange` auto-pauses and returning stays paused; progress
+survives a reload and restores mid-scene; the list jumps, marks, dismisses and is keyboard-navigable; `?lang=zh-Hans`
+gives localised rows and a localised Continue button; a throwing `localStorage` breaks nothing; and a `blur`
+that lands inside an `<iframe>` is ignored while a real loss of window focus pauses. It also asserts
+**no billable Google API was called** (RULE 1) and drives only card/photo/map scenes — no video is loaded anywhere.
+
+### Still NOT done / found but not fixed
+- **The scene-list chrome is English** ("The scenes", "18 scenes · about 21 minutes", "Close") and so are the scene
+  **type** words (`video`, `photo`…), even in zh-Hans: the locale format carries content strings only. Adding UI
+  strings is a spec change plus a translation, i.e. not an Engine decision — flagged for the founder.
+- Narration on a **restored** scene is an estimate, not a real offset — a scene whose script deliberately stops
+  early (silence is content) will be judged "already finished" and stay quiet on resume. Honest, but approximate.
+- Progress is **one save per tour**, not a history: no "you have travelled these days" shelf yet (the positioning
+  note asks for one eventually).
+- The pause is **not** in the URL, so a shared link still starts at the top of the chapter.
+- `smoke_v03.mjs` fails 4 of 22 checks, and `smoke_generated.mjs --only 3,10,11` fails on `pack-the-bag` —
+  **both fail identically on the pre-change baseline** (`git show HEAD:studio/player/index.html`), so they are not
+  v0.6 regressions: the v0.3 assertions predate the "clear English is the default" flip (D5) and the numbering in
+  those tests predates the D6 scene restructure. Worth a pass by whoever owns those suites.
+- The Street View `svChrome` ⏸ is now wired to the master pause, but with the D6 ladder (`embed → link`) no scene
+  renders that chrome any more; it survives for the retired `js`/`stills`/`open` modes only.
