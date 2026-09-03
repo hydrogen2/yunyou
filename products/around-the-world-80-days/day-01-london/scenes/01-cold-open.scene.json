@@ -65,9 +65,9 @@
       "position": "bottom"
     },
     {
-      "at_s": 36,
+      "at_s": 38,
       "kind": "caption",
-      "until_s": 46,
+      "until_s": 48,
       "text": "Eighty days. 1,920 hours. 115,200 minutes.",
       "position": "bottom"
     },
@@ -85,6 +85,22 @@
       "until_s": 60,
       "text": "valet — a gentleman's personal manservant",
       "position": "tl"
+    },
+    {
+      "at_s": 11,
+      "kind": "caption",
+      "until_s": 21,
+      "text": "Around the World in Eighty Days — Jules Verne, 1872",
+      "position": "bottom",
+      "note": "A10 (Narrator): appended, not inserted — cuts/day-01-london.json and i18n/zh-Hans.json address overlays by INDEX. In English this is the book's title on screen while the guide names it (the audience 'knows only the title'). In Mandarin it is also the home of 儒勒·凡尔纳（Jules Verne）, moved out of the spoken script so a Kokoro/misaki Chinese voice never has to pronounce Latin inside Chinese prosody."
+    },
+    {
+      "at_s": 22,
+      "kind": "caption",
+      "until_s": 32,
+      "text": "Phileas Fogg — the hero, a gentleman of the clock",
+      "position": "bottom",
+      "note": "A10 (Narrator): the hero's name plate, appended for the same reason as overlay 4; carries 菲利亚斯·福克（Phileas Fogg） in the Mandarin locale. A caption, not a gloss: the player SPEAKS a gloss chip's full text on tap (index.html speakGloss), which would put the Latin back in a Chinese voice."
     }
   ],
   "interaction": {
@@ -108,6 +124,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1). A1 narrator 2026-08-18: script cut 139→97 words (≤ 100 for the 60-s linear window from 10 s); hours/minutes sentence dropped (caption 36–46 s carries it); 'Paris newspaper' sentence moved to 08; 'Keep that watch in mind' → 'Remember the watch'; sentences ≤ 20 words; ends on 'Savile Row'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine retold for a first-time reader in the briefed order — 1872 novel by Jules Verne, a precise London gentleman named Phileas Fogg bets he can circle the world in eighty days, tonight he leaves, we travel his route today; valet gloss chip added; clear-English variant added; F-04 cited (French valet)."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1). A1 narrator 2026-08-18: script cut 139→97 words (≤ 100 for the 60-s linear window from 10 s); hours/minutes sentence dropped (caption 36–46 s carries it); 'Paris newspaper' sentence moved to 08; 'Keep that watch in mind' → 'Remember the watch'; sentences ≤ 20 words; ends on 'Savile Row'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine retold for a first-time reader in the briefed order — 1872 novel by Jules Verne, a precise London gentleman named Phileas Fogg bets he can circle the world in eighty days, tonight he leaves, we travel his route today; valet gloss chip added; clear-English variant added; F-04 cited (French valet). | A10 narrator 2026-09-03 (density re-measure, EN + ZH, for the YouTube cuts). Rate model: EN 2.5 w/s (150 wpm) and ZH 4.0 zi/s (240 zi/min), both budgeted at 80 % fill of duration_s - starts_at_s; the Mandarin column is counted the way the August translator counted it (every non-whitespace character), which reproduces their 4.63 / 3.81 exactly. GLOBAL FIX: the seven first-use English brackets inside the Mandarin spoken scripts (92 characters) are gone from narration.script — a Kokoro/misaki Mandarin voice would have had to pronounce Latin inside Chinese prosody, and the burned caption is the script as spoken, so they would also have been read out. Four of the seven were in this scene. 儒勒·凡尔纳（Jules Verne）and 菲利亚斯·福克（Phileas Fogg）moved to two NEW captions, appended as overlays 4 and 5 so no existing index moved (both cuts/day-01-london.json and i18n/zh-Hans.json address overlays by index). 路路通（Passepartout）moved to overlay 3, which the Mandarin locale already uses as his name card. 萨维尔街（Savile Row）moved to scene 02's own Savile Row pin, which lands three seconds later on the street itself. Captions, not gloss chips: the player speaks a gloss chip's full text on tap (index.html speakGloss), which would have put the Latin straight back into a Chinese voice. In English the two new captions are a real gain — the book's title and its hero on screen while the guide names them, for an audience that 'knows only the title'. Overlay 1 moved 36-46 -> 38-48 to make room. Mandarin: 3.78 -> 3.02 zi/s (95 % -> 75 % fill) on the bracket removal alone."
   }
 }

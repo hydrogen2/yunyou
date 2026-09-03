@@ -39,6 +39,16 @@
    ],
    "overlays": [
     {
+     "i": 4,
+     "at": 4,
+     "until": 14
+    },
+    {
+     "i": 5,
+     "at": 15,
+     "until": 23
+    },
+    {
      "i": 1,
      "at": 24,
      "until": 32
@@ -49,7 +59,8 @@
      "until": 44
     }
    ],
-   "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped."
+   "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
+   "_a10_note": "A10 2026-09-03 (Narrator): overlays 4 (the book + Jules Verne) and 5 (Phileas Fogg) are NEW and were APPENDED to the scene, so indices 0-3 are unmoved and every token above still points where it did."
   },
   "savile-row": {
    "_readme": "M-66 KartaView hyperlapse + Savile Row stills (M-05 is player-only), pins Savile Row / No. 15 / No. 14, drop the M-32 tail and its three sentences — 84 s",
@@ -191,57 +202,37 @@
    "_d6_note": "Rendered length ≈ 90.2 s (clear track), so the five fixed visuals (46 + 14 + 20 + 8 + 9 = 97) scale to ≈ 42.8 / 13.0 / 18.6 / 7.4 / 8.4 s: the map holds the whole counting beat and hands over one second into 'And this is the street he is walking into'; the walk turns east at ≈ 43.5 s, stops in front of the Reform at ≈ 64 s, and the two neighbour façades take the last two lines. Overlay 0 is the step sticker and overlay 3 the clubland gloss — the renderer burns only pin/caption/lower-third, so neither is timed here. The six timed rows are in RENDERED seconds, each on the picture its words belong to."
   },
   "the-reform-club": {
-   "_readme": "from the door: M-20 + M-69c second angle + the M-22/M-23 insets (M-01 is player-only); drop the Soyer kitchens and the closing Times line — 62 s",
+   "_readme": "photo scene: the seven pictures come from the scene's own start_s/end_s slots (v0.9 renderer, imagelayer.imageSlots) — four of them interiors since the 2026-08-27 rebuild; drop the Soyer kitchens sentence (the film has no kitchen beat of its own) — 62 s",
    "script": [
     "s:0-5",
-    "s:7-11"
-   ],
-   "visuals": [
-    {
-     "kind": "image",
-     "media": "M-20",
-     "dur": 24
-    },
-    {
-     "kind": "image",
-     "media": "M-69c",
-     "dur": 14
-    },
-    {
-     "kind": "image",
-     "media": "M-22",
-     "dur": 9
-    },
-    {
-     "kind": "image",
-     "media": "M-23"
-    }
+    "s:7-10"
    ],
    "overlays": [
     {
      "i": 0,
-     "at": 4.5,
-     "until": 12
-    },
-    {
-     "i": 2,
-     "at": 22,
-     "until": 30
+     "at": 4,
+     "until": 10
     },
     {
      "i": 1,
-     "at": 34,
-     "until": 44
+     "at": 15,
+     "until": 20
+    },
+    {
+     "i": 2,
+     "at": 24,
+     "until": 32
     },
     {
      "i": 3,
-     "at": 46,
-     "until": 56
+     "at": 34,
+     "until": 42
     }
    ],
    "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
    "_a5_note": "A5 (2026-08-19): tokens re-derived against the CLEAR track (the rendered default); no dangling reference, interactive-only prompts dropped.",
-   "_a8_note": "A8 (2026-08-19): M-69c inserted so 62 s is not one still with two insets. No clip card here before or after."
+   "_a8_note": "A8 (2026-08-19): M-69c inserted so 62 s is not one still with two insets. No clip card here before or after.",
+   "_a10_note": "A10 2026-09-03 (Narrator): (1) `s:7-11` was DANGLING — the 2026-08-27 interior rebuild and this pass leave the clear track with 11 sentences (0-10), so the token is now `s:7-10`. (2) The `visuals` array was removed: it still asked for **M-69c**, which the rebuild deleted from the scene, so that 14-second segment was being silently dropped (same class of bug as A8's M-28), and it named none of the four interior pictures the scene has carried since 27 August. With no `visuals` hint the v0.9 renderer builds a photo scene from the scene's own slots, so the film now shows what the player shows. (3) Overlay times are the scene's windows scaled by the rendered length (~47 s / 70 s), because the renderer scales the photo slots the same way and these are picture captions."
   },
   "quiz-verne-saloon": {
    "_readme": "guide asks and answers in one breath (correct option + feedback); drops 'Take your time; the tea is famous.' — 50 s",

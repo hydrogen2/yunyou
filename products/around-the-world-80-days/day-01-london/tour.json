@@ -82,9 +82,9 @@
        "position": "bottom"
       },
       {
-       "at_s": 36,
+       "at_s": 38,
        "kind": "caption",
-       "until_s": 46,
+       "until_s": 48,
        "text": "Eighty days. 1,920 hours. 115,200 minutes.",
        "position": "bottom"
       },
@@ -102,6 +102,22 @@
        "until_s": 60,
        "text": "valet — a gentleman's personal manservant",
        "position": "tl"
+      },
+      {
+       "at_s": 11,
+       "kind": "caption",
+       "until_s": 21,
+       "text": "Around the World in Eighty Days — Jules Verne, 1872",
+       "position": "bottom",
+       "note": "A10 (Narrator): appended, not inserted — cuts/day-01-london.json and i18n/zh-Hans.json address overlays by INDEX. In English this is the book's title on screen while the guide names it (the audience 'knows only the title'). In Mandarin it is also the home of 儒勒·凡尔纳（Jules Verne）, moved out of the spoken script so a Kokoro/misaki Chinese voice never has to pronounce Latin inside Chinese prosody."
+      },
+      {
+       "at_s": 22,
+       "kind": "caption",
+       "until_s": 32,
+       "text": "Phileas Fogg — the hero, a gentleman of the clock",
+       "position": "bottom",
+       "note": "A10 (Narrator): the hero's name plate, appended for the same reason as overlay 4; carries 菲利亚斯·福克（Phileas Fogg） in the Mandarin locale. A caption, not a gloss: the player SPEAKS a gloss chip's full text on tap (index.html speakGloss), which would put the Latin back in a Chinese voice."
       }
      ],
      "interaction": {
@@ -125,7 +141,7 @@
       "fact_check": "pending",
       "rights": "pending",
       "qa": "pending",
-      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1). A1 narrator 2026-08-18: script cut 139→97 words (≤ 100 for the 60-s linear window from 10 s); hours/minutes sentence dropped (caption 36–46 s carries it); 'Paris newspaper' sentence moved to 08; 'Keep that watch in mind' → 'Remember the watch'; sentences ≤ 20 words; ends on 'Savile Row'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine retold for a first-time reader in the briefed order — 1872 novel by Jules Verne, a precise London gentleman named Phileas Fogg bets he can circle the world in eighty days, tonight he leaves, we travel his route today; valet gloss chip added; clear-English variant added; F-04 cited (French valet)."
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 60→75 (linear 60); title 8 s, narration.starts_at_s 10; 1,920-hours caption moved to 36–46 s to land with the words; pin position bl; M-34 inset moved to 50–62; G-01 note asks for a 'Day 1' label (not opacity-only). Script left for the Narrator (Continuity #1). A1 narrator 2026-08-18: script cut 139→97 words (≤ 100 for the 60-s linear window from 10 s); hours/minutes sentence dropped (caption 36–46 s carries it); 'Paris newspaper' sentence moved to 08; 'Keep that watch in mind' → 'Remember the watch'; sentences ≤ 20 words; ends on 'Savile Row'. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine retold for a first-time reader in the briefed order — 1872 novel by Jules Verne, a precise London gentleman named Phileas Fogg bets he can circle the world in eighty days, tonight he leaves, we travel his route today; valet gloss chip added; clear-English variant added; F-04 cited (French valet). | A10 narrator 2026-09-03 (density re-measure, EN + ZH, for the YouTube cuts). Rate model: EN 2.5 w/s (150 wpm) and ZH 4.0 zi/s (240 zi/min), both budgeted at 80 % fill of duration_s - starts_at_s; the Mandarin column is counted the way the August translator counted it (every non-whitespace character), which reproduces their 4.63 / 3.81 exactly. GLOBAL FIX: the seven first-use English brackets inside the Mandarin spoken scripts (92 characters) are gone from narration.script — a Kokoro/misaki Mandarin voice would have had to pronounce Latin inside Chinese prosody, and the burned caption is the script as spoken, so they would also have been read out. Four of the seven were in this scene. 儒勒·凡尔纳（Jules Verne）and 菲利亚斯·福克（Phileas Fogg）moved to two NEW captions, appended as overlays 4 and 5 so no existing index moved (both cuts/day-01-london.json and i18n/zh-Hans.json address overlays by index). 路路通（Passepartout）moved to overlay 3, which the Mandarin locale already uses as his name card. 萨维尔街（Savile Row）moved to scene 02's own Savile Row pin, which lands three seconds later on the street itself. Captions, not gloss chips: the player speaks a gloss chip's full text on tap (index.html speakGloss), which would have put the Latin straight back into a Chinese voice. In English the two new captions are a real gain — the book's title and its hero on screen while the guide names them, for an audience that 'knows only the title'. Overlay 1 moved 36-46 -> 38-48 to make room. Mandarin: 3.78 -> 3.02 zi/s (95 % -> 75 % fill) on the bracket removal alone."
      }
     },
     {
@@ -636,11 +652,11 @@
      "duration_s": 70,
      "learning_goal": "Know the Reform Club is real, founded 1836, Barry's palazzo of 1841, Soyer's kitchens, and Fogg's breakfast; feel cosy club warmth.",
      "narration": {
-      "script": "We arrive at the door of Fogg's club. The Reform Club is real, and still here: 104 Pall Mall, since 1836. Its founders backed the great Reform Act of 1832 — hence the name. In the novel this is Fogg's whole world: he eats here, reads here, plays cards here, every day until midnight. Charles Barry's palazzo opened in 1841: Portland stone outside; inside, a saloon two storeys high under a glass roof. And the famous kitchens that the chef Alexis Soyer helped to plan. Look down — they ran in the basement, under all this. Now Fogg's breakfast, taken here. A broiled fish with Reading sauce — keep that in mind. Roast beef, a tart, Cheshire cheese, and the tea the Reform is famous for. Inside today: a tessellated floor, marble busts, portraits between the columns. Barry's elevation of the front. Somewhere in there, breakfast done, Fogg cuts the pages himself and reads The Times.",
+      "script": "We arrive at the door of Fogg's club. The Reform Club is real, and still here: 104 Pall Mall. Its founders backed the great Reform Act of 1832 — hence the name. In the novel this is Fogg's whole world: he eats here, reads here, plays cards here, every day until midnight. Charles Barry's palazzo opened in 1841: Portland stone outside, and inside, the saloon. And the famous kitchens that the chef Alexis Soyer helped to plan. Look down — they ran in the basement, under all this. Now Fogg's breakfast, taken here. A broiled fish with Reading sauce — keep that in mind. Inside today: a tessellated floor, marble busts, portraits between the columns. Barry's elevation of the front. Somewhere in there, breakfast done, Fogg cuts the pages himself and reads The Times.",
       "timing": "over",
       "voice": "guide",
       "variants": {
-       "clear": "This is the door of Fogg's club: the Reform Club. It is real, and still here — 104 Pall Mall, since 1836. Its founders had backed the Reform Act of 1832 — that is where the name comes from. In the book, Fogg spends every day here until midnight: meals, newspapers, cards. The architect Charles Barry finished the building in 1841. Stone outside; inside, a grand hall two floors high, under a glass roof. The club also had famous kitchens, planned with the chef Alexis Soyer. They were down in the basement. Here Fogg ate his breakfast: grilled fish with Reading sauce — remember that sauce. Roast beef, a fruit tart, cheese, and the club's famous tea. Then Barry's own drawing of the front. Somewhere in there, Fogg cuts his newspaper's pages and reads The Times."
+       "clear": "This is the door of Fogg's club: the Reform Club. It is real, and still here — 104 Pall Mall. Its founders had backed the Reform Act of 1832 — that is where the name comes from. In the book, Fogg spends every day here until midnight: meals, newspapers, cards. The architect Charles Barry finished the building in 1841. Stone outside; inside, this hall. The club also had famous kitchens, planned with the chef Alexis Soyer. They were down in the basement. Here Fogg ate his breakfast: grilled fish with Reading sauce — remember that sauce. Then Barry's design for the front. Somewhere in there, Fogg cuts his newspaper's pages and reads The Times."
       }
      },
      "media": [
@@ -652,7 +668,7 @@
        "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
        "start_s": 0,
        "end_s": 10,
-       "note": "Slot 1/7 (0-10 s) — the front today, over the arrival and the address. 3024x4032 portrait: the player contains it over a blurred backdrop (treatment 'backdrop'), never stretched.",
+       "note": "Slot 1/7 (0-10 s, A10 re-timed to the shortened clear track) — the front today, over the arrival and the address. 3024x4032 portrait: the player contains it over a blurred backdrop (treatment 'backdrop'), never stretched.",
        "use": "both",
        "sa": true
       },
@@ -663,8 +679,8 @@
        "manifest_id": "M-97",
        "attribution": "Reform Club, plan of the ground floor — Alfred Barry, 'The Life and Works of Sir Charles Barry' (1867), p. 120 (Wikimedia Commons, public domain)",
        "start_s": 10,
-       "end_s": 20,
-       "note": "Slot 2/7 (10-20 s) — over 'Fogg's whole world: he eats here, reads here, plays cards here'. The plate labels the rooms he lived in: COFFEE ROOM, SALOON, PARLIAMENTARY LIBRARY OR MORNING-ROOM, HOUSE-DINING-ROOM. 1698x1792, so it is shown contained, not upscaled. Supersedes the 699-px 'Reform executed ground 1840' (M-99) — same plan, unreadable labels at that size.",
+       "end_s": 21,
+       "note": "Slot 2/7 (10-21 s, A10 re-timed to the shortened clear track) — over 'Fogg's whole world: he eats here, reads here, plays cards here'. The plate labels the rooms he lived in: COFFEE ROOM, SALOON, PARLIAMENTARY LIBRARY OR MORNING-ROOM, HOUSE-DINING-ROOM. 1698x1792, so it is shown contained, not upscaled. Supersedes the 699-px 'Reform executed ground 1840' (M-99) — same plan, unreadable labels at that size.",
        "use": "both"
       },
       {
@@ -673,9 +689,9 @@
        "license": "public-domain",
        "manifest_id": "M-96",
        "attribution": "The Reform Club saloon from the south-west corner — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887), p. 51 (public domain; scan: Internet Archive)",
-       "start_s": 20,
-       "end_s": 30,
-       "note": "Slot 3/7 (20-30 s) — INTERIOR, over 'a saloon two storeys high under a glass roof' (spoken ~21-32 s). Two storeys, Ionic below and Corinthian above on the gallery, the balustraded first-floor peristyle, the glazed cove top left, the staircase in the far corner — F-15 exactly. IIIF crop of leaf 0069, 1200x1158, no upscale. If iiif.archive.org is slow, swap ref for the full page scan in `fallback` (drawing sits in the middle 55 %).",
+       "start_s": 21,
+       "end_s": 28,
+       "note": "Slot 3/7 (21-28 s, A10 re-timed to the shortened clear track) — INTERIOR, over the saloon lines — literary 'inside, the saloon', clear 'Stone outside; inside, this hall' (spoken ~21.6-27.6 s after A10). Two storeys, Ionic below and Corinthian above on the gallery, the balustraded first-floor peristyle, the glazed cove top left, the staircase in the far corner — F-15 exactly. IIIF crop of leaf 0069, 1200x1158, no upscale. If iiif.archive.org is slow, swap ref for the full page scan in `fallback` (drawing sits in the middle 55 %).",
        "use": "both",
        "fallback": "https://archive.org/download/18361886reformcl00fagauoft/page/n68_w1200.jpg"
       },
@@ -685,9 +701,9 @@
        "license": "public-domain",
        "manifest_id": "M-95",
        "attribution": "'The Kitchen Department of the Reform Club', lithograph by John Tarring, published by Alexis Soyer, 1842 (Wikimedia Commons, public domain)",
-       "start_s": 30,
-       "end_s": 40,
-       "note": "Slot 4/7 (30-40 s) — INTERIOR, over 'the famous kitchens that the chef Alexis Soyer helped to plan' and the new basement line. 4000x2201 hand-coloured cut-away of Soyer's kitchen with its letterpress key and plan below; the player asks Commons for a 1600-px thumb and fills the frame (1.82:1 against 1.78:1, ~2 % cropped). The linear cut should pan slowly left to right across the top band.",
+       "start_s": 28,
+       "end_s": 36,
+       "note": "Slot 4/7 (28-36 s, A10 re-timed to the shortened clear track) — INTERIOR, over 'the famous kitchens that the chef Alexis Soyer helped to plan' and the new basement line. 4000x2201 hand-coloured cut-away of Soyer's kitchen with its letterpress key and plan below; the player asks Commons for a 1600-px thumb and fills the frame (1.82:1 against 1.78:1, ~2 % cropped). The linear cut should pan slowly left to right across the top band.",
        "use": "both"
       },
       {
@@ -696,9 +712,9 @@
        "license": "cc-by-sa-3.0",
        "manifest_id": "M-94",
        "attribution": "Reform Club interior, 2013 — photo alexander williams, CC BY-SA 3.0, commons.wikimedia.org/wiki/File:ReformClubLobby.jpg",
-       "start_s": 40,
-       "end_s": 50,
-       "note": "Slot 5/7 (40-50 s) — INTERIOR, the only modern photograph from inside, over the breakfast lines and 'Inside today: a tessellated floor, marble busts, portraits between the columns'. 729x545, under the 760-px plate threshold, so the player mounts it small on paper with its credit under it — never full-bleed, never upscaled. Identified as the saloon's ground-level colonnade looking at the principal staircase: the geotag is the club (51.50667,-0.13367), and the columns, balustrade, busts and the arch over the stair match M-96 (1887) and M-23 (1841). This is the picture the title now rests on.",
+       "start_s": 36,
+       "end_s": 42,
+       "note": "Slot 5/7 (36-42 s, A10 re-timed to the shortened clear track) — INTERIOR, the only modern photograph from inside, over the breakfast line (the menu itself is no longer spoken — caption 2 carries it) and, in the literary track, 'Inside today: a tessellated floor, marble busts, portraits between the columns'. 729x545, under the 760-px plate threshold, so the player mounts it small on paper with its credit under it — never full-bleed, never upscaled. Identified as the saloon's ground-level colonnade looking at the principal staircase: the geotag is the club (51.50667,-0.13367), and the columns, balustrade, busts and the arch over the stair match M-96 (1887) and M-23 (1841). This is the picture the title now rests on.",
        "use": "both",
        "sa": true
       },
@@ -708,9 +724,9 @@
        "license": "public-domain",
        "manifest_id": "M-22",
        "attribution": "Reform Club, north elevation, from 'Life and Works of Sir Charles Barry' (Wikimedia Commons, PD)",
-       "start_s": 50,
-       "end_s": 60,
-       "note": "Slot 6/7 (50-60 s) — over 'Barry's elevation of the front' (~50-53 s in the clear track). 709x431 -> plate mount. M-102 (p. 124, 2994x1932, view from Pall Mall) is the high-res alternative if a perspective is wanted.",
+       "start_s": 42,
+       "end_s": 47,
+       "note": "Slot 6/7 (42-47 s, A10 re-timed to the shortened clear track) — over 'Barry's elevation / design for the front' (~42.0-44.4 s in the clear track after A10). 709x431 -> plate mount. M-102 (p. 124, 2994x1932, view from Pall Mall) is the high-res alternative if a perspective is wanted.",
        "use": "both"
       },
       {
@@ -719,9 +735,9 @@
        "license": "public-domain",
        "manifest_id": "M-23",
        "attribution": "Reform Club, the corridors of the saloon — 'London Interiors' (1841) (Wikimedia Commons, PD)",
-       "start_s": 60,
+       "start_s": 47,
        "end_s": 70,
-       "note": "Slot 7/7 (60-70 s) — the closing image, under 'Somewhere in there...'. 632x521 -> plate mount. Its own caption reads 'Reform Club. The Corridors of the Saloon': it is the UPPER level of the same colonnade M-94 photographs from below.",
+       "note": "Slot 7/7 (47-70 s, A10 re-timed to the shortened clear track) — the closing image, under 'Somewhere in there...'. 632x521 -> plate mount. Its own caption reads 'Reform Club. The Corridors of the Saloon': it is the UPPER level of the same colonnade M-94 photographs from below.",
        "use": "both"
       },
       {
@@ -737,31 +753,32 @@
      ],
      "overlays": [
       {
-       "at_s": 8,
+       "at_s": 5,
        "kind": "pin",
-       "until_s": 17,
+       "until_s": 14,
        "text": "Reform Club — 104 Pall Mall, founded 1836",
        "position": "bl",
        "geo": "51.5065,-0.1335"
       },
       {
-       "at_s": 21,
+       "at_s": 22,
        "kind": "caption",
        "until_s": 30,
        "text": "The Saloon: 57 × 51 ft, two storeys, under a glazed roof — Barry, opened 1 March 1841",
        "position": "bottom"
       },
       {
-       "at_s": 40,
+       "at_s": 36,
        "kind": "caption",
-       "until_s": 50,
+       "until_s": 47,
        "text": "Broiled fish, Reading sauce · roast beef · rhubarb-and-gooseberry tart · Cheshire · tea",
-       "position": "bottom"
+       "position": "bottom",
+       "note": "A10: the menu is no longer read aloud (style guide R3 + guide persona §2.6 'no lists aloud'), so this caption is now the ONLY place the breakfast is listed. It must stay."
       },
       {
-       "at_s": 61,
+       "at_s": 50,
        "kind": "caption",
-       "until_s": 70,
+       "until_s": 62,
        "text": "The corridors of the saloon, engraved 1841 — the club is private; pictures are how we get in",
        "position": "bottom"
       }
@@ -784,12 +801,12 @@
       "F-27",
       "F-47"
      ],
-     "production_notes": "A9 2026-08-27 (content-preparer) — THE SCENE NOW GOES INSIDE. Free interior material does exist; the earlier 'no PD Reform interior beyond one 1841 engraving' finding was wrong (media/manifest.md §A9). Four of the seven pictures are interiors: M-96 (Fagan 1887, the saloon from the SW corner), M-95 (Soyer's kitchens, 1842), M-94 (a 2013 photograph inside), M-23 (1841). TYPE CHANGED video -> photo. This is the load-bearing change: in the player, a 'video' scene with a youtube item calls showYouTube() and NEVER shows the scene's images (index.html, showScene) — which is exactly why the founder saw 70 s of outdoor walking under an 'Inside' title. As a photo scene the player cycles the images every max(8000, duration_s*1000/n) ms = 10 s for seven, in ARRAY ORDER, ignoring start_s; start_s/end_s are set to the same 10-s slots so the rendered cut matches what the player shows. Adding or removing one image re-times the whole scene — keep it at seven. M-01 (Wanderizm, Standard YouTube Licence, embed-only) was REMOVED from this scene: it is inert in a photo scene, and the arrival at the Reform door is scene 04's job (D6). To restore it, re-add {kind:'youtube', ref:'WQCsxb2dMgQ', start_s:1610, end_s:1655, use:'player'} and set type back to 'video' — but then the interiors disappear again. SLOTS, ten seconds each (checked against the player's own words-per-second estimate, 2.6 x rate, on BOTH tracks — clear English is the default, at rate 0.9): 0-10 M-20 the front today (arrival, the address) · 10-20 M-97 the ground plan (‘his whole world: he eats here, reads here, plays cards here’) · 20-30 M-96 THE SALOON (spoken 20.8-28.1 literary / 22.2-31.6 clear) · 30-40 M-95 SOYER'S KITCHENS (28.1-36.9 / 31.6-39.3) · 40-50 M-94 INSIDE TODAY (the breakfast, 36.9-48.5 / 39.3-50.0) · 50-60 M-22 Barry's elevation (52.7-54.6 / 50.0-53.0) · 60-70 M-23 1841, the closing image. The one residual drift: the literary line ‘Inside today: a tessellated floor…’ starts at 48.5 s, 1.5 s before M-94 leaves the screen. RESOLUTION: M-94 (729 px), M-22 (709 px) and M-23 (632 px) are under the player's 760-px plate threshold and mount as small paper plates with their credit under them; M-95, M-96, M-97, M-20 are 1200-4000 px and are contained or filled. Nothing is upscaled anywhere — pickTreatment() caps the fit at 1.0. NARRATION CHANGED (Narrator to sign off, see review.notes): 'no camera has been inside for us' is now false and is gone from both tracks; the closing picture-by-picture enumeration is gone because seven equally-spaced images cannot keep a three-item promise spoken in five seconds; the 'look up at the first-floor windows' cue (written for a façade video) became 'Look down — they ran in the basement' so it lands on the kitchen plate (F-47); one new sentence describes the 2013 photograph while it is on screen. Earlier notes that still hold: no paper-knife (F-06); the coffee-room's nine windows are in the SOUTH garden wall, so 'nine' stays out of this scene (Quiz A follows, F-15); the linear cut opens on M-20 and scene 04 ends on the open-imagery arrival at the door, so the two do not repeat the same shot.",
+     "production_notes": "A9 2026-08-27 (content-preparer) — THE SCENE NOW GOES INSIDE. Free interior material does exist; the earlier 'no PD Reform interior beyond one 1841 engraving' finding was wrong (media/manifest.md §A9). Four of the seven pictures are interiors: M-96 (Fagan 1887, the saloon from the SW corner), M-95 (Soyer's kitchens, 1842), M-94 (a 2013 photograph inside), M-23 (1841). TYPE CHANGED video -> photo. This is the load-bearing change: in the player, a 'video' scene with a youtube item calls showYouTube() and NEVER shows the scene's images (index.html, showScene) — which is exactly why the founder saw 70 s of outdoor walking under an 'Inside' title. As a photo scene the player cycles the images every max(8000, duration_s*1000/n) ms = 10 s for seven, in ARRAY ORDER, ignoring start_s; start_s/end_s are set to the same 10-s slots so the rendered cut matches what the player shows. Adding or removing one image re-times the whole scene — keep it at seven. M-01 (Wanderizm, Standard YouTube Licence, embed-only) was REMOVED from this scene: it is inert in a photo scene, and the arrival at the Reform door is scene 04's job (D6). To restore it, re-add {kind:'youtube', ref:'WQCsxb2dMgQ', start_s:1610, end_s:1655, use:'player'} and set type back to 'video' — but then the interiors disappear again. SLOTS, ten seconds each (checked against the player's own words-per-second estimate, 2.6 x rate, on BOTH tracks — clear English is the default, at rate 0.9): 0-10 M-20 the front today (arrival, the address) · 10-20 M-97 the ground plan (‘his whole world: he eats here, reads here, plays cards here’) · 20-30 M-96 THE SALOON (spoken 20.8-28.1 literary / 22.2-31.6 clear) · 30-40 M-95 SOYER'S KITCHENS (28.1-36.9 / 31.6-39.3) · 40-50 M-94 INSIDE TODAY (the breakfast, 36.9-48.5 / 39.3-50.0) · 50-60 M-22 Barry's elevation (52.7-54.6 / 50.0-53.0) · 60-70 M-23 1841, the closing image. The one residual drift: the literary line ‘Inside today: a tessellated floor…’ starts at 48.5 s, 1.5 s before M-94 leaves the screen. RESOLUTION: M-94 (729 px), M-22 (709 px) and M-23 (632 px) are under the player's 760-px plate threshold and mount as small paper plates with their credit under them; M-95, M-96, M-97, M-20 are 1200-4000 px and are contained or filled. Nothing is upscaled anywhere — pickTreatment() caps the fit at 1.0. NARRATION CHANGED (Narrator to sign off, see review.notes): 'no camera has been inside for us' is now false and is gone from both tracks; the closing picture-by-picture enumeration is gone because seven equally-spaced images cannot keep a three-item promise spoken in five seconds; the 'look up at the first-floor windows' cue (written for a façade video) became 'Look down — they ran in the basement' so it lands on the kitchen plate (F-47); one new sentence describes the 2013 photograph while it is on screen. Earlier notes that still hold: no paper-knife (F-06); the coffee-room's nine windows are in the SOUTH garden wall, so 'nine' stays out of this scene (Quiz A follows, F-15); the linear cut opens on M-20 and scene 04 ends on the open-imagery arrival at the door, so the two do not repeat the same shot. | A10 2026-09-03 (Narrator): the 'keep it at seven / ten seconds each' rule above is superseded. Seven is still right, but the slots are no longer equal: they are authored against the clear track's sentence clock (see review.notes). The old note's claim that the player 'cycles every max(8000, duration_s*1000/n) ms, in ARRAY ORDER, ignoring start_s' has not been true since player v0.8, which honours authored start_s/end_s. Adding or removing a picture still re-times the scene.",
      "review": {
       "fact_check": "pending",
       "rights": "pending",
       "qa": "pending",
-      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): opener now says whose club this is and what it is to Fogg (a first-time reader meets 'the Reform' cold otherwise); Reform Act line recast as the name's plain explanation; clear-English variant added; 'nine' still kept out (Quiz A follows). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track 'Its founders wanted political reform; that is the name' → 'Its founders had backed the Reform Act of 1832 — that is where the name comes from' (F-14: 1836, by Radicals and Whigs who had backed the 1832 Act — as simplified it sounded like a campaign for a reform already law); 'the architect's drawing' → 'the architect's plan of the front' (M-22 is an engraving of Barry's north elevation, not his hand). Linear cut now opens on s:0 ('This is the door of Fogg's club') and keeps s:2, so the video no longer starts on a dangling 'It is real, and still here…' and does explain the club's name; the Soyer kitchens and the closing Times line pay for the seconds, and the three insets are timed 38 / 9 / rest so 'the front today' is said over the front. A8 2026-08-19 (content-preparer): M-01 `use: player`, M-69c added (`use: linear`, `sa: true`); M-20 flagged `sa: true` for the rights-a6 §2.4 strip-list. D6 scene-developer 2026-08-19: cross-reference only — the retired scene 05 was named in production_notes as the holder of M-01; that shot now lives in the restructured scene 04 (`use: player`). Nothing else in this scene changed, and 06 still opens on M-20 in the film: scene 04 ends on the open-imagery arrival at the Reform door, not on this still. | 2026-08-20 founder playtest: title said 'Inside' over purely outdoor footage. We have no interior footage (the script itself says no camera has been inside), so the title was the lie, not the picture. Retitled to match the script's own opening line. | A9 2026-08-27 content-preparer: interior material found and wired (M-94..M-97; media/manifest.md §A9). Scene type video->photo (a video scene never shows its images in the player). Title restored to 'Inside the Reform — what Verne got right' — 4 of 7 pictures and 43 of 70 seconds are now inside the building, so the title is honest again; tour.json and i18n/zh-Hans.json updated to match. NARRATOR, PLEASE SIGN OFF ON FOUR SCRIPT EDITS: (1) '— no camera has been inside for us' deleted from both tracks (we now show a photograph from inside, and Fagan 1887 prints a photogravure of the library, M-100); (2) 'The front today; Barry's elevation. And here, the saloon engraved in 1841' -> 'Barry's elevation of the front' (clear: 'Now three pictures: ...' -> 'Then Barry's own drawing of the front') — an enumeration of three pictures spoken in five seconds cannot match seven images at ten seconds each; (3) 'Look up — the tall windows of the first floor' -> 'Look down — they ran in the basement, under all this' (clear: 'Look up at the tall windows' -> 'They were down in the basement'), so the cue lands on Soyer's kitchen plate instead of pointing outside at a façade we are no longer looking at — new fact F-47 (Fagan 1887, ch. VI); (4) one new sentence in the LITERARY track only, 'Inside today: a tessellated floor, marble busts, portraits between the columns', spoken over M-94 — F-15 gives the tessellated pavement, the busts and portraits are in the photograph; the clear track does not get it, because at clear-track pace it landed wholly on the elevation slot, and the plate's own credit line names the photograph anyway. Word counts were kept close to the old ones so the slot timings above still hold. RIGHTS: M-94 is CC BY-SA 3.0 (author + licence + file link in the attribution string, sa:true for the rights-a6 §2.4 strip-list); everything else added is PD by age. FACT-CHECK: F-47 added to the fact sheet (source [53], Fagan 1887) — note that Fagan's often-quoted 'the basement comprised the kitchen, scullery and various offices' on p. 50 describes SMIRKE'S REJECTED DESIGN; the basement claim here rests on his ch. VI description of the club as built."
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: paper-knife removed (F-06); breakfast moved over the video's last 20 s with a menu caption; 'look up' cue slot added (windows only — the coffee-room's face the garden, F-15); M-22/M-23 now insets over M-20 (45–70 s); M-01 window shifted to 26:50–27:35 so the door is reached; 'The Times' style; pin/caption spacing ≥ 15 s. A1 narrator 2026-08-18: script 168→137 words, every sentence ≤ 20 (Continuity #2); 'look up' cue kept to the first-floor windows (no 'nine', coffee-room faces the garden); menu spoken as the best clause only (caption 30–42 s carries it); Berkshire line dropped (19 pays Reading sauce off); Times line moved to the close so the scene ends on '…and reads The Times' over the 1841 engraving; no paper-knife. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): opener now says whose club this is and what it is to Fogg (a first-time reader meets 'the Reform' cold otherwise); Reform Act line recast as the name's plain explanation; clear-English variant added; 'nine' still kept out (Quiz A follows). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track 'Its founders wanted political reform; that is the name' → 'Its founders had backed the Reform Act of 1832 — that is where the name comes from' (F-14: 1836, by Radicals and Whigs who had backed the 1832 Act — as simplified it sounded like a campaign for a reform already law); 'the architect's drawing' → 'the architect's plan of the front' (M-22 is an engraving of Barry's north elevation, not his hand). Linear cut now opens on s:0 ('This is the door of Fogg's club') and keeps s:2, so the video no longer starts on a dangling 'It is real, and still here…' and does explain the club's name; the Soyer kitchens and the closing Times line pay for the seconds, and the three insets are timed 38 / 9 / rest so 'the front today' is said over the front. A8 2026-08-19 (content-preparer): M-01 `use: player`, M-69c added (`use: linear`, `sa: true`); M-20 flagged `sa: true` for the rights-a6 §2.4 strip-list. D6 scene-developer 2026-08-19: cross-reference only — the retired scene 05 was named in production_notes as the holder of M-01; that shot now lives in the restructured scene 04 (`use: player`). Nothing else in this scene changed, and 06 still opens on M-20 in the film: scene 04 ends on the open-imagery arrival at the Reform door, not on this still. | 2026-08-20 founder playtest: title said 'Inside' over purely outdoor footage. We have no interior footage (the script itself says no camera has been inside), so the title was the lie, not the picture. Retitled to match the script's own opening line. | A9 2026-08-27 content-preparer: interior material found and wired (M-94..M-97; media/manifest.md §A9). Scene type video->photo (a video scene never shows its images in the player). Title restored to 'Inside the Reform — what Verne got right' — 4 of 7 pictures and 43 of 70 seconds are now inside the building, so the title is honest again; tour.json and i18n/zh-Hans.json updated to match. NARRATOR, PLEASE SIGN OFF ON FOUR SCRIPT EDITS: (1) '— no camera has been inside for us' deleted from both tracks (we now show a photograph from inside, and Fagan 1887 prints a photogravure of the library, M-100); (2) 'The front today; Barry's elevation. And here, the saloon engraved in 1841' -> 'Barry's elevation of the front' (clear: 'Now three pictures: ...' -> 'Then Barry's own drawing of the front') — an enumeration of three pictures spoken in five seconds cannot match seven images at ten seconds each; (3) 'Look up — the tall windows of the first floor' -> 'Look down — they ran in the basement, under all this' (clear: 'Look up at the tall windows' -> 'They were down in the basement'), so the cue lands on Soyer's kitchen plate instead of pointing outside at a façade we are no longer looking at — new fact F-47 (Fagan 1887, ch. VI); (4) one new sentence in the LITERARY track only, 'Inside today: a tessellated floor, marble busts, portraits between the columns', spoken over M-94 — F-15 gives the tessellated pavement, the busts and portraits are in the photograph; the clear track does not get it, because at clear-track pace it landed wholly on the elevation slot, and the plate's own credit line names the photograph anyway. Word counts were kept close to the old ones so the slot timings above still hold. RIGHTS: M-94 is CC BY-SA 3.0 (author + licence + file link in the attribution string, sa:true for the rights-a6 §2.4 strip-list); everything else added is PD by age. FACT-CHECK: F-47 added to the fact sheet (source [53], Fagan 1887) — note that Fagan's often-quoted 'the basement comprised the kitchen, scullery and various offices' on p. 50 describes SMIRKE'S REJECTED DESIGN; the basement claim here rests on his ch. VI description of the club as built. | A10 narrator 2026-09-03 (density re-measure, EN + ZH, for the YouTube cuts). Rate model: EN 2.5 w/s (150 wpm) and ZH 4.0 zi/s (240 zi/min), both budgeted at 80 % fill of duration_s - starts_at_s; the Mandarin column is counted the way the August translator counted it (every non-whitespace character), which reproduces their 4.63 / 3.81 exactly. MEASURED: EN literary 2.23 w/s (89 % fill), EN clear 1.94 (78 %), Mandarin 3.76 zi/s (94 %) — so after the 27 August rebuild the clear track (the one BOTH films speak, D5) was already inside budget and only the Mandarin and the literary track were over. The interior sentence the translator wanted cut DOES still exist: 'Stone outside; inside, a grand hall two floors high, under a glass roof' — and it is carried three times over (caption 1 on screen at the same moment; quiz 07's option-1 and option-2 feedback re-teach the two-storey peristyle and the glazed roof ~80 s later; M-96 shows it). FOUR EDITS, both tracks and the Mandarin: (1) that sentence trimmed, not deleted, to 'Stone outside; inside, this hall' — M-96 keeps words of its own, the caption keeps the numbers (R3). (2) 'Roast beef, a fruit tart, cheese, and the club's famous tea' DELETED: caption 2 shows the whole menu, and reading a menu aloud is the guide persona's own anti-example (§2.6, §3). Caption 2 is now the only place the breakfast is listed and must not be dropped. (3) 'since 1836' / '1836年创立' dropped from the spoken line — pin 0 carries it and scene 04 named the address twenty seconds earlier (R3). (4) clear track 'Then Barry's OWN DRAWING of the front' -> 'Then Barry's DESIGN for the front' (Mandarin '巴里亲手画的' -> '巴里设计的'): the A9 rewrite re-broke the correction A5 had already made — M-22 is an engraving of Barry's north elevation, not his hand. AFTER: EN literary 1.91 (77 %), EN clear 1.63 (65 %), Mandarin 3.16 zi/s (79 %). SLOTS RE-TIMED, and this is the load-bearing part: cutting 26 words pulls every later sentence ~5 s earlier, which would have orphaned M-22 and M-23 (the last two pictures would have run 20 s after the words that belong to them). The seven equal 10-s slots are therefore gone; the authored start_s/end_s are now 0-10 / 10-21 / 21-28 / 28-36 / 36-42 / 42-47 / 47-70, each timed against the clear track at 2.5 w/s (s0-s2 front · s2-s3 plan · s4-s5 saloon · s6-s7 kitchens · s8 the breakfast on the 2013 interior · s9 the elevation · s10 The Times, then 20 s held on the 1841 engraving with its caption — deliberate, positioning.md 'silence is content'). The player honours these since v0.8 and the renderer scales them to the rendered length, so film and player change picture on the same beat. Overlays re-spread 5-14 / 22-30 / 36-47 / 50-62. Cut sheet: `s:7-11` was dangling (11 sentences now, 0-10) -> `s:7-10`, and its stale `visuals` array (which still asked for the deleted M-69c and named none of the four interiors) was removed so the film builds from these slots. A9's FOUR SCRIPT EDITS ARE SIGNED OFF, with one correction: (1) 'no camera has been inside for us' gone — agreed, it is now false. (2) the three-picture enumeration gone — agreed. (3) 'Look down — they ran in the basement' — agreed, the cue lands on the kitchen plate (F-47). (4) the literary-only 'Inside today: a tessellated floor, marble busts, portraits between the columns' — agreed, it keeps M-94 narrated in the literary track. NOT signed off: 'Barry's own drawing', corrected above."
      }
     },
     {
@@ -911,11 +928,11 @@
      "duration_s": 70,
      "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
      "narration": {
-      "script": "Evening, at the club. Fogg sits down to whist with five fellow members — four hands at the table, the same five every night. In the novel — only in the novel — a thief has robbed the Bank of England of fifty-five thousand pounds. The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums: the world can be crossed in eighty days. That talk becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds it can't be done. Fogg stakes twenty thousand — half his fortune — that it can: 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Exactly eighty days — and it really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, fell in 1995. The wager has outlived the bank.",
+      "script": "Evening, at the club. Fogg sits down to whist with five fellow members — four hands at the table, the same five every night. In the novel — only in the novel — a thief has robbed the Bank of England of fifty-five thousand pounds. The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums: the world can be crossed in eighty days. That talk becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds it can't be done. Fogg stakes twenty thousand — half his fortune — that it can: 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Fogg's motto: 'The unforeseen does not exist.'",
       "timing": "over",
       "voice": "guide",
       "variants": {
-       "clear": "Evening, at the club. Fogg plays whist with five fellow members — four hands at the table, the same five men every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. Where could such a man hide now? So a newspaper, the Daily Telegraph, counts the days: you can now go around the world in eighty days. At the table this becomes a wager — a bet, with money on it. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Exactly eighty days. It really was a Saturday. Fogg's motto: 'The unforeseen does not exist.' Fogg's bank, Baring's, failed in 1995. The wager has outlived the bank."
+       "clear": "Evening, at the club. Fogg plays whist with five fellow members — four hands at the table, the same five men every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. Where could such a man hide now? So a newspaper, the Daily Telegraph, counts the days: you can now go around the world in eighty days. At the table this becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Fogg's motto: 'The unforeseen does not exist.'"
       }
      },
      "media": [
@@ -937,7 +954,7 @@
        "license": "generated",
        "manifest_id": "G-05",
        "attribution": "Yunyou studio, generated",
-       "note": "REQUESTED (Content Preparer): typeset memorandum — six signatures (Stuart, Sullivan, Fallentin, Flanagan, Ralph, Fogg — the card carries the names the guide no longer reads), stake £20,000, 'Saturday 21 December 1872, 8:45 pm'. G-03 illustration is not required."
+       "note": "REQUESTED (Content Preparer): typeset memorandum — six signatures (Stuart, Sullivan, Fallentin, Flanagan, Ralph, Fogg — the card carries the names the guide no longer reads), stake £20,000, 'Saturday 21 December 1872, 8:45 pm'. G-03 illustration is not required. A10: make 'Saturday' legible on the card — the guide no longer says 'it really was a Saturday', so this card is where the calendar joke now lives."
       },
       {
        "kind": "audio",
@@ -1017,7 +1034,7 @@
       "fact_check": "pending",
       "rights": "pending",
       "qa": "pending",
-      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): whist and the wager now introduced in plain words before use (Stuart is 'one of the five friends' at the table); the Paris-serial meta aside moved out of the spine into a 'go deeper' caption; gloss chips for whist and wager; clear-English variant added. A5 narrator+scene-developer 2026-08-19 (fact-check-a5 §1–2, both tracks): (1) whist — 'Fogg and five friends sit down to whist' → 'Fogg sits down to whist with five fellow members — four hands at the table, the same five every night' (F-08: five usual partners join him and four hands play), so the narration and the 'card game for four players' chip agree; nothing invented, the gloss is unchanged. (2) The £55,000 theft now has a reason to be in the scene — 'The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums…' (F-09 → F-10, ch. III), so a newcomer cannot conclude the wager is about catching the thief. (3) Clear track: 'Baring's closed' → 'failed' (F-23 collapsed, sold to ING for £1) and the word 'wager' is spoken once, which un-orphans the wager chip. duration 60 → 70 s: both fixes cannot fit 60 s at ≤ 2.5 w/s (std 166 w, clear 168 w = 2.37/2.40 w/s at 70 s); M-35 0–35, G-05 35–70, M-41 bed 0–70, overlays re-spread 2–14 / 5–17 / 21–33 / 28–40 / 37–49 / 56–69. Linear cap 70 → 75 s (plan: 72.3 s, nothing end-cut)."
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): whist and the wager now introduced in plain words before use (Stuart is 'one of the five friends' at the table); the Paris-serial meta aside moved out of the spine into a 'go deeper' caption; gloss chips for whist and wager; clear-English variant added. A5 narrator+scene-developer 2026-08-19 (fact-check-a5 §1–2, both tracks): (1) whist — 'Fogg and five friends sit down to whist' → 'Fogg sits down to whist with five fellow members — four hands at the table, the same five every night' (F-08: five usual partners join him and four hands play), so the narration and the 'card game for four players' chip agree; nothing invented, the gloss is unchanged. (2) The £55,000 theft now has a reason to be in the scene — 'The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums…' (F-09 → F-10, ch. III), so a newcomer cannot conclude the wager is about catching the thief. (3) Clear track: 'Baring's closed' → 'failed' (F-23 collapsed, sold to ING for £1) and the word 'wager' is spoken once, which un-orphans the wager chip. duration 60 → 70 s: both fixes cannot fit 60 s at ≤ 2.5 w/s (std 166 w, clear 168 w = 2.37/2.40 w/s at 70 s); M-35 0–35, G-05 35–70, M-41 bed 0–70, overlays re-spread 2–14 / 5–17 / 21–33 / 28–40 / 37–49 / 56–69. Linear cap 70 → 75 s (plan: 72.3 s, nothing end-cut). | A10 narrator 2026-09-03 (density re-measure, EN + ZH, for the YouTube cuts). Rate model: EN 2.5 w/s (150 wpm) and ZH 4.0 zi/s (240 zi/min), both budgeted at 80 % fill of duration_s - starts_at_s; the Mandarin column is counted the way the August translator counted it (every non-whitespace character), which reproduces their 4.63 / 3.81 exactly. MEASURED before: EN literary 2.37 w/s (95 %), EN clear 2.40 (96 %), Mandarin 3.81 zi/s (95 %). THREE CUTS, both tracks and the Mandarin: (1) the spoken Baring's line goes — 'Fogg's bank, Baring's, failed in 1995. The wager has outlived the bank.' Caption 5 carries both halves verbatim at 56-69 s, over the memorandum card. Both sentences had to go together: keeping the payoff without its antecedent would leave 'the bank' referring to nothing spoken. The scene now ENDS on 'Fogg's motto: \"The unforeseen does not exist\"' — a better close than a bank failure, and caption 5 lands the Baring's beat on screen, unspoken. (2) 'Exactly eighty days. It really was a Saturday.' goes: the date is stated whole in the previous sentence and the G-05 card prints 'Saturday 21 December 1872, 8:45 pm', so the calendar delight is shown rather than told (connoisseur material belongs out of the spine — style guide). (3) clear track only: 'becomes a wager — a bet, with money on it' -> 'becomes a wager'. The em-dash gloss duplicated gloss chip 3 word for word while the chip was on screen (R3); 'wager' is still spoken once, so the chip is not orphaned (A5's condition holds). AFTER: EN literary 2.06 (82 %), EN clear 2.01 (81 %), Mandarin 3.24 zi/s (81 %) — about one point over the 80 % target on the strict all-characters count, 68 % on the spoken-character count. I stopped there: the only cuts left are the deadline sentence (the chapter's spine) and the doubled 'in the story — only in the story' hedge (fact-check A5 put it there on purpose). duration_s is unchanged at 70 s; the film's own length is narration + 2.5 s, so 08 renders at ~64 s inside its 75 s cap and is not end-cut. If the founder wants it strictly inside budget in the PLAYER, 70 -> 73 s does it with no other change."
      }
     },
     {
@@ -1025,7 +1042,7 @@
      "type": "card",
      "title": "Two real men were doing it",
      "subtopic": "6 — The wager (Cook and Train)",
-     "duration_s": 30,
+     "duration_s": 45,
      "learning_goal": "Know that Thomas Cook and George Francis Train really went round the world just as Verne wrote; feel that Fogg's bet was in the air.",
      "narration": {
       "script": "Two real men: one travelling as Verne wrote, the other already home. Thomas Cook, going west, left Liverpool in late September 1872 — the first commercial round-the-world tour. Two hundred and twenty-two days; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'",
@@ -1040,17 +1057,17 @@
        "kind": "generated",
        "ref": "generated/g-06/two-real-men-card.svg",
        "start_s": 0,
-       "end_s": 30,
+       "end_s": 45,
        "license": "generated",
        "manifest_id": "G-06",
        "attribution": "Yunyou studio, generated",
-       "note": "REQUESTED (Content Preparer): typeset card, two columns (Cook · Train) with dates; no illustration budget needed."
+       "note": "REQUESTED (Content Preparer): typeset card, two columns (Cook · Train) with dates; no illustration budget needed. 45 s (was 30): the last ~15 s are deliberate reading time on the card, not dead air — see production_notes."
       },
       {
        "kind": "audio",
        "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
        "start_s": 0,
-       "end_s": 30,
+       "end_s": 45,
        "license": "public-domain",
        "manifest_id": "M-41",
        "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
@@ -1059,9 +1076,9 @@
      ],
      "overlays": [
       {
-       "at_s": 3,
+       "at_s": 5,
        "kind": "caption",
-       "until_s": 15,
+       "until_s": 20,
        "text": "Cook: 222 days. Train: 164 days. Fogg: 80.",
        "position": "bottom"
       }
@@ -1079,7 +1096,7 @@
       "F-35",
       "F-36"
      ],
-     "production_notes": "INTERACTIVE CUT ONLY (optional card per rundown). Placed before the map so the map can close on the turn line. F-35's '26 Sept Liverpool' is medium confidence, hence 'late September'.",
+     "production_notes": "INTERACTIVE CUT ONLY (optional card per rundown) — it has no row in scenes/README.md's 'Linear cut' table and no entry in studio/tools/render/cuts/day-01-london.json, so the 30 -> 45 s change below touches neither film. Placed before the map so the map can close on the turn line. F-35's '26 Sept Liverpool' is medium confidence, hence 'late September'. A10 2026-09-03 (Narrator): 30 -> 45 s. The words are UNCHANGED in all three languages; only the clock moved. Two full Western names cost 13 Chinese characters each before a single fact lands, which is why this scene could not be fixed by rewording: at 30 s the Mandarin ran 4.63 zi/s (116 % fill) and the clear-English track 2.40 w/s (96 %). At 45 s they are 3.09 zi/s (77 %) and 1.60 w/s (64 %). The G-06 card and the M-41 bed now run 0-45 s and the caption sits 5-20 s, over the Cook number and the Train date; the tail is the traveller reading the two columns of dates, which is what a typeset card is for.",
      "review": {
       "fact_check": "pending",
       "rights": "pending",
@@ -1606,8 +1623,9 @@
        "at_s": 10,
        "kind": "caption",
        "until_s": 22,
-       "text": "Station: 8 years old. Underground: 9. Clock tower: 13.",
-       "position": "bottom"
+       "text": "Charing Cross station: 8 years old. Underground: 9. Clock tower: 13.",
+       "position": "bottom",
+       "note": "A10 (Narrator): now names the station, so it is the on-screen home of 查令十字（Charing Cross）, moved out of scene 12's spoken Mandarin."
       },
       {
        "at_s": 26,
@@ -1657,7 +1675,7 @@
       "fact_check": "pending",
       "rights": "pending",
       "qa": "pending",
-      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s). A8 2026-08-19 (content-preparer): M-08 marked `use: player`; M-84 / M-81 / M-78 / M-74 wired for the linear cut. TWO honest flags for Rights: (i) the Commons PD copy of M-78 carries a burned-in BFI roundel in the top-right corner of every frame — the film's public-domain status is unaffected, but the BFI's mark will appear in our MP4 and should either be accepted and credited or the shot re-framed; (ii) M-84's frames were viewed and are genuinely Trafalgar Square, but the clip is tourist coverage of the fountains and lions, not the walk into the forecourt the scene describes — the narration must not claim more than the picture shows."
+      "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s). A8 2026-08-19 (content-preparer): M-08 marked `use: player`; M-84 / M-81 / M-78 / M-74 wired for the linear cut. TWO honest flags for Rights: (i) the Commons PD copy of M-78 carries a burned-in BFI roundel in the top-right corner of every frame — the film's public-domain status is unaffected, but the BFI's mark will appear in our MP4 and should either be accepted and credited or the shot re-framed; (ii) M-84's frames were viewed and are genuinely Trafalgar Square, but the clip is tourist coverage of the fountains and lions, not the walk into the forecourt the scene describes — the narration must not claim more than the picture shows. | A10 narrator 2026-09-03 (density re-measure, EN + ZH, for the YouTube cuts). Rate model: EN 2.5 w/s (150 wpm) and ZH 4.0 zi/s (240 zi/min), both budgeted at 80 % fill of duration_s - starts_at_s; the Mandarin column is counted the way the August translator counted it (every non-whitespace character), which reproduces their 4.63 / 3.81 exactly. Caption 0 now names the station ('Charing Cross station: 8 years old…', 11 words) so it can carry 查令十字（Charing Cross）, the last of the seven English brackets moved out of the spoken Mandarin (it was in scene 12). NOT otherwise touched — but flagging it: this is the densest scene in the chapter and it was not in my brief. EN literary 2.48 w/s (99 % fill), EN clear 2.35 (94 %), Mandarin 3.68 zi/s (92 %), all against 60 s. It is in both films. It needs the same pass 06 and 08 just had."
      }
     },
     {

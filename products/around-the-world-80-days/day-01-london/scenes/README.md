@@ -13,10 +13,10 @@
 | 03 | 03-fogg-by-the-clock.scene.json | fogg-by-the-clock | card | 60 | 3 | G-04 (requested), M-50 (plate 05; backup M-34) | Tap-to-find timetable; guide reads only the times and the CV, the taps hold the punchlines (pause per tap, 12 s). |
 | 04 | 04-count-the-steps.scene.json | count-the-steps | **video** | **94** | 4 | M-30 (1872 plan) · geometry stops M-39, M-53, M-54, M-55, M-56, M-57, M-37 · M-01 `use: player` · linear: **panowalk stops 5–6** + M-69b / M-69a (fallbacks M-67, M-20) | **D6 restructure: transport, not Street View.** The counting plays over the 1872 plan — 1,151 steps, 1,120 m, 0.97 m a step, 'he never hurries' — then the street plays plainly while the guide names clubland and the three clubs. No walk, no route, no tap. |
 | ~~05~~ | *(retired 2026-08-19, D6)* | pall-mall-pass | — | — | — | — | **Cut.** It existed only as the linear stand-in for 04's Street View walk; with 04 restructured it said the same words over the same pictures. Its media (M-01, M-67, M-20, M-69a, M-69b) moved into 04. The 05 file slot stays empty — later files keep their numbers. |
-| 06 | 06-the-reform-club.scene.json | the-reform-club | video | 70 | 5 | M-01 26:50–27:35 (`use: player`), M-20 (+ **M-69c**, M-22, M-23 as insets), M-43 | Arrive at the door; 1836 / Barry 1841 / Soyer; look-up cue; breakfast over the video's last 20 s with a menu caption; Reading sauce seeded; reads The Times (no paper-knife); photo trio as insets. |
+| 06 | 06-the-reform-club.scene.json | the-reform-club | **photo** | 70 | 5 | **M-20 · M-97 · M-96 · M-95 · M-94 · M-22 · M-23** (four interiors, A9 2026-08-27), M-43 | Arrive at the door; 1836 / Barry 1841 / Soyer; 'look down' onto the kitchens; breakfast over the 2013 interior with a menu caption; Reading sauce seeded; reads The Times (no paper-knife). **A10: seven authored slots, no longer equal — 0-10 / 10-21 / 21-28 / 28-36 / 36-42 / 42-47 / 47-70, timed to the clear track.** |
 | 07 | 07-quiz-verne-saloon.scene.json | quiz-verne-saloon | quiz | 80 | 5 (Quiz A) | M-23, M-20, M-43 | Which of Verne's club details is real? — pause until answered (30 s), reveal in `after_script`; Open House caption time-bound. |
 | 08 | 08-the-wager.scene.json | the-wager | photo | 70 | 6 | M-35 (1873 plate), G-05 (requested memorandum card), M-41 | The fictional theft "in the novel", Stuart's £4,000, Fogg's £20,000 at Baring's, six names on the card ("Stuart first, Fogg last"), 21 December 8:45 pm; "the wager has outlived the bank". |
-| 09 | 09-two-real-men.scene.json | two-real-men | card | 30 | 6 (optional card) | G-06 (requested), M-41 | **Interactive cut only.** Cook 222 days westward, Train home 21 Dec 1870 — "I'm Phileas Fogg." |
+| 09 | 09-two-real-men.scene.json | two-real-men | card | **45** | 6 (optional card) | G-06 (requested), M-41 | **Interactive cut only.** Cook 222 days westward, Train home 21 Dec 1870 — "I'm Phileas Fogg." **A10: 30 → 45 s; the words are unchanged, only the clock moved** (two full Western names cost 13 Chinese characters each before a fact lands: 4.63 → 3.09 zi/s). |
 | 10 | 10-the-world-shrinks.scene.json | the-world-shrinks | map | 100 | 6 (map beat) | G-01 (enablers layer requested, full loop, Day-1 layer), M-41 | Enablers light up, the loop draws leg by leg, "three words: 'It was once.'", tap the longest leg (pause 20 s), reveal + turn line in `after_script`. |
 | 11 | 11-pack-the-bag.scene.json | pack-the-bag | game | 90 | 7 | G-07 (requested game UI), M-42 | Drag game: six items in, three distractors; no weather in the mackintosh feedback; Bradshaw "hundreds of pages"; the gas stays. |
 | 12 | 12-the-dash.scene.json | the-dash | map | 60 | 7 | M-30, M-29 (hansom, confirmed), M-46, M-47, M-42 | Route line over the 1872 plan; hansom "most likely", sixpence a mile, barely a mile and a half — call it a bob; Underground nine years old; no "wet" before Quiz B. |
@@ -30,7 +30,7 @@
 
 **Chain (`next`):** 01 → 02 → 03 → 04 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → **16 quiz-the-weather → 17 passepartout-on-the-platform** → 18 → 19 (end). Unchanged by D6: 04 still hands to 06, and 05 no longer exists. **File numbers now skip 05**, so from 06 on, a scene's file number is one higher than its index in `tour.json` (18 scenes) — the render log counts tour indices.
 
-**Interactive length (D3, honest):** nominal 01–04, 06–19 = 75+100+60+**94**+70+80+70+30+100+90+60+60+35+**47**+45+90+85+60 = **1,251 s ≈ 20 min 51 s** (D6: 04 150 → 94 and fixed rather than user-paced, 15 25 → 47); plus wait budgets (03 up to 6 × 12 s, 07 30 s, 10 20 s, 15 up to 30 s of free looking, 16 20 s, 17 up to 180 s) ⇒ **≈ 22 min typical, 26 min maximum**. D6 also removed the 90–240 s of user-paced walking, which is where most of the old variance lived.
+**Interactive length (D3, honest):** nominal 01–04, 06–19 = 75+100+60+**94**+70+80+70+**45**+100+90+60+60+35+**47**+45+90+85+60 = **1,251 s**; **A10 2026-09-03: 09 is now 45 s, so 1,266 s ≈ 21 min 6 s** (D6: 04 150 → 94 and fixed rather than user-paced, 15 25 → 47); plus wait budgets (03 up to 6 × 12 s, 07 30 s, 10 20 s, 15 up to 30 s of free looking, 16 20 s, 17 up to 180 s) ⇒ **≈ 22 min typical, 26 min maximum**. D6 also removed the 90–240 s of user-paced walking, which is where most of the old variance lived.
 Rhythm check: no two video scenes adjacent (02 video → 03 card; **04 video → 06 video is now the one exception, and it is deliberate: 04 arrives at the club door and 06 opens on it** — 04's own first 40 s are a map beat, so the traveller does not see 90 s of unbroken street; 06 video → 07 quiz; 13 video → 14 photo; 18 video is preceded by the dialogue); no continuous video > 90 s (04's street half is ≈ 50 s).
 
 ## Linear cut (~16 min passive version — D6: the transport is now in the film)
@@ -55,9 +55,9 @@ no freely-licensed source carries 76 s of continuous Pall Mall façade; the word
 | 02 savile-row | **M-66 hyperlapse 8 s + M-77a 32 s + M-77c 16 s + M-77b (1955) 28 s** (M-05 is player-only), pins Savile Row / No. 15 / No. 14, drop the M-32 tail and its three sentences | 84 |
 | 03 fogg-by-the-clock | card only, no taps; whole script minus the tap prompt and "Look at his face" | 50 |
 | 04 count-the-steps | **D6 transport scene**: the counting over the 1872 plan (M-30, 46 s) → **open-imagery walk, stop 5 (14 s) then stop 6 (37 s)**, the camera turning onto each club as it is named; whole script | 97 |
-| 06 the-reform-club | from the door: M-20 + **M-69c** + M-22/M-23 insets (M-01 is player-only); drops the Soyer and Times asides | 62 |
+| 06 the-reform-club | **photo scene: the seven pictures come from the scene's own slots** (v0.9 renderer = imagelayer.imageSlots; the sidecar's `visuals` array is gone — it still asked for the deleted M-69c and named none of the four interiors); drops only the Soyer sentence | 62 |
 | 07 quiz-verne-saloon | guide asks and answers in one breath (script + correct option + feedback + after_script) + Open House tail | 50 |
-| 08 the-wager | whole | 75 |
+| 08 the-wager | whole (A10: three sentences shorter — renders ≈ 64 s, well inside the cap) | 75 |
 | 10 the-world-shrinks | enablers + loop reveal + turn line, no tap; skip 09 | 92 |
 | 11 pack-the-bag | 20-s packing-list card, no drag; whole script minus the drag instruction | 88 |
 | 12 the-dash | whole (the shilling sentence makes 'sixpence a mile' add up) | 58 |
@@ -239,6 +239,66 @@ so the finished MP4 should land at **≈ 16 min 10 s** with the title card and c
 **Left alone on purpose:** `studio/player/index.html` (out of scope this pass), `validate.py`, `linear/watch.json`
 (the render regenerates it — its chapter markers still name `pall-mall-pass` until then), and the render itself.
 
+## A10 pass (2026-09-03) — Narrator: density re-measured in both languages, for the YouTube cuts
+
+**Why:** in August a translator found three Mandarin scenes too dense. All three were already over-packed in
+English, so it was a writing problem the translation exposed. The numbers were stale (06 was rebuilt on 27 August),
+so every scene was re-measured in both languages from the current files.
+
+**Rate model.** English 2.5 words/s (150 wpm — guide persona §6, `validate.py` WPS_WARN); Mandarin 4.0 字/秒
+(240 字/min). Both budgeted at **80 % fill** of the spoken window (`duration_s − narration.starts_at_s`), i.e.
+≤ 2.00 w/s and ≤ 3.20 字/秒. The Mandarin column counts **every non-whitespace character**, which is how the
+August measurement was taken (it reproduces 4.63 and 3.81 exactly); a second column dropping punctuation is
+always ~0.5 字/秒 lower and is the truer number. Decisions were taken on the strict column.
+
+| scene | EN clear before → after | Mandarin before → after |
+|---|---|---|
+| 09 two-real-men | 2.40 w/s (96 %) → **1.60 (64 %)** | 4.63 字/秒 (116 %) → **3.09 (77 %)** |
+| 06 the-reform-club | 1.94 (78 %) → **1.63 (65 %)** | 3.76 (94 %) → **3.16 (79 %)** |
+| 08 the-wager | 2.40 (96 %) → **2.01 (81 %)** | 3.81 (95 %) → **3.24 (81 %)** |
+| 01 cold-open (brackets only) | unchanged 1.68 (67 %) | 3.78 (95 %) → **3.02 (75 %)** |
+| 04 count-the-steps (brackets only) | unchanged 2.17 (87 %) | 3.52 (88 %) → **3.29 (82 %)** |
+| 12 the-dash (brackets only) | unchanged 2.07 (83 %) | 3.62 (90 %) → **3.38 (85 %)** |
+
+**What changed**
+- **09 extended 30 → 45 s, words untouched in all three languages.** Two full Western names cost 13 Chinese
+  characters each before a fact lands, so this one could not be fixed by rewording. `duration_s`, the G-06 and
+  M-41 windows (0–45) and the caption (5–20) moved with it. It is **interactive-only** — no row in the linear-cut
+  table, no entry in the sidecar — so neither film changes.
+- **06:** the saloon sentence trimmed (caption 1, quiz 07's feedback and M-96 all carry it), the spoken menu
+  deleted (caption 2 shows it; a menu read aloud is the persona's own anti-example), the duplicated address date
+  dropped (pin 0 has it), and A9's "Barry's **own drawing**" corrected back to "Barry's **design**" — M-22 is an
+  engraving of his north elevation, not his hand, which A5 had already fixed once. **Seven photo slots re-timed**
+  so the last two pictures are not orphaned by the shorter script. A9's four script edits are signed off in the
+  scene's `review.notes` (three as written, the fourth corrected).
+- **08:** the spoken Baring's-1995 line and its payoff both cut (caption 5 carries them verbatim; cutting one
+  without the other would leave "the bank" with no antecedent), and "Exactly eighty days. It really was a
+  Saturday." cut — the G-05 card prints the Saturday. The scene now ends on Fogg's motto.
+- **The global fix: 92 characters of first-use English brackets are out of the spoken Mandarin.** All seven —
+  儒勒·凡尔纳（Jules Verne）, 菲利亚斯·福克（Phileas Fogg）, 路路通（Passepartout）, 萨维尔街（Savile Row）,
+  蓓尔美尔街（Pall Mall）, 改良俱乐部（Reform Club）, 查令十字（Charing Cross）— now live on pins and captions,
+  read on screen and never spoken. A Kokoro/misaki Mandarin voice would otherwise have had to pronounce Latin
+  inside Chinese prosody, and the burned caption is the script as spoken, so they would have been read out twice
+  over. Two new captions were **appended** to 01 (indices 4 and 5) so no existing overlay index moved; captions,
+  not gloss chips, because the player speaks a gloss chip's whole text on tap.
+
+**Still over budget, and why**
+- **13 charing-cross — the worst scene in the chapter and it was not in the brief.** EN literary 2.48 w/s (99 %),
+  EN clear 2.35 (94 %), Mandarin 3.68 字/秒 (92 %), in 60 s, and it is in both films. Needs the same pass.
+- 04 count-the-steps (EN clear 87 %, ZH 82 %), 15 look-up-the-cross (89 % / 88 %), 12 the-dash (ZH 85 %),
+  02 savile-row (ZH 84 %), 10 the-world-shrinks (ZH 82 %), 14 then-and-now (EN literary 85 %).
+- 08 lands at 81 % in both languages, one point over. The only cuts left are the deadline sentence (the chapter's
+  spine) and a hedge fact-check put there on purpose. `duration_s` 70 → 73 would close it, in the player only.
+
+**The finding that outranks all of the above.** The linear renderer sets every scene's length to
+`narration_at_s + speech + 1.5 s` (`p.len` in `render_linear.mjs`), capped by the README seconds but never floored
+by them. So the film is **wall-to-wall narration**: the 2026-08-20 animatic runs 46.7 s of scene over 44.2 s of
+speech, 63.3 s over 61.3 s, and so on for all seventeen. Trimming words does not buy the film any silence — it
+just makes the scene shorter. `positioning.md` calls silence a hard constraint ("Silence is content… the scenes
+that failed the density check were the ones talking non-stop"), and the linear cut cannot honour it until `p.len`
+treats the README seconds as a floor, or derives the length from the 80 % fill budget. That is an Engine change,
+not a script change, and the renderer is mid-port right now — the right moment to say so.
+
 ## Requests to Content Preparer / Engine
 - **G-01** — Day-1 layer must carry a "Day 1" label and a lit/unlit legend (not opacity-only); enablers layer as before.
 - **G-05** — the six names on the memorandum card (the guide no longer reads them); "Saturday 21 December 1872, 8:45 pm".
@@ -299,7 +359,30 @@ The one remaining WARN is **stale, not a defect**: since C1a the linear renderer
 type (`render_linear.mjs` → `buildPanowalk` → `panomove.planScene`), and scene 04 needs its two cues to stop the walk in front of 104 Pall
 Mall. `validate.py`'s rule predates that — Engine backlog item (c) above.
 
-## Linear plan (final — `node render_linear.mjs <tour.json> --plan --track clear`)
+## Linear plan (A10, 2026-09-03 — re-derived after the density pass)
+
+**The tool could not be run as written.** `studio/tools/render/render_linear.mjs` is being ported from Edge TTS to
+local Kokoro by another session *while this pass was running* (the file changed twice under us). In its current
+state step 3 calls an undefined `tts()` and every invocation — `--plan` included — dies with
+`ReferenceError: tts is not defined`. It was left alone: it is somebody else's work in flight, and its TTS path
+calls `~/hilbert`, which this task must not touch. The plan below was re-derived by replaying steps 1–2 exactly —
+the README selection table, the sidecar's tokens, and `splitSentences` / `splitSentencesZh` lifted verbatim from
+the current source — with the renderer's own no-TTS duration estimate (words ÷ 2.3 for English) and 4.0 zi/s for
+Mandarin. **Re-run the real `--plan` once the port lands.**
+
+```
+EN  (--track clear)   17 scenes, 0 dangling references, 0 end-cuts, total ≈ 908 s + title + credits
+     06 the-reform-club  README 62 s → ≈ 47 s   (11 sentences; s:0-5 + s:7-10, drops [6] the Soyer line)
+     08 the-wager        README 75 s → ≈ 64 s   (12 sentences, whole)
+     09 two-real-men     not in the film — interactive-only, no README row, no sidecar entry
+ZH  (--lang zh)       17 scenes, total ≈ 780 s; one pre-existing over-reach: 12 the-dash `s:0-9` against a
+     9-sentence Mandarin script, and 02 savile-row's `s:0-15` takes all 16 Mandarin sentences where the English
+     cut keeps 16 of 19 (the M-32 tail lines have no picture in this cut). Both are handled by the port's new
+     `alignKept()` / `--zh-align`, so NO `cuts/day-01-london.zh-Hans.json` was written — one would go stale
+     against that machinery. Whoever finishes the port should confirm those two scenes on a real run.
+```
+
+### The previous plan (2026-08-19, still the last one produced by a working tool)
 ```
 == 04 count-the-steps (video)      README 97 s → 90.2 s; TTS ok; narration 87.6 s from 1 s   (19/19 sentences, nothing dropped)
 == 14 look-up-the-cross (streetview) README 50 s → 44.4 s; TTS ok; narration 42.0 s from 1 s (9/9 sentences, nothing dropped)
