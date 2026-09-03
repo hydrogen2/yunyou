@@ -568,3 +568,191 @@ be diffed the same way.
   20 s lands at 20.0–20.5 s and then paints. That is the same granularity every other scheduled medium has had
   since v0.2, and it is well inside a ten-second slot, but it is not frame-accurate and the linear cut will be.
 - **`window.__lastImage`** is now the only way a test can see which picture is up. It is a test hook, not an API.
+
+## 2026-09-03 — v0.9 (Engine): the renderer can publish — local Kokoro voice, no upscaling, the treatment layer, 1080p, EN + ZH
+**Brief (founder):** the focus moves to the VIDEO (`/watch`) to test the audience on YouTube; the player is now
+secondary. Five things: replace `msedge-tts` with hilbert's local Kokoro; never upscale a still; mirror the v0.7
+treatment layer in ffmpeg; 1080p by default; two cuts per chapter (English and Mandarin) with captions in both.
+Everything below is in `studio/tools/render/` and `studio/player/imagelayer.mjs`. **No video was published and
+nothing was spent** — the voice is a local model, the only network calls are Wikimedia's free API.
+
+### 1. The voice: `studio/tools/render/tts_kokoro.py` (new), msedge-tts deleted
+`msedge-tts` wrapped an undocumented Microsoft endpoint with no licence for third-party use. Fine for a private
+animatic; not fine for a file we publish. It is gone from the code and from `package.json`.
+
+The replacement is hilbert's Kokoro (Apache-2.0, 82M params, CPU-only, commercial use allowed) called through a
+**yunyou-side adapter**, because `~/hilbert/docs/REUSE.md` says *"Call them, do not edit them"* — a sibling project
+once edited hilbert's TTS and invalidated the Mandarin durations of two finished episodes. The adapter runs under
+`~/hilbert/.venv/bin/python`, `sys.path.insert`s hilbert, imports `from studio import tts`, loads
+`~/hilbert/config.yaml` and calls exactly one public function, `tts.synth_kokoro(text, lang, cfg, raw)`. It writes
+nothing inside `~/hilbert` — verified after every run with `git status` in that repo and a `find -newermt`; both
+clean, and `~/hilbert/.tts-cache` is still empty.
+- **Our cache**, `studio/tools/render/.tts-cache/`, keyed on sha256 of (provider, voice, speed, lang, text) plus
+  hilbert's `_ZH_PROSODY_REV` when it exposes one — because the Mandarin phoneme pipeline lives in hilbert's file,
+  so a change there has to invalidate our Mandarin clips too. Editing one line re-synthesizes one line.
+- **RULE 1 is structural, not a promise:** the adapter forces `provider: kokoro` even if the config says
+  `elevenlabs` (billed per character) and prints that it did. There is no flag that makes this file spend money.
+- **Measured, not quoted:** 0.85× real time for a cold English batch, 0.78× for Mandarin, ~750 MB RSS, ~7 s model
+  load. The renderer batches every line of a cut into ONE python process so the model loads once.
+- **What Edge gave us and Kokoro does not: word boundaries.** An utterance is therefore one *sentence* now (also
+  the right cache grain), and caption cards inside a long sentence are timed by character share. Sentence in/out
+  points are exact; word-level caption timing is gone.
+- Narration level is **measured** (`ebur128` over the run's own clips, median) and gained to −17 LUFS. Kokoro
+  lands at −16.5, so the gain is −0.5 dB; the old code applied a fixed +4 dB tuned for Edge, which would have been
+  4.5 dB hot on every published cut.
+
+### 2. Never upscale (the honesty bug, in the film this time)
+- `commonsInfo()` now asks for `iiprop=url|size|…` and, when Commons answers `thumbwidth 1920` for a 632-px file
+  (it does, and hands back the original), takes the **file's own** width/height — the player's v0.7 fix, mirrored.
+  The downloaded file is then probed with ffprobe, which is the last word.
+- Every still is fitted with `min(W/nw, H/nh, 1)`: **k is capped at 1**. The old `scale=1920:1080` +
+  `zoompan z=1→1.10` did the two things a chapter about looking at real things must not do — it enlarged a 632-px
+  engraving to 1080 and then cropped the subject away to fill the frame.
+- The quiz/dialogue **card** path was the worst offender and the founder's own example lives there: scene 06
+  `quiz-verne-saloon` shows the 632-px 1841 saloon engraving through `quizScreen`, whose `img.hero` was
+  `width:100%;object-fit:contain`. It now carries `max-width`/`max-height` in the file's own pixels and sits on an
+  ambient blurred copy of itself with the credit under it.
+- Not fixed, stated plainly: **footage is still scaled to the frame.** `media/files/*.mp4` are 1280×720 masters,
+  so the film upscales them 1.5×, and three of them (m78 640×480, m81 270×270, m83 640×480) were already upscaled
+  into those masters with black bars baked in. Re-normalising from `media/files/src/` is a Content Preparer task
+  and it will not make 640×480 into 1080p — the honest answer for that material is a treatment, not a scaler.
+  The panowalk crop is also an upscale (a 82° window of a 5760-px equirect is 1312 px → 1920).
+
+### 3. The treatment layer, in ffmpeg — and `pickTreatment()`/`imageSlots()` are now SHARED CODE
+New **`studio/player/imagelayer.mjs`**: `IMG_DEFAULTS`, `hash32`, `pickTreatment`, `fitSize`, `driftFor`,
+`blurRadius`, `imageSlots`, `slotsToShots`. Pure arithmetic, no DOM and no ffmpeg. Imported by
+`render_linear.mjs` (static) and by `index.html` (a boot-time `import()`, exactly like `panomove.mjs`). This is
+the refactor v0.7 and v0.8 both proposed and both declined to do; it is done, and the two suites that cover it
+pass unchanged (below).
+- The player keeps a **degraded path** if the module 404s: `backdrop` for everything and the v0.7 even division
+  for photo scenes, with one console error. It does not break.
+- `/config.json`'s `images` overrides are merged *under* nothing — the module's defaults are merged **under**
+  whatever is already in `IMGCFG`, because the config fetch is a floating promise and may land first.
+- In the film: `backdrop` = the bars filled with a blurred, darkened copy of the same file (`gblur` at 1/10 scale
+  then scaled back up — the player's own trick, and here it is also four times less pixel work); `plate` = a warm
+  paper mount **typeset in the browser** and composited (ffmpeg-static has no `drawtext`: it is built without
+  libfreetype, which this run discovered the hard way); `fill`/`none` = plain contain.
+- **Drift 0.94 → 1.00**, seeded from `hash32(ref)`, honouring `media[].drift:false` and `--no-drift`. Built by
+  making the canvas 1/0.94 larger and zooming *in* to 1:1, so the most magnified frame is the honest size and
+  every other frame is a downscale. `zoompan` cannot zoom out below 1; this is how you get the player's motion out
+  of it without inventing a pixel.
+- **Photo scenes now use the player's `imageSlots()`**, so the film and the chapter change picture on the same
+  beat (v0.8 listed this as "found but not fixed").
+- **One deliberate divergence, argued not hidden.** v0.7 degrades a plate to a backdrop when the mount leaves the
+  picture under 22 % of the frame — written for a 280-px Fold cover where margin, paper and caption genuinely
+  shrink the picture. On a 1920×1080 frame the same test also rejects mounts whose paper costs nothing: a 709×431
+  elevation is 14 % of the frame. The film adds the condition the rationale implies — the paper only costs more
+  than it gives when it actually **shrinks** the picture (`k < 1`). `--plate-strict` restores the player's
+  arithmetic exactly. Compare `scratchpad/proof-en/f32.png` (bare rule: grey wash) with
+  `proof-plate/p32.png` (mount): the mount is plainly the better frame, and it is the founder's brief.
+
+### 4. 1080p — and the two things that broke at 1080p
+`--size` defaults to `1920x1080` @ 25 fps. Two real failures came out of raising it, both fixed:
+- **The panowalk cross-fade was OOM-killed.** Fifteen 1080p inputs in one `filter_complex` on a 3 GB box: ffmpeg
+  died after **46 minutes** with `exit null` and `sys` time (5m43) exceeding `user` time (2m42) — the signature of
+  swapping. `xfadeChain()` now folds in groups of `--xfade-group` (default 4), which keeps the number of live
+  decoders constant at any frame size, at the cost of one extra h264 generation on a long walk.
+- **The panowalk intermediate was 3840×2160** (`scale=W*2:H*2`) to give `zoompan` headroom for a 1.055 push.
+  1.15× is all that push needs; the intermediate is now 2208×1242.
+
+### 5. Two cuts, both captioned
+`--lang en` (default) and `--lang zh` → `<chapter-id>_en.mp4` / `_zh.mp4` and a matching `.vtt` for each (captions
+are burned in **and** shipped as a sidecar). The Mandarin cut reads `i18n/zh-Hans.json` the way the player does —
+index-addressed, partial locales valid, English wherever the locale is silent — and localises narration, burned
+captions, VTT, scene lower-third, pins/captions, title and credits cards and the quiz/chat/checklist screens.
+Mandarin uses `Noto Sans CJK SC` at a smaller size and ≤ 24 characters a card (Latin faces tofu every CJK glyph;
+full-width glyphs need their own size — hilbert's `captions.size_zh` learned the same lesson), with a kinsoku rule
+so a closing mark never opens a line. The CJK sentence splitter keeps a closing quote with the sentence it closes.
+- **The sidecar's `s:N` tokens do not transfer.** They index the English *clear* sentences; the locale translates
+  the whole clear script and splits differently (8 of 18 Day-1 scenes; `count-the-steps` is 19 English sentences
+  and 13 Chinese ones). Default is `--zh-align proportional` — each kept English sentence is a span of characters,
+  a locale sentence is kept when most of its own span lies inside a kept span — **logged per scene** so a human
+  can check it ("English kept 16/19 → Mandarin 14/16"). The right answer is a real
+  `cuts/<chapter-id>.<locale>.json`, which is used automatically when it exists and is a Narrator/Translator
+  deliverable, not something a tool may invent.
+- **Mandarin density is measured**: `zf_xiaoxiao` runs 4.77 char/s (hilbert's 286 char/min, confirmed here), and a
+  scene needing more than 92 % of its slot is written into `render-log.md` as "too dense in Mandarin" with the
+  numbers. "Silence is content" is a hard constraint, not a preference.
+
+### How to run / what to look at
+```bash
+# the two full cuts (sequentially — two cores)
+node studio/tools/render/render_linear.mjs products/around-the-world-80-days/day-01-london/tour.json --lang en
+node studio/tools/render/render_linear.mjs products/around-the-world-80-days/day-01-london/tour.json --lang zh
+# what it will do, without rendering
+node studio/tools/render/render_linear.mjs .../tour.json --plan --lang zh --no-tts
+# the voice on its own
+~/hilbert/.venv/bin/python studio/tools/render/tts_kokoro.py --probe
+```
+Proof renders (scenes 5 + 7, 1080p, both languages) are in the scratchpad, not committed: `proof-en/f10.png` is a
+1920×2560 portrait on its own blurred backdrop, `proof-zh/z30.png` is the paper mount with a Mandarin pin and
+Mandarin captions, `proof-plate/p32.png` is the plate/backdrop comparison.
+
+### Regression
+| suite | before | after |
+|---|---|---|
+| `studio/player/test/smoke_images.mjs` | 158/158 | **158/158 PASS** |
+| `studio/player/test/smoke_playback.mjs` | 83/83 | **83/83 PASS** |
+Both were run against the refactored player (shared module) on the live host. No billable API was called in either.
+
+### Still NOT done / known weak
+- **Nothing is published.** No account was created, no upload was made; `~/hilbert/studio/publish/youtube.py` is
+  the tool for that when the founder says so, and it needs their credentials, not ours.
+- The Mandarin cut has **no per-locale cut sheet**, so seven scenes are cut by proportional alignment. It reads
+  correctly in the two scenes rendered here, and it is still arithmetic standing in for an editor.
+- `narration.after_script` is still not a sidecar token in either language (`after:N`), so 07/10/16 lose their
+  payoff lines in the film. Unchanged from v0.8, and it is now a *bilingual* gap.
+- Footage upscaling (above), and the 4:3 black bars baked into three of the normalised masters.
+- The title card's kicker stays English in the zh cut: the locale has no `chapter.tour_title`.
+- Caption timing inside a long sentence is proportional to characters, not to speech. On a sentence with a long
+  pause in it the second card comes up early.
+- The `plate` mount is one fixed paper; period material varies (v0.7 said the same and it is still true).
+
+### v0.9 addendum — three things the density pass asked for, all done and all verified
+The coordinator landed a density pass on Day 1 (commit `d570e04`) while this was being built and raised three
+items. All three are in `render_linear.mjs`; none of them touched a content file.
+
+1. **The README seconds are now a FLOOR as well as a cap.** `len = clamp(narration + pad, readme_s,
+   readme_s × (1 + slack))`. The old rule ended a scene ~2.5 s after the last word regardless of what the rundown
+   authored, so trimming words bought the film no air — it just made scenes shorter and left the voice
+   wall-to-wall. Day 1 now renders **1,090 s (18:10) in both languages**, every scene on its authored seconds,
+   with an **air** column in `render-log.md` (scene 05: 62.0 s of scene over 41.2 s of speech, 19.8 s of air).
+   The spare time is a held shot at the end of the scene. `--no-floor` reverts. Side effect worth having: the two
+   cuts are now the same length to the frame, so the picture is identical and the second render re-uses the
+   first's cached segments.
+2. **Speech normalisation, TTS input only** (`speechText()`). The hazard is real and was checked at the phoneme
+   level, not guessed: espeak (which is Kokoro's English front end) turns `No. 7` into `nˈoʊ. sˈɛvən` — the word
+   *no* — and `1872` into `wˈʌn θˈaʊzənd ˈeɪthˈʌndɹɪd sˈɛvənti tˈuː`, a cardinal rather than a year. Day 1 has
+   nine `No. N` and nineteen bare years. The rewrite happens on the way to the synthesizer and nowhere else, so
+   the caption still reads "No. 14" as the style guide requires: `No. N` → "number N" (capitalised if it starts a
+   sentence), `£N` → "N pounds", four-digit 1100–2099 → year words. A number carrying a comma or a decimal point
+   is left alone, so "1,151 steps" stays a count. Every rewrite is listed in `render-log.md`. **Mandarin needs
+   none and gets none** — hilbert's misaki/pypinyin was checked the same way and already reads 1872年 digit by
+   digit, 8点45分 as bā diǎn sì shí wǔ fēn and 104号 as yī bǎi líng sì hào.
+3. **The two Mandarin token mismatches are handled, and no zh sidecar is needed.** Confirmed by reading the code
+   path, not by assertion: `s:N` tokens are resolved against the **English** sentence list first (`if (enSents[i])
+   usedS.add(i)`, so `the-dash`'s `s:0-9` over-reach is simply ignored), and only then mapped onto the locale's
+   sentences by `alignKept()`. `savile-row`'s `s:0-15` therefore keeps 16 of 19 English sentences and yields
+   **14 of 16** Mandarin ones — not all 16. The Narrator's decision to skip `cuts/day-01-london.zh-Hans.json`
+   holds. The mapping is printed per scene in `render-log.md` so it stays reviewable.
+
+Also fixed while re-testing the change: **`06-the-reform-club` lost its sidecar `visuals`**, which took the photo
+branch for the first time and immediately found two bugs. `commonsInfo()` crashed on M-96 (an archive.org IIIF
+crop, not a Commons `File:` page) — stills now resolve through `resolveStill()`, which handles any http(s) file,
+honours `media[].fallback` exactly as the player has since v0.8 (M-96's IIIF endpoint answered **HTTP 504** during
+this run and the declared archive.org fallback was used automatically, logged), and degrades to a named card
+instead of throwing. The scene now renders all **seven authored slots** through the shared `imageSlots()`, in the
+player's order, with three different treatments: 1920×2560 → backdrop, 1920×1056 → fill, 709×431 and 632×521 →
+plate. That is the whole point of the shared module, and it only came out because a sidecar stopped hiding it.
+
+**Also in v0.9, and worth a founder look:** the renderer now writes `<chapter-id>_<lang>.chapters.json` and
+`.chapters.txt` (the `0:00 Title` block YouTube wants pasted into a description) beside the MP4.
+`products/.../linear/watch.json` is hand-maintained by another role and **is now stale** — the filenames changed
+and the length floor moved every `at_s` (971 s → 1,090 s); the generated file is the one that stays in step.
+
+And the one thing the floor makes visible: **Mandarin says the same content in less time**, so the air lands
+unevenly between the cuts. `the-wager` at its authored 75 s is 41.7 s of Mandarin speech and **32.3 s of silence**;
+in English the same scene is ~10 s of air. On a photo scene that is fine — the pictures keep changing on their own
+slots and the silence is over moving material, which is what "silence is content" means. On a **card** scene
+(07/08/18) it is a frozen frame held for half a minute. Options, none of them Engine's to choose: give the zh cut
+`--no-floor`, let the translator add material to those scenes, or author a shorter `s` for them in a zh cut sheet.

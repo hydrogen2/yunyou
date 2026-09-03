@@ -3,14 +3,13 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Linear-cut ('variety show') review-animatic renderer for Yunyou tours",
+  "description": "Linear-cut renderer for Yunyou chapters (1080p, EN + ZH cuts; voice via the local Kokoro model in ~/hilbert)",
   "scripts": {
     "render": "node render_linear.mjs"
   },
   "dependencies": {
     "ffmpeg-static": "^5.2.0",
     "ffprobe-static": "^3.1.0",
-    "msedge-tts": "^2.0.0",
     "playwright-core": "^1.50.0"
   }
 }

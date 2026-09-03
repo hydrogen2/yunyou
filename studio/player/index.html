@@ -412,35 +412,11 @@ function schedTick(){ if(!sched) return; let k=-1; sched.items.forEach((it,i)=>{
 // `until` (the first generated asset's start) bounds the list: pictures at or after it belong to the card, not to
 // the cycle. end_s bounds a slot but never blanks the frame — the last picture holds rather than leaving black.
 function imageSlots(imgs, duration, until){
-  const n=imgs.length; if(!n) return [];
-  const num=v=>{ const x=+v; return Number.isFinite(x)?x:null; };
-  const lim=(until!=null&&isFinite(until))?until:duration;
-  const timed=imgs.some(m=>num(m.start_s)!==null||num(m.end_s)!==null);
-  let seq=[];
-  if(!timed){                                                    // v0.7 parity: max(8 s, duration/n), wrapping
-    const step=Math.max(8, duration/n);
-    for(let i=0; i===0 || i*step < Math.max(duration,step)-0.001; i++) seq.push({start:i*step, end:null, m:imgs[i%n]});
-  } else {
-    let prev=0;
-    const raw=imgs.map((m,i)=>{ const st=num(m.start_s), en=num(m.end_s); const start=st!==null?st:prev;
-      prev = en!==null ? en : start; return {start:Math.max(0,start), end:en, m, i}; });
-    raw.sort((a,b)=>a.start-b.start||a.i-b.i);
-    for(let i=0;i<raw.length;){
-      let j=i; while(j+1<raw.length && Math.abs(raw[j+1].start-raw[i].start)<0.001) j++;
-      const grp=raw.slice(i,j+1);
-      if(grp.length===1) seq.push(grp[0]);
-      else {                                                     // one window, several pictures: divide it between them
-        const nextStart=(j+1<raw.length)?raw[j+1].start:null;
-        const ends=grp.map(g=>g.end).filter(e=>e!==null);
-        const gEnd=nextStart!==null?nextStart:(ends.length?Math.max.apply(null,ends):duration);
-        const step=Math.max(0.5,(gEnd-grp[0].start)/grp.length);
-        grp.forEach((g,k)=>seq.push({start:grp[0].start+k*step, end:g.end, m:g.m}));
-      }
-      i=j+1;
-    }
-    if(seq.length&&seq[0].start>0) seq[0].start=0;                // a photo scene is never a black frame at second 0
-  }
-  return seq.filter(x=>x.start<lim-0.001).sort((a,b)=>a.start-b.start);
+  if(IL) return IL.imageSlots(imgs, duration, until);            // the ONE definition (shared with the renderer)
+  const n=imgs.length; if(!n) return [];                          // degraded: v0.7 even division, no authored slots
+  const step=Math.max(8, duration/n), lim=(until!=null&&isFinite(until))?until:duration, seq=[];
+  for(let i=0; i===0 || i*step < Math.max(duration,step)-0.001; i++) seq.push({start:i*step, end:null, m:imgs[i%n]});
+  return seq.filter(x=>x.start<lim-0.001);
 }
 // The items themselves: showImage() already re-checks sched.active after its Commons lookup, so a slow picture
 // cannot clobber the slot that replaced it. Nothing here holds a timer — pause, seek, jump and restore are the
@@ -471,27 +447,31 @@ async function insetImage(m){
 // the REAL frame and picks one of four treatments; `media[].treatment` in the scene overrides it.
 // Config, not hard-coded: /config.json may carry an `images` object with any of these keys; ?drift=0 holds every
 // still dead still (the screenshot test and, later, the renderer).
-const IMGCFG={ plate_max_px:760,      // long side at or under this = small archive material → the paper mount
-               plate_min_area:0.22,   // …but only if the mount still leaves the picture this much of the frame
-               fill_coverage:0.90,    // a contained fit covering this much of the frame needs no help
-               blur_px:36,            // backdrop blur at a 620-px-tall frame; scaled with the frame below
-               drift:true, drift_s:36, drift_from:0.94, drift_from_plate:0.97,
-               fallback_after_s:6 };  // v0.8: a still that has a media[].fallback swaps to it after this long without loading
+// v0.9: the arithmetic moved to studio/player/imagelayer.mjs and the LINEAR RENDERER imports the same file, so a
+// picture is mounted the same way in this chapter and in the film. Loaded once at boot (before the first scene),
+// exactly like panomove.mjs. If it cannot be fetched the player still runs: `backdrop` for everything and the
+// v0.7 even division for photo scenes — degraded, obviously wrong-looking on small plates, never broken.
+let IL=null;
+const IMGCFG={ plate_max_px:760, plate_min_area:0.22, fill_coverage:0.90, blur_px:36,
+               drift:true, drift_s:36, drift_from:0.94, drift_from_plate:0.97, fallback_after_s:6 };
+async function loadImageLayer(){
+  if(IL) return IL;
+  // merge UNDER whatever is already there: /config.json is fetched on a floating promise and may have landed
+  // first, and a config override must never be undone by a default.
+  try{ IL=await import('./imagelayer.mjs'); for(const k in IL.IMG_DEFAULTS) if(!(k in IMGCFG)) IMGCFG[k]=IL.IMG_DEFAULTS[k]; }
+  catch(e){ console.error('[yunyou] imagelayer.mjs did not load — stills degrade to plain backdrops', e); }
+  if(qs.get('drift')==='0') IMGCFG.drift=false;
+  return IL;
+}
 if(qs.get('drift')==='0') IMGCFG.drift=false;
 const reduceMotion=()=>{ try{ return matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){ return false; } };
-const hash32=s=>{ let h=2166136261; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); } return h>>>0; };
+const hash32=s=>IL?IL.hash32(s):(()=>{ let h=2166136261; for(let i=0;i<s.length;i++){ h^=s.charCodeAt(i); h=Math.imul(h,16777619); } return h>>>0; })();
 
 // Which treatment? Aspect ratio and pixel size decide, so existing scenes improve with no content edit.
 function pickTreatment(m, nw, nh, W, H){
+  if(IL) return IL.pickTreatment(m, nw, nh, W, H, IMGCFG);
   const forced=String((m&&m.treatment)||'').toLowerCase();
-  if(forced==='backdrop'||forced==='plate'||forced==='fill'||forced==='none') return forced;
-  if(!(nw>0&&nh>0&&W>0&&H>0)) return 'backdrop';                 // unknown size: the backdrop is never wrong
-  const ia=nw/nh, ca=W/H;
-  const coverage=Math.min(ia/ca, ca/ia);                         // share of the frame a contained fit would cover
-  const fit=Math.min(W/nw, H/nh);                                // > 1 means it would have to be upscaled to fill
-  if(coverage>=IMGCFG.fill_coverage && fit<=1.02) return 'fill';
-  if(Math.max(nw,nh)<=IMGCFG.plate_max_px) return 'plate';       // it can never fill a modern frame honestly
-  return 'backdrop';
+  return (forced==='backdrop'||forced==='plate'||forced==='fill'||forced==='none') ? forced : 'backdrop';
 }
 
 let imgRO=null;   // one ResizeObserver at a time: the mounted still re-lays itself out when the frame changes
@@ -1437,6 +1417,7 @@ window.addEventListener('blur',()=>{ setTimeout(()=>{                   // anoth
   pauseFor('away'); },250); });
 
 (async()=>{
+  await loadImageLayer();      // the shared image-treatment module, before the first scene can mount a still
   // ---- i18n: a locale is an index-addressed OVERLAY applied to the tour in memory, so every render path below
   // stays monolingual and unaware. English remains canonical in scenes/*.scene.json; a partial locale is valid.
   // Format: studio/templates/i18n-locale.md. Select with ?lang=zh-Hans or the picker on the cover.

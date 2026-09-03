@@ -7,10 +7,11 @@ const mmss = (t) => { t = Math.max(0, Math.round(t || 0)); const h = Math.floor(
 export const BASE_CSS = `
 :root { --ink:#ece6da; --dim:#a9a193; --bg:#0d0c0e; --panel:#17161a; --line:#2b292f; --accent:#d9a441; --ok:#7bc47f; --bad:#e07a6a; }
 * { box-sizing:border-box; }
-html,body { margin:0; width:100%; height:100%; background:var(--bg); color:var(--ink); font:22px/1.4 Georgia,'Liberation Serif','Times New Roman',serif; overflow:hidden; }
-.sans { font-family:'Liberation Sans',system-ui,sans-serif; }
+html,body { margin:0; width:100%; height:100%; background:var(--bg); color:var(--ink); font:22px/1.4 Georgia,'Liberation Serif','Times New Roman','Noto Serif CJK SC','Noto Sans CJK SC',serif; overflow:hidden; }
+.sans { font-family:'Liberation Sans','Noto Sans CJK SC',system-ui,sans-serif; }
+:lang(zh), .zh, .zh * { font-family:'Noto Sans CJK SC','Liberation Sans',system-ui,sans-serif; }
 .page { position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:4vmin; }
-.kicker { font-family:'Liberation Sans',system-ui,sans-serif; font-size:16px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin:0 0 .6em; }
+.kicker { font-family:'Liberation Sans','Noto Sans CJK SC',system-ui,sans-serif; font-size:16px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin:0 0 .6em; }
 .muted { color:var(--dim); }
 h1 { font-weight:500; font-size:56px; line-height:1.15; margin:0 0 .3em; letter-spacing:.01em; }
 h2 { font-weight:500; font-size:40px; line-height:1.2; margin:0 0 .4em; }
@@ -22,7 +23,11 @@ h2 { font-weight:500; font-size:40px; line-height:1.2; margin:0 0 .4em; }
 .pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 12px; font-family:'Liberation Sans',system-ui,sans-serif; font-size:15px; color:var(--dim); margin-right:8px; }
 .thumb { position:absolute; right:40px; bottom:40px; width:200px; height:auto; border-radius:8px; opacity:.85; box-shadow:0 8px 24px rgba(0,0,0,.6); }
 .split { display:grid; grid-template-columns: 1fr 1fr; gap:36px; width:100%; height:100%; align-items:center; }
-.split img.hero { width:100%; height:100%; max-height:calc(100vh - 8vmin); object-fit:contain; border-radius:10px; background:#000; }
+.herobox { position:relative; height:100%; width:100%; border-radius:10px; overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center; }
+.herobox img.back { position:absolute; inset:-12%; width:124%; height:124%; object-fit:cover; filter:blur(28px) saturate(1.12) brightness(.44); }
+/* NEVER enlarged: max-width/height are the file's OWN pixels, so a 632-px engraving stays 632 px (player v0.7) */
+.split img.hero { position:relative; max-width:100%; max-height:calc(100vh - 8vmin); width:auto; height:auto; object-fit:contain; border-radius:6px; }
+.herocap { position:absolute; left:0; right:0; bottom:0; padding:6px 10px; font-family:'Liberation Sans','Noto Sans CJK SC',sans-serif; font-size:14px; color:#cfd6dc; background:linear-gradient(transparent,rgba(0,0,0,.72)); }
 .opts { list-style:none; margin:0; padding:0; font-family:'Liberation Sans',system-ui,sans-serif; font-size:21px; }
 .opts li { margin:10px 0; padding:12px 16px; border:1px solid var(--line); border-radius:12px; background:var(--panel); break-inside:avoid; display:inline-block; width:100%; }
 .opts li.correct { border-color:var(--ok); background:#15231a; }
@@ -43,12 +48,21 @@ export function page(body, extraCss = '') {
   return `<!doctype html><html><head><meta charset="utf-8"><style>${BASE_CSS}${extraCss}</style></head><body>${body}</body></html>`;
 }
 
+/** A picture panel that obeys the v0.7 rules: never upscaled, bars filled with a blurred copy of itself. */
+function hero({ imageUrl, imageW, imageH, attribution }) {
+  if (!imageUrl) return '<div class="herobox"></div>';
+  const cap = imageW ? ` style="max-width:${Math.round(imageW)}px;max-height:${Math.round(imageH || imageW)}px"` : '';
+  return `<div class="herobox"><img class="back" src="${esc(imageUrl)}" alt="" aria-hidden="true">` +
+    `<img class="hero" src="${esc(imageUrl)}"${cap}>` +
+    `${attribution ? `<div class="herocap">${esc(attribution)}</div>` : ''}</div>`;
+}
+
 /** Title card at the start of the film. */
-export function titleCard({ tourTitle, chapterTitle, dateStr, label = 'review animatic', studio = 'Yunyou 云游' }) {
+export function titleCard({ tourTitle, chapterTitle, dateStr, label = '', studio = 'Yunyou 云游' }) {
   return page(`<div class="page" style="flex-direction:column;text-align:center">
     <p class="kicker">${esc(tourTitle)}</p>
     <h1>${esc(chapterTitle)}</h1>
-    <p class="muted" style="font-size:26px;margin:.2em 0 1.2em">${esc(label)}</p>
+    ${label ? `<p class="muted" style="font-size:26px;margin:.2em 0 1.2em">${esc(label)}</p>` : '<div style="height:.8em"></div>'}
     <span class="tag">${esc(studio)} · ${esc(dateStr)}</span>
   </div>`);
 }
@@ -91,10 +105,10 @@ export function streetViewCard({ sceneTitle, stops, note }) {
 }
 
 /** Quiz screen: image left, question and options right; correct option highlighted (linear cut = guide answers). */
-export function quizScreen({ sceneTitle, imageUrl, attribution, prompt, options, feedback }) {
+export function quizScreen({ sceneTitle, imageUrl, imageW, imageH, attribution, prompt, options, feedback }) {
   const li = options.map(o => `<li class="${o.correct ? 'correct' : 'wrong'}">${o.correct ? '✔ ' : '○ '}${esc(o.text)}</li>`).join('');
   return page(`<div class="page"><div class="split">
-    <div style="position:relative;height:100%">${imageUrl ? `<img class="hero" src="${esc(imageUrl)}">` : ''}</div>
+    ${hero({ imageUrl, imageW, imageH, attribution })}
     <div>
       <p class="kicker">${esc(sceneTitle)}</p>
       <h2 style="font-size:32px">${esc(prompt)}</h2>
@@ -104,15 +118,15 @@ export function quizScreen({ sceneTitle, imageUrl, attribution, prompt, options,
 }
 
 /** Dialogue screen: avatar left, scripted exchange right. */
-export function chatScreen({ sceneTitle, imageUrl, context, turns }) {
+export function chatScreen({ sceneTitle, imageUrl, imageW, imageH, attribution, context, turns, note = 'Scripted fallback exchange — the interactive player runs free chat with guardrails.' }) {
   const t = turns.map(x => `<div class="${x.role === 'q' ? 'q' : 'a'}">${esc(x.text)}</div>`).join('');
   return page(`<div class="page"><div class="split" style="grid-template-columns: 2fr 3fr">
-    <div style="position:relative;height:100%">${imageUrl ? `<img class="hero" src="${esc(imageUrl)}">` : ''}</div>
+    ${hero({ imageUrl, imageW, imageH, attribution })}
     <div>
       <p class="kicker">${esc(sceneTitle)}</p>
       ${context ? `<p class="muted sans" style="font-size:17px;margin:0 0 1em">${esc(context)}</p>` : ''}
       <div class="chat">${t}</div>
-      <p class="muted sans" style="font-size:15px;margin-top:1em">Scripted fallback exchange — the interactive player runs free chat with guardrails.</p>
+      ${note ? `<p class="muted sans" style="font-size:15px;margin-top:1em">${esc(note)}</p>` : ''}
     </div></div></div>`);
 }
 
@@ -146,4 +160,22 @@ export function creditsCard({ title = 'Credits', lines, pageNo, pages, footer })
       <div class="credits">${ps}</div>
       ${footer ? `<div class="foot"><span>${esc(footer)}</span></div>` : ''}
     </div></div>`);
+}
+
+/**
+ * The paper mount for a small archive plate — the film's copy of the player's `.imgplate` (v0.7).
+ * Rendered at its OWN size on a transparent page and composited by ffmpeg, so the picture is printed at 1:1
+ * (never enlarged) and the credit IS the caption on the paper, not an overlay dropped on the picture.
+ */
+export function plateCard({ imageUrl, w, h, pad = 20, caption = '', capSize = 18, cjk = false }) {
+  const face = cjk ? `'Noto Serif CJK SC','Noto Sans CJK SC',Georgia,serif` : `Georgia,'Liberation Serif','Times New Roman',serif`;
+  return `<!doctype html><html><head><meta charset="utf-8"><style>
+    html,body{margin:0;background:transparent}
+    .plate{display:inline-flex;flex-direction:column;gap:.55em;padding:${pad}px;width:${w + 2 * pad}px;
+      background:linear-gradient(163deg,#f7f0de 0%,#f0e6ce 55%,#e6dabc 100%);color:#3a2f22;
+      border:1px solid rgba(58,44,26,.34);border-radius:3px;
+      box-shadow:0 26px 72px rgba(0,0,0,.62), 0 1px 0 rgba(255,255,255,.35) inset;}
+    .plate img{display:block;width:${w}px;height:${h}px;border:1px solid rgba(58,44,26,.42);}
+    .cap{font:italic ${capSize}px/1.35 ${face};color:#5d4c37;text-align:left;max-width:${w}px;}
+  </style></head><body><figure class="plate"><img src="${esc(imageUrl)}">${caption ? `<figcaption class="cap">${esc(caption)}</figcaption>` : ''}</figure></body></html>`;
 }
