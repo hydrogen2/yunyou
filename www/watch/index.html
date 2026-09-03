@@ -42,6 +42,22 @@ const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
   const ch=tour&&tour.chapters.find(c=>c.id===chapter)||tour&&tour.chapters[0];
   $('#eyebrow').textContent=(tour?tour.title:'Yunyou')+' · review animatic'; document.title=(ch?ch.title:chapter)+' · Yunyou';
   $('#title').textContent=ch?ch.title:chapter; $('#hook').textContent=ch?ch.hook:'';
+  // Two cuts per chapter (EN / ZH) since 2026-09: `cuts` carries both, and the top-level fields mirror the
+  // first one so an older single-cut watch.json still plays untouched.
+  const cuts = (w.cuts && w.cuts.length) ? w.cuts : [{lang:'en', name:'English', video:w.video, subtitles:w.subtitles, duration_s:w.duration_s, chapters:w.chapters}];
+  const wantCut = new URLSearchParams(location.search).get('lang') || localStorage.getItem('yy-watch-lang') || cuts[0].lang;
+  let cut = cuts.find(c=>c.lang===wantCut) || cuts[0];
+  if(cuts.length>1){
+    const pick=document.createElement('span'); pick.style.cssText='display:inline-flex;gap:6px;margin-right:8px';
+    cuts.forEach(c=>{ const b=document.createElement('button');
+      b.textContent=c.name||c.lang; b.className='btn';
+      if(c.lang===cut.lang) b.style.cssText='border-color:var(--accent);color:var(--accent)';
+      b.onclick=()=>{ localStorage.setItem('yy-watch-lang',c.lang);
+        const u=new URL(location.href); u.searchParams.set('lang',c.lang); location.href=u.toString(); };
+      pick.appendChild(b); });
+    $('.bar').prepend(pick);
+  }
+  w = Object.assign({}, w, cut);            // chapters, subtitles, duration all follow the chosen cut
   const v=$('#v'); v.src=`${base}/linear/${w.video}`; $('#dl').href=v.src;
   if(w.subtitles){ const tr=document.createElement('track'); tr.kind='subtitles'; tr.label='English'; tr.srclang='en'; tr.src=`${base}/linear/${w.subtitles}`; v.appendChild(tr); v.addEventListener('loadedmetadata',()=>{ for(const t of v.textTracks) t.mode='hidden'; }); }
   $('#interactive').href=`/player/?tour=${base}/tour.json`; $('#log').href=`${base}/linear/render-log.md`; $('#digest').href=`${base}/review/DIGEST.md`;

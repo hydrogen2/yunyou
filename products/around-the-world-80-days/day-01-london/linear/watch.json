@@ -1,110 +1,318 @@
 {
- "video": "day-01-london_review-animatic.mp4",
- "subtitles": "day-01-london_narration.vtt",
- "duration_s": 971,
- "track": "clear",
+ "lang": "en",
+ "name": "English",
+ "video": "day-01-london_en.mp4",
+ "subtitles": "day-01-london_en.vtt",
+ "duration_s": 1050,
  "chapters": [
   {
    "scene": "cold-open",
    "type": "interstitial",
    "at_s": 4,
-   "title": "Day 1 \u00b7 London \u00b7 Wednesday 2 October 1872"
+   "title": "Day 1 · London · Wednesday 2 October 1872"
   },
   {
    "scene": "savile-row",
    "type": "video",
-   "at_s": 57,
-   "title": "Savile Row \u2014 Fogg's front door"
+   "at_s": 64,
+   "title": "Savile Row — Fogg's front door"
   },
   {
    "scene": "fogg-by-the-clock",
    "type": "card",
-   "at_s": 134,
-   "title": "Fogg's day, by the clock \u2014 enter Passepartout"
+   "at_s": 148,
+   "title": "Fogg's day, by the clock — enter Passepartout"
   },
   {
    "scene": "count-the-steps",
    "type": "video",
-   "at_s": 181,
-   "title": "Count the steps \u2014 Savile Row to Pall Mall"
+   "at_s": 198,
+   "title": "Count the steps — Savile Row to Pall Mall"
   },
   {
    "scene": "the-reform-club",
-   "type": "video",
-   "at_s": 271,
-   "title": "Inside the Reform \u2014 what Verne got right"
+   "type": "photo",
+   "at_s": 295,
+   "title": "Inside the Reform — what Verne got right"
   },
   {
    "scene": "quiz-verne-saloon",
    "type": "quiz",
-   "at_s": 332,
-   "title": "Quiz \u2014 which of Verne's club details is real?"
+   "at_s": 357,
+   "title": "Quiz — which of Verne's club details is real?"
   },
   {
    "scene": "the-wager",
    "type": "photo",
-   "at_s": 369,
-   "title": "The wager \u2014 twenty thousand at Baring's"
+   "at_s": 407,
+   "title": "The wager — twenty thousand at Baring's"
   },
   {
    "scene": "the-world-shrinks",
    "type": "map",
-   "at_s": 441,
-   "title": "The world had just shrunk \u2014 the 80-day loop"
+   "at_s": 482,
+   "title": "The world had just shrunk — the 80-day loop"
   },
   {
    "scene": "pack-the-bag",
    "type": "game",
-   "at_s": 511,
-   "title": "Ten minutes \u2014 pack the carpet-bag"
+   "at_s": 574,
+   "title": "Ten minutes — pack the carpet-bag"
   },
   {
    "scene": "the-dash",
    "type": "map",
-   "at_s": 579,
+   "at_s": 662,
    "title": "A shilling's cab to Charing Cross"
-  },
-  {
-   "scene": "charing-cross",
-   "type": "video",
-   "at_s": 630,
-   "title": "Charing Cross \u2014 Fogg's newest London"
   },
   {
    "scene": "then-and-now",
    "type": "photo",
-   "at_s": 696,
-   "title": "Then and now \u2014 the forecourt, 1872 and today"
+   "at_s": 720,
+   "title": "Then and now — the forecourt, 1872 and today"
   },
   {
    "scene": "look-up-the-cross",
    "type": "streetview",
-   "at_s": 716,
-   "title": "Look up \u2014 the cross, and where London starts"
+   "at_s": 746,
+   "title": "Look up — the cross, and where London starts"
   },
   {
    "scene": "quiz-the-weather",
    "type": "quiz",
-   "at_s": 761,
-   "title": "Quiz \u2014 look up at the roof: what is the weather doing?"
+   "at_s": 796,
+   "title": "Quiz — look up at the roof: what is the weather doing?"
   },
   {
    "scene": "passepartout-on-the-platform",
    "type": "dialogue",
-   "at_s": 779,
-   "title": "The platform, 8:40 pm \u2014 talk to Passepartout"
+   "at_s": 824,
+   "title": "The platform, 8:40 pm — talk to Passepartout"
   },
   {
    "scene": "the-boat-train",
    "type": "video",
-   "at_s": 820,
-   "title": "8:45 \u2014 over the river, to the forgotten gas"
+   "at_s": 870,
+   "title": "8:45 — over the river, to the forgotten gas"
   },
   {
    "scene": "souvenir",
    "type": "card",
-   "at_s": 890,
-   "title": "Souvenir \u2014 Fogg's last breakfast in London"
+   "at_s": 952,
+   "title": "Souvenir — Fogg's last breakfast in London"
   }
- ]
+ ],
+ "cuts": [
+  {
+   "lang": "en",
+   "name": "English",
+   "video": "day-01-london_en.mp4",
+   "subtitles": "day-01-london_en.vtt",
+   "duration_s": 1050,
+   "chapters": [
+    {
+     "scene": "cold-open",
+     "type": "interstitial",
+     "at_s": 4,
+     "title": "Day 1 · London · Wednesday 2 October 1872"
+    },
+    {
+     "scene": "savile-row",
+     "type": "video",
+     "at_s": 64,
+     "title": "Savile Row — Fogg's front door"
+    },
+    {
+     "scene": "fogg-by-the-clock",
+     "type": "card",
+     "at_s": 148,
+     "title": "Fogg's day, by the clock — enter Passepartout"
+    },
+    {
+     "scene": "count-the-steps",
+     "type": "video",
+     "at_s": 198,
+     "title": "Count the steps — Savile Row to Pall Mall"
+    },
+    {
+     "scene": "the-reform-club",
+     "type": "photo",
+     "at_s": 295,
+     "title": "Inside the Reform — what Verne got right"
+    },
+    {
+     "scene": "quiz-verne-saloon",
+     "type": "quiz",
+     "at_s": 357,
+     "title": "Quiz — which of Verne's club details is real?"
+    },
+    {
+     "scene": "the-wager",
+     "type": "photo",
+     "at_s": 407,
+     "title": "The wager — twenty thousand at Baring's"
+    },
+    {
+     "scene": "the-world-shrinks",
+     "type": "map",
+     "at_s": 482,
+     "title": "The world had just shrunk — the 80-day loop"
+    },
+    {
+     "scene": "pack-the-bag",
+     "type": "game",
+     "at_s": 574,
+     "title": "Ten minutes — pack the carpet-bag"
+    },
+    {
+     "scene": "the-dash",
+     "type": "map",
+     "at_s": 662,
+     "title": "A shilling's cab to Charing Cross"
+    },
+    {
+     "scene": "then-and-now",
+     "type": "photo",
+     "at_s": 720,
+     "title": "Then and now — the forecourt, 1872 and today"
+    },
+    {
+     "scene": "look-up-the-cross",
+     "type": "streetview",
+     "at_s": 746,
+     "title": "Look up — the cross, and where London starts"
+    },
+    {
+     "scene": "quiz-the-weather",
+     "type": "quiz",
+     "at_s": 796,
+     "title": "Quiz — look up at the roof: what is the weather doing?"
+    },
+    {
+     "scene": "passepartout-on-the-platform",
+     "type": "dialogue",
+     "at_s": 824,
+     "title": "The platform, 8:40 pm — talk to Passepartout"
+    },
+    {
+     "scene": "the-boat-train",
+     "type": "video",
+     "at_s": 870,
+     "title": "8:45 — over the river, to the forgotten gas"
+    },
+    {
+     "scene": "souvenir",
+     "type": "card",
+     "at_s": 952,
+     "title": "Souvenir — Fogg's last breakfast in London"
+    }
+   ]
+  },
+  {
+   "lang": "zh",
+   "name": "简体中文",
+   "video": "day-01-london_zh.mp4",
+   "subtitles": "day-01-london_zh.vtt",
+   "duration_s": 1050,
+   "chapters": [
+    {
+     "scene": "cold-open",
+     "type": "interstitial",
+     "at_s": 4,
+     "title": "第一天 · 伦敦 · 1872年10月2日，星期三"
+    },
+    {
+     "scene": "savile-row",
+     "type": "video",
+     "at_s": 64,
+     "title": "萨维尔街——福克家的门口"
+    },
+    {
+     "scene": "fogg-by-the-clock",
+     "type": "card",
+     "at_s": 148,
+     "title": "福克的一天，按钟走——路路通登场"
+    },
+    {
+     "scene": "count-the-steps",
+     "type": "video",
+     "at_s": 198,
+     "title": "数脚步——从萨维尔街到蓓尔美尔街"
+    },
+    {
+     "scene": "the-reform-club",
+     "type": "photo",
+     "at_s": 295,
+     "title": "走进改良俱乐部——凡尔纳写对了什么"
+    },
+    {
+     "scene": "quiz-verne-saloon",
+     "type": "quiz",
+     "at_s": 357,
+     "title": "小测——凡尔纳写的俱乐部，哪一处是真的"
+    },
+    {
+     "scene": "the-wager",
+     "type": "photo",
+     "at_s": 407,
+     "title": "赌局——巴林银行里的两万镑"
+    },
+    {
+     "scene": "the-world-shrinks",
+     "type": "map",
+     "at_s": 482,
+     "title": "世界刚刚变小——八十天的那个圈"
+    },
+    {
+     "scene": "pack-the-bag",
+     "type": "game",
+     "at_s": 574,
+     "title": "十分钟——把旅行包收好"
+    },
+    {
+     "scene": "the-dash",
+     "type": "map",
+     "at_s": 662,
+     "title": "一先令的马车，到查令十字"
+    },
+    {
+     "scene": "then-and-now",
+     "type": "photo",
+     "at_s": 720,
+     "title": "今昔——1872年和今天的站前广场"
+    },
+    {
+     "scene": "look-up-the-cross",
+     "type": "streetview",
+     "at_s": 746,
+     "title": "抬头——十字碑，和伦敦的原点"
+    },
+    {
+     "scene": "quiz-the-weather",
+     "type": "quiz",
+     "at_s": 796,
+     "title": "小测——抬头看屋顶：今晚天气怎么样"
+    },
+    {
+     "scene": "passepartout-on-the-platform",
+     "type": "dialogue",
+     "at_s": 824,
+     "title": "站台，晚上8点40分——和路路通聊聊"
+    },
+    {
+     "scene": "the-boat-train",
+     "type": "video",
+     "at_s": 870,
+     "title": "8点45分——过河，奔向那盏忘关的煤气灯"
+    },
+    {
+     "scene": "souvenir",
+     "type": "card",
+     "at_s": 952,
+     "title": "纪念品——福克在伦敦的最后一顿早餐"
+    }
+   ]
+  }
+ ],
+ "track": "clear"
 }
