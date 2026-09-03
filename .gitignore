@@ -13,3 +13,4 @@ www/serve.log
 .DS_Store
 www/config.json
 www/player-v07/
+studio/player/test/out/
