@@ -150,21 +150,21 @@
      "dur": 20,
      "fallback": {
       "kind": "image",
-      "media": "M-20"
+      "media": "M-104"
      },
-     "_why": "BEAT B part 2: the last 158 m up to the Reform door (Mapillary 360°, 2024-04). The scene's single stop-6 camera cue stops the walk in front of 104 Pall Mall at ≈ 64 s of the rendered scene and holds there while the guide names it. Falls back to the M-20 façade still."
+     "_why": "BEAT B part 2: the last 158 m up to the Reform door (Mapillary 360°, 2024-04). The scene's single stop-6 camera cue stops the walk in front of 104 Pall Mall at ≈ 64 s of the rendered scene and holds there while the guide names it. Falls back to the M-104 façade still (A11 2026-09-03: was M-20, a Brexit-demonstration photograph — see media/manifest.md §A11)."
     },
     {
      "kind": "image",
-     "media": "M-69b",
+     "media": "M-106",
      "dur": 8,
-     "_why": "'A little to the left, No. 106, the Travellers…' — over its own façade. Swinging the open-imagery camera back onto it instead made the walk reverse 36 m."
+     "_why": "'A little to the left, No. 106, the Travellers…' — over its own façade. Swinging the open-imagery camera back onto it instead made the walk reverse 36 m. A11 2026-09-03: media M-69b -> M-106. The geograph file titled 'Travellers Club, Pall Mall' shows the REFORM Club (the 'CARLTON GARDENS SW1' sign is on its corner), so this eight-second shot named No. 106 over a picture of No. 104."
     },
     {
      "kind": "image",
      "media": "M-69a",
      "dur": 9,
-     "_why": "'And beyond it, No. 107, the Athenaeum. One turn of the head covers all three.' — the third façade closes the scene, so 06 can open on M-20 without repeating a frame across the seam."
+     "_why": "'And beyond it, No. 107, the Athenaeum. One turn of the head covers all three.' — the third façade closes the scene, so 06 can open on M-105 (the doorway itself, close) without repeating a frame across the seam."
     }
    ],
    "overlays": [

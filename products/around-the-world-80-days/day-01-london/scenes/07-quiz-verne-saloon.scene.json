@@ -26,17 +26,7 @@
       "attribution": "Reform Club saloon, 'London Interiors' (1841) (Wikimedia Commons, PD)",
       "start_s": 0,
       "end_s": 80,
-      "note": "Vignetted inset behind the quiz card."
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
-      "license": "cc-by-sa-2.0",
-      "manifest_id": "M-20",
-      "attribution": "Philip Cornwall / geograph.org.uk, CC BY-SA 2.0",
-      "start_s": 0,
-      "end_s": 80,
-      "note": "Blurred backdrop."
+      "note": "The saloon behind the quiz card. THIS IS THE ONLY PICTURE THE SCENE CAN SHOW: a quiz scene takes `media.find(kind==='image')` — the FIRST image and no other — in both the player (www/player/index.html, showScene: `showImage(img[0], false)`) and the linear renderer (render_linear.mjs, the `quiz` visual and the `type==='quiz'` branch). The blurred surround is a treatment the renderer derives from this same file, not a second asset. A11 2026-09-03: a second entry (M-20, the Reform façade, noted 'Blurred backdrop') sat here and was never rendered in either cut — dead weight that also carried a share-alike obligation. Removed rather than swapped: putting a different picture in an inert slot would have been the same mistake with better taste. If a real backdrop layer is ever built, the right file for it is M-102 (Barry 1867, PD, 2994x1932 landscape), not a modern photograph."
     },
     {
       "kind": "audio",
@@ -106,6 +96,6 @@
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: wait state added (pause_narration, timeout_s 30); the answer/tail sentences moved to narration.after_script; prompt persists until answered; option-1 feedback 'dark Siena marble' scagliola (F-15); 'dining-room' hyphenated; Open House caption marked time-bound (D9). A1 narrator 2026-08-18: 35-word question opener split into short beats; after_script Open House sentence shortened; answer sentences stay in after_script (post-pause). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain (the question lists Verne's claims; the reveal waits in after_script) — script untouched; clear-English variant added; after_script stays single-track per the template. A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.after_script_variants.clear added (plain twin of the reveal: 'Half invented, half exact… one weekend a year… one very long staircase'). Facts unchanged (F-17 Open House dates stay in the caption). Linear cut keeps s:5 ('Compare that with Barry's real building') so the question is answerable in the film. Engine: the renderer has no after:N token, so the reveal is still missing from the linear cut."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: wait state added (pause_narration, timeout_s 30); the answer/tail sentences moved to narration.after_script; prompt persists until answered; option-1 feedback 'dark Siena marble' scagliola (F-15); 'dining-room' hyphenated; Open House caption marked time-bound (D9). A1 narrator 2026-08-18: 35-word question opener split into short beats; after_script Open House sentence shortened; answer sentences stay in after_script (post-pause). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): spine already plain (the question lists Verne's claims; the reveal waits in after_script) — script untouched; clear-English variant added; after_script stays single-track per the template. A5 narrator 2026-08-19 (fact-check-a5 §2, register break): narration.after_script_variants.clear added (plain twin of the reveal: 'Half invented, half exact… one weekend a year… one very long staircase'). Facts unchanged (F-17 Open House dates stay in the caption). Linear cut keeps s:5 ('Compare that with Barry's real building') so the question is answerable in the film. Engine: the renderer has no after:N token, so the reveal is still missing from the linear cut. | A11 content-preparer 2026-09-03 (spell-break sweep): the M-20 entry ('Blurred backdrop') was DELETED. Two findings behind that. (1) M-20 is a photograph of the Reform Club taken during a Brexit demonstration — EU flags and hand-painted placards fill the lower half — and is now rejected chapter-wide (media/manifest.md, M-20 row + §A11); it also appeared in scenes 04 and 06, so the same contemporary protest recurred three times in a chapter set in 1872, against brief.md's must-not list. (2) It never reached a frame anyway: a quiz scene shows only its first image in BOTH cuts (player showScene -> showImage(img[0]); render_linear.mjs quizScreen -> media.find(kind==='image')), and the first image here is M-23. So the honest fix was to delete the dead row, not to substitute a prettier dead row. M-23 keeps the slot, and its note now records the one-image rule so the next pass does not re-add a 'backdrop'. No narration, interaction, overlay or duration changed."
   }
 }
