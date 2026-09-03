@@ -6,13 +6,10 @@
   "duration_s": 75,
   "learning_goal": "Know the date, the deadline and the stake in one breath; feel a clock already running.",
   "narration": {
-    "script": "There is a novel, published in 1872, by the French writer Jules Verne: Around the World in Eighty Days. Its hero is Phileas Fogg, a London gentleman who runs his life by the clock. Fogg bets half his fortune that he can circle the whole world in eighty days. And tonight — Wednesday the second of October, 1872 — at a quarter to nine, he leaves. We are travelling his route, starting today. Look at the map: only London is lit. Day by day, we'll light the rest, one port at a time. One name before we start. This morning Fogg hired a French valet, Passepartout, whose watch runs four minutes slow. Remember the watch. Now to the street where it all begins: Savile Row.",
+    "script": "In 1872, the French writer Jules Verne published a famous novel: Around the World in Eighty Days. The hero is Phileas Fogg, a gentleman in London who lives by the clock. Fogg bets half his money that he can travel around the whole world in eighty days. Tonight — Wednesday, the second of October, 1872 — at a quarter to nine, his train leaves London. We follow his route, starting today. Look at the map: only London is lit. Day by day, we light the rest. One more name: Passepartout, Fogg's new French valet. His watch is four minutes slow. Remember the watch. First stop: Fogg's street, Savile Row.",
     "timing": "over",
     "voice": "guide",
-    "starts_at_s": 10,
-    "variants": {
-      "clear": "In 1872, the French writer Jules Verne published a famous novel: Around the World in Eighty Days. The hero is Phileas Fogg, a gentleman in London who lives by the clock. Fogg bets half his money that he can travel around the whole world in eighty days. Tonight — Wednesday, the second of October, 1872 — at a quarter to nine, his train leaves London. We follow his route, starting today. Look at the map: only London is lit. Day by day, we light the rest. One more name: Passepartout, Fogg's new French valet. His watch is four minutes slow. Remember the watch. First stop: Fogg's street, Savile Row."
-    }
+    "starts_at_s": 10
   },
   "media": [
     {

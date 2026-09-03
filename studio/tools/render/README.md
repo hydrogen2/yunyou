@@ -39,7 +39,7 @@ Outputs (default `--out <chapter>/linear/`):
 Useful flags: `--plan` (print sentences, TTS lengths and cuts, render nothing) · `--scenes 1,7,16` (subset) ·
 `--size 1280x720` (fast look) · `--slack 0.10` · `--voice af_heart --speed 0.85` · `--gap 0.28` (silence between
 sentences) · `--no-tts` (captions only) · `--no-drift` (hold every still still, the player's `?drift=0`) ·
-`--cuts path.json` · `--player https://localhost/player/` · `--keep` (keep `.work/`) · `--track clear|standard` ·
+`--cuts path.json` · `--player https://localhost/player/` · `--keep` (keep `.work/`) ·
 `--zh-align proportional|whole` · `--plate-strict` · `--plate-min-area 0.10` · `--xfade-group 4` ·
 `--python ~/hilbert/.venv/bin/python`.
 
@@ -81,8 +81,8 @@ share. Sentence in/out points are exact; word-level highlight is gone and is not
 It localises the narration, the burned captions and the VTT, the scene lower-third, pins and captions, the title
 and credits cards, and the quiz / chat / checklist screens.
 
-**The one thing that does not transfer: the sidecar's `s:N` tokens.** They index the *English clear* sentences,
-and the locale translates the whole clear script, so the two sentence lists are not the same length (Day 1: 8 of
+**The one thing that does not transfer: the sidecar's `s:N` tokens.** They index the English sentences of
+`narration.script`, and the locale translates that whole script, so the two lists are not the same length (Day 1: 8 of
 18 scenes differ; `count-the-steps` is 19 English sentences and 13 Chinese ones). Three ways out, in order:
 
 1. **`cuts/<chapter-id>.<locale>.json`** — a real per-locale cut sheet, same token format, indexed into the

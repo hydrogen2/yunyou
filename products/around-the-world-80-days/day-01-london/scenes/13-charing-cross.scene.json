@@ -6,13 +6,10 @@
   "duration_s": 75,
   "learning_goal": "Know that Fogg's London was brand-new (station 8, Underground 9, Embankment 2, Big Ben 13) and remember the twenty guineas; feel awe at a new city and one warm beat.",
   "narration": {
-    "script": "The Strand, and ahead, the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the stone cross, and the cross itself, 1865. The Underground, nine years old. The Embankment by the river, two. Big Ben — the clock tower — thirteen. So much of what Fogg passes tonight is younger than his valet. You can't see it from here: the station's great roof — one iron span, 155 metres. It fell in 1905 and was replaced; that's all we'll say. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money. Fogg hands her the twenty guineas he has just won at whist. Without breaking stride.",
+    "script": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross, and the cross itself: 1865. The Underground railway: nine years old. The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking.",
     "starts_at_s": 2,
     "timing": "over",
-    "voice": "guide",
-    "variants": {
-      "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross, and the cross itself: 1865. The Underground railway: nine years old. The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
-    }
+    "voice": "guide"
   },
   "media": [
     {

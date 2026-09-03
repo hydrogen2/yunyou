@@ -6,12 +6,9 @@
   "duration_s": 60,
   "learning_goal": "Know Fogg's timetable and who Passepartout is; feel precision as comedy and like the valet at once.",
   "narration": {
-    "script": "Fogg's day, by the clock. Tap any line to see what happens. He rises at eight. Tea and toast at twenty-three minutes past. Shaving-water at nine thirty-seven, at thirty degrees — eighty-six Fahrenheit. Out of the door at half past eleven, home at midnight. Into this house, at twenty-nine minutes past eleven, walks Passepartout: a Parisian of Paris, about thirty. Once a wandering singer, then a circus-rider who vaulted like Léotard, a rope-dancer like Blondin. Then a fireman in Paris, then ten English households in five years. He wants a quiet life. Look at his face on the card; we like him already — the man with the slow watch.",
+    "script": "Fogg's day, hour by hour. Tap any line to see what happens. He gets up at eight. Tea and toast at twenty-three minutes past eight. Shaving water at nine thirty-seven, at exactly thirty degrees — eighty-six Fahrenheit. He leaves at half past eleven; home at midnight. This morning, at twenty-nine minutes past eleven, Passepartout walked into this house. A Parisian, about thirty. He was a singer, a circus rider, a gymnastics teacher, a fireman in Paris. Then ten English houses in five years. He wants a quiet life now. Look at his face. We like him already — the man with the slow watch.",
     "timing": "over",
-    "voice": "guide",
-    "variants": {
-      "clear": "Fogg's day, hour by hour. Tap any line to see what happens. He gets up at eight. Tea and toast at twenty-three minutes past eight. Shaving water at nine thirty-seven, at exactly thirty degrees — eighty-six Fahrenheit. He leaves at half past eleven; home at midnight. This morning, at twenty-nine minutes past eleven, Passepartout walked into this house. A Parisian, about thirty. He was a singer, a circus rider, a gymnastics teacher, a fireman in Paris. Then ten English houses in five years. He wants a quiet life now. Look at his face. We like him already — the man with the slow watch."
-    }
+    "voice": "guide"
   },
   "media": [
     {

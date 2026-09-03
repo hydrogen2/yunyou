@@ -6,12 +6,9 @@
  "duration_s": 55,
  "learning_goal": "Take away the seven lines with a blank column beside them, and one train that can still be booked; feel quiet satisfaction at having stopped where Fogg did not.",
  "narration": {
-  "script": "Six days from here, at Suez, Fogg works out that he is exactly on time. Then Verne writes the sharpest sentence in the book about him. Fogg breakfasts in his cabin, never thinking of inspecting the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, and an empty column headed 'what I saw'. On the back, the one thing here you can still book: Paris to Turin, through Sommeiller's tunnel.",
+  "script": "Six days from here, at Suez, Fogg finds he is exactly on time. Then Verne writes the sharpest sentence in the book about him. Fogg eats breakfast in his cabin and never thinks of looking at the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, an empty column headed 'what I saw'. On the back, the one thing you can still book: Paris to Turin, through Sommeiller's tunnel.",
   "timing": "over",
-  "voice": "guide",
-  "variants": {
-   "clear": "Six days from here, at Suez, Fogg finds he is exactly on time. Then Verne writes the sharpest sentence in the book about him. Fogg eats breakfast in his cabin and never thinks of looking at the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, an empty column headed 'what I saw'. On the back, the one thing you can still book: Paris to Turin, through Sommeiller's tunnel."
-  }
+  "voice": "guide"
  },
  "media": [
   {

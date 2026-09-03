@@ -39,9 +39,11 @@ externally (no uploads, no outreach emails, no purchases, no API keys created). 
       "Assume no prior reading" per `day-01-london/review/audience.md`: retell-the-story spine (cold open tells the bet in one
       breath before any meta-joke; Act I recast), connoisseur notes moved to overlay/"go deeper" layers, clear-English script
       variant per scene (schema: `narration.variants.clear`, Engine adds field + player toggle), glossary cards for period terms.
+      **Historical — the variant half of this item is void since 2026-09-03 (DECISIONS.md D8): there is one English track and
+      `narration.script` IS the clear one. Do not add `narration.variants` to anything.**
       Re-validate; fact-check-light on changed lines.
 - [ ] A3p Engine/Tools: player aids — "who's who" card (from personas + fact sheet), chapter "previously on…" recap,
-      narration speed control, clear-English toggle.
+      narration speed control, ~~clear-English toggle~~ (the toggle was built, then removed on 2026-09-03 — D8 leaves one track).
 - [ ] A4 Narrator: edit `studio/tools/render/cuts/day-01-london.json` so no sentence is machine-cut; Publisher re-renders the linear cut
       (`node studio/tools/render/render_linear.mjs …`) and refreshes `linear/watch.json`; write `review/publish-record.md` (credits page from rights.md).
 - [ ] A6 Content Preparer: re-source Day 1's five walking segments at ladder rungs 1–3 (`studio/strategy/media-fallback-ladder.md`)

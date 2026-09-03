@@ -55,13 +55,14 @@
     },
     "narration": {
       "type": "object",
+      "description": "Spoken narration. REMOVED 2026-09-03 (DECISIONS.md D8): `variants`, `after_script_variants` and `waypoint_script_variants` \u2014 the clear/literary register split. Migration: promote `variants.clear` into `script` (and `after_script_variants.clear` into `after_script`), then delete the variants objects. A scene that still carries them is not rejected \u2014 the keys are simply ignored by the player, the linear renderer and the validator's word budget \u2014 but they must not be re-introduced.",
       "required": [
         "script"
       ],
       "properties": {
         "script": {
           "type": "string",
-          "description": "Spoken script. Plain text, no stage directions. ~150 wpm."
+          "description": "Spoken script. Plain text, no stage directions. ~150 wpm. This is the CLEAR-ENGLISH track and the only English track: the parallel literary register was retired 2026-09-03 (DECISIONS.md D8 \u2014 the founder is a non-native speaker and the target audience, so a register they cannot judge is prose nobody reviews). Other languages are whole-file locale overlays (i18n/<code>.json), not variants."
         },
         "voice": {
           "type": "string",
@@ -80,26 +81,12 @@
         },
         "after_script": {
           "type": "string",
-          "description": "Spoken after the interaction resolves (answer chosen, walk finished, chat handed back, timeout hit). Plain text like script. Counted in the words-per-second rule."
+          "description": "Spoken after the interaction resolves (answer chosen, walk finished, chat handed back, timeout hit). Plain text like script. Counted in the words-per-second rule. One register only: `after_script_variants` was removed with the literary track (D8, 2026-09-03)."
         },
         "starts_at_s": {
           "type": "number",
           "minimum": 0,
           "description": "Seconds into the scene when speech begins (default 0). The validator measures words-per-second over duration_s - starts_at_s."
-        },
-        "variants": {
-          "type": "object",
-          "description": "Parallel narration tracks keyed by variant id; each value is a full replacement for `script` (plain text, same rules and w/s budget). Current ids: \"clear\" = simplified plain-English track for non-native speakers, selected on the player start screen (TTS slows to 0.9 unless the traveller picked a speed). Missing variant \u2192 the player falls back to `script`. Future ids: language codes (zh, \u2026).",
-          "additionalProperties": {
-            "type": "string"
-          }
-        },
-        "after_script_variants": {
-          "type": "object",
-          "description": "Same variant ids as `variants`, but for `after_script`: a full replacement for the post-interaction line so the chosen track does not change register mid-scene (fact-check A5, 2026-08-19). Missing id \u2192 the runtime falls back to `after_script`. Not counted twice by the validator: the w/s budget still measures `after_script` once per track. The walk key `waypoint_script` has the same twin, `waypoint_script_variants` (object of variant id \u2192 array of blocks, one per route index; `variants.<id>` must be their join).",
-          "additionalProperties": {
-            "type": "string"
-          }
         },
         "tts": {
           "type": "object",

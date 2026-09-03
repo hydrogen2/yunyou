@@ -1,0 +1,106 @@
+{
+ "video": "day-01-london_zh.mp4",
+ "subtitles": "day-01-london_zh.vtt",
+ "lang": "zh",
+ "locale": "zh-Hans",
+ "duration_s": 1050,
+ "track": "clear",
+ "chapters": [
+  {
+   "scene": "cold-open",
+   "type": "interstitial",
+   "at_s": 4,
+   "title": "第一天 · 伦敦 · 1872年10月2日，星期三"
+  },
+  {
+   "scene": "savile-row",
+   "type": "video",
+   "at_s": 64,
+   "title": "萨维尔街——福克家的门口"
+  },
+  {
+   "scene": "fogg-by-the-clock",
+   "type": "card",
+   "at_s": 148,
+   "title": "福克的一天，按钟走——路路通登场"
+  },
+  {
+   "scene": "count-the-steps",
+   "type": "video",
+   "at_s": 198,
+   "title": "数脚步——从萨维尔街到蓓尔美尔街"
+  },
+  {
+   "scene": "the-reform-club",
+   "type": "photo",
+   "at_s": 295,
+   "title": "走进改良俱乐部——凡尔纳写对了什么"
+  },
+  {
+   "scene": "quiz-verne-saloon",
+   "type": "quiz",
+   "at_s": 357,
+   "title": "小测——凡尔纳写的俱乐部，哪一处是真的"
+  },
+  {
+   "scene": "the-wager",
+   "type": "photo",
+   "at_s": 407,
+   "title": "赌局——巴林银行里的两万镑"
+  },
+  {
+   "scene": "the-world-shrinks",
+   "type": "map",
+   "at_s": 482,
+   "title": "世界刚刚变小——八十天的那个圈"
+  },
+  {
+   "scene": "pack-the-bag",
+   "type": "game",
+   "at_s": 574,
+   "title": "十分钟——把旅行包收好"
+  },
+  {
+   "scene": "the-dash",
+   "type": "map",
+   "at_s": 662,
+   "title": "一先令的马车，到查令十字"
+  },
+  {
+   "scene": "then-and-now",
+   "type": "photo",
+   "at_s": 720,
+   "title": "今昔——1872年和今天的站前广场"
+  },
+  {
+   "scene": "look-up-the-cross",
+   "type": "streetview",
+   "at_s": 746,
+   "title": "抬头——十字碑，和伦敦的原点"
+  },
+  {
+   "scene": "quiz-the-weather",
+   "type": "quiz",
+   "at_s": 796,
+   "title": "小测——抬头看屋顶：今晚天气怎么样"
+  },
+  {
+   "scene": "passepartout-on-the-platform",
+   "type": "dialogue",
+   "at_s": 824,
+   "title": "站台，晚上8点40分——和路路通聊聊"
+  },
+  {
+   "scene": "the-boat-train",
+   "type": "video",
+   "at_s": 870,
+   "title": "8点45分——过河，奔向那盏忘关的煤气灯"
+  },
+  {
+   "scene": "souvenir",
+   "type": "card",
+   "at_s": 952,
+   "title": "纪念品——福克在伦敦的最后一顿早餐"
+  }
+ ]
+}

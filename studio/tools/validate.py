@@ -142,18 +142,23 @@ def studio_rules(s):
     timed=[o for o in ov if 'at_waypoint' not in o and o.get('kind')!='gloss']  # gloss chips are reference, not pacing
     if d and len(timed) > max(1, d//15)+1: errs.append(f'{sid}: {len(timed)} timed overlays in {d}s exceeds ~1 per 15 s (waypoint-triggered overlays exempt)')
     if not s.get('sources') and typ not in ('interstitial','map'): errs.append(f'{sid}: no fact-sheet sources cited')
-    # words per second: (script + after_script) over (duration_s - starts_at_s); each narration.variants track measured the same way
-    tracks=[('', n.get('script',''))] + [(f' [variants.{k}]', v) for k,v in (n.get('variants') or {}).items() if isinstance(v,str)]
+    # retired register split (D8, 2026-09-03): one English track, and narration.script IS the clear one.
+    # A leftover variants object is not a hard failure — nothing reads it any more — but it is dead weight that
+    # will drift out of step with the script it shadows, so say so loudly.
+    for vkey,base in (('variants','script'),('after_script_variants','after_script'),('waypoint_script_variants','waypoint_script')):
+        if isinstance(n.get(vkey),dict) and n[vkey]:
+            warns.append(f'{sid}: narration.{vkey} is retired (DECISIONS.md D8) and is IGNORED by the player, the '
+                         f'linear renderer and the budget below — promote its "clear" value into narration.{base} and delete it')
+    # words per second: (script + after_script) over (duration_s - starts_at_s), on the one track there is
     start=n.get('starts_at_s',0) or 0
     if d and isinstance(start,(int,float)):
         secs=d-start
         if secs<=0: errs.append(f'{sid}: narration.starts_at_s {start} leaves no time in {d}s')
         else:
-            for label,txt in tracks:
-                words=len(txt.split()) + len(n.get('after_script','').split())
-                wps=words/secs
-                if words > secs*WPS_ERROR: errs.append(f'{sid}{label}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, too fast (limit {WPS_ERROR})')
-                elif wps > WPS_WARN: warns.append(f'{sid}{label}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, over the {WPS_WARN} w/s (150 wpm) target')
+            words=len(n.get('script','').split()) + len(n.get('after_script','').split())
+            wps=words/secs
+            if words > secs*WPS_ERROR: errs.append(f'{sid}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, too fast (limit {WPS_ERROR})')
+            elif wps > WPS_WARN: warns.append(f'{sid}: {words} words in {secs:g}s spoken = {wps:.2f} w/s, over the {WPS_WARN} w/s (150 wpm) target')
     return errs, warns
 
 def check(path, use_jsonschema=True):

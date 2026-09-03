@@ -6,12 +6,9 @@
   "duration_s": 47,
   "learning_goal": "Find two things without being told where to point: the 1865 replica cross overhead, and the direction of the Charles I statue — the point London's distances are measured from.",
   "narration": {
-    "script": "Stop here. Two things to find. The first is straight above you: follow the cross up to its very top, twenty-one metres, seventy feet, of Portland stone. It is a replica, put up in 1865 — the year the hotel behind it opened. The second is harder. Turn to your right, out of the forecourt, and look about two hundred metres towards Trafalgar Square. You cannot quite see him from here, but King Charles the First rides there in bronze. The first cross, of 1291, stood on that spot — and London still measures its distances from him, not from the stone above your head.",
+    "script": "Stop here. Two things to find. The first is straight above you: follow the cross up to its top — twenty-one metres, seventy feet, of stone. It is a copy, put up in 1865 — the year the hotel behind it opened. The second is harder. Turn to your right, out of the station yard, and look about two hundred metres towards Trafalgar Square. You cannot quite see him from here, but a statue of King Charles the First rides there. The first cross, from 1291, stood on that spot. London still measures its distances from that statue, not from the stone above your head.",
     "timing": "over",
-    "voice": "guide",
-    "variants": {
-      "clear": "Stop here. Two things to find. The first is straight above you: follow the cross up to its top — twenty-one metres, seventy feet, of stone. It is a copy, put up in 1865 — the year the hotel behind it opened. The second is harder. Turn to your right, out of the station yard, and look about two hundred metres towards Trafalgar Square. You cannot quite see him from here, but a statue of King Charles the First rides there. The first cross, from 1291, stood on that spot. London still measures its distances from that statue, not from the stone above your head."
-    }
+    "voice": "guide"
   },
   "media": [
     {

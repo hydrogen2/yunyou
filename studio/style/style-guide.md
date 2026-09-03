@@ -4,8 +4,14 @@
 the source text and is not a native English speaker. Tell the story as we go — never annotate a story we haven't told.
 Names, stakes and dates are introduced before they are used; any meta-joke about the source ("the author got X wrong")
 may only appear AFTER the plain version has been told. Connoisseur material lives in optional pins/"go deeper" layers,
-never in the spine. Every scene offers a clear-English script variant (shorter sentences, common words); period words
-(wager, valet, whist, guinea, hansom) get glossary cards on first use.
+never in the spine. Period words (wager, valet, whist, guinea, hansom) get glossary cards on first use.
+
+**Clear English is the only English (founder, 2026-09-03 — DECISIONS.md D8, supersedes D5).** *"Drop the literal
+english one and stick to the clear english, per the 'I need to be able to judge' principle."* `narration.script` IS
+the clear track: short sentences, common words, one idea at a time. The parallel literary register is retired, and
+not because it was bad — because the founder, who is the reviewer and the target reader, cannot evaluate it, and
+prose nobody can review is prose nobody reviews. Write the only line you would defend; there is no second draft to
+hide behind. Ornament is still allowed where a plain reader can follow it — plain is not flat.
 
 **Voice:** warm, curious, first-person plural. A knowledgeable friend, not a lecturer. Short sentences. Concrete nouns.
 **Never:** "Did you know…", "Fun fact:", "Without further ado", exclamation marks in narration, reading lists aloud.

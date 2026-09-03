@@ -6,12 +6,9 @@
   "duration_s": 85,
   "learning_goal": "Feel the thrill of the first train out; know the train still leaves over Hungerford Bridge and takes about two hours to Dover today; end on Passepartout's forgotten gas.",
   "narration": {
-    "script": "A postcard from 1905, thirty-three years after Fogg. The same platforms, and — just — the old roof, months before it fell. The Paris boat train, waiting. Now, tonight. Twenty to nine, seated. A quarter to nine — the whistle, and we're off, over Hungerford Bridge, the way trains still leave Fogg's station. We travel in daylight; Fogg had rain and dark. Look right — the Embankment along the river, two years old in 1872, and beyond it the clock tower, thirteen. Brand-new London slipping away behind him. This train, today, takes about two hours to Dover. Fogg's timetable gave him seven days to reach Suez, and this is the first hour of them. A few miles out, Passepartout sits bolt upright. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
+    "script": "This postcard is from 1905, thirty-three years after Fogg. The same platforms — and the old roof, probably in its last months before it fell. The boat train to Paris is waiting. Now, tonight. Twenty to nine: we are seated. A quarter to nine: the whistle, and we are off, over Hungerford Bridge. Trains still leave Fogg's station this way. Our film is daylight; Fogg had rain and dark. Look right: the Embankment along the river, two years old in 1872. Beyond it, the clock tower, thirteen. New London slips away behind him. Today this train takes about two hours to Dover. Fogg's plan gave him seven days to reach Suez. This is the first hour. A few miles out, Passepartout sits up straight. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
     "timing": "over",
-    "voice": "guide",
-    "variants": {
-      "clear": "This postcard is from 1905, thirty-three years after Fogg. The same platforms — and the old roof, probably in its last months before it fell. The boat train to Paris is waiting. Now, tonight. Twenty to nine: we are seated. A quarter to nine: the whistle, and we are off, over Hungerford Bridge. Trains still leave Fogg's station this way. Our film is daylight; Fogg had rain and dark. Look right: the Embankment along the river, two years old in 1872. Beyond it, the clock tower, thirteen. New London slips away behind him. Today this train takes about two hours to Dover. Fogg's plan gave him seven days to reach Suez. This is the first hour. A few miles out, Passepartout sits up straight. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued."
-    }
+    "voice": "guide"
   },
   "media": [
     {

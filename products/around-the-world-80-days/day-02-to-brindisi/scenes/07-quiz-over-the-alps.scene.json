@@ -9,13 +9,7 @@
   "script": "It is Thursday night, and the train is climbing. Two years before Fogg, how did this train get to the other side of the Alps?",
   "timing": "over",
   "voice": "guide",
-  "after_script": "Over the top: seventy-seven kilometres of railway laid beside the mountain road, and about five hours. In 1867 you crossed these mountains in the open air. In 1872 you slept through them.",
-  "variants": {
-   "clear": "It is Thursday night, and the train is climbing. Two years before Fogg, how did this train get to the other side of the Alps?"
-  },
-  "after_script_variants": {
-   "clear": "Over the top. Seventy-seven kilometres of railway beside the mountain road, and about five hours. In 1867 you crossed these mountains in the open air. In 1872 you slept through them."
-  }
+  "after_script": "Over the top. Seventy-seven kilometres of railway beside the mountain road, and about five hours. In 1867 you crossed these mountains in the open air. In 1872 you slept through them."
  },
  "media": [],
  "overlays": [

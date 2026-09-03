@@ -1,12 +1,15 @@
 #!/usr/bin/env node
 /**
  * smoke_v03.mjs — headless checks for the v0.3 player features (audience fix pass A3p):
- *   clear-English toggle (narration.variants.clear swaps TTS+caption script, ttsRate 0.9),
  *   gloss overlay chips (📖, tap speaks), who's-who card (shared/whos-who.json, degrades to hidden button),
  *   chapter recap on the cover, narration speed control, and the post-start voice-picker crash fix.
  *
- * The tour is fetched live and mutated in flight (page.route): a recap, a clear variant and a gloss overlay are
- * injected into chapter 1 / scene 1 so no content files are touched.
+ * v0.10 (2026-09-03, DECISIONS.md D8): the clear/literary register toggle is GONE — there is one English track and
+ * narration.script IS it — so the toggle checks are replaced by "the caption speaks narration.script, full stop",
+ * and the house TTS default is 0.9 unconditionally.
+ *
+ * The tour is fetched live and mutated in flight (page.route): a recap and a gloss overlay are injected into
+ * chapter 1 / scene 1 so no content files are touched.
  *
  * Run:  node studio/player/test/smoke_v03.mjs [--player https://localhost/player/] [--tour /products/.../tour.json]
  * Needs: studio/tools/render/node_modules (playwright-core) + chromium in ~/.cache/ms-playwright.
@@ -26,7 +29,6 @@ const opt = (k, d) => { const i = args.indexOf(k); return i >= 0 ? args[i + 1] :
 const PLAYER = opt('--player', 'https://localhost/player/');
 const TOUR = opt('--tour', '/products/around-the-world-80-days/day-01-london/tour.json');
 
-const CLEAR = 'Simple words here. We start in London. A rich man makes a big bet.';
 const GLOSS = 'whist — a four-player card game, the ancestor of bridge';
 const RECAP = 'A rich Londoner bet twenty thousand pounds he can circle the world in eighty days.';
 
@@ -42,11 +44,10 @@ async function newPage({ blockWho = false } = {}) {
   page.errors = []; page.consoleErrors = [];
   page.on('pageerror', e => page.errors.push(String(e.message)));
   page.on('console', m => { if (m.type() === 'error') page.consoleErrors.push(m.text()); });
-  await page.route(u => new URL(u).pathname.endsWith('/tour.json'), async route => {   // inject recap + variant + gloss, content files untouched (predicate: the player page URL carries tour.json in its query string)
+  await page.route(u => new URL(u).pathname.endsWith('/tour.json'), async route => {   // inject recap + gloss, content files untouched (predicate: the player page URL carries tour.json in its query string)
     const r = await route.fetch(); const j = await r.json();
     const ch = j.chapters[0]; ch.recap = RECAP;
     const s0 = ch.scenes[0];
-    s0.narration.variants = { clear: CLEAR };
     s0.overlays = (s0.overlays || []).concat([{ at_s: 0, kind: 'gloss', text: GLOSS }]);
     await route.fulfill({ response: r, json: j });
   });
@@ -60,22 +61,21 @@ async function newPage({ blockWho = false } = {}) {
 // ---- pass 1: everything present ----
 {
   const page = await newPage();
-  ok(await page.locator('#clearEn').count() === 1, 'cover: Clear English toggle exists');
+  ok(await page.locator('#clearEn').count() === 0, 'cover: the clear/literary toggle is gone (D8, one English track)');
   ok(await page.locator('#rate option').count() === 4, 'cover: speed control has 4 steps');
   ok((await page.locator('#coverTitle').innerText()).includes(RECAP), 'cover: chapter recap shown under the hook');
   await page.waitForFunction(() => !document.querySelector('#btnWho').hidden, null, { timeout: 10000 }).catch(() => {});
   ok(!(await page.evaluate(() => document.querySelector('#btnWho').hidden)), "header: who's-who button revealed after whos-who.json loads");
 
-  await page.check('#clearEn');
-  ok(await page.evaluate(() => localStorage.getItem('yy-clear')) === '1', 'toggle persists to localStorage');
-  ok(await page.evaluate(() => ttsRate()) === 0.9, 'clear mode defaults TTS rate to 0.9');
+  ok(await page.evaluate(() => ttsRate()) === 0.9, 'no explicit speed: TTS rate is the house default 0.9');
   await page.selectOption('#rate', '1.1');
-  ok(await page.evaluate(() => ttsRate()) === 1.1, 'explicit speed choice (1.1) wins over the clear-mode default');
-  await page.evaluate(() => localStorage.removeItem('yy-rate'));       // back to the clear default for the rest of the pass
+  ok(await page.evaluate(() => ttsRate()) === 1.1, 'explicit speed choice (1.1) wins over the default');
+  await page.evaluate(() => localStorage.removeItem('yy-rate'));       // back to the default for the rest of the pass
 
   await page.click('#start');
   await page.waitForSelector('#script');
-  ok((await page.locator('#script').innerText()).trim() === CLEAR, 'scene 1: caption script = variants.clear');
+  const s0script = await page.evaluate(() => scenes[0].narration.script);
+  ok((await page.locator('#script').innerText()).trim() === s0script.trim(), 'scene 1: caption script = narration.script');
   const chip = page.locator('#overlays button.gloss');
   ok(await chip.count() === 1 && (await chip.innerText()).includes('📖'), 'scene 1: gloss overlay renders as a 📖 chip');
   await chip.click(); await sleep(300);                                 // tap speaks the definition (silent headless) — must not throw
@@ -91,10 +91,10 @@ async function newPage({ blockWho = false } = {}) {
   ok(await page.evaluate(() => document.querySelector('#who').hidden), 'Escape closes the card');
   ok(await page.evaluate(() => paused) === false, 'scene clock resumes on close');
 
-  // scene without a variant falls back to script even with clear mode on
+  // one track everywhere: the next scene's caption is its narration.script too
   const orig = await page.evaluate(() => scenes[1].narration.script);
   await page.evaluate(() => showScene(1)); await sleep(400);
-  ok((await page.locator('#script').innerText()).trim() === orig.trim(), 'scene 2 (no variant): falls back to narration.script');
+  ok((await page.locator('#script').innerText()).trim() === orig.trim(), 'scene 2: caption script = narration.script');
 
   // regression: speak() must not touch the removed cover's #voice select (pre-v0.3 crash when voices exist)
   const before = page.errors.length;
@@ -107,19 +107,20 @@ async function newPage({ blockWho = false } = {}) {
   await page.context().close();
 }
 
-// ---- pass 2: degradation — no whos-who.json, clear mode off ----
+// ---- pass 2: degradation — no whos-who.json, and a stale yy-clear left over from before D8 ----
 {
   const page = await newPage({ blockWho: true });
-  await page.evaluate(() => { localStorage.removeItem('yy-clear'); localStorage.removeItem('yy-rate'); });
+  await page.evaluate(() => { localStorage.setItem('yy-clear', '0'); localStorage.removeItem('yy-rate'); });
   await sleep(600);
   ok(await page.evaluate(() => document.querySelector('#btnWho').hidden), "missing whos-who.json: button stays hidden");
   await page.reload(); await page.waitForSelector('#start');
   await page.waitForFunction(() => typeof scenes !== 'undefined' && scenes.length > 0, null, { timeout: 20000 });
-  ok(await page.evaluate(() => ttsRate()) === 1.0, 'defaults: TTS rate 1.0 with clear mode off');
+  ok(await page.evaluate(() => localStorage.getItem('yy-clear')) === null, 'a stale yy-clear from an older build is dropped on boot');
+  ok(await page.evaluate(() => ttsRate()) === 0.9, 'defaults: TTS rate 0.9, whatever the old flag said');
   await page.click('#start');
   await page.waitForSelector('#script');
   const orig = await page.evaluate(() => scenes[0].narration.script);
-  ok((await page.locator('#script').innerText()).trim() === orig.trim(), 'clear mode off: variants ignored, script plays');
+  ok((await page.locator('#script').innerText()).trim() === orig.trim(), 'stale flag ignored: narration.script plays');
   ok(page.errors.length === 0, 'no uncaught page errors in pass 2', page.errors.join(' | '));
   await page.context().close();
 }

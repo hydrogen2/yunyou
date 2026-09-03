@@ -65,7 +65,42 @@ is free and the $200/month credit is never touched at our volume. Paste it on th
 Applies to studio-written text, cards (G-01…G-08) and the linear cuts. Chosen for goodwill and because share-alike
 protects the work; not a considered commercial choice — revisit with D1 when monetization comes up.
 
-**D5 · Clear English is the DEFAULT everywhere.**
+**D5 · Clear English is the DEFAULT everywhere.** — **SUPERSEDED by D8 (2026-09-03).**
 The founder is the target audience: armchair traveller, knows only the title, non-native English speaker.
 `narration.variants.clear` is now the default track in BOTH the player and the rendered video; the literary track is
 the opt-out toggle in the player. One video, not two. (Audience report #1; north star in `studio/PRODUCTION.md`.)
+*D5 kept the literary track alive as an opt-out. D8 deletes it: clear English is not the default any more, it is the
+only English there is.*
+
+## D8 · The literary English track is RETIRED — clear English is the only English (founder, 2026-09-03, supersedes D5)
+
+> *"drop the literal english one and stick to the clear english, per the 'I need to be able to judge' principle."*
+> — the founder, 2026-09-03
+
+**The reason, which matters more than the deletion.** The founder is a non-native English speaker and the target
+audience, and is also the only reviewer. A register they cannot evaluate is not merely a second copy of the words —
+it is prose that **nobody reviews**. The literary track was therefore not redundant, it was *unreviewable*, and an
+unreviewable track is a place where errors, purple sentences and unchecked claims can live indefinitely. Ship only
+what the founder can judge.
+
+**What changed, 2026-09-03 (Engine/Tools):**
+- **Content.** In all 33 scenes across `day-01-london` (18) and `day-02-to-brindisi` (15), `narration.variants.clear`
+  was promoted into `narration.script` and `after_script_variants.clear` into `after_script`; the variants objects
+  were deleted. Every other field is untouched. Both `tour.json` files were reassembled from the scene files (they
+  embed their own copies of the scenes, so a scene edit does not reach the player or the renderer otherwise) and are
+  now byte-for-byte equal to them, scene by scene.
+- **Contracts.** `studio/schema/scene.schema.json` drops `narration.variants` and `narration.after_script_variants`
+  and records the removal + migration in `narration.description`; `studio/tools/validate.py` measures the
+  words-per-second budget on the one track and WARNS (not fails) if a retired variants object reappears;
+  `studio/templates/scene-spec.md`, `studio/templates/i18n-locale.md` and `studio/style/style-guide.md` follow.
+- **Code.** The player loses the "Clear English" checkbox, `pickScript`, the `yy-clear` storage key (deleted on boot
+  if an old browser still has it) and the rate coupling — the TTS default is simply 0.9 now. `render_linear.mjs`
+  loses `--track` and the variant lookup. **`--lang en|zh` is untouched**: language is a different axis from register,
+  `i18n/zh-Hans.json` still overlays `script`, and after this change that overlay is over the only English there is.
+- **Cut sheet.** `studio/tools/render/cuts/day-01-london.json` addresses narration by sentence index and its tokens
+  were already derived against the clear track (A5, 2026-08-19), so **no token needed fixing** — all 17 re-checked
+  against the promoted script with the renderer's own splitter; nothing dangles or over-reaches. Day 2 has no cut
+  sheet yet; when it gets one, it indexes `narration.script` like everyone else.
+
+**Standing rule for every role from now on:** there is one narration track per language. If a line is too ornate for
+the founder to judge, that is a defect in the line, not a reason for a second track.

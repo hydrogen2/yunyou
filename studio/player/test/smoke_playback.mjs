@@ -222,8 +222,8 @@ const state = page => page.evaluate(() => ({
   ok(saved.idx === 6 && saved.elapsed > 2.5, 'scene 7 running before the reload', `elapsed=${saved.elapsed.toFixed(1)}s`);
   const stored = await page.evaluate(() => JSON.parse(localStorage.getItem('yy-progress:' + TOUR_URL)));
   ok(stored && stored.sceneId === 'the-wager', 'progress is written under a tour-scoped key', JSON.stringify(stored && stored.sceneId));
-  ok(stored && stored.tourUrl && 'clearEnglish' in stored && 'rate' in stored && 'lang' in stored,
-    'the save carries {tourUrl, sceneId, elapsed, lang, clearEnglish, rate}');
+  ok(stored && stored.tourUrl && !('clearEnglish' in stored) && 'rate' in stored && 'lang' in stored,
+    'the save carries {tourUrl, sceneId, elapsed, lang, rate} — and no register flag (D8)');
   const writes = await page.evaluate(() => { let n = 0; const raw = localStorage.setItem.bind(localStorage);
     localStorage.setItem = (k, v) => { if (String(k).startsWith('yy-progress')) n++; return raw(k, v); };
     return new Promise(r => setTimeout(() => r(n), 5000)); });

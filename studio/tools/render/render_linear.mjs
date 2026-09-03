@@ -240,9 +240,17 @@ const isCJK = s => /[㐀-鿿豈-﫿＀-￯]/.test(s || '');
 function parseLinearCut(readmePath) {
   if (!fs.existsSync(readmePath)) return null; const md = fs.readFileSync(readmePath, 'utf8');
   const sec = md.split(/\n##\s+/).find(s => /^linear cut/i.test(s)); if (!sec) return null;
-  const rows = []; for (const line of sec.split('\n')) { const m = line.match(/^\|\s*(\d{2})\s+([a-z0-9-]+)\s*\|\s*(.*?)\s*\|\s*(\d+)\s*\|/i); if (m) rows.push({ num: +m[1], id: m[2], use: m[3], s: +m[4] }); }
+  // The seconds column may be emphasised (`| **75** |`) — the Narrator bolds a number they have just changed, and
+  // on 2026-09-03 that silently dropped `13 charing-cross` out of the film because the row no longer matched.
+  // Accept the emphasis, and SAY SO when a line that looks like a cut row still fails to parse.
+  const rows = [], skipped = [];
+  for (const line of sec.split('\n')) {
+    const m = line.match(/^\|\s*(\d{2})\s+([a-z0-9-]+)\s*\|\s*(.*?)\s*\|\s*[*_`]*\s*(\d+)\s*[*_`]*\s*\|/i);
+    if (m) { rows.push({ num: +m[1], id: m[2], use: m[3], s: +m[4] }); continue; }
+    if (/^\|\s*\d{2}\s+[a-z0-9-]+\s*\|/i.test(line)) skipped.push(line.trim().slice(0, 80));
+  }
   const notes = (sec.match(/Linear-only:[^\n]*|Interactive-only:[^\n]*/g) || []).join(' ');
-  return rows.length ? { rows, notes } : null;
+  return rows.length ? { rows, notes, skipped } : null;
 }
 
 // ---------------------------------------------------------------- TTS (local Kokoro, through ~/hilbert)
@@ -701,14 +709,16 @@ function captionChunks(text, words, maxChars = 84) {
 
   // 1. selection
   let selection;
-  if (readme) { selection = readme.rows.map(r => { const i = scenes.findIndex(s => s.id === r.id); return i < 0 ? null : { idx: i, scene: scenes[i], cap: r.s, use: r.use }; }).filter(Boolean); note(`Selection: ${selection.length} scenes from scenes/README.md "Linear cut" table (${readme.rows.reduce((a, r) => a + r.s, 0)} s planned).`); }
+  if (readme) { selection = readme.rows.map(r => { const i = scenes.findIndex(s => s.id === r.id); return i < 0 ? null : { idx: i, scene: scenes[i], cap: r.s, use: r.use }; }).filter(Boolean); note(`Selection: ${selection.length} scenes from scenes/README.md "Linear cut" table (${readme.rows.reduce((a, r) => a + r.s, 0)} s planned).`);
+    for (const bad of readme.skipped || []) warnings.push(`scenes/README.md "Linear cut": this row has no readable seconds column and is NOT in the film — \`${bad}\``);
+    for (const r of readme.rows) if (!scenes.some(s2 => s2.id === r.id)) warnings.push(`scenes/README.md "Linear cut" row "${r.num} ${r.id}" names a scene that is not in tour.json — dropped`); }
   else { selection = scenes.map((s, i) => ({ idx: i, scene: s, cap: s.duration_s, use: 'whole' })).filter(x => !/INTERACTIVE CUT ONLY/i.test(x.scene.production_notes || '')); note('Selection: no README table found — all scenes except "INTERACTIVE CUT ONLY", capped at duration_s.'); }
   if (ONLY) selection = selection.filter(x => ONLY.includes(x.idx + 1));
 
   // 2. per-scene plan: script tokens → utterances
   //
-  // English stays canonical: the sidecar's `s:N` tokens are indexed against the CLEAR English track, which is the
-  // rendered default (D5). The locale file translates the WHOLE clear script, so for --lang zh those indices do not
+  // English stays canonical: the sidecar's `s:N` tokens are indexed against narration.script, the one English track
+  // (D8). The locale file translates that whole script, so for --lang zh those indices do not
   // transfer (Day 1: 8 of 18 scenes split into a different number of Mandarin sentences — 19 English sentences
   // become 13 Chinese ones in `count-the-steps`). Three ways out, in order of authority:
   //   1. cuts/<chapter-id>.<locale>.json — a real per-locale cut sheet, tokens indexed into the LOCALE's sentences.
@@ -733,10 +743,9 @@ function captionChunks(text, words, maxChars = 84) {
   const plans = [];
   for (const sel of selection) {
     const s = sel.scene; const hint = (cuts.scenes || {})[s.id] || {};
-    // --track clear|standard : the clear-English variant (narration.variants.clear) is the DEFAULT (founder decision 2026-08-19,
-    // audience report #1: non-native-friendly). Falls back to narration.script wherever a scene has no variant.
-    const _track = (args.track || 'clear');
-    const _en = (_track === 'clear' && s.narration?.variants?.clear) ? s.narration.variants.clear : (s.narration?.script || '');
+    // One English narration track: narration.script IS the clear-English track (founder decision 2026-09-03,
+    // DECISIONS.md D8 — the literary register is retired, "I need to be able to judge"). No --track, no variant lookup.
+    const _en = s.narration?.script || '';
     const enSents = splitSentences(_en);
     const locScript = LT.script(s);
     const localised = LANG === 'zh' && !!locScript;
@@ -1036,14 +1045,14 @@ function captionChunks(text, words, maxChars = 84) {
   const marks = plans.map(p => ({ scene: p.s.id, type: p.s.type, at_s: Math.round(p.render.start), title: LT.title(p.s) }));
   fs.writeFileSync(path.join(OUT, `${chapter.id}_${LANG}.chapters.json`), JSON.stringify({
     video: outName, subtitles: `${chapter.id}_${LANG}.vtt`, lang: LANG, locale: LOCALE_ID || 'en',
-    duration_s: Math.round(dur), track: args.track || 'clear', chapters: marks }, null, 1));
+    duration_s: Math.round(dur), chapters: marks }, null, 1));
   fs.writeFileSync(path.join(OUT, `${chapter.id}_${LANG}.chapters.txt`),
     ['0:00 ' + LT.chapterTitle(), ...marks.map(m => `${mmss(m.at_s)} ${m.title}`)].join('\n') + '\n');
 
   // 6. log
   const L = []; L.push(`# Render log — ${chapter.title} — linear cut (review animatic)`, '', `**Rendered:** ${new Date().toISOString()}   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** ${Math.round((Date.now() - t0) / 60000 * 10) / 10} min`, '',
     `**Output:** \`${path.relative(path.resolve(CHAPTER_DIR, '../../..'), finalMp4)}\` — ${fmt1(dur)} s (${mmss(dur)}), ${v.width}×${v.height} ${v.codec_name} ${v.r_frame_rate} fps, ${a.codec_name} ${a.sample_rate} Hz ${a.channels} ch, ${(probe.format.size / 1048576).toFixed(1)} MB, faststart. Subtitles: \`${chapter.id}_${LANG}.vtt\` (burned in AND sidecar).`, '',
-    `**Language:** ${LANG === 'zh' ? `Mandarin (${LOCALE_ID}) — text from \`i18n/${LOCALE_ID}.json\`, index-addressed, English where the locale is silent` : 'English (clear track)'}. **Voice:** ${NO_TTS || !ttsVoices ? 'none (captions only)' : `local Kokoro ${ttsVoices[LANG][0]} @ ${ttsVoices[LANG][1]}x via ~/hilbert (Apache-2.0, free, no account)`}${plans.some(p => !p.ttsOk) ? ' — **TTS FAILED for some lines, see table**' : ''}. **Narration gain:** ${fmt1(NARR_GAIN_DB)} dB (measured). **Beds:** Commons audio at ${BED_TARGET_LUFS} LUFS (≈ 18 dB under narration), stings at ${STING_TARGET_LUFS} LUFS. **Slack:** a scene may exceed its README seconds by ${Math.round(SLACK * 100)} % before the script is end-cut at a sentence boundary. **Scene length:** ${args['no-floor'] ? 'narration + pad, capped by the README seconds (--no-floor: the authored seconds are NOT honoured as a floor)' : 'clamp(narration + pad, README seconds, README seconds x ' + (1 + SLACK).toFixed(2) + ') — the authored seconds are a floor as well as a cap, so silence the rundown asked for actually exists ("air" column below)'}.`, '',
+    `**Language:** ${LANG === 'zh' ? `Mandarin (${LOCALE_ID}) — text from \`i18n/${LOCALE_ID}.json\`, index-addressed, English where the locale is silent` : 'English'}. **Voice:** ${NO_TTS || !ttsVoices ? 'none (captions only)' : `local Kokoro ${ttsVoices[LANG][0]} @ ${ttsVoices[LANG][1]}x via ~/hilbert (Apache-2.0, free, no account)`}${plans.some(p => !p.ttsOk) ? ' — **TTS FAILED for some lines, see table**' : ''}. **Narration gain:** ${fmt1(NARR_GAIN_DB)} dB (measured). **Beds:** Commons audio at ${BED_TARGET_LUFS} LUFS (≈ 18 dB under narration), stings at ${STING_TARGET_LUFS} LUFS. **Slack:** a scene may exceed its README seconds by ${Math.round(SLACK * 100)} % before the script is end-cut at a sentence boundary. **Scene length:** ${args['no-floor'] ? 'narration + pad, capped by the README seconds (--no-floor: the authored seconds are NOT honoured as a floor)' : 'clamp(narration + pad, README seconds, README seconds x ' + (1 + SLACK).toFixed(2) + ') — the authored seconds are a floor as well as a cap, so silence the rundown asked for actually exists ("air" column below)'}.`, '',
     ...logLines, `Sidecar cut hints: ${fs.existsSync(cutsPath) ? path.relative(path.resolve(CHAPTER_DIR, '../../..'), cutsPath) : 'none'}.`, '',
     `## Rights compliance`, `- YouTube: not downloaded, not re-encoded. ${clipCards ? `${clipCards} clip card(s) stand in (channel, title, in/out, thumbnail from i.ytimg.com)` : 'no clip cards in this cut'}; ${footageSegs} shot(s) come from self-hosted, licence-clean files under \`media/files/\` (Wikimedia Commons / public-domain film / KartaView), never from youtube.com.`, `- Street View: not screen-recorded — stop cards only.`, `- Commons images resolved through the API (imageinfo, width 1920), attribution burned bottom-right while shown and repeated on the credits card. Freesound refs (login-gated) skipped.`, '',
     `## Scenes`, '', `| # | scene | type | at | s (README) | TTS | air | visual source | beds | script cuts |`, `|---|-------|------|----|-----------:|-----|----:|---------------|------|-------------|`);

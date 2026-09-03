@@ -6,16 +6,10 @@
  "duration_s": 50,
  "learning_goal": "Know why a train to the heel of Italy counted as a short cut to India.",
  "narration": {
-  "script": "Calais, in the middle of the night. Before we board — one question about the train we are about to catch. Before any of this existed, how long did a letter from London take to reach India?",
+  "script": "Calais, in the middle of the night. Before we get on the train, one question about it. Before any of this was built, how long did a letter from London take to reach India?",
   "timing": "over",
   "voice": "guide",
-  "after_script": "Three months, round the Cape of Good Hope. A question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut.",
-  "variants": {
-   "clear": "Calais, in the middle of the night. Before we get on the train, one question about it. Before any of this was built, how long did a letter from London take to reach India?"
-  },
-  "after_script_variants": {
-   "clear": "Three months, round the Cape of Good Hope. So a question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut."
-  }
+  "after_script": "Three months, round the Cape of Good Hope. So a question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut."
  },
  "media": [
   {

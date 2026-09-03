@@ -23,13 +23,10 @@
      "duration_s": 75,
      "learning_goal": "Know the date, the deadline and the stake in one breath; feel a clock already running.",
      "narration": {
-      "script": "There is a novel, published in 1872, by the French writer Jules Verne: Around the World in Eighty Days. Its hero is Phileas Fogg, a London gentleman who runs his life by the clock. Fogg bets half his fortune that he can circle the whole world in eighty days. And tonight — Wednesday the second of October, 1872 — at a quarter to nine, he leaves. We are travelling his route, starting today. Look at the map: only London is lit. Day by day, we'll light the rest, one port at a time. One name before we start. This morning Fogg hired a French valet, Passepartout, whose watch runs four minutes slow. Remember the watch. Now to the street where it all begins: Savile Row.",
+      "script": "In 1872, the French writer Jules Verne published a famous novel: Around the World in Eighty Days. The hero is Phileas Fogg, a gentleman in London who lives by the clock. Fogg bets half his money that he can travel around the whole world in eighty days. Tonight — Wednesday, the second of October, 1872 — at a quarter to nine, his train leaves London. We follow his route, starting today. Look at the map: only London is lit. Day by day, we light the rest. One more name: Passepartout, Fogg's new French valet. His watch is four minutes slow. Remember the watch. First stop: Fogg's street, Savile Row.",
       "timing": "over",
       "voice": "guide",
-      "starts_at_s": 10,
-      "variants": {
-       "clear": "In 1872, the French writer Jules Verne published a famous novel: Around the World in Eighty Days. The hero is Phileas Fogg, a gentleman in London who lives by the clock. Fogg bets half his money that he can travel around the whole world in eighty days. Tonight — Wednesday, the second of October, 1872 — at a quarter to nine, his train leaves London. We follow his route, starting today. Look at the map: only London is lit. Day by day, we light the rest. One more name: Passepartout, Fogg's new French valet. His watch is four minutes slow. Remember the watch. First stop: Fogg's street, Savile Row."
-      }
+      "starts_at_s": 10
      },
      "media": [
       {
@@ -152,12 +149,9 @@
      "duration_s": 100,
      "learning_goal": "Know that Verne put Fogg at No. 7 and Sheridan's death there in 1814, that Sheridan lived at No. 14 and died in 1816, and that the Row was already tailoring country; feel the hush of cloth and chalk.",
      "narration": {
-      "script": "Here we are: Savile Row, a quiet street in Mayfair. This is where the novel begins. Phileas Fogg lives on this street — at No. 7, Verne tells us — and from that door he leaves tonight to go round the world. Look in the windows as we walk: bolts of cloth, chalk marks, half-made jackets. This was already tailoring country in 1872, and it still is. Henry Poole put his front door on the Row in 1846 and is still here — since 1982 at No. 15. Poole's own story is that in 1865 they cut the Prince of Wales a short evening jacket. The ancestor, they say, of the dinner jacket. One detour: on the roof of No. 3, on the thirtieth of January 1969, the Beatles played their rooftop concert. Now, about No. 7. Verne picked a famous address: 'the house in which Sheridan died in 1814', he wrote. In fact Sheridan, the playwright, lived at No. 14 — and died there in 1816. The plaque on No. 14 remembers him. There's no plaque for Fogg anywhere; he lived only in the novel. Here is the Row around 1890, a few years after Fogg. Same doors. Same hush.",
+      "script": "This is Savile Row, a quiet street in Mayfair. The novel starts here. Phileas Fogg lives on this street — at No. 7, the book says. Tonight he will leave from that door to go round the world. Look in the shop windows: rolls of cloth, chalk marks, half-made jackets. In 1872 this was already a street of tailors. It still is. The tailor Henry Poole opened his door on the Row in 1846. The shop is still here — at No. 15 since 1982. The firm says that in 1865 they made a short evening jacket for the Prince of Wales — the grandfather, they say, of the dinner jacket. One more stop: on the roof of No. 3, in January 1969, the Beatles played their famous rooftop concert. And one small secret about No. 7. Verne wrote that the playwright Sheridan died there in 1814. In fact Sheridan lived at No. 14, and died in 1816. No. 14 has a plaque for him. Fogg has no plaque — he lived only in the book. Here is the street around 1890. Same doors. Same quiet.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "This is Savile Row, a quiet street in Mayfair. The novel starts here. Phileas Fogg lives on this street — at No. 7, the book says. Tonight he will leave from that door to go round the world. Look in the shop windows: rolls of cloth, chalk marks, half-made jackets. In 1872 this was already a street of tailors. It still is. The tailor Henry Poole opened his door on the Row in 1846. The shop is still here — at No. 15 since 1982. The firm says that in 1865 they made a short evening jacket for the Prince of Wales — the grandfather, they say, of the dinner jacket. One more stop: on the roof of No. 3, in January 1969, the Beatles played their famous rooftop concert. And one small secret about No. 7. Verne wrote that the playwright Sheridan died there in 1814. In fact Sheridan lived at No. 14, and died in 1816. No. 14 has a plaque for him. Fogg has no plaque — he lived only in the book. Here is the street around 1890. Same doors. Same quiet."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -302,12 +296,9 @@
      "duration_s": 60,
      "learning_goal": "Know Fogg's timetable and who Passepartout is; feel precision as comedy and like the valet at once.",
      "narration": {
-      "script": "Fogg's day, by the clock. Tap any line to see what happens. He rises at eight. Tea and toast at twenty-three minutes past. Shaving-water at nine thirty-seven, at thirty degrees — eighty-six Fahrenheit. Out of the door at half past eleven, home at midnight. Into this house, at twenty-nine minutes past eleven, walks Passepartout: a Parisian of Paris, about thirty. Once a wandering singer, then a circus-rider who vaulted like Léotard, a rope-dancer like Blondin. Then a fireman in Paris, then ten English households in five years. He wants a quiet life. Look at his face on the card; we like him already — the man with the slow watch.",
+      "script": "Fogg's day, hour by hour. Tap any line to see what happens. He gets up at eight. Tea and toast at twenty-three minutes past eight. Shaving water at nine thirty-seven, at exactly thirty degrees — eighty-six Fahrenheit. He leaves at half past eleven; home at midnight. This morning, at twenty-nine minutes past eleven, Passepartout walked into this house. A Parisian, about thirty. He was a singer, a circus rider, a gymnastics teacher, a fireman in Paris. Then ten English houses in five years. He wants a quiet life now. Look at his face. We like him already — the man with the slow watch.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Fogg's day, hour by hour. Tap any line to see what happens. He gets up at eight. Tea and toast at twenty-three minutes past eight. Shaving water at nine thirty-seven, at exactly thirty degrees — eighty-six Fahrenheit. He leaves at half past eleven; home at midnight. This morning, at twenty-nine minutes past eleven, Passepartout walked into this house. A Parisian, about thirty. He was a singer, a circus rider, a gymnastics teacher, a fireman in Paris. Then ten English houses in five years. He wants a quiet life now. Look at his face. We like him already — the man with the slow watch."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -406,12 +397,9 @@
      "duration_s": 94,
      "learning_goal": "Know that Fogg's 1,151 steps are about a kilometre of real London, and that the street they end in is clubland — gas-lit since 1807, with the Reform, the Travellers and the Athenaeum in a row.",
      "narration": {
-      "script": "Half past eleven, and Fogg leaves the house on foot, counting. Five hundred and seventy-five paces with the right foot, five hundred and seventy-six with the left: one thousand one hundred and fifty-one steps to his club. His way runs down Savile Row, right into Burlington Gardens, left down Old Bond Street to Piccadilly. Across, and down the long slope of St James's Street. At the bottom, east into Pall Mall. Door to door it is eleven hundred and twenty metres, near enough a kilometre, so his step works out at ninety-seven centimetres. He never hurries once. And this is the street he is walking into. Pall Mall was one of the first streets in London lit by gas, back in 1807. Sixty-five years before Fogg, the lamps here were already the future. This is clubland, a row of private clubs along the south side, and three of them stand together. In front of us, the Portland-stone front with the tall windows: 104 Pall Mall, the Reform Club, by Charles Barry, opened in 1841. That one is Fogg's. A little to the left, 106, the Travellers, Barry's first Italian palazzo, finished in 1832. And beyond it, 107, the Athenaeum. One turn of the head covers all three.",
+      "script": "Half past eleven. Fogg leaves the house and walks to his club. He counts his steps as he goes: one thousand one hundred and fifty-one of them. His way runs down Savile Row, right into Burlington Gardens, then left down Old Bond Street to Piccadilly. Across the road, and down the long slope of St James's Street. At the bottom he turns east, into Pall Mall. From his front door to the club door is one thousand one hundred and twenty metres: about one kilometre. So each step is about ninety-seven centimetres. He never hurries. And this is the street he is walking into. Pall Mall had gas lamps in 1807, one of the first streets in London. Sixty-five years before Fogg, the lamps here were already the future. This is clubland: a row of private clubs on the south side. Three of them stand together. In front of us, the grand stone front with the tall windows: 104 Pall Mall, the Reform Club, by Charles Barry, opened 1841. That one is Fogg's. A little to the left, No. 106, the Travellers, Barry's first Italian palazzo, finished in 1832. And beyond it, No. 107, the Athenaeum. One turn of the head covers all three.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Half past eleven. Fogg leaves the house and walks to his club. He counts his steps as he goes: one thousand one hundred and fifty-one of them. His way runs down Savile Row, right into Burlington Gardens, then left down Old Bond Street to Piccadilly. Across the road, and down the long slope of St James's Street. At the bottom he turns east, into Pall Mall. From his front door to the club door is one thousand one hundred and twenty metres: about one kilometre. So each step is about ninety-seven centimetres. He never hurries. And this is the street he is walking into. Pall Mall had gas lamps in 1807, one of the first streets in London. Sixty-five years before Fogg, the lamps here were already the future. This is clubland: a row of private clubs on the south side. Three of them stand together. In front of us, the grand stone front with the tall windows: 104 Pall Mall, the Reform Club, by Charles Barry, opened 1841. That one is Fogg's. A little to the left, No. 106, the Travellers, Barry's first Italian palazzo, finished in 1832. And beyond it, No. 107, the Athenaeum. One turn of the head covers all three."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -651,12 +639,9 @@
      "duration_s": 70,
      "learning_goal": "Know the Reform Club is real, founded 1836, Barry's palazzo of 1841, Soyer's kitchens, and Fogg's breakfast; feel cosy club warmth.",
      "narration": {
-      "script": "We arrive at the door of Fogg's club. The Reform Club is real, and still here: 104 Pall Mall. Its founders backed the great Reform Act of 1832 — hence the name. In the novel this is Fogg's whole world: he eats here, reads here, plays cards here, every day until midnight. Charles Barry's palazzo opened in 1841: Portland stone outside, and inside, the saloon. And the famous kitchens that the chef Alexis Soyer helped to plan. Look down — they ran in the basement, under all this. Now Fogg's breakfast, taken here. A broiled fish with Reading sauce — keep that in mind. Inside today: a tessellated floor, marble busts, portraits between the columns. Barry's elevation of the front. Somewhere in there, breakfast done, Fogg cuts the pages himself and reads The Times.",
+      "script": "This is the door of Fogg's club: the Reform Club. It is real, and still here — 104 Pall Mall. Its founders had backed the Reform Act of 1832 — that is where the name comes from. In the book, Fogg spends every day here until midnight: meals, newspapers, cards. The architect Charles Barry finished the building in 1841. Stone outside; inside, this hall. The club also had famous kitchens, planned with the chef Alexis Soyer. They were down in the basement. Here Fogg ate his breakfast: grilled fish with Reading sauce — remember that sauce. Then Barry's design for the front. Somewhere in there, Fogg cuts his newspaper's pages and reads The Times.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "This is the door of Fogg's club: the Reform Club. It is real, and still here — 104 Pall Mall. Its founders had backed the Reform Act of 1832 — that is where the name comes from. In the book, Fogg spends every day here until midnight: meals, newspapers, cards. The architect Charles Barry finished the building in 1841. Stone outside; inside, this hall. The club also had famous kitchens, planned with the chef Alexis Soyer. They were down in the basement. Here Fogg ate his breakfast: grilled fish with Reading sauce — remember that sauce. Then Barry's design for the front. Somewhere in there, Fogg cuts his newspaper's pages and reads The Times."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -816,16 +801,10 @@
      "duration_s": 80,
      "learning_goal": "Know that Verne's Reform is half fantasy (porphyry columns, blue glass) and half exact (nine garden windows); know you can visit during Open House.",
      "narration": {
-      "script": "Verne describes the club in loving detail. Mosaic floors. A gallery under a dome, held up by twenty red porphyry columns. Blue painted windows. A dining-room with nine windows onto a garden already gilded with autumn. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous.",
+      "script": "Verne describes the inside of the club with much detail. Mosaic floors. A gallery under a dome, held up by twenty red stone columns. Blue painted windows. A dining room with nine windows onto a garden. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous.",
       "timing": "over",
       "voice": "guide",
-      "after_script": "Half fantasy, half exact — treat the novel that way for the next seventy-nine days. One practical note. You can stand in that saloon yourself, one weekend a year, on the club's Open House London tours. The caption has this year's dates. The tour, they say, includes one very long staircase.",
-      "variants": {
-       "clear": "Verne describes the inside of the club with much detail. Mosaic floors. A gallery under a dome, held up by twenty red stone columns. Blue painted windows. A dining room with nine windows onto a garden. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous."
-      },
-      "after_script_variants": {
-       "clear": "Half invented, half exact — read the novel that way for the next seventy-nine days. One practical note. You can stand in that hall yourself, one weekend a year, on the club's Open House London tours. The dates are in the caption. The tour, they say, has one very long staircase."
-      }
+      "after_script": "Half invented, half exact — read the novel that way for the next seventy-nine days. One practical note. You can stand in that hall yourself, one weekend a year, on the club's Open House London tours. The dates are in the caption. The tour, they say, has one very long staircase."
      },
      "media": [
       {
@@ -917,12 +896,9 @@
      "duration_s": 70,
      "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
      "narration": {
-      "script": "Evening, at the club. Fogg sits down to whist with five fellow members — four hands at the table, the same five every night. In the novel — only in the novel — a thief has robbed the Bank of England of fifty-five thousand pounds. The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums: the world can be crossed in eighty days. That talk becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds it can't be done. Fogg stakes twenty thousand — half his fortune — that it can: 'eighty days or less'. Look at the card: six names, Stuart first, Fogg last. Due back 'in this very room of the Reform Club, on Saturday, the 21st of December, at a quarter before nine p.m.' Fogg's motto: 'The unforeseen does not exist.'",
+      "script": "Evening, at the club. Fogg plays whist with five fellow members — four hands at the table, the same five men every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. Where could such a man hide now? So a newspaper, the Daily Telegraph, counts the days: you can now go around the world in eighty days. At the table this becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Fogg's motto: 'The unforeseen does not exist.'",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Evening, at the club. Fogg plays whist with five fellow members — four hands at the table, the same five men every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. Where could such a man hide now? So a newspaper, the Daily Telegraph, counts the days: you can now go around the world in eighty days. At the table this becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Fogg's motto: 'The unforeseen does not exist.'"
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1034,12 +1010,9 @@
      "duration_s": 45,
      "learning_goal": "Know that Thomas Cook and George Francis Train really went round the world just as Verne wrote; feel that Fogg's bet was in the air.",
      "narration": {
-      "script": "Two real men: one travelling as Verne wrote, the other already home. Thomas Cook, going west, left Liverpool in late September 1872 — the first commercial round-the-world tour. Two hundred and twenty-two days; he was mid-Atlantic when Fogg's story began. George Francis Train, also westward, had reached home on the twenty-first of December 1870 — Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'",
+      "script": "Two real men: one travelling as Verne wrote, the other already home. Thomas Cook left Liverpool in late September 1872, going west — the first commercial round-the-world tour. It took him two hundred and twenty-two days. He was mid-ocean when Fogg's story began. George Francis Train had reached home earlier — on the twenty-first of December 1870. Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Two real men: one travelling as Verne wrote, the other already home. Thomas Cook left Liverpool in late September 1872, going west — the first commercial round-the-world tour. It took him two hundred and twenty-two days. He was mid-ocean when Fogg's story began. George Francis Train had reached home earlier — on the twenty-first of December 1870. Fogg's date, two years early. He later claimed, 'Verne stole my thunder. I'm Phileas Fogg.'"
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1101,16 +1074,10 @@
      "duration_s": 100,
      "learning_goal": "Know the three enablers of 1869–70 and the eight legs that add up to eighty; feel the thrill of the map lighting up.",
      "narration": {
-      "script": "How could anyone even think it? Because the world had just shrunk. When one of the card players said the world was big, Fogg's answer was three words: 'It was once.' Look at the three lights. The Suez Canal, opened in November 1869. The American railroad, joined at Promontory Summit in May 1869. The last rail link across India, closed at Jabalpur in March 1870. Three doors, opened within ten months, two years before tonight. Now watch the line draw. London to Suez, by rail and steamer through Mont Cenis and Brindisi, seven days. Suez to Bombay by steamer, thirteen. Bombay to Calcutta by rail, three. Calcutta to Hong Kong, thirteen. Hong Kong to Yokohama, six. Yokohama to San Francisco, twenty-two. San Francisco to New York by rail, seven. New York back to London, nine. Add them up: eighty. Now tap the longest leg on the map.",
+      "script": "How could anyone believe this plan? Because the world had just become smaller. When one of the card players said the world was big, Fogg answered with three words: 'It was once.' Look at the three lights. The Suez Canal opened in November 1869. The American railroad, coast to coast, was joined in May 1869. The last rail link across India closed the gap in March 1870. Three doors, all opened within ten months, two years before tonight. Now watch the line draw. London to Suez: seven days. Suez to Bombay, by ship: thirteen. Bombay to Calcutta, by rail: three. Calcutta to Hong Kong: thirteen. Hong Kong to Yokohama: six. Yokohama to San Francisco: twenty-two. San Francisco to New York, by rail: seven. New York back to London: nine. Add them up: eighty. Now tap the longest leg on the map.",
       "timing": "over",
       "voice": "guide",
-      "after_script": "The Pacific — twenty-two days of ocean; keep this in mind for later. And the map fades back to tonight: only London lit. Because Fogg, still at the table, says the sentence that turns the evening. 'The train leaves for Dover at a quarter before nine.'",
-      "variants": {
-       "clear": "How could anyone believe this plan? Because the world had just become smaller. When one of the card players said the world was big, Fogg answered with three words: 'It was once.' Look at the three lights. The Suez Canal opened in November 1869. The American railroad, coast to coast, was joined in May 1869. The last rail link across India closed the gap in March 1870. Three doors, all opened within ten months, two years before tonight. Now watch the line draw. London to Suez: seven days. Suez to Bombay, by ship: thirteen. Bombay to Calcutta, by rail: three. Calcutta to Hong Kong: thirteen. Hong Kong to Yokohama: six. Yokohama to San Francisco: twenty-two. San Francisco to New York, by rail: seven. New York back to London: nine. Add them up: eighty. Now tap the longest leg on the map."
-      },
-      "after_script_variants": {
-       "clear": "The Pacific — twenty-two days of ocean. Remember that for later. Now the map goes back to tonight: only London is lit. Because Fogg, still at the table, says the words that start everything. 'The train leaves for Dover at a quarter before nine.'"
-      }
+      "after_script": "The Pacific — twenty-two days of ocean. Remember that for later. Now the map goes back to tonight: only London is lit. Because Fogg, still at the table, says the words that start everything. 'The train leaves for Dover at a quarter before nine.'"
      },
      "media": [
       {
@@ -1261,12 +1228,9 @@
      "duration_s": 90,
      "learning_goal": "Know what went into the carpet-bag and what stayed at Savile Row; feel the scramble.",
      "narration": {
-      "script": "Twenty-five past seven. Fogg goes home from the club, calls Passepartout and says: 'We start for Dover and Calais in ten minutes.' Dover, on the English coast; Calais, across the water in France. Where to? 'We are going round the world.' 'In eighty days.' Passepartout, remember, wanted a quiet life. Now help him pack. One carpet-bag, and it must hold everything. Drag in what goes; leave what stays. Verne gives the list; ours keeps the six things that matter. Two shirts and three pairs of stockings each. A mackintosh, a travelling-cloak. The red-bound Bradshaw — the world's timetable, hundreds of pages of trains and hotels. And a goodly roll of Bank of England notes: twenty thousand pounds. No books, because there are none in the house. The electric clock stays on the mantel. And so, tonight, does the gas — remember that. Two shirts, three pairs of stockings, and half a fortune.",
+      "script": "Twenty-five past seven. Fogg comes home from the club. He calls Passepartout and says: 'We start for Dover and Calais in ten minutes.' Dover is on the English coast; Calais is across the sea, in France. Where to? 'We are going round the world.' 'In eighty days.' Passepartout, remember, wanted a quiet life. Now help him pack. One carpet-bag — one travel bag — must hold everything. Drag in what goes; leave what stays. Two shirts and three pairs of stockings each. A mackintosh and a travelling-cloak. The red-bound Bradshaw — a thick book of train times, hundreds of pages. And a fat roll of Bank of England notes: twenty thousand pounds. No books — the house has none. The electric clock stays on the mantel. And so, tonight, does the gas — remember that. Two shirts, three pairs of stockings, and half a fortune.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Twenty-five past seven. Fogg comes home from the club. He calls Passepartout and says: 'We start for Dover and Calais in ten minutes.' Dover is on the English coast; Calais is across the sea, in France. Where to? 'We are going round the world.' 'In eighty days.' Passepartout, remember, wanted a quiet life. Now help him pack. One carpet-bag — one travel bag — must hold everything. Drag in what goes; leave what stays. Two shirts and three pairs of stockings each. A mackintosh and a travelling-cloak. The red-bound Bradshaw — a thick book of train times, hundreds of pages. And a fat roll of Bank of England notes: twenty thousand pounds. No books — the house has none. The electric clock stays on the mantel. And so, tonight, does the gas — remember that. Two shirts, three pairs of stockings, and half a fortune."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1394,12 +1358,9 @@
      "duration_s": 60,
      "learning_goal": "Know the cab, the fare, the times, and that Fogg does not take the nine-year-old Underground; feel cobbles and hooves.",
      "narration": {
-      "script": "Down to the end of Savile Row and into a cab — a hansom, most likely; Verne never says. To the cabby, Fogg is a swell. The fare is sixpence a mile or part of one. Barely a mile and a half to Charing Cross — call it a bob. Watch the line on the 1872 map, south and east to Trafalgar Square and the Strand. London already had an Underground — nine years old, steam-hauled and smoky. Fogg takes a cab. Listen: hooves on stone, and a galop by Offenbach — French dance music — because Passepartout is a Parisian. They left the club at twenty-five past seven. They are at Charing Cross at twenty past eight.",
+      "script": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a gentleman in good clothes. The fare is sixpence a mile — or part of a mile. Charing Cross is about a mile and a half away, so call it one shilling: a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a gentleman in good clothes. The fare is sixpence a mile — or part of a mile. Charing Cross is about a mile and a half away, so call it one shilling: a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1530,13 +1491,10 @@
      "duration_s": 75,
      "learning_goal": "Know that Fogg's London was brand-new (station 8, Underground 9, Embankment 2, Big Ben 13) and remember the twenty guineas; feel awe at a new city and one warm beat.",
      "narration": {
-      "script": "The Strand, and ahead, the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the stone cross, and the cross itself, 1865. The Underground, nine years old. The Embankment by the river, two. Big Ben — the clock tower — thirteen. So much of what Fogg passes tonight is younger than his valet. You can't see it from here: the station's great roof — one iron span, 155 metres. It fell in 1905 and was replaced; that's all we'll say. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money. Fogg hands her the twenty guineas he has just won at whist. Without breaking stride.",
+      "script": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross, and the cross itself: 1865. The Underground railway: nine years old. The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking.",
       "starts_at_s": 2,
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross, and the cross itself: 1865. The Underground railway: nine years old. The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1676,12 +1634,9 @@
      "duration_s": 35,
      "learning_goal": "See the 1872 forecourt against today's; know the station still runs about a train an hour to Dover.",
      "narration": {
-      "script": "Drag the seam. On the left, an engraving from 1872 — the year itself — the hotel and forecourt as Fogg saw them. On the right, the cross today. Six platforms behind it, and still about a train an hour to Dover. You can still buy a ticket for Dover at Fogg's station. The through route to Paris, though, now leaves from St Pancras. The hotel is a hotel still, under a newer name.",
+      "script": "Drag the line. On the left: a drawing from 1872 — the hotel and forecourt as Fogg saw them. On the right: the cross today. Six platforms behind it, and still about one train an hour to Dover. You can still buy a ticket to Dover here. The fast Paris route now leaves from St Pancras station. The hotel is still a hotel, under a new name.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Drag the line. On the left: a drawing from 1872 — the hotel and forecourt as Fogg saw them. On the right: the cross today. Six platforms behind it, and still about one train an hour to Dover. You can still buy a ticket to Dover here. The fast Paris route now leaves from St Pancras station. The hotel is still a hotel, under a new name."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1761,12 +1716,9 @@
      "duration_s": 47,
      "learning_goal": "Find two things without being told where to point: the 1865 replica cross overhead, and the direction of the Charles I statue — the point London's distances are measured from.",
      "narration": {
-      "script": "Stop here. Two things to find. The first is straight above you: follow the cross up to its very top, twenty-one metres, seventy feet, of Portland stone. It is a replica, put up in 1865 — the year the hotel behind it opened. The second is harder. Turn to your right, out of the forecourt, and look about two hundred metres towards Trafalgar Square. You cannot quite see him from here, but King Charles the First rides there in bronze. The first cross, of 1291, stood on that spot — and London still measures its distances from him, not from the stone above your head.",
+      "script": "Stop here. Two things to find. The first is straight above you: follow the cross up to its top — twenty-one metres, seventy feet, of stone. It is a copy, put up in 1865 — the year the hotel behind it opened. The second is harder. Turn to your right, out of the station yard, and look about two hundred metres towards Trafalgar Square. You cannot quite see him from here, but a statue of King Charles the First rides there. The first cross, from 1291, stood on that spot. London still measures its distances from that statue, not from the stone above your head.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Stop here. Two things to find. The first is straight above you: follow the cross up to its top — twenty-one metres, seventy feet, of stone. It is a copy, put up in 1865 — the year the hotel behind it opened. The second is harder. Turn to your right, out of the station yard, and look about two hundred metres towards Trafalgar Square. You cannot quite see him from here, but a statue of King Charles the First rides there. The first cross, from 1291, stood on that spot. London still measures its distances from that statue, not from the stone above your head."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1880,13 +1832,7 @@
       "script": "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?",
       "timing": "over",
       "voice": "guide",
-      "after_script": "Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter.",
-      "variants": {
-       "clear": "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?"
-      },
-      "after_script_variants": {
-       "clear": "Rain, then. Verne's words: 'The night was dark, and a fine, steady rain was falling.' No fog tonight — we save the pea-souper for a winter chapter."
-      }
+      "after_script": "Rain, then. Verne's words: 'The night was dark, and a fine, steady rain was falling.' No fog tonight — we save the pea-souper for a winter chapter."
      },
      "media": [
       {
@@ -1997,13 +1943,7 @@
       "script": "It's twenty to nine, and it's raining. That's Passepartout, with the bag — he's known his master for about nine hours. Ask him something.",
       "timing": "before",
       "voice": "guide",
-      "after_script": "We've got a train to catch. Twenty to nine on the platform.",
-      "variants": {
-       "clear": "It's twenty to nine, and it's raining. That's Passepartout, with the bag — he's known his master for about nine hours. Ask him something."
-      },
-      "after_script_variants": {
-       "clear": "We've got a train to catch. Twenty to nine on the platform."
-      }
+      "after_script": "We've got a train to catch. Twenty to nine on the platform."
      },
      "media": [
       {
@@ -2134,12 +2074,9 @@
      "duration_s": 85,
      "learning_goal": "Feel the thrill of the first train out; know the train still leaves over Hungerford Bridge and takes about two hours to Dover today; end on Passepartout's forgotten gas.",
      "narration": {
-      "script": "A postcard from 1905, thirty-three years after Fogg. The same platforms, and — just — the old roof, months before it fell. The Paris boat train, waiting. Now, tonight. Twenty to nine, seated. A quarter to nine — the whistle, and we're off, over Hungerford Bridge, the way trains still leave Fogg's station. We travel in daylight; Fogg had rain and dark. Look right — the Embankment along the river, two years old in 1872, and beyond it the clock tower, thirteen. Brand-new London slipping away behind him. This train, today, takes about two hours to Dover. Fogg's timetable gave him seven days to reach Suez, and this is the first hour of them. A few miles out, Passepartout sits bolt upright. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
+      "script": "This postcard is from 1905, thirty-three years after Fogg. The same platforms — and the old roof, probably in its last months before it fell. The boat train to Paris is waiting. Now, tonight. Twenty to nine: we are seated. A quarter to nine: the whistle, and we are off, over Hungerford Bridge. Trains still leave Fogg's station this way. Our film is daylight; Fogg had rain and dark. Look right: the Embankment along the river, two years old in 1872. Beyond it, the clock tower, thirteen. New London slips away behind him. Today this train takes about two hours to Dover. Fogg's plan gave him seven days to reach Suez. This is the first hour. A few miles out, Passepartout sits up straight. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "This postcard is from 1905, thirty-three years after Fogg. The same platforms — and the old roof, probably in its last months before it fell. The boat train to Paris is waiting. Now, tonight. Twenty to nine: we are seated. A quarter to nine: the whistle, and we are off, over Hungerford Bridge. Trains still leave Fogg's station this way. Our film is daylight; Fogg had rain and dark. Look right: the Embankment along the river, two years old in 1872. Beyond it, the clock tower, thirteen. New London slips away behind him. Today this train takes about two hours to Dover. Fogg's plan gave him seven days to reach Suez. This is the first hour. A few miles out, Passepartout sits up straight. He has forgotten to turn off the gas in his room. 'It will burn,' says Fogg, 'at your expense.' To be continued."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -2309,12 +2246,9 @@
      "duration_s": 60,
      "learning_goal": "Take home the breakfast Fogg ate before betting half his fortune, and a date to cook it; feel warmth and a promise to be back on 21 December.",
      "narration": {
-      "script": "Your souvenir of the day: Fogg's last breakfast in London — the meal he ate before betting half his fortune. The dish is broiled fish with a Reading-sauce-style ketchup — a real Berkshire condiment from 1802, gone since the 1960s. The recipe is on the card, with the rest of the menu. Save the card. Cook it on the evening of the twenty-first of December, and be at table by a quarter to nine. That's when he promised to be back in that room. Fogg's other motto, and ours for the road: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris.",
+      "script": "Your souvenir today: Fogg's last breakfast in London — the meal he ate before betting half his fortune. The dish is grilled fish with a Reading-sauce-style ketchup. Reading sauce was a real English sauce from 1802; it disappeared in the 1960s. The recipe is on the card. Save the card. Cook the meal on the evening of the twenty-first of December, and sit down to eat by a quarter to nine. That is when Fogg promised to be back. His motto, and ours: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Your souvenir today: Fogg's last breakfast in London — the meal he ate before betting half his fortune. The dish is grilled fish with a Reading-sauce-style ketchup. Reading sauce was a real English sauce from 1802; it disappeared in the 1960s. The recipe is on the card. Save the card. Cook the meal on the evening of the twenty-first of December, and sit down to eat by a quarter to nine. That is when Fogg promised to be back. His motto, and ours: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris."
-      }
+      "voice": "guide"
      },
      "media": [
       {

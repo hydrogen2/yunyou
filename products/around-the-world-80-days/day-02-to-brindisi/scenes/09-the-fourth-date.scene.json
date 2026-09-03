@@ -6,13 +6,10 @@
  "duration_s": 85,
  "learning_goal": "See the tunnel in section and the four dates that made the eighty days thinkable; know that Fréjus is the only one Fogg physically travels through — and that the same tunnel reopened in March 2025.",
  "narration": {
-  "script": "Here is the mountain, cut through. The thin line over the top is the way they went the year before. The straight one under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railroad, joined in 1869. The last rail link across India, 1870. Three doors that opened within ten months, and made eighty days thinkable.\n\nHere is a fourth. The seventeenth of September, 1871. And it is the only one of the four that Fogg physically goes through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months; it reopened on the thirty-first of March, 2025.",
+  "script": "Here is the mountain, cut in half. The thin line over the top is the way they went the year before. The straight line under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railway, joined in 1869. The last railway link across India, 1870. Three doors, opened within ten months. They made eighty days possible.\n\nHere is a fourth. The seventeenth of September, 1871. It is the only one of the four that Fogg actually travels through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months. It reopened on the thirty-first of March, 2025.",
   "timing": "over",
   "voice": "guide",
-  "starts_at_s": 8,
-  "variants": {
-   "clear": "Here is the mountain, cut in half. The thin line over the top is the way they went the year before. The straight line under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railway, joined in 1869. The last railway link across India, 1870. Three doors, opened within ten months. They made eighty days possible.\n\nHere is a fourth. The seventeenth of September, 1871. It is the only one of the four that Fogg actually travels through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months. It reopened on the thirty-first of March, 2025."
-  }
+  "starts_at_s": 8
  },
  "media": [
   {

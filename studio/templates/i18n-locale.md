@@ -29,7 +29,8 @@ Path: `products/<product>/<chapter>/i18n/<locale>.json` (e.g. `zh-Hans.json`). P
 Rules
 - Index-addressed (`i`), never text-matched — English wording changes must not silently orphan a translation.
 - Anything omitted falls back to English. A partial locale is valid and must not break the player.
-- Translate the **clear** track, not the literary one: clear English is the default register (D5).
+- Translate `narration.script` — since 2026-09-03 (D8) that is the ONE English track, and it is the clear one.
+  There is no literary track and no `variants` object to choose from any more.
 - Do not translate proper nouns into invented forms; give the established local name where one exists and keep the
   original in brackets on FIRST use only (e.g. 改良俱乐部（Reform Club）). Never re-translate it thereafter.
 - Numbers, dates and money keep their meaning, not their English phrasing — use the local convention.

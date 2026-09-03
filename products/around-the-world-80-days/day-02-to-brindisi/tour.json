@@ -23,13 +23,10 @@
      "duration_s": 95,
      "learning_goal": "Know who Fogg is, what he bet, and that the whole crossing of Europe exists in the novel as seven timestamps; feel the size of the gap we are about to walk into.",
      "narration": {
-      "script": "Day two. For anyone joining us: in Jules Verne's novel of 1872, a London gentleman, Phileas Fogg, bets half his fortune that he can go round the world in eighty days. He left London last night at a quarter to nine with a French servant, Passepartout.\n\nThe route was printed in the newspaper the night of the bet. Its first line reads: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nHere is everything Verne says about those seven days. Fogg keeps a notebook. It opens: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nIt ends: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nThat is the whole of it. Seven lines, three thousand kilometres.",
+      "script": "Day two. If you have just joined us: in 1872 Jules Verne published a novel. A London gentleman named Phileas Fogg bets half his money that he can travel round the world in eighty days. He left London last night at a quarter to nine, with a French servant, Passepartout.\n\nThe route was printed in the newspaper on the night of the bet. The first line says: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nThat is nearly all the novel says. Fogg keeps a notebook. The first line: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nThe last line: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nSeven lines. Three thousand kilometres.",
       "timing": "over",
       "voice": "guide",
-      "starts_at_s": 8,
-      "variants": {
-       "clear": "Day two. If you have just joined us: in 1872 Jules Verne published a novel. A London gentleman named Phileas Fogg bets half his money that he can travel round the world in eighty days. He left London last night at a quarter to nine, with a French servant, Passepartout.\n\nThe route was printed in the newspaper on the night of the bet. The first line says: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nThat is nearly all the novel says. Fogg keeps a notebook. The first line: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nThe last line: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nSeven lines. Three thousand kilometres."
-      }
+      "starts_at_s": 8
      },
      "media": [
       {
@@ -149,12 +146,9 @@
      "duration_s": 130,
      "learning_goal": "Know that the boat train ran out along the Admiralty Pier so you stepped from carriage to deck, that the cliffs are chalk and France is 32 km off, and that the crossing was a byword for misery; feel cold air and open water.",
      "narration": {
-      "script": "Dover, and a night boat. Charles Dickens crossed here in 1863 and wrote it down. On the deck, he watches the train come to him: 'A screech, a bell, and two red eyes come gliding down the Admiralty Pier.'\n\nThe railway ran out along the pier, over the water, to the steamer. By Fogg's night the rails ran out along it, so his boat train would have set him down beside the ship — carriage to deck, without touching a street.\n\nAbove the harbour, the cliffs. Chalk, about a hundred metres high, and about a hundred million years old. France is thirty-two kilometres away, and on a clear day you can see it. The French call this water la Manche — the sleeve. Verne never mentions any of it.\n\nAn hour and a quarter of open water. Dickens again, on his fellow passengers: they 'lie about in melancholy bundles, as if they were sorted out for the laundress.' One man holds an umbrella up the whole way over.\n\nOur pictures are daylight, and a lifetime late. Fogg crossed in the middle of the night.",
+      "script": "Dover, and a night boat. Charles Dickens crossed here in 1863 and wrote about it. On the deck he watches the train come to him: 'A screech, a bell, and two red eyes come gliding down the Admiralty Pier.'\n\nThe railway ran out along the pier, over the water, to the ship. On Fogg's night the rails ran out along it too, so his train would have stopped beside the steamer. You stepped from the carriage onto the deck, without touching a street.\n\nAbove the harbour, the cliffs. Chalk, about a hundred metres high, and roughly a hundred million years old. France is thirty-two kilometres away. On a clear day you can see it. The French call this water la Manche — the sleeve. Verne never mentions any of this.\n\nAn hour and a quarter of open sea. Dickens again, about the other passengers: they 'lie about in melancholy bundles, as if they were sorted out for the laundress.' One man holds his umbrella up the whole way over.\n\nOur pictures are daylight, and a lifetime late. Fogg crossed in the middle of the night.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Dover, and a night boat. Charles Dickens crossed here in 1863 and wrote about it. On the deck he watches the train come to him: 'A screech, a bell, and two red eyes come gliding down the Admiralty Pier.'\n\nThe railway ran out along the pier, over the water, to the ship. On Fogg's night the rails ran out along it too, so his train would have stopped beside the steamer. You stepped from the carriage onto the deck, without touching a street.\n\nAbove the harbour, the cliffs. Chalk, about a hundred metres high, and roughly a hundred million years old. France is thirty-two kilometres away. On a clear day you can see it. The French call this water la Manche — the sleeve. Verne never mentions any of this.\n\nAn hour and a quarter of open sea. Dickens again, about the other passengers: they 'lie about in melancholy bundles, as if they were sorted out for the laundress.' One man holds his umbrella up the whole way over.\n\nOur pictures are daylight, and a lifetime late. Fogg crossed in the middle of the night."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -347,16 +341,10 @@
      "duration_s": 50,
      "learning_goal": "Know why a train to the heel of Italy counted as a short cut to India.",
      "narration": {
-      "script": "Calais, in the middle of the night. Before we board — one question about the train we are about to catch. Before any of this existed, how long did a letter from London take to reach India?",
+      "script": "Calais, in the middle of the night. Before we get on the train, one question about it. Before any of this was built, how long did a letter from London take to reach India?",
       "timing": "over",
       "voice": "guide",
-      "after_script": "Three months, round the Cape of Good Hope. A question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut.",
-      "variants": {
-       "clear": "Calais, in the middle of the night. Before we get on the train, one question about it. Before any of this was built, how long did a letter from London take to reach India?"
-      },
-      "after_script_variants": {
-       "clear": "Three months, round the Cape of Good Hope. So a question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut."
-      }
+      "after_script": "Three months, round the Cape of Good Hope. So a question and its answer took half a year. That is why a train to the heel of Italy counts as a short cut."
      },
      "media": [
       {
@@ -441,12 +429,9 @@
      "duration_s": 80,
      "learning_goal": "Know that our train is the Indian Mail, that it could only run because rails reached Brindisi in 1865 and the canal opened in 1869, and that the first P&O sailing from Brindisi was two years before Fogg; feel the border arrive as a sound.",
      "narration": {
-      "script": "The boat comes alongside the Railway Station Quay — le quai — and hands you to the train. Customs officers in green and grey; touts shouting English as the French hear it; hot coffee at one in the morning.\n\nThis is the train. The French call it la malle des Indes — the India mail. It runs from Calais to Brindisi to meet a ship. It exists because of three dates: rails reached the heel in 1865, the Suez Canal opened in 1869, and the first steamer left Brindisi for India in October 1870. Two years before Fogg.\n\nIn the novel, when the bank is robbed, detectives go to six ports. Brindisi is one, and nobody needs it explained.\n\nOne last thing about the night line to Paris. It runs through Amiens — where Jules Verne had been living for a year, writing this book.",
+      "script": "The boat comes in beside the railway station quay — le quai — and hands you to the train. Customs officers in green and grey. Touts shouting English the way the French hear it. Hot coffee at one in the morning.\n\nThis is the train. In French, la malle des Indes — the India mail. It runs from Calais to Brindisi to meet a ship. It exists because of three dates: rails reached the heel in 1865, the Suez Canal opened in 1869, and the first steamer left Brindisi for India in October 1870. Two years before Fogg.\n\nIn the novel, when the bank is robbed, detectives go to six ports. Brindisi is one, and nobody needs it explained.\n\nOne last thing about the night train to Paris. It runs through Amiens — where Jules Verne had been living for a year, writing this book.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "The boat comes in beside the railway station quay — le quai — and hands you to the train. Customs officers in green and grey. Touts shouting English the way the French hear it. Hot coffee at one in the morning.\n\nThis is the train. In French, la malle des Indes — the India mail. It runs from Calais to Brindisi to meet a ship. It exists because of three dates: rails reached the heel in 1865, the Suez Canal opened in 1869, and the first steamer left Brindisi for India in October 1870. Two years before Fogg.\n\nIn the novel, when the bank is robbed, detectives go to six ports. Brindisi is one, and nobody needs it explained.\n\nOne last thing about the night train to Paris. It runs through Amiens — where Jules Verne had been living for a year, writing this book."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -591,12 +576,9 @@
      "duration_s": 85,
      "learning_goal": "Know that Passepartout is a Parisian who is driven across his own city between two stations without stopping, and that neither station looked the way we picture it; feel the comedy before the sadness.",
      "narration": {
-      "script": "Twenty past seven, Thursday morning. The train comes into the Gare du Nord — the North station. Passepartout is a Parisian. He left France five years ago, and last night he was hoping for exactly this: it would do his eyes good, he thinks, to see Paris once more.\n\nHe gets eighty minutes. The next train leaves from the Gare de Lyon, four kilometres across the city, and the two of them cross it by cab, in driving rain.\n\nTwo dates while we cross. The station he arrives at is eight years old: this front was finished in 1864. The one he leaves from had burned sixteen months earlier, in the Commune — and the Gare de Lyon everybody photographs, clock tower and all, is 1900. Nobody in 1872 ever saw it.\n\nEighty minutes. He does not get out.",
+      "script": "Twenty past seven, Thursday morning. The train comes into the Gare du Nord — the North station. Passepartout is a Parisian. He left France five years ago, and last night he was hoping for exactly this. It would do his eyes good, he thinks, to see Paris once more.\n\nHe gets eighty minutes. The next train leaves from the Gare de Lyon, four kilometres across the city. The two of them cross Paris in a horse-cab, in the rain.\n\nTwo dates while we cross. The station he arrives at is eight years old: this front was finished in 1864. The one he leaves from had burned down sixteen months earlier, in the Commune. And the Gare de Lyon everybody photographs, with the clock tower, is from 1900. Nobody in 1872 ever saw it.\n\nEighty minutes. He does not get out.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Twenty past seven, Thursday morning. The train comes into the Gare du Nord — the North station. Passepartout is a Parisian. He left France five years ago, and last night he was hoping for exactly this. It would do his eyes good, he thinks, to see Paris once more.\n\nHe gets eighty minutes. The next train leaves from the Gare de Lyon, four kilometres across the city. The two of them cross Paris in a horse-cab, in the rain.\n\nTwo dates while we cross. The station he arrives at is eight years old: this front was finished in 1864. The one he leaves from had burned down sixteen months earlier, in the Commune. And the Gare de Lyon everybody photographs, with the clock tower, is from 1900. Nobody in 1872 ever saw it.\n\nEighty minutes. He does not get out."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -717,16 +699,10 @@
      "duration_s": 125,
      "learning_goal": "Know the two places Passepartout names and the one Verne does not; feel that the traveller is the one who gets to stop.",
      "narration": {
-      "script": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord, twenty to nine at the Gare de Lyon, four kilometres of Paris in between, in the rain.\n\nIn the novel, Passepartout names two things he wishes he could see. Neither is on the road between the stations. Both are on the card, in grey — with a third that is ours. Tap any of them.",
+      "script": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord. Twenty to nine at the Gare de Lyon. Four kilometres of Paris in between, in the rain.\n\nIn the book, Passepartout names two places he wishes he could see. Neither is on the road between the stations. Both are on the card, in grey — with a third that is ours. Tap any of them.",
       "timing": "over",
       "voice": "guide",
-      "after_script": "He asked for a cemetery and a circus. We can go to one of them.",
-      "variants": {
-       "clear": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord. Twenty to nine at the Gare de Lyon. Four kilometres of Paris in between, in the rain.\n\nIn the book, Passepartout names two places he wishes he could see. Neither is on the road between the stations. Both are on the card, in grey — with a third that is ours. Tap any of them."
-      },
-      "after_script_variants": {
-       "clear": "He asked for a cemetery and a circus. We can still go to one of them."
-      }
+      "after_script": "He asked for a cemetery and a circus. We can still go to one of them."
      },
      "media": [
       {
@@ -810,13 +786,7 @@
       "script": "It is Thursday night, and the train is climbing. Two years before Fogg, how did this train get to the other side of the Alps?",
       "timing": "over",
       "voice": "guide",
-      "after_script": "Over the top: seventy-seven kilometres of railway laid beside the mountain road, and about five hours. In 1867 you crossed these mountains in the open air. In 1872 you slept through them.",
-      "variants": {
-       "clear": "It is Thursday night, and the train is climbing. Two years before Fogg, how did this train get to the other side of the Alps?"
-      },
-      "after_script_variants": {
-       "clear": "Over the top. Seventy-seven kilometres of railway beside the mountain road, and about five hours. In 1867 you crossed these mountains in the open air. In 1872 you slept through them."
-      }
+      "after_script": "Over the top. Seventy-seven kilometres of railway beside the mountain road, and about five hours. In 1867 you crossed these mountains in the open air. In 1872 you slept through them."
      },
      "media": [],
      "overlays": [
@@ -878,12 +848,9 @@
      "duration_s": 85,
      "learning_goal": "Know that the Fréjus tunnel was dug from both ends between 1857 and 1870, opened thirteen months before Fogg's train, and was the longest in the world until 1882 — and that a machine is why it took thirteen years, not seventy-one.",
      "narration": {
-      "script": "That was the way over. This is the way through.\n\nThey began in 1857, from both ends, with nothing in the middle: no shaft, no daylight, two teams walking towards each other under the mountain. By hand it would reportedly have taken about seventy-one years.\n\nSo Germain Sommeiller's crews used a machine he had to invent first — a compressed-air drill, ten of them mounted in one frame. And the air that drove the drills, coming out of them, was the air the men breathed.\n\nThe two headings met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871: thirteen months before Fogg's train. Nobody had ever made a hole in the world this long, and nobody made a longer one until 1882.\n\nAnd here it is now. The Italians call it simply il traforo — the tunnel. Same arch, same hole, still the way through.",
+      "script": "That was the way over. This is the way through.\n\nThey started in 1857, from both ends, with nothing in the middle: no shaft, no daylight, two teams walking towards each other under the mountain. By hand, people said, it would have taken about seventy-one years.\n\nSo Germain Sommeiller's men used a machine he had to invent first — a compressed-air drill, ten of them held in one frame. And the air that drove the drills came out of them and became the air the men breathed.\n\nThe two ends met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871 — thirteen months before Fogg's train. Nobody had ever made a hole this long, and nobody made a longer one until 1882.\n\nAnd here it is today. Italians call it simply il traforo — the tunnel. Same arch, same hole, still the way through.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "That was the way over. This is the way through.\n\nThey started in 1857, from both ends, with nothing in the middle: no shaft, no daylight, two teams walking towards each other under the mountain. By hand, people said, it would have taken about seventy-one years.\n\nSo Germain Sommeiller's men used a machine he had to invent first — a compressed-air drill, ten of them held in one frame. And the air that drove the drills came out of them and became the air the men breathed.\n\nThe two ends met on the twenty-sixth of December, 1870. The tunnel opened on the seventeenth of September, 1871 — thirteen months before Fogg's train. Nobody had ever made a hole this long, and nobody made a longer one until 1882.\n\nAnd here it is today. Italians call it simply il traforo — the tunnel. Same arch, same hole, still the way through."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1022,13 +989,10 @@
      "duration_s": 85,
      "learning_goal": "See the tunnel in section and the four dates that made the eighty days thinkable; know that Fréjus is the only one Fogg physically travels through — and that the same tunnel reopened in March 2025.",
      "narration": {
-      "script": "Here is the mountain, cut through. The thin line over the top is the way they went the year before. The straight one under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railroad, joined in 1869. The last rail link across India, 1870. Three doors that opened within ten months, and made eighty days thinkable.\n\nHere is a fourth. The seventeenth of September, 1871. And it is the only one of the four that Fogg physically goes through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months; it reopened on the thirty-first of March, 2025.",
+      "script": "Here is the mountain, cut in half. The thin line over the top is the way they went the year before. The straight line under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railway, joined in 1869. The last railway link across India, 1870. Three doors, opened within ten months. They made eighty days possible.\n\nHere is a fourth. The seventeenth of September, 1871. It is the only one of the four that Fogg actually travels through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months. It reopened on the thirty-first of March, 2025.",
       "timing": "over",
       "voice": "guide",
-      "starts_at_s": 8,
-      "variants": {
-       "clear": "Here is the mountain, cut in half. The thin line over the top is the way they went the year before. The straight line under it is the way we are going, and it is dark the whole way.\n\nOn day one we lit three dates. The Suez Canal, 1869. The American railway, joined in 1869. The last railway link across India, 1870. Three doors, opened within ten months. They made eighty days possible.\n\nHere is a fourth. The seventeenth of September, 1871. It is the only one of the four that Fogg actually travels through. It is even in the first line of his printed route — 'by way of Mont Cenis and Brindisi'. He goes through it in the dark, asleep, and the book never mentions it.\n\nOne more thing, and this one you can book. The same tunnel is still the way through. A rockfall closed the line for nineteen months. It reopened on the thirty-first of March, 2025."
-      }
+      "starts_at_s": 8
      },
      "media": [
       {
@@ -1130,13 +1094,10 @@
      "duration_s": 55,
      "learning_goal": "Know that the man who invented the drill that made the tunnel possible died two months before it opened. Nothing else.",
      "narration": {
-      "script": "Germain Sommeiller. A Savoyard engineer who chose Italy when Savoy went to France. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia.",
+      "script": "Germain Sommeiller. An engineer from Savoy, who chose Italy when Savoy became French. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia.",
       "timing": "over",
       "voice": "guide",
-      "starts_at_s": 4,
-      "variants": {
-       "clear": "Germain Sommeiller. An engineer from Savoy, who chose Italy when Savoy became French. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia."
-      }
+      "starts_at_s": 4
      },
      "media": [
       {
@@ -1204,12 +1165,9 @@
      "duration_s": 90,
      "learning_goal": "Find three things at Porta Nuova without being told where to point — the name, the clock, and the fact that the rails end here — and learn that the world's oldest museum of ancient Egypt is a walk away from a man on his way to Egypt.",
      "narration": {
-      "script": "Twenty-five to seven in the morning, and Turin. Fogg has forty-five minutes. Three things to find. First: read the name across the front of the station. Second: find the clock. Third: look at how the building closes the end of the square — the rails stop here, and everybody has to turn round.\n\nTorino Porta Nuova. When Fogg waited here it was four years finished. And the city itself had just lost something: Turin was the capital of Italy from 1861 to 1865, and had been an ordinary city again for seven years.\n\nNow the pin. About nine hundred metres that way — and you cannot see it from here — is the oldest museum in the world devoted entirely to ancient Egypt. It was founded in 1824. Fogg is on his way to Egypt. He has forty-five minutes.",
+      "script": "Twenty-five to seven in the morning, in Turin. Fogg has forty-five minutes. Three things to find. First: read the name across the front of the station. Second: find the clock. Third: look at how the building closes the end of the square — the rails stop here, and everyone has to turn round.\n\nTorino Porta Nuova. When Fogg waited here, the station was four years old. And the city had just lost something too: Turin was the capital of Italy from 1861 to 1865, and had been an ordinary city again for seven years.\n\nNow the pin. About nine hundred metres in that direction — you cannot see it from here — is the oldest museum in the world devoted only to ancient Egypt. It was founded in 1824. Fogg is on his way to Egypt. He has forty-five minutes.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Twenty-five to seven in the morning, in Turin. Fogg has forty-five minutes. Three things to find. First: read the name across the front of the station. Second: find the clock. Third: look at how the building closes the end of the square — the rails stop here, and everyone has to turn round.\n\nTorino Porta Nuova. When Fogg waited here, the station was four years old. And the city had just lost something too: Turin was the capital of Italy from 1861 to 1865, and had been an ordinary city again for seven years.\n\nNow the pin. About nine hundred metres in that direction — you cannot see it from here — is the oldest museum in the world devoted only to ancient Egypt. It was founded in 1824. Fogg is on his way to Egypt. He has forty-five minutes."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1381,12 +1339,9 @@
      "duration_s": 45,
      "learning_goal": "Know that the longest single leg of the chapter — the whole length of Italy — is two lines in the notebook, and that we cannot say which stations he passed.",
      "narration": {
-      "script": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Nearly thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the rails reached the heel in 1865; which stations he stopped at, nobody has told us.",
+      "script": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Almost thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the railway reached the heel in 1865. Which stations he stopped at, nobody has told us.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Almost thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the railway reached the heel in 1865. Which stations he stopped at, nobody has told us."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1456,12 +1411,9 @@
      "duration_s": 50,
      "learning_goal": "Find the base of the lost second column and the steps down to the water, and know that Rome's road east ends 150 m from the quay where Britain's mail for India was put on a ship.",
      "narration": {
-      "script": "Last stop before the sea. Two things to find. Above you, le colonne romane — the Roman columns, though only one of them is still standing. Find the other: there is a base, and nothing more. Then find the steps down to the water.\n\nIt fell in 1582; the pieces went to Lecce. This is the end of the Appian Way, Rome's road east. A hundred and fifty metres along that quay, Britain's mail for India got on a ship. And Virgil died in this town.",
+      "script": "Last stop before the sea. Two things to find. Above you are le colonne romane — the Roman columns. Only one is still standing. Find the other: there is a base, and nothing else. Then find the steps down to the water.\n\nIt fell in 1582; the pieces went to Lecce. This is the end of the Appian Way, Rome's road east. A hundred and fifty metres along that quay, Britain's mail for India was put on a ship. And Virgil died in this town.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Last stop before the sea. Two things to find. Above you are le colonne romane — the Roman columns. Only one is still standing. Find the other: there is a base, and nothing else. Then find the steps down to the water.\n\nIt fell in 1582; the pieces went to Lecce. This is the end of the Appian Way, Rome's road east. A hundred and fifty metres along that quay, Britain's mail for India was put on a ship. And Virgil died in this town."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1598,12 +1550,9 @@
      "duration_s": 50,
      "learning_goal": "Know that the ship at the end of the leg is a real scheduled mail steamer, hedged where the record is thin; feel Europe closing behind us.",
      "narration": {
-      "script": "Four o'clock, Saturday afternoon. One hour. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia: in the novel, iron, two thousand eight hundred tons, taking on the Indian mail. A real P&O Mongolia did exist, launched in 1865, about three thousand tons. Whether she was on this run that Saturday, nobody has shown us. Five o'clock. She sails.",
+      "script": "Four o'clock, Saturday afternoon. One hour. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia. In the novel she is iron, two thousand eight hundred tons, taking on the Indian mail. A real P&O Mongolia did exist: launched in 1865, about three thousand tons. Whether she sailed this route that Saturday, nobody has shown us. Five o'clock. She sails.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Four o'clock, Saturday afternoon. One hour. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia. In the novel she is iron, two thousand eight hundred tons, taking on the Indian mail. A real P&O Mongolia did exist: launched in 1865, about three thousand tons. Whether she sailed this route that Saturday, nobody has shown us. Five o'clock. She sails."
-      }
+      "voice": "guide"
      },
      "media": [
       {
@@ -1711,12 +1660,9 @@
      "duration_s": 55,
      "learning_goal": "Take away the seven lines with a blank column beside them, and one train that can still be booked; feel quiet satisfaction at having stopped where Fogg did not.",
      "narration": {
-      "script": "Six days from here, at Suez, Fogg works out that he is exactly on time. Then Verne writes the sharpest sentence in the book about him. Fogg breakfasts in his cabin, never thinking of inspecting the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, and an empty column headed 'what I saw'. On the back, the one thing here you can still book: Paris to Turin, through Sommeiller's tunnel.",
+      "script": "Six days from here, at Suez, Fogg finds he is exactly on time. Then Verne writes the sharpest sentence in the book about him. Fogg eats breakfast in his cabin and never thinks of looking at the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, an empty column headed 'what I saw'. On the back, the one thing you can still book: Paris to Turin, through Sommeiller's tunnel.",
       "timing": "over",
-      "voice": "guide",
-      "variants": {
-       "clear": "Six days from here, at Suez, Fogg finds he is exactly on time. Then Verne writes the sharpest sentence in the book about him. Fogg eats breakfast in his cabin and never thinks of looking at the town — 'one of those Englishmen who are wont to see foreign countries through the eyes of their domestics.'\n\nYour souvenir is his notebook: seven lines, three thousand kilometres, an empty column headed 'what I saw'. On the back, the one thing you can still book: Paris to Turin, through Sommeiller's tunnel."
-      }
+      "voice": "guide"
      },
      "media": [
       {

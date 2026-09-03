@@ -6,16 +6,10 @@
   "duration_s": 100,
   "learning_goal": "Know the three enablers of 1869–70 and the eight legs that add up to eighty; feel the thrill of the map lighting up.",
   "narration": {
-    "script": "How could anyone even think it? Because the world had just shrunk. When one of the card players said the world was big, Fogg's answer was three words: 'It was once.' Look at the three lights. The Suez Canal, opened in November 1869. The American railroad, joined at Promontory Summit in May 1869. The last rail link across India, closed at Jabalpur in March 1870. Three doors, opened within ten months, two years before tonight. Now watch the line draw. London to Suez, by rail and steamer through Mont Cenis and Brindisi, seven days. Suez to Bombay by steamer, thirteen. Bombay to Calcutta by rail, three. Calcutta to Hong Kong, thirteen. Hong Kong to Yokohama, six. Yokohama to San Francisco, twenty-two. San Francisco to New York by rail, seven. New York back to London, nine. Add them up: eighty. Now tap the longest leg on the map.",
+    "script": "How could anyone believe this plan? Because the world had just become smaller. When one of the card players said the world was big, Fogg answered with three words: 'It was once.' Look at the three lights. The Suez Canal opened in November 1869. The American railroad, coast to coast, was joined in May 1869. The last rail link across India closed the gap in March 1870. Three doors, all opened within ten months, two years before tonight. Now watch the line draw. London to Suez: seven days. Suez to Bombay, by ship: thirteen. Bombay to Calcutta, by rail: three. Calcutta to Hong Kong: thirteen. Hong Kong to Yokohama: six. Yokohama to San Francisco: twenty-two. San Francisco to New York, by rail: seven. New York back to London: nine. Add them up: eighty. Now tap the longest leg on the map.",
     "timing": "over",
     "voice": "guide",
-    "after_script": "The Pacific — twenty-two days of ocean; keep this in mind for later. And the map fades back to tonight: only London lit. Because Fogg, still at the table, says the sentence that turns the evening. 'The train leaves for Dover at a quarter before nine.'",
-    "variants": {
-      "clear": "How could anyone believe this plan? Because the world had just become smaller. When one of the card players said the world was big, Fogg answered with three words: 'It was once.' Look at the three lights. The Suez Canal opened in November 1869. The American railroad, coast to coast, was joined in May 1869. The last rail link across India closed the gap in March 1870. Three doors, all opened within ten months, two years before tonight. Now watch the line draw. London to Suez: seven days. Suez to Bombay, by ship: thirteen. Bombay to Calcutta, by rail: three. Calcutta to Hong Kong: thirteen. Hong Kong to Yokohama: six. Yokohama to San Francisco: twenty-two. San Francisco to New York, by rail: seven. New York back to London: nine. Add them up: eighty. Now tap the longest leg on the map."
-    },
-    "after_script_variants": {
-      "clear": "The Pacific — twenty-two days of ocean. Remember that for later. Now the map goes back to tonight: only London is lit. Because Fogg, still at the table, says the words that start everything. 'The train leaves for Dover at a quarter before nine.'"
-    }
+    "after_script": "The Pacific — twenty-two days of ocean. Remember that for later. Now the map goes back to tonight: only London is lit. Because Fogg, still at the table, says the words that start everything. 'The train leaves for Dover at a quarter before nine.'"
   },
   "media": [
     {

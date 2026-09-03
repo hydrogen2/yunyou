@@ -6,12 +6,9 @@
   "duration_s": 60,
   "learning_goal": "Know the cab, the fare, the times, and that Fogg does not take the nine-year-old Underground; feel cobbles and hooves.",
   "narration": {
-    "script": "Down to the end of Savile Row and into a cab — a hansom, most likely; Verne never says. To the cabby, Fogg is a swell. The fare is sixpence a mile or part of one. Barely a mile and a half to Charing Cross — call it a bob. Watch the line on the 1872 map, south and east to Trafalgar Square and the Strand. London already had an Underground — nine years old, steam-hauled and smoky. Fogg takes a cab. Listen: hooves on stone, and a galop by Offenbach — French dance music — because Passepartout is a Parisian. They left the club at twenty-five past seven. They are at Charing Cross at twenty past eight.",
+    "script": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a gentleman in good clothes. The fare is sixpence a mile — or part of a mile. Charing Cross is about a mile and a half away, so call it one shilling: a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight.",
     "timing": "over",
-    "voice": "guide",
-    "variants": {
-      "clear": "Fogg and Passepartout take a cab at the end of Savile Row — probably a hansom, a fast two-wheeled horse cab. To the driver, Fogg is a 'swell': a gentleman in good clothes. The fare is sixpence a mile — or part of a mile. Charing Cross is about a mile and a half away, so call it one shilling: a 'bob'. Watch the line on the 1872 map, south and east to the Strand. London already had an Underground railway — nine years old, full of steam and smoke. Fogg takes a cab instead. Listen: hooves on stone, and fast French dance music for Passepartout, the Parisian. They left the club at twenty-five past seven. They reach Charing Cross at twenty past eight."
-    }
+    "voice": "guide"
   },
   "media": [
     {

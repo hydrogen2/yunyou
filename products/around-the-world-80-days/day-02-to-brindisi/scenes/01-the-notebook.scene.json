@@ -6,13 +6,10 @@
  "duration_s": 95,
  "learning_goal": "Know who Fogg is, what he bet, and that the whole crossing of Europe exists in the novel as seven timestamps; feel the size of the gap we are about to walk into.",
  "narration": {
-  "script": "Day two. For anyone joining us: in Jules Verne's novel of 1872, a London gentleman, Phileas Fogg, bets half his fortune that he can go round the world in eighty days. He left London last night at a quarter to nine with a French servant, Passepartout.\n\nThe route was printed in the newspaper the night of the bet. Its first line reads: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nHere is everything Verne says about those seven days. Fogg keeps a notebook. It opens: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nIt ends: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nThat is the whole of it. Seven lines, three thousand kilometres.",
+  "script": "Day two. If you have just joined us: in 1872 Jules Verne published a novel. A London gentleman named Phileas Fogg bets half his money that he can travel round the world in eighty days. He left London last night at a quarter to nine, with a French servant, Passepartout.\n\nThe route was printed in the newspaper on the night of the bet. The first line says: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nThat is nearly all the novel says. Fogg keeps a notebook. The first line: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nThe last line: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nSeven lines. Three thousand kilometres.",
   "timing": "over",
   "voice": "guide",
-  "starts_at_s": 8,
-  "variants": {
-   "clear": "Day two. If you have just joined us: in 1872 Jules Verne published a novel. A London gentleman named Phileas Fogg bets half his money that he can travel round the world in eighty days. He left London last night at a quarter to nine, with a French servant, Passepartout.\n\nThe route was printed in the newspaper on the night of the bet. The first line says: 'London to Suez, by way of Mont Cenis and Brindisi, by rail and steamboats — seven days.'\n\nThat is nearly all the novel says. Fogg keeps a notebook. The first line: 'Left London, Wednesday, October the second, at eight forty-five p.m.'\n\nThe last line: 'Sailed on the Mongolia, Saturday, at five p.m.'\n\nSeven lines. Three thousand kilometres."
-  }
+  "starts_at_s": 8
  },
  "media": [
   {

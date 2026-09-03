@@ -6,12 +6,9 @@
  "duration_s": 50,
  "learning_goal": "Know that the ship at the end of the leg is a real scheduled mail steamer, hedged where the record is thin; feel Europe closing behind us.",
  "narration": {
-  "script": "Four o'clock, Saturday afternoon. One hour. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia: in the novel, iron, two thousand eight hundred tons, taking on the Indian mail. A real P&O Mongolia did exist, launched in 1865, about three thousand tons. Whether she was on this run that Saturday, nobody has shown us. Five o'clock. She sails.",
+  "script": "Four o'clock, Saturday afternoon. One hour. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia. In the novel she is iron, two thousand eight hundred tons, taking on the Indian mail. A real P&O Mongolia did exist: launched in 1865, about three thousand tons. Whether she sailed this route that Saturday, nobody has shown us. Five o'clock. She sails.",
   "timing": "over",
-  "voice": "guide",
-  "variants": {
-   "clear": "Four o'clock, Saturday afternoon. One hour. The quay is still called the stazione marittima — the harbour station, where the train meets the ship. And here is the Mongolia. In the novel she is iron, two thousand eight hundred tons, taking on the Indian mail. A real P&O Mongolia did exist: launched in 1865, about three thousand tons. Whether she sailed this route that Saturday, nobody has shown us. Five o'clock. She sails."
-  }
+  "voice": "guide"
  },
  "media": [
   {

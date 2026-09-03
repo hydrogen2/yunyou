@@ -6,13 +6,10 @@
  "duration_s": 55,
  "learning_goal": "Know that the man who invented the drill that made the tunnel possible died two months before it opened. Nothing else.",
  "narration": {
-  "script": "Germain Sommeiller. A Savoyard engineer who chose Italy when Savoy went to France. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia.",
+  "script": "Germain Sommeiller. An engineer from Savoy, who chose Italy when Savoy became French. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia.",
   "timing": "over",
   "voice": "guide",
-  "starts_at_s": 4,
-  "variants": {
-   "clear": "Germain Sommeiller. An engineer from Savoy, who chose Italy when Savoy became French. He patented the drill. He gave fourteen years to this tunnel. He died on the eleventh of July, 1871, at Saint-Jeoire, in the place he was born — two months before it opened.\n\n\nThere is a street named after him in Bardonecchia."
-  }
+  "starts_at_s": 4
  },
  "media": [
   {

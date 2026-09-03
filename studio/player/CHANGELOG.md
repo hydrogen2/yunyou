@@ -756,3 +756,64 @@ in English the same scene is ~10 s of air. On a photo scene that is fine — the
 slots and the silence is over moving material, which is what "silence is content" means. On a **card** scene
 (07/08/18) it is a frozen frame held for half a minute. Options, none of them Engine's to choose: give the zh cut
 `--no-floor`, let the translator add material to those scenes, or author a shorter `s` for them in a zh cut sheet.
+
+## 2026-09-03 — v0.10 (engine-tools, founder D8): the literary English track is retired
+
+> *"drop the literal english one and stick to the clear english, per the 'I need to be able to judge' principle."*
+> — the founder, 2026-09-03. Recorded as **D8** in `products/around-the-world-80-days/DECISIONS.md`, superseding D5.
+
+The reason is not tidiness. The founder is a non-native English speaker, the target reader **and** the only
+reviewer; a register they cannot evaluate is prose nobody reviews. So there is now **one English narration track**,
+and `narration.script` IS the clear one.
+
+**What changed**
+
+- **Content (33 scenes, both chapters).** `narration.variants.clear` → `narration.script`, `after_script_variants.clear`
+  → `after_script`, variants objects deleted; every other field preserved. Both `tour.json` files reassembled from
+  the scene files — they embed their own copies, so a scene edit reaches nothing until the tour is rebuilt — and each
+  tour scene is now JSON-equal to its `scenes/*.scene.json`. Script: `promote.py` pattern is in D8; it detects each
+  file's own indent + trailing-newline so the diffs are the narration keys and nothing else.
+- **Player** (`studio/player/index.html`): the "Clear English" checkbox, `pickScript()`, the `yy-clear` storage key
+  and the register→rate coupling are gone. TTS default rate is simply **0.9**; an explicit `yy-rate` still wins. A
+  stale `yy-clear` from an older build is deleted on boot. `applyLocale()` no longer mirrors the locale into a
+  variants object — it just replaces `script` / `after_script`. **`?lang=` is untouched**: language is a different
+  axis from register, and `i18n/zh-Hans.json` now overlays the only English there is.
+- **Renderer** (`render_linear.mjs`): `--track` and the variant lookup are gone; `_en` is `narration.script`. The
+  `track` field is out of `*.chapters.json`. `--lang en|zh` and `--zh-align` are unchanged.
+- **Contracts**: `scene.schema.json` drops `narration.variants` + `after_script_variants` and records the removal and
+  the migration in `narration.description` (a leftover object is ignored, not rejected); `validate.py` measures the
+  w/s budget on one track and WARNs if a retired variants object reappears; `templates/scene-spec.md`,
+  `templates/i18n-locale.md`, `style/style-guide.md`, `render/README.md`, `PRODUCTION.md` follow.
+- **Cut sheet**: **no token needed fixing.** `cuts/day-01-london.json` was already derived against the clear track
+  (A5), so all 17 `s:N` tokens still resolve; re-checked scene by scene with the renderer's own splitter and again
+  through `--plan --no-tts`. The dropped sentences are exactly A5's interactive-only instructions plus its declared
+  editorial drops. A dated note recording the re-check is appended to the sidecar's `_comment`.
+
+**Bug found on the way (pre-existing, NOT caused by D8) — a scene was silently missing from the film.**
+`parseLinearCut()` required a bare integer in the seconds column, so when the A11 pass bolded charing-cross's new
+length (`| **75** |`) earlier on 2026-09-03 the row stopped matching and **scene 12 charing-cross dropped out of the
+linear cut** — the 06:35 zh render says "Selection: 16 scenes" where the 20 Aug one said 17, and nothing warned.
+The parser now accepts `**`/`_`/`` ` `` around the number, and any line that looks like a cut row but yields no
+seconds, or names an id that is not in the tour, is pushed to `warnings` instead of vanishing. `--plan` now selects
+17 scenes again and charing-cross is back.
+
+**How to run / what to look at**
+
+```
+python3 studio/tools/validate.py products/around-the-world-80-days/day-0{1,2}-*/scenes/*.scene.json \
+                                 products/around-the-world-80-days/day-0{1,2}-*/tour.json
+node studio/player/test/smoke_playback.mjs     # 83/83
+node studio/player/test/smoke_images.mjs       # 158/158
+node studio/player/test/smoke_v03.mjs          # ALL PASS (its toggle checks are now "the toggle is gone")
+node studio/tools/render/render_linear.mjs products/around-the-world-80-days/day-01-london/tour.json \
+     --plan --no-tts --out /tmp/plan          # 17 scenes, no video, no TTS, no billable call
+```
+
+Look at: the cover (no register checkbox, speed still there), any scene's caption (it is the clear wording), and
+the `--plan` output for scene 12.
+
+**Still failing, and it was failing before this change** (verified by re-running them against `HEAD`):
+`smoke_panowalk.mjs` and `smoke_streetview.mjs` still test the auto-walk that **D6 retired** (`mode=undefined`,
+scene 04 no longer has seven waypoints), and `smoke_generated.mjs` fails the same three scenes (10, 11, 14 — G-01
+leg reveal, G-07 timeout, G-02 timeout + a 403 from the Street View embed). Those are stale-test / key problems, not
+narration ones, and they are somebody's next task, not this one.

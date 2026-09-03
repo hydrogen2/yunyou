@@ -9,13 +9,7 @@
     "script": "It's twenty to nine, and it's raining. That's Passepartout, with the bag — he's known his master for about nine hours. Ask him something.",
     "timing": "before",
     "voice": "guide",
-    "after_script": "We've got a train to catch. Twenty to nine on the platform.",
-    "variants": {
-      "clear": "It's twenty to nine, and it's raining. That's Passepartout, with the bag — he's known his master for about nine hours. Ask him something."
-    },
-    "after_script_variants": {
-      "clear": "We've got a train to catch. Twenty to nine on the platform."
-    }
+    "after_script": "We've got a train to catch. Twenty to nine on the platform."
   },
   "media": [
     {

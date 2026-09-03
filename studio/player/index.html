@@ -195,7 +195,6 @@
   <button class="btn primary" id="start" style="font-size:18px;padding:12px 26px">▶ Start the day</button>
   <label>Language / 语言 <select id="lang"><option value="en">English</option><option value="zh-Hans">简体中文</option></select></label>
   <label>Narration voice <select id="voice"></select> <select id="rate" title="narration speed"><option value="0.8">0.8×</option><option value="0.9">0.9×</option><option value="1" selected>1.0×</option><option value="1.1">1.1×</option></select> <button class="btn" id="testVoice">test</button></label>
-  <label style="cursor:pointer"><input type="checkbox" id="clearEn"> Clear English — simpler wording and a slightly slower voice, where the chapter provides it</label>
   <label id="gkeyRow">Google Maps API key (optional — enables live Street View; stored only in this browser)<br><input id="gkey" placeholder="AIza…"></label>
   <label id="gkeyOk" style="display:none">Street View: <b>enabled</b> <button class="btn" id="gkeyEdit" style="padding:2px 8px;font-size:11px">use my own key</button></label>
   <p class="muted" style="margin-top:18px">Dry-run player · YouTube embeds, Wikimedia Commons media, browser TTS. Generated cards/maps are rendered live from the scene text.</p>
@@ -295,7 +294,7 @@ function saveProgress(force){
   if(!started||!scenes.length) return; const s=scenes[idx]; if(!s) return;
   const now=Date.now(); if(!force && now-lastSave<2000) return; lastSave=now;
   LS.set(PROG_KEY, JSON.stringify({ tourUrl:TOUR_URL, sceneId:s.id, sceneNo:idx+1, sceneTitle:s.title,
-    elapsed:Math.round(elapsed*10)/10, lang:(LOCALE&&(LOCALE.locale||''))||'en', clearEnglish, rate:ttsRate(), savedAt:now }));
+    elapsed:Math.round(elapsed*10)/10, lang:(LOCALE&&(LOCALE.locale||''))||'en', rate:ttsRate(), savedAt:now }));
 }
 function loadProgress(){ const raw=LS.get(PROG_KEY); if(!raw) return null;
   try{ const p=JSON.parse(raw); return (p&&p.tourUrl===TOUR_URL&&p.sceneId)?p:null; }catch(e){ return null; } }
@@ -346,10 +345,10 @@ async function showYouTube(m, offset=0){
 }
 
 // ---------- TTS ----------
-// clear-English + speed: yy-clear picks narration.variants.clear when present; rate = yy-rate if the traveller chose one, else 0.9 in clear mode / 1.0
-let clearEnglish=(LS.get('yy-clear')??'1')==='1';   // DEFAULT ON (founder decision 2026-08-19: clear English is the default in player and video; the literary track is the opt-out)
-function ttsRate(){ const r=parseFloat(LS.get('yy-rate')); if(r>=0.5&&r<=2) return r; return clearEnglish?0.9:1.0; }
-function pickScript(s){ const n=(s&&s.narration)||{}; return (clearEnglish&&n.variants&&typeof n.variants.clear==='string')?n.variants.clear:(n.script||''); }
+// speed: yy-rate if the traveller chose one, else 0.9 — the house default, set for the clear-English track.
+// There is one English narration track (founder decision 2026-09-03, DECISIONS.md D8: the literary register is
+// retired — "I need to be able to judge"). narration.script IS the clear track; there is no register to pick.
+function ttsRate(){ const r=parseFloat(LS.get('yy-rate')); if(r>=0.5&&r<=2) return r; return 0.9; }
 let voices=[], voiceName=LS.get('yy-voice')||''; // cached: the #voice select lives on the cover, which is removed on start
 function loadVoices(){ voices=speechSynthesis.getVoices(); const sel=$('#voice'); if(!sel) return; sel.innerHTML='';
   // voice list follows the active locale: a Chinese script read by an English voice is unusable
@@ -1174,9 +1173,7 @@ function clearCountdown(){ if(cdTimer){ clearInterval(cdTimer); cdTimer=null; } 
 function startCountdown(sec, onTimeout){ clearCountdown(); let left=sec; const show=()=>$('#countdown').textContent=`· ${left}s`; show(); cdTimer=setInterval(()=>{ if(hardPaused()) return; left--; if(left<=0){ clearCountdown(); onTimeout&&onTimeout(); } else show(); },1000); }
 function renderInteraction(s){
   const box=$('#interaction'); box.innerHTML=''; pickOption=null; gameApi=null; interactionResolved=false; clearCountdown(); const it=s.interaction; if(!it||it.kind==='none') return;
-  const after=()=>{ const n=s.narration||{};
-    // honour the clear-English register for the reveal too (D5), same rule as pickScript
-    const a=(clearEnglish && n.after_script_variants && n.after_script_variants.clear) || n.after_script;
+  const after=()=>{ const n=s.narration||{}; const a=n.after_script;
     if(a&&!box.dataset.afterDone){ box.dataset.afterDone='1'; return a; } return null; };
   if(it.prompt){ const p=document.createElement('p'); p.innerHTML=`<b>${it.prompt}</b>`; box.appendChild(p); }
   if(it.kind==='choice'||it.kind==='tap-to-find'){
@@ -1233,7 +1230,7 @@ async function showScene(i, opts){
   elapsed=at; t0=performance.now()-elapsed*1000;
   ['user','away','wait'].forEach(r=>pauseReasons.delete(r)); applyPause();   // a jump is a fresh start; an open sheet keeps its hold
   $('#hScene').textContent=`scene ${idx+1}/${scenes.length} · ${s.type} · ${s.duration_s}s`; $('#title').textContent=s.title; $('#media').innerHTML='';
-  const script=pickScript(s); $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:''; // clear-English: variants.clear replaces script for TTS + captions when present
+  const script=(s.narration&&s.narration.script)||''; $('#script').innerHTML=captions?`<span class="unsaid">${script}</span>`:'';
   const media=s.media||[]; const yt=media.find(m=>m.kind==='youtube'), img=media.filter(m=>m.kind==='image'), aud=media.find(m=>m.kind==='audio'&&isCommons(m.ref)), gen=media.filter(m=>m.kind==='generated');
   const genStarts=gen.map(g=>g.start_s||0), firstGen=gen.length?Math.min(...genStarts):Infinity;
   // v0.8: the stills of a photo scene are schedule items on the scene clock (see imageSlots) — no setInterval, so a
@@ -1345,8 +1342,7 @@ $('#pauseGo').onclick=()=>togglePause();
 $('#testVoice').onclick=()=>{ voiceName=$('#voice').value; LS.set('yy-voice',voiceName); speak('It is Wednesday, the second of October, eighteen seventy-two. We have a train to catch.'); };
 $('#voice').onchange=()=>{ voiceName=$('#voice').value; LS.set('yy-voice',voiceName); };
 $('#rate').value=String(ttsRate()); $('#rate').onchange=e=>LS.set('yy-rate',e.target.value);
-$('#clearEn').checked=clearEnglish;
-$('#clearEn').onchange=e=>{ clearEnglish=e.target.checked; LS.set('yy-clear',clearEnglish?'1':'0'); if(!LS.get('yy-rate')) $('#rate').value=String(ttsRate()); }; // no explicit speed chosen → clear mode defaults the dial to 0.9
+LS.del('yy-clear');   // retired 2026-09-03 (D8): old browsers may still hold the register flag; it means nothing now
 // Maps key: server config first (www/config.json, gitignored — never committed), then whatever the traveller pasted.
 // Maps key: server config (www/config.json, gitignored) supplies it, so the traveller never needs to paste one.
 // The input stays available as an override for self-hosted copies — hidden unless there is no server key or the traveller asks.
@@ -1429,10 +1425,8 @@ window.addEventListener('blur',()=>{ setTimeout(()=>{                   // anoth
       const L=loc.scenes[s.id]; if(!L) return;
       if(L.title) s.title=L.title;
       if(L.learning_goal) s.learning_goal=L.learning_goal;
-      if(L.after_script){ s.narration=s.narration||{}; s.narration.after_script=L.after_script;   // renderer reads narration.after_script
-        s.narration.after_script_variants=Object.assign({},s.narration.after_script_variants,{clear:L.after_script}); }
-      if(L.script){ s.narration=s.narration||{}; s.narration.script=L.script;
-        s.narration.variants=Object.assign({}, s.narration.variants, {clear:L.script}); }   // both registers -> the locale
+      if(L.after_script){ s.narration=s.narration||{}; s.narration.after_script=L.after_script; }
+      if(L.script){ s.narration=s.narration||{}; s.narration.script=L.script; }   // one track: the locale simply replaces it
       (L.overlays||[]).forEach(o=>{ const tgt=(s.overlays||[])[o.i]; if(tgt && o.text) tgt.text=o.text; });
       if(L.interaction && s.interaction){
         if(L.interaction.prompt) s.interaction.prompt=L.interaction.prompt;

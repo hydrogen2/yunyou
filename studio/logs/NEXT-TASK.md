@@ -13,11 +13,13 @@ none of the recent picture work). The founder has NOT asked for a re-render — 
 ## Do next: build Day 2's scenes
 Dispatch a `yunyou-scene-developer` acting as Scene Developer AND Narrator. It must read: studio/roles/_common.md,
 scene-developer.md, narrator.md, studio/templates/scene-spec.md, studio/schema/scene.schema.json,
-products/around-the-world-80-days/DECISIONS.md (all rules; D5 clear-English default, D6 Street View = stop-and-look
+products/around-the-world-80-days/DECISIONS.md (all rules; D8 clear English is the only English — supersedes D5 —,
+D6 Street View = stop-and-look
 only), studio/strategy/positioning.md (tone is a HARD constraint), shared/style-guide.md, shared/personas/guide.md,
 and Day 2's three completed documents above. Use day-01-london/scenes/06-the-reform-club.scene.json and
 15-look-up-the-cross.scene.json as house shape.
-Requirements: every scene needs `narration.script` AND `narration.variants.clear` · respect the rundown's per-segment
+Requirements: every scene needs `narration.script`, written in CLEAR English — that is the only track since
+2026-09-03 (D8); do NOT add `narration.variants` · respect the rundown's per-segment
 density budgets · **the three named silences must survive** (the notebook lines unspoken, the sea under the Dover
 film, fifteen seconds after Sommeiller's death) · photo scenes carry explicit per-still `start_s`/`end_s` (the player
 honours them since v0.8) and note which sentence each slot is timed against · the two Street View scenes (11 Turin,

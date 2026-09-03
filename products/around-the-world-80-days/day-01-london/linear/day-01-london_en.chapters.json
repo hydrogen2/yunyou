@@ -1,0 +1,106 @@
+{
+ "video": "day-01-london_en.mp4",
+ "subtitles": "day-01-london_en.vtt",
+ "lang": "en",
+ "locale": "en",
+ "duration_s": 1050,
+ "track": "clear",
+ "chapters": [
+  {
+   "scene": "cold-open",
+   "type": "interstitial",
+   "at_s": 4,
+   "title": "Day 1 · London · Wednesday 2 October 1872"
+  },
+  {
+   "scene": "savile-row",
+   "type": "video",
+   "at_s": 64,
+   "title": "Savile Row — Fogg's front door"
+  },
+  {
+   "scene": "fogg-by-the-clock",
+   "type": "card",
+   "at_s": 148,
+   "title": "Fogg's day, by the clock — enter Passepartout"
+  },
+  {
+   "scene": "count-the-steps",
+   "type": "video",
+   "at_s": 198,
+   "title": "Count the steps — Savile Row to Pall Mall"
+  },
+  {
+   "scene": "the-reform-club",
+   "type": "photo",
+   "at_s": 295,
+   "title": "Inside the Reform — what Verne got right"
+  },
+  {
+   "scene": "quiz-verne-saloon",
+   "type": "quiz",
+   "at_s": 357,
+   "title": "Quiz — which of Verne's club details is real?"
+  },
+  {
+   "scene": "the-wager",
+   "type": "photo",
+   "at_s": 407,
+   "title": "The wager — twenty thousand at Baring's"
+  },
+  {
+   "scene": "the-world-shrinks",
+   "type": "map",
+   "at_s": 482,
+   "title": "The world had just shrunk — the 80-day loop"
+  },
+  {
+   "scene": "pack-the-bag",
+   "type": "game",
+   "at_s": 574,
+   "title": "Ten minutes — pack the carpet-bag"
+  },
+  {
+   "scene": "the-dash",
+   "type": "map",
+   "at_s": 662,
+   "title": "A shilling's cab to Charing Cross"
+  },
+  {
+   "scene": "then-and-now",
+   "type": "photo",
+   "at_s": 720,
+   "title": "Then and now — the forecourt, 1872 and today"
+  },
+  {
+   "scene": "look-up-the-cross",
+   "type": "streetview",
+   "at_s": 746,
+   "title": "Look up — the cross, and where London starts"
+  },
+  {
+   "scene": "quiz-the-weather",
+   "type": "quiz",
+   "at_s": 796,
+   "title": "Quiz — look up at the roof: what is the weather doing?"
+  },
+  {
+   "scene": "passepartout-on-the-platform",
+   "type": "dialogue",
+   "at_s": 824,
+   "title": "The platform, 8:40 pm — talk to Passepartout"
+  },
+  {
+   "scene": "the-boat-train",
+   "type": "video",
+   "at_s": 870,
+   "title": "8:45 — over the river, to the forgotten gas"
+  },
+  {
+   "scene": "souvenir",
+   "type": "card",
+   "at_s": 952,
+   "title": "Souvenir — Fogg's last breakfast in London"
+  }
+ ]
+}

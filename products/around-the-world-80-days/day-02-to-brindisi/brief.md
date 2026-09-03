@@ -31,7 +31,8 @@ Use it. The chapter's emotional payoff should be that we see what Fogg refused t
 - **Media fallback ladder first** (`studio/strategy/media-fallback-ladder.md`): freely-licensed video, then open
   street imagery, then stills+motion, then generated. Embed-only YouTube is a last resort and cannot enter the film.
 - **Newcomer-first**: assume the traveller has never read the novel. Tell the story before commenting on it.
-- **Clear English is the default track**; every scene needs `narration.variants.clear`.
+- **Clear English is the ONLY track** (founder, 2026-09-03 — DECISIONS.md D8, supersedes D5): write it into
+  `narration.script`. There is no literary track and no `narration.variants` any more.
 - **Tone is a constraint**: unhurried, no cliffhangers, never school.
 - Small archive images are fine — the player now mounts them as plates. Do not avoid a good picture for being small.
 

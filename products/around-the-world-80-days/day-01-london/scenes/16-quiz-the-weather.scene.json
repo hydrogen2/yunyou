@@ -9,13 +9,7 @@
     "script": "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?",
     "timing": "over",
     "voice": "guide",
-    "after_script": "Rain, then — Verne's words: 'The night was dark, and a fine, steady rain was falling.' Save the pea-souper for a winter chapter.",
-    "variants": {
-      "clear": "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?"
-    },
-    "after_script_variants": {
-      "clear": "Rain, then. Verne's words: 'The night was dark, and a fine, steady rain was falling.' No fog tonight — we save the pea-souper for a winter chapter."
-    }
+    "after_script": "Rain, then. Verne's words: 'The night was dark, and a fine, steady rain was falling.' No fog tonight — we save the pea-souper for a winter chapter."
   },
   "media": [
     {

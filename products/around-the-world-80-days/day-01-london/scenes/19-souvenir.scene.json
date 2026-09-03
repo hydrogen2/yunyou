@@ -6,12 +6,9 @@
   "duration_s": 60,
   "learning_goal": "Take home the breakfast Fogg ate before betting half his fortune, and a date to cook it; feel warmth and a promise to be back on 21 December.",
   "narration": {
-    "script": "Your souvenir of the day: Fogg's last breakfast in London — the meal he ate before betting half his fortune. The dish is broiled fish with a Reading-sauce-style ketchup — a real Berkshire condiment from 1802, gone since the 1960s. The recipe is on the card, with the rest of the menu. Save the card. Cook it on the evening of the twenty-first of December, and be at table by a quarter to nine. That's when he promised to be back in that room. Fogg's other motto, and ours for the road: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris.",
+    "script": "Your souvenir today: Fogg's last breakfast in London — the meal he ate before betting half his fortune. The dish is grilled fish with a Reading-sauce-style ketchup. Reading sauce was a real English sauce from 1802; it disappeared in the 1960s. The recipe is on the card. Save the card. Cook the meal on the evening of the twenty-first of December, and sit down to eat by a quarter to nine. That is when Fogg promised to be back. His motto, and ours: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris.",
     "timing": "over",
-    "voice": "guide",
-    "variants": {
-      "clear": "Your souvenir today: Fogg's last breakfast in London — the meal he ate before betting half his fortune. The dish is grilled fish with a Reading-sauce-style ketchup. Reading sauce was a real English sauce from 1802; it disappeared in the 1960s. The recipe is on the card. Save the card. Cook the meal on the evening of the twenty-first of December, and sit down to eat by a quarter to nine. That is when Fogg promised to be back. His motto, and ours: 'A well-used minimum suffices for everything.' Next: Dover, Calais, Paris."
-    }
+    "voice": "guide"
   },
   "media": [
     {

@@ -6,16 +6,10 @@
   "duration_s": 80,
   "learning_goal": "Know that Verne's Reform is half fantasy (porphyry columns, blue glass) and half exact (nine garden windows); know you can visit during Open House.",
   "narration": {
-    "script": "Verne describes the club in loving detail. Mosaic floors. A gallery under a dome, held up by twenty red porphyry columns. Blue painted windows. A dining-room with nine windows onto a garden already gilded with autumn. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous.",
+    "script": "Verne describes the inside of the club with much detail. Mosaic floors. A gallery under a dome, held up by twenty red stone columns. Blue painted windows. A dining room with nine windows onto a garden. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous.",
     "timing": "over",
     "voice": "guide",
-    "after_script": "Half fantasy, half exact — treat the novel that way for the next seventy-nine days. One practical note. You can stand in that saloon yourself, one weekend a year, on the club's Open House London tours. The caption has this year's dates. The tour, they say, includes one very long staircase.",
-    "variants": {
-      "clear": "Verne describes the inside of the club with much detail. Mosaic floors. A gallery under a dome, held up by twenty red stone columns. Blue painted windows. A dining room with nine windows onto a garden. Compare that with Barry's real building. Which of these details is real? Take your time; the tea is famous."
-    },
-    "after_script_variants": {
-      "clear": "Half invented, half exact — read the novel that way for the next seventy-nine days. One practical note. You can stand in that hall yourself, one weekend a year, on the club's Open House London tours. The dates are in the caption. The tour, they say, has one very long staircase."
-    }
+    "after_script": "Half invented, half exact — read the novel that way for the next seventy-nine days. One practical note. You can stand in that hall yourself, one weekend a year, on the club's Open House London tours. The dates are in the caption. The tour, they say, has one very long staircase."
   },
   "media": [
     {

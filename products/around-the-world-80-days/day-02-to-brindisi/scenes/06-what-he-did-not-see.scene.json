@@ -6,16 +6,10 @@
  "duration_s": 125,
  "learning_goal": "Know the two places Passepartout names and the one Verne does not; feel that the traveller is the one who gets to stop.",
  "narration": {
-  "script": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord, twenty to nine at the Gare de Lyon, four kilometres of Paris in between, in the rain.\n\nIn the novel, Passepartout names two things he wishes he could see. Neither is on the road between the stations. Both are on the card, in grey — with a third that is ours. Tap any of them.",
+  "script": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord. Twenty to nine at the Gare de Lyon. Four kilometres of Paris in between, in the rain.\n\nIn the book, Passepartout names two places he wishes he could see. Neither is on the road between the stations. Both are on the card, in grey — with a third that is ours. Tap any of them.",
   "timing": "over",
   "voice": "guide",
-  "after_script": "He asked for a cemetery and a circus. We can go to one of them.",
-  "variants": {
-   "clear": "Here is the card. A clock, and eighty minutes. Twenty past seven at the Gare du Nord. Twenty to nine at the Gare de Lyon. Four kilometres of Paris in between, in the rain.\n\nIn the book, Passepartout names two places he wishes he could see. Neither is on the road between the stations. Both are on the card, in grey — with a third that is ours. Tap any of them."
-  },
-  "after_script_variants": {
-   "clear": "He asked for a cemetery and a circus. We can still go to one of them."
-  }
+  "after_script": "He asked for a cemetery and a circus. We can still go to one of them."
  },
  "media": [
   {

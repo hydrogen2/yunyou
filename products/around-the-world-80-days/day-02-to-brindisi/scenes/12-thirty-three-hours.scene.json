@@ -6,12 +6,9 @@
  "duration_s": 45,
  "learning_goal": "Know that the longest single leg of the chapter — the whole length of Italy — is two lines in the notebook, and that we cannot say which stations he passed.",
  "narration": {
-  "script": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Nearly thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the rails reached the heel in 1865; which stations he stopped at, nobody has told us.",
+  "script": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Almost thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the railway reached the heel in 1865. Which stations he stopped at, nobody has told us.",
   "timing": "over",
-  "voice": "guide",
-  "variants": {
-   "clear": "Twenty past seven, Friday morning, Turin. Four o'clock, Saturday afternoon, Brindisi. Almost thirty-three hours — the whole length of Italy. The notebook gives it two lines. We know the railway reached the heel in 1865. Which stations he stopped at, nobody has told us."
-  }
+  "voice": "guide"
  },
  "media": [
   {
