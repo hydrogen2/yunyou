@@ -346,7 +346,8 @@
    "_a8_note": "A8 (2026-08-19, content-preparer): the middle visual asked for **M-28** (Thomson, 'London Cabmen', 1877), which is not in scene 12's media list — the renderer resolves `media` against the SCENE's entries, so that 10-second segment was silently dropped and the two M-30 map beats absorbed the time. Scene 12 carries **M-29** (Colard, a hansom on a wet London street, c.1891–96, CC0), which is what the README row names. Changed M-28 → M-29. Pre-existing bug, found while auditing the sidecar; if the Scene Developer wants Thomson's cabmen here instead, add M-28 to the scene's media rather than to the cut sheet."
   },
   "charing-cross": {
-   "_readme": "M-84 Trafalgar Square today -> M-81 Donisthorpe 1890 disc -> M-78 the 1903 Strand -> M-74 the cross from the station yard -> M-51 (M-08 is player-only) — 70 s",
+   "_readme": "M-84 Trafalgar Square today -> M-81 Donisthorpe 1890 disc -> M-78 the 1903 Strand -> M-74 the cross from the station yard -> M-51 (M-08 is player-only) — 75 s (A11)",
+   "narration_at_s": 2,
    "_a4_note": "A4 (2026-08-19): re-derived from post-A3n scripts; spine preserved, interactive-only prompts dropped.",
    "visuals": [
     {
@@ -362,32 +363,34 @@
     {
      "kind": "footage",
      "media": "M-78",
-     "dur": 18
+     "dur": 16
     },
     {
      "kind": "image",
      "media": "M-74",
-     "dur": 14
+     "dur": 12
     },
     {
      "kind": "image",
-     "media": "M-51"
+     "media": "M-51",
+     "dur": 23
     }
    ],
    "overlays": [
     0,
     {
      "i": 1,
-     "at": 42,
-     "until": 54
+     "at": 41,
+     "until": 51
     },
     {
      "i": 2,
-     "at": 56,
-     "until": 66
+     "at": 61,
+     "until": 72
     }
    ],
-   "_a8_note": "A8 (2026-08-19): clip card M-08 gone. The Eleanor Cross pin moved to 40-52 s so it sits over M-74 (the cross photographed from the station yard, c.1903) rather than over Trafalgar Square. Overlay 3 is a gloss and is not timed."
+   "_a8_note": "A8 (2026-08-19): clip card M-08 gone. The Eleanor Cross pin moved to 40-52 s so it sits over M-74 (the cross photographed from the station yard, c.1903) rather than over Trafalgar Square. Overlay 3 is a gloss and is not timed.",
+   "_a11_note": "A11 2026-09-03 (Narrator): scene lengthened 60 -> 75 s in BOTH cuts to fix the chapter's worst density (EN clear 2.35 w/s / 94 % fill -> 1.93 / 77 %); narration_at_s 2 matches the scene's new narration.starts_at_s, so the film opens on two seconds of Trafalgar Square before the guide speaks. NO sentence token was added or removed here and none was needed: this scene has no `script` key, so render_linear.mjs synthesises `s:0..s:N-1` from the current clear track (now 15 sentences, was 16) and speaks the whole thing. Every other scene's tokens index its own script and are untouched. Visuals re-cut 16/8/18/14/rest -> 16/8/16/12/23 = 75 s exactly (the renderer scales them to the rendered length, so these are also proportions): M-84 0-16 under the arrival, M-81 16-24 under the two 1865 dates, M-78 24-40 under the Embankment / clock tower / 'younger than his valet', M-74 40-52 arriving on 'One thing you cannot see', M-51 52-75 arriving on 'A barefoot woman with a child asks for money.' (~51 s) and holding through the last three sentences and ~11 s of silence — the scene's designed rest (positioning.md: silence is content). The last 35 s are now IDENTICAL to the player's, which uses the same M-74 40-52 / M-51 52-75. Overlays: [0] untimed, so it keeps the scene's own 10-24 s; the Eleanor Cross pin moves 42-54 -> 41-51 to stay over M-74 (A8's rule); the twenty-guineas caption moves 56-66 -> 61-72 to land after its sentence, over M-51. Overlay 3 is a gloss and is not burned."
   },
   "then-and-now": {
    "_readme": "15 s, seam auto-wipes; script trimmed to the first two sentences and the Dover line (drops 'Drag the seam.')",

@@ -20,7 +20,7 @@
 | 10 | 10-the-world-shrinks.scene.json | the-world-shrinks | map | 100 | 6 (map beat) | G-01 (enablers layer requested, full loop, Day-1 layer), M-41 | Enablers light up, the loop draws leg by leg, "three words: 'It was once.'", tap the longest leg (pause 20 s), reveal + turn line in `after_script`. |
 | 11 | 11-pack-the-bag.scene.json | pack-the-bag | game | 90 | 7 | G-07 (requested game UI), M-42 | Drag game: six items in, three distractors; no weather in the mackintosh feedback; Bradshaw "hundreds of pages"; the gas stays. |
 | 12 | 12-the-dash.scene.json | the-dash | map | 60 | 7 | M-30, M-29 (hansom, confirmed), M-46, M-47, M-42 | Route line over the 1872 plan; hansom "most likely", sixpence a mile, barely a mile and a half — call it a bob; Underground nine years old; no "wet" before Quiz B. |
-| 13 | 13-charing-cross.scene.json | charing-cross | video | 60 | 8 | M-08 04:45–05:25 (`use: player`), M-51 (held 40–60 s); linear: **M-84 → M-81 → M-78 → M-74** | Strand into the forecourt; station 8, Underground 9, Big Ben — the clock tower 13; "you cannot see it from here — Hawkshaw's roof"; twenty guineas over Neuville's "A poor mendicant". |
+| 13 | 13-charing-cross.scene.json | charing-cross | video | **75** | 8 | M-08 04:45–05:25 (`use: player`), M-74 (40–52 s), M-51 (held 52–75 s); linear: **M-84 → M-81 → M-78 → M-74 → M-51** | Strand into the forecourt; station 8, Underground 9, Big Ben — the clock tower 13; "you cannot see it from here — Hawkshaw's roof"; twenty guineas over Neuville's "A poor mendicant". **A11: 60 → 75 s, narration from 2 s; the words are almost unchanged** (the age list is the scene) — the chapter's densest scene, 2.35 w/s clear / 3.68 字/秒, now 1.93 / 3.03. M-74 40–52, M-51 52–75 in **both** cuts. |
 | 14 | 14-then-and-now.scene.json | then-and-now | photo | 35 | 8 | G-02 (requested), M-24, M-26 | Drag-seam split frame, 1872 engraving vs today's cross; six platforms, a train an hour to Dover. |
 | 15 | 15-look-up-the-cross.scene.json | look-up-the-cross | streetview | **47** | 8 | M-38, M-26; linear: **panowalk stop 0** | **The chapter's one Street View stop (D6), now a real stop-and-look:** two things to FIND, both said out loud — the top of the 1865 replica cross overhead, then the direction of Charles I, 200 m off, from whom London's distances are measured. `interaction.kind: look`. In the film: a slow pan over the same imagery. |
 | 16 | 16-quiz-the-weather.scene.json | quiz-the-weather | quiz | 45 | 9 (Quiz B — now BEFORE the dialogue, D4) | M-25, M-44, M-58 (rain bed, low) | "Twenty to nine, still under the roof. Look up — what is the weather doing tonight?" — pause 20 s; reveal (Verne's sentence) in `after_script`; rain, not fog. |
@@ -30,7 +30,7 @@
 
 **Chain (`next`):** 01 → 02 → 03 → 04 → 06 → 07 → 08 → 09 → 10 → 11 → 12 → 13 → 14 → 15 → **16 quiz-the-weather → 17 passepartout-on-the-platform** → 18 → 19 (end). Unchanged by D6: 04 still hands to 06, and 05 no longer exists. **File numbers now skip 05**, so from 06 on, a scene's file number is one higher than its index in `tour.json` (18 scenes) — the render log counts tour indices.
 
-**Interactive length (D3, honest):** nominal 01–04, 06–19 = 75+100+60+**94**+70+80+70+**45**+100+90+60+60+35+**47**+45+90+85+60 = **1,251 s**; **A10 2026-09-03: 09 is now 45 s, so 1,266 s ≈ 21 min 6 s** (D6: 04 150 → 94 and fixed rather than user-paced, 15 25 → 47); plus wait budgets (03 up to 6 × 12 s, 07 30 s, 10 20 s, 15 up to 30 s of free looking, 16 20 s, 17 up to 180 s) ⇒ **≈ 22 min typical, 26 min maximum**. D6 also removed the 90–240 s of user-paced walking, which is where most of the old variance lived.
+**Interactive length (D3, honest):** nominal 01–04, 06–19 = 75+100+60+**94**+70+80+70+**45**+100+90+60+**75**+35+**47**+45+90+85+60 = **1,281 s**; **A10 2026-09-03: 09 30 → 45 s (1,266 s); A11 2026-09-03: 13 60 → 75 s, so 1,281 s ≈ 21 min 21 s** (D6: 04 150 → 94 and fixed rather than user-paced, 15 25 → 47); plus wait budgets (03 up to 6 × 12 s, 07 30 s, 10 20 s, 15 up to 30 s of free looking, 16 20 s, 17 up to 180 s) ⇒ **≈ 22 min typical, 26 min maximum**. D6 also removed the 90–240 s of user-paced walking, which is where most of the old variance lived.
 Rhythm check: no two video scenes adjacent (02 video → 03 card; **04 video → 06 video is now the one exception, and it is deliberate: 04 arrives at the club door and 06 opens on it** — 04's own first 40 s are a map beat, so the traveller does not see 90 s of unbroken street; 06 video → 07 quiz; 13 video → 14 photo; 18 video is preceded by the dialogue); no continuous video > 90 s (04's street half is ≈ 50 s).
 
 ## Linear cut (~16 min passive version — D6: the transport is now in the film)
@@ -61,14 +61,14 @@ no freely-licensed source carries 76 s of continuous Pall Mall façade; the word
 | 10 the-world-shrinks | enablers + loop reveal + turn line, no tap; skip 09 | 92 |
 | 11 pack-the-bag | 20-s packing-list card, no drag; whole script minus the drag instruction | 88 |
 | 12 the-dash | whole (the shilling sentence makes 'sixpence a mile' add up) | 58 |
-| 13 charing-cross | whole: **M-84 Trafalgar today 16 s → M-81 Donisthorpe 1890 disc 8 s → M-78 the 1903 Strand 18 s → M-74 14 s → M-51** | 70 |
+| 13 charing-cross | whole, narration from 2 s: **M-84 Trafalgar today 16 s → M-81 Donisthorpe 1890 disc 8 s → M-78 the 1903 Strand 16 s → M-74 12 s → M-51 23 s** (A11: 18/14 → 16/12 so Neuville's plate arrives on 'A barefoot woman…' at ≈ 51 s; the last 35 s are identical to the player's) | **75** |
 | 14 then-and-now | 15 s, seam auto-wipes | 26 |
 | 15 look-up-the-cross | **D6 stop-and-look, adapted**: a slow pan over the same open imagery (stop 0, 44 m at walking pace); whole script — the guide names both finds | 50 |
 | 16 quiz-the-weather | guide asks and states the answer (script + after_script), no choice | 28 |
 | 17 passepartout-on-the-platform | passepartout.md §6 scripted three-line exchange (guide names him → Passepartout → guide) | 46 |
 | 18 the-boat-train | postcard 10 s + **M-88 lit bridge at night 12 s + M-76 the view from Hungerford Bridge 36 s** + postcard tail; trim the Dover/Suez sentence | 82 |
 | 19 souvenir | ingredient list stays on the card; "Save the card." dropped, the recipe-card sentence kept | 54 |
-| **total** | | **1,072 s ≈ 17 min 52 s** of caps (D6: −42 for the retired 05, +97 for the restructured 04, +50 for 15 in the film; 967 → 1,072). `--plan --track clear` renders **≈ 962 s ≈ 16 min 2 s** — what the caps actually produce once every scene is trimmed to `narration + pad`. Re-derive with `cd studio/tools/render && node render_linear.mjs <tour.json> --plan --track clear` after ANY script edit |
+| **total** | | **1,077 s ≈ 17 min 57 s** of caps (D6: −42 for the retired 05, +97 for the restructured 04, +50 for 15 in the film; 967 → 1,072. **A11: +5 for 13, 60 → 75 s — and the cap is now a floor, see below**). `--plan --track clear` rendered **≈ 962 s ≈ 16 min 2 s** when the cap was only a ceiling — what the caps produced once every scene was trimmed to `narration + pad`; **that figure is stale**, because the port now floors a scene at its README seconds (A11), which is what puts the silence back. Re-derive with `cd studio/tools/render && node render_linear.mjs <tour.json> --plan --track clear` after ANY script edit |
 
 Linear-only: none (05 pall-mall-pass is retired — see the D6 pass). Interactive-only: 09 (and the interactions of 03, 10, 11, 14, 16, 17, and the free look in 15). **Both cuts now carry the transport (04) and the Street View stop (15).** Narrator trims scripts to the marks in each scene's `production_notes`. Note for Engine/Tools: the renderer speaks `script` (or `variants.clear`) only — it has no token for `after_script`, so 07's "Half invented, half exact…", 10's "The train leaves for Dover at a quarter before nine." and 16's Verne rain quote are missing from the film; `after:N` is the missing token.
 
@@ -283,8 +283,8 @@ always ~0.5 字/秒 lower and is the truer number. Decisions were taken on the s
   not gloss chips, because the player speaks a gloss chip's whole text on tap.
 
 **Still over budget, and why**
-- **13 charing-cross — the worst scene in the chapter and it was not in the brief.** EN literary 2.48 w/s (99 %),
-  EN clear 2.35 (94 %), Mandarin 3.68 字/秒 (92 %), in 60 s, and it is in both films. Needs the same pass.
+- ~~13 charing-cross — the worst scene in the chapter and it was not in the brief~~ (EN literary 2.48 w/s / 99 %,
+  EN clear 2.35 / 94 %, Mandarin 3.68 字/秒 / 92 %, in 60 s, in both films) — **fixed by the A11 pass below, 2026-09-03.**
 - 04 count-the-steps (EN clear 87 %, ZH 82 %), 15 look-up-the-cross (89 % / 88 %), 12 the-dash (ZH 85 %),
   02 savile-row (ZH 84 %), 10 the-world-shrinks (ZH 82 %), 14 then-and-now (EN literary 85 %).
 - 08 lands at 81 % in both languages, one point over. The only cuts left are the deadline sentence (the chapter's
@@ -298,6 +298,79 @@ just makes the scene shorter. `positioning.md` calls silence a hard constraint (
 that failed the density check were the ones talking non-stop"), and the linear cut cannot honour it until `p.len`
 treats the README seconds as a floor, or derives the length from the 80 % fill budget. That is an Engine change,
 not a script change, and the renderer is mid-port right now — the right moment to say so.
+
+## A11 pass (2026-09-03) — Narrator: 13 charing-cross, the scene A10 measured and was not briefed to fix
+
+**Same rate model as A10**, so the numbers stay comparable: English 2.5 w/s (150 wpm), Mandarin 4.0 字/秒, both budgeted
+at **80 % fill** of `duration_s − narration.starts_at_s` (≤ 2.00 w/s, ≤ 3.20 字/秒); the Mandarin column counts every
+non-whitespace character. Measured from the files first — A10's figures reproduced exactly, so nothing was stale.
+
+| track | before (60 s window) | after (73 s window) |
+|---|---|---|
+| EN literary | 149 w → 2.48 w/s (**99 %**) | 134 w → **1.84 (73 %)** |
+| EN clear (the rendered default) | 141 w → 2.35 w/s (**94 %**) | 141 w → **1.93 (77 %)** |
+| Mandarin | 221 字 → 3.68 字/秒 (**92 %**) | 221 字 → **3.03 (76 %)** |
+| Mandarin, punctuation dropped | 194 → 3.23 (81 %) | 194 → **2.66 (66 %)** |
+
+**Lengthened, not cut — 60 → 75 s, narration from 2 s.** The clear track loses *no words at all*, because there were
+none left to lose: A5 had already stripped this scene once (the spoken "420 shillings" line went then), and what
+remains is the arrival (2 sentences), the thesis (1), the ages that *are* the scene — station 8, hotel and cross
+1865, Underground 9, Embankment 2, clock tower 13 — the "younger than his valet" payoff, the roof you cannot see (3),
+and the beggar-woman and the twenty guineas (4), which is half the learning goal. Cutting the age list would gut the
+scene; cutting the roof would remove the only sentence that makes the newness physical. So the clock moved, exactly
+as it did for 09 — with the difference that **13 is in the linear cut**, so both films change too.
+
+**What actually changed in the words**
+- **Deleted (literary track only): "Four hundred and twenty shillings — about eight hundred and forty cab-miles."**
+  Caption [2] carries it verbatim ("Twenty guineas — 420 shillings, or 840 cab-miles") and A5 had already cut it from
+  the clear track *and* from the Mandarin — the literary track was the odd one out. Nothing moved; it was already there.
+- **Deleted (literary track only): "five hundred feet"** from the roof line. Metric first (style guide); F-21's
+  510 × 164 ft stays in `production_notes` and on the fact sheet. A spoken double measurement is two numbers for one fact.
+- **Merged, both English tracks:** the two 1865 sentences → "The hotel behind the stone cross, and the cross itself:
+  1865." Same two facts, one breath instead of two, and the cross's date is *additionally* on pin [1]. The Mandarin
+  already had them as one sentence.
+- **Mandarin: not one character added or removed (221), but three sentence breaks added.** 「地铁九岁，河边的泰晤士河堤
+  两岁，我们叫大本钟的钟楼十三岁。」 was one 25-character run where English has three short sentences, and 「…递过去，脚
+  步都没停。」 buried "Without breaking stride." inside the guineas sentence — the chapter's warmest line, which the
+  persona (§2 rule 10) says should be said *less, slower*. The renderer speaks one sentence = one utterance, so three
+  breaks buy three real pauses for nothing. 11 → 14 sentences.
+
+**Windows moved with the clock** — `duration_s` 60 → 75, `narration.starts_at_s` 0 → 2 (two seconds of street before
+the guide speaks; the film gets the same via the cut sheet's `narration_at_s`). M-74 44–58 → **40–52**, M-51 40–60 →
+**52–75**, caption [0] 10–22 → **10–24** (it now spans the station and the Underground as they are spoken, and stops
+before the Eleanor Cross pin at 26 s), caption [2] 48–58 → **61–73**, gloss [3] 45–55 → **57–69**. Pin [1] 26–38 is
+**unchanged**: M-08's 0–40 window did not move, and the pin is timed to the frame the cross appears in, not to its
+sentence. Overlay indices are unchanged, so every cut-sheet `{i:…}` still points where it did.
+
+**The film.** The linear cap goes 70 → 75 and the visuals were re-cut 16/8/**16**/**12**/**23** = 75 s exactly, so
+M-74 arrives on "One thing you cannot see" (≈ 36 s) and Neuville's plate on "A barefoot woman with a child asks for
+money." (≈ 51 s), then holds through the last three sentences and **≈ 11 s of silence** into the dissolve. That silence
+is the point: A10's headline finding was that the film is wall-to-wall narration, and since the renderer now floors a
+scene at its README seconds (`p.len = Math.max(p.sel.cap, want)`, capped by `cap × (1 + SLACK)`), raising the cap is
+the one lever a script pass has. **The last 35 seconds of the player and of the film are now identical**
+(M-74 40–52, M-51 52–75) — only the first 40 differ, embed against montage.
+
+**Cut sheet re-derived by hand** (`render_linear.mjs --plan` still dies on `ReferenceError: tts is not defined`, and it
+is somebody else's work in flight — untouched). `cuts/day-01-london.json` → `charing-cross` **has no `script` key**, and
+the renderer's `const tokens = hint.script || enSents.map((_, i) => 's:' + i)` means the whole track is spoken; so the
+15 clear sentences (was 16) are all kept, none dangling, and there is no token to shift. Verified by reading every
+other scene's tokens against its own unchanged script: 02 `s:0-15`, 03 `s:0` / `s:2-10` / `s:12`, 06 `s:0-5` / `s:7-10`,
+07 `s:0-6`, 11 `s:0-9` / `s:11-18`, 12 `s:0-9`, 14 `s:1-3` / `s:6`, 16 `s:0-1`, 17 `s:0-1`, 19 `s:0-3` / `s:5-7` — every
+token is scene-local, none references 13, and no scene but 13 was edited. In the Mandarin cut `!hint.script` also gives
+`keep = all`, so 13's 11 → 14 sentences are all spoken there too. **Re-run the real `--plan` once the port lands.**
+
+**Still over budget after this pass:** nothing in 13. The Mandarin film now carries ~18 s of tail on this scene
+(221 字 ÷ 4.0 ≈ 55 s of speech inside 75 s) — baggier than the English, and the strongest argument yet for the
+per-language cut sheet that the port's `alignKept()` / `--zh-align` is meant to make unnecessary. Left alone
+deliberately: you never add words to hit a budget. The rest of A10's list (04, 15, 12, 02, 10, 14, and 08 at 81 %)
+is unchanged and untouched.
+
+**TTS hazards, re-checked (A10's list).** No first-use English brackets anywhere in the spoken Mandarin — A10 moved
+查令十字（Charing Cross）onto caption [0] and it stays there, read on screen, never spoken. The gloss chip [3]
+(「几尼——21先令。到1872年它只是记价单位，早已不铸币」) carries none either, which matters because the player speaks a
+chip's whole text on tap. **No `No. <number>` form in this scene in any track** (the chapter's live in 02 and 04), so
+the renderer's espeak normalisation — which rewrites "No. 14" on its way to the synthesizer and nowhere else — has
+nothing to do here. Noted, not fixed, as briefed.
 
 ## Requests to Content Preparer / Engine
 - **G-01** — Day-1 layer must carry a "Day 1" label and a lit/unlit legend (not opacity-only); enablers layer as before.

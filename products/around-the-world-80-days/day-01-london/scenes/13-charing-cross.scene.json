@@ -3,14 +3,15 @@
   "type": "video",
   "title": "Charing Cross — Fogg's newest London",
   "subtopic": "8 — Charing Cross",
-  "duration_s": 60,
+  "duration_s": 75,
   "learning_goal": "Know that Fogg's London was brand-new (station 8, Underground 9, Embankment 2, Big Ben 13) and remember the twenty guineas; feel awe at a new city and one warm beat.",
   "narration": {
-    "script": "The Strand, and ahead, the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the stone cross, 1865. The cross itself, 1865. The Underground, nine years old. The Embankment by the river, two. Big Ben — the clock tower — thirteen. So much of what Fogg passes tonight is younger than his valet. You can't see it from here: the station's great roof — one iron span, 155 metres, five hundred feet. It fell in 1905 and was replaced; that's all we'll say. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money. Fogg hands her the twenty guineas he has just won at whist. Without breaking stride. Four hundred and twenty shillings — about eight hundred and forty cab-miles.",
+    "script": "The Strand, and ahead, the forecourt of Charing Cross. Forget olde-worlde London: this was Fogg's newest London. The station had opened in January 1864 — eight years old that night. The hotel behind the stone cross, and the cross itself, 1865. The Underground, nine years old. The Embankment by the river, two. Big Ben — the clock tower — thirteen. So much of what Fogg passes tonight is younger than his valet. You can't see it from here: the station's great roof — one iron span, 155 metres. It fell in 1905 and was replaced; that's all we'll say. Then the one warm beat of the evening. At the station a barefoot woman with a child asks for money. Fogg hands her the twenty guineas he has just won at whist. Without breaking stride.",
+    "starts_at_s": 2,
     "timing": "over",
     "voice": "guide",
     "variants": {
-      "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross: 1865. The cross itself: 1865. The Underground railway: nine years old. The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
+      "clear": "This is the Strand, and ahead is Charing Cross station. Forget 'old London': for Fogg, this was new London. The station opened in January 1864 — eight years old that night. The hotel behind the stone cross, and the cross itself: 1865. The Underground railway: nine years old. The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old. Much of what Fogg passes tonight is younger than his valet. One thing you cannot see: the station's huge iron roof, 155 metres in one span. It fell in 1905 and was replaced. That is all we will say. Then the one warm moment of the evening. A barefoot woman with a child asks for money. Fogg gives her the twenty guineas he has just won at cards. He does not even stop walking."
     }
   },
   "media": [
@@ -64,13 +65,13 @@
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623).jpg",
-      "start_s": 44,
-      "end_s": 58,
+      "start_s": 40,
+      "end_s": 52,
       "license": "public-domain",
       "manifest_id": "M-74",
       "attribution": "The Eleanor Cross from Charing Cross station yard, c.1903 — public domain (Wikimedia Commons)",
       "use": "both",
-      "note": "2352×3600. A period photograph taken FROM the station yard — the scene’s own viewpoint, and a better match than M-24’s 1872 engraving. A6 M-74."
+      "note": "2352×3600. A period photograph taken FROM the station yard — the scene’s own viewpoint, and a better match than M-24’s 1872 engraving. A6 M-74. A11 2026-09-03: window 44-58 -> 40-52 s (the scene is 75 s now); it takes over from the M-08 embed the moment the walk ends and carries the roof beat — \"you cannot see it from here\", over a photograph in which you indeed cannot."
     },
     {
       "kind": "image",
@@ -78,19 +79,19 @@
       "license": "public-domain",
       "manifest_id": "M-51",
       "attribution": "'A poor mendicant' — the beggar-woman with a child, de Neuville & Benett plate 07, Hetzel edition 1873 (Wikimedia Commons, PD)",
-      "start_s": 40,
-      "end_s": 60,
-      "note": "Held still 40–60 s under the beggar-woman beat and the twenty-guineas caption; portrait, high-res. No sentiment (rundown)."
+      "start_s": 52,
+      "end_s": 75,
+      "note": "Held still 52-75 s under the beggar-woman beat and the twenty-guineas caption; portrait, high-res. No sentiment (rundown). A11 2026-09-03: was 40-60 s; the plate now lands on \"A barefoot woman with a child asks for money.\" (≈ 52 s) and holds through the last three sentences and the ~11 s of silence that end the scene."
     }
   ],
   "overlays": [
     {
       "at_s": 10,
       "kind": "caption",
-      "until_s": 22,
+      "until_s": 24,
       "text": "Charing Cross station: 8 years old. Underground: 9. Clock tower: 13.",
       "position": "bottom",
-      "note": "A10 (Narrator): now names the station, so it is the on-screen home of 查令十字（Charing Cross）, moved out of scene 12's spoken Mandarin."
+      "note": "A10 (Narrator): now names the station, so it is the on-screen home of 查令十字（Charing Cross）, moved out of scene 12's spoken Mandarin. A11: held to 24 s (was 22) so it spans the station and the Underground as they are spoken; it stops before the Eleanor Cross pin at 26 s."
     },
     {
       "at_s": 26,
@@ -101,16 +102,16 @@
       "geo": "51.5081,-0.1247"
     },
     {
-      "at_s": 48,
+      "at_s": 61,
       "kind": "caption",
-      "until_s": 58,
+      "until_s": 73,
       "text": "Twenty guineas — 420 shillings, or 840 cab-miles",
       "position": "bottom"
     },
     {
-      "at_s": 45,
+      "at_s": 57,
       "kind": "gloss",
-      "until_s": 55,
+      "until_s": 69,
       "text": "guinea — twenty-one shillings: a price, not a coin, by 1872",
       "position": "tl"
     }
@@ -135,11 +136,11 @@
     "F-31",
     "F-39"
   ],
-  "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m). The 1864 roof is gone (1905, replaced; Embankment Place sits over the platforms) and the train-shed is not visible from the Strand — hence 'You cannot see it from here'. The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'So much of what Fogg passes' (not 'almost everything' — Trafalgar Square and St Martin's are older). First mention 'Big Ben — the clock tower', then 'the clock tower' (Continuity #21). Narrator: short sentences at the beggar-woman beat (Continuity #10). Linear cut: keep whole (60 s: 40 s video + 20 s M-51 still). A8 2026-08-19 (content-preparer): the linear cut loses its clip card here. Linear visuals: M-84 (16 s, Trafalgar Square today, CC BY 3.0 via the Commons mirror) → M-81 (8 s, Donisthorpe 1890 disc) → M-78 (18 s, the 1903 Strand ride) → M-74 (14 s, the cross from the station yard, c.1903) → M-51 (14 s, Neuville’s beggar-woman, unchanged). M-08 stays the PLAYER source. What we still do NOT have is modern moving footage of the forecourt: manifest-a7.md searched Commons, Pexels, Pixabay, Mixkit, Coverr and the Internet Archive and found none, and the Strand has no KartaView coverage at the station frontage. The Urban Pigeon file request (rights-a6 §1.6) remains the upgrade path.",
+  "production_notes": "Roof dimensions are a conversion of F-21's 510 × 164 ft (≈ 155 × 50 m); A11 2026-09-03 the spoken line keeps the metric span only (style guide: metric first) — the imperial figure lives here and on F-21, not in the voice. The 1864 roof is gone (1905, replaced; Embankment Place sits over the platforms) and the train-shed is not visible from the Strand — hence 'You cannot see it from here'. The 1905 collapse gets one line, no drama (brief: no disaster tourism). 'So much of what Fogg passes' (not 'almost everything' — Trafalgar Square and St Martin's are older). First mention 'Big Ben — the clock tower', then 'the clock tower' (Continuity #21). Narrator: short sentences at the beggar-woman beat (Continuity #10). Linear cut: keep whole. A11: the scene is 75 s in BOTH cuts. Player = M-08 embed 0-40, then M-74 40-52, then M-51 52-75. Film = M-84 0-16, M-81 16-24, M-78 24-40, then the SAME last 35 s (M-74 40-52, M-51 52-75), so the two cuts land the beggar-woman beat on the same frame at the same second. A8 2026-08-19 (content-preparer): the linear cut loses its clip card here. Linear visuals: M-84 (16 s, Trafalgar Square today, CC BY 3.0 via the Commons mirror) → M-81 (8 s, Donisthorpe 1890 disc) → M-78 (16 s, the 1903 Strand ride) → M-74 (12 s, the cross from the station yard, c.1903) → M-51 (23 s, Neuville’s beggar-woman). A11 re-timed M-78 18→16 and M-74 14→12 so the plate arrives on the woman's sentence; M-51 takes the remainder of the 75 s. M-08 stays the PLAYER source. What we still do NOT have is modern moving footage of the forecourt: manifest-a7.md searched Commons, Pexels, Pixabay, Mixkit, Coverr and the Internet Archive and found none, and the Strand has no KartaView coverage at the station frontage. The Urban Pigeon file request (rights-a6 §1.6) remains the upgrade path.",
   "review": {
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s). A8 2026-08-19 (content-preparer): M-08 marked `use: player`; M-84 / M-81 / M-78 / M-74 wired for the linear cut. TWO honest flags for Rights: (i) the Commons PD copy of M-78 carries a burned-in BFI roundel in the top-right corner of every frame — the film's public-domain status is unaffected, but the BFI's mark will appear in our MP4 and should either be accepted and credited or the shot re-framed; (ii) M-84's frames were viewed and are genuinely Trafalgar Square, but the clip is tourist coverage of the fountains and lions, not the walk into the forecourt the scene describes — the narration must not claim more than the picture shows. | A10 narrator 2026-09-03 (density re-measure, EN + ZH, for the YouTube cuts). Rate model: EN 2.5 w/s (150 wpm) and ZH 4.0 zi/s (240 zi/min), both budgeted at 80 % fill of duration_s - starts_at_s; the Mandarin column is counted the way the August translator counted it (every non-whitespace character), which reproduces their 4.63 / 3.81 exactly. Caption 0 now names the station ('Charing Cross station: 8 years old…', 11 words) so it can carry 查令十字（Charing Cross）, the last of the seven English brackets moved out of the spoken Mandarin (it was in scene 12). NOT otherwise touched — but flagging it: this is the densest scene in the chapter and it was not in my brief. EN literary 2.48 w/s (99 % fill), EN clear 2.35 (94 %), Mandarin 3.68 zi/s (92 %), all against 60 s. It is in both films. It needs the same pass 06 and 08 just had."
+    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: 'Almost everything' → 'So much of what Fogg passes'; roof line → 'You cannot see it from here — Hawkshaw's roof…'; 'Big Ben — the clock tower' first mention, caption 'Clock tower: 13'; M-08 cut at 05:25 and M-51 (Neuville 'A poor mendicant') held 40–60 s under the twenty-guineas caption; beggar-woman sentence split (Continuity #10). A1 narrator 2026-08-18: script 156→148 words for 60 s (validator WARN cleared); roof line split, 'You can't see it from here'; 'So much of what Fogg passes' kept; beggar-woman beat in short sentences (Continuity #10); Big Ben — the clock tower first mention. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): Hawkshaw's name moved out of the spine (the roof told plainly; the engineer stays in production notes); 'the stone cross' cues the eye before the pin; guinea gloss chip; clear-English variant added; still ≤ 2.5 w/s. A5 narrator 2026-08-19 (fact-check-a5 §1, §3): gloss corrected per F-46 — 'guinea — an old coin: one pound and one shilling' → 'guinea — twenty-one shillings: a price, not a coin, by 1872' (last struck 1813, demonetised 1816; Fogg hands over sovereigns or notes to the value of 420 shillings). Clear track's age list no longer goes elliptical ('The Embankment along the river: two years old. And the clock tower we call Big Ben: thirteen years old'). NOT taken: the report's 'the hotel, eight years old too' — the hotel opened 15 May 1865 and was seven, not eight, years old that night (F-21), so the two 1865 dates stay as years. The spoken '420 shillings' line stays cut (caption [2] carries it; restoring it would push the clear track over 2.5 w/s). A8 2026-08-19 (content-preparer): M-08 marked `use: player`; M-84 / M-81 / M-78 / M-74 wired for the linear cut. TWO honest flags for Rights: (i) the Commons PD copy of M-78 carries a burned-in BFI roundel in the top-right corner of every frame — the film's public-domain status is unaffected, but the BFI's mark will appear in our MP4 and should either be accepted and credited or the shot re-framed; (ii) M-84's frames were viewed and are genuinely Trafalgar Square, but the clip is tourist coverage of the fountains and lions, not the walk into the forecourt the scene describes — the narration must not claim more than the picture shows. | A10 narrator 2026-09-03 (density re-measure, EN + ZH, for the YouTube cuts). Rate model: EN 2.5 w/s (150 wpm) and ZH 4.0 zi/s (240 zi/min), both budgeted at 80 % fill of duration_s - starts_at_s; the Mandarin column is counted the way the August translator counted it (every non-whitespace character), which reproduces their 4.63 / 3.81 exactly. Caption 0 now names the station ('Charing Cross station: 8 years old…', 11 words) so it can carry 查令十字（Charing Cross）, the last of the seven English brackets moved out of the spoken Mandarin (it was in scene 12). NOT otherwise touched — but flagging it: this is the densest scene in the chapter and it was not in my brief. EN literary 2.48 w/s (99 % fill), EN clear 2.35 (94 %), Mandarin 3.68 zi/s (92 %), all against 60 s. It is in both films. It needs the same pass 06 and 08 just had. | A11 narrator 2026-09-03 (the density fix A10 flagged and was not briefed to make). Same rate model as A10: EN 2.5 w/s and ZH 4.0 zi/s, both budgeted at 80 % fill of duration_s - narration.starts_at_s; ZH counts every non-whitespace character. Measured from the files first: EN literary 149 w / 60 s = 2.48 w/s (99 %), EN clear 141 / 60 = 2.35 (94 %), Mandarin 221 zi / 60 = 3.68 zi/s (92 %) — A10's figures reproduced exactly. LENGTHENED, not cut: 60 → 75 s with narration from 2 s (window 73 s). The age list IS the scene (station 8, Underground 9, Embankment 2, clock tower 13) and the twenty guineas is the learning goal's warm beat; A5 had already stripped this scene once, so the only cuttable words left were duplicates. Cut: the literary track's 'Four hundred and twenty shillings — about eight hundred and forty cab-miles.' (caption [2] carries it verbatim, and A5 had already cut it from the clear track and from the Mandarin — the literary track was the odd one out); and 'five hundred feet' from the roof line (the metric span stays spoken; the imperial is on F-21 and in these notes). Merged, both English tracks: the two 1865 sentences into one — 'The hotel behind the stone cross, and the cross itself: 1865.' The cross's date is additionally on pin [1]. The Mandarin already had them as one sentence. Mandarin: no characters added or removed (221), but three sentence breaks added — the three-age run and the guineas/'without breaking stride' beat were single sentences where English has five, so the Mandarin voice got one breathless run and no pause at the chapter's warmest line. 11 → 14 sentences; the renderer speaks one utterance per sentence, so this buys three real pauses for free. After: EN literary 134 w / 73 s = 1.84 w/s (73 %), EN clear 141 / 73 = 1.93 (77 %), Mandarin 221 zi / 73 = 3.03 zi/s (76 %). Sentence counts: literary 16 → 14, clear 16 → 15, Mandarin 11 → 14. Windows moved with the clock: M-74 44-58 → 40-52, M-51 40-60 → 52-75, caption [0] 10-22 → 10-24, caption [2] 48-58 → 61-73, gloss [3] 45-55 → 57-69; pin [1] 26-38 unchanged because M-08's 0-40 window is unchanged and the pin is timed to the frame the cross appears in. TTS hazards re-checked: the spoken Mandarin carries no first-use English brackets (A10 moved 查令十字（Charing Cross） onto caption [0], where it stays) and the gloss chip [3] has none either — the player speaks a chip's whole text on tap. No 'No. <number>' form in this scene, in any track, so the renderer's speech normalisation has nothing to do here."
   }
 }
