@@ -3,8 +3,7 @@
  "subtitles": "day-01-london_zh.vtt",
  "lang": "zh",
  "locale": "zh-Hans",
- "duration_s": 1050,
- "track": "clear",
+ "duration_s": 1126,
  "chapters": [
   {
    "scene": "cold-open",
@@ -67,39 +66,45 @@
    "title": "一先令的马车，到查令十字"
   },
   {
+   "scene": "charing-cross",
+   "type": "video",
+   "at_s": 720,
+   "title": "查令十字——福克那个崭新的伦敦"
+  },
+  {
    "scene": "then-and-now",
    "type": "photo",
-   "at_s": 720,
+   "at_s": 795,
    "title": "今昔——1872年和今天的站前广场"
   },
   {
    "scene": "look-up-the-cross",
    "type": "streetview",
-   "at_s": 746,
+   "at_s": 821,
    "title": "抬头——十字碑，和伦敦的原点"
   },
   {
    "scene": "quiz-the-weather",
    "type": "quiz",
-   "at_s": 796,
+   "at_s": 871,
    "title": "小测——抬头看屋顶：今晚天气怎么样"
   },
   {
    "scene": "passepartout-on-the-platform",
    "type": "dialogue",
-   "at_s": 824,
+   "at_s": 899,
    "title": "站台，晚上8点40分——和路路通聊聊"
   },
   {
    "scene": "the-boat-train",
    "type": "video",
-   "at_s": 870,
+   "at_s": 945,
    "title": "8点45分——过河，奔向那盏忘关的煤气灯"
   },
   {
    "scene": "souvenir",
    "type": "card",
-   "at_s": 952,
+   "at_s": 1027,
    "title": "纪念品——福克在伦敦的最后一顿早餐"
   }
  ]

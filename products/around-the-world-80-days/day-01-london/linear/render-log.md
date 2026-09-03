@@ -1,18 +1,18 @@
 # Render log — Day 1 · London — the departure — linear cut (review animatic)
 
-**Rendered:** 2026-09-03T06:35:32.741Z   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** 16.5 min
+**Rendered:** 2026-09-03T09:10:41.206Z   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** 9.1 min
 
-**Output:** `products/around-the-world-80-days/day-01-london/linear/day-01-london_zh.mp4` — 1050.0 s (17:30), 1920×1080 h264 25/1 fps, aac 48000 Hz 2 ch, 197.0 MB, faststart. Subtitles: `day-01-london_zh.vtt` (burned in AND sidecar).
+**Output:** `products/around-the-world-80-days/day-01-london/linear/day-01-london_zh.mp4` — 1126.0 s (18:46), 1920×1080 h264 25/1 fps, aac 48000 Hz 2 ch, 231.6 MB, faststart. Subtitles: `day-01-london_zh.vtt` (burned in AND sidecar).
 
 **Language:** Mandarin (zh-Hans) — text from `i18n/zh-Hans.json`, index-addressed, English where the locale is silent. **Voice:** local Kokoro zf_xiaoxiao @ 1x via ~/hilbert (Apache-2.0, free, no account). **Narration gain:** -0.9 dB (measured). **Beds:** Commons audio at -35 LUFS (≈ 18 dB under narration), stings at -26 LUFS. **Slack:** a scene may exceed its README seconds by 10 % before the script is end-cut at a sentence boundary. **Scene length:** clamp(narration + pad, README seconds, README seconds x 1.10) — the authored seconds are a floor as well as a cap, so silence the rundown asked for actually exists ("air" column below).
 
 Locale: /home/supper-user/yunyou/products/around-the-world-80-days/day-01-london/i18n/zh-Hans.json (简体中文) — 18 scenes translated; anything missing falls back to English.
-Selection: 16 scenes from scenes/README.md "Linear cut" table (1002 s planned).
+Selection: 17 scenes from scenes/README.md "Linear cut" table (1077 s planned).
 Narration level: measured -16.1 LUFS over 12 clip(s) → -0.9 dB to reach -17 LUFS.
 Sidecar cut hints: studio/tools/render/cuts/day-01-london.json.
 
 ## Rights compliance
-- YouTube: not downloaded, not re-encoded. no clip cards in this cut; 2 shot(s) come from self-hosted, licence-clean files under `media/files/` (Wikimedia Commons / public-domain film / KartaView), never from youtube.com.
+- YouTube: not downloaded, not re-encoded. no clip cards in this cut; 5 shot(s) come from self-hosted, licence-clean files under `media/files/` (Wikimedia Commons / public-domain film / KartaView), never from youtube.com.
 - Street View: not screen-recorded — stop cards only.
 - Commons images resolved through the API (imageinfo, width 1920), attribution burned bottom-right while shown and repeated on the credits card. Freesound refs (login-gated) skipped.
 
@@ -30,14 +30,15 @@ Sidecar cut hints: studio/tools/render/cuts/day-01-london.json.
 | 09 | the-world-shrinks | map | 8:02 | 92.0 (92) | ok 48.8 s | 42.2 s | player screenshot showRouteMap(false) 83.0 s<br>player screenshot showRouteMap(true) 9.0 s | M-41 0:00–1:32 (bed -8 dB → -35 LUFS) | sidecar: dropped [18] 现在，在地图上点出最长的一段。 |
 | 10 | pack-the-bag | game | 9:34 | 88.0 (88) | ok 48.0 s | 39.0 s | checklist screen (own render) 88.0 s | M-42 0:59–1:28 (bed -14 dB → -35 LUFS) | sidecar: dropped [10] 该带的拖进去，该留的留下。 |
 | 11 | the-dash | map | 11:02 | 58.0 (58) | ok 38.0 s | 19.0 s | M-30 Commons still 1920x1428 → backdrop 40.0 s<br>M-29 Commons still 1920x1367 → backdrop 10.0 s<br>M-30 Commons still 1920x1428 → backdrop 8.0 s | M-42 0:00–0:58 (bed -14 dB → -35 LUFS) | — |
-| 13 | then-and-now | photo | 12:00 | 26.0 (26) | ok 12.9 s | 12.1 s | M-24 Commons still 1802x1345 → backdrop 13.0 s<br>M-26 Commons still 1920x3272 → backdrop 13.0 s | — | sidecar: dropped [0] 拖动这条缝。<br>sidecar: dropped [4] 你今天仍然可以在这里买去多佛的票。<br>sidecar: dropped [5] 去巴黎的快车改从圣潘克拉斯站发。 |
-| 14 | look-up-the-cross | streetview | 12:26 | 50.0 (50) | ok 32.3 s | 16.7 s | panowalk — mapillary ctrzEaPC8S2q1DQvsiupmL (stops 0), cached frames, same move as the player 50.0 s | — | — |
-| 15 | quiz-the-weather | quiz | 13:16 | 28.0 (28) | ok 12.6 s | 14.4 s | quiz screen (own render) 28.0 s | M-44 0:00–0:28 (bed -22 dB → -35 LUFS) | — |
-| 16 | passepartout-on-the-platform | dialogue | 13:44 | 46.0 (46) | ok 29.0 s | 16.0 s | dialogue screen (own render, scripted chips) 46.0 s | M-44 0:00–0:46 (bed -22 dB → -35 LUFS) | sidecar: dropped [2] 问他点什么吧。 |
-| 17 | the-boat-train | video | 14:30 | 82.0 (82) | ok 52.7 s | 28.3 s | M-27 Commons still 1526x986 → backdrop 10.0 s<br>M-88 local footage media/files/m88-hungerford-bridge-night.mp4 — self-hosted, licence-clean 12.0 s<br>M-76 Commons still 1920x1440 → backdrop 36.0 s<br>M-27 Commons still 1526x986 → backdrop 24.0 s | M-44 0:00–0:10 (bed -22 dB → -35 LUFS)<br>M-45 0:13–0:17 (sting -9 dB → -26 LUFS) | — |
-| 18 | souvenir | card | 15:52 | 54.0 (54) | ok 33.0 s | 20.0 s | player screenshot showScene(18) 54.0 s | M-41 0:00–0:54 (bed -8 dB → -35 LUFS) | sidecar: dropped [8] 下一站：多佛、加来、巴黎。 |
+| 12 | charing-cross | video | 12:00 | 75.0 (75) | ok 43.3 s | 29.7 s | M-84 local footage media/files/m84-trafalgar-square.mp4 — self-hosted, licence-clean 16.0 s<br>M-81 local footage media/files/m81-trafalgar-1890-disc.mp4 — self-hosted, licence-clean 8.0 s<br>M-78 local footage media/files/m78-strand-1903.mp4 — self-hosted, licence-clean 16.0 s<br>M-74 Commons still 1920x2939 → backdrop 12.0 s<br>M-51 Commons still 1920x2827 → backdrop 23.0 s | — | — |
+| 13 | then-and-now | photo | 13:15 | 26.0 (26) | ok 12.9 s | 12.1 s | M-24 Commons still 1802x1345 → backdrop 13.0 s<br>M-26 Commons still 1920x3272 → backdrop 13.0 s | — | sidecar: dropped [0] 拖动这条缝。<br>sidecar: dropped [4] 你今天仍然可以在这里买去多佛的票。<br>sidecar: dropped [5] 去巴黎的快车改从圣潘克拉斯站发。 |
+| 14 | look-up-the-cross | streetview | 13:41 | 50.0 (50) | ok 32.3 s | 16.7 s | panowalk — mapillary ctrzEaPC8S2q1DQvsiupmL (stops 0), cached frames, same move as the player 50.0 s | — | — |
+| 15 | quiz-the-weather | quiz | 14:31 | 28.0 (28) | ok 12.6 s | 14.4 s | quiz screen (own render) 28.0 s | M-44 0:00–0:28 (bed -22 dB → -35 LUFS) | — |
+| 16 | passepartout-on-the-platform | dialogue | 14:59 | 46.0 (46) | ok 29.0 s | 16.0 s | dialogue screen (own render, scripted chips) 46.0 s | M-44 0:00–0:46 (bed -22 dB → -35 LUFS) | sidecar: dropped [2] 问他点什么吧。 |
+| 17 | the-boat-train | video | 15:45 | 82.0 (82) | ok 52.7 s | 28.3 s | M-27 Commons still 1526x986 → backdrop 10.0 s<br>M-88 local footage media/files/m88-hungerford-bridge-night.mp4 — self-hosted, licence-clean 12.0 s<br>M-76 Commons still 1920x1440 → backdrop 36.0 s<br>M-27 Commons still 1526x986 → backdrop 24.0 s | M-44 0:00–0:10 (bed -22 dB → -35 LUFS)<br>M-45 0:13–0:17 (sting -9 dB → -26 LUFS) | — |
+| 18 | souvenir | card | 17:07 | 54.0 (54) | ok 33.0 s | 20.0 s | player screenshot showScene(18) 54.0 s | M-41 0:00–0:54 (bed -8 dB → -35 LUFS) | sidecar: dropped [8] 下一站：多佛、加来、巴黎。 |
 
-Title card 4 s at 0:00; credits 3 page(s) at the end. Total 17:30.
+Title card 4 s at 0:00; credits 3 page(s) at the end. Total 18:46.
 
 ## Warnings
 - 2 savile-row: zh: sentence tokens re-aligned proportionally — English kept 16/19 → Mandarin 14/16 (no zh cut sheet; see README "Two cuts")
@@ -80,6 +81,8 @@ Title card 4 s at 0:00; credits 3 page(s) at the end. Total 17:30.
 
 **11 the-dash** — [0] 福克和路路通在萨维尔街街口叫了辆马车——多半是汉森马车，两轮，一匹马，跑得快。 [1] 在车夫眼里，福克是个“阔少”。 [2] 车费每英里六便士，不足一英里也按一英里算； [3] 到查令十字大约一英里半，就算一先令。 [4] 看1872年地图上这条线，往南往东，到河岸街。 [5] 伦敦当时已经有地铁——九年新，蒸汽机车，一路是烟。 [6] 福克还是坐马车。 [7] 听：石板路上的马蹄，还有一段轻快的法国舞曲，给巴黎人路路通。 [8] 他们7点25分离开俱乐部，8点20分到查令十字。
 
+**12 charing-cross** — [0] 这里是河岸街，前面就是查令十字车站。 [1] 别想“老伦敦”：对福克来说，这是新伦敦。 [2] 车站1864年1月开，那晚才八岁。 [3] 石十字碑和它背后的旅馆，1865年。 [4] 地铁九岁。 [5] 河边的泰晤士河堤两岁。 [6] 我们叫大本钟的钟楼十三岁。 [7] 今晚他路过的东西，很多比他的仆人还年轻。 [8] 有一样你在这儿看不见：车站那片铁屋顶，一跨155米。 [9] 它1905年塌了，后来重建——这句就说到这里。 [10] 然后是今晚唯一暖的一刻。 [11] 一个赤脚女人抱着孩子来讨钱。 [12] 福克把刚在牌桌上赢的二十几尼递过去。 [13] 脚步都没停。
+
 **13 then-and-now** — [0] 拖动这条缝。 [1] 左边：1872年的版画——福克见到的旅馆和站前广场。 [2] 右边：今天的十字碑。 [3] 后面六个站台，去多佛还是大约每小时一班。 [4] 你今天仍然可以在这里买去多佛的票。 [5] 去巴黎的快车改从圣潘克拉斯站发。 [6] 旅馆还是旅馆，换了个名字。
 
 **14 look-up-the-cross** — [0] 停在这儿。 [1] 找两样东西。 [2] 第一样在你正上方：顺着十字碑看到最顶——21米的石头。 [3] 它是复制品，1865年立的，正是它背后那家旅馆开业那年。 [4] 第二样难一点。 [5] 向右转出站前广场，朝特拉法加广场看，大约两百米。 [6] 你从这儿看不清他，但查理一世的骑马像就立在那边。 [7] 1291年的第一座十字碑就立在那个位置。 [8] 伦敦的里程至今从那座像算起，不是从你头顶这块石头。
@@ -93,6 +96,6 @@ Title card 4 s at 0:00; credits 3 page(s) at the end. Total 17:30.
 **18 souvenir** — [0] 今天的纪念品：福克在伦敦的最后一顿早餐——他押上半个身家之前吃的那一顿。 [1] 主菜是烤鱼，配雷丁酱风味的酱汁。 [2] 雷丁酱是真有过的英国调味酱，1802年开始卖，1960年代消失。 [3] 菜谱在卡片上。 [4] 把卡片存下来。 [5] 12月21日晚上做这顿饭，8点45分之前坐到桌前。 [6] 福克答应回到那个房间的，正是那一刻。 [7] 他另一句座右铭，也送给我们上路：“用好最少的东西，什么都够了。” [8] 下一站：多佛、加来、巴黎。
 
 ## Digest
-- Did: rendered 16 scenes + title + credits into one h264/aac MP4 (17:30) with Edge TTS narration, sentence captions, Commons beds and clip/stop cards where rights forbid copying.
-- Weak: 0 clip card(s) still stand in and stop cards for 1 Street View scene(s) (313.0 s of 1050.0); 0 scene(s) were end-cut mechanically where TTS overran the README seconds (see table) — Narrator should re-trim by hand; generated assets (G-xx) are still pending cards.
+- Did: rendered 17 scenes + title + credits into one h264/aac MP4 (18:46) with Edge TTS narration, sentence captions, Commons beds and clip/stop cards where rights forbid copying.
+- Weak: 0 clip card(s) still stand in and stop cards for 1 Street View scene(s) (388.0 s of 1126.0); 0 scene(s) were end-cut mechanically where TTS overran the README seconds (see table) — Narrator should re-trim by hand; generated assets (G-xx) are still pending cards.
 - Next: swap clip cards for licensed footage once Rights clears direct licences; add per-sentence timed overlays; run loudnorm on the final mix; add a 9:16 variant.

@@ -3,8 +3,7 @@
  "subtitles": "day-01-london_en.vtt",
  "lang": "en",
  "locale": "en",
- "duration_s": 1050,
- "track": "clear",
+ "duration_s": 1126,
  "chapters": [
   {
    "scene": "cold-open",
@@ -67,39 +66,45 @@
    "title": "A shilling's cab to Charing Cross"
   },
   {
+   "scene": "charing-cross",
+   "type": "video",
+   "at_s": 720,
+   "title": "Charing Cross — Fogg's newest London"
+  },
+  {
    "scene": "then-and-now",
    "type": "photo",
-   "at_s": 720,
+   "at_s": 795,
    "title": "Then and now — the forecourt, 1872 and today"
   },
   {
    "scene": "look-up-the-cross",
    "type": "streetview",
-   "at_s": 746,
+   "at_s": 821,
    "title": "Look up — the cross, and where London starts"
   },
   {
    "scene": "quiz-the-weather",
    "type": "quiz",
-   "at_s": 796,
+   "at_s": 871,
    "title": "Quiz — look up at the roof: what is the weather doing?"
   },
   {
    "scene": "passepartout-on-the-platform",
    "type": "dialogue",
-   "at_s": 824,
+   "at_s": 899,
    "title": "The platform, 8:40 pm — talk to Passepartout"
   },
   {
    "scene": "the-boat-train",
    "type": "video",
-   "at_s": 870,
+   "at_s": 945,
    "title": "8:45 — over the river, to the forgotten gas"
   },
   {
    "scene": "souvenir",
    "type": "card",
-   "at_s": 952,
+   "at_s": 1027,
    "title": "Souvenir — Fogg's last breakfast in London"
   }
  ]
