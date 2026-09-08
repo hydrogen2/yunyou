@@ -12,7 +12,15 @@
  * CSS `filter: blur()` in the player, `gblur` in ffmpeg — but the decisions come from here.
  *
  * The three rules that are not settings:
- *   never stretch · never upscale past the file's own pixels · never crop the subject away.
+ *   never stretch · never crop the subject away · never claim detail we do not have.
+ *
+ * 2026-09-08 — the second rule USED to read "never upscale past the file's own pixels", and the founder retired it
+ * after watching Day 1: "when the scene type is a still image, can you enlarge it to fit the screen, now all too
+ * small". The rule was over-strict. Showing a picture large is not a *claim* about its resolution — nobody is
+ * deceived by a big engraving — while a 632-px plate pinned to 632 px inside a 1920-px frame just looks broken.
+ * So the cap became a setting: `max_scale` (1 = the old behaviour, which the player keeps until it is re-tuned),
+ * and the film raises it per picture — more for line art, which upscales almost for free, less for photographs,
+ * where softness shows. NEVER STRETCH is untouched: the aspect ratio is still exact, k is one number.
  */
 
 export const IMG_DEFAULTS = {
@@ -22,6 +30,7 @@ export const IMG_DEFAULTS = {
   blur_px: 36,              // backdrop blur at a 620-px-tall frame; both sides scale it with the frame
   backdrop_brightness: 0.44,// player: brightness(.44). ffmpeg equivalent is eq=brightness=-0.18
   backdrop_saturate: 1.12,
+  max_scale: 1,             // how far a picture may be enlarged past its own pixels (1 = never; the film raises it)
   drift: true, drift_s: 36, drift_from: 0.94, drift_from_plate: 0.97,
   drift_dx: 0.9, drift_dy: 0.7,   // per-cent of the picture, direction seeded from the ref
   fallback_after_s: 6       // v0.8: a still with media[].fallback swaps to it after this long without loading
@@ -43,21 +52,22 @@ export function pickTreatment(m, nw, nh, W, H, cfg = IMG_DEFAULTS) {
   const ia = nw / nh, ca = W / H;
   const coverage = Math.min(ia / ca, ca / ia);                    // share of the frame a contained fit would cover
   const fit = Math.min(W / nw, H / nh);                           // > 1 means it would have to be upscaled to fill
-  if (coverage >= cfg.fill_coverage && fit <= 1.02) return 'fill';
-  if (Math.max(nw, nh) <= cfg.plate_max_px) return 'plate';       // it can never fill a modern frame honestly
+  const maxK = Math.max(1, cfg.max_scale || 1);
+  if (coverage >= cfg.fill_coverage && fit <= maxK * 1.02) return 'fill';
+  if (Math.max(nw, nh) <= cfg.plate_max_px) return 'plate';       // small archive material: mount it on paper
   return 'backdrop';
 }
 
 /**
- * The honest size of a picture inside a frame: contained, and NEVER enlarged past its own pixels.
- * `reserve` is a band kept clear at the bottom for the credit line (the player centres the picture in what
- * is left rather than printing the credit across the subject).
- * Returns integers, and `upscaled:false` always — if it ever says true, something else clamped wrong.
+ * The size of a picture inside a frame: contained (aspect exact, never stretched, never cropped) and enlarged
+ * at most `maxScale`x past its own pixels. `reserve` is a band kept clear at the bottom for the credit line.
+ * maxScale = 1 reproduces the old "never upscale" rule exactly, and is still the default.
+ * Returns integers plus `k` (the scale actually used) and `upscaled` (k > 1.001), which the caller logs.
  */
-export function fitSize(nw, nh, W, H, reserve = 0) {
+export function fitSize(nw, nh, W, H, reserve = 0, maxScale = 1) {
   const availH = Math.max(16, H - Math.max(0, reserve));
-  const k = Math.min(W / nw, availH / nh, 1);
-  return { w: Math.max(2, Math.round(nw * k)), h: Math.max(2, Math.round(nh * k)), k, upscaled: k > 1 };
+  const k = Math.min(W / nw, availH / nh, Math.max(1, maxScale || 1));
+  return { w: Math.max(2, Math.round(nw * k)), h: Math.max(2, Math.round(nh * k)), k, upscaled: k > 1.001 };
 }
 
 /**

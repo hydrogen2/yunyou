@@ -5,8 +5,12 @@ G-01 — the 80-day route map (Around the World in Eighty Days, Day 1 London cha
 Regenerates every SVG under products/around-the-world-80-days/day-01-london/generated/g-01/ from the cached
 Natural Earth 1:110m land polygons (public domain) in generated/g-01/src/.
 
-  python3 studio/tools/gen/g01_route_map.py            # SVGs only
-  python3 studio/tools/gen/g01_route_map.py --png      # SVGs + PNG exports via studio/tools/svg2png.mjs
+  python3 studio/tools/gen/g01_route_map.py            # SVGs + route-data.json
+  python3 studio/tools/gen/g01_route_map.py --png      # ... + PNG exports via studio/tools/svg2png.mjs
+
+Also writes `route-data.json` — the itinerary as data (ports, legs, days, dates, waypoints, enablers) so the linear
+cut can build its own FILM map (studio/tools/render/lib/mapfilm.mjs) from these numbers instead of shrinking the
+print plate into a 1080p frame, where its 16-px type is unreadable.
 
 No dependencies beyond the standard library. Layer contract: see LAYER_CONTRACT below (also embedded in every SVG).
 Facts: F-10 (itinerary and days), F-11 (2 Oct → 21 Dec 1872), F-33 (enablers) in research/fact-sheet.md.
@@ -468,6 +472,30 @@ def build():
         print('wrote', os.path.relpath(p, ROOT), os.path.getsize(p) // 1024, 'KB')
     return files
 
+# ---------------------------------------------------------------- machine-readable export (for the FILM map)
+# The print plate above is a plate: fixed layout, small type, everything at once. The linear cut renders its OWN
+# graphic from the SAME numbers (studio/tools/render/lib/mapfilm.mjs) so a film-legible map never has to re-key the
+# itinerary. This file is the single source of truth for both; route-data.json is generated, never hand-edited.
+def export_data():
+    data = {
+        '_generated_by': 'studio/tools/gen/g01_route_map.py — do not hand-edit',
+        '_facts': ['F-10 itinerary and days', 'F-11 2 Oct → 21 Dec 1872', 'F-33 the three enablers'],
+        '_consumers': ['studio/tools/render/lib/mapfilm.mjs (film map)', 'the G-01 SVG plates in this directory'],
+        'land_geojson': 'src/ne_110m_land.geojson',
+        'start_date': '1872-10-02', 'end_date': '1872-12-21', 'total_days': 80,
+        'ports': [dict(n=n, name=name, lon=lon, lat=lat, date=date) for n, name, lon, lat, date, *_ in PORTS],
+        'legs': [dict(k=k, **{'from': a}, to=b, mode=mode, days=days, dates=dates,
+                      waypoints=[[round(x, 4), round(y, 4)] for x, y in wps], label_at=list(anchor))
+                 for k, a, b, mode, days, dates, wps, anchor in LEGS],
+        'enablers': [dict(letter=l, label=lab, date=date, lon=lon, lat=lat, on_route=list(spec))
+                     for l, lab, date, lon, lat, spec, *_ in ENABLERS],
+    }
+    p = os.path.join(OUT, 'route-data.json')
+    os.makedirs(OUT, exist_ok=True)
+    open(p, 'w').write(json.dumps(data, indent=1, ensure_ascii=False) + '\n')
+    print('wrote', os.path.relpath(p, ROOT), os.path.getsize(p) // 1024, 'KB')
+
+
 def export_png():
     exporter = os.path.join(ROOT, 'studio/tools/svg2png.mjs')
     jobs = [  # one export per spec format; each PNG is a true crop of its own SVG (no letterboxing)
@@ -488,5 +516,6 @@ def export_png():
 
 if __name__ == '__main__':
     build()
+    export_data()
     if '--png' in sys.argv:
         export_png()
