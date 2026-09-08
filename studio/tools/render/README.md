@@ -1,7 +1,48 @@
-# studio/tools/render — linear-cut ("variety show") renderer
+# studio/tools/render — film renderer (was: linear-cut "variety show" renderer)
 
-Turns a chapter's `tour.json` + the **Linear cut** table in `scenes/README.md` into **one publishable MP4 per
-language** (h264 + aac, 1920×1080 @ 25 fps, faststart), plus a render log and a WebVTT of the narration.
+Turns a chapter's `tour.json` into **one publishable MP4 per language** (h264 + aac, 1920×1080 @ 25 fps,
+faststart), plus a render log, a WebVTT of the narration, chapter markers and a **gap manifest**.
+
+---
+
+## v1.1 (2026-09-08) — FILM MODE. Read this first; it changes where the film comes from.
+
+**A chapter is now one of two shapes, and the renderer decides by looking for `scenes/README-film.md`.**
+
+| | **FILM** (`scenes/README-film.md` exists) | **LEGACY** (a "Linear cut" table in `scenes/README.md`) |
+|---|---|---|
+| what renders | every scene, in order | the scenes the table selects |
+| scene length | the scene's own `duration_s` | the table's seconds, floor **and** cap, ± `--slack` |
+| narration | **every sentence is spoken**; if the voice overruns, the scene stretches and says so | sentence tokens select; overruns are end-cut at a sentence boundary |
+| visuals | the authored `media[].start_s`/`end_s` slots, in order, never re-divided | the sidecar's `visuals`, or defaults by scene type |
+| cut sheet | **refused** — having one is a hard error | `cuts/<chapter-id>.json`, optional |
+
+Day 1 is a film (12 scenes, 162 authored slots, 18:42). Day 2 is still legacy. Both paths are live.
+
+**Why the cut sheet went.** A cut sheet exists to select and trim a linear cut out of an *interactive* chapter.
+Under D9 (`studio/strategy/video-first.md`) the scene files *are* the film, so there is nothing left to select and
+a sheet can only be a second place that disagrees with them. `cuts/day-01-london.json` is retired to
+`cuts/retired/day-01-london.player18.json`; that directory's README records what the sheet uniquely provided and
+where each of those things lives now (short answer: `narration.starts_at_s`, `media[]` audio entries, and the
+slots themselves). **If a film chapter has a cut sheet, the renderer stops with an error rather than half-apply it.**
+
+**Nothing is parsed leniently any more.** A row in either README that looks like a scene row and does not parse is
+now a **fatal error**, not a warning: on 2026-09-03 a bolded number (`| **75** |`) stopped matching, `charing-cross`
+silently left the film, and two full renders shipped without it. In film mode there are three further checks, all
+fatal — the scene files on disk vs `tour.json`, vs `README-film.md`'s table (ids **and** seconds), and, after
+assembly, the list of scenes that actually came out and the chapter markers in the finished file.
+
+**The gap manifest.** The film is honestly incomplete, so every slot that does not get its own source falls back as
+the scene declares and is **listed in a table at the end of the run** — on the console, in `render-log.md`, and in
+`<chapter-id>_<lang>.gaps.json`. `--plan` prints the same table from a filesystem-only pre-flight, with no network
+calls and no TTS, so "how thin is this film today?" is a one-second question.
+
+**Also in v1.1:** vector assets are rasterised by the browser with the house fonts loaded (no more "screenshot the
+player to see an SVG"); a pano stop is addressed by its **stop id**, not by a scene id; and burned credits are
+corrected to the form `review/rights-mapillary.md` §8 requires (Mapillary's retired "platform default" hedge out,
+KartaView's "© Grab and KartaView Contributors" in), with every rewrite logged.
+
+---
 
 **v0.9 (2026-09-03) — what changed and why it matters if you have run this before**
 - The voice is the **local Kokoro model in `~/hilbert`**, not `msedge-tts`. msedge-tts wrapped an undocumented
@@ -31,12 +72,19 @@ Outputs (default `--out <chapter>/linear/`):
 - `<chapter-id>_en.mp4` / `<chapter-id>_zh.mp4` — the film (title card · scenes · credits)
 - `<chapter-id>_en.vtt` / `<chapter-id>_zh.vtt` — the same captions as a sidecar (captions are ALSO burned in)
 - `render-log.md` — per scene: seconds, TTS ok?, visual source **and the treatment each still actually got**,
-  beds, every script cut; warnings (including Mandarin density); sentence index for the sidecar
+  beds, every script cut; the **fallback table**; warnings (including Mandarin density); sentence index
+- `<chapter-id>_<lang>.gaps.json` — the same fallback table, machine-readable: every slot that did not get its own
+  source, why, what played instead, and the distinct assets that are missing
+- `<chapter-id>_<lang>.chapters.json` / `.chapters.txt` — chapter markers, and the timestamp block for YouTube
 - `.cache/` — Commons files, screenshots, encoded segments (safe to delete; re-runs are much faster with it)
 - `.tts-cache/` next to this script — the synthesized WAVs, keyed on (provider, voice, speed, lang, text).
   Editing one line re-synthesizes one line. **Not** `~/hilbert/.tts-cache`, which we never write to.
 
-Useful flags: `--plan` (print sentences, TTS lengths and cuts, render nothing) · `--scenes 1,7,16` (subset) ·
+Useful flags: `--plan` (print sentences, TTS lengths, cuts **and the pre-flight gap table**, render nothing) ·
+`--strict-length` (film mode: a scene whose narration overruns its authored seconds is an error, not a stretch) ·
+`--allow-partial-locale` (film mode: render `--lang zh` even though the locale does not cover every scene — by
+default that is a hard error, because a Mandarin cut that speaks English in seven scenes looks finished and is not) ·
+`--scenes 1,7,16` (subset) ·
 `--size 1280x720` (fast look) · `--slack 0.10` · `--voice af_heart --speed 0.85` · `--gap 0.28` (silence between
 sentences) · `--no-tts` (captions only) · `--no-drift` (hold every still still, the player's `?drift=0`) ·
 `--cuts path.json` · `--player https://localhost/player/` · `--keep` (keep `.work/`) ·
@@ -76,6 +124,13 @@ share. Sentence in/out points are exact; word-level highlight is gone and is not
 
 ## Two cuts, one film
 
+> **Film chapters: the locale must be complete.** `--lang zh` on a chapter with `scenes/README-film.md` fails
+> unless every scene has a translated `script`. And a surviving scene *id* is not a surviving *script*: after the
+> 2026-09-08 rewrite, five of Day 1's twelve ids still match `i18n/zh-Hans.json` while the text behind them is
+> gone. The renderer also warns when the translated script needs more than ~70 % of the film's seconds, which is
+> the usual signature of a locale that is translating an older script.
+
+
 `--lang zh` overlays `products/<p>/<chapter>/i18n/<locale>.json` the way the player does: index-addressed
 (`overlays[].i`, `interaction.options[].i`), anything omitted falls back to English, a partial locale is valid.
 It localises the narration, the burned captions and the VTT, the scene lower-third, pins and captions, the title
@@ -102,8 +157,12 @@ at a sentence boundary and logs what it dropped. The fix belongs in the locale f
 
 ## What it does
 
-1. **Selection** — parses the `## Linear cut` table (`| 05 pall-mall-pass | whole … | 45 |`) → ordered scenes with a seconds cap.
-   No table → all scenes except `INTERACTIVE CUT ONLY`, capped at `duration_s`.
+0. **Mode** — `scenes/README-film.md` present → FILM; else the `## Linear cut` table in `scenes/README.md` → LEGACY;
+   else all scenes except `INTERACTIVE CUT ONLY`. Any row in either table that looks like a scene row and does not
+   parse is a fatal error. In FILM mode the disk / tour.json / README-film lists must agree on ids, order and
+   seconds before anything renders.
+1. **Selection** — FILM: all scenes, in order, at their own `duration_s`, no cut sheet.
+   LEGACY: the `## Linear cut` table (`| 05 pall-mall-pass | whole … | 45 |`) → ordered scenes with a seconds cap.
 2. **Script** — the scene's `narration.script`, split into sentences. An optional sidecar `cuts/<chapter-id>.json` re-selects
    sentences with tokens (`s:3-6`, `quiz:correct`, `chat:0`, `overlay:1`) — every token points at text that already exists in the
    scene JSON; nothing is authored here. Guide = `--voice`, chat answers = `--voice2`.
@@ -111,7 +170,16 @@ at a sentence boundary and logs what it dropped. The fix belongs in the locale f
    `max(6 s, narration_at + speech + 1.5 s)` capped at README seconds × (1 + slack). If speech overruns, the script is
    **end-cut at the last sentence boundary that fits** and the dropped sentences are logged. If TTS fails the run continues
    with captions only and says so in the log/credits (durations then come from 2.7 words/s EN, 4.77 characters/s ZH).
-4. **Visuals** at `--size` (**1920×1080 @ 25 fps default**), each scene = one or more segments:
+4. **Visuals** at `--size` (**1920×1080 @ 25 fps default**).
+   **FILM:** one authored slot = one shot. `media[].start_s`/`end_s` are scene-clock seconds and are honoured to the
+   frame; slots must tile 0 → `duration_s` and a gap or an overlap is reported. `image` → the treatment layer ·
+   `generated` → the file (an `.svg` is rasterised at 1920×1080 in the browser, with `studio/player/fonts` loaded) ·
+   `footage` → the local file (a `source in-point mm:ss` in the entry's `note` is obeyed) · `streetview` → a
+   panowalk over the cached stop named by `manifest_id: "PANO/<stop_id>"`, aimed at the heading in the entry's
+   `ref`. Anything absent falls back to the entry's own `fallback: "M-xx"` (resolved against the other scenes and
+   `media/*.md`) and is recorded in the gap manifest; with no fallback, a pending card. It never crashes and never
+   silently drops a shot.
+   **LEGACY**, each scene = one or more segments:
    - `video` → **clip card** (channel, title, YouTube id, in/out mm:ss, i.ytimg thumbnail, "licensed footage goes here — review animatic"). Never downloads or re-encodes YouTube.
    - `streetview` → **stop card** with descriptions + coordinates. Never screen-records Street View.
    - Commons `image`/`map` → downloaded through the Commons API (`iiprop=url|size|…`, so a 632-px file is not
@@ -128,7 +196,9 @@ at a sentence boundary and logs what it dropped. The fix belongs in the locale f
 6. **Audio** — narration measured with `ebur128` over the run's own clips and gained to −17 LUFS (Kokoro lands
    near −16.5, so the gain is usually under a dB — it is measured, not assumed); Commons beds measured (ebur128) and set to −35 LUFS (18 dB under), stings ≤ 6 s to −26;
    fades; `amix` + limiter. Freesound refs are skipped (login-gated) and listed under Warnings.
-7. **Assembly** — per-scene MP4 (concat of segments + subtitles + mix), then concat demuxer `-c copy`, `+faststart`;
+7. **Assembly** — per-scene MP4 (concat of segments + subtitles + mix); the rendered scene list is then checked
+   against the intended one (ids and order) and again against the finished file's chapter markers, both fatal on a
+   mismatch; then concat demuxer `-c copy`, `+faststart`;
    4-s title card first, credits card(s) last (every Commons file / creator / licence used, YouTube creators of
    placeholder clips, map tiles, the Kokoro voice and its licence).
 
@@ -316,7 +386,10 @@ backdrop wash, which is the "reads as a gap" the treatment layer exists to end. 
 condition the rationale implies — the paper only costs more than it gives when it actually **shrinks** the picture
 (`k < 1`). `--plate-strict` restores the player's arithmetic exactly; `--plate-min-area N` sets the threshold.
 
-## Sidecar format (`cuts/<chapter-id>.json`)
+## Sidecar format (`cuts/<chapter-id>.json`) — LEGACY CHAPTERS ONLY
+
+> **A film chapter must not have one.** See "v1.1 — FILM MODE" above and `cuts/retired/README.md`.
+
 
 ```json
 { "scenes": { "<scene-id>": {
@@ -374,8 +447,15 @@ Embed API). D12 is now answered — the founder's key has the Maps JavaScript AP
 (`window.__sv.debug.pos` is the hook). `media[].fallback` for a missing pano is still unimplemented: v0.4 skips forward to the
 next reachable pano instead of showing the stop still.
 
-## Scene length: the README seconds are a FLOOR as well as a cap
+## Scene length
 
+**FILM: `len = duration_s`, and the script is never cut.** The scene file is the film, so every sentence the
+Narrator wrote is spoken. If the synthesized voice needs more than the authored seconds the scene *stretches* to
+fit and every slot in it scales by the same factor — the shot order and the proportions survive, the words survive,
+and the overrun is a warning naming the scene and the seconds. `--strict-length` makes it a hard failure instead,
+for a render that has to hit a stated running time.
+
+**LEGACY: the README seconds are a FLOOR as well as a cap.**
 `len = clamp(narration + pad, readme_s, readme_s × (1 + slack))`.
 
 Until v0.9 the seconds in `scenes/README.md` were only a cap: a scene ended about 2.5 s after the last word, so a

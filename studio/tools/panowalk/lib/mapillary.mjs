@@ -13,9 +13,13 @@
  *     /images?fields=id,license      → 200, but every object comes back as {"id": …} with no licence key
  *     /<image_id>?fields=…,license   → 500 {"message":"Tried accessing nonexisting field (license)"}
  *   `organization_id` is likewise absent on every image in central London, so there is no org-vs-user proxy either.
- *   Therefore: this adapter reports licence_class 'unknown' for every frame, and the fetcher REFUSES to download
- *   unknown-licence frames unless a human passes --accept-unknown-licence. That flag is a Rights decision (does the
- *   platform default cover us?), not an engineering one. See studio/tools/panowalk/README.md §Licence.
+ *   2026-09-08 — RIGHTS RULED GREEN (products/around-the-world-80-days/day-01-london/review/rights-mapillary.md).
+ *   The missing API field reflects UNIFORMITY, not ambiguity: the Terms, the Help Centre and Mapillary's own
+ *   per-image download panel all state CC BY-SA, and "NonCommercial" appears nowhere in the product (the NC
+ *   sentence is scoped to separately-distributed research data sets we do not use). So this adapter now reports
+ *   `licence_source: 'platform-default'`, which fetch.mjs treats as permissive — exactly as it already treats
+ *   KartaView — and **--accept-unknown-licence is no longer needed for Mapillary**. The flag stays for genuinely
+ *   unknown providers. Ruling §9.1; see studio/tools/panowalk/README.md §Licence.
  *
  * ATTRIBUTION is contractual on top of CC: when we serve the bytes ourselves Mapillary requires the Mapillary mark
  * displayed and a link back to the image page. Every frame carries requires_logo:true and source_url.
@@ -126,10 +130,11 @@ export async function candidates(wp, radius, cache, { token = '', notes = [], re
     const panos = s.all.filter(f => f.is_pano).length;
     out.push(Object.assign(s, {
       inside,
-      licence: null,                                   // unknown until Rights rules; see the header comment
-      licence_url: 'https://www.mapillary.com/terms',
-      licence_source: 'not stated by the API (platform default is CC BY-SA; some content is CC BY-NC-SA)',
-      attribution: `Mapillary / ${s.author} — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)`,
+      licence: 'CC BY-SA 4.0',                         // ruled green 2026-09-08; see the header comment
+      licence_url: 'https://creativecommons.org/licenses/by-sa/4.0/',
+      licence_source: 'platform-default',              // the token fetch.mjs accepts as permissive
+      licence_basis: 'Mapillary Terms §3, eff. 2024-02-15; image-details panel, verified 2026-09-08 — review/rights-mapillary.md',
+      attribution: `Mapillary / ${s.author} · CC BY-SA 4.0 · adapted`,
       requires_logo: true, panos,
       is_pano_sequence: panos > 0 && panos >= s.all.length * 0.5
     }));

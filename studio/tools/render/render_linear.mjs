@@ -245,21 +245,76 @@ export function speechText(text, lang, notes) {
 }
 const isCJK = s => /[㐀-鿿豈-﫿＀-￯]/.test(s || '');
 
-// ---------------------------------------------------------------- README linear-cut table
+// ---------------------------------------------------------------- scene-list tables
+// TWO shapes exist and they are NOT interchangeable:
+//
+//   scenes/README-film.md   a FILM chapter (D9). The scene files ARE the film; this table is a MANIFEST of what
+//                           should be there, never a selection. Every scene is rendered, every sentence is spoken,
+//                           and the seconds come from the scene's own `duration_s` — the table is cross-checked
+//                           against them and a disagreement is fatal.
+//   scenes/README.md        a legacy interactive chapter whose "Linear cut" section SELECTS scenes and lengths.
+//
+// Both parsers now DIE on a row they cannot read. On 2026-09-03 a bolded number (`| **75** |`) made one row fail to
+// match and `charing-cross` vanished from two full renders with nothing but a silent 16-instead-of-17 in the log.
+// The lesson was not "accept more syntax", it was "never continue past a row you did not understand".
+class TableError extends Error { }
+
+/** `scenes/README-film.md` §1 "The scenes, in order" → [{num, file, id, seconds, slots}] */
+function parseFilmTable(readmePath) {
+  if (!fs.existsSync(readmePath)) return null;
+  const md = fs.readFileSync(readmePath, 'utf8');
+  const sec = md.split(/\n##\s+/).find(x => /^\d+\s*[·.\-]?\s*The scenes, in order/i.test(x));
+  if (!sec) throw new TableError(`${readmePath} has no "## N · The scenes, in order" section — the film's scene table. ` +
+    `Either restore it or delete the file (a chapter with no README-film.md renders as a legacy cut).`);
+  const rows = [];
+  for (const raw of sec.split('\n')) {
+    const line = raw.trim();
+    if (!/^\|\s*\d+\s*\|/.test(line)) continue;                       // only rows that start with a scene number
+    // | 1 | `01-cold-open.scene.json` | `cold-open` | **S0** | 45 | 8 | 65 | 58 % | … |
+    const m = line.match(/^\|\s*(\d+)\s*\|\s*[`*_]*([^`*|]+?)[`*_]*\s*\|\s*[`*_]*([a-z0-9][a-z0-9-]*)[`*_]*\s*\|\s*[^|]*\|\s*[*_`]*\s*(\d+)\s*[*_`]*\s*\|\s*[*_`]*\s*(\d+)\s*[*_`]*\s*\|/i);
+    if (!m) throw new TableError(`${readmePath}: this line starts like a scene row and did not parse. Fix the table ` +
+      `(| # | file | scene id | block | seconds | slots | …) — the renderer refuses to guess.\n    ${line.slice(0, 160)}`);
+    rows.push({ num: +m[1], file: m[2].trim(), id: m[3].trim(), seconds: +m[4], slots: +m[5] });
+  }
+  if (!rows.length) throw new TableError(`${readmePath}: "The scenes, in order" has no readable rows.`);
+  return { rows, path: readmePath };
+}
+
+/** legacy `scenes/README.md` "## Linear cut" → {rows:[{num,id,use,s}]} */
 function parseLinearCut(readmePath) {
   if (!fs.existsSync(readmePath)) return null; const md = fs.readFileSync(readmePath, 'utf8');
   const sec = md.split(/\n##\s+/).find(s => /^linear cut/i.test(s)); if (!sec) return null;
-  // The seconds column may be emphasised (`| **75** |`) — the Narrator bolds a number they have just changed, and
-  // on 2026-09-03 that silently dropped `13 charing-cross` out of the film because the row no longer matched.
-  // Accept the emphasis, and SAY SO when a line that looks like a cut row still fails to parse.
-  const rows = [], skipped = [];
+  const rows = [];
   for (const line of sec.split('\n')) {
     const m = line.match(/^\|\s*(\d{2})\s+([a-z0-9-]+)\s*\|\s*(.*?)\s*\|\s*[*_`]*\s*(\d+)\s*[*_`]*\s*\|/i);
     if (m) { rows.push({ num: +m[1], id: m[2], use: m[3], s: +m[4] }); continue; }
-    if (/^\|\s*\d{2}\s+[a-z0-9-]+\s*\|/i.test(line)) skipped.push(line.trim().slice(0, 80));
+    if (/^\|\s*\d{2}\s+[a-z0-9-]+\s*\|/i.test(line))
+      throw new TableError(`${readmePath} "Linear cut": this line looks like a cut row and has no readable seconds ` +
+        `column, so a scene would be dropped from the film without a word. Fix the row.\n    ${line.trim().slice(0, 160)}`);
   }
   const notes = (sec.match(/Linear-only:[^\n]*|Interactive-only:[^\n]*/g) || []).join(' ');
-  return rows.length ? { rows, notes, skipped } : null;
+  return rows.length ? { rows, notes } : null;
+}
+
+/**
+ * The intended scene list, straight off disk: `scenes/*.scene.json` in filename order.
+ * This is the arbiter. tour.json embeds its own copies of the scenes and can drift; the files cannot.
+ */
+function scenesOnDisk(chapterDir) {
+  const dir = path.join(chapterDir, 'scenes');
+  if (!fs.existsSync(dir)) return null;
+  return fs.readdirSync(dir).filter(f => /\.scene\.json$/.test(f)).sort()
+    .map(f => { const j = JSON.parse(fs.readFileSync(path.join(dir, f), 'utf8')); return { file: f, id: j.id, duration_s: j.duration_s }; });
+}
+/** ids of a vs b, in order — returns null when they agree, a human-readable diff when they do not. */
+function listDiff(aName, a, bName, b) {
+  if (a.length === b.length && a.every((x, i) => x === b[i])) return null;
+  const miss = a.filter(x => !b.includes(x)), extra = b.filter(x => !a.includes(x));
+  const lines = [`${aName} (${a.length}) and ${bName} (${b.length}) do not match.`];
+  if (miss.length) lines.push(`  missing from ${bName}: ${miss.join(', ')}`);
+  if (extra.length) lines.push(`  only in ${bName}: ${extra.join(', ')}`);
+  if (!miss.length && !extra.length) lines.push(`  same ids, different ORDER:\n    ${aName}: ${a.join(' → ')}\n    ${bName}: ${b.join(' → ')}`);
+  return lines.join('\n');
 }
 
 // ---------------------------------------------------------------- TTS (local Kokoro, through ~/hilbert)
@@ -332,6 +387,40 @@ async function shotPlayer(fnCall, name, waitMs = 3200) {
   await playerPage.waitForTimeout(waitMs);
   await playerPage.evaluate(() => { try { speechSynthesis.cancel(); } catch { } });
   await playerPage.screenshot({ path: f }); return f;
+}
+
+/**
+ * Rasterise a vector asset (our own SVG cards and maps) to a W x H PNG on the house ground.
+ * ffmpeg has no SVG decoder, so the old path screenshot the PLAYER at the asset's scene time — which needs a
+ * running player, is slow, and under D9 there may never be a player at all. The browser we already launch draws it
+ * directly, contained (never stretched, never cropped) on the same near-black the cards use.
+ * Cached on path + mtime + size, so re-generating a card re-renders exactly that card.
+ */
+async function svgToPng(file, w = W, h = H, bg = '#0d0c0e') {
+  const st = fs.statSync(file);
+  const out = path.join(CACHE, 'img', `svg_${sha(file + st.mtimeMs + st.size + w + 'x' + h + bg)}.png`);
+  if (fs.existsSync(out)) return out;
+  const b = await getBrowser();
+  const ctx = await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: 1, ignoreHTTPSErrors: true });
+  const pg = await ctx.newPage();
+  // The SVG is INLINED, not put in an <img>: an <img> is a separate document that cannot see our web fonts, and
+  // every card in the house style is set in Playfair Display / Source Sans 3, neither of which is installed
+  // system-wide. This is the same trick studio/tools/svg2png.mjs uses. <base> keeps relative <image href> working.
+  const fontsCss = 'file://' + path.resolve(__dirname, '..', '..', 'player', 'fonts', 'fonts.css');
+  const svg = fs.readFileSync(file, 'utf8').replace(/<\?xml[^>]*\?>/, '');
+  const html = `<!doctype html><html><head><meta charset="utf-8">` +
+    `<base href="file://${path.dirname(path.resolve(file))}/">` +
+    `<link rel="stylesheet" href="${fontsCss}">` +
+    `<style>html,body{margin:0;width:100%;height:100%;background:${bg};overflow:hidden;display:flex;align-items:center;justify-content:center}` +
+    `svg{display:block;max-width:100%;max-height:100%;width:auto;height:auto}</style></head><body>${svg}</body></html>`;
+  const hf = path.join(CACHE, 'shots', `svg_${sha(out)}.html`); fs.writeFileSync(hf, html);
+  await pg.goto('file://' + hf, { waitUntil: 'load' });
+  await pg.evaluate(() => Promise.all([...document.images].map(i => i.complete ? 1 : new Promise(r => { i.onload = i.onerror = r; }))));
+  await pg.evaluate(() => document.fonts ? document.fonts.ready : null).catch(() => { });
+  await pg.waitForTimeout(120);
+  await pg.screenshot({ path: out });
+  await ctx.close();
+  return out;
 }
 
 // ---------------------------------------------------------------- video segment renderers (cached mp4, video only)
@@ -594,9 +683,24 @@ function panoIndex() {
 }
 function panoPacks(sceneId, only) {
   const idx = panoIndex(); if (!idx) return [];
-  return idx.stops.filter(s => s.scene_id === sceneId && (!only || only.includes(s.waypoint_index)))
+  return idx.stops.filter(s => (s.scene_id === sceneId || (s.scene_ids || []).includes(sceneId)) && (!only || only.includes(s.waypoint_index)))
     .map(s => { const f = path.join(panoRoot, s.stop_id, 'frames.json'); return fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, 'utf8')) : null; })
     .filter(p => p && p.frames && p.frames.length);
+}
+/**
+ * v1.1 — a pano stop is addressed by its own STOP ID, never by a scene id.
+ * The film's scene ids changed on 2026-09-08 and the cache went blind, because `index.json` keyed every stop by
+ * the scene that happened to commission it. That key was wrong even before the rename: `count-the-steps-w06` now
+ * serves three different scenes and `count-the-steps-w04` four different slots, so `scene_id` cannot be a key.
+ * A film slot names its stop directly — `"manifest_id": "PANO/count-the-steps-w04"` — and this reads the pack for
+ * it off disk. `index.json` is only consulted to say whether the stop is known at all.
+ */
+function panoPackById(stopId) {
+  if (!stopId) return null;
+  const f = path.join(panoRoot, stopId, 'frames.json');
+  if (!fs.existsSync(f)) return null;
+  const p = JSON.parse(fs.readFileSync(f, 'utf8'));
+  return (p && p.frames && p.frames.length) ? p : null;
 }
 
 /** one source frame → one clip: crop the window out of the (doubled, for 360°) image, then breathe */
@@ -710,6 +814,59 @@ async function buildPanowalk(scene, sceneId, only, dur) {
   return { file, dur, credits: [...credits.values()], notes, stops: wps, packs };
 }
 
+/**
+ * FILM: one authored slot = one shot over one cached pano stop.
+ * The slot gives the seconds (start_s/end_s) and, in its `ref` ("lat,lng,heading"), the direction to look. There is
+ * no route, no waypoint arithmetic and no `interaction.route` to consult — the shot is exactly as long as the
+ * Scene Developer said, and the frames are laid out inside it by the SAME planStop()/windowFor() the player uses.
+ * Returns { file, credits, notes } or null when the cache cannot serve it (the caller then uses the slot fallback).
+ */
+async function buildPanoShot(pack, dur, aim) {
+  if (!pack) return null;
+  const laid = PM.planStop(pack, 0, dur);
+  if (!laid.segments.length) return null;
+  const aspect = W / H;
+  const clips = []; const notes = [];
+  for (const seg of laid.segments) {
+    const heading = (aim && isFinite(aim.heading)) ? aim.heading : (seg.frame.ref_heading || 0);
+    const win = PM.windowFor(seg.frame, { heading, pitch: (aim && aim.pitch) || 0, fov: (aim && aim.fov) || undefined }, aspect);
+    const d = Math.max(0.5, seg.t1 - seg.t0);
+    clips.push({ file: await segPanoFrame(pack, seg.frame, win, d + (seg.fade || 0), seg.dir), dur: d + (seg.fade || 0), fade: seg.fade || 0.4 });
+    if (win.clamped) notes.push(`${pack.stop_id}: flat frame clamped at ${Math.round(win.yaw)}° — the slot asked for more turn than the photograph holds`);
+  }
+  const file = await xfadeChain(clips, clips[0].fade || 0.4);
+  return { file, notes, credit: { attribution: pack.attribution, licence: pack.licence, url: (pack.frames[0] || {}).source_url },
+    label: `${pack.source} ${pack.sequence_id} (${laid.segments.length} frames, ${pack.stop_id})` };
+}
+
+// ---------------------------------------------------------------- burned-credit compliance (Rights, 2026-09-08)
+// A burned credit is a LICENCE OBLIGATION, not editorial text, so the renderer is allowed to correct one that a
+// scene file states in a form Rights has since ruled wrong. Two corrections, both from
+// `review/rights-mapillary.md` §8/§9.2, and both LOGGED so the wording gets fixed at source:
+//   · Mapillary — drop "(platform default — NOT stated per image)". The ruling: the licence IS stated, platform-wide
+//     and in the download panel; it is simply not a per-image API field, and the hedge is now inaccurate.
+//   · KartaView — add "© Grab and KartaView Contributors", which KartaView's own terms require and which every
+//     attribution string written before 2026-09-08 omits.
+// Nothing else is touched: this never invents a creator, a licence or a date.
+const creditFixes = [];
+function complyCredit(att) {
+  let out = String(att || ''); if (!out) return out;
+  const before = out;
+  if (/mapillary/i.test(out)) {
+    out = out.replace(/\s*[—-]?\s*\(?\s*(?:Mapillary\s+)?platform[- ]default[^)]*\)?/ig, '')
+             .replace(/\s*\(?per-image licence not stated[^)]*\)?/ig, '')
+             .replace(/\s+—\s+CC BY-SA 4\.0\s*$/i, ' · CC BY-SA 4.0')
+             .replace(/\s{2,}/g, ' ').replace(/\s*·\s*$/, '').trim();
+    if (!/adapted/i.test(out)) out += ' · adapted';
+  }
+  if (/kartaview/i.test(out) && !/grab/i.test(out)) {
+    out = out.replace(/(KartaView\s*\/\s*[^·—]+?)(\s*[·—]\s*)/i, '$1 · © Grab and KartaView Contributors$2');
+    if (!/grab/i.test(out)) out += ' · © Grab and KartaView Contributors';
+  }
+  if (out !== before && !creditFixes.some(x => x.before === before)) creditFixes.push({ before, after: out });
+  return out;
+}
+
 // ---------------------------------------------------------------- ASS captions
 const assTime = t => { t = Math.max(0, t); const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = Math.floor(t % 60), cs = Math.floor((t - Math.floor(t)) * 100); return `${h}:${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}.${String(cs).padStart(2, '0')}`; };
 const assEsc = s => String(s).replace(/\\/g, '\\\\').replace(/\{/g, '(').replace(/\}/g, ')').replace(/\n/g, '\\N');
@@ -786,18 +943,119 @@ function captionChunks(text, words, maxChars = 84) {
 // ---------------------------------------------------------------- main
 (async () => {
   const t0 = Date.now();
+  const warnings = [];                 // declared first: the pre-render checks below already have things to say
+  // Every slot that did not get the picture it asked for, and every asset that is simply not there. Printed as a
+  // table at the END of the run (console + render-log.md + linear/<chapter>_<lang>.gaps.json) so the founder is
+  // told where the film is thin instead of discovering it. Populated by preflight() and by the render itself.
+  const fellBack = [];                 // {n, scene, at, slot, kind, wanted, wanted_ref, used, used_ref, why}
+  const missingAssets = new Map();     // id -> {id, kind, ref, why, slots:[…]}
+  const gap = (rec) => { fellBack.push(rec); };
+  const missing = (id, kind, ref, why, where) => {
+    const k = id || ref; const cur = missingAssets.get(k) || { id: id || '(unnamed)', kind, ref, why, slots: [] };
+    cur.slots.push(where); if (why && !cur.why) cur.why = why; missingAssets.set(k, cur);
+  };
   const tour = JSON.parse(fs.readFileSync(TOUR_PATH, 'utf8')); const chapter = tour.chapters[0]; const scenes = chapter.scenes;
-  const readme = parseLinearCut(path.join(CHAPTER_DIR, 'scenes', 'README.md'));
-  // the sidecar: a per-locale one wins when it exists (its s:N tokens index the LOCALE's sentences, not English)
-  const localeCuts = LOCALE_ID ? path.join(__dirname, 'cuts', `${chapter.id}.${LOCALE_ID}.json`) : null;
+
+  // ---- which kind of chapter is this? -------------------------------------------------------------------------
+  // FILM (D9): `scenes/README-film.md` exists. The scene files ARE the film — twelve shot lists with authored
+  // `start_s`/`end_s` slots — so there is nothing left for a cut sheet to decide and no second place to disagree
+  // with them. Every scene renders, every sentence is spoken, every picture sits where it was authored.
+  // LEGACY: an interactive chapter with a "Linear cut" table in `scenes/README.md` that SELECTS scenes, seconds
+  // and sentences, plus its sidecar in cuts/. Day 2 is still this shape.
+  const FILM_README = path.join(CHAPTER_DIR, 'scenes', 'README-film.md');
+  const FILM = fs.existsSync(FILM_README);
+  const filmTable = FILM ? parseFilmTable(FILM_README) : null;
+  const readme = FILM ? null : parseLinearCut(path.join(CHAPTER_DIR, 'scenes', 'README.md'));
+
+  // ---- the cut sheet: retired for a film chapter --------------------------------------------------------------
+  const localeCuts = (!FILM && LOCALE_ID) ? path.join(__dirname, 'cuts', `${chapter.id}.${LOCALE_ID}.json`) : null;
+  const defaultCuts = path.join(__dirname, 'cuts', `${chapter.id}.json`);
   const cutsPath = args.cuts ? path.resolve(args.cuts)
-    : (localeCuts && fs.existsSync(localeCuts)) ? localeCuts : path.join(__dirname, 'cuts', `${chapter.id}.json`);
-  const cuts = fs.existsSync(cutsPath) ? JSON.parse(fs.readFileSync(cutsPath, 'utf8')) : { scenes: {} };
+    : (localeCuts && fs.existsSync(localeCuts)) ? localeCuts : defaultCuts;
+  if (FILM && (args.cuts || fs.existsSync(defaultCuts) || (LOCALE_ID && fs.existsSync(path.join(__dirname, 'cuts', `${chapter.id}.${LOCALE_ID}.json`))))) {
+    throw new Error(
+      `${chapter.id} is a FILM chapter (scenes/README-film.md exists) and a cut sheet was found at\n` +
+      `  ${args.cuts ? path.resolve(args.cuts) : defaultCuts}\n` +
+      `A film has ONE source of truth: the scene files. A cut sheet selects sentences and visuals out of an\n` +
+      `interactive chapter, and under D9 there is nothing to select — every sentence is spoken and every picture\n` +
+      `carries its own start_s/end_s. Two places that can disagree is exactly the bug we removed.\n` +
+      `Move the sheet to studio/tools/render/cuts/retired/ (see cuts/retired/README.md), or delete scenes/README-film.md\n` +
+      `if this chapter is really still a player chain.`);
+  }
+  const cuts = (!FILM && fs.existsSync(cutsPath)) ? JSON.parse(fs.readFileSync(cutsPath, 'utf8')) : { scenes: {} };
   const cutsAreLocalised = !!(localeCuts && cutsPath === localeCuts);
+
+  // ---- the intended scene list, and the three-way agreement check ---------------------------------------------
+  // Arbiter = the scene files on disk. tour.json embeds copies of them and the README tabulates them; all three
+  // must name the same scenes in the same order before a single frame is rendered, and the same list is checked
+  // again after assembly (§7) against what actually came out.
+  const disk = scenesOnDisk(CHAPTER_DIR);
+  const INTENDED = disk ? disk.map(d => d.id) : scenes.map(s => s.id);
+  if (disk) {
+    const d1 = listDiff('scenes/*.scene.json on disk', INTENDED, `${path.basename(TOUR_PATH)} chapter "${chapter.id}"`, scenes.map(s => s.id));
+    if (d1) throw new Error(`SCENE LIST MISMATCH before rendering.\n${d1}\n` +
+      `tour.json embeds its own copies of the scenes; reassemble it from scenes/ before rendering.`);
+  }
+  if (filmTable) {
+    const d2 = listDiff('scenes/*.scene.json on disk', INTENDED, 'scenes/README-film.md §1 table', filmTable.rows.map(r => r.id));
+    if (d2) throw new Error(`SCENE LIST MISMATCH before rendering.\n${d2}\n` +
+      `README-film.md's table is the film's manifest — fix whichever of the two is wrong.`);
+    const bad = filmTable.rows.map((r, i) => ({ r, want: (disk || [])[i] }))
+      .filter(x => x.want && x.want.duration_s != null && x.r.seconds !== x.want.duration_s);
+    if (bad.length) throw new Error(`SCENE LENGTH MISMATCH: scenes/README-film.md and the scene files disagree.\n` +
+      bad.map(x => `  ${x.r.id}: README-film says ${x.r.seconds} s, ${x.want.file} says duration_s ${x.want.duration_s}`).join('\n') +
+      `\nThe scene file is what renders. Fix the table (or the scene) so the two agree.`);
+    const wantSlots = filmTable.rows.reduce((a, r) => a + r.slots, 0);
+    const gotSlots = scenes.reduce((a, s2) => a + (s2.media || []).filter(m => m.kind !== 'audio').length, 0);
+    if (wantSlots !== gotSlots) warnings.push(`scenes/README-film.md counts ${wantSlots} visual slots; the scene files carry ${gotSlots}.`);
+  }
 
   const manifestMd = fs.existsSync(path.join(CHAPTER_DIR, 'media', 'manifest.md')) ? fs.readFileSync(path.join(CHAPTER_DIR, 'media', 'manifest.md'), 'utf8') : '';
   const manifestRow = id => { const line = manifestMd.split('\n').find(l => l.startsWith(`| ${id} |`)); if (!line) return null; const c = line.split('|').map(x => x.trim()); return { id: c[1], kind: c[2], ref: c[3].replace(/`/g, ''), title: c[4], license: c[5], notes: c[10] || '' }; };
-  const logLines = [], warnings = [], droppedOverlays = [];
+
+  // ---- chapter-wide media index, for `media[].fallback: "M-xx"` ------------------------------------------------
+  // A slot may declare a fallback by MANIFEST ID rather than by URL ("fallback": "M-74"), and the thing it names is
+  // very often not in this scene — it is somewhere else in the chapter, or only in media/*.md. Resolution order:
+  //   1. a media entry with that manifest_id anywhere in the chapter's scenes (the authored attribution wins)
+  //   2. the first row for that id in ANY media/*.md table (all shapes: main table, rung table, motion manifest)
+  // Nothing here downloads; it only turns an id into {kind, ref, attribution, license}.
+  const MEDIA_BY_ID = new Map();
+  for (const sc of scenes) for (const m of (sc.media || [])) if (m.manifest_id && !MEDIA_BY_ID.has(m.manifest_id)) MEDIA_BY_ID.set(m.manifest_id, m);
+  const MD_BY_ID = new Map();
+  { const dir = path.join(CHAPTER_DIR, 'media');
+    const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter(f => /\.md$/.test(f)).sort() : [];
+    for (const f of files) for (const line of fs.readFileSync(path.join(dir, f), 'utf8').split('\n')) {
+      const m = line.match(/^\|\s*`?([MGCN]-[0-9a-zA-Z]+)`?\s*\|/); if (!m) continue;
+      const id = m[1]; const cells = line.split('|').map(x => x.trim());
+      // A LOCAL path wins over a URL in the same row: the KartaView rows read
+      //   `media/files/m66-….mp4 (from KartaView seq 1123901, … via https://cdn.kartaview.org/…)`
+      // and the CDN link is provenance, not the asset. Taking the URL sent M-66's own file to a pending card.
+      const ref = (line.match(/media\/files\/[^\s`)|]+/) || line.match(/https?:\/\/[^\s`)|]+/) || [])[0] || '';
+      // The exact credit string lives in a backticked cell of the "rung" table (`id | rung | licence | attribution
+      // | local file | use`) and always names a licence. Anything else in backticks is a sequence number or a URL,
+      // and an unbalanced backtick in the main table can pair across cells — hence the `|` and length guards.
+      const att = (line.match(/`([^`]{12,})`/g) || []).map(x => x.slice(1, -1))
+        .find(x => !/^https?:|^media\/files\/|^File:/.test(x) && !x.includes('|') && x.length <= 160
+          && /\b(CC[ -]?BY|CC0|public domain|PD|Commons|geograph|KartaView|Mapillary)\b/i.test(x)) || '';
+      // several manifests describe the same id in different tables; merge, rather than letting the first win —
+      // one table has the ref, another has the exact credit string, and a partial row must not shadow a full one.
+      if (MD_BY_ID.has(id)) { const cur = MD_BY_ID.get(id); if (ref && !cur.ref) cur.ref = ref; if (att && !cur.attribution) cur.attribution = att; continue; }
+      const kind = /^(image|footage|audio|video|generated|youtube|map|streetview)$/.test(cells[2] || '') ? cells[2] : (/\.(mp4|webm|mov)/.test(ref) ? 'footage' : /\.(ogg|oga|mp3|wav|flac)/.test(ref) ? 'audio' : 'image');
+      MD_BY_ID.set(id, { id, kind, ref, attribution: att, license: cells[5] || '', from: f });
+    } }
+  /** "M-74" (or a bare URL/path) → a media-entry-shaped object, or null. */
+  function resolveMediaId(idOrRef) {
+    const key = String(idOrRef || '').trim(); if (!key) return null;
+    if (/^(https?:)?\/\//.test(key) || /^media\//.test(key) || /^generated\//.test(key)) return { kind: /\.(mp4|webm|mov)$/i.test(key) ? 'footage' : 'image', ref: key, manifest_id: key, attribution: '' };
+    if (MEDIA_BY_ID.has(key)) return MEDIA_BY_ID.get(key);
+    const r = MD_BY_ID.get(key);
+    // the ref is the last word on kind: rows are merged across manifests, and the row that named the kind is often
+    // not the row that named the file (M-66's a6 row has no path at all, so it looked like a still).
+    if (r && r.ref) { const byExt = /\.(mp4|webm|mov|mkv)$/i.test(r.ref) ? 'footage' : /\.(ogg|oga|mp3|wav|flac|opus)$/i.test(r.ref) ? 'audio' : null;
+      return { kind: byExt || r.kind, ref: r.ref, manifest_id: r.id, attribution: r.attribution, license: r.license }; }
+    return null;
+  }
+  const logLines = [], droppedOverlays = [];
   const note = (s) => { logLines.push(s); };
   // Is an overlay's information already in the narration this cut speaks? Compare the "content tokens" — numbers,
   // years and words of 4+ letters/2+ CJK characters — because that is what an overlay actually carries ("No. 15 —
@@ -838,11 +1096,21 @@ function captionChunks(text, words, maxChars = 84) {
 
   // 1. selection
   let selection;
-  if (readme) { selection = readme.rows.map(r => { const i = scenes.findIndex(s => s.id === r.id); return i < 0 ? null : { idx: i, scene: scenes[i], cap: r.s, use: r.use }; }).filter(Boolean); note(`Selection: ${selection.length} scenes from scenes/README.md "Linear cut" table (${readme.rows.reduce((a, r) => a + r.s, 0)} s planned).`);
-    for (const bad of readme.skipped || []) warnings.push(`scenes/README.md "Linear cut": this row has no readable seconds column and is NOT in the film — \`${bad}\``);
-    for (const r of readme.rows) if (!scenes.some(s2 => s2.id === r.id)) warnings.push(`scenes/README.md "Linear cut" row "${r.num} ${r.id}" names a scene that is not in tour.json — dropped`); }
+  if (FILM) {
+    // No selection. A film is its scenes, in order, at their authored length. (D9 + the founder, 2026-09-08:
+    // "the scene files ARE the film … it removes the whole class of bug where a bolded number in a README
+    // silently dropped a scene".)
+    selection = scenes.map((s, i) => ({ idx: i, scene: s, cap: s.duration_s, use: 'film' }));
+    note(`Selection: FILM mode — all ${selection.length} scenes, in order, at their own \`duration_s\` ` +
+      `(${scenes.reduce((a, x) => a + (x.duration_s || 0), 0)} s = ${mmss(scenes.reduce((a, x) => a + (x.duration_s || 0), 0))} authored). ` +
+      `No cut sheet is read: the scene files are the only source of truth (D9).`);
+  }
+  else if (readme) { selection = readme.rows.map(r => { const i = scenes.findIndex(s => s.id === r.id); return i < 0 ? null : { idx: i, scene: scenes[i], cap: r.s, use: r.use }; }).filter(Boolean); note(`Selection: ${selection.length} scenes from scenes/README.md "Linear cut" table (${readme.rows.reduce((a, r) => a + r.s, 0)} s planned).`);
+    const orphan = readme.rows.filter(r => !scenes.some(s2 => s2.id === r.id));
+    if (orphan.length) throw new Error(`scenes/README.md "Linear cut" names ${orphan.length} scene(s) that are not in ${path.basename(TOUR_PATH)}: ` +
+      orphan.map(r => `${r.num} ${r.id}`).join(', ') + `\nThey would be dropped from the film without a word. Fix the table or reassemble the tour.`); }
   else { selection = scenes.map((s, i) => ({ idx: i, scene: s, cap: s.duration_s, use: 'whole' })).filter(x => !/INTERACTIVE CUT ONLY/i.test(x.scene.production_notes || '')); note('Selection: no README table found — all scenes except "INTERACTIVE CUT ONLY", capped at duration_s.'); }
-  if (ONLY) selection = selection.filter(x => ONLY.includes(x.idx + 1));
+  if (ONLY) { selection = selection.filter(x => ONLY.includes(x.idx + 1)); note(`--scenes ${args.scenes}: PARTIAL RENDER of ${selection.length} scene(s) — this is a proof, not a publishable cut, and the post-assembly scene-list check is scoped to the subset.`); }
 
   // 2. per-scene plan: script tokens → utterances
   //
@@ -941,7 +1209,11 @@ function captionChunks(text, words, maxChars = 84) {
       note(`Narration level: measured ${fmt1(med)} LUFS over ${ls.length} clip(s) → ${fmt1(NARR_GAIN_DB)} dB to reach ${NARR_TARGET_LUFS} LUFS.`); }
   }
   for (const p of plans) {
-    const cap = p.sel.cap * (1 + SLACK); const narrAt = p.hint.narration_at_s ?? 1.0; let t = 0; p.narrAt = narrAt; p.ttsOk = true;
+    const cap = p.sel.cap * (1 + SLACK);
+    // FILM: the narration starts where the scene says it does (`narration.starts_at_s`, which is how the cold open
+    // gets its 3 silent seconds for a muted autoplay). LEGACY: the sidecar's narration_at_s, default 1 s.
+    const narrAt = FILM ? (p.s.narration?.starts_at_s ?? 0) : (p.hint.narration_at_s ?? 1.0);
+    let t = 0; p.narrAt = narrAt; p.ttsOk = true;
     for (const u of p.utts) {
       const r = spoken.get(u.jobId);
       if (!r) { p.ttsOk = false; u.wav = null;
@@ -951,6 +1223,30 @@ function captionChunks(text, words, maxChars = 84) {
       u.at = t; t += u.dur + (u.voice === VOICE2 ? 0.6 : GAP);
     }
     let speechEnd = p.utts.length ? p.utts[p.utts.length - 1].at + p.utts[p.utts.length - 1].dur : 0; p.cutLog = [];
+    if (FILM) {
+      // A film's script is not a menu. Every sentence the Narrator wrote is spoken — the founder's whole point in
+      // retiring the cut sheet — so nothing is end-cut here. If the synthesized voice overruns the authored
+      // seconds the SCENE grows to fit (and every slot in it scales by the same factor, so the shot order and the
+      // proportions survive); the overrun is reported per scene and totalled at the end of the log.
+      // `--strict-length` turns the overrun into a hard failure instead, for a render that must hit 18:42 exactly.
+      p.speechEnd = speechEnd;
+      const need = narrAt + speechEnd + (p.utts.length ? 0.8 : 0);
+      p.len = Math.max(p.sel.cap, need);
+      p.over = p.len - p.sel.cap;
+      if (p.over > 0.05) {
+        const msg = `${p.sel.idx + 1} ${p.s.id}: narration needs ${fmt1(need)} s but the scene is authored at ${p.sel.cap} s — ` +
+          `scene stretched to ${fmt1(p.len)} s (+${fmt1(p.over)} s, every slot scaled by ${(p.len / p.sel.cap).toFixed(3)}x). ` +
+          `Nothing was cut. Fix by trimming the script or lengthening the scene.`;
+        if (args['strict-length']) throw new Error('LENGTH OVERRUN (--strict-length): ' + msg);
+        warnings.push(msg); p.cutLog.push(`stretched +${fmt1(p.over)} s to keep every sentence (nothing dropped)`);
+      }
+      p.len = Math.round(p.len * FPS) / FPS;
+      if (p.len - (narrAt + speechEnd) > 6) p.tail = p.len - (narrAt + speechEnd);
+      if (p.alignNote) warnings.push(`${p.sel.idx + 1} ${p.s.id}: ${p.alignNote}`);
+      if (p.localised) { const chars = p.utts.reduce((a, u) => a + u.text.length, 0); const need2 = chars / 4.77; const room = p.sel.cap - p.narrAt - 1.5;
+        if (need2 > room * 0.92) warnings.push(`${p.sel.idx + 1} ${p.s.id}: **too dense in Mandarin** — ${chars} characters ≈ ${fmt1(need2)} s of speech in ${p.sel.cap} s (${fmt1(room)} s of room).`); }
+      continue;
+    }
     if (narrAt + speechEnd + 1.0 > cap && p.utts.length) {
       // cut at the last sentence boundary that fits
       let keep = null; for (const u of p.utts) for (const se of u.sents) { const abs = u.at + se.e; if (narrAt + abs + 1.0 <= cap) keep = { u, se, abs }; }
@@ -981,6 +1277,80 @@ function captionChunks(text, words, maxChars = 84) {
       if (need > room * 0.92) warnings.push(`${p.sel.idx + 1} ${p.s.id}: **too dense in Mandarin** — ${chars} characters ≈ ${fmt1(need)} s of speech in ${p.sel.cap} s (${fmt1(room)} s of room). Either the locale line is shortened or the scene gets more seconds; the renderer will end-cut it.`); }
   }
 
+  // ---- preflight: what is NOT on disk, decided without a single network call --------------------------------
+  // The film is honestly incomplete, so "will this render?" must be answerable in a second, before TTS and before
+  // ffmpeg. Every authored slot is checked against the filesystem and its own licence field; the same table the
+  // renderer prints at the end of a real run is printed here for `--plan`.
+  const PRE = [];
+  {
+    const has = (rel) => fs.existsSync(path.join(CHAPTER_DIR, String(rel || '')));
+    for (const p of plans) {
+      const s = p.s;
+      for (const [i, m] of (s.media || []).entries()) {
+        const at = `${m.start_s ?? 0}–${m.end_s ?? s.duration_s} s`;
+        const rec = (why) => PRE.push({ n: p.sel.idx + 1, scene: s.id, slot: i + 1, at, kind: m.kind,
+          wanted: m.manifest_id || m.ref, wanted_ref: m.ref, why,
+          used: m.fallback ? (resolveMediaId(m.fallback) ? m.fallback : `${m.fallback} (UNRESOLVABLE)`) : (m.kind === 'audio' ? 'SILENCE' : 'PENDING CARD') });
+        if (m.kind === 'generated') { if (!has(m.ref)) rec('generated asset does not exist yet'); }
+        else if (m.kind === 'footage') { if (/^https?:/i.test(String(m.ref)) || !has(m.ref)) rec('local footage file not in media/files/'); }
+        else if (m.kind === 'streetview') { const id = String(m.manifest_id || '').replace(/^PANO\//, ''); if (!panoPackById(id)) rec(`no cached pano frames for stop \`${id}\``); }
+        else if (m.kind === 'audio') { if (String(m.license) === 'pending' || /media\/files\/pending\//.test(String(m.ref))) rec('sound not sourced yet'); else if (!isCommons(m.ref) && /freesound\.org/.test(String(m.ref))) rec('Freesound is login-gated — the renderer cannot fetch it'); }
+        else { if (String(m.license) === 'pending' || /media\/files\/pending\//.test(String(m.ref))) rec('no source yet — authored as `license: pending`');
+               else if (!/^https?:/i.test(String(m.ref)) && !has(m.ref)) rec('local still not on disk'); }
+      }
+    }
+  }
+  /** the table the founder reads: every slot that did not get what it asked for. */
+  function gapTable(rows, title) {
+    const L2 = [];
+    const byScene = new Map(); for (const r of rows) { const k = `${String(r.n).padStart(2, '0')} ${r.scene}`; byScene.set(k, (byScene.get(k) || 0) + 1); }
+    L2.push('', `## ${title}`, '',
+      `**${rows.length} slot(s) did not get the picture (or sound) they asked for.** Fallbacks are the ones the scene`,
+      `files declare; a "PENDING CARD" is a slot with no fallback at all. Nothing here crashed the render.`, '');
+    if (!rows.length) { L2.push('_Nothing fell back — every authored slot got its own source._', ''); return L2; }
+    L2.push('| # | scene | slot | at | kind | asked for | why it is not there | played instead |',
+            '|---|-------|-----:|----|------|-----------|---------------------|----------------|');
+    for (const r of rows) L2.push(`| ${String(r.n).padStart(2, '0')} | ${r.scene} | ${r.slot} | ${r.at || fmt1(r.at)} | ${r.kind} | \`${r.wanted}\` | ${r.why} | ${r.used === 'PENDING CARD' ? '**pending card**' : '`' + r.used + '`'} |`);
+    L2.push('', '**By scene:** ' + [...byScene.entries()].map(([k, v]) => `${k} (${v})`).join(' · '), '');
+    return L2;
+  }
+  function printGaps(rows, heading) {
+    console.log('');
+    console.log('='.repeat(100));
+    console.log(heading);
+    console.log('='.repeat(100));
+    if (!rows.length) { console.log('  nothing fell back — every authored slot got its own source.'); return; }
+    const w = (x, n) => String(x == null ? '' : x).padEnd(n).slice(0, n);
+    console.log(`  ${w('scene', 31)}${w('slot', 6)}${w('at', 12)}${w('asked for', 14)}${w('played instead', 18)}why`);
+    console.log('  ' + '-'.repeat(96));
+    for (const r of rows) console.log(`  ${w(String(r.n).padStart(2, '0') + ' ' + r.scene, 31)}${w(r.slot, 6)}${w(r.at, 12)}${w(r.wanted, 14)}${w(r.used, 18)}${r.why}`);
+    const noFb = rows.filter(r => r.used === 'PENDING CARD' || /UNRESOLVABLE/.test(String(r.used)));
+    console.log('  ' + '-'.repeat(96));
+    console.log(`  ${rows.length} slot(s) fell back; ${noFb.length} of them have NO usable fallback and play a pending card.`);
+  }
+
+  // ---- a film's locale must be complete, or it is not a cut -------------------------------------------------
+  // Day 1's `i18n/zh-Hans.json` still addresses the retired 18-scene chain: 5 of its keys survive the rename by
+  // NAME only — the scenes behind them were rewritten end to end, so those translations are of text that is no
+  // longer in the film. The other 7 scenes have no Mandarin at all. A cut that speaks English in 7 scenes and a
+  // stale script in 5 is not a deliverable, and it is worse than no cut because it looks finished.
+  if (FILM && LOCALE_ID) {
+    const untranslated = plans.filter(p => !LT.script(p.s) && (p.s.narration?.script || '').trim()).map(p => p.s.id);
+    if (untranslated.length && !args['allow-partial-locale']) {
+      throw new Error(
+        `--lang ${LANG} on a FILM chapter needs a locale that covers every scene.\n` +
+        `  ${localePath}\n` +
+        `  ${plans.length - untranslated.length}/${plans.length} scenes translated; MISSING: ${untranslated.join(', ')}\n` +
+        `Those scenes would be SPOKEN IN ENGLISH inside a Mandarin cut. And be careful with the ones that do match:\n` +
+        `after the 2026-09-08 film rewrite a surviving scene id does not mean surviving text.\n` +
+        `Re-translate against scenes/*.scene.json, or pass --allow-partial-locale to render it anyway.`);
+    }
+    if (untranslated.length) warnings.push(`--allow-partial-locale: ${untranslated.length} scene(s) speak ENGLISH in the ${LOCALE_ID} cut — ${untranslated.join(', ')}`);
+    const need = plans.reduce((a, p) => a + p.utts.reduce((b, u) => b + u.text.length, 0), 0) / 4.77;
+    const room = plans.reduce((a, p) => a + p.sel.cap, 0);
+    if (need > room * 0.75) warnings.push(`${LOCALE_ID}: the translated script needs ≈ ${mmss(need)} of speech in a ${mmss(room)} film (${Math.round(need / room * 100)} % fill). Over ~70 % there is no silence left, and silence is content. Usually a sign the locale is translating a DIFFERENT, older script.`);
+  }
+
   if (PLAN || args.verbose) {
     for (const p of plans) {
       console.log(`\n== ${String(p.sel.idx + 1).padStart(2, '0')} ${p.s.id} (${p.s.type}) README ${p.sel.cap} s → ${fmt1(p.len)} s; TTS ${p.ttsOk ? 'ok' : 'FALLBACK'}; narration ${fmt1(p.speechEnd)} s from ${p.narrAt} s${p.localised ? ' [zh]' : ''}`);
@@ -997,7 +1367,12 @@ function captionChunks(text, words, maxChars = 84) {
     }
     console.log(`\nTotal ≈ ${fmt1(plans.reduce((a, p) => a + p.len, 0) + TITLE_S + 14)} s`);
     if (ttsStats) console.log(`TTS: ${ttsStats.synthesized} synthesized, ${ttsStats.cached} cached, ${ttsStats.audio_s} s of audio in ${ttsStats.wall_s} s (${ttsStats.x_realtime}x real time), cost 0`);
-    if (PLAN) { if (browser) await browser.close(); process.exit(0); }
+    if (PLAN) {
+      printGaps(PRE, `PRE-FLIGHT — assets this chapter asks for and does NOT have (${PRE.length} of ` +
+        `${plans.reduce((a, x) => a + (x.s.media || []).length, 0)} media entries), checked on disk, no network calls`);
+      if (warnings.length) { console.log('\nWarnings:'); warnings.forEach(w => console.log('  - ' + w)); }
+      if (browser) await browser.close(); process.exit(0);
+    }
   }
 
   // 4. visuals + audio per scene → scene mp4
@@ -1064,6 +1439,97 @@ function captionChunks(text, words, maxChars = 84) {
     const footageSeg = async (m, dur, inS = m.start_s || 0) => { const f = path.join(CHAPTER_DIR, m.ref); if (!fs.existsSync(f)) return await pendingSeg(m, dur); useCredit(m); footageSegs++; return { kind: 'footage', file: f, in_s: inS, dur, attribution: m.attribution || '', src: `${m.manifest_id} local footage ${m.ref}${inS ? ' from ' + mmss(inS) : ''} — self-hosted, licence-clean` }; };
     const pendingSeg = async (m, dur) => ({ kind: 'png', file: await shotHtml(T.pendingCard({ sceneTitle: LT.title(s), assetId: m.manifest_id, spec: (m.note || '').slice(0, 140) }), `pending_${m.manifest_id}`), dur, src: `${m.manifest_id} pending-asset card` });
     const playerSeg = async (call, dur, label) => ({ kind: 'png', file: await shotPlayer(call, `player_${label}`), dur, src: `player screenshot ${call}` });
+
+    // ================= FILM: one authored slot, one shot =========================================================
+    // D9. `media[].start_s/end_s` are SCENE-CLOCK seconds — where the shot sits in this scene — and the renderer
+    // honours them instead of re-dividing the scene its own way. The film is honestly incomplete (26 stills with
+    // no source, most of the new motion not fetched, G-10…G-19 and C-01…C-26 not drawn), so EVERY branch degrades
+    // to the slot's own declared `fallback` and records what it did in the gap manifest printed at the end.
+    const isPending = (m) => String(m.license || '') === 'pending' || /(^|\/)media\/files\/pending\//.test(String(m.ref || ''));
+    const localPath = (ref) => path.join(CHAPTER_DIR, String(ref || ''));
+    const slotName = (sl) => `${String(p.sel.idx + 1).padStart(2, '0')} ${s.id} · slot ${sl.i + 1} @ ${sl.s0}–${sl.s1} s`;
+    /** the declared fallback, or a pending card; always recorded. */
+    async function useFallback(m, dur, sl, why, depth) {
+      const fbId = m.fallback;
+      const fb = fbId ? resolveMediaId(fbId) : null;
+      if (!fb) {
+        missing(m.manifest_id, m.kind, m.ref, why, slotName(sl));
+        gap({ n: p.sel.idx + 1, scene: s.id, slot: sl.i + 1, at: sl.s0, dur, wanted: m.manifest_id || m.ref, wanted_ref: m.ref,
+              used: 'PENDING CARD', used_ref: '', why, kind: m.kind });
+        return { ...(await pendingSeg(m, dur)), src: `${m.manifest_id || m.ref} PENDING — ${why}; no fallback declared → pending card` };
+      }
+      missing(m.manifest_id, m.kind, m.ref, why, slotName(sl));
+      gap({ n: p.sel.idx + 1, scene: s.id, slot: sl.i + 1, at: sl.s0, dur, wanted: m.manifest_id || m.ref, wanted_ref: m.ref,
+            used: fb.manifest_id || fbId, used_ref: fb.ref, why, kind: m.kind });
+      const seg = await filmSeg({ ...fb, start_s: undefined, end_s: undefined }, dur, sl, (depth || 0) + 1);
+      seg.src = `${m.manifest_id || m.ref} → fallback ${fb.manifest_id || fbId}: ${seg.src}`;
+      return seg;
+    }
+    /** one media entry → one segment, at exactly `dur` seconds. */
+    async function filmSeg(m, dur, sl, depth = 0) {
+      if (depth > 2) return { ...(await pendingSeg(m, dur)), src: `${m.manifest_id || m.ref} — fallback chain too deep` };
+      const kind = m.kind;
+      if (kind === 'generated') {
+        const gf = localPath(m.ref);
+        if (!fs.existsSync(gf)) return await useFallback(m, dur, sl, 'generated asset does not exist yet', depth);
+        if (/\.svg$/i.test(m.ref)) {
+          const png = await svgToPng(gf, W, H);
+          useCredit(m);
+          return { kind: 'png', file: png, dur, src: `${m.manifest_id} generated ${path.basename(m.ref)} (SVG rasterised ${W}x${H})` };
+        }
+        const gp = await realPixels(gf); useCredit(m);
+        return { kind: 'still', file: gf, dur, m, nw: gp.w, nh: gp.h, src: `${m.manifest_id} generated asset ${gp.w}x${gp.h}` };
+      }
+      if (kind === 'footage') {
+        if (/^https?:/i.test(String(m.ref))) return await useFallback(m, dur, sl, 'footage ref is a URL, not a local file (nothing is downloaded from a video host)', depth);
+        if (!fs.existsSync(localPath(m.ref))) return await useFallback(m, dur, sl, 'local footage file is not in media/files/ (not fetched yet)', depth);
+        const inS = (String(m.note || '').match(/source in-point\s+(\d+):(\d+)/i) || null);
+        return await footageSeg(m, dur, inS ? (+inS[1] * 60 + +inS[2]) : 0);
+      }
+      if (kind === 'streetview') {
+        const stopId = String(m.manifest_id || '').replace(/^PANO\//, '');
+        const pack = panoPackById(stopId);
+        if (!pack) return await useFallback(m, dur, sl, `no cached pano frames for stop \`${stopId}\` (run studio/tools/panowalk/fetch.mjs)`, depth);
+        const parts = String(m.ref || '').split(',').map(Number);
+        const built = await buildPanoShot(pack, dur, { heading: isFinite(parts[2]) ? parts[2] : null, pitch: isFinite(parts[3]) ? parts[3] : 0 });
+        if (!built) return await useFallback(m, dur, sl, `cached pano stop \`${stopId}\` has no usable frames`, depth);
+        built.notes.forEach(n2 => warnings.push(`${tag}: ${n2}`));
+        const att = m.attribution || built.credit.attribution || '';
+        if (!creditsUsed.has(att)) creditsUsed.set(att, { id: m.manifest_id || stopId, kind: 'panowalk', attribution: att, license: built.credit.licence || '', ref: built.credit.url || '' });
+        return { kind: 'mp4', file: built.file, dur, attribution: att, src: `${m.manifest_id} panowalk — ${built.label}, cached open imagery` };
+      }
+      if (kind === 'youtube') return await clipSeg(m, dur, m.start_s || 0, m.end_s || 0);
+      // image / map / anything else that is a picture
+      if (isPending(m)) return await useFallback(m, dur, sl, 'no source yet — authored as `license: pending`', depth);
+      if (!/^https?:/i.test(String(m.ref)) && !fs.existsSync(localPath(m.ref))) return await useFallback(m, dur, sl, 'local still is not on disk', depth);
+      const seg = await imgSeg({ ...m, fallback: undefined }, dur);
+      if (/MISSING — named card/.test(seg.src || '')) {
+        // the picture exists on paper but could not be fetched right now → still honour the declared fallback
+        return await useFallback(m, dur, sl, 'could not be fetched', depth);
+      }
+      return seg;
+    }
+    /** the whole scene's visual track, from its authored slots. */
+    async function filmSegs() {
+      const slots = media.filter(m => m.kind !== 'audio')
+        .map((m, i) => ({ m, i, s0: +(m.start_s ?? 0), s1: +(m.end_s ?? (s.duration_s || len)) }))
+        .sort((a, b) => a.s0 - b.s0 || a.i - b.i);
+      if (!slots.length) return [];
+      // contiguity is an authoring contract (README-film §2.1). Say so when it is broken; never silently reorder.
+      const issues = [];
+      if (Math.abs(slots[0].s0) > 0.01) issues.push(`first slot starts at ${slots[0].s0} s, not 0`);
+      for (let i = 1; i < slots.length; i++) {
+        const d = slots[i].s0 - slots[i - 1].s1;
+        if (Math.abs(d) > 0.01) issues.push(`${d > 0 ? 'gap' : 'overlap'} of ${fmt1(Math.abs(d))} s between slot ${slots[i - 1].i + 1} and slot ${slots[i].i + 1} (at ${slots[i].s0} s)`);
+      }
+      const end = slots[slots.length - 1].s1;
+      if (Math.abs(end - (s.duration_s || len)) > 0.01) issues.push(`last slot ends at ${end} s, scene duration_s is ${s.duration_s}`);
+      if (issues.length) warnings.push(`${tag}: authored slots do not tile the scene — ${issues.join('; ')}. Rendered in start_s order; the durations below are what actually plays.`);
+      const out = [];
+      for (const sl of slots) out.push(await filmSeg(sl.m, Math.max(0.6, (sl.s1 - sl.s0) * f), sl));
+      return out;
+    }
+    // =============================================================================================================
     // when did the narration say this? `s:N` = narration sentence N, `quiz:correct` = the answer utterance.
     const uttAt = (src) => { const u = p.utts.find(u => (u.src || []).includes(src)); return u ? p.narrAt + u.at : null; };
     /**
@@ -1099,7 +1565,8 @@ function captionChunks(text, words, maxChars = 84) {
       if (missed) warnings.push(`${tag}: ${missed} map beat(s) point at a narration sentence this cut does not speak — those reveals are spaced evenly instead. (zh: the sentence indices are English; see README "Two cuts".)`);
       return { kind: 'mapfilm', state, beats: resolved, dur, src: `film route map (${state}${why ? ', ' + why : ''}) — own graphic from route-data.json` };
     };
-    if (hint.visuals) {
+    if (FILM) { segs = await filmSegs(); }
+    else if (hint.visuals) {
       for (const v of hint.visuals) {
         const m = v.media ? media.find(x => x.manifest_id === v.media) : null; const dur = v.dur ?? null;
         if (v.kind === 'routemap') segs.push(await mapSeg(v.state || 'day-1', v.beats, dur));
@@ -1223,7 +1690,7 @@ function captionChunks(text, words, maxChars = 84) {
     // undrawn overlay is listed in render-log.md, flagged when its wording is NOT already in the spoken narration,
     // so a real loss of information becomes a rundown/script task instead of disappearing quietly.
     let ass = assHeader();
-    for (const x of segs) if (x.attribution && !x.attrInFrame) ass += assLine('Attr', x.at, x.at + x.dur, x.attribution);
+    for (const x of segs) if (x.attribution && !x.attrInFrame) ass += assLine('Attr', x.at, x.at + x.dur, complyCredit(x.attribution));
     { const ovList = (hint.overlays ?? (s.overlays || []).map((_, i) => i)).map(x => typeof x === 'number' ? { i: x } : x);
       const spokenNow = p.utts.map(u => u.text).join(' ');
       for (const ov of ovList) { const o = (s.overlays || [])[ov.i]; if (!o) continue;
@@ -1242,8 +1709,12 @@ function captionChunks(text, words, maxChars = 84) {
     for (const u of p.utts) { if (!u.wav) continue; inputs.push('-i', u.wav); fc.push(`[${idx}:a]${u.trimTo ? `atrim=0:${fmt1(u.trimTo)},afade=t=out:st=${fmt1(Math.max(0, u.trimTo - 0.15))}:d=0.15,` : ''}aresample=48000,aformat=channel_layouts=stereo,volume=${fmt1(NARR_GAIN_DB)}dB,adelay=${Math.round((p.narrAt + u.at) * 1000)}:all=1[n${idx}]`); amixIn.push(`[n${idx}]`); idx++; }
     const bedList = []; const beds = hint.beds ? hint.beds.map(b => { const m = media.find(x => x.manifest_id === b.media); return m ? { m, at: b.at ?? 0, until: b.until ?? len } : null; }).filter(Boolean)
       : media.filter(m => m.kind === 'audio').map(m => ({ m, at: (m.start_s ?? 0) * f, until: Math.min(len, (m.end_s ?? s.duration_s) * f) }));
-    for (const b of beds) { if (b.until - b.at < 1.5) continue; if (!isCommons(b.m.ref)) { warnings.push(`${tag}: audio ${b.m.manifest_id} (${b.m.ref}) is not on Commons — skipped (login/download needed).`); continue; }
-      let bf; try { bf = (await commonsAudio(b.m.ref)).file; } catch (e) { warnings.push(`${tag}: could not fetch ${b.m.manifest_id}: ${e.message}`); continue; }
+    const bedGap = (b, why) => { missing(b.m.manifest_id, 'audio', b.m.ref, why, `${String(p.sel.idx + 1).padStart(2, '0')} ${s.id} · ${mmss(b.at)}–${mmss(b.until)}`);
+      gap({ n: p.sel.idx + 1, scene: s.id, slot: '—', at: `${fmt1(b.at)}–${fmt1(b.until)} s`, kind: 'audio', wanted: b.m.manifest_id || b.m.ref, wanted_ref: b.m.ref, used: 'SILENCE', why }); };
+    for (const b of beds) { if (b.until - b.at < 1.5) continue;
+      if (String(b.m.license) === 'pending' || /media\/files\/pending\//.test(String(b.m.ref))) { bedGap(b, 'sound not sourced yet'); continue; }
+      if (!isCommons(b.m.ref)) { bedGap(b, /freesound/i.test(String(b.m.ref)) ? 'Freesound is login-gated — the renderer cannot fetch it' : 'not on Commons — the renderer only fetches Commons audio'); continue; }
+      let bf; try { bf = (await commonsAudio(b.m.ref)).file; } catch (e) { bedGap(b, `could not be fetched (${String(e.message).slice(0, 60)})`); continue; }
       useCredit(b.m); const lufs = await measureLufs(bf); const sting = (b.until - b.at) <= 6; const gain = Math.min(12, (sting ? STING_TARGET_LUFS : BED_TARGET_LUFS) - lufs); const d = b.until - b.at;
       inputs.push('-stream_loop', '-1', '-i', bf); fc.push(`[${idx}:a]atrim=0:${fmt1(d)},aresample=48000,aformat=channel_layouts=stereo,volume=${gain}dB,afade=t=in:st=0:d=1,afade=t=out:st=${fmt1(Math.max(0, d - 1.5))}:d=1.5,adelay=${Math.round(b.at * 1000)}:all=1[b${idx}]`); amixIn.push(`[b${idx}]`); idx++;
       bedList.push(`${b.m.manifest_id} ${mmss(b.at)}–${mmss(b.until)} (${sting ? 'sting' : 'bed'} ${Math.round(gain)} dB → ${sting ? STING_TARGET_LUFS : BED_TARGET_LUFS} LUFS)`); }
@@ -1256,7 +1727,18 @@ function captionChunks(text, words, maxChars = 84) {
   }
 
   // credits
-  const credits = []; for (const c of creditsUsed.values()) { const row = manifestRow(c.id) || {}; const hasLic = /\b(PD|public domain|CC0|CC[- ]BY|youtube|geograph)\b/i.test(c.attribution); credits.push({ head: c.id, text: `${c.attribution}${row.license && !hasLic ? ' — ' + row.license : ''}${c.kind === 'youtube' ? ' — placeholder clip card in this animatic; embedded, not copied, in the player' : ''}` }); }
+  const credits = []; for (const c of creditsUsed.values()) { const row = manifestRow(c.id) || {}; const att = complyCredit(c.attribution); const hasLic = /\b(PD|public domain|CC0|CC[- ]BY|youtube|geograph)\b/i.test(att); credits.push({ head: c.id, text: `${att}${row.license && !hasLic ? ' — ' + row.license : ''}${c.kind === 'youtube' ? ' — placeholder clip card in this animatic; embedded, not copied, in the player' : ''}` }); }
+  // The adapter's-licence notice and the platform tails are required on EVERY cut that contains one of these shots
+  // (rights-mapillary.md §5.2 and §8): CC BY-SA 4.0 §3(b) wants the Adapter's Licence and its URI, and Mapillary
+  // Terms §11 wants a link back. Emitted from what the film actually used, never hard-coded to one chapter.
+  {
+    const used = [...creditsUsed.values()].map(c => complyCredit(c.attribution));
+    const names = (re) => [...new Set(used.filter(x => re.test(x)).map(x => (x.match(/\/\s*([^·—(]+)/) || [, ''])[1].trim()).filter(Boolean))];
+    const mp = names(/mapillary/i), kv = names(/kartaview/i);
+    if (mp.length) credits.push({ head: 'Mapillary', text: `Street-level imagery from Mapillary (www.mapillary.com), by its contributors: ${mp.join(', ')}. Licensed CC BY-SA 4.0 — creativecommons.org/licenses/by-sa/4.0/. Adapted by Yunyou: reprojected, cropped, re-timed and interpolated into moving shots. Per-image links: see the credits page for this chapter.` });
+    if (kv.length) credits.push({ head: 'KartaView', text: `Street-level imagery from KartaView (kartaview.org) — © Grab and KartaView Contributors, contributor(s) ${kv.join(', ')} — licensed CC BY-SA 4.0. Adapted by Yunyou: cropped, stabilised, re-timed.` });
+    if (mp.length || kv.length) credits.push({ head: 'Licence', text: 'This film, and the adapted shots within it, are released under Creative Commons Attribution-ShareAlike 4.0 International — creativecommons.org/licenses/by-sa/4.0/' });
+  }
   credits.push(mapUsed
     ? { head: 'Map', text: 'Route map drawn by Yunyou (G-01) — coastlines from Natural Earth 1:110m, public domain; equirectangular, standard parallel 42° N. Itinerary, dates and day counts: Verne, ch. III (F-10, F-11, F-33)' }
     : { head: 'Map', text: 'Route map tiles © OpenStreetMap contributors, © CARTO (light_nolabels) via Leaflet 1.9.4' });
@@ -1267,7 +1749,21 @@ function captionChunks(text, words, maxChars = 84) {
   for (let pg = 0; pg < pages; pg++) { const lines = credits.slice(pg * perPage, (pg + 1) * perPage); const png = await shotHtml(T.creditsCard({ title: `${LANG === 'zh' ? '鸣谢 · ' : 'Credits — '}${LT.chapterTitle()}`, lines, pageNo: pg + 1, pages, footer: args.footer || `Yunyou 云游 · ${DATE} · text & cards CC BY-SA 4.0 (D4) · media credited above` }), `credits${pg}`); const d = Math.max(8, Math.round(lines.length * CREDITS_S_PER_LINE)); const mp4 = path.join(WORK, `zz_credits${pg}.mp4`);
     await ffmpeg(['-loop', '1', '-framerate', String(FPS), '-i', png, '-f', 'lavfi', '-i', 'anullsrc=r=48000:cl=stereo', '-t', String(d), '-vf', `format=yuv420p,fade=t=in:st=0:d=0.5`, '-r', String(FPS), '-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-crf', '20', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000', '-ac', '2', '-shortest', mp4]); sceneFiles.push(mp4); globalT += d; }
 
-  // 5. concat
+  // 5. verify BEFORE assembly: did every intended scene actually produce a file?
+  // 2026-09-08. Two full renders were shipped with a scene missing because a table row stopped matching and the
+  // only trace was a smaller number in a log nobody diffed. A film is a list of scenes; if the list that came out
+  // is not the list that went in, the render is wrong and must fail, not warn.
+  {
+    const want = ONLY ? selection.map(x => x.scene.id) : INTENDED;
+    const got = plans.map(p => p.s.id);
+    const d = listDiff('intended scene list', want, 'scenes actually rendered', got);
+    if (d) throw new Error(`SCENE LIST MISMATCH after assembly — the film that came out is not the film that went in.\n${d}`);
+    const noFile = plans.filter(p => !p.render || !fs.existsSync(path.join(WORK, `${String(p.sel.idx + 1).padStart(2, '0')}_${p.s.id}.mp4`)));
+    if (noFile.length) throw new Error(`These scenes produced no video file: ${noFile.map(p => p.s.id).join(', ')}`);
+    note(`Scene-list check: ${got.length}/${want.length} intended scenes rendered, in order${ONLY ? ' (scoped to --scenes ' + args.scenes + ')' : ''} — ${got.join(' → ')}`);
+  }
+
+  // 6. concat
   const listFile = path.join(WORK, 'concat.txt'); fs.writeFileSync(listFile, sceneFiles.map(f => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'));
   // v0.9: one file per language, named so the two cuts can never be confused for each other.
   const outName = `${chapter.id}_${LANG}.mp4`; const finalMp4 = path.join(OUT, outName);
@@ -1278,6 +1774,17 @@ function captionChunks(text, words, maxChars = 84) {
   // and its at_s values do NOT survive a re-render (the v0.9 length floor moves every one of them), so this writes
   // its own, per language, plus the timestamp block YouTube wants pasted into a description.
   const marks = plans.map(p => ({ scene: p.s.id, type: p.s.type, at_s: Math.round(p.render.start), title: LT.title(p.s) }));
+  // ...and the same check once more, on the file that exists: the markers ARE the film's table of contents, and a
+  // scene that fell out between the plan and the concat would show up here and nowhere else.
+  {
+    const want = ONLY ? selection.map(x => x.scene.id) : INTENDED;
+    const d = listDiff('intended scene list', want, `${outName} chapter markers`, marks.map(m => m.scene));
+    if (d) throw new Error(`SCENE LIST MISMATCH in the rendered file's chapter markers.\n${d}`);
+    const expect = TITLE_S + plans.reduce((a, x) => a + x.len, 0);
+    const creditsS = globalT - expect;
+    if (Math.abs(dur - globalT) > 1.5) warnings.push(`assembly: ${fmt1(dur)} s of MP4 against ${fmt1(globalT)} s of planned scenes+cards (${fmt1(dur - globalT)} s adrift). Every scene is present; the drift is in segment rounding.`);
+    note(`Assembly check: ${marks.length} scene(s) in the file, in the intended order; ${mmss(dur)} of video = ${TITLE_S} s title + ${mmss(expect - TITLE_S)} of scenes + ${fmt1(creditsS)} s of credits.`);
+  }
   fs.writeFileSync(path.join(OUT, `${chapter.id}_${LANG}.chapters.json`), JSON.stringify({
     video: outName, subtitles: `${chapter.id}_${LANG}.vtt`, lang: LANG, locale: LOCALE_ID || 'en',
     duration_s: Math.round(dur), chapters: marks }, null, 1));
@@ -1287,15 +1794,16 @@ function captionChunks(text, words, maxChars = 84) {
   // 6. log
   const L = []; L.push(`# Render log — ${chapter.title} — linear cut (review animatic)`, '', `**Rendered:** ${new Date().toISOString()}   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** ${Math.round((Date.now() - t0) / 60000 * 10) / 10} min`, '',
     `**Output:** \`${path.relative(path.resolve(CHAPTER_DIR, '../../..'), finalMp4)}\` — ${fmt1(dur)} s (${mmss(dur)}), ${v.width}×${v.height} ${v.codec_name} ${v.r_frame_rate} fps, ${a.codec_name} ${a.sample_rate} Hz ${a.channels} ch, ${(probe.format.size / 1048576).toFixed(1)} MB, faststart. Subtitles: \`${chapter.id}_${LANG}.vtt\` (burned in AND sidecar).`, '',
-    `**Language:** ${LANG === 'zh' ? `Mandarin (${LOCALE_ID}) — text from \`i18n/${LOCALE_ID}.json\`, index-addressed, English where the locale is silent` : 'English'}. **Voice:** ${NO_TTS || !ttsVoices ? 'none (captions only)' : `local Kokoro ${ttsVoices[LANG][0]} @ ${ttsVoices[LANG][1]}x via ~/hilbert (Apache-2.0, free, no account)`}${plans.some(p => !p.ttsOk) ? ' — **TTS FAILED for some lines, see table**' : ''}. **Narration gain:** ${fmt1(NARR_GAIN_DB)} dB (measured). **Beds:** Commons audio at ${BED_TARGET_LUFS} LUFS (≈ 18 dB under narration), stings at ${STING_TARGET_LUFS} LUFS. **Slack:** a scene may exceed its README seconds by ${Math.round(SLACK * 100)} % before the script is end-cut at a sentence boundary. **Scene length:** ${args['no-floor'] ? 'narration + pad, capped by the README seconds (--no-floor: the authored seconds are NOT honoured as a floor)' : 'clamp(narration + pad, README seconds, README seconds x ' + (1 + SLACK).toFixed(2) + ') — the authored seconds are a floor as well as a cap, so silence the rundown asked for actually exists ("air" column below)'}.`, '',
-    ...logLines, `Sidecar cut hints: ${fs.existsSync(cutsPath) ? path.relative(path.resolve(CHAPTER_DIR, '../../..'), cutsPath) : 'none'}.`, '',
-    `## Rights compliance`, `- YouTube: not downloaded, not re-encoded. ${clipCards ? `${clipCards} clip card(s) stand in (channel, title, in/out, thumbnail from i.ytimg.com)` : 'no clip cards in this cut'}; ${footageSegs} shot(s) come from self-hosted, licence-clean files under \`media/files/\` (Wikimedia Commons / public-domain film / KartaView), never from youtube.com.`, `- Street View: not screen-recorded — stop cards only.`, `- Commons images resolved through the API (imageinfo, width 1920), attribution burned bottom-right while shown and repeated on the credits card. Freesound refs (login-gated) skipped.`, '',
-    `## Scenes`, '', `| # | scene | type | at | s (README) | TTS | air | visual source | beds | script cuts |`, `|---|-------|------|----|-----------:|-----|----:|---------------|------|-------------|`);
+    `**Language:** ${LANG === 'zh' ? `Mandarin (${LOCALE_ID}) — text from \`i18n/${LOCALE_ID}.json\`, index-addressed, English where the locale is silent` : 'English'}. **Voice:** ${NO_TTS || !ttsVoices ? 'none (captions only)' : `local Kokoro ${ttsVoices[LANG][0]} @ ${ttsVoices[LANG][1]}x via ~/hilbert (Apache-2.0, free, no account)`}${plans.some(p => !p.ttsOk) ? ' — **TTS FAILED for some lines, see table**' : ''}. **Narration gain:** ${fmt1(NARR_GAIN_DB)} dB (measured). **Beds:** Commons audio at ${BED_TARGET_LUFS} LUFS (≈ 18 dB under narration), stings at ${STING_TARGET_LUFS} LUFS. ${FILM ? '**Scene length:** the scene\'s own `duration_s` (D9 — the scene files ARE the film). Nothing is end-cut: if the voice overruns, the scene stretches and every slot in it scales by the same factor, and the overrun is in the warnings. **Visuals:** the authored `media[].start_s`/`end_s` slots, in order, never re-divided. **Cut sheet:** none — retired for this chapter (`cuts/retired/README.md`).' : '**Slack:** a scene may exceed its README seconds by ' + Math.round(SLACK * 100) + ' % before the script is end-cut at a sentence boundary. **Scene length:** ' + (args['no-floor'] ? 'narration + pad, capped by the README seconds (--no-floor: the authored seconds are NOT honoured as a floor)' : 'clamp(narration + pad, README seconds, README seconds x ' + (1 + SLACK).toFixed(2) + ') — the authored seconds are a floor as well as a cap')}.`, '',
+    ...logLines, FILM ? 'Sidecar cut hints: **none, by design** — this chapter is a film and its scene files are the only source of truth (D9).' : `Sidecar cut hints: ${fs.existsSync(cutsPath) ? path.relative(path.resolve(CHAPTER_DIR, '../../..'), cutsPath) : 'none'}.`, '',
+    `## Rights compliance`, `- YouTube: not downloaded, not re-encoded. ${clipCards ? `${clipCards} clip card(s) stand in (channel, title, in/out, thumbnail from i.ytimg.com)` : 'no clip cards in this cut'}; ${footageSegs} shot(s) come from self-hosted, licence-clean files under \`media/files/\` (Wikimedia Commons / public-domain film / KartaView), never from youtube.com.`, `- Street View: not screen-recorded — stop cards only.`, `- Commons images resolved through the API (imageinfo, width 1920), attribution burned bottom-right while shown and repeated on the credits card. Freesound refs (login-gated) skipped.`,
+    ...(creditFixes.length ? ['', `- **${creditFixes.length} burned credit(s) were corrected to the form Rights requires** (review/rights-mapillary.md §8/§9.2). The scene files still carry the old wording — fix them at source:`, ...creditFixes.map(x => `  - \`${x.before}\`<br>    → \`${x.after}\``)] : []), '',
+    `## Scenes`, '', `| # | scene | type | at | s (${FILM ? 'authored' : 'README'}) | TTS | air | visual source | beds | script cuts |`, `|---|-------|------|----|-----------:|-----|----:|---------------|------|-------------|`);
   for (const p of plans) { L.push(`| ${String(p.sel.idx + 1).padStart(2, '0')} | ${p.s.id} | ${p.s.type} | ${mmss(p.render.start)} | ${fmt1(p.render.len)} (${p.sel.cap}) | ${p.ttsOk ? 'ok' : '**fallback**'} ${fmt1(p.speechEnd)} s | ${fmt1(p.render.len - (p.narrAt + p.speechEnd))} s | ${p.render.segs.join('<br>')} | ${p.render.beds.join('<br>') || '—'} | ${[...p.droppedBySidecar.map(x => 'sidecar: dropped ' + x), ...p.cutLog].join('<br>') || '—'} |`); }
   L.push('', `Title card ${TITLE_S} s at 0:00; credits ${pages} page(s) at the end. Total ${mmss(dur)}.`, '');
   if (warnings.length) { L.push('## Warnings', ...warnings.map(w => '- ' + w), ''); }
   // --- overlays: retired from the film (D9). Report, do not draw.
-  { const drawn = droppedOverlays.filter(o => o.drawnBefore);
+  if (droppedOverlays.length) { const drawn = droppedOverlays.filter(o => o.drawnBefore);
     const lost = drawn.filter(o => !o.covered);
     L.push('## Overlays — not drawn (D9: nothing hovers over the picture)', '',
       `${droppedOverlays.length} overlay(s) exist on the scenes in this cut; ${drawn.length} of them used to be burned` +
@@ -1331,6 +1839,21 @@ function captionChunks(text, words, maxChars = 84) {
     rows.forEach((r, i) => L.push(`| ${i + 1} | ${String(r.p.sel.idx + 1).padStart(2, '0')} ${r.p.s.id} | ${mmss(r.sh.at)} | **${fmt1(r.sh.dur)}** | ${r.sh.src} |`));
     L.push('');
   }
+  // --- the gap manifest: everything that fell back, and everything that is simply not there -------------------
+  {
+    const rows = fellBack.map(r => ({ ...r, at: typeof r.at === 'number' ? `${fmt1(r.at)} s` : r.at }));
+    L.push(...gapTable(rows, 'Fallbacks and missing assets — where this film is thin'));
+    const byAsset = [...missingAssets.values()].sort((a, b) => b.slots.length - a.slots.length);
+    L.push('### The assets themselves', '',
+      `**${byAsset.length} distinct asset(s) are missing**, across ${rows.length} slot(s).`, '',
+      '| asset | kind | expected at | slots that wanted it |', '|---|---|---|---|');
+    for (const a2 of byAsset) L.push(`| \`${a2.id}\` | ${a2.kind} | \`${a2.ref}\` | ${a2.slots.length} — ${a2.slots.join('; ')} |`);
+    L.push('');
+    fs.writeFileSync(path.join(OUT, `${chapter.id}_${LANG}.gaps.json`), JSON.stringify({
+      chapter: chapter.id, lang: LANG, rendered: new Date().toISOString(), video: outName,
+      slots_fell_back: rows.length, assets_missing: byAsset.length,
+      fell_back: rows, missing_assets: byAsset }, null, 1));
+  }
   L.push('## Sentence index per scene (for the sidecar / Narrator)', '');
   for (const p of plans) { L.push(`**${String(p.sel.idx + 1).padStart(2, '0')} ${p.s.id}** — ${p.sents.map((x, i) => `[${i}] ${x}`).join(' ')}`, ''); }
   L.push('## Digest', `- Did: rendered ${plans.length} scenes + title + credits into one h264/aac MP4 (${mmss(dur)}) with Edge TTS narration, sentence captions, Commons beds and clip/stop cards where rights forbid copying.`, `- Weak: ${clipCards} clip card(s) still stand in${plans.filter(p => p.s.type === 'streetview').length ? ` and stop cards for ${plans.filter(p => p.s.type === 'streetview').length} Street View scene(s)` : ''} (${fmt1(plans.filter(p => p.s.type === 'video' || p.s.type === 'streetview').reduce((a, p) => a + p.render.len, 0))} s of ${fmt1(dur)}); ${plans.filter(p => p.cutLog.length).length} scene(s) were end-cut mechanically where TTS overran the README seconds (see table) — Narrator should re-trim by hand; generated assets (G-xx) are still pending cards.`, `- Next: swap clip cards for licensed footage once Rights clears direct licences; add per-sentence timed overlays; run loudnorm on the final mix; add a 9:16 variant.`);
@@ -1338,6 +1861,11 @@ function captionChunks(text, words, maxChars = 84) {
   if (browser) await browser.close();
   if (!args.keep) { try { fs.rmSync(WORK, { recursive: true, force: true }); } catch { } }
   log(`done: ${finalMp4} (${mmss(dur)}), log ${path.join(OUT, 'render-log.md')}`);
+  // The last thing on the operator's screen is where the film is thin. Not buried in a 900-line log.
+  printGaps(fellBack.map(r => ({ ...r, at: typeof r.at === 'number' ? `${fmt1(r.at)} s` : r.at })),
+    `FALLBACK MANIFEST — ${chapter.id} (${LANG}) — every slot that did not get what it asked for`);
+  console.log(`  full table: ${path.join(OUT, 'render-log.md')} · machine-readable: ${path.join(OUT, `${chapter.id}_${LANG}.gaps.json`)}`);
+  if (warnings.length) { console.log(`\n  ${warnings.length} warning(s) — see "## Warnings" in render-log.md`); }
 })().catch(async e => { console.error(e); if (browser) await browser.close(); process.exit(1); });
 
 function assVtt(t) { const h = Math.floor(t / 3600), m = Math.floor((t % 3600) / 60), s = (t % 60); return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}:${s.toFixed(3).padStart(6, '0')}`; }

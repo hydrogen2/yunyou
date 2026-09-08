@@ -226,6 +226,24 @@ still renders. Documented in `studio/templates/scene-spec.md`.
 | G-06 | typeset card — SVG 2176×1812 + PNG 2176×1812 / 1920×1080 | **Two real men: Cook · Train** (scene 09): two columns with dates — Cook sails Liverpool 26 Sep 1872, 222 days, ~48,000 km (F-35); Train leaves New York 10 Jul 1870, home 21 Dec 1870, 164 days, "later claimed" line hedged (F-36); tally "Cook 222 · Train 164 · Fogg 80" (F-11). | seg 6 (scene 09) | **delivered 2026-08-18 (A2)** — `generated/g-06/`, generator `cards_day01.mjs g-06`. Limit: no Cook return date (not in fact sheet). |
 | G-07 | game UI — SVG 2176×1812 (interactive) + PNG 2176×1812 / 1920×1080 (initial state) | **Carpet-bag game** (scene 11, 90 s): open carpet-bag, nine draggable items (`.item[data-option][data-correct]`, six go in / three stay), counter "n of 6", "Close the bag" button; wrong item snaps back and the panel shows/speaks its feedback line; tap-then-tap and keyboard alternatives; panel checklist stays in sync. | seg 7 (scene 11) | **delivered 2026-08-18 (A2)** — `generated/g-07/` (generator `g-07/src/make_g07.py`); player drives it (`wireG07`, index.html v0.2). |
 | G-08 | souvenir card — SVG + PNG 1080×1920 (portrait) and 1920×1080 (landscape), self-contained (M-23 vignette embedded) | **"Fogg's last breakfast" recipe card** (scene 19, exportable/shareable): menu quotation ch. III (F-06), Reading sauce — Cocks, Reading, 1802, walnut & mushroom ketchup, soy, anchovies, chillies, garlic, gone since the 1960s (F-27; "spices" dropped — not in F-27), one own-prose method sentence, last line "Cook it on the evening of 21 December, and be at table by 8:45 pm." (F-11), motto (F-11); credits and "Text © Yunyou 2026 — CC BY-SA 4.0 (provisional, rights Q3)" on the card; title avoids "Phileas Fogg" (trademark note, rights.md). | seg 9 (scene 19) | **delivered 2026-08-18 (A2)** — `generated/g-08/`, generator `cards_day01.mjs g-08`. Open: licence line (rights Q3), no QR/URL yet. |
+
+### C-series — the film's typeset cards (added by Engine/Tools, 2026-09-08)
+
+Under D9 the retired floating overlays became **full-frame designed cards**. The Scene Developer authored 26 of them
+(27 files — C-24 is a two-state pair) as `kind: "generated"` media entries, path `generated/cards/c-NN-<slug>.svg`,
+with the exact wording in each entry's `note` after `ON-SCREEN TEXT:`. They are plain type on plain ground: no
+rights, no research, no illustration budget — which is why they have their own series and do **not** count against
+the illustrated-asset budget the founder is being asked to approve (rundown Decision 5).
+
+| ids | kind | spec | for scenes | status |
+|----|------|------|-----------|--------|
+| C-01…C-26 | typeset card — SVG 1920×1080 | House style: cream #efe6d3, ink #2a2118, secondary #5b4a3a, one accent #b03a2e; Playfair Display for words, Source Sans 3 for dates and numbers; double keyline; type auto-fitted as large as the frame allows (D9: legible at arm's length on a 6-inch phone). Mark-up in the authored string: ` / ` starts a new block (headline, then the answer/list, divided by a short accent rule), ` · ` puts each item on its own line, ` → ` stays inline. | all 12 film scenes | **delivered 2026-09-08 (Engine)** — `generated/cards/` (27 SVGs + its own README listing every card and its text); generator `studio/tools/gen/c_cards.mjs <chapter-dir>`. **The words come from the scene files, not from the generator** — fix a card by fixing the scene's `note` and re-running. `render_linear.mjs` rasterises the SVG at frame size with the house fonts loaded. |
+
+**Still missing, and used by the film:** G-10, G-10b, G-11, G-12, G-13, G-14, G-15, G-16, G-17, G-18, G-19 —
+23 slots, specs in `scenes/README-film.md` §3d and in each slot's own `note`. **G-13** (the 1872 telegraph map)
+carries five slots and is the film's thesis; **G-12** (the twelve Eleanor crosses) carries three. Every run prints
+these in its gap manifest (`linear/<chapter>_<lang>.gaps.json`).
+
 ## Alternatives / backups
 For every primary video, one backup (creators delete videos).
 

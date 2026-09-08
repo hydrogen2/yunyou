@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="You did not apply. / You were proposed, seconded — and balloted.">
+<title>C-10 — You did not apply. / You were proposed, seconded — and balloted.</title>
+<rect width="1920" height="1080" fill="#efe6d3"/>
+<rect x="56" y="56" width="1808" height="968" fill="none" stroke="#2a2118" stroke-width="4"/>
+<rect x="68" y="68" width="1784" height="944" fill="none" stroke="#2a2118" stroke-width="1"/>
+<text x="960" y="415" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="132" font-weight="600" fill="#2a2118">You did not apply.</text>
+<line x1="890" y1="514" x2="1030" y2="514" stroke="#b03a2e" stroke-width="5"/>
+<text x="960" y="655" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="87" font-weight="400" fill="#5b4a3a">You were proposed, seconded — and</text>
+<text x="960" y="763" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-size="87" font-weight="400" fill="#5b4a3a">balloted.</text>
+</svg>

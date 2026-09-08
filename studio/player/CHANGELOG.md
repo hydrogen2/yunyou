@@ -931,3 +931,120 @@ the `--plan` output for scene 12.
 scene 04 no longer has seven waypoints), and `smoke_generated.mjs` fails the same three scenes (10, 11, 14 — G-01
 leg reveal, G-07 timeout, G-02 timeout + a 403 from the Street View embed). Those are stale-test / key problems, not
 narration ones, and they are somebody's next task, not this one.
+
+---
+
+## 2026-09-08 — v1.1 (Engine): the renderer renders the FILM directly — the cut sheet is retired
+
+Day 1 was rewritten as a film the same day: 12 scenes (was 18), all-new ids, 1,122 s = **18:42**, **162 authored
+visual slots** with explicit `start_s`/`end_s`, average shot 6.9 s. The renderer could not render it. Three things
+were in the way and the first was architectural.
+
+### 1 · The cut sheet is retired for film chapters, not rebuilt
+
+`studio/tools/render/cuts/day-01-london.json` → `cuts/retired/day-01-london.player18.json` (+ a README explaining
+what it was and where each of its jobs went).
+
+**Why not rebuild it.** A cut sheet exists to *select and trim a linear cut out of an interactive chapter* — which
+sentences to speak, which pictures to use, how long to hold them. Under D9 that job does not exist: the scene files
+**are** the film, every sentence is spoken, every picture is authored with its own timing. Only 5 of the sheet's 17
+keys even named a surviving scene, and all five described a different scene from the one that now bears the name.
+Rebuilding it would have meant deriving 12 scenes' worth of tokens against text that already says what it wants,
+and then maintaining two copies of the film for ever.
+
+**Nothing it uniquely provided was dropped** — each thing already had a home in the scene files:
+
+| cut sheet | now |
+|---|---|
+| `script: ["s:0-15"]` | gone. A film speaks all of them; the renderer never end-cuts a film scene. |
+| `visuals` | `media[].kind` + `start_s`/`end_s`, 162 of them in Day 1. |
+| `narration_at_s` | `narration.starts_at_s` (already authored — 3 s in `cold-open` and `savile-row`). |
+| `beds` | `media[]` entries of `kind: "audio"` with their own `start_s`/`end_s`. |
+| `overlays` re-timing | gone with overlays (D9). |
+
+**Two places can no longer disagree**: if a chapter has `scenes/README-film.md` *and* a cut sheet, the renderer
+**stops with an error**. There is no flag to run both.
+
+### 2 · A pano stop is addressed by its STOP ID, never by a scene id
+
+`media/files/panos/index.json` keyed every stop by the scene that commissioned it, so the rename blinded the cache.
+That key was wrong even before the rename: `count-the-steps-w06` now serves three scenes and `count-the-steps-w04`
+four slots of one scene — a single `scene_id` cannot say so. A film slot names its stop directly
+(`"manifest_id": "PANO/count-the-steps-w04"`) and the renderer reads that pack off disk.
+
+New tool **`studio/tools/panowalk/rekey.mjs`** rewrites a cached index in place — no re-fetch, no network, no key,
+no cost. It derives `scene_ids` / `used_by` from the scene files, keeps `scene_id` pointing at the first user for
+old readers, and **re-tags the licences green** per `review/rights-mapillary.md` §9.4. Day 1's 7 stops re-keyed;
+`count-the-steps-w02` and `w03` are now referenced by nothing and are reported as orphans.
+
+Also closed the two pipeline items the Mapillary ruling left open (§9.1–9.2), which the ruling's own commit only
+documented: `lib/mapillary.mjs` now reports `licence_source: 'platform-default'` — the token `fetch.mjs` already
+treats as permissive — so **`--accept-unknown-licence` is no longer needed for Mapillary**, and its credit string
+loses the retired hedge. And because the scene files carry the old strings and are not ours to edit, the renderer
+**corrects burned credits at the point of use** and logs every rewrite:
+`Mapillary / X — CC BY-SA 4.0 (platform default; per-image licence not stated)` → `Mapillary / X · CC BY-SA 4.0 ·
+adapted`, and KartaView gains the `© Grab and KartaView Contributors` its terms require. The credits card now also
+carries the §8 platform tails and the CC BY-SA 4.0 adapter's-licence notice, emitted from what the film used.
+
+### 3 · Scene length comes from the scene, and no table is ever read leniently again
+
+`duration_s` is the scene's length in film mode. `scenes/README-film.md` is parsed as a *manifest*, not a source:
+its ids, order **and seconds** are checked against the scene files and a disagreement is fatal.
+
+**Both README parsers now die on a row they cannot read.** The 2026-09-03 bug — a bolded `| **75** |` stopped
+matching, `charing-cross` left the film, two full renders shipped without it, nothing said a word — was patched
+then by accepting more syntax. That was the wrong lesson. The rule now is: *never continue past a row you did not
+understand.* (The bolded-number shape still parses; a genuinely broken row raises `TableError` and names the line.)
+
+**And the check today's incident argued for**, twice: after every scene is built, the rendered scene list is
+compared with the intended one (ids **and** order) and the run fails loudly on any difference; then the finished
+file's chapter markers are compared with the same list. `--scenes` scopes the check and says so.
+
+### The film is incomplete, and the run now says exactly how
+
+26 slots have no source (`license: "pending"`), most of the new motion (M-107…M-116) is not fetched, G-10…G-19 do
+not exist, and the telegraph SFX has no source. **Nothing crashes**: every slot falls back to its own declared
+`fallback: "M-xx"`, resolved against the other scenes and every `media/*.md` table, and a **gap manifest** is
+printed at the end of the run — console, `render-log.md`, and `<chapter-id>_<lang>.gaps.json`. `--plan` prints the
+same table from a filesystem-only pre-flight: no network, no TTS, no cost.
+
+Day 1 today: **105 of 183 media entries fall back**, 69 of them to a pending card. Biggest single win available is
+G-13 (the telegraph map, 5 slots, the film's thesis).
+
+### The 26 C-cards now exist
+
+`studio/tools/gen/c_cards.mjs` sets the new C-series from the scene files themselves — the exact words are in each
+media entry's `note` after `ON-SCREEN TEXT:`, so the tool invents nothing and a card is fixed by fixing the scene.
+27 SVGs at 1920×1080 in the house style (cream #efe6d3 / ink #2a2118 / one accent #b03a2e, Playfair Display +
+Source Sans 3), auto-fitted as large as the frame allows because D9's legibility rule binds hardest on type.
+`generated/cards/README.md` lists all 27 with their text.
+
+Vector assets are no longer shown by screenshotting the player. `svgToPng()` inlines the SVG in the browser we
+already run, with `studio/player/fonts/fonts.css` loaded, and rasterises at the frame size — which also means
+G-01/G-02/G-05/G-07 render without a player, as D9 requires ("there may never be a /player").
+
+### How to run / what to look at
+
+```bash
+# what the film asks for and what it has — no network, no TTS, no cost
+node studio/tools/render/render_linear.mjs products/around-the-world-80-days/day-01-london/tour.json \
+     --plan --no-tts --out /tmp/plan          # 12 scenes; ends with the PRE-FLIGHT gap table
+
+# two-scene proof (cold open + souvenir: pano, footage, C-cards, a Commons still, beds, a pending card)
+node studio/tools/render/render_linear.mjs products/around-the-world-80-days/day-01-london/tour.json \
+     --scenes 1,12 --out /tmp/proof
+
+# the cards, and the pano cache re-key (both free, both offline)
+node studio/tools/gen/c_cards.mjs products/around-the-world-80-days/day-01-london
+node studio/tools/panowalk/rekey.mjs products/around-the-world-80-days/day-01-london --dry
+```
+
+Look at: the fallback table at the end of the run · `render-log.md`'s "Scenes" table, where each slot's seconds are
+the authored ones to the frame (cold open: 6 · 6 · 7 · 5 · 3 · 9 · 5 · 4 = 45) · the credits card's Mapillary /
+KartaView / Licence tails · `generated/cards/*.svg`.
+
+**Still blocking a publishable full render** (content and rights, not engine): G-13 and the rest of G-10…G-19; the
+26 pending stills, three of whose fallbacks are not pictures of the subject (S-liv → a Neuville engraving of Fogg,
+S-chur → the same, S-bank → an 1872 street plan); M-107…M-116 not fetched, so Savile Row's walking pace and the
+Charing Cross forecourt fall back to stills; the four Freesound beds (login-gated) and the telegraph key, which
+leave scene 09's 30-second telegraph reveal silent.

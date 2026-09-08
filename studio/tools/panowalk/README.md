@@ -44,10 +44,13 @@ node studio/tools/panowalk/fetch.mjs \
   --chapter products/around-the-world-80-days/day-01-london \
   --scene count-the-steps --scene look-up-the-cross --dry-run
 
-# fetch (see §Licence about the flag)
+# fetch — no --accept-unknown-licence any more: Mapillary is green (§Licence)
 node studio/tools/panowalk/fetch.mjs \
   --chapter products/around-the-world-80-days/day-01-london \
-  --scene count-the-steps --scene look-up-the-cross --accept-unknown-licence
+  --scene cold-open --scene clothes-then-club --scene what-a-club-was --scene charing-cross
+
+# already have the frames and only the ids/licences are stale? re-key in place, no download:
+node studio/tools/panowalk/rekey.mjs products/around-the-world-80-days/day-01-london
 ```
 
 Re-running is cheap: API answers are cached in `studio/tools/panowalk/.cache/` (gitignored) and any frame already
@@ -64,7 +67,7 @@ on disk is reused, so a second run downloads nothing.
 | `--max-yaw <deg>` | 35 | how far a **flat** frame may be turned before a *named* look-at counts as unservable |
 | `--web-width <px>` | 3072 | width of the web derivative made for the player (needs ffmpeg) |
 | `--dry-run` | off | query, score, report; download nothing |
-| `--accept-unknown-licence` | off | see §Licence |
+| `--accept-unknown-licence` | off | see §Licence — **no longer needed for Mapillary** (green since 2026-09-08) |
 | `--report <file>` | — | write the full report (all candidates, all scores) as JSON |
 
 ## Cache layout
@@ -72,12 +75,13 @@ on disk is reused, so a second run downloads nothing.
 ```
 <chapter>/media/files/panos/            # gitignored (products/**/media/files/*), regenerable, ~190 MB for Day 1
   index.json                           # what the player and the renderer read first
-  <scene-id>-w<NN>/frames.json          # the stop's manifest: sequence, licence, author, per-frame geometry
-  <scene-id>-w<NN>/f000.jpg             # original bytes — what ffmpeg cuts into the MP4 (360°: 5760x2880, ~1.5 MB)
-  <scene-id>-w<NN>/f000.web.jpg         # 3072 px derivative — what the player streams (~0.4 MB)
+  <stop-id>/frames.json                 # the stop's manifest: sequence, licence, author, per-frame geometry
+  <stop-id>/f000.jpg                    # original bytes — what ffmpeg cuts into the MP4 (360°: 5760x2880, ~1.5 MB)
+  <stop-id>/f000.web.jpg                # 3072 px derivative — what the player streams (~0.4 MB)
 ```
 
-`index.json` has two lists: `stops` (usable) and `missing` (with `status` and `why`). A stop that is not in `stops`
+The stop id is `<scene-id-at-fetch-time>-w<NN>`, and it is **only a name** — it is the key, and it does not have
+to match any current scene. `index.json` has two lists: `stops` (usable) and `missing` (with `status` and `why`). A stop that is not in `stops`
 is a stop the player will serve from the free Maps Embed instead — no imagery is ever invented.
 
 Per frame, `frames.json` records: `lat`, `lng`, `ref_heading` (the world bearing at the centre of the image),
@@ -117,11 +121,13 @@ GET /<image_id>?fields=…,license       → 500 {"message":"Tried accessing non
 GET /images?fields=id,organization_id  → 200, organization_id absent on every image in central London
 ```
 
-So there is no filter to apply and no org-vs-user proxy. Mapillary's Terms (15 Feb 2024) say other users' content is
-CC BY-SA **by default** and that some content is served under CC BY-NC-SA — but the API will not tell you which.
-Every Mapillary frame therefore comes back `unknown`, and only `--accept-unknown-licence` lets it through. When it
-does, `frames.json` and the on-screen credit both say so in full:
-`"CC BY-SA 4.0 (Mapillary Terms §3; stated per image in Mapillary's own download panel)"`.
+So there is no filter to apply and no org-vs-user proxy. Until 2026-09-08 every Mapillary frame therefore came back
+`unknown` and only `--accept-unknown-licence` let it through.
+
+**That is over: Mapillary frames are `permissive` by default now.** Since the ruling below, `lib/mapillary.mjs`
+reports `licence: "CC BY-SA 4.0"` with `licence_source: "platform-default"` — exactly as KartaView already did —
+so **`--accept-unknown-licence` is not needed for Mapillary and no render depends on a human remembering to pass
+it.** The flag stays for genuinely unknown providers. (Engine, 2026-09-08, closing §9.1–9.2 of the ruling.)
 
 **Rights ruling 2026-09-08** (`day-01-london/review/rights-mapillary.md`): Mapillary imagery is **green** for our
 CC BY-SA films. The API exposing no `license` field reflects **uniformity, not ambiguity** — Mapillary states CC BY-SA
@@ -130,11 +136,29 @@ Terms is scoped to separately-distributed *data sets*, which we do not use. Kart
 now confirmed first-hand from its own bundle rather than the OSM wiki, and requires the credit
 `© Grab and KartaView Contributors`, which our earlier attribution strings omitted.
 
-**Open for Rights:** does Mapillary's platform default cover us for a CC BY-SA output, given that the API cannot
-confirm it per image? Until that is answered, Day 1's `open` walk is built on an unverified assumption, visibly
-labelled. Mapillary also requires (contractually, on top of CC) that self-hosted images show the Mapillary mark and
-link back to the image page: the player shows the word "Mapillary" as a link to the exact image page, because we do
-not ship their logo file. Rights should confirm that a wordmark link is enough.
+**CLOSED** — that question was the one the 2026-09-08 ruling answered; nothing here is built on an unverified
+assumption any more. What is still outstanding is the **Mapillary logo asset** (§8): Terms §11 wants the mark shown
+and a link back, and until the asset lands in `studio/tools/render/assets/` we ship the wordmark "Mapillary" in the
+caption face — a good-faith, not literal, reading, and a pre-publish to-do rather than a blocker. The per-shot link
+list §8 requires can be generated from `frames.json`, which records `source_url` per frame; it is not generated yet.
+
+### Re-keying and re-tagging a cache that is already on disk
+
+```bash
+node studio/tools/panowalk/rekey.mjs <chapter-dir> [--dry]
+```
+
+**`scene_id` is not a key.** `fetch.mjs` writes one per stop because a stop is commissioned by a scene, but scene
+ids change (Day 1's all did on 2026-09-08) and one stop can serve several scenes (`count-the-steps-w06` serves
+three). `rekey.mjs` derives `scene_ids` and `used_by` from the chapter's scene files, keeps `scene_id` pointing at
+the first user for old readers, and re-tags Mapillary/KartaView licence and attribution strings to the green form —
+**in place, without re-fetching a byte** (the ruling's §9.4: "the bytes need no re-fetch"). No network, no token,
+no cost. It also reports cached stops that no scene references any more.
+
+**Address a stop by its `stop_id`.** A film slot names it directly:
+`{"kind": "streetview", "manifest_id": "PANO/count-the-steps-w04", "ref": "51.5065,-0.1393,147", "start_s": 24, "end_s": 32}`
+— and `render_linear.mjs` reads `<stop_id>/frames.json` off disk, aims at the heading in `ref`, and lays the frames
+over exactly those seconds.
 
 ---
 

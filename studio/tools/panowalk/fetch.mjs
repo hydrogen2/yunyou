@@ -184,7 +184,7 @@ for (const st of stops) {
     if (d.frames_in_radius < MINF) continue;
     const frames = selectFrames(d, st, RADIUS, MAXF).map(f => {
       const lic = f.licence_class ? { class: f.licence_class, licence: f.licence, why: f.licence_why }
-        : d.licence_source === 'platform-default' ? { class: 'permissive', licence: d.licence, why: 'KartaView platform licence (review/rights-a6.md: green)' }
+        : d.licence_source === 'platform-default' ? { class: 'permissive', licence: d.licence, why: `${d.source} platform licence — Rights: green (review/rights-a6.md for KartaView, review/rights-mapillary.md for Mapillary)` }
           : classify(f.licence_raw);
       return { ...f, licence_class: lic.class, licence: lic.licence, licence_why: lic.why };
     });
