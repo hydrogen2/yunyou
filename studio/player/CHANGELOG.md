@@ -15,6 +15,107 @@
   The player does NOT honour any of these yet — runtime TODO table in `studio/tools/render/README.md` ("Runtime TODO"); the player still
   speaks the whole script over interactions and ignores timeouts, waypoints, fallbacks and `save`.
 
+
+## 2026-09-08 — v1.0 (engine-tools): the film's on-screen language, rebuilt (DECISIONS.md D9)
+
+Five founder criticisms of Day 1, all about what is on the screen. Nothing here changes a word of narration or picks
+a picture. Run everything from `studio/tools/render/`; full rationale in that directory's README.
+
+**1. No floating text overlays.** *"i dont wan any floating text overlays like the one on the topleft, distracting also
+hard to read, we already have captions for that."*
+- Deleted from `render_linear.mjs`: the `Pin` ASS style (pins / captions / lower-thirds, top-left) and the `Title`
+  style (scene name, bottom-left, 0–4 s of every scene). Two styles are left — `Cap` (narration captions) and `Attr`
+  (the licence credit, bottom-right). `Attr` **stays on purpose**: it is a CC BY / CC BY-SA obligation at the point of
+  use, not editorial text, and a paper plate still prints its credit on the mount instead.
+- `pendingCard` no longer reprints overlay text either.
+- `scene.overlays[]` is untouched in the schema and in every scene file. The FILM stops drawing it; there is no flag
+  to bring it back.
+- **So the loss is visible, not silent:** every run writes an "Overlays — not drawn" table into `render-log.md` —
+  scene, index, kind, the text, and whether the narration this cut speaks already carries it (content-token overlap
+  ≥ 70 %). Day 1: 54 overlays exist, 38 used to be burned in; **21 carry wording the narration does not say.** Read
+  that table; the **NO** rows are a rundown/script decision, not a renderer one.
+
+**2. The quiz stops giving away the answer.** *"the quiz also give away the answer from the start."*
+- `quizScreen()` takes `phase`: `ask` draws every option identically (no tick, no colour, no feedback); `reveal`
+  lights the correct one, drops the others to 42 % and shows the feedback.
+- The cut between them is **on the scene clock**, like the photo slots: the renderer finds the utterance the cut
+  sheet built from the `quiz:correct` token and cuts 0.45 s before it (0.5 s dissolve centred on the beat), so the
+  answer lands as the guide starts to say it. No `quiz:correct` token → 62 % of the beat, logged. Both languages.
+- New `segStates()`: a segment holding several stills at **absolute scene seconds**, which survive the duration
+  rescaling every segment goes through. Day 1: `quiz-verne-saloon` holds the question 20.2 s, `quiz-the-weather` 5.8 s.
+- Type resized for a phone: question 4.6 vh (50 px at 1080p), options 3.3 vh, feedback 2.9 vh; the bottom 15 % of the
+  frame is left empty for the burned captions. It was a flat 21 px before.
+
+**3. The map is a film graphic now, not a shrunken print plate.** *"the text in the maps are all very small and low
+contrast hard to read and too much text."*
+- **The cause, stated:** the film screenshotted the player showing `route-map_day-01-state.svg`, the **2176 × 1812
+  fold-open print master**. Fitted into 1920 × 1080 that is a scale of **0.596**, so the plate's 16-px leg labels
+  arrived as 9.5 px — with an 8-row ledger, a 7-item key and a credits note, all from the first frame.
+- New `studio/tools/render/lib/mapfilm.mjs` draws the film's own 1920 × 1080 graphic. `g01_route_map.py` now also
+  writes `generated/g-01/route-data.json` (ports, legs, days, dates, waypoints, enablers), so the plate and the film
+  come from **one** set of numbers and nothing is re-keyed. The plate itself is unchanged — it is still right for print.
+- What is on screen: **at most one port name** (54 px, paper halo, fades when the next leg lands; London stays as the
+  anchor), the current leg's day count (50 px, accent), and **one** running total in the top strip (80 px: `20 of 80
+  days`). Cut: the ledger, the key, the credits line, the title, seven of the eight port names.
+- Revealed over time, bound to narration **sentences** in the cut sheet:
+  `{"kind":"routemap","state":"loop","beats":[{"show":"leg:1","s":9}, …]}`. `the-world-shrinks` now draws its eight
+  legs one per sentence (35.2 s → 56.3 s) and closes the total on "Add them up: eighty" — one continuous graphic
+  instead of three plate screenshots. `cold-open` traces the faint loop once around the world and lights London on
+  "Look at the map: only London is lit."
+- Projection changed for the frame: equirectangular with a **standard parallel at 42° N** (latitude × 1.35) instead of
+  the equator, so a 16:9 frame is map rather than empty ocean, and the scale is true where the route runs.
+- Enabler pins show the **month and year only** (`Nov 1869`), not the place name: the narration names the place, and a
+  place name we cannot honestly localise must not be burned into the picture.
+- Mandarin port names are taken from the Translator's own words — the map scene's `tap-to-find` options
+  (`London → Suez` / `伦敦 → 苏伊士`), used only if all eight parse **and chain**. Otherwise English, with a warning.
+- Rendered by `segFrames()`: the page answers `setT(seconds)`, and only the instants that matter are screenshot —
+  12.5/s through a move, exactly one frame per hold. A 92 s map costs ~390 frames instead of 2 300.
+- Degrades: no `route-data.json` / no cached land geojson → the old player screenshot, plus a warning saying the film
+  is showing the unreadable plate. Credits card now names Natural Earth and the projection when the film map is used.
+
+**4. Stills are shown large. "Never upscale" is retired.** *"can you enlarge it to fit the screen, now all too small"*
+- `imagelayer.mjs`: the third rule became a setting, `cfg.max_scale`, threaded through `pickTreatment()` and
+  `fitSize()`. **Never stretch and never crop the subject away are untouched** — one scale factor, aspect exact.
+- The film's ceiling, per picture: `media[].upscale_max` wins; else 3.0× for `kind: generated`/`map`; else 2.6× when
+  the long side is ≤ 760 px (small archive material — plates and engravings, the ones that looked broken); else 2.0×
+  (photographs, where softness shows). `--max-upscale k` overrides. The **player still defaults to 1** — its layout
+  has not been re-tuned, and that is deliberate, not an oversight.
+- Enlargement is `flags=lanczos`; inside a paper plate the picture is pre-scaled by ffmpeg and handed to the browser
+  at 1:1 rather than letting the browser's default filter do it. `render-log.md` prints the scale used and the cap.
+- **A measured line-art classifier was tried first and rejected** (paper/ink/midtone histogram at native resolution,
+  saturation, local flatness, over Day 1's 22 stills): the Neuville wood engravings score 0.000 saturation and so does
+  the black-and-white photograph of Savile Row; scan noise flattens the flatness signal. It cannot tell an engraving
+  from a monochrome photograph, so it must not decide how far we enlarge either. The size rule is generous to the same
+  material and is predictable. Reasoning is in the renderer next to `upscaleCap()`, so it is not re-litigated.
+
+**5. The still-image judder is gone.** *"also they jitters, not sure why but that needs to be fixed"*
+- It was `zoompan`. It crops an **integer** pixel region every frame, and the drift is 0.94 → 1.00, which over a 30 s
+  shot is 0.16 px/frame: the picture stands still for five or six frames, then jumps a whole pixel.
+- Measured, 300 frames at 1080p, mean frame-to-frame difference in an off-centre window, identical zoom and pan:
+  `zoompan` moved on **9 of 30** consecutive frames (21 exact zeroes, spikes to 0.43); `perspective` with float corner
+  expressions moved on **30 of 30**, by a constant 0.03–0.05.
+- The move is now `perspective=eval=frame:interpolation=cubic:sense=source`, which samples sub-pixel (1/256 px) and so
+  needs **none** of the 4–8× supersampling the same fix costs otherwise — 8× would be ~113 MB per frame buffer, which
+  this 3 GB box cannot afford. Same seeded amount, same look, no stepping.
+
+**6. Reported, not fixed — the film holds one picture for too long.** New "Shots — where the film holds one picture"
+table in `render-log.md`: every unmoving shot ≥ 20 s (`--long-shot N`), with the still/moving split for the whole
+film. On the 18:46 Day 1 cut that is ~8½ minutes in ten shots — `pack-the-bag` 88 s on one checklist card,
+`fogg-by-the-clock` 50 s, `the-wager` 50 s, `souvenir` 54 s, `passepartout` 46 s, `count-the-steps` 46 s on the 1872
+plan, `the-dash` 40 s, `savile-row` 32 s + 28 s, `the-boat-train` 36 s. The renderer cuts when the cut sheet gives it
+something to cut to; the fix is more shots, which is the Rundown Writer's and Content Preparer's call.
+
+**Run**
+```bash
+cd studio/tools/render
+python3 ../../../studio/tools/gen/g01_route_map.py            # writes route-data.json (needed by the film map)
+node render_linear.mjs ../../../products/around-the-world-80-days/day-01-london/tour.json            # EN
+node render_linear.mjs ../../../products/around-the-world-80-days/day-01-london/tour.json --lang zh  # ZH
+node render_linear.mjs <tour.json> --scenes 1,6,9,15          # just the map and quiz beats
+```
+**Look at:** the "Overlays — not drawn" and "Shots" tables in `render-log.md`; the map at `the-world-shrinks` while the
+legs draw; the quiz cut from question to reveal; a plate-treated engraving, now large and dead steady.
+
 ## 2026-08-18 — engine-tools: Day 1 typeset cards G-04/G-05/G-06/G-08
 - New generator `studio/tools/gen/cards_day01.mjs` (data block at top → SVGs under `products/around-the-world-80-days/day-01-london/generated/g-0{4,5,6,8}/`, then PNGs via `svg2png.mjs`). Run: `node studio/tools/gen/cards_day01.mjs [g-04 g-05 g-06 g-08] [--no-png]`.
 - G-04 exposes the tap contract for the card renderer: `g.row#row-N[data-option=i][role=button][tabindex=0]` with a full-width `rect.hit` (172 px tall at 2176×1812). Player wiring is a separate change (not in this commit).

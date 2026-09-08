@@ -53,8 +53,12 @@ export function pickTreatment(m, nw, nh, W, H, cfg = IMG_DEFAULTS) {
   const coverage = Math.min(ia / ca, ca / ia);                    // share of the frame a contained fit would cover
   const fit = Math.min(W / nw, H / nh);                           // > 1 means it would have to be upscaled to fill
   const maxK = Math.max(1, cfg.max_scale || 1);
-  if (coverage >= cfg.fill_coverage && fit <= maxK * 1.02) return 'fill';
+  // ORDER MATTERS once max_scale > 1: the plate test comes first. A 709x431 elevation is 0.93 coverage, so with a
+  // 2.6x ceiling the fill test would claim it and bleed a 709-px line drawing to the frame edge — losing the paper
+  // mount that is the whole reason small archive material reads as a document. At max_scale = 1 (the player) the
+  // order is immaterial: nothing that small can pass the fill test anyway.
   if (Math.max(nw, nh) <= cfg.plate_max_px) return 'plate';       // small archive material: mount it on paper
+  if (coverage >= cfg.fill_coverage && fit <= maxK * 1.02) return 'fill';
   return 'backdrop';
 }
 

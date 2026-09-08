@@ -60,6 +60,36 @@ Worked examples from the founder:
 - **London itself** — what kind of city this was in 1872; scale, novelty, why it was the place a bet like this starts.
 - **Dover and Calais** — the two ports facing each other across the Channel: general knowledge worth having.
 
+## The interestingness test (founder, 2026-09-08) — this outranks the place/novel ratio
+
+> *"the place/novel balance should follow the principle of interestedness… if the book is interesting, more on the
+> book, otherwise, more on the places and general background… what we wan give from the book is interesting facts,
+> stories and/or educative lessons, sth the viewer can remember and think over and over again, not dry stuff that
+> she hardly cares."*
+
+**For every beat, ask: would a viewer who has never read the book remember this tomorrow, and want to tell someone?**
+If not, cut it or find the version that would. True is necessary; it is not sufficient. "Dry" means true and unmemorable.
+
+There is **no fixed place/novel ratio.** ~70/30 was an observation, not a target. Interestingness decides, beat by beat.
+The novel earns screen time when it offers a fact, a story or a lesson worth carrying away — never for plot summary,
+and never for characterisation that only lands if you are already invested.
+
+**Passes the test** (the founder's own example, and our strongest material):
+- 1872: the wire closed around the world six weeks before Fogg leaves — the connections were *just* ready. Impressive,
+  memorable, re-thinkable, and true of the world rather than of a character.
+- Savile Row's word: a real origin, a local myth, losing it at tribunal in 2008, and keeping it by drawing a 100-yard circle.
+- Hungerford Bridge's chains sold for £5,000 and re-used to finish the Clifton Suspension Bridge.
+- No. 1 Savile Row was the Royal Geographical Society; Livingstone lay there in 1874, six doors from Verne's Fogg.
+
+**Fails the test** (the founder's own examples — and these have been load-bearing since Day 1, so cutting them hurts):
+- **Fogg's daily timetable** (tea at 8:23, shaving water at 86 °F). *"Why would I be interested… I guess it shows how
+  punctual he is, but that's too vague to an audience who never read the book."* It is characterisation, and
+  characterisation only pays once the viewer is invested. Cut or reduce to one line that does real work.
+- **"Verne put Fogg at No. 7, but Sheridan died at No. 14."** A keystone of Act I since the first draft. To someone who
+  has not read the novel this is: a detail in a book I do not know is slightly wrong. Mildly diverting, not memorable.
+  Keep only if it can be made to *pay* — otherwise the street's own story is far stronger and occupies the same minute.
+- Anything whose justification is "it is in the novel" or "it balances the ratio".
+
 ## Consequences for the studio
 - **Rundown Writer** plans a film: shots, durations, what is on screen every second. Place-first, work-threaded.
 - **Content Preparer** hunts motion for every place beat, and keeps the print/engraving spine that is working.

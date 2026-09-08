@@ -129,8 +129,8 @@ const LABEL = {
   2: { anchor: 'start', dx: 32, dy: 14 },     // Suez    — right, into Arabia
   3: { anchor: 'end', dx: -34, dy: 16 },      // Bombay  — left, over the Arabian Sea
   4: { anchor: 'start', dx: 30, dy: -22 },    // Calcutta— up and right
-  5: { anchor: 'start', dx: 30, dy: 46 },     // Hong Kong — down and right, over the sea
-  6: { anchor: 'start', dx: 30, dy: 40 },     // Yokohama — right, over the Pacific
+  5: { anchor: 'end', dx: -36, dy: 54 },      // Hong Kong — down and LEFT, over the South China Sea
+  6: { anchor: 'middle', dx: 0, dy: 66 },     // Yokohama — below; anchored right it runs off the frame
   7: { anchor: 'start', dx: 28, dy: 62 },     // San Francisco — below, clear of leg 7
   8: { anchor: 'start', dx: 28, dy: 56 },     // New York — below, clear of leg 8
 };
@@ -139,10 +139,10 @@ const LABEL = {
 // film's, chosen clear of the coastline and of the one port name that can be up at the same time. lon, lat.
 const LEG_LABEL = {
   1: [12, 36],      // W Mediterranean, below the Brindisi run
-  2: [57, 8.5],     // Arabian Sea, south of the line
+  2: [55, 2],       // Arabian Sea, well below Bombay's own label
   3: [80.8, 32],    // above India
   4: [99, -2],      // South China Sea, below the arc
-  5: [129, 13.5],   // Philippine Sea, below the line
+  5: [133, 8],      // Philippine Sea, below the line and clear of Hong Kong's label
   6: [-145, 44],    // the Pacific, on the LEFT half — the leg re-enters at the frame edge
   7: [-97, 47],     // above the transcontinental line
   8: [-40, 33],     // mid-Atlantic, below the homeward run
@@ -171,7 +171,7 @@ export function longDate(iso, lang) {
  *   beats  [{show:'leg:3'|'enabler:A'|'london'|'total', at:<seconds into the segment>}]  — resolved by the caller
  *          from the narration clock. Anything not given is spaced evenly, so a scene with no beats still works.
  */
-export function planTimeline({ state = 'day-1', dur, beats = [], draw = 1.6, labelHold = 3.4 }) {
+export function planTimeline({ state = 'day-1', dur, beats = [], draw = 1.6, labelHold = 2.4 }) {
   const at = {};
   for (const b of beats) if (b && b.show != null && isFinite(b.at)) at[b.show] = Math.max(0, Math.min(dur - 0.5, +b.at));
   const legs = [], enablers = [];
@@ -422,7 +422,10 @@ window.setT = function(t){
     let no = 0;
     if (on){
       const inP = cl((t-lit1)/0.45,0,1);
-      const outAt = isLondon ? Infinity : lit1 + TL.labelHold;
+      // a port name also leaves when the NEXT leg starts drawing: with beats 2.8 s apart and a 2.4 s hold, two
+      // names would otherwise be up at once, which is exactly the "too much text" this map exists to end.
+      let nextLegT = Infinity; for (let k=1;k<=8;k++){ const l=legs.find(x=>x.k===k); if (l && R.legTo[k]===p){ const n=legs.find(x=>x.k===k+1); if (n) nextLegT = n.t + 0.35; } }
+      const outAt = isLondon ? Infinity : Math.min(lit1 + TL.labelHold, nextLegT);
       no = inP * (1 - cl((t-outAt)/0.5,0,1));
     }
     fade(name, no);
