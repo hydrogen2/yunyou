@@ -3,109 +3,79 @@
  "subtitles": "day-01-london_en.vtt",
  "lang": "en",
  "locale": "en",
- "duration_s": 1126,
+ "duration_s": 1224,
  "chapters": [
   {
    "scene": "cold-open",
-   "type": "interstitial",
+   "type": "video",
    "at_s": 4,
-   "title": "Day 1 · London · Wednesday 2 October 1872"
+   "title": "Three places, one year"
   },
   {
    "scene": "savile-row",
    "type": "video",
-   "at_s": 64,
-   "title": "Savile Row — Fogg's front door"
+   "at_s": 49,
+   "title": "Savile Row — the whole subject is 280 metres"
   },
   {
-   "scene": "fogg-by-the-clock",
-   "type": "card",
-   "at_s": 148,
-   "title": "Fogg's day, by the clock — enter Passepartout"
-  },
-  {
-   "scene": "count-the-steps",
+   "scene": "the-word",
    "type": "video",
-   "at_s": 198,
-   "title": "Count the steps — Savile Row to Pall Mall"
+   "at_s": 149,
+   "title": "The word — a myth, a tribunal and a tape measure"
   },
   {
-   "scene": "the-reform-club",
-   "type": "photo",
-   "at_s": 295,
-   "title": "Inside the Reform — what Verne got right"
+   "scene": "no-1-savile-row",
+   "type": "video",
+   "at_s": 253,
+   "title": "No. 1 — where the journeys were planned"
   },
   {
-   "scene": "quiz-verne-saloon",
-   "type": "quiz",
-   "at_s": 357,
-   "title": "Quiz — which of Verne's club details is real?"
+   "scene": "clothes-then-club",
+   "type": "video",
+   "at_s": 348,
+   "title": "Clothes, then club — the walk through St James's"
+  },
+  {
+   "scene": "what-a-club-was",
+   "type": "video",
+   "at_s": 420,
+   "title": "What a London club actually was"
+  },
+  {
+   "scene": "a-palace-with-a-motive",
+   "type": "video",
+   "at_s": 528,
+   "title": "The Reform — a political party built as a palace"
   },
   {
    "scene": "the-wager",
-   "type": "photo",
-   "at_s": 407,
-   "title": "The wager — twenty thousand at Baring's"
+   "type": "video",
+   "at_s": 602,
+   "title": "The wager"
   },
   {
-   "scene": "the-world-shrinks",
-   "type": "map",
-   "at_s": 482,
-   "title": "The world had just shrunk — the 80-day loop"
-  },
-  {
-   "scene": "pack-the-bag",
-   "type": "game",
-   "at_s": 574,
-   "title": "Ten minutes — pack the carpet-bag"
-  },
-  {
-   "scene": "the-dash",
-   "type": "map",
-   "at_s": 662,
-   "title": "A shilling's cab to Charing Cross"
+   "scene": "the-year-the-world-closed",
+   "type": "video",
+   "at_s": 692,
+   "title": "1872 — the year the world closed into a circuit"
   },
   {
    "scene": "charing-cross",
    "type": "video",
-   "at_s": 720,
-   "title": "Charing Cross — Fogg's newest London"
+   "at_s": 830,
+   "title": "Charing Cross — the point London is measured from"
   },
   {
-   "scene": "then-and-now",
-   "type": "photo",
-   "at_s": 795,
-   "title": "Then and now — the forecourt, 1872 and today"
-  },
-  {
-   "scene": "look-up-the-cross",
-   "type": "streetview",
-   "at_s": 821,
-   "title": "Look up — the cross, and where London starts"
-  },
-  {
-   "scene": "quiz-the-weather",
-   "type": "quiz",
-   "at_s": 871,
-   "title": "Quiz — look up at the roof: what is the weather doing?"
-  },
-  {
-   "scene": "passepartout-on-the-platform",
-   "type": "dialogue",
-   "at_s": 899,
-   "title": "The platform, 8:40 pm — talk to Passepartout"
-  },
-  {
-   "scene": "the-boat-train",
+   "scene": "a-quarter-to-nine",
    "type": "video",
-   "at_s": 945,
-   "title": "8:45 — over the river, to the forgotten gas"
+   "at_s": 973,
+   "title": "A quarter to nine"
   },
   {
    "scene": "souvenir",
-   "type": "card",
-   "at_s": 1027,
-   "title": "Souvenir — Fogg's last breakfast in London"
+   "type": "video",
+   "at_s": 1091,
+   "title": "Souvenir and send-off"
   }
  ]
 }

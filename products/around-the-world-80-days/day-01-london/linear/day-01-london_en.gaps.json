@@ -1,0 +1,1050 @@
+{
+ "chapter": "day-01-london",
+ "lang": "en",
+ "rendered": "2026-09-08T10:07:21.505Z",
+ "video": "day-01-london_en.mp4",
+ "slots_fell_back": 55,
+ "assets_missing": 35,
+ "fell_back": [
+  {
+   "n": 1,
+   "scene": "cold-open",
+   "slot": 4,
+   "at": "19.0 s",
+   "dur": 5,
+   "wanted": "G-13",
+   "wanted_ref": "generated/g-13/telegraph-1872_a-cables-draw.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 1,
+   "scene": "cold-open",
+   "slot": "—",
+   "at": "19.0–27.0 s",
+   "kind": "audio",
+   "wanted": "N7",
+   "wanted_ref": "media/files/pending/n7-telegraph-key.wav",
+   "used": "SILENCE",
+   "why": "sound not sourced yet"
+  },
+  {
+   "n": 2,
+   "scene": "savile-row",
+   "slot": 2,
+   "at": "14.0 s",
+   "dur": 8,
+   "wanted": "G-10",
+   "wanted_ref": "generated/g-10/savile-row-280m.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 2,
+   "scene": "savile-row",
+   "slot": 7,
+   "at": "46.0 s",
+   "dur": 6,
+   "wanted": "S-mil",
+   "wanted_ref": "media/files/pending/s-mil-regimental-coat-uniform-plate.jpg",
+   "used": "M-32",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 3,
+   "scene": "the-word",
+   "slot": 4,
+   "at": "18.0 s",
+   "dur": 6,
+   "wanted": "G-11",
+   "wanted_ref": "generated/g-11/bespoke-timeline_a.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 3,
+   "scene": "the-word",
+   "slot": 5,
+   "at": "24.0 s",
+   "dur": 6,
+   "wanted": "G-11",
+   "wanted_ref": "generated/g-11/bespoke-timeline_b.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 3,
+   "scene": "the-word",
+   "slot": 6,
+   "at": "30.0 s",
+   "dur": 5,
+   "wanted": "S-trade",
+   "wanted_ref": "media/files/pending/s-trade-period-tailors-trade-card.jpg",
+   "used": "M-32",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 3,
+   "scene": "the-word",
+   "slot": 12,
+   "at": "72.0 s",
+   "dur": 8,
+   "wanted": "G-16",
+   "wanted_ref": "generated/g-16/hundred-yard-rule_a.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 3,
+   "scene": "the-word",
+   "slot": 13,
+   "at": "80.0 s",
+   "dur": 8,
+   "wanted": "G-16",
+   "wanted_ref": "generated/g-16/hundred-yard-rule_b.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 3,
+   "scene": "the-word",
+   "slot": 14,
+   "at": "88.0 s",
+   "dur": 8,
+   "wanted": "G-14",
+   "wanted_ref": "generated/g-14/169-19-22.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 3,
+   "scene": "the-word",
+   "slot": 15,
+   "at": "96.0 s",
+   "dur": 8,
+   "wanted": "S-sargent",
+   "wanted_ref": "media/files/pending/s-sargent-woman-head-cutter-at-the-bench.jpg",
+   "used": "M-77a",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:View_up_Savile_Row_-_geograph.org.uk_-_2929073.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 4,
+   "scene": "no-1-savile-row",
+   "slot": 2,
+   "at": "12.0 s",
+   "dur": 6,
+   "wanted": "S-rgs",
+   "wanted_ref": "media/files/pending/s-rgs-royal-geographical-society-no-1-savile-row.jpg",
+   "used": "M-32",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 5,
+   "scene": "clothes-then-club",
+   "slot": 2,
+   "at": "12.0 s",
+   "dur": 6,
+   "wanted": "G-10b",
+   "wanted_ref": "generated/g-10b/half-mile-route_a.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 5,
+   "scene": "clothes-then-club",
+   "slot": 3,
+   "at": "18.0 s",
+   "dur": 6,
+   "wanted": "G-10b",
+   "wanted_ref": "generated/g-10b/half-mile-route_b.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 6,
+   "scene": "what-a-club-was",
+   "slot": 10,
+   "at": "66.0 s",
+   "dur": 7,
+   "wanted": "G-17",
+   "wanted_ref": "generated/g-17/clubland-dots_a.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 6,
+   "scene": "what-a-club-was",
+   "slot": 11,
+   "at": "73.0 s",
+   "dur": 7,
+   "wanted": "G-17",
+   "wanted_ref": "generated/g-17/clubland-dots_b.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 7,
+   "scene": "a-palace-with-a-motive",
+   "slot": 10,
+   "at": "56.0 s",
+   "dur": 6,
+   "wanted": "M-103",
+   "wanted_ref": "media/files/pending/m-103-soyer-gastronomic-regenerator-title-page.jpg",
+   "used": "M-95",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:The_Kitchen_Department_of_the_Reform_Club,_1842.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 3,
+   "at": "12.0 s",
+   "dur": 8,
+   "wanted": "S-docks",
+   "wanted_ref": "media/files/pending/s-docks-port-of-london-masts.jpg",
+   "used": "M-31",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:London_drawn_and_engraved_expressly_for_the_Post_office_Directory_1875_by_B._R._Davies,._.._-_btv1b53060730z.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 6,
+   "at": "40.0 s",
+   "dur": 6,
+   "wanted": "G-15",
+   "wanted_ref": "generated/g-15/london-1871-scale.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 8,
+   "at": "54.0 s",
+   "dur": 5,
+   "wanted": "S-emb",
+   "wanted_ref": "media/files/pending/s-emb-victoria-embankment-new.jpg",
+   "used": "M-31",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:London_drawn_and_engraved_expressly_for_the_Post_office_Directory_1875_by_B._R._Davies,._.._-_btv1b53060730z.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 10,
+   "at": "64.0 s",
+   "dur": 8,
+   "wanted": "G-18",
+   "wanted_ref": "generated/g-18/twelve-termini_a.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 11,
+   "at": "72.0 s",
+   "dur": 8,
+   "wanted": "G-18",
+   "wanted_ref": "generated/g-18/twelve-termini_b.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 12,
+   "at": "80.0 s",
+   "dur": 7,
+   "wanted": "S-met",
+   "wanted_ref": "media/files/pending/s-met-metropolitan-railway-1863.jpg",
+   "used": "M-31",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:London_drawn_and_engraved_expressly_for_the_Post_office_Directory_1875_by_B._R._Davies,._.._-_btv1b53060730z.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 13,
+   "at": "87.0 s",
+   "dur": 7,
+   "wanted": "S-met",
+   "wanted_ref": "media/files/pending/s-met-metropolitan-railway-1863.jpg",
+   "used": "M-31",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:London_drawn_and_engraved_expressly_for_the_Post_office_Directory_1875_by_B._R._Davies,._.._-_btv1b53060730z.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 14,
+   "at": "94.0 s",
+   "dur": 8,
+   "wanted": "G-13",
+   "wanted_ref": "generated/g-13/telegraph-1872_b-atlantic.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 15,
+   "at": "102.0 s",
+   "dur": 8,
+   "wanted": "G-13",
+   "wanted_ref": "generated/g-13/telegraph-1872_c-india.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 16,
+   "at": "110.0 s",
+   "dur": 7,
+   "wanted": "G-13",
+   "wanted_ref": "generated/g-13/telegraph-1872_d-australia.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": 17,
+   "at": "117.0 s",
+   "dur": 7,
+   "wanted": "G-13",
+   "wanted_ref": "generated/g-13/telegraph-1872_e-last-continent.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 9,
+   "scene": "the-year-the-world-closed",
+   "slot": "—",
+   "at": "94.0–124.0 s",
+   "kind": "audio",
+   "wanted": "N7",
+   "wanted_ref": "media/files/pending/n7-telegraph-key.wav",
+   "used": "SILENCE",
+   "why": "sound not sourced yet"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 2,
+   "at": "12.0 s",
+   "dur": 6,
+   "wanted": "S-plaque",
+   "wanted_ref": "media/files/pending/s-plaque-charing-cross-datum-plaque.jpg",
+   "used": "M-84",
+   "used_ref": "media/files/m84-trafalgar-square.mp4",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 3,
+   "at": "18.0 s",
+   "dur": 6,
+   "wanted": "S-sign",
+   "wanted_ref": "media/files/pending/s-sign-british-road-sign-mileage-to-london.jpg",
+   "used": "M-84",
+   "used_ref": "media/files/m84-trafalgar-square.mp4",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 6,
+   "at": "34.0 s",
+   "dur": 5,
+   "wanted": "G-19",
+   "wanted_ref": "generated/g-19/the-bend_a.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 7,
+   "at": "39.0 s",
+   "dur": 5,
+   "wanted": "G-19",
+   "wanted_ref": "generated/g-19/the-bend_b.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 8,
+   "at": "44.0 s",
+   "dur": 8,
+   "wanted": "G-12",
+   "wanted_ref": "generated/g-12/eleanor-crosses_a.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 9,
+   "at": "52.0 s",
+   "dur": 6,
+   "wanted": "G-12",
+   "wanted_ref": "generated/g-12/eleanor-crosses_b.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 10,
+   "at": "58.0 s",
+   "dur": 6,
+   "wanted": "G-12",
+   "wanted_ref": "generated/g-12/eleanor-crosses_c.svg",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "generated asset does not exist yet",
+   "kind": "generated"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 11,
+   "at": "64.0 s",
+   "dur": 6,
+   "wanted": "S-cross",
+   "wanted_ref": "media/files/pending/s-cross-medieval-charing-cross.jpg",
+   "used": "M-74",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 11,
+   "at": "64.0 s",
+   "dur": 6,
+   "wanted": "M-74",
+   "wanted_ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "could not be fetched",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 13,
+   "at": "76.0 s",
+   "dur": 6,
+   "wanted": "S-civil",
+   "wanted_ref": "media/files/pending/s-civil-civil-war-demolition-print.jpg",
+   "used": "M-24",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 13,
+   "at": "76.0 s",
+   "dur": 6,
+   "wanted": "M-24",
+   "wanted_ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "could not be fetched",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 18,
+   "at": "114.0 s",
+   "dur": 5,
+   "wanted": "S-hung",
+   "wanted_ref": "media/files/pending/s-hung-brunel-hungerford-footbridge-1845.jpg",
+   "used": "M-24",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 18,
+   "at": "114.0 s",
+   "dur": 5,
+   "wanted": "M-24",
+   "wanted_ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "could not be fetched",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 19,
+   "at": "119.0 s",
+   "dur": 5,
+   "wanted": "S-hung",
+   "wanted_ref": "media/files/pending/s-hung-clifton-suspension-bridge.jpg",
+   "used": "M-76",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:View_from_Hungerford_Bridge,_from_the_train_2025-09-06.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 22,
+   "at": "135.0 s",
+   "dur": 8,
+   "wanted": "M-116",
+   "wanted_ref": "media/files/m116-charing-cross-forecourt-360.mp4",
+   "used": "M-74",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623",
+   "why": "local footage file is not in media/files/ (not fetched yet)",
+   "kind": "footage"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": 22,
+   "at": "135.0 s",
+   "dur": 8,
+   "wanted": "M-74",
+   "wanted_ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623",
+   "used": "PENDING CARD",
+   "used_ref": "",
+   "why": "could not be fetched",
+   "kind": "image"
+  },
+  {
+   "n": 10,
+   "scene": "charing-cross",
+   "slot": "—",
+   "at": "0.0–44.0 s",
+   "kind": "audio",
+   "wanted": "M-46",
+   "wanted_ref": "https://freesound.org/people/Sirderf/sounds/333680/",
+   "used": "SILENCE",
+   "why": "Freesound is login-gated — the renderer cannot fetch it"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": 3,
+   "at": "10.0 s",
+   "dur": 6,
+   "wanted": "S-brad",
+   "wanted_ref": "media/files/pending/s-brad-bradshaws-continental-guide-cover.jpg",
+   "used": "M-30",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": 4,
+   "at": "16.0 s",
+   "dur": 6,
+   "wanted": "S-brad",
+   "wanted_ref": "media/files/pending/s-brad-bradshaws-timetable-page.jpg",
+   "used": "M-30",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": 14,
+   "at": "82.0 s",
+   "dur": 6,
+   "wanted": "S-gas",
+   "wanted_ref": "media/files/pending/s-gas-london-gas-lamp-lit-at-dusk.jpg",
+   "used": "M-88",
+   "used_ref": "media/files/m88-hungerford-bridge-night.mp4",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": 15,
+   "at": "88.0 s",
+   "dur": 6,
+   "wanted": "S-gas",
+   "wanted_ref": "media/files/pending/s-gas-lamplighter-ladder.jpg",
+   "used": "M-88",
+   "used_ref": "media/files/m88-hungerford-bridge-night.mp4",
+   "why": "no source yet — authored as `license: pending`",
+   "kind": "image"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": 16,
+   "at": "94.0 s",
+   "dur": 6,
+   "wanted": "N3d",
+   "wanted_ref": "media/files/pending/n3d-charing-cross-concourse-departure-boards.mp4",
+   "used": "M-27",
+   "used_ref": "https://commons.wikimedia.org/wiki/File:1905_LONDON_S.E_%26_C.R_CHARING_CROSS_RAILWAY_STATION_PARIS_BOAT_TRAIN_POSTCARD_(50272732396).jpg",
+   "why": "local footage file is not in media/files/ (not fetched yet)",
+   "kind": "footage"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": 17,
+   "at": "100.0 s",
+   "dur": 6,
+   "wanted": "N3e",
+   "wanted_ref": "media/files/pending/n3e-train-leaving-charing-cross.mp4",
+   "used": "M-88",
+   "used_ref": "media/files/m88-hungerford-bridge-night.mp4",
+   "why": "local footage file is not in media/files/ (not fetched yet)",
+   "kind": "footage"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": "—",
+   "at": "22.0–34.0 s",
+   "kind": "audio",
+   "wanted": "M-46",
+   "wanted_ref": "https://freesound.org/people/Sirderf/sounds/333680/",
+   "used": "SILENCE",
+   "why": "Freesound is login-gated — the renderer cannot fetch it"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": "—",
+   "at": "46.0–118.0 s",
+   "kind": "audio",
+   "wanted": "M-58",
+   "wanted_ref": "https://freesound.org/people/delfieldrecordings/sounds/842069/",
+   "used": "SILENCE",
+   "why": "Freesound is login-gated — the renderer cannot fetch it"
+  },
+  {
+   "n": 11,
+   "scene": "a-quarter-to-nine",
+   "slot": "—",
+   "at": "106.0–118.0 s",
+   "kind": "audio",
+   "wanted": "M-59",
+   "wanted_ref": "https://freesound.org/people/nicoproson/sounds/648529/",
+   "used": "SILENCE",
+   "why": "Freesound is login-gated — the renderer cannot fetch it"
+  }
+ ],
+ "missing_assets": [
+  {
+   "id": "G-13",
+   "kind": "generated",
+   "ref": "generated/g-13/telegraph-1872_a-cables-draw.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "01 cold-open · slot 4 @ 19–24 s",
+    "09 the-year-the-world-closed · slot 14 @ 94–102 s",
+    "09 the-year-the-world-closed · slot 15 @ 102–110 s",
+    "09 the-year-the-world-closed · slot 16 @ 110–117 s",
+    "09 the-year-the-world-closed · slot 17 @ 117–124 s"
+   ]
+  },
+  {
+   "id": "G-12",
+   "kind": "generated",
+   "ref": "generated/g-12/eleanor-crosses_a.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "10 charing-cross · slot 8 @ 44–52 s",
+    "10 charing-cross · slot 9 @ 52–58 s",
+    "10 charing-cross · slot 10 @ 58–64 s"
+   ]
+  },
+  {
+   "id": "N7",
+   "kind": "audio",
+   "ref": "media/files/pending/n7-telegraph-key.wav",
+   "why": "sound not sourced yet",
+   "slots": [
+    "01 cold-open · 0:19–0:27",
+    "09 the-year-the-world-closed · 1:34–2:04"
+   ]
+  },
+  {
+   "id": "G-11",
+   "kind": "generated",
+   "ref": "generated/g-11/bespoke-timeline_a.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "03 the-word · slot 4 @ 18–24 s",
+    "03 the-word · slot 5 @ 24–30 s"
+   ]
+  },
+  {
+   "id": "G-16",
+   "kind": "generated",
+   "ref": "generated/g-16/hundred-yard-rule_a.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "03 the-word · slot 12 @ 72–80 s",
+    "03 the-word · slot 13 @ 80–88 s"
+   ]
+  },
+  {
+   "id": "G-10b",
+   "kind": "generated",
+   "ref": "generated/g-10b/half-mile-route_a.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "05 clothes-then-club · slot 2 @ 12–18 s",
+    "05 clothes-then-club · slot 3 @ 18–24 s"
+   ]
+  },
+  {
+   "id": "G-17",
+   "kind": "generated",
+   "ref": "generated/g-17/clubland-dots_a.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "06 what-a-club-was · slot 10 @ 66–73 s",
+    "06 what-a-club-was · slot 11 @ 73–80 s"
+   ]
+  },
+  {
+   "id": "G-18",
+   "kind": "generated",
+   "ref": "generated/g-18/twelve-termini_a.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "09 the-year-the-world-closed · slot 10 @ 64–72 s",
+    "09 the-year-the-world-closed · slot 11 @ 72–80 s"
+   ]
+  },
+  {
+   "id": "S-met",
+   "kind": "image",
+   "ref": "media/files/pending/s-met-metropolitan-railway-1863.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "09 the-year-the-world-closed · slot 12 @ 80–87 s",
+    "09 the-year-the-world-closed · slot 13 @ 87–94 s"
+   ]
+  },
+  {
+   "id": "G-19",
+   "kind": "generated",
+   "ref": "generated/g-19/the-bend_a.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "10 charing-cross · slot 6 @ 34–39 s",
+    "10 charing-cross · slot 7 @ 39–44 s"
+   ]
+  },
+  {
+   "id": "M-74",
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623",
+   "why": "could not be fetched",
+   "slots": [
+    "10 charing-cross · slot 11 @ 64–70 s",
+    "10 charing-cross · slot 22 @ 135–143 s"
+   ]
+  },
+  {
+   "id": "M-24",
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872",
+   "why": "could not be fetched",
+   "slots": [
+    "10 charing-cross · slot 13 @ 76–82 s",
+    "10 charing-cross · slot 18 @ 114–119 s"
+   ]
+  },
+  {
+   "id": "S-hung",
+   "kind": "image",
+   "ref": "media/files/pending/s-hung-brunel-hungerford-footbridge-1845.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "10 charing-cross · slot 18 @ 114–119 s",
+    "10 charing-cross · slot 19 @ 119–124 s"
+   ]
+  },
+  {
+   "id": "M-46",
+   "kind": "audio",
+   "ref": "https://freesound.org/people/Sirderf/sounds/333680/",
+   "why": "Freesound is login-gated — the renderer cannot fetch it",
+   "slots": [
+    "10 charing-cross · 0:00–0:44",
+    "11 a-quarter-to-nine · 0:22–0:34"
+   ]
+  },
+  {
+   "id": "S-brad",
+   "kind": "image",
+   "ref": "media/files/pending/s-brad-bradshaws-continental-guide-cover.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "11 a-quarter-to-nine · slot 3 @ 10–16 s",
+    "11 a-quarter-to-nine · slot 4 @ 16–22 s"
+   ]
+  },
+  {
+   "id": "S-gas",
+   "kind": "image",
+   "ref": "media/files/pending/s-gas-london-gas-lamp-lit-at-dusk.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "11 a-quarter-to-nine · slot 14 @ 82–88 s",
+    "11 a-quarter-to-nine · slot 15 @ 88–94 s"
+   ]
+  },
+  {
+   "id": "G-10",
+   "kind": "generated",
+   "ref": "generated/g-10/savile-row-280m.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "02 savile-row · slot 2 @ 14–22 s"
+   ]
+  },
+  {
+   "id": "S-mil",
+   "kind": "image",
+   "ref": "media/files/pending/s-mil-regimental-coat-uniform-plate.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "02 savile-row · slot 7 @ 46–52 s"
+   ]
+  },
+  {
+   "id": "S-trade",
+   "kind": "image",
+   "ref": "media/files/pending/s-trade-period-tailors-trade-card.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "03 the-word · slot 6 @ 30–35 s"
+   ]
+  },
+  {
+   "id": "G-14",
+   "kind": "generated",
+   "ref": "generated/g-14/169-19-22.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "03 the-word · slot 14 @ 88–96 s"
+   ]
+  },
+  {
+   "id": "S-sargent",
+   "kind": "image",
+   "ref": "media/files/pending/s-sargent-woman-head-cutter-at-the-bench.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "03 the-word · slot 15 @ 96–104 s"
+   ]
+  },
+  {
+   "id": "S-rgs",
+   "kind": "image",
+   "ref": "media/files/pending/s-rgs-royal-geographical-society-no-1-savile-row.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "04 no-1-savile-row · slot 2 @ 12–18 s"
+   ]
+  },
+  {
+   "id": "M-103",
+   "kind": "image",
+   "ref": "media/files/pending/m-103-soyer-gastronomic-regenerator-title-page.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "07 a-palace-with-a-motive · slot 10 @ 56–62 s"
+   ]
+  },
+  {
+   "id": "S-docks",
+   "kind": "image",
+   "ref": "media/files/pending/s-docks-port-of-london-masts.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "09 the-year-the-world-closed · slot 3 @ 12–20 s"
+   ]
+  },
+  {
+   "id": "G-15",
+   "kind": "generated",
+   "ref": "generated/g-15/london-1871-scale.svg",
+   "why": "generated asset does not exist yet",
+   "slots": [
+    "09 the-year-the-world-closed · slot 6 @ 40–46 s"
+   ]
+  },
+  {
+   "id": "S-emb",
+   "kind": "image",
+   "ref": "media/files/pending/s-emb-victoria-embankment-new.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "09 the-year-the-world-closed · slot 8 @ 54–59 s"
+   ]
+  },
+  {
+   "id": "S-plaque",
+   "kind": "image",
+   "ref": "media/files/pending/s-plaque-charing-cross-datum-plaque.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "10 charing-cross · slot 2 @ 12–18 s"
+   ]
+  },
+  {
+   "id": "S-sign",
+   "kind": "image",
+   "ref": "media/files/pending/s-sign-british-road-sign-mileage-to-london.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "10 charing-cross · slot 3 @ 18–24 s"
+   ]
+  },
+  {
+   "id": "S-cross",
+   "kind": "image",
+   "ref": "media/files/pending/s-cross-medieval-charing-cross.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "10 charing-cross · slot 11 @ 64–70 s"
+   ]
+  },
+  {
+   "id": "S-civil",
+   "kind": "image",
+   "ref": "media/files/pending/s-civil-civil-war-demolition-print.jpg",
+   "why": "no source yet — authored as `license: pending`",
+   "slots": [
+    "10 charing-cross · slot 13 @ 76–82 s"
+   ]
+  },
+  {
+   "id": "M-116",
+   "kind": "footage",
+   "ref": "media/files/m116-charing-cross-forecourt-360.mp4",
+   "why": "local footage file is not in media/files/ (not fetched yet)",
+   "slots": [
+    "10 charing-cross · slot 22 @ 135–143 s"
+   ]
+  },
+  {
+   "id": "N3d",
+   "kind": "footage",
+   "ref": "media/files/pending/n3d-charing-cross-concourse-departure-boards.mp4",
+   "why": "local footage file is not in media/files/ (not fetched yet)",
+   "slots": [
+    "11 a-quarter-to-nine · slot 16 @ 94–100 s"
+   ]
+  },
+  {
+   "id": "N3e",
+   "kind": "footage",
+   "ref": "media/files/pending/n3e-train-leaving-charing-cross.mp4",
+   "why": "local footage file is not in media/files/ (not fetched yet)",
+   "slots": [
+    "11 a-quarter-to-nine · slot 17 @ 100–106 s"
+   ]
+  },
+  {
+   "id": "M-58",
+   "kind": "audio",
+   "ref": "https://freesound.org/people/delfieldrecordings/sounds/842069/",
+   "why": "Freesound is login-gated — the renderer cannot fetch it",
+   "slots": [
+    "11 a-quarter-to-nine · 0:46–1:58"
+   ]
+  },
+  {
+   "id": "M-59",
+   "kind": "audio",
+   "ref": "https://freesound.org/people/nicoproson/sounds/648529/",
+   "why": "Freesound is login-gated — the renderer cannot fetch it",
+   "slots": [
+    "11 a-quarter-to-nine · 1:46–1:58"
+   ]
+  }
+ ]
+}
