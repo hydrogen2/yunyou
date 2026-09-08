@@ -1,223 +1,221 @@
 {
-  "id": "what-a-club-was",
-  "type": "video",
-  "title": "What a London club actually was",
-  "subtopic": "S5 — The club as an institution",
-  "duration_s": 108,
-  "learning_goal": "Know the club as an institution — a second home with servants, entered by election, in a quarter that held hundreds of them.",
-  "narration": {
-    "script": "Three doors in a row on Pall Mall. Three institutions. This is what a club gave you: a man with a modest London address got the run of a palace. Dining room, library, billiards, bedrooms, servants. You could eat, read, write, take your post and sleep, without letting anyone into your own house. You did not apply. You were proposed and seconded, then the membership voted with balls dropped in a box. Black balls kept you out — that is where the word comes from. Churchill resigned from this club in 1913 because a friend was blackballed. At their height there were hundreds of them, packed into a few streets; half the principal ones founded within thirty years. Next door, the Travellers — founded in 1819, in its own words, for gentlemen who had travelled abroad. Your club announced your politics: the Tory club at one end of the street, the reformers' three doors along.",
-    "voice": "guide",
-    "timing": "over",
-    "starts_at_s": 0
+ "id": "what-a-club-was",
+ "type": "video",
+ "title": "What a London club actually was",
+ "subtopic": "S5 — The club as an institution",
+ "duration_s": 108,
+ "learning_goal": "Know the club as an institution — a second home with servants, entered by election, in a quarter that held hundreds of them.",
+ "narration": {
+  "script": "Three doors in a row on Pall Mall. Three institutions. This is what a club gave you: a man with a modest London address got the run of a palace. Dining room, library, billiards, bedrooms, servants. You could eat, read, write, take your post and sleep, without letting anyone into your own house. You did not apply. You were proposed and seconded, then the membership voted with balls dropped in a box. Black balls kept you out — that is where the word comes from. Churchill resigned from this club in 1913 because a friend was blackballed. At their height there were hundreds of them, packed into a few streets; half the principal ones founded within thirty years. Next door, the Travellers — founded in 1819, in its own words, for gentlemen who had travelled abroad. Your club announced your politics: the Tory club at one end of the street, the reformers' three doors along.",
+  "voice": "guide",
+  "timing": "over",
+  "starts_at_s": 0
+ },
+ "media": [
+  {
+   "kind": "streetview",
+   "ref": "51.50678,-0.13354,165",
+   "start_s": 0,
+   "end_s": 14,
+   "license": "cc-by-sa-4.0",
+   "manifest_id": "PANO/count-the-steps-w06",
+   "attribution": "Mapillary / milhouse (10 Apr 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+   "use": "both",
+   "sa": true,
+   "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w06/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S5.1 — slow pass down Pall Mall: Travellers → Reform → Athenaeum. HOLD 10–14 s. The cached 360 stop is the one manifest-motion.md says has all three club cues reachable. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+   "fallback": "M-67"
   },
-  "media": [
-    {
-      "kind": "streetview",
-      "ref": "51.50678,-0.13354,165",
-      "start_s": 0,
-      "end_s": 14,
-      "license": "cc-by-sa-4.0",
-      "manifest_id": "PANO/count-the-steps-w06",
-      "attribution": "Mapillary / milhouse (10 Apr 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
-      "use": "both",
-      "sa": true,
-      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w06/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S5.1 — slow pass down Pall Mall: Travellers → Reform → Athenaeum. HOLD 10–14 s. The cached 360 stop is the one manifest-motion.md says has all three club cues reachable. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
-      "fallback": "M-67"
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Life_and_works_of_sir_Charls_Barry_page_124.jpg",
-      "start_s": 14,
-      "end_s": 26,
-      "license": "public-domain",
-      "manifest_id": "M-102",
-      "attribution": "Reform Club, Pall Mall — wood engraving, 1867 — Reform Club, Pall Mall — Alfred Barry, 'The Life and Works of Sir Charles Barry' (1867), p. 124 (Wikimedia Commons, PD)",
-      "use": "both",
-      "note": "S5.2 — the Reform from Pall Mall, 1860s wood engraving with a hansom and a brougham: the club as Fogg would have seen it. PICTURE CARRIES — HOLD 21–26 s."
-    },
-    {
-      "kind": "image",
-      "ref": "https://archive.org/download/18361886reformcl00fagauoft/page/n7_w1200.jpg",
-      "start_s": 26,
-      "end_s": 32,
-      "license": "public-domain",
-      "manifest_id": "M-100",
-      "attribution": "The Reform Club library, photographed c. 1886 — The library of the Reform Club, photogravure frontispiece — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887) (public domain; scan: Internet Archive)",
-      "use": "both",
-      "note": "S5.3a — the library, photographed c. 1886. Needs a 90° rotation (printed sideways on the page).",
-      "fallback": "M-23"
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:The_Kitchen_Department_of_the_Reform_Club,_1842.jpg",
-      "start_s": 32,
-      "end_s": 38,
-      "license": "public-domain",
-      "manifest_id": "M-95",
-      "attribution": "'The Kitchen Department of the Reform Club', 1842 — 'The Kitchen Department of the Reform Club', lithograph by John Tarring, published by Alexis Soyer, 1842 (Wikimedia Commons, PD)",
-      "use": "both",
-      "note": "S5.3b — Soyer's kitchens, hand-coloured cutaway, 1842."
-    },
-    {
-      "kind": "image",
-      "ref": "https://iiif.archive.org/image/iiif/3/18361886reformcl00fagauoft%2f18361886reformcl00fagauoft_jp2.zip%2f18361886reformcl00fagauoft_jp2%2f18361886reformcl00fagauoft_0044.jp2/full/1200,/0/default.jpg",
-      "start_s": 38,
-      "end_s": 44,
-      "license": "public-domain",
-      "manifest_id": "M-96",
-      "attribution": "The Reform Club saloon — Fagan, 1887 — The Reform Club saloon from the south-west corner — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887) (public domain; scan: Internet Archive)",
-      "use": "both",
-      "note": "S5.3c — the saloon from the south-west corner. FRAGILE URL: iiif.archive.org 504s often; fallback M-23.",
-      "fallback": "M-23"
-    },
-    {
-      "kind": "generated",
-      "ref": "generated/cards/c-10-you-did-not-apply.svg",
-      "start_s": 44,
-      "end_s": 50,
-      "license": "generated",
-      "manifest_id": "C-10",
-      "attribution": "Yunyou studio, generated",
-      "use": "both",
-      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: You did not apply.  /  You were proposed, seconded — and balloted. | S5.4a — two lines, full frame."
-    },
-    {
-      "kind": "generated",
-      "ref": "generated/cards/c-11-blackballed.svg",
-      "start_s": 50,
-      "end_s": 56,
-      "license": "generated",
-      "manifest_id": "C-11",
-      "attribution": "Yunyou studio, generated",
-      "use": "both",
-      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: blackballed | S5.4b — one word, full frame. NO RATIO ON SCREEN: 'one black ball in ten' is folklore (places.md watchlist #3, F-124) and appears nowhere."
-    },
-    {
-      "kind": "image",
-      "ref": "media/files/pending/s-chur-churchill-period-portrait.jpg",
-      "start_s": 56,
-      "end_s": 61,
-      "license": "pending",
-      "manifest_id": "S-chur",
-      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
-      "use": "both",
-      "note": "PENDING STILL, not in the manifest. WANTED: a public-domain period portrait of Winston Churchill, c. 1913 (F-124).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-      "fallback": "M-34"
-    },
-    {
-      "kind": "image",
-      "ref": "media/files/pending/s-chur-churchill-period-portrait.jpg",
-      "start_s": 61,
-      "end_s": 66,
-      "license": "pending",
-      "manifest_id": "S-chur",
-      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
-      "use": "both",
-      "note": "PENDING STILL, not in the manifest. WANTED: same portrait, second cut (push to the face).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-      "fallback": "M-34"
-    },
-    {
-      "kind": "generated",
-      "ref": "generated/g-17/clubland-dots_a.svg",
-      "start_s": 66,
-      "end_s": 73,
-      "license": "generated",
-      "manifest_id": "G-17",
-      "attribution": "Yunyou studio, generated",
-      "use": "both",
-      "note": "S5.6a — the St James's / Pall Mall plan; club dots appear one by one. Four labels maximum at a time (L4). DOES NOT EXIST YET."
-    },
-    {
-      "kind": "generated",
-      "ref": "generated/g-17/clubland-dots_b.svg",
-      "start_s": 73,
-      "end_s": 80,
-      "license": "generated",
-      "manifest_id": "G-17",
-      "attribution": "Yunyou studio, generated",
-      "use": "both",
-      "note": "S5.6b — the dots fill the quarter and one word lands large: 'hundreds'. Never a hard number (F-125)."
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Travellers_Club,_London.jpg",
-      "start_s": 80,
-      "end_s": 88,
-      "license": "cc-by-2.0",
-      "manifest_id": "M-106",
-      "attribution": "The Travellers Club, 106 Pall Mall — Matt Brown (2006) · Wikimedia Commons · CC BY 2.0",
-      "use": "both",
-      "note": "S5.7a — the Travellers Club façade, 106 Pall Mall, slow push."
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Travellers_Club,_London.jpg",
-      "start_s": 88,
-      "end_s": 96,
-      "license": "cc-by-2.0",
-      "manifest_id": "M-106",
-      "attribution": "The Travellers Club, 106 Pall Mall — Matt Brown (2006) · Wikimedia Commons · CC BY 2.0",
-      "use": "both",
-      "note": "S5.7b — same photograph, tighter on the doorway. HOLD 90–96 s after the quotation."
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:The_Reform_Club,_London_doorway-15248850190.jpg",
-      "start_s": 96,
-      "end_s": 102,
-      "license": "cc-by-sa-2.0",
-      "manifest_id": "M-105",
-      "attribution": "The Reform Club doorway, 104 Pall Mall — photo Phil Guest (2014), CC BY-SA 2.0 (Wikimedia Commons)",
-      "use": "both",
-      "note": "S5.8a — the Reform's door, 104 Pall Mall.",
-      "sa": true
-    },
-    {
-      "kind": "streetview",
-      "ref": "51.50678,-0.13354,165",
-      "start_s": 102,
-      "end_s": 108,
-      "license": "cc-by-sa-4.0",
-      "manifest_id": "PANO/count-the-steps-w06",
-      "attribution": "Mapillary / milhouse (10 Apr 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
-      "use": "both",
-      "sa": true,
-      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w06/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S5.8b — back to the street, moving east. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
-      "fallback": "M-67"
-    },
-    {
-      "kind": "audio",
-      "ref": "https://commons.wikimedia.org/wiki/File:Johann_Strauss_-_Wiener_Blut_Op._354.ogg",
-      "start_s": 0,
-      "end_s": 108,
-      "license": "cc0",
-      "manifest_id": "M-43",
-      "attribution": "J. Strauss II, 'Wiener Blut' Op. 354 (Wikimedia Commons, CC0)",
-      "use": "both",
-      "note": "Wiener Blut low; room tone under the interiors 26–44 s."
-    }
-  ],
-  "transition": {
-    "in": "cut",
-    "out": "cut to the north elevation",
-    "music_cue": "M-43 low; room tone under the interiors"
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Life_and_works_of_sir_Charls_Barry_page_124.jpg",
+   "start_s": 14,
+   "end_s": 26,
+   "license": "public-domain",
+   "manifest_id": "M-102",
+   "attribution": "Reform Club, Pall Mall — wood engraving, 1867 — Reform Club, Pall Mall — Alfred Barry, 'The Life and Works of Sir Charles Barry' (1867), p. 124 (Wikimedia Commons, PD)",
+   "use": "both",
+   "note": "S5.2 — the Reform from Pall Mall, 1860s wood engraving with a hansom and a brougham: the club as Fogg would have seen it. PICTURE CARRIES — HOLD 21–26 s."
   },
-  "next": "a-palace-with-a-motive",
-  "sources": [
-    "F-18",
-    "F-129",
-    "F-123",
-    "F-47",
-    "F-124",
-    "F-125",
-    "F-126"
-  ],
-  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots. Verne is not mentioned once in this block, by design (rundown S5).",
-  "review": {
-    "fact_check": "pending",
-    "rights": "amber",
-    "qa": "pending",
-    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S5 (108 s, 15 slots, word cap 155; 157 written).\nSENTENCE ↔ SLOT: 'Three doors in a row…' over slot 1 (ends by 10 s, HOLD 10–14) · 'Here is what a club actually gave you…' over slot 2 (ends by 21 s, HOLD 21–26) · 'Dining room, library, billiards…' over slots 3–5 · 'You did not apply…' over slots 6–7 · 'Churchill resigned…' over slots 8–9 · 'At their height there were hundreds…' over slots 10–11 · 'Next door, the Travellers…' over slot 12, then HOLD 90–96 over slot 13 · 'Your club announced your politics…' over slots 14–15.\nFOLKLORE (places.md watchlist #3 and #4): no black-ball ratio anywhere, on screen or spoken; the Travellers quotation is the Survey of London's wording only, and the famous '500 miles in a straight line' rule is absent because it is unsourced.\nATTRIBUTION: the Travellers quotation is introduced with 'in its own words' so it is never mistaken for the guide's own sentence (persona §5).\nPROVISIONAL: the two clubland motion slots are cached Mapillary panos → pending: rights-mapillary · N4 (a real Pall Mall walking pass) is UNFILLED — manifest-motion.md rejected every 2026 candidate on content (a VIOFO-watermarked dashcam; four Queen's-funeral walks) · G-17 does not exist · C-10/C-11 pending cards · S-chur has no source (fallback M-34, which is a Neuville engraving of Fogg and is a placeholder, not a picture of Churchill — do not ship this beat on the fallback).\nDROPPED DELIBERATELY (coordinator's overlay-migration list): the saloon's dimensions (57 x 51 ft). Dry, and the pictures show the room better than the number does.\nNOT USED: M-20 (rejected — photographed during a Brexit demonstration) and M-69b (mis-titled: it shows the Reform, not the Travellers). The Travellers is M-106, per A11."
+  {
+   "kind": "image",
+   "ref": "https://archive.org/download/18361886reformcl00fagauoft/page/n7_w1200.jpg",
+   "start_s": 26,
+   "end_s": 32,
+   "license": "public-domain",
+   "manifest_id": "M-100",
+   "attribution": "The Reform Club library, photographed c. 1886 — The library of the Reform Club, photogravure frontispiece — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887) (public domain; scan: Internet Archive)",
+   "use": "both",
+   "note": "S5.3a — the library, photographed c. 1886. Needs a 90° rotation (printed sideways on the page).",
+   "fallback": "M-23"
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:The_Kitchen_Department_of_the_Reform_Club,_1842.jpg",
+   "start_s": 32,
+   "end_s": 38,
+   "license": "public-domain",
+   "manifest_id": "M-95",
+   "attribution": "'The Kitchen Department of the Reform Club', 1842 — 'The Kitchen Department of the Reform Club', lithograph by John Tarring, published by Alexis Soyer, 1842 (Wikimedia Commons, PD)",
+   "use": "both",
+   "note": "S5.3b — Soyer's kitchens, hand-coloured cutaway, 1842."
+  },
+  {
+   "kind": "image",
+   "ref": "https://iiif.archive.org/image/iiif/3/18361886reformcl00fagauoft%2f18361886reformcl00fagauoft_jp2.zip%2f18361886reformcl00fagauoft_jp2%2f18361886reformcl00fagauoft_0044.jp2/full/1200,/0/default.jpg",
+   "start_s": 38,
+   "end_s": 44,
+   "license": "public-domain",
+   "manifest_id": "M-96",
+   "attribution": "The Reform Club saloon — Fagan, 1887 — The Reform Club saloon from the south-west corner — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887) (public domain; scan: Internet Archive)",
+   "use": "both",
+   "note": "S5.3c — the saloon from the south-west corner. FRAGILE URL: iiif.archive.org 504s often; fallback M-23.",
+   "fallback": "M-23"
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/cards/c-10-you-did-not-apply.svg",
+   "start_s": 44,
+   "end_s": 50,
+   "license": "generated",
+   "manifest_id": "C-10",
+   "attribution": "Yunyou studio, generated",
+   "use": "both",
+   "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: You did not apply.  /  You were proposed, seconded — and balloted. | S5.4a — two lines, full frame."
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/cards/c-11-blackballed.svg",
+   "start_s": 50,
+   "end_s": 56,
+   "license": "generated",
+   "manifest_id": "C-11",
+   "attribution": "Yunyou studio, generated",
+   "use": "both",
+   "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: blackballed | S5.4b — one word, full frame. NO RATIO ON SCREEN: 'one black ball in ten' is folklore (places.md watchlist #3, F-124) and appears nowhere."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Winston_Churchill_1874_-_1965_Q42037.jpg",
+   "start_s": 56,
+   "end_s": 61,
+   "license": "public-domain",
+   "manifest_id": "M-121",
+   "attribution": "Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain)",
+   "use": "both",
+   "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: a public-domain period portrait of Winston Churchill, c. 1913 (F-1"
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Winston_Churchill_1874_-_1965_Q42037.jpg",
+   "start_s": 61,
+   "end_s": 66,
+   "license": "public-domain",
+   "manifest_id": "M-121",
+   "attribution": "Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain)",
+   "use": "both",
+   "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: same portrait, second cut (push to the face).. The renderer will s"
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/g-17/clubland-dots_a.svg",
+   "start_s": 66,
+   "end_s": 73,
+   "license": "generated",
+   "manifest_id": "G-17",
+   "attribution": "Yunyou studio, generated",
+   "use": "both",
+   "note": "S5.6a — the St James's / Pall Mall plan; club dots appear one by one. Four labels maximum at a time (L4). DOES NOT EXIST YET."
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/g-17/clubland-dots_b.svg",
+   "start_s": 73,
+   "end_s": 80,
+   "license": "generated",
+   "manifest_id": "G-17",
+   "attribution": "Yunyou studio, generated",
+   "use": "both",
+   "note": "S5.6b — the dots fill the quarter and one word lands large: 'hundreds'. Never a hard number (F-125)."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Travellers_Club,_London.jpg",
+   "start_s": 80,
+   "end_s": 88,
+   "license": "cc-by-2.0",
+   "manifest_id": "M-106",
+   "attribution": "The Travellers Club, 106 Pall Mall — Matt Brown (2006) · Wikimedia Commons · CC BY 2.0",
+   "use": "both",
+   "note": "S5.7a — the Travellers Club façade, 106 Pall Mall, slow push."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Travellers_Club,_London.jpg",
+   "start_s": 88,
+   "end_s": 96,
+   "license": "cc-by-2.0",
+   "manifest_id": "M-106",
+   "attribution": "The Travellers Club, 106 Pall Mall — Matt Brown (2006) · Wikimedia Commons · CC BY 2.0",
+   "use": "both",
+   "note": "S5.7b — same photograph, tighter on the doorway. HOLD 90–96 s after the quotation."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:The_Reform_Club,_London_doorway-15248850190.jpg",
+   "start_s": 96,
+   "end_s": 102,
+   "license": "cc-by-sa-2.0",
+   "manifest_id": "M-105",
+   "attribution": "The Reform Club doorway, 104 Pall Mall — photo Phil Guest (2014), CC BY-SA 2.0 (Wikimedia Commons)",
+   "use": "both",
+   "note": "S5.8a — the Reform's door, 104 Pall Mall.",
+   "sa": true
+  },
+  {
+   "kind": "streetview",
+   "ref": "51.50678,-0.13354,165",
+   "start_s": 102,
+   "end_s": 108,
+   "license": "cc-by-sa-4.0",
+   "manifest_id": "PANO/count-the-steps-w06",
+   "attribution": "Mapillary / milhouse (10 Apr 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+   "use": "both",
+   "sa": true,
+   "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w06/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S5.8b — back to the street, moving east. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+   "fallback": "M-67"
+  },
+  {
+   "kind": "audio",
+   "ref": "https://commons.wikimedia.org/wiki/File:Johann_Strauss_-_Wiener_Blut_Op._354.ogg",
+   "start_s": 0,
+   "end_s": 108,
+   "license": "cc0",
+   "manifest_id": "M-43",
+   "attribution": "J. Strauss II, 'Wiener Blut' Op. 354 (Wikimedia Commons, CC0)",
+   "use": "both",
+   "note": "Wiener Blut low; room tone under the interiors 26–44 s."
   }
+ ],
+ "transition": {
+  "in": "cut",
+  "out": "cut to the north elevation",
+  "music_cue": "M-43 low; room tone under the interiors"
+ },
+ "next": "a-palace-with-a-motive",
+ "sources": [
+  "F-18",
+  "F-129",
+  "F-123",
+  "F-47",
+  "F-124",
+  "F-125",
+  "F-126"
+ ],
+ "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots. Verne is not mentioned once in this block, by design (rundown S5).",
+ "review": {
+  "fact_check": "pending",
+  "rights": "amber",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S5 (108 s, 15 slots, word cap 155; 157 written).\nSENTENCE ↔ SLOT: 'Three doors in a row…' over slot 1 (ends by 10 s, HOLD 10–14) · 'Here is what a club actually gave you…' over slot 2 (ends by 21 s, HOLD 21–26) · 'Dining room, library, billiards…' over slots 3–5 · 'You did not apply…' over slots 6–7 · 'Churchill resigned…' over slots 8–9 · 'At their height there were hundreds…' over slots 10–11 · 'Next door, the Travellers…' over slot 12, then HOLD 90–96 over slot 13 · 'Your club announced your politics…' over slots 14–15.\nFOLKLORE (places.md watchlist #3 and #4): no black-ball ratio anywhere, on screen or spoken; the Travellers quotation is the Survey of London's wording only, and the famous '500 miles in a straight line' rule is absent because it is unsourced.\nATTRIBUTION: the Travellers quotation is introduced with 'in its own words' so it is never mistaken for the guide's own sentence (persona §5).\nPROVISIONAL: the two clubland motion slots are cached Mapillary panos → pending: rights-mapillary · N4 (a real Pall Mall walking pass) is UNFILLED — manifest-motion.md rejected every 2026 candidate on content (a VIOFO-watermarked dashcam; four Queen's-funeral walks) · G-17 does not exist · C-10/C-11 pending cards · S-chur has no source (fallback M-34, which is a Neuville engraving of Fogg and is a placeholder, not a picture of Churchill — do not ship this beat on the fallback).\nDROPPED DELIBERATELY (coordinator's overlay-migration list): the saloon's dimensions (57 x 51 ft). Dry, and the pictures show the room better than the number does.\nNOT USED: M-20 (rejected — photographed during a Brexit demonstration) and M-69b (mis-titled: it shows the Reform, not the Travellers). The Travellers is M-106, per A11. | 2026-09-08: real pictures wired for the wrong-picture fallbacks (Fogg engraving stood in for Livingstone and Churchill; a street plan for a bank)."
+ }
 }

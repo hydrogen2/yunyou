@@ -559,3 +559,219 @@ M-51 · M-74 · M-94 · M-95 · M-96 · M-97).
 - **Change with more time:** cut the M-102 / M-104 then-and-now pair, which is sitting there fully cleared and would
   be the most on-theme thirty seconds in the chapter; add a "look at the pixels" step with a contact sheet to the
   Content Preparer's own checklist, so the next chapter never ships a slogan nobody read.
+
+
+---
+
+## A12 — the motion fetch: M-107…M-119 downloaded, looked at, normalised (2026-09-08, content-preparer)
+
+**Why:** `manifest-motion.md` proposed M-107…M-119 but fetched nothing (its own status line: *"nothing fetched into
+`media/files/`"*). The renderer's pre-flight therefore reported **78 of 183 media entries missing, 31 of them with no
+usable fallback**, and **24 of the 78 were simply "local footage file not in media/files/"** — Savile Row lost its
+walking pass and Charing Cross lost its river. This pass downloads them, **looks at every frame**, normalises the
+survivors, and says plainly what was thrown away.
+
+**RULE 0 / RULE 1 intact.** Zero spend. Bytes came from `upload.wikimedia.org`, `cdn.kartaview.org` and
+`graph.mapillary.com` only — no YouTube, no account created, no terms accepted, no metered SKU. The Mapillary calls
+used the free token already in the gitignored `www/config.json`; KartaView and Commons need no key.
+**Licence basis:** `review/rights-mapillary.md` (2026-09-08) rules Mapillary **and** KartaView **green**, CC BY-SA 4.0,
+and requires KartaView's credit line `© Grab and KartaView Contributors`, which the a6 strings omitted. It is in every
+KartaView string below.
+
+### A12.1 — promoted rows (what the film now plays)
+
+Same shape as the A8 table. Local paths are relative to the chapter dir and are **not committed** (`.gitignore`);
+every row is regenerable from the source URL + the recipe in `media/files/README.md` §A12.
+
+| id | rung | licence | exact attribution string | local file | use |
+|----|------|---------|--------------------------|-----------|-----|
+| M-107 | 2 | CC BY-SA 4.0 | `KartaView / telenavdrives (17 Jan 2018) · © Grab and KartaView Contributors · CC BY-SA 4.0 · adapted` | `media/files/m107-savile-row-end-to-end.mp4` (18.4 s, 13.8 MB, 1920×1080) | **linear** |
+| M-108 | 2 | CC BY-SA 4.0 | `Mapillary / asturksever (23 Feb 2022) · CC BY-SA 4.0 · adapted` | `media/files/m108-savile-row-walk-south.mp4` (64.8 s, 51.3 MB, 1920×1080) | **linear** |
+| M-109 | 2 | CC BY-SA 4.0 | `Mapillary / Stefdegreef (19 Sep 2024) · CC BY-SA 4.0 · adapted` | `media/files/m109-savile-row-360-north.mp4` (29.2 s, 21.0 MB, 1920×1080) | **linear** |
+| M-110 | 1 | CC BY-SA 3.0 NL | `"Efficiencydag voor kleermakers" (1952), Polygoon-Profilti / Nederlands Instituut voor Beeld en Geluid · CC BY-SA 3.0 NL · muted` | `media/files/m110-tailors-1952.mp4` (87.3 s, 33.6 MB, 1920×1080) | **linear** · **`audio: mute`** |
+| M-112 | 1 | Public domain | `"Rough Sea at Dover" (1896), Birt Acres / Robert W. Paul — public domain (Wikimedia Commons) · muted` | `media/files/m112-rough-sea-at-dover-1896.mp4` (17.4 s, 9.5 MB, 1920×1080) | **linear** · **`audio: mute`** |
+| M-113 | 1 | Public domain | `"Entre Calais et Douvres" (1897), Georges Méliès, Star Film 112 — public domain (Wikimedia Commons)` | `media/files/src/m113_entre_calais_douvres_1897.webm` (68.8 s, 60 MB, 720×576 SAR 16:15) | **Day 2 — fetched and screened, NOT normalised (no Day-1 slot)** |
+| M-114 | 1 | Public domain | `"Hyde Park Bicycling Scene" (1896), Robert W. Paul — public domain (Wikimedia Commons) · muted` | `media/files/m114-hyde-park-1896.mp4` (20.4 s, 12.5 MB, 1920×1080) | **linear** · **`audio: mute`** |
+| M-115 | 2 | CC BY-SA 4.0 | `Mapillary / kieran (21 Jul 2015) · CC BY-SA 4.0 · adapted` | `media/files/m115-thames-from-the-footbridge.mp4` (18.0 s, 15.1 MB, 1920×1080) | **linear** |
+| M-118 | 1 | CC BY-SA 4.0 | `"Pride of Canterbury" at Calais (2019) · Wikimedia Commons · CC BY-SA 4.0` | `media/files/src/m118_pride_of_canterbury_1.ogg` + `_2.ogg` (17.7 s + 19.5 s, 1280×720) | **Day 2 — fetched and screened, NOT normalised (no Day-1 slot)** |
+
+**M-107's own attribution string is now different from M-66's**, which was cut from the same KartaView sequence
+(1123901) — both must carry Grab's credit. `review/rights-mapillary.md` §8 has the corrected M-66/M-67 strings too;
+the A8 table above still shows the old ones and should be read as superseded.
+
+### A12.2 — what was thrown away, and why (I looked at all of it)
+
+Evidence frames are kept at `media/files/src/_rejected/` so nobody has to take my word for it or re-download.
+
+| what | verdict | why |
+|---|---|---|
+| **M-116** — Mapillary `VgRKivL0cBNshd2Pu7qkJU`, peterleth, 2024-01-24, 84 × 5760×2880 | **REJECTED — wrong place** | `manifest-motion.md` listed it from metadata as *"a 360° walk at true walking pace across the Strand end of the Charing Cross forecourt"* and marked it "found, not yet viewed". I viewed it. **It is Villiers Street**, the pedestrian street on the station's east flank, running from Embankment station up to the Strand: `FIVE GUYS` in a full-width red fascia, a doughnut shop, a pub awning. Its closest approach to the forecourt is **86 m** and to the Eleanor Cross **86 m** — measured, not guessed. The one stretch that is unmistakably the station (under the Embankment Place viaduct) is the stretch with the Five Guys sign across it. Scene 10 slot 22 therefore keeps its fallback (M-74). Evidence: `_rejected/m116-is-villiers-street-not-the-forecourt.jpg`. |
+| **Mapillary `Fxp_lf7ls-CtV688DOKd3g`** (ris, 2016-06-08, 19 fr, 2.7 m, 0.4 m/s, 3264×2448) — searched as an M-116 replacement | **REJECTED — wrong place** | The best-ranked walk within 55 m of the forecourt. It is **Craven Street WC2** (street sign legible in two frames): Georgian terrace, a parked Rolls-Royce, a pub. Not the forecourt, not the Strand approach. Evidence: `_rejected/cx2016-is-craven-street-not-the-forecourt.jpg`. |
+| **M-119** — *Early English Traffic, Turn of the Century London (1896–1903)*, Commons, 640×480, 10:47 | **REJECTED, and it is a duplicate** | Screened end to end at 40 s intervals. **Every frame carries a burned-in BRITISH PATHÉ cockerel watermark** top-right, and the reel is not all London — one shot reads `LEEDS CITY TRAMWAYS`. It is the **same item as M-80**, which this manifest's "Rejected on content" section already holds back pending `manifest-a7.md` decision 3 (Commons says PD on age; British Pathé licenses the same footage commercially). The motion pass re-found it under a new id without noticing. **Do not fetch a third time.** 46 MB deleted; evidence: `_rejected/m119-british-pathe-watermark-contact-sheet.jpg`. |
+| **M-107 source frames 1773, 1775, 1788** (KartaView seq 1123901) | **dropped from the shot** | 1773: a marked police car in battenburg livery, bottom-centre, reads as an incident. 1775: a curtain-side lorry filling the right third with large red advertising and an `0845` number. 1788: a **UPS** van filling the centre of frame, logo and "Worldwide Services" legible. The other 19 frames of 1768–1789 are used. Evidence: three files under `_rejected/`. |
+| **M-109 source frame 107** (Mapillary `txqvAgRwn1YEOie7fI6sLd`) | **dropped from the shot** | A **DHL** van fills the left third with livery and `www.dhl.com` legible, and it was the shot's opening frame (scene 02 slot 6 uses in-point 00:00). Dropped; the shot now opens on frame 105. Evidence: `_rejected/m109-frame-107-dhl-livery.jpg`. |
+| **M-108 source frames 18–24, 57–58, 60–63** | **dropped from the shot** | 18–24 are the Vigo Street corner before the Row, one of them with a passer-by's coat filling a third of the lens; 57–63 are past the Row into Boyle Street, pointing at pavement and shop glass. 33 frames kept (25–56, 59) = 64.8 s at a true 1.17 m/s. |
+| **M-111** (Commons "Tailor NN", Accra) | **not fetched** | `manifest-motion.md` §4 decision 2 is still open with the founder and its own recommendation is "not under Savile Row narration". No scene slot references it. Not mine to pre-empt. |
+| **M-117** (Mapillary `v3os63fy2ei82hl66w4xox`, Calais) | **not fetched this pass** | Day 2 only, no Day-1 slot, and `places.md` / `manifest-motion.md` §4 decision 4 have not said whether Dover/Calais assets live here or in `day-02-to-brindisi/`. Fetching it into Day 1's gitignored cache would prejudge that. |
+
+### A12.3 — two defects in already-shipped shots, found while measuring
+
+1. **`m78-strand-1903.mp4` was cut across two scene changes — FIXED.** The A8 recipe took src `117.0 +20 s`. The
+   compilation cuts at src **118.0** (into the St Mary-le-Strand shot) and again at **133.4** (out of it, to an
+   omnibus close-up). Scene 09 slot 5 (`S8.3`, in-point `00:08`, 14 s, marked **"PICTURE CARRIES — HOLD"**) therefore
+   played the tail of the Strand, hard-cut to an omnibus mid-hold, and then **looped**, because 8 + 14 > 20. Re-cut to
+   src **111.0 + 22.4 s**: the slot's 8–22 s is now src 119.0–133.0, one unbroken shot, no cut, no loop. Same framing,
+   same window, now at 1920×1080 (see §A12.4). New size 15.2 MB.
+2. **M-84 is asked for three windows it does not contain — NOT fixed, needs new sourcing.** Scene 10 slots 1 and 14
+   and scene 12 slot 1 ask for the **equestrian Charles I** at source in-points `00:22`, `01:05` and `01:40` — i.e.
+   against the 2:10 Commons source, not against the 16 s normalised file, which is all that exists. So today all
+   three slots silently play nearly the same wide shot. I screened the whole 130 s source: **the Charles I statue is
+   not in it at any point** — it is fountains, Landseer's lions and wide views of the square, and src 01:05 is a
+   stranger's head crossing the lens. Extending the file would make two of the three slots worse, so I did not.
+   The honest fix is a new source; the concrete candidate is in §A12.6.
+
+### A12.4 — frame size: 1920×1080, and why that is not a breach of "never upscale"
+
+`media/files/README.md` settled **1280×720** in August, when the cut was 720p. The cut is 1080p now
+(`linear/day-01-london_en.mp4` is 1920×1080), and `render_linear.mjs → segFootage()` scales *whatever it is handed* to
+1920×1080 with plain bicubic. Handing it a 1280×720 file does not avoid an upscale; it hides one, badly. So:
+
+- **Rung-2 street imagery is delivered at 1920×1080 from a DOWNSCALE.** M-107 crops 2400×1350 out of 2592×1936;
+  M-108 crops 4032×2268 out of 4032×3024; M-115 uses 4608×2592 whole. Every one of those is ≥ 1920 px wide before
+  scaling, so the film is getting **true pixels for the first time** — the old 720p files were throwing half of
+  Savile Row away and then having it invented back.
+- **M-109 is the one mild enlargement (1.11×)**: a 100° rectilinear window off a 5760×2880 equirect is 1600 source
+  px. Under the treatment layer's own 2.0 photograph ceiling.
+- **4:3 archive film is pillarboxed, never stretched**, exactly as README rule 3, but at the 1080p equivalent: one
+  scale factor, picture centred on the `0x14110D` plate, 2 px `0x8A7A5E@0.7` rule at each seam. M-112 crops its
+  active area (930×720, `cropdetect`) and M-114 uses its full 958×720; both at **1.5×**, under the 2.0 ceiling.
+- **M-110 (352×288, SAR 12:11 → 384×288 display) gets an ARCHIVE WINDOW, not a full frame** — 2.5× to 960×720,
+  centred and ruled on all four sides. Full frame would be 3.75×; `manifest-a6.md`'s Donisthorpe rule already
+  established that 2.7× is mush, and the treatment layer's ceiling for small archive material is 2.6.
+- **Audio is stripped from every output** (`-an`), per README rule 2 — M-110, M-112 and M-114 all carry an uploader's
+  or broadcaster's soundtrack that we have no licence record for.
+
+Recipes are in `media/files/README.md` §A12 so the eight files are reproducible from `src/` alone.
+
+### A12.5 — the three "wrong picture entirely" fallbacks (S-liv, S-chur, S-bank)
+
+Three slots fall back to a picture of something else: `S-liv` and `S-chur` to **M-34, Neuville's engraving of the
+fictional Phileas Fogg**, standing in for two real men, and `S-bank` to **M-30, an 1872 street plan**, standing in for
+a bank. All three now have a real picture, verified by eye and by the Commons API today:
+
+| id | picture | pixels | licence, as the API returned it 2026-09-08 | exact attribution string |
+|----|---------|--------|--------------------------------------------|--------------------------|
+| **M-120** | `https://commons.wikimedia.org/wiki/File:David_Livingstone_by_Thomas_Annan.jpg` | 1920×2347 | `LicenseShortName: Public domain` · `UsageTerms: Public domain` · `Artist: Thomas Annan` · `DateTimeOriginal: 1864` · `Credit: National Galleries of Scotland, PGP 74.2` | `David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain)` |
+| **M-121** | `https://commons.wikimedia.org/wiki/File:Winston_Churchill_1874_-_1965_Q42037.jpg` | 1735×2480 | `LicenseShortName: Public domain` · `Artist: Unknown author` · `DateTimeOriginal: 1904` · Imperial War Museum **Q 42037** | `Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain)` |
+| **M-122** | `https://commons.wikimedia.org/wiki/File:Barings_circular_letter_of_credit_1892.jpg` | 2497×3102 | `LicenseShortName: Public domain` · `Artist: Baring Brothers` · `DateTimeOriginal: 1892` · `Credit: Columbia University` | `Baring Brothers circular letter of credit for £1,000 sterling, 1892 — Columbia University Law Library (Wikimedia Commons, public domain)` |
+
+**What I actually saw, at 900 px:**
+
+- **M-120** — the seated studio portrait: dark frock coat, wing collar, cane in the right hand, cap on a draped table.
+  Unmistakably Livingstone; no annotation, no plate edge, no watermark. The head sits in the upper third, so the
+  second cut's *"slow push into the face"* has somewhere to go. **Take it.**
+- **M-122** — an engraved *Lettre de Crédit Circulaire*, **No. A1828**, `Boston, 9 avril 1892`, made out to
+  *M. Hon. George F. Hoar* for **"Mille livres sterling — £1,000 Stg"**, drawn on *"Messieurs Baring Brothers & Cie
+  Ltd, Londres"*, signed *"for themselves and as Attorneys for Baring Brothers & Co. Ld"*. I agree with the
+  coordinator's preference over a building, and more strongly than they put it: a **circular letter of credit is the
+  instrument Fogg would actually have carried**, and it names the firm in copperplate. 2497×3102 takes a hard push.
+  **Honest-dating law applies: 1892, twenty years after the wager — the caption must say so**, which is why the date
+  is inside the attribution string above and will burn bottom-right.
+- **M-121 — I did NOT take the coordinator's candidate, and here is a better one.**
+  `File:25-6-13, Londres, Mr Winston Churchill - btv1b53114849w.jpg` is correctly dated (25 June 1913) and correctly
+  identified, but I viewed it and the coordinator's reading is right twice over: it is a **full-length ceremonial
+  walk past a guard of honour** in cocked hat, epaulettes and medals, and it carries the BnF negative number
+  **30703** burned vertically down the right edge plus a mirrored handwritten annotation along the bottom. A crop
+  fixes the annotations; **it cannot fix the register**, because a head-and-shoulders crop still shows a cocked hat
+  and gold epaulettes under a sentence about a man resigning from a club. So I searched the year categories instead
+  and viewed five alternatives (Bassano 1911, Admiralty 1911, the "Spy" *Vanity Fair* plate of 1900, a Bain News
+  Service plate, and IWM Q 42037). **Q 42037 wins outright**: a clean head-and-shoulders in dark coat, wing collar
+  and spotted bow tie — a young politician, which is exactly the register — at 1735×2480, with **no annotation, no
+  plate edge and no crop needed at all**. Its cost is honest and small: it is **1904**, and the narration says 1913,
+  so the caption must carry the date (it does, above).
+  *Second choice, if Rundown wants a face nearer 1913 and will accept a crop:*
+  `File:Winston_Churchill_LCCN2014684733.jpg` — Bain News Service, PD, **4254×5804**, a seated civilian portrait, but
+  the plate carries `WINSTON CHURCHILL  1016-13` handwritten across the top and a white sprocket strip down the left.
+  At that size a crop of `{"x":0.13,"y":0.05,"w":0.74,"h":0.72}` removes both and still leaves ~3150×4180.
+
+**Correction for the record: the scene schema DOES have a crop field.** `media[].crop` = `{x, y, w, h}` in fractions
+of the picture, implemented in `studio/player/imagelayer.mjs → cropBox()/cropRect()` and applied by
+`render_linear.mjs → cropStill()` before the treatment layer measures the pixels. `cropLabel()`'s own worked example
+in the source is literally sized on the 6122×8488 Churchill plate. Nothing needs building.
+
+**These three are NOT wired, and I could not wire them from this file.** `render_linear.mjs` line 1492:
+
+```js
+const isPending = (m) => String(m.license || '') === 'pending' || /(^|\/)media\/files\/pending\//.test(String(m.ref || ''));
+```
+
+A slot is pending if its `license` is `pending` **or** its `ref` sits under `media/files/pending/` — and all three
+slots are both. Putting bytes at the pending path changes nothing; the renderer never looks. The manifest cannot
+override it either, because `MD_BY_ID` only indexes ids matching `[MGCN]-…` (so `S-liv` is invisible to it) and
+`resolveMediaId` is consulted only for `media[].fallback`. **The fix is three fields per slot in the scene file**,
+which is not mine to edit. Exact patch, for whoever owns those files — no crop, no new local bytes, resolved through
+the Commons API at render time exactly like M-34:
+
+| scene file | slots | set `ref` to | set `license` to | set `attribution` to |
+|---|---|---|---|---|
+| `scenes/04-no-1-savile-row.scene.json` | `S-liv` @ 24–31 s and 31–38 s | `https://commons.wikimedia.org/wiki/File:David_Livingstone_by_Thomas_Annan.jpg` | `public-domain` | the M-120 string above |
+| `scenes/06-what-a-club-was.scene.json` | `S-chur` @ 56–61 s and 61–66 s | `https://commons.wikimedia.org/wiki/File:Winston_Churchill_1874_-_1965_Q42037.jpg` | `public-domain` | the M-121 string above |
+| `scenes/08-the-wager.scene.json` | `S-bank` @ 52–58 s and 58–64 s | `https://commons.wikimedia.org/wiki/File:Barings_circular_letter_of_credit_1892.jpg` | `public-domain` | the M-122 string above |
+
+Leave `fallback` alone; once `ref` and `license` change it is never reached. **Until that patch lands the pre-flight
+still counts these six slots as gaps, and M-34 still plays a fictional character for two real men.**
+
+### A12.6 — gaps that only new sourcing or a generated asset can close
+
+| what the film asks for | state | the honest next move |
+|---|---|---|
+| **N3a / S9.1, S9.8, S11.1a — the equestrian Charles I, with traffic** | **open.** M-84 does not contain it (§A12.3). | The one candidate that exists: **Mapillary `9Gr23deQw0oE6JSKnjk4C7`**, NatchaponJ, 2025-07-02, **360° 4096×2048**, 27 frames at 2.8 m / 2.5 m/s, closest approach **16 m** to the statue at 51.50745, −0.12772 — same contributor as the cached `look-up-the-cross-w00`, so the licence question is already answered. A 360 can be turned onto the statue. Costs one fetch and one build; needs a new id and a scene edit, so it is not mine to land unasked. |
+| **N3a–c — the Charing Cross forecourt, a second walking source** | **open, and I do not think it exists.** | 38 sequences within 45 m of the Eleanor Cross were ranked; the two best non-dashcam walks are Villiers Street and Craven Street (§A12.2). What the chapter holds — the cached 360 stop `look-up-the-cross-w00` — remains the only forecourt imagery. Treat scene 10 slot 22 as a duplicate of slot 21 and cut it, or leave it on M-74. |
+| **N3b — the datum plaque, readable** | **open, stills-only.** | No street-level platform resolves plaque text from the road. This is a photograph, not footage. |
+| **N3d — the concourse and the departure boards** | **open.** | Indoors; open street-level imagery does not go inside stations. Rung 4 (generated) or rung 5. |
+| **N3e — a train leaving over Hungerford Bridge** | **open.** | `manifest-motion.md` §2.4 could not find one free anywhere and neither could I. The scene already narrates M-115 with an honesty note. |
+| **N4 — the Pall Mall clubland pass** | **open, unchanged.** | Nothing new. M-67 + the cached 360 stop remain the answer, and M-67 is 8.0 s serving a 15 s ask (it loops with a visible jump). The 11 KartaView frames in `src/kv_pallmall/` could be re-timed to ~19 s, which halves the hyperlapse speed — a look change on an approved shot, so it is a Rundown call, not mine. |
+| **N2 — the making of a suit** | **carried, honestly, by M-110.** | 87 s of real 1952 tailoring at 384×288 in a ruled archive window. `manifest-motion.md` §4 decision 1 (a free Pexels/Pixabay key, which is the founder's to create and not ours) is still the only route to 1080p craft macros. |
+| **N8 — dusk anywhere** | **open, unchanged.** | Open imagery is daylight. M-88 (Hungerford at night) is the only night asset in the chapter. |
+| **G-10…G-19 — 23 of the 31 no-fallback slots** | **open by design.** | These are generated assets, not sourced ones; nothing on the fallback ladder closes them. |
+
+### A12.7 — pre-flight, before and after
+
+`node studio/tools/render/render_linear.mjs products/around-the-world-80-days/day-01-london/tour.json --plan --no-tts`
+
+| | before | after |
+|---|---|---|
+| media entries the chapter asks for and does not have | **78** of 183 | **57** of 183 |
+| of those, with **no usable fallback** (a pending card plays) | **31** | **23** |
+| "local footage file not in `media/files/`" | **24** | **3** |
+| warnings | none | none |
+
+The 21 slots that changed: 3 × M-107, 6 × M-108, 3 × M-109, 6 × M-110, 1 × M-112, 1 × M-114, 1 × M-115.
+**Eight of the 31 no-fallback slots are now filled** (six M-110, one M-112, one M-114); the **remaining 23 are all
+generated assets** — G-10, G-10b ×2, G-11 ×2, G-12 ×3, G-13 ×5, G-14, G-15, G-16 ×2, G-17 ×2, G-18 ×2, G-19 ×2 —
+and no rung of the fallback ladder closes any of them. The three still on "local footage not fetched" are **M-116**
+(rejected on content, §A12.2 — falls back to M-74) and **N3d / N3e**, which were never sourced by anyone and have
+working fallbacks (M-27, M-88).
+
+**Bytes added:** 156 MB of normalised MP4 (net of the 7.7 MB `m78-strand-1903.mp4` this pass replaced) and 334 MB of
+originals in `src/` — 490 MB, all gitignored, all regenerable. 46 MB was downloaded and then deleted (M-119) and
+25 MB of rejected JPEG frames were deleted, leaving 1.3 MB of evidence in `src/_rejected/`.
+
+### Digest (A12)
+
+- **Did:** downloaded and screened every unfetched motion item in `manifest-motion.md` — 26 KartaView frames,
+  4 Mapillary sequences, 5 Commons films — and normalised eight of them to 1920×1080 h264 (a **downscale** from the
+  street sources, so the film gets true pixels for the first time); dropped the pre-flight from 78 gaps to 57 and
+  from 31 no-fallback slots to 23; **rejected M-116 because it is Villiers Street and not the Charing Cross
+  forecourt**, rejected M-119 because every frame carries a British Pathé watermark and it is M-80 under a new
+  number, and dropped four individual frames for a police car, an advertising lorry, a UPS van and a DHL van;
+  found and fixed a shot that had been cutting across two archive scene changes mid-hold; and verified three
+  replacement stills for the slots that were playing Neuville's fictional Fogg in place of two real men.
+- **Weak:** the three still replacements are **specified, not wired** — `isPending()` keys off the scene file's own
+  `ref` and `license`, which I must not edit, so six slots still show the wrong picture until someone applies the
+  three-line patch in §A12.5. M-110 remains a 384×288 window carrying the chapter's whole craft beat. And M-84 is
+  asked for a statue it does not contain, which I could only report.
+- **With more time:** fetch Mapillary `9Gr23deQw0oE6JSKnjk4C7` and cut the equestrian Charles I, which is the one
+  genuinely findable shot on the open list; re-time M-67 from its 11 cached frames so the Pall Mall pass stops
+  looping inside a 15 s slot; and add a `--contact-sheet` mode to the render tool so "look at the pixels" is a
+  command and not a habit.

@@ -670,27 +670,25 @@
       },
       {
        "kind": "image",
-       "ref": "media/files/pending/s-liv-david-livingstone-portrait.jpg",
+       "ref": "https://commons.wikimedia.org/wiki/File:David_Livingstone_by_Thomas_Annan.jpg",
        "start_s": 24,
        "end_s": 31,
-       "license": "pending",
-       "manifest_id": "S-liv",
-       "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+       "license": "public-domain",
+       "manifest_id": "M-120",
+       "attribution": "David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain)",
        "use": "both",
-       "note": "PENDING STILL, not in the manifest. WANTED: a public-domain portrait of David Livingstone (F-113).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-       "fallback": "M-34"
+       "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: a public-domain portrait of David Livingstone (F-113).. The render"
       },
       {
        "kind": "image",
-       "ref": "media/files/pending/s-liv-david-livingstone-portrait.jpg",
+       "ref": "https://commons.wikimedia.org/wiki/File:David_Livingstone_by_Thomas_Annan.jpg",
        "start_s": 31,
        "end_s": 38,
-       "license": "pending",
-       "manifest_id": "S-liv",
-       "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+       "license": "public-domain",
+       "manifest_id": "M-120",
+       "attribution": "David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain)",
        "use": "both",
-       "note": "PENDING STILL, not in the manifest. WANTED: same plate, second cut: a slow push into the face. PICTURE CARRIES — HOLD 6 s.. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-       "fallback": "M-34"
+       "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: same plate, second cut: a slow push into the face. PICTURE CARRIES"
       },
       {
        "kind": "generated",
@@ -795,7 +793,7 @@
       "fact_check": "flag",
       "rights": "amber",
       "qa": "pending",
-      "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S3 (95 s, 11 slots, word cap 140).\n*** CONDITIONAL BEAT — S3.6 (62–80 s), PENDING FACT-CHECKER SIGN-OFF ON F-34. *** The sentences 'The premise is an argument, not a character' / 'A newspaper table in the book says eighty days is now possible, and writers had been making that case since Suez opened' rest on F-34, which is MEDIUM confidence from a search snippet (an 1870 article in Le Magasin pittoresque arguing an eighty-day circuit was possible). The Chief's ruling 3 at the foot of rundown-film.md: the Fact-Checker must stand behind F-34 before this beat is scripted. IF F-34 FAILS: this beat loses its justification and becomes plain plot summary, which the interestingness test rejects. The replacement I would write is the same 18 s on VERIFIED ground — F-33, the three real enablers Verne's characters cite (Suez 1869, Promontory 1869, Jabalpur 1870) — i.e. 'Three things had just happened that made the arithmetic work' over the same two Neuville plates, with the four dates moved forward from scene 09 (S8.9) or duplicated. Do not render this beat until the flag clears.\nSENTENCE ↔ SLOT: 'The building on the corner…' over slot 1 · 'From 1870 to 1912…' over slots 2–3 · 'David Livingstone's body lay…' over slot 4, then HOLD 31–38 over slot 5 · SILENCE 38–48 over the card · 'And on this same two hundred and eighty metres…' over slot 7 · the conditional premise sentences over slots 8–9 · 'In 1912 the military tailor…' over slots 10–11.\nPROVISIONAL: M-108/M-109 pending: rights-mapillary · S-rgs and S-liv have no source at all (fallbacks M-32 and M-34, neither of which shows the subject — S-liv especially: a Fogg engraving standing in for Livingstone is a placeholder, not a picture, and this beat should not ship until the real portrait exists) · C-07/C-08 pending cards.\nREPLACES the cut 'Verne put Fogg at No. 7 but Sheridan died at No. 14' beat (rev 2, founder's own ruling)."
+      "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S3 (95 s, 11 slots, word cap 140).\n*** CONDITIONAL BEAT — S3.6 (62–80 s), PENDING FACT-CHECKER SIGN-OFF ON F-34. *** The sentences 'The premise is an argument, not a character' / 'A newspaper table in the book says eighty days is now possible, and writers had been making that case since Suez opened' rest on F-34, which is MEDIUM confidence from a search snippet (an 1870 article in Le Magasin pittoresque arguing an eighty-day circuit was possible). The Chief's ruling 3 at the foot of rundown-film.md: the Fact-Checker must stand behind F-34 before this beat is scripted. IF F-34 FAILS: this beat loses its justification and becomes plain plot summary, which the interestingness test rejects. The replacement I would write is the same 18 s on VERIFIED ground — F-33, the three real enablers Verne's characters cite (Suez 1869, Promontory 1869, Jabalpur 1870) — i.e. 'Three things had just happened that made the arithmetic work' over the same two Neuville plates, with the four dates moved forward from scene 09 (S8.9) or duplicated. Do not render this beat until the flag clears.\nSENTENCE ↔ SLOT: 'The building on the corner…' over slot 1 · 'From 1870 to 1912…' over slots 2–3 · 'David Livingstone's body lay…' over slot 4, then HOLD 31–38 over slot 5 · SILENCE 38–48 over the card · 'And on this same two hundred and eighty metres…' over slot 7 · the conditional premise sentences over slots 8–9 · 'In 1912 the military tailor…' over slots 10–11.\nPROVISIONAL: M-108/M-109 pending: rights-mapillary · S-rgs and S-liv have no source at all (fallbacks M-32 and M-34, neither of which shows the subject — S-liv especially: a Fogg engraving standing in for Livingstone is a placeholder, not a picture, and this beat should not ship until the real portrait exists) · C-07/C-08 pending cards.\nREPLACES the cut 'Verne put Fogg at No. 7 but Sheridan died at No. 14' beat (rev 2, founder's own ruling). | 2026-09-08: real pictures wired for the wrong-picture fallbacks (Fogg engraving stood in for Livingstone and Churchill; a street plan for a bank)."
      }
     },
     {
@@ -1064,27 +1062,25 @@
       },
       {
        "kind": "image",
-       "ref": "media/files/pending/s-chur-churchill-period-portrait.jpg",
+       "ref": "https://commons.wikimedia.org/wiki/File:Winston_Churchill_1874_-_1965_Q42037.jpg",
        "start_s": 56,
        "end_s": 61,
-       "license": "pending",
-       "manifest_id": "S-chur",
-       "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+       "license": "public-domain",
+       "manifest_id": "M-121",
+       "attribution": "Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain)",
        "use": "both",
-       "note": "PENDING STILL, not in the manifest. WANTED: a public-domain period portrait of Winston Churchill, c. 1913 (F-124).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-       "fallback": "M-34"
+       "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: a public-domain period portrait of Winston Churchill, c. 1913 (F-1"
       },
       {
        "kind": "image",
-       "ref": "media/files/pending/s-chur-churchill-period-portrait.jpg",
+       "ref": "https://commons.wikimedia.org/wiki/File:Winston_Churchill_1874_-_1965_Q42037.jpg",
        "start_s": 61,
        "end_s": 66,
-       "license": "pending",
-       "manifest_id": "S-chur",
-       "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+       "license": "public-domain",
+       "manifest_id": "M-121",
+       "attribution": "Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain)",
        "use": "both",
-       "note": "PENDING STILL, not in the manifest. WANTED: same portrait, second cut (push to the face).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-       "fallback": "M-34"
+       "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): Winston Churchill, 1904 — Imperial War Museum Q 42037 (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: same portrait, second cut (push to the face).. The renderer will s"
       },
       {
        "kind": "generated",
@@ -1187,7 +1183,7 @@
       "fact_check": "pending",
       "rights": "amber",
       "qa": "pending",
-      "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S5 (108 s, 15 slots, word cap 155; 157 written).\nSENTENCE ↔ SLOT: 'Three doors in a row…' over slot 1 (ends by 10 s, HOLD 10–14) · 'Here is what a club actually gave you…' over slot 2 (ends by 21 s, HOLD 21–26) · 'Dining room, library, billiards…' over slots 3–5 · 'You did not apply…' over slots 6–7 · 'Churchill resigned…' over slots 8–9 · 'At their height there were hundreds…' over slots 10–11 · 'Next door, the Travellers…' over slot 12, then HOLD 90–96 over slot 13 · 'Your club announced your politics…' over slots 14–15.\nFOLKLORE (places.md watchlist #3 and #4): no black-ball ratio anywhere, on screen or spoken; the Travellers quotation is the Survey of London's wording only, and the famous '500 miles in a straight line' rule is absent because it is unsourced.\nATTRIBUTION: the Travellers quotation is introduced with 'in its own words' so it is never mistaken for the guide's own sentence (persona §5).\nPROVISIONAL: the two clubland motion slots are cached Mapillary panos → pending: rights-mapillary · N4 (a real Pall Mall walking pass) is UNFILLED — manifest-motion.md rejected every 2026 candidate on content (a VIOFO-watermarked dashcam; four Queen's-funeral walks) · G-17 does not exist · C-10/C-11 pending cards · S-chur has no source (fallback M-34, which is a Neuville engraving of Fogg and is a placeholder, not a picture of Churchill — do not ship this beat on the fallback).\nDROPPED DELIBERATELY (coordinator's overlay-migration list): the saloon's dimensions (57 x 51 ft). Dry, and the pictures show the room better than the number does.\nNOT USED: M-20 (rejected — photographed during a Brexit demonstration) and M-69b (mis-titled: it shows the Reform, not the Travellers). The Travellers is M-106, per A11."
+      "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S5 (108 s, 15 slots, word cap 155; 157 written).\nSENTENCE ↔ SLOT: 'Three doors in a row…' over slot 1 (ends by 10 s, HOLD 10–14) · 'Here is what a club actually gave you…' over slot 2 (ends by 21 s, HOLD 21–26) · 'Dining room, library, billiards…' over slots 3–5 · 'You did not apply…' over slots 6–7 · 'Churchill resigned…' over slots 8–9 · 'At their height there were hundreds…' over slots 10–11 · 'Next door, the Travellers…' over slot 12, then HOLD 90–96 over slot 13 · 'Your club announced your politics…' over slots 14–15.\nFOLKLORE (places.md watchlist #3 and #4): no black-ball ratio anywhere, on screen or spoken; the Travellers quotation is the Survey of London's wording only, and the famous '500 miles in a straight line' rule is absent because it is unsourced.\nATTRIBUTION: the Travellers quotation is introduced with 'in its own words' so it is never mistaken for the guide's own sentence (persona §5).\nPROVISIONAL: the two clubland motion slots are cached Mapillary panos → pending: rights-mapillary · N4 (a real Pall Mall walking pass) is UNFILLED — manifest-motion.md rejected every 2026 candidate on content (a VIOFO-watermarked dashcam; four Queen's-funeral walks) · G-17 does not exist · C-10/C-11 pending cards · S-chur has no source (fallback M-34, which is a Neuville engraving of Fogg and is a placeholder, not a picture of Churchill — do not ship this beat on the fallback).\nDROPPED DELIBERATELY (coordinator's overlay-migration list): the saloon's dimensions (57 x 51 ft). Dry, and the pictures show the room better than the number does.\nNOT USED: M-20 (rejected — photographed during a Brexit demonstration) and M-69b (mis-titled: it shows the Reform, not the Travellers). The Travellers is M-106, per A11. | 2026-09-08: real pictures wired for the wrong-picture fallbacks (Fogg engraving stood in for Livingstone and Churchill; a street plan for a bank)."
      }
     },
     {
@@ -1477,27 +1473,25 @@
       },
       {
        "kind": "image",
-       "ref": "media/files/pending/s-bank-barings-premises-or-1870s-banknote.jpg",
+       "ref": "https://commons.wikimedia.org/wiki/File:Barings_circular_letter_of_credit_1892.jpg",
        "start_s": 52,
        "end_s": 58,
-       "license": "pending",
-       "manifest_id": "S-bank",
-       "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+       "license": "public-domain",
+       "manifest_id": "M-122",
+       "attribution": "Baring Brothers circular letter of credit for £1,000 sterling, 1892 — Columbia University Law Library (Wikimedia Commons, public domain)",
        "use": "both",
-       "note": "PENDING STILL, not in the manifest. WANTED: Barings Bank's premises at 8 Bishopsgate, or an 1870s Bank of England note (F-23).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-       "fallback": "M-30"
+       "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): Baring Brothers circular letter of credit for £1,000 sterling, 1892 — Columbia University Law Library (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: Barings Bank's premises at 8 Bishopsgate, or an 1870s Bank of Engl"
       },
       {
        "kind": "image",
-       "ref": "media/files/pending/s-bank-barings-premises-or-1870s-banknote.jpg",
+       "ref": "https://commons.wikimedia.org/wiki/File:Barings_circular_letter_of_credit_1892.jpg",
        "start_s": 58,
        "end_s": 64,
-       "license": "pending",
-       "manifest_id": "S-bank",
-       "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+       "license": "public-domain",
+       "manifest_id": "M-122",
+       "attribution": "Baring Brothers circular letter of credit for £1,000 sterling, 1892 — Columbia University Law Library (Wikimedia Commons, public domain)",
        "use": "both",
-       "note": "PENDING STILL, not in the manifest. WANTED: same plate, second cut.. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-       "fallback": "M-30"
+       "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): Baring Brothers circular letter of credit for £1,000 sterling, 1892 — Columbia University Law Library (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: same plate, second cut.. The renderer will show the declared fallb"
       },
       {
        "kind": "footage",
@@ -1579,7 +1573,7 @@
       "fact_check": "pending",
       "rights": "amber",
       "qa": "pending",
-      "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S7 (90 s, 13 slots, word cap 130).\nCOORDINATOR'S OVERLAY MIGRATION — TAKEN: 'Eighty days. 1,920 hours. 115,200 minutes.' was a cold-open OVERLAY and overlays are now deleted from the renderer with no flag to bring them back. The Chief ruled KEEP (it is scale, and deranged is memorable), so it is now BOTH spoken (slot 8's sentence) and shown as a full-frame card (C-16). ALSO TAKEN: the Baring's-1995 line, which was an overlay in the old scene 08 and is now narration (slots 9–10).\nSENTENCE ↔ SLOT: 'A card table at the Reform…' over slots 1–2 · 'Eight legs, and the days land as they go…' over slots 3–4, then HOLD 26–32 over slot 5 · 'Twenty thousand pounds at Baring's…' over slots 6–7 · 'Eighty days. Nineteen hundred and twenty hours…' over slot 8, ending by 48 s so the card holds 4 s · 'His bank was a hundred and ten years old…' over slots 9–10 · 'Verne gives him one line…' over slot 11 · 'And the turn, in Verne's words…' over slot 12, ending by 84 s so the door holds 6 s.\nATTRIBUTION: both Verne quotations are named as his before they are spoken (persona §5). No bare quotes.\nCUT IN REV 2 AND NOT RESTORED: the six signatories, the whist detail, the Bank of England director.\nPROVISIONAL: G-01 exists but needs the L4 rebuild (bigger type, fewer labels) · G-05 exists but must lose the signatories · C-16 is a pending card · S-bank has no source (fallback M-30, the 1872 plan, which is honest wallpaper and not a picture of a bank) · the dusk pass (N8) does not exist, so 64–76 s is a 2016 daylight hyperlapse · the closing façade is a cached Mapillary pano → pending: rights-mapillary."
+      "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S7 (90 s, 13 slots, word cap 130).\nCOORDINATOR'S OVERLAY MIGRATION — TAKEN: 'Eighty days. 1,920 hours. 115,200 minutes.' was a cold-open OVERLAY and overlays are now deleted from the renderer with no flag to bring them back. The Chief ruled KEEP (it is scale, and deranged is memorable), so it is now BOTH spoken (slot 8's sentence) and shown as a full-frame card (C-16). ALSO TAKEN: the Baring's-1995 line, which was an overlay in the old scene 08 and is now narration (slots 9–10).\nSENTENCE ↔ SLOT: 'A card table at the Reform…' over slots 1–2 · 'Eight legs, and the days land as they go…' over slots 3–4, then HOLD 26–32 over slot 5 · 'Twenty thousand pounds at Baring's…' over slots 6–7 · 'Eighty days. Nineteen hundred and twenty hours…' over slot 8, ending by 48 s so the card holds 4 s · 'His bank was a hundred and ten years old…' over slots 9–10 · 'Verne gives him one line…' over slot 11 · 'And the turn, in Verne's words…' over slot 12, ending by 84 s so the door holds 6 s.\nATTRIBUTION: both Verne quotations are named as his before they are spoken (persona §5). No bare quotes.\nCUT IN REV 2 AND NOT RESTORED: the six signatories, the whist detail, the Bank of England director.\nPROVISIONAL: G-01 exists but needs the L4 rebuild (bigger type, fewer labels) · G-05 exists but must lose the signatories · C-16 is a pending card · S-bank has no source (fallback M-30, the 1872 plan, which is honest wallpaper and not a picture of a bank) · the dusk pass (N8) does not exist, so 64–76 s is a 2016 daylight hyperlapse · the closing façade is a cached Mapillary pano → pending: rights-mapillary. | 2026-09-08: real pictures wired for the wrong-picture fallbacks (Fogg engraving stood in for Livingstone and Churchill; a street plan for a bank)."
      }
     },
     {

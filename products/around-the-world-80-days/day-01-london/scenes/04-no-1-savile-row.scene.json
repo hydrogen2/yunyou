@@ -1,181 +1,179 @@
 {
-  "id": "no-1-savile-row",
-  "type": "video",
-  "title": "No. 1 — where the journeys were planned",
-  "subtopic": "S3 — No. 1 Savile Row: the Royal Geographical Society, and the tailor who bought it",
-  "duration_s": 95,
-  "learning_goal": "Know that No. 1 Savile Row was the Royal Geographical Society, that Livingstone lay there in 1874, and that the tailor who bought the building had dressed the explorers who planned their journeys inside it.",
-  "narration": {
-    "script": "At the bottom of the street: number one, Savile Row. From 1870 to 1912 this was the Royal Geographical Society: the room where British expeditions to Africa, Asia and the Pole were planned. David Livingstone's body lay here in April 1874, before Westminster Abbey. And on this same two hundred and eighty metres, in a novel published that autumn, a man is packing to go round the world. The premise is an argument, not a character. A newspaper table in the book says eighty days is now possible, and writers had been making that case since Suez opened. A bet, half a fortune, eighty days. In 1912 the military tailor at number one bought the explorers' headquarters for thirty-eight thousand pounds — partly because the firm had dressed so many of the men who planned their journeys inside it.",
-    "voice": "guide",
-    "timing": "over",
-    "starts_at_s": 0
+ "id": "no-1-savile-row",
+ "type": "video",
+ "title": "No. 1 — where the journeys were planned",
+ "subtopic": "S3 — No. 1 Savile Row: the Royal Geographical Society, and the tailor who bought it",
+ "duration_s": 95,
+ "learning_goal": "Know that No. 1 Savile Row was the Royal Geographical Society, that Livingstone lay there in 1874, and that the tailor who bought the building had dressed the explorers who planned their journeys inside it.",
+ "narration": {
+  "script": "At the bottom of the street: number one, Savile Row. From 1870 to 1912 this was the Royal Geographical Society: the room where British expeditions to Africa, Asia and the Pole were planned. David Livingstone's body lay here in April 1874, before Westminster Abbey. And on this same two hundred and eighty metres, in a novel published that autumn, a man is packing to go round the world. The premise is an argument, not a character. A newspaper table in the book says eighty days is now possible, and writers had been making that case since Suez opened. A bet, half a fortune, eighty days. In 1912 the military tailor at number one bought the explorers' headquarters for thirty-eight thousand pounds — partly because the firm had dressed so many of the men who planned their journeys inside it.",
+  "voice": "guide",
+  "timing": "over",
+  "starts_at_s": 0
+ },
+ "media": [
+  {
+   "kind": "footage",
+   "ref": "media/files/m108-savile-row-walk-south.mp4",
+   "start_s": 0,
+   "end_s": 12,
+   "license": "cc-by-sa-4.0",
+   "manifest_id": "M-108",
+   "attribution": "Mapillary / asturksever (2022) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+   "use": "both",
+   "audio": "mute",
+   "note": "S3.1 — the south end, No. 1's corner façade today. Source in-point 00:04. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19). Coverage note: manifest-motion.md files No. 1 under M-109 but gives M-109's span as 51.51126–51.51241 (the NORTH end) and M-108's as 51.51015–51.51119 (the SOUTH end, where No. 1 is). I have followed the coordinates; QA to confirm on a frame and swap if wrong.",
+   "sa": true,
+   "fallback": "M-77a"
   },
-  "media": [
-    {
-      "kind": "footage",
-      "ref": "media/files/m108-savile-row-walk-south.mp4",
-      "start_s": 0,
-      "end_s": 12,
-      "license": "cc-by-sa-4.0",
-      "manifest_id": "M-108",
-      "attribution": "Mapillary / asturksever (2022) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
-      "use": "both",
-      "audio": "mute",
-      "note": "S3.1 — the south end, No. 1's corner façade today. Source in-point 00:04. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19). Coverage note: manifest-motion.md files No. 1 under M-109 but gives M-109's span as 51.51126–51.51241 (the NORTH end) and M-108's as 51.51015–51.51119 (the SOUTH end, where No. 1 is). I have followed the coordinates; QA to confirm on a frame and swap if wrong.",
-      "sa": true,
-      "fallback": "M-77a"
-    },
-    {
-      "kind": "image",
-      "ref": "media/files/pending/s-rgs-royal-geographical-society-no-1-savile-row.jpg",
-      "start_s": 12,
-      "end_s": 18,
-      "license": "pending",
-      "manifest_id": "S-rgs",
-      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
-      "use": "both",
-      "note": "PENDING STILL, not in the manifest. WANTED: an engraving or period photograph of the Royal Geographical Society at No. 1 Savile Row (F-113).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-      "fallback": "M-32"
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
-      "start_s": 18,
-      "end_s": 24,
-      "license": "public-domain",
-      "manifest_id": "M-32",
-      "attribution": "Savile Row, c. 1890 — Savile Row, c. 1890 — Henry Poole & Co archive photograph (Wikimedia Commons, PD)",
-      "use": "both",
-      "note": "S3.2b — Savile Row, c. 1890: the street as it stood while the RGS was at the bottom of it."
-    },
-    {
-      "kind": "image",
-      "ref": "media/files/pending/s-liv-david-livingstone-portrait.jpg",
-      "start_s": 24,
-      "end_s": 31,
-      "license": "pending",
-      "manifest_id": "S-liv",
-      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
-      "use": "both",
-      "note": "PENDING STILL, not in the manifest. WANTED: a public-domain portrait of David Livingstone (F-113).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-      "fallback": "M-34"
-    },
-    {
-      "kind": "image",
-      "ref": "media/files/pending/s-liv-david-livingstone-portrait.jpg",
-      "start_s": 31,
-      "end_s": 38,
-      "license": "pending",
-      "manifest_id": "S-liv",
-      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
-      "use": "both",
-      "note": "PENDING STILL, not in the manifest. WANTED: same plate, second cut: a slow push into the face. PICTURE CARRIES — HOLD 6 s.. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
-      "fallback": "M-34"
-    },
-    {
-      "kind": "generated",
-      "ref": "generated/cards/c-07-1872-at-no-1.svg",
-      "start_s": 38,
-      "end_s": 48,
-      "license": "generated",
-      "manifest_id": "C-07",
-      "attribution": "Yunyou studio, generated",
-      "use": "both",
-      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 1872. At No. 1: the headquarters of British exploration. | S3.4 — full-frame card. Nothing spoken over it; the card is read, not narrated."
-    },
-    {
-      "kind": "footage",
-      "ref": "media/files/m109-savile-row-360-north.mp4",
-      "start_s": 48,
-      "end_s": 62,
-      "license": "cc-by-sa-4.0",
-      "manifest_id": "M-109",
-      "attribution": "Mapillary / Stefdegreef (2024) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
-      "use": "both",
-      "audio": "mute",
-      "note": "S3.5 — slow pan up the east side of the Row. Source in-point 00:06. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
-      "sa": true,
-      "fallback": "M-77a"
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
-      "start_s": 62,
-      "end_s": 71,
-      "license": "public-domain",
-      "manifest_id": "M-34",
-      "attribution": "Phileas Fogg, frontispiece by Alphonse de Neuville, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
-      "use": "both",
-      "note": "S3.6a — Neuville's Fogg, slow push."
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_05.jpg",
-      "start_s": 71,
-      "end_s": 80,
-      "license": "public-domain",
-      "manifest_id": "M-50",
-      "attribution": "Passepartout — Neuville / Benett plate 05, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
-      "use": "both",
-      "note": "S3.6b — Neuville's Passepartout, slow push."
-    },
-    {
-      "kind": "footage",
-      "ref": "media/files/m108-savile-row-walk-south.mp4",
-      "start_s": 80,
-      "end_s": 87,
-      "license": "cc-by-sa-4.0",
-      "manifest_id": "M-108",
-      "attribution": "Mapillary / asturksever (2022) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
-      "use": "both",
-      "audio": "mute",
-      "note": "S3.7a — No. 1's façade / the shopfront today. Source in-point 00:10. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
-      "sa": true,
-      "fallback": "M-77c"
-    },
-    {
-      "kind": "generated",
-      "ref": "generated/cards/c-08-1912-38000-pounds.svg",
-      "start_s": 87,
-      "end_s": 95,
-      "license": "generated",
-      "manifest_id": "C-08",
-      "attribution": "Yunyou studio, generated",
-      "use": "both",
-      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 1912  ·  £38,000 | S3.7b — full-frame card as the sentence lands."
-    },
-    {
-      "kind": "audio",
-      "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
-      "start_s": 0,
-      "end_s": 95,
-      "license": "public-domain",
-      "manifest_id": "M-41",
-      "attribution": "Arthur Sullivan, 'Overture di Ballo' (1870), US Marine Band (Wikimedia Commons, PD)",
-      "use": "both",
-      "note": "Sullivan low under the whole block; lifts under the card at 87 s."
-    }
-  ],
-  "transition": {
-    "in": "cut",
-    "out": "cut to the Burlington Gardens corner",
-    "music_cue": "M-41 low; lift at 87 s"
+  {
+   "kind": "image",
+   "ref": "media/files/pending/s-rgs-royal-geographical-society-no-1-savile-row.jpg",
+   "start_s": 12,
+   "end_s": 18,
+   "license": "pending",
+   "manifest_id": "S-rgs",
+   "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+   "use": "both",
+   "note": "PENDING STILL, not in the manifest. WANTED: an engraving or period photograph of the Royal Geographical Society at No. 1 Savile Row (F-113).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+   "fallback": "M-32"
   },
-  "next": "clothes-then-club",
-  "sources": [
-    "F-113",
-    "F-01",
-    "F-32",
-    "F-11",
-    "F-34",
-    "F-04"
-  ],
-  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots.",
-  "review": {
-    "fact_check": "flag",
-    "rights": "amber",
-    "qa": "pending",
-    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S3 (95 s, 11 slots, word cap 140).\n*** CONDITIONAL BEAT — S3.6 (62–80 s), PENDING FACT-CHECKER SIGN-OFF ON F-34. *** The sentences 'The premise is an argument, not a character' / 'A newspaper table in the book says eighty days is now possible, and writers had been making that case since Suez opened' rest on F-34, which is MEDIUM confidence from a search snippet (an 1870 article in Le Magasin pittoresque arguing an eighty-day circuit was possible). The Chief's ruling 3 at the foot of rundown-film.md: the Fact-Checker must stand behind F-34 before this beat is scripted. IF F-34 FAILS: this beat loses its justification and becomes plain plot summary, which the interestingness test rejects. The replacement I would write is the same 18 s on VERIFIED ground — F-33, the three real enablers Verne's characters cite (Suez 1869, Promontory 1869, Jabalpur 1870) — i.e. 'Three things had just happened that made the arithmetic work' over the same two Neuville plates, with the four dates moved forward from scene 09 (S8.9) or duplicated. Do not render this beat until the flag clears.\nSENTENCE ↔ SLOT: 'The building on the corner…' over slot 1 · 'From 1870 to 1912…' over slots 2–3 · 'David Livingstone's body lay…' over slot 4, then HOLD 31–38 over slot 5 · SILENCE 38–48 over the card · 'And on this same two hundred and eighty metres…' over slot 7 · the conditional premise sentences over slots 8–9 · 'In 1912 the military tailor…' over slots 10–11.\nPROVISIONAL: M-108/M-109 pending: rights-mapillary · S-rgs and S-liv have no source at all (fallbacks M-32 and M-34, neither of which shows the subject — S-liv especially: a Fogg engraving standing in for Livingstone is a placeholder, not a picture, and this beat should not ship until the real portrait exists) · C-07/C-08 pending cards.\nREPLACES the cut 'Verne put Fogg at No. 7 but Sheridan died at No. 14' beat (rev 2, founder's own ruling)."
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
+   "start_s": 18,
+   "end_s": 24,
+   "license": "public-domain",
+   "manifest_id": "M-32",
+   "attribution": "Savile Row, c. 1890 — Savile Row, c. 1890 — Henry Poole & Co archive photograph (Wikimedia Commons, PD)",
+   "use": "both",
+   "note": "S3.2b — Savile Row, c. 1890: the street as it stood while the RGS was at the bottom of it."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:David_Livingstone_by_Thomas_Annan.jpg",
+   "start_s": 24,
+   "end_s": 31,
+   "license": "public-domain",
+   "manifest_id": "M-120",
+   "attribution": "David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain)",
+   "use": "both",
+   "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: a public-domain portrait of David Livingstone (F-113).. The render"
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:David_Livingstone_by_Thomas_Annan.jpg",
+   "start_s": 31,
+   "end_s": 38,
+   "license": "public-domain",
+   "manifest_id": "M-120",
+   "attribution": "David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain)",
+   "use": "both",
+   "note": "WIRED 2026-09-08 (was a fallback to a picture of something else): David Livingstone, 1864 — photograph by Thomas Annan, National Galleries of Scotland (Wikimedia Commons, public domain) | previous WANTED note: PENDING STILL, not in the manifest. WANTED: same plate, second cut: a slow push into the face. PICTURE CARRIES"
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/cards/c-07-1872-at-no-1.svg",
+   "start_s": 38,
+   "end_s": 48,
+   "license": "generated",
+   "manifest_id": "C-07",
+   "attribution": "Yunyou studio, generated",
+   "use": "both",
+   "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 1872. At No. 1: the headquarters of British exploration. | S3.4 — full-frame card. Nothing spoken over it; the card is read, not narrated."
+  },
+  {
+   "kind": "footage",
+   "ref": "media/files/m109-savile-row-360-north.mp4",
+   "start_s": 48,
+   "end_s": 62,
+   "license": "cc-by-sa-4.0",
+   "manifest_id": "M-109",
+   "attribution": "Mapillary / Stefdegreef (2024) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+   "use": "both",
+   "audio": "mute",
+   "note": "S3.5 — slow pan up the east side of the Row. Source in-point 00:06. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+   "sa": true,
+   "fallback": "M-77a"
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
+   "start_s": 62,
+   "end_s": 71,
+   "license": "public-domain",
+   "manifest_id": "M-34",
+   "attribution": "Phileas Fogg, frontispiece by Alphonse de Neuville, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+   "use": "both",
+   "note": "S3.6a — Neuville's Fogg, slow push."
+  },
+  {
+   "kind": "image",
+   "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_05.jpg",
+   "start_s": 71,
+   "end_s": 80,
+   "license": "public-domain",
+   "manifest_id": "M-50",
+   "attribution": "Passepartout — Neuville / Benett plate 05, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+   "use": "both",
+   "note": "S3.6b — Neuville's Passepartout, slow push."
+  },
+  {
+   "kind": "footage",
+   "ref": "media/files/m108-savile-row-walk-south.mp4",
+   "start_s": 80,
+   "end_s": 87,
+   "license": "cc-by-sa-4.0",
+   "manifest_id": "M-108",
+   "attribution": "Mapillary / asturksever (2022) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+   "use": "both",
+   "audio": "mute",
+   "note": "S3.7a — No. 1's façade / the shopfront today. Source in-point 00:10. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+   "sa": true,
+   "fallback": "M-77c"
+  },
+  {
+   "kind": "generated",
+   "ref": "generated/cards/c-08-1912-38000-pounds.svg",
+   "start_s": 87,
+   "end_s": 95,
+   "license": "generated",
+   "manifest_id": "C-08",
+   "attribution": "Yunyou studio, generated",
+   "use": "both",
+   "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 1912  ·  £38,000 | S3.7b — full-frame card as the sentence lands."
+  },
+  {
+   "kind": "audio",
+   "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+   "start_s": 0,
+   "end_s": 95,
+   "license": "public-domain",
+   "manifest_id": "M-41",
+   "attribution": "Arthur Sullivan, 'Overture di Ballo' (1870), US Marine Band (Wikimedia Commons, PD)",
+   "use": "both",
+   "note": "Sullivan low under the whole block; lifts under the card at 87 s."
   }
+ ],
+ "transition": {
+  "in": "cut",
+  "out": "cut to the Burlington Gardens corner",
+  "music_cue": "M-41 low; lift at 87 s"
+ },
+ "next": "clothes-then-club",
+ "sources": [
+  "F-113",
+  "F-01",
+  "F-32",
+  "F-11",
+  "F-34",
+  "F-04"
+ ],
+ "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots.",
+ "review": {
+  "fact_check": "flag",
+  "rights": "amber",
+  "qa": "pending",
+  "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S3 (95 s, 11 slots, word cap 140).\n*** CONDITIONAL BEAT — S3.6 (62–80 s), PENDING FACT-CHECKER SIGN-OFF ON F-34. *** The sentences 'The premise is an argument, not a character' / 'A newspaper table in the book says eighty days is now possible, and writers had been making that case since Suez opened' rest on F-34, which is MEDIUM confidence from a search snippet (an 1870 article in Le Magasin pittoresque arguing an eighty-day circuit was possible). The Chief's ruling 3 at the foot of rundown-film.md: the Fact-Checker must stand behind F-34 before this beat is scripted. IF F-34 FAILS: this beat loses its justification and becomes plain plot summary, which the interestingness test rejects. The replacement I would write is the same 18 s on VERIFIED ground — F-33, the three real enablers Verne's characters cite (Suez 1869, Promontory 1869, Jabalpur 1870) — i.e. 'Three things had just happened that made the arithmetic work' over the same two Neuville plates, with the four dates moved forward from scene 09 (S8.9) or duplicated. Do not render this beat until the flag clears.\nSENTENCE ↔ SLOT: 'The building on the corner…' over slot 1 · 'From 1870 to 1912…' over slots 2–3 · 'David Livingstone's body lay…' over slot 4, then HOLD 31–38 over slot 5 · SILENCE 38–48 over the card · 'And on this same two hundred and eighty metres…' over slot 7 · the conditional premise sentences over slots 8–9 · 'In 1912 the military tailor…' over slots 10–11.\nPROVISIONAL: M-108/M-109 pending: rights-mapillary · S-rgs and S-liv have no source at all (fallbacks M-32 and M-34, neither of which shows the subject — S-liv especially: a Fogg engraving standing in for Livingstone is a placeholder, not a picture, and this beat should not ship until the real portrait exists) · C-07/C-08 pending cards.\nREPLACES the cut 'Verne put Fogg at No. 7 but Sheridan died at No. 14' beat (rev 2, founder's own ruling). | 2026-09-08: real pictures wired for the wrong-picture fallbacks (Fogg engraving stood in for Livingstone and Churchill; a street plan for a bank)."
+ }
 }

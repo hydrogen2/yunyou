@@ -88,3 +88,60 @@ per-sequence parameters, so it is a five-line script to re-create.
   If the founder wants scene 05 back at 76 s, this is the one file to check.
 - **M-85 / M-86** (Pexels, Mixkit): M-84 already covers Trafalgar Square from a source whose licence we have read in
   full; Mixkit's licence text is still unread (`manifest-a7.md` decision 2).
+
+---
+
+## §A12 — the motion fetch (2026-09-08). Frame size is now **1920×1080**.
+
+**Why the frame size changed.** This file settled 1280×720 in August, when the cut was 720p. The cut is 1080p now
+(`linear/day-01-london_en.mp4` is 1920×1080) and `render_linear.mjs → segFootage()` scales *whatever it is handed* to
+1920×1080 with plain bicubic. A 1280×720 master does not avoid an upscale, it hides one. Every file below is
+1920×1080, h264 **High**, yuv420p, 25 fps, **no audio** — and for the rung-2 street imagery that is a **downscale**
+from the source, i.e. real pixels rather than invented ones. The older 720p files (m66, m67, m84, m88, m89, m81,
+m78-london-traffic) are unchanged and still upscale 1.5× inside the renderer; re-cutting them is a look change on
+approved shots, so it was left alone. `m78-strand-1903.mp4` was re-cut for a content reason (see `manifest.md` §A12.3)
+and is 1920×1080.
+
+`FF=studio/tools/render/node_modules/ffmpeg-static/ffmpeg`
+Builder: `scratchpad/work/build.py` of the A12 session — 200 lines, three helpers (`clip_from_still`, `xfade_chain`,
+`pillarbox`/`archive_window`) plus one function per output. Nothing below needs anything else.
+
+```
+PB1080(pw,ph,k)   4:3 archive film, one scale factor k, centred on the plate, warm rule at each seam:
+  scale=<pw*k>:<ph*k>:flags=lanczos, unsharp=5:5:0.45,
+  pad=1920:1080:<x>:<y>:color=0x14110D,
+  drawbox=x=<x-2>:y=0:w=2:h=1080:color=0x8A7A5E@0.7:t=fill,
+  drawbox=x=<x+sw>:y=0:w=2:h=1080:color=0x8A7A5E@0.7:t=fill, setsar=1, fps=25, format=yuv420p
+
+AW1080(pw,ph,k)   an ARCHIVE WINDOW for a source too small to fill the frame: same, but ruled on all four sides.
+
+HYPER(vf,hold,fade)  one source frame -> one clip of `hold` s: <vf> delivering 2006x1128, then
+  zoompan=z='min(1+0.045*on/n,1.045)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=n:s=1920x1080:fps=25
+  (at zoom 1.0 the 2006x1128 region is DOWNscaled to 1920x1080; at 1.045 it is 1:1 — the push can never
+   invent resolution), then xfade=fade:duration=<fade> chained in groups of 4.
+```
+
+| output | source in `src/` | recipe |
+|---|---|---|
+| `m107-savile-row-end-to-end.mp4` (18.4 s, 13.8 MB) | `kv_savile_full/1768…1789` **minus 1773, 1775, 1788** (19 frames) | HYPER, hold 1.25 s, fade 0.30. `crop=2400:1350:96:150` (above the bonnet, 16:9), `eq=brightness=0.055:contrast=1.12:saturation=1.05`, `scale=2006:1128:flags=lanczos`, `unsharp=5:5:0.5` |
+| `m108-savile-row-walk-south.mp4` (64.8 s, 51.3 MB) | `mly_m108/025…056` + `059` (33 frames) | HYPER, hold **2.40 s** (= 2.8 m per 2.4 s = **1.17 m/s, real walking pace**), fade 0.45. `crop=4032:2268:0:120` (the upper 16:9 band — the phone is tilted down, so a centred crop is tarmac), `eq=brightness=0.02:contrast=1.06:saturation=1.04`, `scale=2006:1128:flags=lanczos`, `unsharp=5:5:0.35` |
+| `m109-savile-row-360-north.mp4` (29.2 s, 21.0 MB) | `mly_m109/105, 106, 108…122` (17 frames, 5760×2880 equirect) | HYPER, hold 2.05 s, fade 0.35. **True rectilinear reprojection, not an equirect crop:** `v360=e:flat:h_fov=100:v_fov=67.6:yaw=<8→40 linear>:pitch=6:w=2006:h=1128:interp=lanczos` — the yaw ramp drifts off the travel line onto the east-side frontages, which is what the three slots ask for. 100° off 5760 px = 1600 source px, so 1.11× — the only enlargement in this pass. The bike and rider at the nadir are outside the window. |
+| `m110-tailors-1952.mp4` (87.3 s, 33.6 MB) | `m110_tailors_1952.ogv` (352×288 **SAR 12:11**) | `scale=384:288,setsar=1` (correct the sample aspect first — never stretch), then **AW1080(384,288,2.5)** → a 960×720 window, ruled, on the plate. Full frame would be 3.75×; the Donisthorpe rule and the treatment layer's 2.6 ceiling both forbid it. `-an` (the upload carries a soundtrack). Whole file, no trim — the six slots address it by source time. |
+| `m112-rough-sea-at-dover-1896.mp4` (17.4 s, 9.5 MB) | `m112_rough_sea_dover_1896.webm` | `crop=930:720:16:0` (active picture per `cropdetect`), then **PB1080(930,720,1.5)**. `-an` (vorbis track stripped). |
+| `m114-hyde-park-1896.mp4` (20.4 s, 12.5 MB) | `m114_hyde_park_1896.webm` | `crop=958:720:0:0` (full frame per `cropdetect`), then **PB1080(958,720,1.5)**. `-an`. |
+| `m115-thames-from-the-footbridge.mp4` (18.0 s, 15.1 MB) | `mly_m115/022…028, 030…036` (14 frames, 4608×2592 = native 16:9) | HYPER, hold 1.70 s, fade 0.45. `crop=4608:2592:0:0`, `eq=brightness=0.01:contrast=1.05:saturation=1.03`, `scale=2006:1128:flags=lanczos`, `unsharp=5:5:0.35`. Frame order puts the railway bridge's dark truss at 6.3–11.9 s, which is the window scene 10 slot 20 plays. |
+| `m78-strand-1903.mp4` (22.4 s, 15.2 MB) — **re-cut** | `m78_old_london_1903.webm` | `-ss 111.0 -t 22.4`, `crop=640:480:0:0`, then **PB1080(640,480,2.25)**. The old `-ss 117 -t 20` straddled the compilation's cuts at src 118.0 and 133.4; see `manifest.md` §A12.3. |
+
+## `src/_rejected/` — evidence, so nobody re-fetches or re-argues
+
+Small JPEGs showing exactly what was rejected: the Villiers Street sequence that was filed as the Charing Cross
+forecourt, the Craven Street sequence found while looking for a replacement, the British Pathé watermark on
+*Early English Traffic*, and the four frames dropped out of M-107/M-109 for a police car, an advertising
+curtain-side, a UPS van and a DHL van.
+
+## Fetched, screened, kept in `src/`, NOT normalised (no Day-1 slot)
+
+`m113_entre_calais_douvres_1897.webm` (Méliès, 1897, PD, 720×576 SAR 16:15, 68.8 s — restored title card at 0:14–0:18,
+usable window 0:20–1:08), `m118_pride_of_canterbury_1.ogg` / `_2.ogg` (Calais, CC BY-SA 4.0, 1280×720; one night, one
+day, both locked-off wide shots of a P&O ferry crossing the harbour mouth — real but barely moving).
+Both are Day 2 material and `manifest-motion.md` §4 decision 4 has not said where Dover/Calais assets live.
