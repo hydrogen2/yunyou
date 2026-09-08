@@ -129,6 +129,129 @@ node render_linear.mjs <tour.json> --scenes 1,6,9,15          # just the map and
 **Look at:** the "Overlays — not drawn" and "Shots" tables in `render-log.md`; the map at `the-world-shrinks` while the
 legs draw; the quiz cut from question to reveal; a plate-treated engraving, now large and dead steady.
 
+## 2026-09-08 — v1.2 (Engine): `media[].crop` — a rectangle of the source, in fractions
+
+**Why.** A picture is often right but has something unusable at an edge, and there was no way to say so, so the
+slot stayed stuck. The live case: the only correctly dated, public-domain, high-resolution Winston Churchill we
+can find (Agence Rol, London, 25 June 1913, **6122 × 8488**, `File:25-6-13, Londres, Mr Winston Churchill -
+btv1b53114849w.jpg`) is a full-length ceremonial shot carrying the archive's **negative number ("30703") burned
+down the right edge and the archivist's handwritten annotation along the bottom**, where the beat wants
+head-and-shoulders. At that resolution a hard crop fixes the register *and* the marks. Earlier we hit the same
+wall with an "abercrombie KIDS" shopfront beside a doorway.
+
+### The field
+
+```json
+"crop": { "x": 0.24, "y": 0.10, "w": 0.40, "h": 0.30,
+          "why": "head-and-shoulders; drops the plate edges carrying the negative number and the annotation" }
+```
+
+`x`/`y` are the **top-left corner**, all four are **fractions of the source**, 0–1, `x + w ≤ 1`, `y + h ≤ 1`.
+`why` is optional prose for review (the validator warns without it). Fractions rather than pixels so the box still
+names the same region when the file is swapped for a higher-resolution scan — pixel coordinates would then point at
+somebody's ear, and Commons re-scans. Allowed on `kind: image | generated | map`; a `crop` on footage is an error
+(trim with `start_s`/`end_s`).
+
+### Implemented once, in the shared layer
+
+`studio/player/imagelayer.mjs` gains `cropBox()` (clean fractions or null), `cropRect()` (the box in the file's own
+pixels) and `cropLabel()`. Both consumers materialise that rectangle before anything else happens — the renderer
+writes a cropped file to `.cache/img/cr_*.jpg` (`cropStill()`), the player draws it into a canvas — so there is
+literally one picture from then on and the film and the player cannot disagree.
+
+**Order of operations, documented in the layer, the schema, the README and the scene-spec template:**
+
+```
+crop  →  treatment  →  fit / upscale ceiling  →  drift
+```
+
+The treatment layer sees **only** the cropped picture: `pickTreatment()` classifies the crop, the paper plate
+**mounts the crop**, and the ambient backdrop is a blurred copy **of the crop** — otherwise the negative number we
+just removed would come back, softly, behind the picture.
+
+### The cap interaction (the part that needed deciding)
+
+The per-picture enlargement ceiling (v1.0) is applied to the **post-crop** pixels, because those are the only ones
+that still exist. Measured both ways, with `--crop-preview`:
+
+| source | box | post-crop | result on 1920×1080 |
+|---|---|---|---|
+| Churchill 6122 × 8488 | `0.24, 0.10, 0.40 × 0.30` | 2449 × 2546 | `backdrop`, **k = 0.41×** — a downscale, so no detail is invented |
+| Savile Row c. 1890, 695 × 478 | `0.30, 0.10, 0.30 × 0.55` | 209 × 263 | `plate`, **k = 2.60×** — the 2.6× ceiling binds and holds 209 px to a small paper mount instead of blowing it to 1080p |
+
+So a hard crop can demote a full-frame photograph to a paper plate: that is the cap doing exactly the job it was
+written for, not a regression. A crop **changes the aspect ratio on purpose** — that is what a crop is. **NEVER
+STRETCH is untouched**: after the crop, one `k`, aspect exact.
+
+### Fetching enough source
+
+We normally ask Commons for a frame-width (1920 px) thumbnail. Crop 40 % of that width and only ~770 px reaches the
+screen. `resolveStill()` now asks for `width / crop.w`, and once that exceeds half the file's own width it takes
+the **original** — Commons does not reliably render the large thumbnail you ask for (a 4800-px request for the
+Churchill plate came back at 3840). The player does the same, capped at 4000 px. Only stills that carry a crop pay
+for this. A **fallback** picture is never cropped: the box describes the picture that was asked for, not the one
+that turned up, and the substitution is logged.
+
+### `--crop-preview` — a content role can see the box without a render
+
+```bash
+node studio/tools/render/render_linear.mjs <tour.json> --crop-preview <scene-id> [--crop x,y,w,h] [--crop-slot n]
+node studio/tools/render/render_linear.mjs --crop-preview '<Commons File: URL or image path>' --crop x,y,w,h
+```
+
+Writes `_before.png`, `_after.png` and a side-by-side `_compare.png` per still, plus `crop-preview.json`, and
+prints source pixels → box → post-crop pixels, the treatment each way, and the scale used against the cap
+("the crop is NOT upscaled: 2449x2546 pixels shown at 0.41x"). Frames come from the **same** path as a real shot
+(`resolveStill → cropStill → pickTreatment → fitSize → segStill`, drift off). No TTS, no plan, no film, nothing
+billable, ~6 s. tour.json may be omitted entirely for a picture that is not authored into a scene yet.
+
+### Validator
+
+`media[].crop` errors: not an object · missing/non-numeric `w`/`h` · any of `x,y,w,h` outside 0–1 (with the example
+box in the message, because the likely mistake is pixels) · zero area · `x + w > 1` / `y + h > 1` · a crop on
+something that is not a still. Warnings: a box keeping under 4 % of the source area (the cap will now decide what
+it looks like — go and preview it), and a missing `why`. The schema carries the same bounds, so both the
+`jsonschema` and the light checker catch a bad box.
+
+### Also fixed here (found while testing)
+
+`segStill()` returned its scale factor `k` **only on a cache miss** — `meta.k` was assigned after the
+`if (fs.existsSync(out)) return` early exit. Every warm re-render therefore wrote "shown at 1.00x" into
+`render-log.md` for every still, whatever the picture actually did. The arithmetic was always right; the report was
+not. `k` (and `upscaled`) are now computed before the cache check.
+
+### Honesty boundary — written into the schema, the template, the README and the layer
+
+Reframing to the subject, and removing burned-in archive marks, watermarks or modern signage at an edge, are fine.
+Cropping away context that changes what the picture *means* — a date stamp, a caption identifying the subject, the
+evidence that the scene is somewhere else — is not. `crop.why` is where the author says which, and Rights and QA
+read that line.
+
+### What I did not do
+
+- **No scene file, and no `media/manifest.md`, was touched** (another agent was in them): the Churchill box above
+  is proven with `--crop-preview` on the live Commons file, not authored into a slot. Someone owning the content
+  still has to add the `crop` block to the scene and the note to the manifest.
+- **No film was rendered.**
+- SVG generated assets ignore `crop` (they are rasterised to the frame; change the artboard) — the renderer warns.
+- The player's small corner **inset** (`insetImage()`, card scenes) ignores `crop`; only the full-frame still path
+  (`mountImage()`) honours it. Nothing in Day 1 or Day 2 crops an inset, and the film has no insets at all.
+- The player's `smoke_images.mjs` has 16 failures on Day 1 **before and after** this change (its scene indices
+  pre-date the D9 film rewrite, so it drives `video` scenes that mount no still). Verified identical against a
+  pristine `index.html` served side by side; the crop path itself was proved with a two-scene fixture.
+
+### How to run / what to look at
+
+```bash
+node studio/tools/render/render_linear.mjs \
+  --crop-preview 'https://commons.wikimedia.org/wiki/File:25-6-13, Londres, Mr Winston Churchill - btv1b53114849w.jpg' \
+  --crop 0.24,0.10,0.40,0.30 --out /tmp/crop-out --preview-out /tmp/crop
+python3 studio/tools/validate.py products/around-the-world-80-days/day-01-london/scenes/*.scene.json
+```
+
+Look at `_compare.png`: left, the full plate with its dark edges, "30703" down the right side and the handwritten
+annotation along the bottom; right, head-and-shoulders with all of it gone, at 0.41× of its own pixels.
+
 ## 2026-08-18 — engine-tools: Day 1 typeset cards G-04/G-05/G-06/G-08
 - New generator `studio/tools/gen/cards_day01.mjs` (data block at top → SVGs under `products/around-the-world-80-days/day-01-london/generated/g-0{4,5,6,8}/`, then PNGs via `svg2png.mjs`). Run: `node studio/tools/gen/cards_day01.mjs [g-04 g-05 g-06 g-08] [--no-png]`.
 - G-04 exposes the tap contract for the card renderer: `g.row#row-N[data-option=i][role=button][tabindex=0]` with a full-width `rect.hit` (172 px tall at 2176×1812). Player wiring is a separate change (not in this commit).

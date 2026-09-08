@@ -89,7 +89,9 @@ default that is a hard error, because a Mandarin cut that speaks English in seve
 sentences) · `--no-tts` (captions only) · `--no-drift` (hold every still still, the player's `?drift=0`) ·
 `--cuts path.json` · `--player https://localhost/player/` · `--keep` (keep `.work/`) ·
 `--zh-align proportional|whole` · `--plate-strict` · `--plate-min-area 0.10` · `--xfade-group 4` ·
-`--python ~/hilbert/.venv/bin/python`.
+`--python ~/hilbert/.venv/bin/python` ·
+`--crop-preview <scene-id | Commons File: URL | image path>` with `--crop x,y,w,h`, `--crop-slot n`,
+`--preview-out <dir>` (before/after frames for a `media[].crop` box; renders no film — see "Stills" below).
 
 Requirements: Node 22, the Playwright chromium in `~/.cache/ms-playwright`, the player served over HTTPS (default
 `https://localhost/player/`, cert errors ignored), internet for Commons, `~/hilbert` with its venv for the voice,
@@ -310,7 +312,97 @@ with `python3 studio/tools/gen/g01_route_map.py`.
 
 `studio/player/imagelayer.mjs` is imported by BOTH the player and this renderer (like `panomove.mjs`), so
 `pickTreatment()` and `imageSlots()` have exactly one definition. Two rules are not settings: **never stretch,
-never crop the subject away.**
+and the layer never crops a picture to fit the frame.** (An authored `media[].crop` is a different thing — a
+content decision, taken once, in the scene file. See the next section.)
+
+### `media[].crop` — a rectangle of the source, in fractions (v1.2, 2026-09-08)
+
+A picture is often right but has something unusable at an edge. The case that forced this: the only correctly
+dated, public-domain, high-resolution Winston Churchill we can find (Agence Rol, London, 25 June 1913,
+**6122 × 8488**) is a full-length ceremonial shot carrying the archive's **negative number down the right edge and
+the archivist's handwritten annotation along the bottom**, where the beat wants head-and-shoulders. Earlier, an
+"abercrombie KIDS" shopfront sat beside the doorway we wanted. Neither was expressible, so the slot was stuck.
+
+```json
+{ "kind": "image", "manifest_id": "M-xx", "ref": "https://commons.wikimedia.org/wiki/File:…",
+  "crop": { "x": 0.24, "y": 0.10, "w": 0.40, "h": 0.30,
+            "why": "head-and-shoulders; drops the plate edges carrying the negative number and the annotation" } }
+```
+
+**Fractions of the source, not pixels** (`x`,`y` = top-left, all four 0–1). Fractions survive swapping the file for
+a higher-resolution scan of the same image — pixel coordinates would then point at somebody's ear. The validator
+rejects out-of-range, zero-area and off-the-edge boxes with a message that says which; the layer additionally
+clamps at runtime so a bad box never produces a black frame.
+
+**Order of operations — this is the whole design:**
+
+```
+crop  →  treatment  →  fit / upscale ceiling  →  drift
+```
+
+The crop is **materialised first** (`cropStill()` writes a cropped file to the cache; the player does the same with
+a canvas), so everything downstream sees *only* the cropped picture: `pickTreatment()` classifies the crop, the
+paper mount **mounts the crop**, the ambient backdrop is a blurred copy **of the crop** — the negative number must
+not come back, softly, behind the picture — and the drift moves within the crop.
+
+**The ceiling therefore measures the POST-CROP pixels**, because those are the only pixels that still exist. Both
+directions are real and both are correct:
+
+| source | box | post-crop | on a 1920×1080 frame |
+|---|---|---|---|
+| Churchill plate 6122 × 8488 | `0.24, 0.10, 0.40 × 0.30` | **2449 × 2546** | `backdrop`, k = **0.41×** — a downscale; nothing is invented |
+| Savile Row c. 1890, 695 × 478 | `0.30, 0.10, 0.30 × 0.55` | **209 × 263** | `plate`, k = **2.60×** — the 2.6× ceiling binds and holds it to a small paper mount instead of blowing 209 px to 1080p |
+
+So a hard crop can demote a picture that filled the frame to a paper plate. That is the ceiling doing its job.
+A crop **changes the aspect ratio on purpose** — that is what a crop is; **never stretch** is untouched (one `k`,
+aspect exact, after the crop).
+
+Two more things the renderer does for a cropped still:
+- **it fetches more source.** We normally ask Commons for a frame-width (1920) thumbnail; if 40 % of the width
+  survives the crop that leaves ~770 px. `resolveStill()` asks for `width / crop.w`, and once that is more than
+  half the file's own width it takes the **original** — Commons does not always render the large thumbnail you ask
+  for (a 4800-px request for the Churchill plate came back at 3840), and for a crop that silently costs resolution.
+- **it never crops a fallback.** If the picture cannot be fetched and `media[].fallback` is used, the box describes
+  a picture that is not on screen, so it is dropped and the substitution is logged.
+
+`kind: generated` PNGs are cropped like any still; an **SVG** is not — it is rasterised to the frame, so change the
+artboard instead. The renderer warns rather than silently ignoring the key.
+
+**The honesty boundary.** Reframing to the subject, and removing burned-in archive marks, watermarks or modern
+signage at an edge, are legitimate. Cropping away context that changes what the picture *means* — a date stamp, a
+caption identifying the subject, the evidence that the scene is somewhere else — is not. `crop.why` is where you
+say which; Rights and QA read it. Same wording in `studio/templates/scene-spec.md`.
+
+### `--crop-preview` — see the box before the film (v1.2)
+
+```bash
+# every still in a scene, with a box you have not authored yet
+node studio/tools/render/render_linear.mjs products/around-the-world-80-days/day-01-london/tour.json \
+     --crop-preview savile-row --crop 0.30,0.10,0.30,0.55 --crop-slot 4 --preview-out /tmp/crop
+
+# a picture that is not in any scene yet — no tour.json at all
+node studio/tools/render/render_linear.mjs \
+     --crop-preview 'https://commons.wikimedia.org/wiki/File:25-6-13, Londres, Mr Winston Churchill - btv1b53114849w.jpg' \
+     --crop 0.24,0.10,0.40,0.30 --out /tmp/crop-out --preview-out /tmp/crop
+```
+
+Writes `<label>_before.png`, `<label>_after.png` and a side-by-side `<label>_compare.png` (plus
+`crop-preview.json`), and prints what the box actually yields:
+
+```
+  preview_620b6c26  CROP-PREVIEW
+    before     1920x2662 (what plays today) → backdrop, shown at 1.00x (cap 2.0x)
+    fetched    6122x8488 for the crop (a crop needs more source than a frame-width thumbnail)
+    crop 0.240,0.100 0.400x0.300 -> 2449x2546 of 6122x8488 (12 % of the area)
+    cropped    2449x2546 → backdrop, shown at 0.41x (cap 2.0x, measured on the POST-CROP pixels)
+    the crop is NOT upscaled: 2449x2546 pixels shown at 0.41x
+```
+
+Each frame goes through the **same** path as a real shot (`resolveStill → cropStill → pickTreatment → fitSize →
+segStill`) with the drift switched off, so it is the composition the film will cut, not an approximation. No TTS,
+no scene plan, no film is rendered, and nothing is billable — one Commons API call and one image download, cached.
+It takes about six seconds. A `--crop-slot` that names something that is not a still, and a still that is not on
+disk yet, are reported by name instead of failing.
 
 ### "Never upscale" is retired — read this before reinstating it (v1.0, 2026-09-08)
 

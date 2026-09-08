@@ -32,6 +32,13 @@
  *   --no-drift           hold every still dead still (the player's ?drift=0)
  *   --max-upscale <k>    override the per-picture enlargement ceiling (default: 3.0 generated/map, 2.6 plates, 2.0 photos)
  *   --long-shot <s>      threshold for the "where the film holds one picture" table in render-log.md (default 20)
+ *
+ * Crop preview (v1.2) — see a media[].crop box WITHOUT rendering a film:
+ *   --crop-preview <scene-id>            every still in that scene: before/after frames + what the box yields
+ *   --crop-preview <Commons File: URL>   or a local image path; tour.json may then be omitted entirely
+ *   --crop x,y,w,h       try a box that is not in the scene file yet (fractions of the source, 0-1)
+ *   --crop-slot <n>      which media[] entry the --crop box applies to (1-based; default: every still)
+ *   --preview-out <dir>  where the frames go (default <out>/crop-preview)
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -52,11 +59,14 @@ const FFMPEG = ffmpegPath, FFPROBE = ffprobeStatic.path;
 // ---------------------------------------------------------------- args
 const argv = process.argv.slice(2); const args = { _: [] };
 for (let i = 0; i < argv.length; i++) { const a = argv[i]; if (a.startsWith('--')) { const k = a.slice(2); const nx = argv[i + 1]; if (nx !== undefined && !nx.startsWith('--')) { args[k] = nx; i++; } else args[k] = true; } else args._.push(a); }
-if (!args._[0]) { console.error('usage: node render_linear.mjs <tour.json> [--out dir] [--size 1280x720] [--plan] ...'); process.exit(2); }
+// v1.2: --crop-preview may run with NO tour.json at all (preview a Commons URL or a file before it is authored
+// into a scene), so the positional argument is only required for an actual render.
+const CROP_PREVIEW = args['crop-preview'] !== undefined ? String(args['crop-preview']) : null;
+if (!args._[0] && !CROP_PREVIEW) { console.error('usage: node render_linear.mjs <tour.json> [--out dir] [--size 1280x720] [--plan] ...\n       node render_linear.mjs [tour.json] --crop-preview <scene-id | Commons File: URL | image path> [--crop x,y,w,h]'); process.exit(2); }
 
-const TOUR_PATH = path.resolve(args._[0]);
-const CHAPTER_DIR = path.dirname(TOUR_PATH);
-const OUT = path.resolve(args.out || path.join(CHAPTER_DIR, 'linear'));
+const TOUR_PATH = args._[0] ? path.resolve(args._[0]) : null;
+const CHAPTER_DIR = TOUR_PATH ? path.dirname(TOUR_PATH) : process.cwd();
+const OUT = path.resolve(args.out || (TOUR_PATH ? path.join(CHAPTER_DIR, 'linear') : path.join(process.cwd(), 'crop-preview')));
 const CACHE = path.join(OUT, '.cache'); const WORK = path.join(OUT, '.work');
 const [W, H] = (args.size || '1920x1080').split('x').map(Number); const FPS = +(args.fps || 25);
 // v0.9: the voice is Kokoro, run locally through ~/hilbert (tts_kokoro.py). VOICE/VOICE2 are speaker LABELS now —
@@ -148,6 +158,35 @@ async function realPixels(file) {
     const [w, h] = out.trim().split(',').map(Number); if (w > 0) { fs.writeFileSync(k, `${w}x${h}`); return { w, h }; } } catch { }
   return { w: 0, h: 0 };
 }
+/**
+ * v1.2 (2026-09-08) — media[].crop, materialised. THE ORDER OF OPERATIONS: crop FIRST, then everything downstream
+ * (pickTreatment, the upscale cap, the paper plate, the blurred backdrop, the drift) sees ONLY the cropped
+ * picture, because that is the only file it is handed. The box itself lives in studio/player/imagelayer.mjs
+ * (cropRect: fractions of the source -> this file's own pixels) so the film and any future player cannot disagree.
+ *
+ * Consequences, deliberate:
+ *   · upscaleCap() measures the POST-CROP pixels. A quarter of the 6122x8488 Churchill plate is still ~1500 px
+ *     and the cap never binds; a quarter of a 700-px plate is ~175 px and the cap is exactly what stops us
+ *     presenting it as a 1080p photograph. A hard crop can demote a "fill" picture to a paper plate — correct.
+ *   · the backdrop is a blurred copy of the CROP, not of the original: the negative number and the annotation we
+ *     just cropped off must not come back, softly, behind the picture.
+ *   · aspect ratio changes on purpose. NEVER STRETCH is untouched — one k, aspect exact, after the crop.
+ * Never applied to a fallback picture: the box describes the original, and would land somewhere arbitrary on
+ * a different image (see resolveStill).
+ */
+async function cropStill(m, r) {
+  const rect = IL.cropRect(m, r.w, r.h);
+  if (!rect) return r;
+  const jpg = /\.jpe?g$/i.test(r.file);
+  const out = path.join(CACHE, 'img', `cr_${sha(`${r.file}|${rect.x},${rect.y},${rect.w}x${rect.h}`)}` + (jpg ? '.jpg' : '.png'));
+  if (!fs.existsSync(out)) {
+    await ffmpeg(['-i', r.file, '-vf', `crop=${rect.w}:${rect.h}:${rect.x}:${rect.y}`, '-frames:v', '1',
+      ...(jpg ? ['-q:v', '2'] : []), out]);
+  }
+  const px = await realPixels(out);
+  return { ...r, file: out, w: px.w || rect.w, h: px.h || rect.h,
+           crop: rect, cropLabel: IL.cropLabel(m, r.w, r.h), srcW: r.w, srcH: r.h };
+}
 async function commonsImage(pageUrl, width = Math.max(W, 1920)) {
   const info = await commonsInfo(pageUrl, width);
   const ext = (info.thumburl.match(/\.(jpe?g|png|gif|svg|webp|tiff?)(\?|$)/i) || [, 'jpg'])[1].toLowerCase();
@@ -163,7 +202,21 @@ async function commonsAudio(pageUrl) { const info = await commonsInfo(pageUrl, 6
  * Commons through the API, anything else by straight download — and honours `media[].fallback` on failure, which
  * is what the player has done since v0.8. A still that cannot be fetched at all raises, and the caller degrades.
  */
-async function resolveStill(m, width = Math.max(W, 1920)) {
+async function resolveStill(m, width = Math.max(W, 1920), opts = {}) {
+  // v1.2: a CROP needs more source than the frame. We normally ask Commons for a frame-width thumbnail (1920);
+  // if only 40 % of that width survives the crop, the picture reaching the screen is ~770 px and the upscale cap
+  // — correctly, on the post-crop pixels — holds it back. So ask for width/crop.w instead. And once we need more
+  // than half the file's own width, ask for the ORIGINAL (width = natw + 1 makes commonsInfo hand back ii.url):
+  // Commons does not always render the exact large thumbnail we ask for — a 4800-px request for the 6122x8488
+  // Churchill plate came back as 3840 — and for a crop that silently costs resolution we could have had. The
+  // original is one 7 MB download, cached, and only for stills that actually carry a crop box.
+  const box = IL.cropBox(m);
+  if (box && isCommons(m.ref)) {
+    const need = Math.ceil(width / Math.max(0.02, box.w));
+    const probe = await commonsInfo(m.ref, width).catch(() => null);
+    const natw = probe ? (probe.natw || 0) : 0;
+    width = (!natw) ? need : (need >= natw * 0.5 ? natw + 1 : need);
+  }
   const one = async (ref) => {
     if (isCommons(ref)) { const { file, info } = await commonsImage(ref, width);
       return { file, w: info.w, h: info.h, credit: m.attribution || `${info.artist} — ${info.license} (Wikimedia Commons)` }; }
@@ -173,12 +226,16 @@ async function resolveStill(m, width = Math.max(W, 1920)) {
     if (!px.w) throw new Error('not an image: ' + ref);
     return { file: f, w: px.w, h: px.h, credit: m.attribution || '' };
   };
-  try { return await one(m.ref); }
+  // opts.applyCrop === false: fetch at the crop-aware size but hand back the WHOLE picture (--crop-preview's
+  // "before" side needs the uncropped source at the same resolution the cropped shot would have had).
+  try { const r = await one(m.ref); return opts.applyCrop === false ? r : await cropStill(m, r); }
   catch (e) {
     if (!m.fallback) throw e;
     const fb = /^M-/.test(m.fallback) ? m.fallback : m.fallback;      // a bare M-xx is resolved by the caller's media list
     const r = await one(fb);
-    r.fellBack = `${m.manifest_id || m.ref} could not be fetched (${String(e.message).slice(0, 80)}) — used media[].fallback`;
+    // NOT cropped: media[].crop names a region of the picture that was asked for, not of the one that turned up.
+    r.fellBack = `${m.manifest_id || m.ref} could not be fetched (${String(e.message).slice(0, 80)}) — used media[].fallback`
+      + (IL.cropBox(m) ? '; media[].crop was NOT applied (the box describes the original picture)' : '');
     return r;
   }
 }
@@ -580,14 +637,14 @@ async function segStill(img, dur, m, nw, nh, attribution) {
   const frames = Math.max(2, Math.round(dur * FPS));
   const key = sha(['v10', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), attribution || ''].join('|'));
   const out = path.join(CACHE, 'seg', `im_${key}.mp4`);
-  const meta = { treat, nw, nh, maxK };
-  if (fs.existsSync(out)) return { file: out, ...meta };
-
   const from = dr.on ? dr.from : 1;                        // canvas is 1/from larger so the zoom ENDS at 1:1
   const BW = Math.round(W / from) + (Math.round(W / from) % 2), BH = Math.round(H / from) + (Math.round(H / from) % 2);
   const fit = treat === 'plate' ? plateGeom().f : IL.fitSize(nw, nh, W, H, band, maxK);   // k <= maxK, aspect exact
   const fw = fit.w + (fit.w % 2), fh = fit.h + (fit.h % 2);
-  meta.k = fit.k;
+  // v1.2: `k` is computed BEFORE the cache check. It used to be filled in only on a cache miss, so on any warm
+  // re-render every still logged "shown at 1.00x" in render-log.md — the arithmetic was right, the report was not.
+  const meta = { treat, nw, nh, maxK, k: fit.k, upscaled: fit.upscaled };
+  if (fs.existsSync(out)) return { file: out, ...meta };
   const oy = Math.round((BH - band * BH / H - fh) / 2);
   const wantBack = (treat === 'backdrop' || treat === 'plate');
 
@@ -940,9 +997,123 @@ function captionChunks(text, words, maxChars = 84) {
   return chunks;
 }
 
+// ---------------------------------------------------------------- v1.2: --crop-preview
+/**
+ * A content role proposes a `media[].crop` box and wants to know what it actually yields — before authoring it,
+ * and without waiting 20 minutes for a film. This renders ONE frame per still through the SAME path the film
+ * uses (resolveStill -> cropStill -> pickTreatment -> fitSize -> segStill), twice: the picture as it plays today,
+ * and the picture with the box applied. Drift is switched off for the preview so both frames are the static,
+ * honest composition; nothing else differs from a real shot.
+ *
+ *   node studio/tools/render/render_linear.mjs <tour.json> --crop-preview <scene-id>
+ *   node studio/tools/render/render_linear.mjs --crop-preview 'https://commons.wikimedia.org/wiki/File:Foo.jpg' --crop 0.28,0.05,0.34,0.30
+ *
+ * It prints, per still: source pixels -> crop box -> post-crop pixels, the treatment each way, and the scale k
+ * actually used against the per-picture cap — i.e. exactly whether the crop pushed the picture past its own
+ * resolution. THE CAP IS MEASURED ON THE POST-CROP PIXELS; that is the number to read.
+ */
+function parseCropArg(v) {
+  const n = String(v).split(/[,\s:xX]+/).map(Number).filter(x => Number.isFinite(x));
+  if (n.length !== 4) throw new Error(`--crop wants four numbers "x,y,w,h" in fractions of the source (0-1), got "${v}"`);
+  return { x: n[0], y: n[1], w: n[2], h: n[3] };
+}
+async function previewStill(m, outDir, label) {
+  // the picture as it is on disk / on Commons, uncropped, whatever the scene says
+  const bare = { ...m, crop: undefined };
+  const localFile = path.resolve(CHAPTER_DIR, String(m.ref || ''));
+  const isLocal = !/^https?:/i.test(String(m.ref)) && fs.existsSync(localFile) && fs.statSync(localFile).isFile();
+  const local = async () => { const px = await realPixels(localFile); return { file: localFile, w: px.w, h: px.h, credit: m.attribution || '' }; };
+  // BEFORE = exactly what the film shows today (frame-width thumbnail, no crop).
+  const r0 = isLocal ? await local() : await resolveStill(bare);
+  if (!(r0.w > 0)) throw new Error(`could not read the pixels of ${m.ref}`);
+  // AFTER = the crop, taken from the crop-aware fetch (resolveStill asks Commons for width/crop.w, or the original).
+  const rsrc = IL.cropBox(m) ? (isLocal ? await local() : await resolveStill(m, Math.max(W, 1920), { applyCrop: false })) : r0;
+  const r1 = await cropStill(m, rsrc);
+  const still = async (r, tag) => {
+    const mm = { ...m, drift: false };                       // a preview frame is the static composition
+    const seg = await segStill(r.file, 2 / FPS, mm, r.w, r.h, r.credit || m.attribution || '');
+    const png = path.join(outDir, `${label}_${tag}.png`);
+    await ffmpeg(['-i', seg.file, '-frames:v', '1', png]);
+    const cap = upscaleCap(mm, r.w, r.h);
+    return { png, treat: seg.treat, k: seg.k || 1, cap, w: r.w, h: r.h };
+  };
+  const before = await still(r0, 'before');
+  const after = r1.crop ? await still(r1, 'after') : null;
+  if (after) {                                               // one file the founder can look at: before | after
+    const cmp = path.join(outDir, `${label}_compare.png`);
+    await ffmpeg(['-i', before.png, '-i', after.png, '-filter_complex',
+      '[0:v]scale=940:529[a];[1:v]scale=940:529[b];[a][b]hstack=inputs=2,pad=1900:553:10:12:color=0x101010', '-frames:v', '1', cmp]);
+    after.compare = cmp;
+  }
+  return { before, after, crop: r1.crop || null, cropLabel: r1.cropLabel || '',
+           src: { w: r0.w, h: r0.h, file: r0.file }, cropSrc: { w: rsrc.w, h: rsrc.h, file: rsrc.file } };
+}
+async function runCropPreview(target) {
+  const outDir = path.resolve(args['preview-out'] || path.join(OUT, 'crop-preview'));
+  fs.mkdirSync(outDir, { recursive: true });
+  const override = args.crop !== undefined ? parseCropArg(args.crop) : null;
+  const onlySlot = args['crop-slot'] !== undefined ? +args['crop-slot'] : null;
+  // what are we previewing? a scene id from the tour, or a bare picture (URL / path) that is not authored yet.
+  let items = [];
+  const looksLikeRef = /^https?:/i.test(target) || /\.(jpe?g|png|gif|webp|tiff?|svg)$/i.test(target) || fs.existsSync(path.resolve(CHAPTER_DIR, target));
+  if (TOUR_PATH && !looksLikeRef) {
+    const tour = JSON.parse(fs.readFileSync(TOUR_PATH, 'utf8'));
+    const scenes = tour.chapters.flatMap(c => c.scenes || []);
+    const sc = scenes.find(x => x.id === target);
+    if (!sc) throw new Error(`no scene "${target}" in ${path.basename(TOUR_PATH)}. Scenes: ${scenes.map(x => x.id).join(', ')}`);
+    const stills = (sc.media || []).map((m, i) => ({ m, i })).filter(x => ['image', 'generated', 'map'].includes(x.m.kind) && !/\.svg$/i.test(String(x.m.ref)));
+    if (!stills.length) throw new Error(`scene "${target}" has no still pictures to crop`);
+    // --crop-slot is a 1-based index into media[], the same number the validator prints as media[i] + 1.
+    if (onlySlot !== null && !stills.some(x => x.i + 1 === onlySlot)) {
+      throw new Error(`--crop-slot ${onlySlot} is not a still in "${target}". Its stills are slot(s) ` +
+        stills.map(x => `${x.i + 1} (${x.m.manifest_id || x.m.ref})`).join(', '));
+    }
+    items = stills.map(({ m, i }) => ({
+      m: (override && (onlySlot === null || onlySlot === i + 1)) ? { ...m, crop: override } : m,
+      label: `${sc.id}_slot${String(i + 1).padStart(2, '0')}`,
+      // a pending / not-yet-fetched still has no pixels to crop; say so instead of chasing its fallback, whose
+      // box would be somebody else's picture anyway.
+      absent: (!/^https?:/i.test(String(m.ref)) && !fs.existsSync(path.resolve(CHAPTER_DIR, String(m.ref)))) ? String(m.ref) : null
+    }));
+  } else {
+    items = [{ m: { kind: 'image', ref: target, manifest_id: 'CROP-PREVIEW', attribution: args.attribution || '', crop: override || undefined },
+               label: 'preview_' + sha(target).slice(0, 8) }];
+  }
+  console.log(`crop preview → ${outDir}  (frame ${W}x${H}, drift off)\n`);
+  const rows = [];
+  for (const it of items) {
+    if (it.absent) { console.log(`  ${it.label}  ${it.m.manifest_id || it.m.ref}\n    skipped    no file at \`${it.absent}\` (pending / not fetched) — there are no pixels to crop yet\n`); continue; }
+    let r; try { r = await previewStill(it.m, outDir, it.label); }
+    catch (e) { console.log(`  ${it.label}: FAILED — ${e.message}`); continue; }
+    const b = r.before, a = r.after;
+    console.log(`  ${it.label}  ${it.m.manifest_id || it.m.ref}`);
+    console.log(`    before     ${b.w}x${b.h} (what plays today) → ${b.treat}, shown at ${b.k.toFixed(2)}x (cap ${b.cap.toFixed(1)}x)${b.k > 1.001 ? ' — enlarged' : ''}`);
+    if (a && (r.cropSrc.w !== b.w)) console.log(`    fetched    ${r.cropSrc.w}x${r.cropSrc.h} for the crop (a crop needs more source than a frame-width thumbnail)`);
+    if (!a) console.log(`    crop       (none — no media[].crop and no --crop; only the "before" frame was written)`);
+    else {
+      console.log(`    ${r.cropLabel}`);
+      console.log(`    cropped    ${a.w}x${a.h} → ${a.treat}, shown at ${a.k.toFixed(2)}x (cap ${a.cap.toFixed(1)}x, measured on the POST-CROP pixels)`);
+      console.log(`    ${a.k > 1.001 ? `NOTE: the crop is enlarged ${a.k.toFixed(2)}x past its own ${a.w}x${a.h} pixels (the cap allows ${a.cap.toFixed(1)}x)`
+                                     : `the crop is NOT upscaled: ${a.w}x${a.h} pixels shown at ${a.k.toFixed(2)}x`}`);
+      console.log(`    compare    ${a.compare}`);
+    }
+    console.log(`    frames     ${b.png}${a ? '\n               ' + a.png : ''}\n`);
+    rows.push({ label: it.label, ref: it.m.ref, ...r });
+  }
+  fs.writeFileSync(path.join(outDir, 'crop-preview.json'), JSON.stringify(rows, null, 1));
+  console.log(`  ${rows.length} still(s) previewed · machine-readable: ${path.join(outDir, 'crop-preview.json')}`);
+  console.log(`  Remember: the box is FRACTIONS of the source (x,y = top-left), so it survives a higher-resolution rescan.`);
+}
+
 // ---------------------------------------------------------------- main
 (async () => {
   const t0 = Date.now();
+  // v1.2: preview a crop box and stop. Nothing else runs — no TTS, no scene plan, no film.
+  if (CROP_PREVIEW) {
+    try { await runCropPreview(CROP_PREVIEW); }
+    catch (e) { console.error('crop preview: ' + e.message); if (browser) await browser.close(); process.exit(2); }
+    if (browser) await browser.close(); return;
+  }
   const warnings = [];                 // declared first: the pre-render checks below already have things to say
   // Every slot that did not get the picture it asked for, and every asset that is simply not there. Printed as a
   // table at the END of the run (console + render-log.md + linear/<chapter>_<lang>.gaps.json) so the founder is
@@ -1431,10 +1602,13 @@ function captionChunks(text, words, maxChars = 84) {
       useCredit(m);
       if (r.fellBack) warnings.push(`${tag}: ${r.fellBack}`);
       const att = r.credit;
+      // r.w x r.h are POST-CROP pixels (resolveStill applied media[].crop), so the treatment and the upscale
+      // cap below are decided on the pixels that actually reach the screen.
       const treat = IL.pickTreatment(m, r.w, r.h, W, H, cfgFor(m, r.w, r.h));
       const src = isCommons(m.ref) ? 'Commons still' : 'still';
+      const cropTxt = r.crop ? ` [${r.cropLabel}]` : '';
       return { kind: 'still', file: r.file, dur, m, nw: r.w, nh: r.h, treat, attribution: att,
-        label: `${m.manifest_id} ${src} ${r.w}x${r.h}`, src: `${m.manifest_id} ${src} ${r.w}x${r.h} → ${treat}` }; };
+        label: `${m.manifest_id} ${src} ${r.w}x${r.h}${cropTxt}`, src: `${m.manifest_id} ${src} ${r.w}x${r.h}${cropTxt} → ${treat}` }; };
     const clipSeg = async (m, dur, inS = m.start_s || 0, outS = m.end_s || 0) => { const { channel, videoTitle } = ytLabel(m); const th = await ytThumb(m.ref); useCredit(m); clipCards++; const html = T.clipCard({ channel, videoTitle, videoId: m.ref, inS, outS, sceneTitle: s.title, thumbUrl: th ? 'file://' + th : '', note: hint.clip_note || '' }); return { kind: 'png', file: await shotHtml(html, `clip_${m.ref}`), dur, src: `${m.manifest_id} clip card (YouTube ${m.ref} ${mmss(inS)}–${mmss(outS)}) — no download` }; };
     const footageSeg = async (m, dur, inS = m.start_s || 0) => { const f = path.join(CHAPTER_DIR, m.ref); if (!fs.existsSync(f)) return await pendingSeg(m, dur); useCredit(m); footageSegs++; return { kind: 'footage', file: f, in_s: inS, dur, attribution: m.attribution || '', src: `${m.manifest_id} local footage ${m.ref}${inS ? ' from ' + mmss(inS) : ''} — self-hosted, licence-clean` }; };
     const pendingSeg = async (m, dur) => ({ kind: 'png', file: await shotHtml(T.pendingCard({ sceneTitle: LT.title(s), assetId: m.manifest_id, spec: (m.note || '').slice(0, 140) }), `pending_${m.manifest_id}`), dur, src: `${m.manifest_id} pending-asset card` });
@@ -1475,10 +1649,15 @@ function captionChunks(text, words, maxChars = 84) {
         if (/\.svg$/i.test(m.ref)) {
           const png = await svgToPng(gf, W, H);
           useCredit(m);
+          // an SVG is rasterised to the FRAME, so there is nothing to reframe and a crop would have to be
+          // stretched back to 16:9. Redraw the asset instead — it is ours.
+          if (IL.cropBox(m)) warnings.push(`${tag}: ${m.manifest_id} is an SVG rasterised to ${W}x${H}; media[].crop is IGNORED (change the artboard, do not crop our own vector output)`);
           return { kind: 'png', file: png, dur, src: `${m.manifest_id} generated ${path.basename(m.ref)} (SVG rasterised ${W}x${H})` };
         }
-        const gp = await realPixels(gf); useCredit(m);
-        return { kind: 'still', file: gf, dur, m, nw: gp.w, nh: gp.h, src: `${m.manifest_id} generated asset ${gp.w}x${gp.h}` };
+        const gp0 = await realPixels(gf); useCredit(m);
+        const gr = await cropStill(m, { file: gf, w: gp0.w, h: gp0.h });     // v1.2: crop first, same as any still
+        return { kind: 'still', file: gr.file, dur, m, nw: gr.w, nh: gr.h,
+                 src: `${m.manifest_id} generated asset ${gr.w}x${gr.h}${gr.crop ? ` [${gr.cropLabel}]` : ''}` };
       }
       if (kind === 'footage') {
         if (/^https?:/i.test(String(m.ref))) return await useFallback(m, dur, sl, 'footage ref is a URL, not a local file (nothing is downloaded from a video host)', depth);
@@ -1631,7 +1810,9 @@ function captionChunks(text, words, maxChars = 84) {
           const d = Math.max(4, ((m.end_s ?? s.duration_s) - (m.start_s ?? 0)) * f);
           if (!fs.existsSync(path.join(CHAPTER_DIR, m.ref))) { segs.push(await pendingSeg(m, d)); continue; }
           if (/\.svg$/i.test(m.ref)) segs.push(await playerSeg(`showScene(${n}).then(()=>seek(${m.start_s ?? 0}))`, d, `${tag}_${sha(m.ref)}`));   // ffmpeg has no svg decoder: shoot the player at the asset's scene time
-          else { const gf = path.join(CHAPTER_DIR, m.ref); const gp = await realPixels(gf); segs.push({ kind: 'still', file: gf, dur: d, m, nw: gp.w, nh: gp.h, src: `${m.manifest_id} generated asset ${gp.w}x${gp.h}` }); }
+          else { const gf = path.join(CHAPTER_DIR, m.ref); const gp = await realPixels(gf);
+                 const gr = await cropStill(m, { file: gf, w: gp.w, h: gp.h });          // v1.2: crop first
+                 segs.push({ kind: 'still', file: gr.file, dur: d, m, nw: gr.w, nh: gr.h, src: `${m.manifest_id} generated asset ${gr.w}x${gr.h}${gr.crop ? ` [${gr.cropLabel}]` : ''}` }); }
         }
         if (!segs.length && imgs.length) segs.push(await imgSeg(imgs[0], null));
       }

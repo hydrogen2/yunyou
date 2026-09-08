@@ -78,8 +78,10 @@ Checklist before handing to review:
       engravings, elevations and plans mounted on warm paper with a caption line, sized to their real pixels — a
       document, not a floating rectangle) or `fill` (it already fills the frame; nothing added). All three carry a
       very slow drift that starts *below* 100 % and ends *at* 100 %, so the motion can never invent resolution.
-      Nothing is ever stretched, upscaled past the file's own pixels, or cropped to fit — that is a studio rule, not
-      a setting. **Leave `treatment` out and you get the right answer nearly always.**
+      Nothing is ever stretched, and the layer never crops a picture to fit the frame — that is a studio rule, not a
+      setting. (How far a picture may be *enlarged* is a per-picture ceiling, not a rule; and an authored
+      `media[].crop`, below, is a content decision made once in the scene file, never something the layer does.)
+      **Leave `treatment` out and you get the right answer nearly always.**
 - [ ] **`media[].treatment`** (`kind: "image"` only) forces one of `backdrop` | `plate` | `fill` | `none` when the
       automatic choice is wrong for a reason you can name in `note`. Use it when: a *large* modern photograph is
       really an archive document and should be mounted (`plate`); a picture whose edges matter must not be pushed
@@ -87,6 +89,36 @@ Checklist before handing to review:
       set `fill` on something that cannot fill 16:9 at its own resolution — you are only asking for black bars back.
       The attribution is part of the treatment: on a plate it is the caption line under the picture, elsewhere a chip
       in the corner. It is never optional, and never removable by a `treatment` choice.
+- [ ] **`media[].crop`** (still pictures only) shows just one rectangle of the source, in **fractions of the source**,
+      `x`/`y` being the top-left corner: `"crop": { "x": 0.24, "y": 0.10, "w": 0.40, "h": 0.30, "why": "…" }`. All four
+      are 0–1; fractions rather than pixels so the box still names the same region when the file is swapped for a
+      higher-resolution scan. **The two cases it exists for, both real:**
+      **(a) reframing to the subject** — the only correctly-dated, public-domain, high-resolution Churchill we can
+      find (Agence Rol, London, 25 June 1913, 6122×8488) is a full-length ceremonial shot, and the beat wants
+      head-and-shoulders; `{ "x":0.24, "y":0.10, "w":0.40, "h":0.30 }` gives a 2449×2546 head-and-shoulders that is
+      still shown at 0.41× — a downscale, so no detail is invented.
+      **(b) removing something unusable at an edge** — that same plate carries the archive's negative number
+      ("30703") burned down the right edge and the archivist's handwritten annotation along the bottom; an
+      "abercrombie KIDS" shopfront sits beside the doorway we actually want. The crop takes the marks and the
+      modern signage out; nothing else changes.
+      **The honesty boundary is not negotiable.** Reframing to the subject, and removing a burned-in archival mark,
+      a watermark or modern signage at an edge, are fine. Cropping away context that changes what the picture
+      *means* is not: a date stamp, a caption identifying the subject, a sign or a background that is the evidence
+      the scene is somewhere (or somewhen) else. If the crop makes the picture say something the whole picture does
+      not say, you do not have the picture — find another one. Put what the box removes in `why`; Rights and QA
+      read that line.
+      **Order of operations, because it decides the resolution:** crop first, then the treatment layer sees *only*
+      the cropped picture — the paper mount mounts the crop, the ambient backdrop is derived from the crop (so the
+      negative number cannot come back, softly, behind the picture), and **the upscale ceiling is measured on the
+      post-crop pixels**. A quarter of a 6122-px plate is still ~1500 px and the ceiling never binds; a quarter of a
+      700-px plate is ~175 px, and the ceiling will hold it back to a small paper plate rather than blow it up.
+      Crop hard and you may turn a full-frame photograph into a plate: that is the cap doing its job, not a bug.
+      A crop changes the aspect ratio on purpose — that is what a crop is. **Never stretch** is untouched.
+      **See the box before you author it:**
+      `node studio/tools/render/render_linear.mjs <tour.json> --crop-preview <scene-id> [--crop x,y,w,h] [--crop-slot n]`
+      writes a before frame, an after frame and a side-by-side, and prints the post-crop pixels, the treatment and
+      the scale actually used against the cap. It also takes a bare Commons `File:` URL or an image path, so you can
+      try a box on a picture that is not in a scene yet (no tour.json needed). No film is rendered and nothing is billed.
 - [ ] **anything derived from CC BY-SA material carries `sa: true`** — the strip-list flag from `rights-a6.md` §2.4, so
       that a future change to the studio's own output licence is a generated list rather than an archaeology project
 - [ ] quiz has 3–4 options, exactly one correct, feedback on every option

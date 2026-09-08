@@ -189,6 +189,45 @@
           "drift": {
             "type": "boolean",
             "description": "kind 'image' only. false = this still does not drift. Use for a beat that must sit still (a held silence, a portrait, a death). Prefer this over treatment:'none', which also removes the backdrop and leaves black bars. Added v0.9."
+          },
+          "crop": {
+            "type": "object",
+            "description": "kind 'image'/'generated'/'map' only. Show ONLY this rectangle of the source picture, in FRACTIONS of the source (0-1), x/y = the top-left corner: {\"x\":0.28,\"y\":0.05,\"w\":0.34,\"h\":0.30}. Fractions, not pixels, so the box survives swapping the file for a higher-resolution scan of the same image. ORDER OF OPERATIONS: crop first, then the treatment layer sees ONLY the cropped picture - the plate mounts the crop, the blurred backdrop derives from the crop, and the upscale cap (max_scale / upscale_max) measures the POST-CROP pixels, so cropping a small plate hard leaves little and the cap will hold it back. A crop changes the aspect ratio on purpose; NEVER STRETCH is untouched. Legitimate use: reframe to the subject, or remove burned-in archive marks / modern signage at an edge. NOT legitimate: cropping away context that changes what the picture means (a date stamp, a caption naming the subject, evidence the scene is elsewhere). Added v1.2 (2026-09-08); scenes without the key are unaffected.",
+            "required": [
+              "w",
+              "h"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "left edge as a fraction of the source width (default 0)."
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "top edge as a fraction of the source height (default 0)."
+              },
+              "w": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1,
+                "description": "width as a fraction of the source width. x + w must be <= 1."
+              },
+              "h": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1,
+                "description": "height as a fraction of the source height. y + h must be <= 1."
+              },
+              "why": {
+                "type": "string",
+                "description": "One line for review: what the crop removes or reframes, e.g. \"head-and-shoulders; drops the plate edges carrying the negative number and the archivist's annotation\". Rights and QA read this."
+              }
+            }
           }
         }
       }

@@ -13,6 +13,9 @@
  *
  * The three rules that are not settings:
  *   never stretch · never crop the subject away · never claim detail we do not have.
+ * (v1.2: "never crop the subject away" is about the LAYER never cropping to fill a frame. An authored
+ *  media[].crop is a content decision, made once, in the scene file, and is applied before any of this — see
+ *  the CROP block below for the order of operations and the honesty boundary.)
  *
  * 2026-09-08 — the second rule USED to read "never upscale past the file's own pixels", and the founder retired it
  * after watching Day 1: "when the scene type is a still image, can you enlarge it to fit the screen, now all too
@@ -40,9 +43,83 @@ export const IMG_DEFAULTS = {
 export const hash32 = s => { let h = 2166136261; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; };
 
 /**
+ * ---------------------------------------------------------------------------------------------------------------
+ * CROP (v1.2, 2026-09-08) — `media[].crop`, and THE ORDER OF OPERATIONS, which is the whole design.
+ *
+ *     crop  →  treatment  →  fit/upscale cap  →  drift
+ *
+ * The crop happens FIRST and everything downstream sees ONLY the cropped picture. There is no second picture:
+ * pickTreatment() classifies the crop, fitSize() fits the crop, the paper plate mounts the crop, and the blurred
+ * backdrop is derived from the crop. That is deliberate — a mount or an ambient wash built from the parts of the
+ * plate we just decided not to show would put the thing we removed (an archive's negative number, a modern
+ * shopfront) back on screen, softly, behind the picture.
+ *
+ * WHY FRACTIONS, NOT PIXELS. The box is expressed in fractions of the source, 0–1, x/y being the top-left corner:
+ *   "crop": { "x": 0.28, "y": 0.05, "w": 0.34, "h": 0.30 }
+ * Swap the file for a higher-resolution scan of the same image and the fractions still name the same region;
+ * pixel coordinates would silently point at somebody's ear. Commons re-scans, and we ask for a thumbnail width
+ * that can change between runs, so pixel boxes were never an option here.
+ *
+ * THE CAP INTERACTION, stated so nobody has to rediscover it. `max_scale` (upscaleCap in the renderer) is applied
+ * to the POST-CROP pixels, because those are the only pixels that exist any more. Cropping to a quarter of a
+ * 6122-px plate still leaves ~1500 px and the cap never binds. Cropping the same fraction out of a 700-px plate
+ * leaves ~175 px, and the cap is then doing exactly the job it was written for: it stops us presenting 175 px as
+ * a 1080p photograph. A crop can therefore turn a picture that filled the frame into a plate — that is correct,
+ * not a regression. The renderer logs the post-crop size and k for every shot.
+ *
+ * ASPECT RATIO. A crop changes the aspect ratio on purpose; that is what a crop is. NEVER STRETCH is untouched
+ * and absolute: after the crop, one scale factor k, aspect exact, as before.
+ *
+ * HONESTY. Reframing to the subject and removing burned-in archival marks or modern signage at an edge are
+ * legitimate. Cropping away something that changes what the picture MEANS — a date stamp, a caption naming the
+ * subject, the evidence that the scene is somewhere else — is not. See studio/templates/scene-spec.md.
+ *
+ * This layer DEGRADES: a malformed or out-of-range box is clamped, and a box that survives clamping as
+ * zero-area is ignored (the whole picture is shown). The validator is where a bad box is an error you must fix.
+ */
+
+/** the crop as clean fractions, or null for "no crop" (absent, malformed, or the whole picture). */
+export function cropBox(m) {
+  const c = m && m.crop;
+  if (!c || typeof c !== 'object') return null;
+  const num = v => { const x = +v; return Number.isFinite(x) ? x : null; };
+  let x = num(c.x), y = num(c.y), w = num(c.w), h = num(c.h);
+  if (x === null) x = 0; if (y === null) y = 0;
+  if (w === null || h === null || !(w > 0) || !(h > 0)) return null;
+  x = Math.min(Math.max(x, 0), 1); y = Math.min(Math.max(y, 0), 1);
+  w = Math.min(w, 1 - x); h = Math.min(h, 1 - y);
+  if (!(w > 0.001 && h > 0.001)) return null;                    // clamped to nothing: show the whole picture
+  if (w >= 0.999 && h >= 0.999 && x <= 0.001 && y <= 0.001) return null;   // "crop" that is the whole picture
+  return { x, y, w, h };
+}
+
+/**
+ * The crop in the SOURCE FILE's own pixels: {x, y, w, h} integers, or null. nw x nh are the file's real pixels.
+ * Always inside the file and at least 2 px on a side, so ffmpeg's `crop=` and a canvas drawImage() agree.
+ */
+export function cropRect(m, nw, nh) {
+  const b = cropBox(m); if (!b || !(nw > 0 && nh > 0)) return null;
+  let w = Math.max(2, Math.round(b.w * nw)), h = Math.max(2, Math.round(b.h * nh));
+  let x = Math.min(Math.max(0, Math.round(b.x * nw)), Math.max(0, nw - w));
+  let y = Math.min(Math.max(0, Math.round(b.y * nh)), Math.max(0, nh - h));
+  w = Math.min(w, nw - x); h = Math.min(h, nh - y);
+  if (!(w >= 2 && h >= 2)) return null;
+  return { x, y, w, h, box: b };
+}
+
+/** one line for a log/preview: "crop 0.28,0.05 0.34x0.30 → 2081x2546 of 6122x8488 (10 % of the area)". */
+export function cropLabel(m, nw, nh) {
+  const r = cropRect(m, nw, nh); if (!r) return '';
+  const pct = Math.round(100 * (r.w * r.h) / Math.max(1, nw * nh));
+  return `crop ${r.box.x.toFixed(3)},${r.box.y.toFixed(3)} ${r.box.w.toFixed(3)}x${r.box.h.toFixed(3)} -> ${r.w}x${r.h} of ${nw}x${nh} (${pct} % of the area)`;
+}
+
+/**
  * Which treatment? Aspect ratio and pixel size decide, so existing scenes improve with no content edit.
  * `m.treatment` (schema: backdrop|plate|fill|none) always wins.
- *   nw,nh = the file's REAL pixels (Commons will report a 1600-px thumb for a 632-px file — ask commonsInfo)
+ *   nw,nh = the picture's REAL pixels AFTER any media[].crop (Commons will report a 1600-px thumb for a 632-px
+ *           file — ask commonsInfo; then crop, then pass the cropped size here. A crop can legitimately demote a
+ *           full-frame photograph to a plate: fewer pixels is fewer pixels.)
  *   W,H   = the real frame
  */
 export function pickTreatment(m, nw, nh, W, H, cfg = IMG_DEFAULTS) {
@@ -63,8 +140,9 @@ export function pickTreatment(m, nw, nh, W, H, cfg = IMG_DEFAULTS) {
 }
 
 /**
- * The size of a picture inside a frame: contained (aspect exact, never stretched, never cropped) and enlarged
- * at most `maxScale`x past its own pixels. `reserve` is a band kept clear at the bottom for the credit line.
+ * The size of a picture inside a frame: contained (aspect exact, never stretched, never cropped FURTHER — an
+ * authored media[].crop has already been applied to nw x nh by the caller) and enlarged at most `maxScale`x past
+ * its own pixels. The cap therefore measures the POST-CROP pixels, which are the only ones that still exist. `reserve` is a band kept clear at the bottom for the credit line.
  * maxScale = 1 reproduces the old "never upscale" rule exactly, and is still the default.
  * Returns integers plus `k` (the scale actually used) and `upscaled` (k > 1.001), which the caller logs.
  */

@@ -75,6 +75,52 @@ def studio_rules(s):
         elif tr in ('fill','none'):
             warns.append(f'{sid}: media[{i}].treatment "{tr}" overrides the automatic choice — only do this when the '
                          f'picture really does fill a 16:9 frame at its own resolution, else it plays as black bars')
+    # media[].crop (v1.2): fractions of the SOURCE, 0-1, x/y = top-left. Fractions survive a re-scan; pixels do not.
+    # A bad box is an error, not a warning: the renderer clamps so a film still comes out, but a box that had to be
+    # clamped is not the box anyone reviewed. See studio/player/imagelayer.mjs (order of operations) and
+    # studio/templates/scene-spec.md (the honesty boundary).
+    for i,mm in enumerate(s.get('media') or []):
+        cr=mm.get('crop')
+        if cr is None: continue
+        where=f'{sid}: media[{i}].crop'
+        if not isinstance(cr,dict):
+            errs.append(f'{where} must be an object {{"x":0-1,"y":0-1,"w":0-1,"h":0-1}} in fractions of the source, not {type(cr).__name__}')
+            continue
+        if mm.get('kind') not in ('image','generated','map'):
+            errs.append(f'{where} is for still pictures only (kind image/generated/map); this one is "{mm.get("kind")}" — '
+                        f'trim footage with start_s/end_s, not with a crop box')
+        vals={}
+        bad=False
+        for k,dflt in (('x',0.0),('y',0.0),('w',None),('h',None)):
+            v=cr.get(k, dflt)
+            if v is None:
+                errs.append(f'{where} needs "{k}" (a fraction of the source, 0-1)'); bad=True; continue
+            if not isinstance(v,(int,float)) or isinstance(v,bool):
+                errs.append(f'{where}.{k} must be a number in fractions of the source (0-1), got {v!r}'); bad=True; continue
+            vals[k]=float(v)
+        if bad: continue
+        for k in ('x','y','w','h'):
+            if not (0.0 <= vals[k] <= 1.0):
+                errs.append(f'{where}.{k} = {vals[k]:g} is outside 0-1. The box is FRACTIONS of the source, not pixels: '
+                            f'a head in a 6122x8488 plate is about {{"x":0.28,"y":0.05,"w":0.34,"h":0.30}}')
+        if vals['w'] <= 0.001 or vals['h'] <= 0.001:
+            # imagelayer.cropBox() ignores anything this thin (it would be a couple of pixels), so an authored box
+            # below the threshold would be silently dropped at render time. Fail here instead.
+            errs.append(f'{where} has (near-)zero area (w={vals["w"]:g}, h={vals["h"]:g}) — nothing would be shown; '
+                        f'the renderer ignores any side <= 0.001 of the source')
+        if vals['x']+vals['w'] > 1.0001:
+            errs.append(f'{where}: x + w = {vals["x"]+vals["w"]:.4g} > 1 — the box runs off the right edge of the source')
+        if vals['y']+vals['h'] > 1.0001:
+            errs.append(f'{where}: y + h = {vals["y"]+vals["h"]:.4g} > 1 — the box runs off the bottom edge of the source')
+        area=vals['w']*vals['h']
+        if 0 < area < 0.04:
+            warns.append(f'{where} keeps {area*100:.1f} % of the source area. The upscale cap measures the POST-CROP '
+                         f'pixels, so unless the file is very large this will now play as a small plate — check it with '
+                         f'`node studio/tools/render/render_linear.mjs <tour.json> --crop-preview {sid}`')
+        if not str(cr.get('why') or '').strip():
+            warns.append(f'{where} has no "why" — one line saying what it removes or reframes is what Rights and QA review '
+                         f'(reframing and removing burned-in archive marks are fine; removing context that changes what the '
+                         f'picture means is not)')
     # media stills on the scene clock (v0.8 player): a photo scene's images are scheduled at their own start_s
     imgs=[(i,mm) for i,mm in enumerate(s.get('media') or []) if mm.get('kind')=='image']
     def _num(v):
