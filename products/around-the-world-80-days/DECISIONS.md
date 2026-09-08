@@ -3,6 +3,17 @@
 Standing answers to the studio's open questions. Roles read this before asking again.
 Anything here is reversible; say so and the studio changes course.
 
+## D9 · VIDEO FIRST — the film is the product (founder, 2026-09-08)
+
+"Forget the /player version now and get fully oriented to the video version… video is never a rendering of the
+/player because there may never be a /player." A scene is a shot list. Nothing is designed for interaction and
+flattened afterwards. Full brief, including what to protect and the place-axis rule: `studio/strategy/video-first.md`.
+
+Headlines: keep the period sound design and the engravings (both working) · more visuals, less narration-only ·
+source real motion for places · **no floating text overlays at all — captions do that** · map and quiz rebuilt as
+film devices (big readable type; question then reveal, never the answer up front) · **every place must earn its
+screen time independently of the novel.**
+
 ## RULE 1 — NO SPENDING WITHOUT ASKING (founder, 2026-08-19, overrides everything below)
 
 **Never incur a cost on any account of the founder's — cloud APIs, paid services, subscriptions, per-call billing —
