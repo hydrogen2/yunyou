@@ -88,7 +88,8 @@ figure{{margin:0}} img{{width:100%;border-radius:6px;display:block;background:#2
 figcaption{{font-size:12px;opacity:.6;padding-top:4px}}
 </style>
 <h1>Day 1 · London — the departure</h1>
-<p class=sub>{dur} · {w.get("lang", "en")} cut · review copies sized for a slow line. Estimates assume {KBPS} kbps; downloads resume if they break.</p>
+<p class=sub>{dur} · {w.get("lang", "en")} cut · review copies sized for a slow line. Estimates assume {KBPS} kbps; downloads resume if they break
+(<code>curl -C - -O &lt;url&gt;</code>, or just re-click — browsers resume too).</p>
 <h2>Download</h2>
 <table>{rows()}</table>
 <h2>{len(points)} frames — the whole film for under a megabyte</h2>
