@@ -30,6 +30,7 @@
  *   --no-tts             captions only, no voice (fallback)   --keep   keep the work dir
  *   --python <path>      interpreter for the TTS adapter (default ~/hilbert/.venv/bin/python)
  *   --no-drift           hold every still dead still (the player's ?drift=0)
+ *   --max-upscale <k>    override the per-picture enlargement ceiling (default: 3.0 generated/map, 2.6 plates, 2.0 photos)
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -42,6 +43,7 @@ import { chromium } from 'playwright-core';
 import * as T from './lib/templates.mjs';
 import * as PM from '../../player/panomove.mjs';   // ONE definition of the open-imagery walk, shared with the player
 import * as IL from '../../player/imagelayer.mjs'; // ONE definition of the image treatment + photo slots, ditto
+import * as MF from './lib/mapfilm.mjs';           // the route map as a FILM graphic (D9) — not the print plate
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FFMPEG = ffmpegPath, FFPROBE = ffprobeStatic.path;
@@ -87,6 +89,12 @@ function run(cmd, cmdArgs, opts = {}) {
   return new Promise((res, rej) => { const p = spawn(cmd, cmdArgs, { stdio: ['ignore', 'pipe', 'pipe'], ...opts }); let out = '', err = '';
     p.stdout.on('data', d => out += d); p.stderr.on('data', d => err += d);
     p.on('close', c => c === 0 ? res({ out, err }) : rej(new Error(`${path.basename(cmd)} exit ${c}\n${cmdArgs.join(' ').slice(0, 800)}\n${err.slice(-1500)}`))); });
+}
+/** like run(), but stdout is a Buffer — for decoding a frame to raw pixels (image statistics). */
+function runBuf(cmd, cmdArgs) {
+  return new Promise((res, rej) => { const p = spawn(cmd, cmdArgs, { stdio: ['ignore', 'pipe', 'ignore'] }); const b = [];
+    p.stdout.on('data', d => b.push(d)); p.on('error', rej);
+    p.on('close', c => c === 0 ? res(Buffer.concat(b)) : rej(new Error(`${path.basename(cmd)} exit ${c}`))); });
 }
 /** like run(), but the child's stderr goes straight to ours — for long jobs that must not look hung (TTS). */
 function runLive(cmd, cmdArgs) {
@@ -330,6 +338,59 @@ async function segStatic(png, dur) {
   const out = path.join(CACHE, 'seg', `st_${sha(png + dur + W + H + FPS)}.mp4`); if (fs.existsSync(out)) return out;
   await ffmpeg(['-loop', '1', '-framerate', String(FPS), '-i', png, '-t', fmt1(dur), '-vf', `scale=${W}:${H}:force_original_aspect_ratio=decrease,pad=${W}:${H}:(ow-iw)/2:(oh-ih)/2,format=yuv420p,setsar=1`, '-r', String(FPS), '-c:v', 'libx264', '-preset', 'veryfast', '-tune', 'stillimage', '-crf', '20', '-pix_fmt', 'yuv420p', out]); return out;
 }
+/**
+ * A segment that CHANGES STATE part-way through, on the scene clock. `states` carry absolute scene-seconds, so
+ * the switch lands where the narration put it and survives the duration rescaling every segment goes through.
+ * Used by the quiz (ask -> reveal). The dissolve is centred on the beat: xfade eats `fade` seconds per join, so
+ * the first and last clips are lengthened by fade/2 and the middles by fade, which makes the total exactly `dur`.
+ */
+async function segStates(states, dur, segAt, fade = 0.5) {
+  const rel = states.map(x => ({ file: x.file, s: Math.max(0, Math.min(dur, x.at - segAt)) })).sort((a, b) => a.s - b.s);
+  if (!rel.length) throw new Error('segStates: no states');
+  rel[0].s = 0;
+  const spans = rel.map((x, i) => ({ file: x.file, dur: (i + 1 < rel.length ? rel[i + 1].s : dur) - x.s })).filter(x => x.dur > 0.12);
+  if (spans.length < 2) return await segStatic(spans[0] ? spans[0].file : rel[0].file, dur);
+  const fd = Math.max(0.15, Math.min(fade, ...spans.map(x => x.dur * 0.8)));
+  const clips = [];
+  for (let i = 0; i < spans.length; i++) {
+    const grow = (i === 0 || i === spans.length - 1) ? fd / 2 : fd;
+    clips.push({ file: await segStatic(spans[i].file, spans[i].dur + grow), dur: spans[i].dur + grow });
+  }
+  return await xfadeChain(clips, fd);
+}
+
+/**
+ * A segment built from an HTML page that answers `setT(seconds)` — the film map. The page is opened once and
+ * screenshot at exactly the instants the timeline asks for (dense through a move, one frame per hold), then the
+ * frames are concatenated with their own durations. A 95 s map costs ~230 screenshots instead of 2 375.
+ */
+async function segFrames(html, samples, dur, name) {
+  const key = sha([html, JSON.stringify(samples.map(x => [x.t.toFixed(3), x.dur.toFixed(3)])), W, H, FPS, dur].join('|'));
+  const out = path.join(CACHE, 'seg', `fr_${key}.mp4`);
+  if (fs.existsSync(out)) return out;
+  const dir = path.join(CACHE, 'shots', `frames_${key}`); fs.mkdirSync(dir, { recursive: true });
+  const hf = path.join(dir, 'page.html'); fs.writeFileSync(hf, html);
+  const b = await getBrowser();
+  const ctx = await b.newContext({ viewport: { width: W, height: H }, deviceScaleFactor: 1, ignoreHTTPSErrors: true });
+  const pg = await ctx.newPage();
+  await pg.goto('file://' + hf, { waitUntil: 'load' });
+  await pg.evaluate(() => document.fonts ? document.fonts.ready : null).catch(() => { });
+  await pg.waitForTimeout(200);
+  const list = [];
+  for (let i = 0; i < samples.length; i++) {
+    const jf = path.join(dir, `f${String(i).padStart(5, '0')}.jpg`);
+    if (!fs.existsSync(jf)) { await pg.evaluate(t => window.setT(t), samples[i].t); await pg.screenshot({ path: jf, type: 'jpeg', quality: 94 }); }
+    list.push(`file '${jf.replace(/'/g, "'\\''")}'`, `duration ${samples[i].dur.toFixed(4)}`);
+  }
+  await ctx.close();
+  list.push(list[list.length - 2]);   // ffconcat needs the last file repeated for its duration to apply
+  const cf = path.join(dir, 'concat.txt'); fs.writeFileSync(cf, list.join('\n') + '\n');
+  await ffmpeg(['-f', 'concat', '-safe', '0', '-i', cf, '-vf', `scale=${W}:${H}:flags=lanczos,format=yuv420p,setsar=1,fps=${FPS}`,
+    '-t', fmt1(dur), '-r', String(FPS), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', out]);
+  log(`  map: ${samples.length} frames -> ${path.basename(out)} (${name})`);
+  return out;
+}
+
 // ---------------------------------------------------------------- v0.9: the image treatment layer, in ffmpeg
 // The player's v0.7 rules, mirrored shot for shot (studio/player/imagelayer.mjs decides; this only draws):
 //   never stretch · never upscale past the file's own pixels · never crop the subject away.
@@ -362,15 +423,54 @@ const wrapChars = (s, n) => { const words = String(s).split(/\s+/); const out = 
  */
 const IMGCFG = { ...IL.IMG_DEFAULTS, drift: DRIFT };
 if (args['plate-min-area'] !== undefined) IMGCFG.plate_min_area = +args['plate-min-area'];
+
+// ---------------------------------------------------------------- how large may a still be shown? (2026-09-08)
+// The founder, after watching Day 1: "when the scene type is a still image, can you enlarge it to fit the screen,
+// now all too small". `imagelayer` used to pin every picture at k <= 1 so a 960x540 photograph sat as a 960-px
+// window in the middle of a blurred wash. That rule is retired (see the header of studio/player/imagelayer.mjs):
+// showing a picture large is not a claim about its resolution. What replaces it is a per-picture CEILING.
+//
+// How the ceiling is chosen — and what I tried first, so nobody re-litigates it. I built a measured line-art
+// classifier (paper/ink/midtone histogram at native resolution + saturation + local flatness) and ran it over
+// the 22 stills of Day 1. It does not separate: the Neuville wood engravings score 0.000 saturation and so does
+// the Ben-Brooksbank black-and-white photograph of Savile Row; scan noise destroys the flatness signal for the
+// 1841 elevation. A classifier that cannot tell an engraving from a monochrome photograph must not decide how
+// far we enlarge either. So the ceiling uses the signal that is actually reliable AND happens to correlate with
+// material in this house style:
+//   · media entry says so            -> m.upscale_max wins, always (the one place a human can be explicit)
+//   · kind generated / map           -> 3.0  (our own vector output, and printed plans: line art by construction)
+//   · long side <= plate_max_px      -> 2.6  (small archive material — plates and engravings; they upscale
+//                                             almost for free, and they are the ones that looked broken)
+//   · everything else                -> 2.0  (photographs; softness shows, and a 1920-px file needs 1.0-1.6x
+//                                             to fill 1080p anyway, so this cap almost never binds)
+// NEVER STRETCH is untouched: one scale factor, aspect exact. --max-upscale scales all four numbers for a test.
+const UPSCALE_TUNE = args['max-upscale'] !== undefined ? +args['max-upscale'] : null;
+function upscaleCap(m, nw, nh) {
+  if (m && m.upscale_max !== undefined && +m.upscale_max > 0) return +m.upscale_max;
+  if (UPSCALE_TUNE) return UPSCALE_TUNE;
+  const kind = String((m && m.kind) || '');
+  if (kind === 'generated' || kind === 'map') return 3.0;
+  if (Math.max(nw || 0, nh || 0) <= IMGCFG.plate_max_px) return 2.6;
+  return 2.0;
+}
+const cfgFor = (m, nw, nh) => ({ ...IMGCFG, max_scale: upscaleCap(m, nw, nh) });
+/** enlarge a file to exactly w x h with lanczos, cached — a good filter, once, instead of the browser's default. */
+async function scaleTo(img, w, h) {
+  const out = path.join(CACHE, 'img', `up_${sha(img + '|' + w + 'x' + h)}.png`);
+  if (fs.existsSync(out)) return out;
+  await ffmpeg(['-i', img, '-vf', `scale=${w}:${h}:flags=lanczos`, '-frames:v', '1', out]);
+  return out;
+}
 async function segStill(img, dur, m, nw, nh, attribution) {
-  let treat = IL.pickTreatment(m, nw, nh, W, H, IMGCFG);
+  const CFG = cfgFor(m, nw, nh), maxK = CFG.max_scale;
+  let treat = IL.pickTreatment(m, nw, nh, W, H, CFG);
   const plateGeom = () => {                                 // the player's sizePlate(), same arithmetic
     const pad = Math.max(9, Math.round(Math.min(W, H) * 0.028));
     const margin = Math.max(7, Math.round(Math.min(W, H) * 0.036));
     const capSize = Math.max(13, Math.round(H * 0.0165));
     const capLines = attribution ? Math.max(1, Math.ceil(attribution.length / Math.max(18, (W - 2 * margin - 2 * pad) / (capSize * 0.5)))) : 0;
     const capH = capLines ? Math.round(capLines * capSize * 1.35) + Math.round(capSize * 0.55) : 0;
-    const f = IL.fitSize(nw, nh, Math.max(40, W - 2 * margin - 2 * pad - 2), Math.max(40, H - 2 * margin - 2 * pad - 2), capH);
+    const f = IL.fitSize(nw, nh, Math.max(40, W - 2 * margin - 2 * pad - 2), Math.max(40, H - 2 * margin - 2 * pad - 2), capH, maxK);
     return { pad, margin, capSize, capH, f };
   };
   // v0.7's measured give-up: "a mount that would leave the picture under plate_min_area of the frame — which is
@@ -383,20 +483,21 @@ async function segStill(img, dur, m, nw, nh, attribution) {
   // when it actually SHRINKS the picture (k < 1). `--plate-strict` restores the player's arithmetic exactly.
   if (treat === 'plate' && !(m && m.treatment)) {
     const g = plateGeom(); const area = (g.f.w * g.f.h) / (W * H);
-    if (area < IMGCFG.plate_min_area && (args['plate-strict'] || g.f.k < 0.999)) treat = 'backdrop';
+    if (area < CFG.plate_min_area && (args['plate-strict'] || g.f.k < 0.999)) treat = 'backdrop';
   }
   const band = (attribution && treat !== 'plate' && treat !== 'none') ? Math.round(H * 0.041) : 0;
-  const dr = IL.driftFor(m, treat, IMGCFG, img);
+  const dr = IL.driftFor(m, treat, CFG, img);
   const frames = Math.max(2, Math.round(dur * FPS));
-  const key = sha([img, dur, W, H, FPS, treat, nw, nh, band, JSON.stringify(dr), attribution || ''].join('|'));
+  const key = sha(['v10', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), attribution || ''].join('|'));
   const out = path.join(CACHE, 'seg', `im_${key}.mp4`);
-  const meta = { treat, nw, nh };
+  const meta = { treat, nw, nh, maxK };
   if (fs.existsSync(out)) return { file: out, ...meta };
 
   const from = dr.on ? dr.from : 1;                        // canvas is 1/from larger so the zoom ENDS at 1:1
   const BW = Math.round(W / from) + (Math.round(W / from) % 2), BH = Math.round(H / from) + (Math.round(H / from) % 2);
-  const fit = treat === 'plate' ? plateGeom().f : IL.fitSize(nw, nh, W, H, band);   // k is capped at 1: never upscaled
+  const fit = treat === 'plate' ? plateGeom().f : IL.fitSize(nw, nh, W, H, band, maxK);   // k <= maxK, aspect exact
   const fw = fit.w + (fit.w % 2), fh = fit.h + (fit.h % 2);
+  meta.k = fit.k;
   const oy = Math.round((BH - band * BH / H - fh) / 2);
   const wantBack = (treat === 'backdrop' || treat === 'plate');
 
@@ -416,7 +517,10 @@ async function segStill(img, dur, m, nw, nh, attribution) {
     // libfreetype (no `drawtext`), and even with it a one-line drawtext is not the player's caption. The picture
     // inside the mount is at 1:1 — `fw x fh` is already clamped to the file's own pixels.
     const g = plateGeom(); const pad = g.pad, capSize = g.capSize;
-    const html = T.plateCard({ imageUrl: 'file://' + path.resolve(img), w: fw, h: fh, pad, caption: attribution || '', capSize, cjk: isCJK(attribution) });
+    // the picture inside the mount may now be larger than the file: do that enlargement in ffmpeg with lanczos
+    // and hand the browser a 1:1 image, rather than letting the browser's default filter do it.
+    const plateImg = fit.k > 1.001 ? await scaleTo(img, fw, fh) : img;
+    const html = T.plateCard({ imageUrl: 'file://' + path.resolve(plateImg), w: fw, h: fh, pad, caption: attribution || '', capSize, cjk: isCJK(attribution) });
     // measure: the caption wraps, so the mount's height is whatever the browser makes it (capped by the frame)
     const png = await shotHtmlSize(html, `plate_${key}`, fw + 2 * pad + 6, fh + 2 * pad + g.capH + 10, true);
     const pp = await realPixels(png);
@@ -428,15 +532,27 @@ async function segStill(img, dur, m, nw, nh, attribution) {
     fc.push(`[src]scale=${fw}:${fh}:flags=lanczos,setsar=1[fg]`);
     fc.push(`[bg][fg]overlay=x=(W-w)/2:y=${oy}[cv]`);
   }
-  // the drift: zoom 1 → 1/from over the shot, i.e. 0.94 → 1.00 of the honest size, plus the seeded ±0.9 % pan
+  // ---- the drift: zoom 1 → 1/from over the shot (0.94 → 1.00 of the honest size) + the seeded ±0.9 % pan.
+  // v1.0 (2026-09-08): done with `perspective`, NOT `zoompan`. The founder: "they jitter, not sure why but that
+  // needs to be fixed". zoompan crops an INTEGER pixel region out of its input every frame, so a slow push —
+  // 0.94 → 1.00 over 30 s is 0.16 px per frame — stands perfectly still for five or six frames and then jumps a
+  // whole pixel. Measured on a 300-frame 1920x1080 test, mean absolute frame-to-frame difference in an off-centre
+  // window: zoompan moved on 9 of 30 consecutive frames (21 exact zeroes, spikes to 0.43); `perspective` with
+  // float corner expressions moved on 30 of 30, by a constant 0.03–0.05. It samples sub-pixel (1/256 px), so it
+  // needs none of the 4–8x supersampling the same fix would otherwise cost, which this 3 GB box cannot afford.
+  // `perspective` keeps the input size, so the BW x BH canvas is resampled and then scaled down to the frame.
   if (dr.on) {
-    const zEnd = 1 / from; const ax = (dr.dx * fw).toFixed(2), ay = (dr.dy * fh).toFixed(2);
-    const z = `1+${(zEnd - 1).toFixed(5)}*on/${frames}`;
-    const x = `iw/2-(iw/zoom/2)+${ax}*(1-on/${frames})`;
-    const y = `ih/2-(ih/zoom/2)+${ay}*(1-on/${frames})`;
-    fc.push(`[cv]zoompan=z='${z}':x='${x}':y='${y}':d=${frames}:s=${W}x${H}:fps=${FPS},format=yuv420p,setsar=1[v]`);
+    const zEnd = 1 / from; const ax = (dr.dx * fw).toFixed(3), ay = (dr.dy * fh).toFixed(3);
+    const pr = `(on/${Math.max(1, frames - 1)})`;
+    const z = `(1+${(zEnd - 1).toFixed(6)}*${pr})`;
+    const hw = `(${BW}/(2*${z}))`, hh = `(${BH}/(2*${z}))`;
+    const cx = `(${BW}/2+${ax}*(1-${pr}))`, cy = `(${BH}/2+${ay}*(1-${pr}))`;
+    fc.push(`[cv]perspective=eval=frame:interpolation=cubic:sense=source:` +
+      `x0='${cx}-${hw}':y0='${cy}-${hh}':x1='${cx}+${hw}':y1='${cy}-${hh}':` +
+      `x2='${cx}-${hw}':y2='${cy}+${hh}':x3='${cx}+${hw}':y3='${cy}+${hh}',` +
+      `scale=${W}:${H}:flags=lanczos,format=yuv420p,setsar=1,fps=${FPS}[v]`);
   } else {
-    fc.push(`[cv]scale=${W}:${H}:flags=bilinear,format=yuv420p,setsar=1,fps=${FPS}[v]`);
+    fc.push(`[cv]scale=${W}:${H}:flags=lanczos,format=yuv420p,setsar=1,fps=${FPS}[v]`);
   }
   await ffmpeg(['-loop', '1', '-framerate', String(FPS), '-i', img, ...(extraIn ? ['-loop', '1', '-framerate', String(FPS), '-i', extraIn] : []),
     '-filter_complex', fc.join(';'), '-map', '[v]',
@@ -607,9 +723,9 @@ function assHeader() {
   const capSize = Math.round((LANG === 'zh' ? 26 : 30) * sc);
   return `[Script Info]\nScriptType: v4.00+\nPlayResX: ${W}\nPlayResY: ${H}\nWrapStyle: 0\nScaledBorderAndShadow: yes\n\n[V4+ Styles]\nFormat: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding\n` +
     `Style: Cap,${CAP_FONT},${capSize},&H00DAE6EC,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,3,${Math.round(3 * sc)},0,2,${Math.round(120 * sc)},${Math.round(120 * sc)},${Math.round(44 * sc)},1\n` +
-    `Style: Title,${UI_FONT},${Math.round(24 * sc)},&H0041A4D9,&H00FFFFFF,&H00000000,&HA0000000,1,0,0,0,100,100,1,0,3,${Math.round(4 * sc)},0,1,${Math.round(36 * sc)},${Math.round(36 * sc)},${Math.round(112 * sc)},1\n` +
+    // v1.0: the `Title` (scene name, bottom-left, 0–4 s) and `Pin` (overlays, top-left) styles are GONE — see the
+    // caption block in the scene loop. Only two styles are left: the narration caption and the licence credit.
     `Style: Attr,Liberation Sans,${Math.round(15 * sc)},&H00BCC8CF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,0,0,3,${Math.round(3 * sc)},0,3,${Math.round(24 * sc)},${Math.round(16 * sc)},${Math.round(10 * sc)},1\n` +
-    `Style: Pin,${UI_FONT},${Math.round(19 * sc)},&H0041A4D9,&H00FFFFFF,&H00000000,&HA0000000,0,0,0,0,100,100,0,0,3,${Math.round(4 * sc)},0,7,${Math.round(28 * sc)},${Math.round(28 * sc)},${Math.round(22 * sc)},1\n` +
     `\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n`;
 }
 const assLine = (style, s, e, text) => `Dialogue: 0,${assTime(s)},${assTime(e)},${style},,0,0,0,,${assEsc(text)}\n`;
@@ -680,8 +796,20 @@ function captionChunks(text, words, maxChars = 84) {
 
   const manifestMd = fs.existsSync(path.join(CHAPTER_DIR, 'media', 'manifest.md')) ? fs.readFileSync(path.join(CHAPTER_DIR, 'media', 'manifest.md'), 'utf8') : '';
   const manifestRow = id => { const line = manifestMd.split('\n').find(l => l.startsWith(`| ${id} |`)); if (!line) return null; const c = line.split('|').map(x => x.trim()); return { id: c[1], kind: c[2], ref: c[3].replace(/`/g, ''), title: c[4], license: c[5], notes: c[10] || '' }; };
-  const logLines = [], warnings = [];
+  const logLines = [], warnings = [], droppedOverlays = [];
   const note = (s) => { logLines.push(s); };
+  // Is an overlay's information already in the narration this cut speaks? Compare the "content tokens" — numbers,
+  // years and words of 4+ letters/2+ CJK characters — because that is what an overlay actually carries ("No. 15 —
+  // Henry Poole, on the Row since 1846"). >= 70 % of them present in the spoken text = covered. Deliberately
+  // crude and deliberately generous to the *reporting* side: a false "not covered" costs a human ten seconds,
+  // a false "covered" hides a real loss.
+  const contentTokens = t => (String(t).toLowerCase().match(/[a-z']{4,}|\d[\d,.:]*|[\u4e00-\u9fff]{2,}/g) || []);
+  function overlayCovered(text, spoken) {
+    const sp = String(spoken).toLowerCase(); const toks = contentTokens(text);
+    if (!toks.length) return true;
+    const hit = toks.filter(t => sp.includes(t)).length;
+    return hit / toks.length >= 0.7;
+  }
 
   // ---- the locale layer, read EXACTLY as the player reads it -------------------------------------------------
   // products/<p>/<chapter>/i18n/<locale>.json, index-addressed: overlays[].i and interaction.options[].i point at
@@ -876,6 +1004,37 @@ function captionChunks(text, words, maxChars = 84) {
   let clipCards = 0, footageSegs = 0;   // A8: the point of the exercise is to drive clipCards to zero
   const useCredit = (m) => { if (!m) return; const id = m.manifest_id || m.ref; if (!creditsUsed.has(id)) creditsUsed.set(id, { id, kind: m.kind, attribution: m.attribution || m.ref, license: m.license || '', ref: m.ref }); };
   const vtt = ['WEBVTT', '']; let globalT = TITLE_S; const sceneFiles = [];
+
+  // ---- the FILM map (D9) ------------------------------------------------------------------------------------
+  // Not a screenshot of the print plate. studio/tools/render/lib/mapfilm.mjs draws its own graphic from
+  // generated/g-01/route-data.json — same facts, film-legible type, revealed on the narration clock. If the data
+  // file or the cached Natural Earth land is missing, mapLoaded is null and the map beats fall back to the old
+  // player screenshot with a warning, so a clean checkout still renders.
+  const mapLoaded = MF.load(CHAPTER_DIR);
+  let mapUsed = false;
+  if (!mapLoaded) warnings.push('film map: generated/g-01/route-data.json (or its land geojson) is missing — run `python3 studio/tools/gen/g01_route_map.py`. Map beats fall back to a screenshot of the print plate, which is the thing D9 says is unreadable.');
+  else note(`Film map: own 1920x1080 graphic from generated/g-01/route-data.json (${mapLoaded.data.ports.length} ports, ${mapLoaded.data.legs.length} legs, ${mapLoaded.data.total_days} days) — the G-01 print plate is NOT screenshotted any more (D9: too small, too much text).`);
+  // Mandarin port names come from the Translator's own words, never from this tool: a tap-to-find map scene
+  // authors its options as "London → Suez" / "伦敦 → 苏伊士", one per leg in leg order. Used only if all eight
+  // parse AND chain (option i's destination is option i+1's origin, and the last closes the loop).
+  let MAPNAMES = null;
+  if (mapLoaded && LANG === 'zh') {
+    for (const sc of scenes) {
+      const os = (sc.interaction || {}).options || [];
+      if (os.length !== mapLoaded.data.legs.length) continue;
+      const pairs = os.map((_, i) => String(LT.option(sc, i).text || '').split(/\s*(?:→|->)\s*/));
+      if (!pairs.every(x => x.length === 2 && x[0].trim() && x[1].trim())) continue;
+      const chained = pairs.every((x, i) => i === 0 || x[0].trim() === pairs[i - 1][1].trim()) &&
+        pairs[pairs.length - 1][1].trim() === pairs[0][0].trim();
+      if (!chained) continue;
+      MAPNAMES = {}; mapLoaded.data.legs.forEach((l, i) => { MAPNAMES[l.from] = pairs[i][0].trim(); MAPNAMES[l.to] = pairs[i][1].trim(); });
+      note(`Film map, Mandarin port names: taken from scene \`${sc.id}\`'s translated options (${Object.values(MAPNAMES).join('、')}) — this tool never translates a place name itself.`);
+      break;
+    }
+    if (!MAPNAMES) warnings.push('film map: no scene in this chapter carries a translated leg list that parses as "A → B" for all eight legs, so the Mandarin map shows the ENGLISH port names. Fix by keeping the map scene\'s tap-to-find options in leg order in i18n/<locale>.json.');
+  }
+  const mapLabels = () => ({ ports: MAPNAMES || {}, days: LANG === 'zh' ? '天' : 'days', of: LANG === 'zh' ? '/' : 'of' });
+  const FONTS_DIR = path.resolve(__dirname, '..', '..', 'player', 'fonts');
   const ytLabel = m => { const row = manifestRow(m.manifest_id) || {}; const tm = (row.title || '').match(/^"(.+?)"\s+—\s+(.+?)\s*\(/); return { channel: tm ? tm[2] : (m.attribution || '').split(',')[0], videoTitle: tm ? tm[1] : (m.attribution || m.ref) }; };
 
   // title card
@@ -896,26 +1055,63 @@ function captionChunks(text, words, maxChars = 84) {
       useCredit(m);
       if (r.fellBack) warnings.push(`${tag}: ${r.fellBack}`);
       const att = r.credit;
-      const treat = IL.pickTreatment(m, r.w, r.h, W, H);
-      if (r.w && r.h && Math.max(r.w, r.h) < Math.max(W, H) * 0.5 && treat !== 'plate')
-        warnings.push(`${tag}: ${m.manifest_id} is only ${r.w}x${r.h} — shown at its own pixels on a blurred backdrop, never enlarged`);
+      const treat = IL.pickTreatment(m, r.w, r.h, W, H, cfgFor(m, r.w, r.h));
       const src = isCommons(m.ref) ? 'Commons still' : 'still';
       return { kind: 'still', file: r.file, dur, m, nw: r.w, nh: r.h, treat, attribution: att,
         label: `${m.manifest_id} ${src} ${r.w}x${r.h}`, src: `${m.manifest_id} ${src} ${r.w}x${r.h} → ${treat}` }; };
     const clipSeg = async (m, dur, inS = m.start_s || 0, outS = m.end_s || 0) => { const { channel, videoTitle } = ytLabel(m); const th = await ytThumb(m.ref); useCredit(m); clipCards++; const html = T.clipCard({ channel, videoTitle, videoId: m.ref, inS, outS, sceneTitle: s.title, thumbUrl: th ? 'file://' + th : '', note: hint.clip_note || '' }); return { kind: 'png', file: await shotHtml(html, `clip_${m.ref}`), dur, src: `${m.manifest_id} clip card (YouTube ${m.ref} ${mmss(inS)}–${mmss(outS)}) — no download` }; };
     const footageSeg = async (m, dur, inS = m.start_s || 0) => { const f = path.join(CHAPTER_DIR, m.ref); if (!fs.existsSync(f)) return await pendingSeg(m, dur); useCredit(m); footageSegs++; return { kind: 'footage', file: f, in_s: inS, dur, attribution: m.attribution || '', src: `${m.manifest_id} local footage ${m.ref}${inS ? ' from ' + mmss(inS) : ''} — self-hosted, licence-clean` }; };
-    const pendingSeg = async (m, dur) => ({ kind: 'png', file: await shotHtml(T.pendingCard({ sceneTitle: LT.title(s), assetId: m.manifest_id, spec: (m.note || '').slice(0, 140), overlays: (s.overlays || []).filter(o => /caption|lower-third/.test(o.kind)).slice(0, 4) }), `pending_${m.manifest_id}`), dur, src: `${m.manifest_id} pending-asset card` });
+    const pendingSeg = async (m, dur) => ({ kind: 'png', file: await shotHtml(T.pendingCard({ sceneTitle: LT.title(s), assetId: m.manifest_id, spec: (m.note || '').slice(0, 140) }), `pending_${m.manifest_id}`), dur, src: `${m.manifest_id} pending-asset card` });
     const playerSeg = async (call, dur, label) => ({ kind: 'png', file: await shotPlayer(call, `player_${label}`), dur, src: `player screenshot ${call}` });
+    // when did the narration say this? `s:N` = narration sentence N, `quiz:correct` = the answer utterance.
+    const uttAt = (src) => { const u = p.utts.find(u => (u.src || []).includes(src)); return u ? p.narrAt + u.at : null; };
+    /**
+     * QUIZ, as a film device (D9). Two frames, one cut: the question with the options set plainly, then the
+     * reveal. The cut lands 0.45 s before the utterance the cut sheet built from `quiz:correct` — i.e. on the
+     * narration beat, the way the photo slots are driven — so the answer appears exactly as the guide starts to
+     * give it, and never before. With no such utterance (a scene with no `quiz:correct` token, or a locale whose
+     * alignment dropped it) it falls back to 62 % of the beat, which still holds the question first.
+     */
+    const quizSeg = async (dur) => {
+      const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img);
+      const it = s.interaction || {}; const opts = LT.options(s);
+      const fb = opts.find((_, i) => ((it.options || [])[i] || {}).correct)?.feedback || '';
+      const base = { sceneTitle: LT.title(s), imageUrl: ci ? 'file://' + ci.file : '', imageW: ci ? ci.info.w : 0, imageH: ci ? ci.info.h : 0,
+        attribution: img ? (img.attribution || '') : '', prompt: LT.prompt(s), options: opts, feedback: fb };
+      const ask = await shotHtml(T.quizScreen({ ...base, phase: 'ask' }), `quizask_${tag}_${LANG}`);
+      const rev = await shotHtml(T.quizScreen({ ...base, phase: 'reveal' }), `quizrev_${tag}_${LANG}`);
+      const beat = uttAt('quiz:correct');
+      // the credit is printed on the card itself (hero caption), so the burned bottom-right line is suppressed —
+      // one credit, not two. attrInFrame is the same flag a paper plate sets.
+      return { kind: 'states', ask, rev, revealAt: beat != null ? beat - 0.45 : null, dur,
+        attribution: img?.attribution, attrInFrame: true, src: 'quiz — question held, then the reveal' };
+    };
+    /** ROUTE MAP, as a film device (D9). beats: [{show:'leg:1'|'enabler:A'|'london'|'total', s:<sentence>|t:<sec>}] */
+    const mapSeg = async (state, beats, dur, why) => {
+      if (!mapLoaded) return await playerSeg(`showRouteMap(${state === 'day-1'})`, dur, `${tag}_${state}`);
+      mapUsed = true;
+      const resolved = (beats || []).map(b => {
+        const t = b.t !== undefined ? +b.t : (b.s !== undefined ? uttAt(`s:${b.s}`) : null);
+        return t == null ? null : { show: b.show, at: t - (b.lead !== undefined ? +b.lead : 0.25), from: b.s !== undefined ? `s:${b.s}` : `t=${b.t}` };
+      }).filter(Boolean);
+      const missed = (beats || []).length - resolved.length;
+      if (missed) warnings.push(`${tag}: ${missed} map beat(s) point at a narration sentence this cut does not speak — those reveals are spaced evenly instead. (zh: the sentence indices are English; see README "Two cuts".)`);
+      return { kind: 'mapfilm', state, beats: resolved, dur, src: `film route map (${state}${why ? ', ' + why : ''}) — own graphic from route-data.json` };
+    };
     if (hint.visuals) {
       for (const v of hint.visuals) {
         const m = v.media ? media.find(x => x.manifest_id === v.media) : null; const dur = v.dur ?? null;
-        if (v.kind === 'image' && m) segs.push(await imgSeg(m, dur));
+        if (v.kind === 'routemap') segs.push(await mapSeg(v.state || 'day-1', v.beats, dur));
+        // a cut sheet written before D9 asks for a player screenshot of the G-01 plate; route it to the film map.
+        else if (v.kind === 'player' && /showRouteMap\s*\(/.test(String(v.call || '')))
+          segs.push(await mapSeg(/showRouteMap\s*\(\s*false/.test(v.call) ? 'loop' : 'day-1', v.beats, dur, `was ${v.call}`));
+        else if (v.kind === 'image' && m) segs.push(await imgSeg(m, dur));
         else if (v.kind === 'clip' && m) segs.push(await clipSeg(m, dur, v.in_s ?? m.start_s ?? 0, v.out_s ?? m.end_s ?? 0));
         else if (v.kind === 'footage' && m) segs.push(await footageSeg(m, dur, v.in_s ?? m.start_s ?? 0));
         else if (v.kind === 'player') segs.push(await playerSeg(v.call, dur, `${tag}_${sha(v.call)}`));
         else if (v.kind === 'scenecard') segs.push({ kind: 'png', file: await shotHtml(T.sceneCard({ title: LT.title(s), subtitle: LT.chapterTitle(), note: v.note || '' }), `scenecard_${tag}`), dur, src: 'scene title card' });
         else if (v.kind === 'pending' && m) segs.push(await pendingSeg(m, dur));
-        else if (v.kind === 'quiz') { const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img); const it = s.interaction || {}; const co = (it.options || []).find(o => o.correct) || {}; segs.push({ kind: 'png', file: await shotHtml(T.quizScreen({ sceneTitle: LT.title(s), imageUrl: ci ? 'file://' + ci.file : '', imageW: ci ? ci.info.w : 0, imageH: ci ? ci.info.h : 0, attribution: img ? (img.attribution || '') : '', prompt: LT.prompt(s), options: LT.options(s), feedback: LT.options(s).find((_, i) => ((it.options || [])[i] || {}).correct)?.feedback || '' }), `quiz_${tag}`), dur, attribution: img?.attribution, src: 'quiz screen (own render)' }); }
+        else if (v.kind === 'quiz') segs.push(await quizSeg(dur));
         else if (v.kind === 'chat') { const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img); const it = s.interaction || {}; const turns = (v.chips || [0]).flatMap(i => { const o = (it.options || [])[i] ? LT.option(s, i) : null; return o ? [{ role: 'q', text: o.text }, { role: 'a', text: o.feedback || o.answer || '' }] : []; }); segs.push({ kind: 'png', file: await shotHtml(T.chatScreen({ sceneTitle: LT.title(s), imageUrl: ci ? 'file://' + ci.file : '', imageW: ci ? ci.info.w : 0, imageH: ci ? ci.info.h : 0, attribution: img ? (img.attribution || '') : '', context: LT.prompt(s), turns }), `chat_${tag}`), dur, attribution: img?.attribution, src: 'dialogue screen (own render, scripted chips)' }); }
         else if (v.kind === 'checklist') { const it = s.interaction || {}; segs.push({ kind: 'png', file: await shotHtml(T.checklistScreen({ sceneTitle: LT.title(s), prompt: LT.prompt(s), options: LT.options(s), closing: v.closing_overlay !== undefined ? (s.overlays || [])[v.closing_overlay]?.text : '' }), `check_${tag}`), dur, src: 'checklist screen (own render)' }); }
         else if (v.kind === 'panowalk') {
@@ -971,8 +1167,15 @@ function captionChunks(text, words, maxChars = 84) {
         }
         if (!segs.length && imgs.length) segs.push(await imgSeg(imgs[0], null));
       }
-      else if (s.type === 'map') { const gen = media.filter(x => x.kind === 'generated' && /route-map/.test(x.ref)); const vm = media.find(x => x.kind === 'map'); if (gen.length) { for (const g of gen) segs.push(await playerSeg(`showRouteMap(${!/full-loop|enablers/.test(g.ref)})`, Math.max(4, ((g.end_s ?? 0) - (g.start_s ?? 0)) * f), `${tag}_${sha(g.ref)}`)); } else if (vm) { segs.push(await imgSeg(vm, null)); } else segs.push(await playerSeg('showRouteMap(true)', null, tag)); }
-      else if (s.type === 'quiz') { const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img); const it = s.interaction || {}; const co = (it.options || []).find(o => o.correct) || {}; segs.push({ kind: 'png', file: await shotHtml(T.quizScreen({ sceneTitle: LT.title(s), imageUrl: ci ? 'file://' + ci.file : '', imageW: ci ? ci.info.w : 0, imageH: ci ? ci.info.h : 0, attribution: img ? (img.attribution || '') : '', prompt: LT.prompt(s), options: LT.options(s), feedback: LT.options(s).find((_, i) => ((it.options || [])[i] || {}).correct)?.feedback || '' }), `quiz_${tag}`), dur: null, attribution: img?.attribution, src: 'quiz screen (own render)' }); }
+      else if (s.type === 'map') {
+        // D9: ONE continuous film map for the whole scene rather than a slideshow of plate screenshots. Without
+        // beats from the cut sheet the reveals are spaced evenly, which is watchable but not on the voice.
+        const gen = media.filter(x => x.kind === 'generated' && /route-map/.test(x.ref)); const vm = media.find(x => x.kind === 'map');
+        if (gen.length) segs.push(await mapSeg(gen.some(g => /full-loop|enablers/.test(g.ref)) ? 'loop' : 'day-1', null, null, 'no beats in the cut sheet'));
+        else if (vm) segs.push(await imgSeg(vm, null));
+        else segs.push(await mapSeg('day-1', null, null));
+      }
+      else if (s.type === 'quiz') segs.push(await quizSeg(null));
       else if (s.type === 'dialogue') { const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img); const it = s.interaction || {}; const o = (it.options || []).length ? LT.option(s, 0) : null; segs.push({ kind: 'png', file: await shotHtml(T.chatScreen({ sceneTitle: LT.title(s), imageUrl: ci ? 'file://' + ci.file : '', imageW: ci ? ci.info.w : 0, imageH: ci ? ci.info.h : 0, attribution: img ? (img.attribution || '') : '', context: LT.prompt(s), turns: o ? [{ role: 'q', text: o.text }, { role: 'a', text: o.feedback || o.answer || '' }] : [] }), `chat_${tag}`), dur: null, attribution: img?.attribution, src: 'dialogue screen (own render)' }); }
       else if (s.type === 'game') { const it = s.interaction || {}; segs.push({ kind: 'png', file: await shotHtml(T.checklistScreen({ sceneTitle: LT.title(s), prompt: LT.prompt(s), options: LT.options(s) }), `check_${tag}`), dur: null, src: 'checklist screen (own render)' }); }
       else { segs.push(await playerSeg(`showScene(${n})`, null, `${tag}_scene`)); }
@@ -987,17 +1190,45 @@ function captionChunks(text, words, maxChars = 84) {
     const segFiles = [];
     for (const x of segs) {
       if (x.kind === 'still') { const r = await segStill(x.file, x.dur, x.m || {}, x.nw || 0, x.nh || 0, x.attribution || '');
-        if (x.label) x.src = `${x.label} → ${r.treat}${r.treat === 'plate' ? ' (credit printed on the mount)' : ''}`;
+        if (x.label) x.src = `${x.label} → ${r.treat} at ${(r.k || 1).toFixed(2)}x (cap ${(r.maxK || 1).toFixed(1)}x)${r.treat === 'plate' ? ', credit printed on the mount' : ''}`;
         x.treat = r.treat; if (r.treat === 'plate') x.attrInFrame = true;   // the paper mount prints its own credit
         segFiles.push(r.file); }
+      else if (x.kind === 'states') {
+        const rv = Math.max(x.at + 1.5, Math.min(x.at + x.dur - 1.5, x.revealAt != null ? x.revealAt : x.at + x.dur * 0.62));
+        segFiles.push(await segStates([{ file: x.ask, at: x.at }, { file: x.rev, at: rv }], x.dur, x.at));
+        x.src += ` — question ${fmt1(rv - x.at)} s, then the reveal (${x.revealAt != null ? 'on the narration beat' : 'no quiz:correct token — 62 % of the beat'})`;
+      }
+      else if (x.kind === 'mapfilm') {
+        const tl = MF.planTimeline({ state: x.state, dur: x.dur, beats: (x.beats || []).map(b => ({ show: b.show, at: b.at - x.at })) });
+        const html = MF.page({ loaded: mapLoaded, W, H, tl, lang: LANG, labels: mapLabels(), fontsDir: FONTS_DIR });
+        const samples = MF.sampleTimes(tl, FPS);
+        segFiles.push(await segFrames(html, samples, x.dur, `${tag} ${x.state}`));
+        x.src += ` — ${samples.length} rendered frames; ` + ((x.beats || []).length ? (x.beats).map(b => `${b.show}@${fmt1(b.at - x.at)}s ${b.from}`).join(' · ') : 'beats spaced evenly (no cut-sheet beats)');
+      }
       else segFiles.push(x.kind === 'footage' ? await segFootage(x.file, x.dur, x.in_s || 0) : x.kind === 'mp4' ? await segFootage(x.file, x.dur, 0) : await segStatic(x.file, x.dur));
     }
 
     // ---- captions (ASS) + VTT ----
-    let ass = assHeader(); ass += assLine('Title', 0, 4, LT.title(s));
+    // v1.0 (2026-09-08, DECISIONS.md D9): NOTHING HOVERS OVER THE PICTURE. The film used to draw the scene title
+    // bottom-left for four seconds (style `Title`) and every pin / caption / lower-third overlay top-left (style
+    // `Pin`). The founder: "i dont want any floating text overlays like the one on the topleft, distracting also
+    // hard to read, we already have captions for that." Both are gone. What is still burned in:
+    //   · Cap  — the narration captions. They are the film's only running text and they carry the same words the
+    //            voice says, which is what the overlays were mostly duplicating.
+    //   · Attr — the credit line, bottom-right, while a credited picture is on screen. This one stays because it
+    //            is a LICENCE OBLIGATION (CC BY / CC BY-SA attribution at the point of use), not editorial text;
+    //            a plate prints its credit on the paper mount instead and sets attrInFrame.
+    // scene.overlays[] is untouched in the schema and in the scene files — the film simply stops drawing it. Every
+    // undrawn overlay is listed in render-log.md, flagged when its wording is NOT already in the spoken narration,
+    // so a real loss of information becomes a rundown/script task instead of disappearing quietly.
+    let ass = assHeader();
     for (const x of segs) if (x.attribution && !x.attrInFrame) ass += assLine('Attr', x.at, x.at + x.dur, x.attribution);
-    const ovList = (hint.overlays ?? (s.overlays || []).map((_, i) => i)).map(x => typeof x === 'number' ? { i: x } : x);
-    for (const ov of ovList) { const o = (s.overlays || [])[ov.i]; if (!o || !/pin|caption|lower-third/.test(o.kind)) continue; let at = ov.at ?? o.at_s; let until = ov.until ?? (o.until_s ?? o.at_s + 8); if (ov.at === undefined && at + 2 > len) { if (ov.i === (s.overlays || []).length - 1 || hint.overlay_times === 'shift-tail') { until = len - 0.5; at = Math.max(4.5, until - 8); } else continue; } until = Math.min(len - 0.5, until); if (o.kind === 'lower-third' && at < 4) continue; if (at < 4.2) at = 4.2; if (until - at < 1.5) continue; ass += assLine('Pin', at, until, (o.kind === 'pin' ? '▸ ' : '') + LT.overlay(s, ov.i)); }
+    { const ovList = (hint.overlays ?? (s.overlays || []).map((_, i) => i)).map(x => typeof x === 'number' ? { i: x } : x);
+      const spokenNow = p.utts.map(u => u.text).join(' ');
+      for (const ov of ovList) { const o = (s.overlays || [])[ov.i]; if (!o) continue;
+        const txt = LT.overlay(s, ov.i); if (!txt) continue;
+        const covered = overlayCovered(txt, spokenNow);
+        droppedOverlays.push({ scene: s.id, n: p.sel.idx + 1, i: ov.i, kind: o.kind, text: txt, covered, drawnBefore: /pin|caption|lower-third/.test(o.kind) }); } }
     for (const u of p.utts) { const chunks = captionCards(u.text, u.trimTo || u.dur, CAP_MAX_CHARS);
       for (const c of chunks) { const cs = p.narrAt + u.at + c.s, ce = Math.min(len, p.narrAt + u.at + c.e); ass += assLine('Cap', cs, ce, c.text); vtt.push(`${assVtt(globalT + cs)} --> ${assVtt(globalT + ce)}`, (u.voice === VOICE2 ? '<v Passepartout>' : '') + c.text, ''); } }
     const assFile = path.join(WORK, `${tag}.ass`); fs.writeFileSync(assFile, ass);
@@ -1019,12 +1250,15 @@ function captionChunks(text, words, maxChars = 84) {
     const outMp4 = path.join(WORK, `${tag}.mp4`);
     await ffmpeg([...inputs, '-filter_complex', fc.join(';'), '-map', '[v]', '-map', '[a]', '-t', fmt1(len), '-r', String(FPS), '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '21', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-ar', '48000', '-ac', '2', '-movflags', '+faststart', outMp4], { cwd: WORK });
     sceneFiles.push(outMp4);
-    p.render = { start: globalT, len, segs: segs.map(x => `${x.src} ${fmt1(x.dur)} s`), beds: bedList }; globalT += len;
+    p.render = { start: globalT, len, segs: segs.map(x => `${x.src} ${fmt1(x.dur)} s`), beds: bedList,
+      shots: segs.map(x => ({ at: globalT + x.at, dur: x.dur, kind: x.kind, src: x.src })) }; globalT += len;
   }
 
   // credits
   const credits = []; for (const c of creditsUsed.values()) { const row = manifestRow(c.id) || {}; const hasLic = /\b(PD|public domain|CC0|CC[- ]BY|youtube|geograph)\b/i.test(c.attribution); credits.push({ head: c.id, text: `${c.attribution}${row.license && !hasLic ? ' — ' + row.license : ''}${c.kind === 'youtube' ? ' — placeholder clip card in this animatic; embedded, not copied, in the player' : ''}` }); }
-  credits.push({ head: 'Map', text: 'Route map tiles © OpenStreetMap contributors, © CARTO (light_nolabels) via Leaflet 1.9.4' });
+  credits.push(mapUsed
+    ? { head: 'Map', text: 'Route map drawn by Yunyou (G-01) — coastlines from Natural Earth 1:110m, public domain; equirectangular, standard parallel 42° N. Itinerary, dates and day counts: Verne, ch. III (F-10, F-11, F-33)' }
+    : { head: 'Map', text: 'Route map tiles © OpenStreetMap contributors, © CARTO (light_nolabels) via Leaflet 1.9.4' });
   credits.push({ head: LANG === 'zh' ? '配音' : 'Voice', text: NO_TTS || !ttsVoices ? 'Captions only — no voice in this run'
     : `Kokoro v1.0 (Apache-2.0), voice ${ttsVoices[LANG][0]} at ${ttsVoices[LANG][1]}x — run locally, no cloud service` });
   credits.push({ head: 'Text', text: 'Jules Verne, Around the World in Eighty Days (1872), Towle translation, Project Gutenberg #103 — PD' });
@@ -1059,6 +1293,43 @@ function captionChunks(text, words, maxChars = 84) {
   for (const p of plans) { L.push(`| ${String(p.sel.idx + 1).padStart(2, '0')} | ${p.s.id} | ${p.s.type} | ${mmss(p.render.start)} | ${fmt1(p.render.len)} (${p.sel.cap}) | ${p.ttsOk ? 'ok' : '**fallback**'} ${fmt1(p.speechEnd)} s | ${fmt1(p.render.len - (p.narrAt + p.speechEnd))} s | ${p.render.segs.join('<br>')} | ${p.render.beds.join('<br>') || '—'} | ${[...p.droppedBySidecar.map(x => 'sidecar: dropped ' + x), ...p.cutLog].join('<br>') || '—'} |`); }
   L.push('', `Title card ${TITLE_S} s at 0:00; credits ${pages} page(s) at the end. Total ${mmss(dur)}.`, '');
   if (warnings.length) { L.push('## Warnings', ...warnings.map(w => '- ' + w), ''); }
+  // --- overlays: retired from the film (D9). Report, do not draw.
+  { const drawn = droppedOverlays.filter(o => o.drawnBefore);
+    const lost = drawn.filter(o => !o.covered);
+    L.push('## Overlays — not drawn (D9: nothing hovers over the picture)', '',
+      `${droppedOverlays.length} overlay(s) exist on the scenes in this cut; ${drawn.length} of them used to be burned` +
+      ` in as floating text and none is now. \`scene.overlays[]\` is untouched — the FILM stops drawing it.`, '',
+      `**${lost.length} carry wording the narration does not say**, listed first: each is either already redundant on`,
+      `screen (a credit, a date the picture shows), or a real loss that belongs in the script or on a designed card.`, '',
+      '| # | scene | i | kind | in narration? | text |', '|---|-------|---|------|---------------|------|');
+    const order = [...droppedOverlays].sort((a, b) => (a.covered === b.covered ? 0 : a.covered ? 1 : -1) || a.n - b.n || a.i - b.i);
+    for (const o of order) L.push(`| ${String(o.n).padStart(2, '0')} | ${o.scene} | ${o.i} | ${o.kind}${o.drawnBefore ? '' : ' *(never drawn)*'} | ${o.covered ? 'yes' : '**NO**'} | ${o.text.replace(/\|/g, '\\|')} |`);
+    L.push(''); }
+  // --- where the film holds ONE picture for a long narration run (founder: "not enough visuals; it plays as
+  // heavily narrated, which gets tiring"). A shot that does not move is measured; footage, the panowalk and the
+  // film map are exempt because they are moving pictures. This is a RUNDOWN input, not a renderer setting: the
+  // fix is more shots, which means more media, which is the Rundown Writer's and Content Preparer's call.
+  {
+    const MOVING = new Set(['footage', 'mp4', 'mapfilm']);
+    const LONG = +(args['long-shot'] || 20);
+    const rows = [];
+    let stillS = 0, movingS = 0;
+    for (const p of plans) for (const sh of (p.render.shots || [])) {
+      const moving = MOVING.has(sh.kind);
+      if (moving) movingS += sh.dur; else stillS += sh.dur;
+      if (!moving && sh.dur >= LONG) rows.push({ p, sh });
+    }
+    rows.sort((a, b) => b.sh.dur - a.sh.dur);
+    const held = rows.reduce((a, r) => a + r.sh.dur, 0);
+    L.push('## Shots — where the film holds one picture', '',
+      `Still or card time: **${mmss(stillS)}**. Moving time (footage, panowalk, film map): **${mmss(movingS)}**.`,
+      `**${rows.length} shot(s) hold a single unmoving picture for ${LONG} s or more — ${mmss(held)} in total, ${Math.round(held / Math.max(1, dur) * 100)} % of the film.**`,
+      `The renderer cannot fix this: it cuts when the cut sheet gives it something to cut to. Each row below is a`,
+      `request to the rundown for another shot, not a bug. (\`--long-shot N\` changes the threshold.)`, '',
+      '| shot | scene | at | seconds | what is on screen |', '|---|-------|----|--------:|-------------------|');
+    rows.forEach((r, i) => L.push(`| ${i + 1} | ${String(r.p.sel.idx + 1).padStart(2, '0')} ${r.p.s.id} | ${mmss(r.sh.at)} | **${fmt1(r.sh.dur)}** | ${r.sh.src} |`));
+    L.push('');
+  }
   L.push('## Sentence index per scene (for the sidecar / Narrator)', '');
   for (const p of plans) { L.push(`**${String(p.sel.idx + 1).padStart(2, '0')} ${p.s.id}** — ${p.sents.map((x, i) => `[${i}] ${x}`).join(' ')}`, ''); }
   L.push('## Digest', `- Did: rendered ${plans.length} scenes + title + credits into one h264/aac MP4 (${mmss(dur)}) with Edge TTS narration, sentence captions, Commons beds and clip/stop cards where rights forbid copying.`, `- Weak: ${clipCards} clip card(s) still stand in${plans.filter(p => p.s.type === 'streetview').length ? ` and stop cards for ${plans.filter(p => p.s.type === 'streetview').length} Street View scene(s)` : ''} (${fmt1(plans.filter(p => p.s.type === 'video' || p.s.type === 'streetview').reduce((a, p) => a + p.render.len, 0))} s of ${fmt1(dur)}); ${plans.filter(p => p.cutLog.length).length} scene(s) were end-cut mechanically where TTS overran the README seconds (see table) — Narrator should re-trim by hand; generated assets (G-xx) are still pending cards.`, `- Next: swap clip cards for licensed footage once Rights clears direct licences; add per-sentence timed overlays; run loudnorm on the final mix; add a 9:16 variant.`);

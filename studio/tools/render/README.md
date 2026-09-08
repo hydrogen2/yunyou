@@ -118,12 +118,13 @@ at a sentence boundary and logs what it dropped. The fix belongs in the locale f
      believed to be a 1920-px one), then through the **shared treatment layer** — see "Stills" below. Photo scenes
      use the player's own `imageSlots()`, so the film and the chapter change picture on the same beat.
    - `card`/`interstitial` → headless screenshot of the real player (`showScene(n)`, header/footer/right panel hidden, `#media` = full frame).
-   - `map` with a route-map asset → player `showRouteMap(true|false)` (Leaflet + CARTO tiles).
-   - `quiz`/`dialogue`/`game` → our own quiz / chat / checklist screens (HTML → Playwright PNG); missing generated assets → "pending" card like the player's.
-5. **Captions** (libass): scene title lower-third for 4 s, spoken sentence bottom-centre (≤ 84 chars EN in
-   Liberation Serif, ≤ 24 characters ZH in Noto Sans CJK SC, timed by character share inside the sentence),
-   selected scene overlays (pins/captions) top-left, attribution bottom-right — except on a `plate`, where the
-   credit is printed on the paper instead and the corner label is suppressed.
+   - `map` → the **film route map** (`lib/mapfilm.mjs`), not a screenshot of the G-01 print plate. See "The map".
+   - `quiz` → the **two-state quiz** (question held, then reveal). See "The quiz".
+   - `dialogue`/`game` → our own chat / checklist screens (HTML → Playwright PNG); missing generated assets → "pending" card like the player's.
+5. **Captions** (libass) — **two styles only, since v1.0**: the spoken sentence bottom-centre (≤ 84 chars EN in
+   Liberation Serif, ≤ 24 characters ZH in Noto Sans CJK SC, timed by character share inside the sentence) and the
+   licence credit bottom-right — except on a `plate`, where the credit is printed on the paper instead and the
+   corner label is suppressed. **Nothing else hovers over the picture.** See "No floating text".
 6. **Audio** — narration measured with `ebur128` over the run's own clips and gained to −17 LUFS (Kokoro lands
    near −16.5, so the gain is usually under a dB — it is measured, not assumed); Commons beds measured (ebur128) and set to −35 LUFS (18 dB under), stings ≤ 6 s to −26;
    fades; `amix` + limiter. Freesound refs are skipped (login-gated) and listed under Warnings.
@@ -131,11 +132,143 @@ at a sentence boundary and logs what it dropped. The fix belongs in the locale f
    4-s title card first, credits card(s) last (every Commons file / creator / licence used, YouTube creators of
    placeholder clips, map tiles, the Kokoro voice and its licence).
 
+## No floating text (v1.0, DECISIONS.md D9)
+
+> *"i dont wan any floating text overlays like the one on the topleft, distracting also hard to read, we already
+> have captions for that."* — the founder, after watching Day 1
+
+Retired from the film, in this tool:
+
+| was | where | now |
+|---|---|---|
+| scene title, ASS style `Title` | bottom-left, 0–4 s of every scene | **gone** — the chapter markers carry it (`*_<lang>.chapters.txt`) |
+| `pin` / `caption` / `lower-third` overlays, ASS style `Pin` | top-left, timed from `scene.overlays[]` or the sidecar | **gone** — not drawn, in either language |
+| overlay text reprinted on the pending-asset card | stand-in card for a missing G-xx | **gone** |
+| licence credit, ASS style `Attr` | bottom-right while a credited picture is up | **KEPT** — a CC BY / CC BY-SA obligation at the point of use, not editorial text |
+
+`scene.overlays[]` is untouched in `scene.schema.json` and in every scene file; the **film** simply stops drawing
+it. There is no flag to bring it back: if a beat needs text it belongs in the narration or on a designed card.
+
+Because dropping text silently is how information disappears, every run writes an **"Overlays — not drawn"** table
+into `render-log.md`: scene, index, kind, the text, and whether the narration this cut speaks already carries it
+(content-token overlap ≥ 70 %). The ones marked **NO** are the rundown's problem, not the renderer's — read that
+table after any script edit.
+
+## The quiz — question, hold, reveal (v1.0, D9)
+
+> *"the quiz also give away the answer from the start."*
+
+It did: one frame, every option drawn at once, the correct one ticked and green, the feedback printed underneath.
+`quizScreen()` now takes a `phase`:
+
+* **`ask`** — picture, question, options set identically. No tick, no colour, no feedback.
+* **`reveal`** — the correct option lights (accent border, filled mark), the others drop to 42 % opacity, the
+  feedback appears.
+
+The cut between them is **on the scene clock, not at a fixed offset**: the renderer looks up the utterance the cut
+sheet built from the `quiz:correct` token and cuts 0.45 s before it, so the answer arrives exactly as the guide
+starts to say it (a 0.5 s dissolve centred on the beat). A scene with no `quiz:correct` token falls back to 62 % of
+the beat and says so in `render-log.md`. Both languages, same mechanism — the token is language-independent.
+
+Mechanically this is `segStates()`: a segment carrying several stills with **absolute scene seconds**, which
+survive the duration rescaling every segment goes through.
+
+Type is sized in `vh` (question ≈ 4.6 % of frame height = 50 px at 1080p, options 3.3 % = 36 px, feedback 2.9 %),
+and the bottom 15 % of the frame is left empty because the burned captions live there.
+
+## The map — a film graphic, not the print plate (v1.0, D9)
+
+> *"the text in the maps are all very small and low contrast hard to read and too much text."*
+
+**The diagnosis.** The film used to screenshot the player showing `route-map_day-01-state.svg`, which is the
+**fold-open print master: 2176 × 1812**. Fitted into a 1920 × 1080 frame that is a scale of **0.596**, so the plate's
+16-px leg labels and 19-px ledger figures arrive as **9.5 and 11 px**. Add an eight-row ledger, a seven-item key
+and a two-line credits note, all on screen from the first frame, and it is unreadable on a phone. The plate is not
+badly made; it is a *plate*, and a film is a different medium.
+
+**What replaced it.** `lib/mapfilm.mjs` draws the film's own 1920 × 1080 graphic from the **same numbers** — the
+generator now also writes `generated/g-01/route-data.json` (ports, legs, days, dates, waypoints, enablers;
+F-10 / F-11 / F-33), so there is still one source of truth and nothing is re-keyed.
+
+| the plate | the film map |
+|---|---|
+| 8-row × 5-column itinerary ledger, 19–21 px | **one** running total in the top strip, 80 px numeral (`20 of 80 days`), plus the current leg's day count on the map at 50 px |
+| 8 port names + 8 dates + 8 leg labels, always on | **at most one port name at a time**, 54 px, with a paper halo; it fades when the next leg lands. London stays, as the anchor |
+| 7-item key | none — in a film the drawing order *is* the key |
+| credits line, 14 px | none — moved to the film's credits card |
+| title, 42 px | none — the film has a title card |
+| everything visible at t = 0 | **revealed over time**, on the narration clock |
+| equirectangular on the equator (right for a plate) | equirectangular with a **standard parallel at 42° N** (latitude stretched 1.35×) so the frame is map, not empty ocean; true to scale where the route actually runs |
+| enabler pins carry name + full date | accent diamond + **month and year only** (`Nov 1869`), because the narration names the place — and a place name we cannot honestly localise must not be burned into the picture |
+
+Two states:
+
+* **`day-1`** — the faint whole loop **traces once around the world**, then London lights with the date. Seven
+  unlit ports, no ledger. This is the cold open, and it has to work with the sound off.
+* **`loop`** — the eight legs draw one at a time (1.6 s each), current leg in accent, travelled legs in ink, the
+  arriving port named for 3.4 s, the running day total stepping in the top strip, and the total closing at the end.
+
+**Beats.** In the sidecar, a map visual binds each reveal to a **narration sentence**:
+
+```json
+{"kind":"routemap","state":"loop","beats":[
+  {"show":"enabler:A","s":4}, {"show":"leg:1","s":9}, {"show":"leg:2","s":10}, {"show":"total","s":17}]}
+```
+
+`s` is the sentence index (the same indices the `script` tokens use), `t` is raw seconds, `lead` is how far ahead
+of the word the graphic moves (default 0.25 s). `show` is `london | total | leg:1..8 | enabler:A..C`. Anything not
+given is spaced evenly, so a scene with no beats still renders. A beat pointing at a sentence this cut does not
+speak is logged as a warning and spaced evenly instead.
+
+Old sidecars keep working: `{"kind":"player","call":"showRouteMap(true)"}` is routed to the film map
+(`true` → `day-1`, `false` → `loop`) rather than screenshotting the plate.
+
+**How it is rendered.** The page answers `setT(seconds)`; `sampleTimes()` asks for dense frames through a move
+(12.5/s) and exactly **one** frame per hold, and `segFrames()` screenshots those instants and concatenates them
+with their own durations. A 92-second map costs ~230 screenshots instead of 2 300.
+
+**Mandarin.** Port names come from the Translator's own words: a `tap-to-find` map scene authors its options as
+`London → Suez` / `伦敦 → 苏伊士`, one per leg in leg order. They are used only if all of them parse **and chain**
+(option *i*'s destination is option *i+1*'s origin, and the last closes the loop). Otherwise the map shows English
+names and the run warns. This tool never translates a place name itself.
+
+**Degrades.** No `route-data.json` or no cached `src/ne_110m_land.geojson` → `MF.load()` returns null, the map beats
+fall back to the old player screenshot, and the run warns that the film is showing the unreadable plate. Regenerate
+with `python3 studio/tools/gen/g01_route_map.py`.
+
 ## Stills — the shared treatment layer
 
 `studio/player/imagelayer.mjs` is imported by BOTH the player and this renderer (like `panomove.mjs`), so
-`pickTreatment()` and `imageSlots()` have exactly one definition. Three rules are not settings: **never stretch,
-never upscale past the file's own pixels, never crop the subject away.**
+`pickTreatment()` and `imageSlots()` have exactly one definition. Two rules are not settings: **never stretch,
+never crop the subject away.**
+
+### "Never upscale" is retired — read this before reinstating it (v1.0, 2026-09-08)
+
+The third rule used to be *never upscale past the file's own pixels*. The founder retired it after watching Day 1:
+*"when the scene type is a still image, can you enlarge it to fit the screen, now all too small"*. The rule existed
+to stop us **claiming** detail we do not have — but showing a picture large is not a claim about its resolution,
+and a 960 × 540 photograph pinned at 960 px inside a 1920-px frame just reads as a mistake.
+
+What replaced it is a **per-picture ceiling**, `cfg.max_scale`, threaded through `pickTreatment()` and `fitSize()`:
+
+| picture | ceiling | why |
+|---|---|---|
+| `media[].upscale_max` set | that | the one place a human can be explicit; wins over everything |
+| `kind: generated` or `kind: map` | **3.0×** | our own vector output and printed plans — line art by construction |
+| long side ≤ `plate_max_px` (760) | **2.6×** | small archive material: plates and engravings. They upscale almost for free, and they were the ones that looked broken |
+| everything else | **2.0×** | photographs; softness shows. A 1920-px file needs 1.0–1.6× to fill 1080p anyway, so this rarely binds |
+
+`--max-upscale <k>` overrides all four for a test. The enlargement itself is `scale=…:flags=lanczos`; inside a
+`plate` the picture is pre-scaled with lanczos in ffmpeg and handed to the browser at 1:1, rather than letting the
+browser's default filter do it. The player still defaults to `max_scale: 1` — its layout has not been re-tuned.
+
+**What I tried first, so nobody re-litigates it.** I built a measured line-art classifier (paper / ink / midtone
+histogram at native resolution, mean saturation, local flatness) and ran it over Day 1's 22 stills. It does not
+separate: the Neuville wood engravings score **0.000** saturation and so does the Ben-Brooksbank black-and-white
+photograph of Savile Row; scan noise flattens the flatness signal for the 1841 elevation; downscaling before
+measuring turns cross-hatching into midtones. A classifier that cannot tell an engraving from a monochrome
+photograph must not decide how far we enlarge either. The size-based ceiling above is generous to exactly the same
+material a working classifier would have been generous to, and it is predictable.
 
 | treatment | chosen when | in the film |
 |---|---|---|
@@ -144,9 +277,35 @@ never upscale past the file's own pixels, never crop the subject away.**
 | `plate` | long side ≤ 760 px | a warm paper mount typeset in the browser, picture at 1:1, credit printed on the paper |
 | `none` | opt-out only (`media[].treatment`) | bare frame, no backdrop, no motion |
 
-The **drift** is `zoompan` from 0.94 to 1.00 of the honest size, seeded from `hash32(ref)` so a picture drifts the
-same way in the film and in the player. It is built by making the canvas 1/0.94 larger and zooming *in* to 1:1, so
-the most magnified frame is the honest size and every other frame is a downscale — it cannot invent resolution.
+### The drift, and why it stopped juddering (v1.0)
+
+> *"also they jitters, not sure why but that needs to be fixed"*
+
+The drift is a push from 0.94 to 1.00 of the honest size plus a ±0.9 %/±0.7 % pan, seeded from `hash32(ref)` so a
+picture drifts the same way in the film and in the player. It is built by making the canvas 1/0.94 larger and
+moving *in* to 1:1, so the most magnified frame is the honest size.
+
+It used to be driven by **`zoompan`**, and that was the bug. `zoompan` crops an **integer** pixel region out of its
+input every frame. 0.94 → 1.00 over a 30-second shot is 0.16 px per frame, so the picture stands perfectly still
+for five or six frames and then jumps a whole pixel — a visible stutter about four times a second.
+
+Measured, 300 frames at 1920 × 1080, mean absolute frame-to-frame difference in an off-centre window, same zoom and
+pan both times:
+
+```
+zoompan      0.00 0.00 0.03 0.04 0.00 0.00 0.00 0.00 0.00 0.05 0.00 0.00 0.38 0.43 0.00 …   21 of 30 frames frozen
+perspective  0.04 0.03 0.03 0.04 0.03 0.04 0.04 0.03 0.05 0.03 0.03 0.04 0.04 0.04 0.03 …    0 of 30 frames frozen
+```
+
+So the move is now `perspective=eval=frame:interpolation=cubic:sense=source` with float corner expressions in
+`on`, which samples sub-pixel (1/256 px) and needs **none** of the 4–8× supersampling the same fix would otherwise
+cost — supersampling to 8× would be ~113 MB per frame buffer, which this 3 GB box cannot afford. Reproduce the
+measurement with:
+
+```bash
+ffmpeg -i shot.mp4 -vf "select='between(n,100,140)',crop=500:350:120:80,format=gray,tblend=all_mode=difference" -f rawvideo - | …
+```
+
 `media[].drift: false` holds one beat still; `--no-drift` holds the whole film still.
 
 **One deliberate divergence from the player, and its reason.** v0.7 degrades a `plate` to `backdrop` when the
@@ -168,7 +327,13 @@ condition the rationale implies — the paper only costs more than it gives when
     "overlays": [ 0, {"i":1,"at":12,"until":18} ]                   // indices into scene.overlays, optionally re-timed
 } } }
 ```
-`visuals.kind`: `image | clip | player (call) | scenecard | pending | quiz | chat (chips) | checklist (closing_overlay) | streetview`; `dur` omitted = share the remainder.
+`visuals.kind`: `image | clip | footage | routemap (state, beats) | player (call) | scenecard | pending | quiz |
+chat (chips) | checklist (closing_overlay) | panowalk (scene, stops, fallback) | streetview`; `dur` omitted = share
+the remainder.
+
+`overlays` is **read but never drawn** (v1.0, D9) — it survives in the file so the report in `render-log.md` can
+list what the film is choosing not to say. A `player` visual whose call is `showRouteMap(…)` is routed to the film
+map. See "The map" for `routemap`.
 
 ## Rights guardrails (from review/rights.md)
 

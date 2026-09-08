@@ -49,9 +49,10 @@ export function page(body, extraCss = '') {
 }
 
 /** A picture panel that obeys the v0.7 rules: never upscaled, bars filled with a blurred copy of itself. */
-function hero({ imageUrl, imageW, imageH, attribution }) {
+function hero({ imageUrl, imageW, imageH, attribution, maxScale = 1 }) {
   if (!imageUrl) return '<div class="herobox"></div>';
-  const cap = imageW ? ` style="max-width:${Math.round(imageW)}px;max-height:${Math.round(imageH || imageW)}px"` : '';
+  const k = Math.max(1, maxScale || 1);
+  const cap = imageW ? ` style="max-width:${Math.round(imageW * k)}px;max-height:${Math.round((imageH || imageW) * k)}px"` : '';
   return `<div class="herobox"><img class="back" src="${esc(imageUrl)}" alt="" aria-hidden="true">` +
     `<img class="hero" src="${esc(imageUrl)}"${cap}>` +
     `${attribution ? `<div class="herocap">${esc(attribution)}</div>` : ''}</div>`;
@@ -104,17 +105,59 @@ export function streetViewCard({ sceneTitle, stops, note }) {
     </div></div>`);
 }
 
-/** Quiz screen: image left, question and options right; correct option highlighted (linear cut = guide answers). */
-export function quizScreen({ sceneTitle, imageUrl, imageW, imageH, attribution, prompt, options, feedback }) {
-  const li = options.map(o => `<li class="${o.correct ? 'correct' : 'wrong'}">${o.correct ? '✔ ' : '○ '}${esc(o.text)}</li>`).join('');
-  return page(`<div class="page"><div class="split">
-    ${hero({ imageUrl, imageW, imageH, attribution })}
-    <div>
-      <p class="kicker">${esc(sceneTitle)}</p>
-      <h2 style="font-size:32px">${esc(prompt)}</h2>
-      <ul class="opts">${li}</ul>
-      ${feedback ? `<div class="fb sans">${esc(feedback)}</div>` : ''}
-    </div></div></div>`);
+/**
+ * Quiz — a FILM device, in two states (D9, studio/strategy/video-first.md §6).
+ *
+ * The founder, after watching Day 1: "the quiz also give away the answer from the start." It did: this template
+ * used to render every option at once with the correct one already ticked and green and the feedback printed
+ * underneath, so the answer was on screen before the question had been read aloud. A film cannot take an answer,
+ * but it can do the thing a quiz is actually for — make you commit before you are told.
+ *
+ *   phase 'ask'     the question and the options, all three set identically. No tick, no colour, no feedback.
+ *                   Held while the narration invites you to think.
+ *   phase 'reveal'  the correct option lights, the others step back, the feedback appears.
+ *
+ * The renderer cuts between the two on the narration beat (the utterance built from the `quiz:correct` token),
+ * not at a fixed offset — see segStates() in render_linear.mjs.
+ *
+ * Type is sized in vh so it holds up on a phone: the question is ~4.6 % of frame height (50 px at 1080p), an
+ * option ~3.3 % (36 px). The old card set options at a flat 21 px. The bottom 15 % is left empty because the
+ * burned narration captions live there.
+ */
+export function quizScreen({ sceneTitle, imageUrl, imageW, imageH, attribution, prompt, options, feedback, phase = 'reveal', marks = '①②③④⑤⑥', imageMaxScale = 2.2 }) {
+  const reveal = phase === 'reveal';
+  const li = options.map((o, i) => {
+    const state = !reveal ? 'ask' : (o.correct ? 'correct' : 'wrong');
+    return `<li class="q-${state}"><span class="mark">${marks[i] || '·'}</span><span class="otext">${esc(o.text)}</span></li>`;
+  }).join('');
+  const css = `
+  .quizpage { display:grid; grid-template-columns: 42fr 58fr; gap:3.2vh; width:100%; height:100%;
+    padding:5vh 4.5vh 15vh 4.5vh; align-items:center; }
+  .quizpage .herobox { height:74vh; }
+  /* the blurred backdrop is position:absolute, so a STATIC picture paints under it. The .split rule that used to
+     give img.hero position:relative does not reach this layout — say it here or the picture disappears. */
+  .quizpage img.hero { position:relative; z-index:1; max-width:100%; max-height:74vh; width:auto; height:auto;
+    object-fit:contain; border-radius:6px; box-shadow:0 1.4vh 4vh rgba(0,0,0,.55); }
+  .quizpage .herocap { z-index:2; font-size:1.7vh; padding:0.7vh 1.1vh; }
+  .qbody { display:flex; flex-direction:column; justify-content:center; height:100%; }
+  .qq { font-size:4.6vh; line-height:1.24; font-weight:500; margin:0 0 3.4vh; color:var(--ink); }
+  ul.qopts { list-style:none; margin:0; padding:0; font-family:'Liberation Sans','Noto Sans CJK SC',system-ui,sans-serif; }
+  ul.qopts li { display:flex; gap:1.6vh; align-items:flex-start; font-size:3.3vh; line-height:1.3;
+    margin:0 0 1.7vh; padding:1.5vh 2vh; border:2px solid var(--line); border-radius:1.2vh; background:#17161a; }
+  ul.qopts .mark { flex:0 0 auto; font-size:3.3vh; color:var(--dim); font-weight:600; }
+  ul.qopts li.q-ask { color:var(--ink); }
+  ul.qopts li.q-correct { border-color:var(--accent); border-width:3px; background:#241d12; color:#f6ead2; }
+  ul.qopts li.q-correct .mark { color:var(--accent); }
+  ul.qopts li.q-wrong { opacity:.42; }
+  .qfb { margin-top:2.6vh; padding:1.4vh 0 0 2vh; border-left:4px solid var(--accent);
+    font-family:'Liberation Sans','Noto Sans CJK SC',system-ui,sans-serif; font-size:2.9vh; line-height:1.34; color:#e6dcc8; }`;
+  return page(`<div class="page" style="padding:0"><div class="quizpage">
+    ${hero({ imageUrl, imageW, imageH, attribution, maxScale: imageMaxScale })}
+    <div class="qbody">
+      <h2 class="qq">${esc(prompt)}</h2>
+      <ul class="qopts">${li}</ul>
+      ${reveal && feedback ? `<div class="qfb">${esc(feedback)}</div>` : ''}
+    </div></div></div>`, css);
 }
 
 /** Dialogue screen: avatar left, scripted exchange right. */
