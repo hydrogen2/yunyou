@@ -7,6 +7,19 @@ This supersedes every player-shaped assumption in the schema, the roles and the 
 > *"you need to forget the /player version now and get fully oriented to the video version… video is never a
 > rendering of the /player because there may never be a /player."*
 
+## The target, stated (founder, 2026-09-08)
+**A YouTube long-form video: landscape, 1920×1080, about 20 minutes.** That is the format every craft decision
+answers to. What it implies, concretely:
+- **The first 30 seconds decide everything.** On long-form YouTube, retention is won or lost before the story starts.
+  The opening must give a stranger a reason to stay, not a title card and a throat-clear.
+- **It is watched on a phone AND on a television.** Type must survive both — which is exactly why the dense map
+  failed. Legible at arm's length on a 6-inch screen is the binding constraint.
+- **No interactivity, ever.** Not deferred, not degraded: absent. Design accordingly.
+- **~20 minutes is a target, not a quota.** Do not pad to reach it; do not rush to fit it. Day 1 at 18:46 is fine.
+- **The deliverable is more than the file:** title, thumbnail, description and chapter timestamps are part of the
+  episode. We generate chapters already; **titles and thumbnails do not exist yet** and are a real gap.
+- Autoplay often starts muted, so the opening frames must carry meaning with no sound.
+
 ## Protect these — they are working (founder, after watching Day 1)
 1. **Period sound design.** "Gives an old school movie feel." Keep and extend it.
 2. **Historic printmaking, engravings and illustrations.** "A key differentiator from a pure video tour — gives it
