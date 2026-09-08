@@ -136,8 +136,12 @@ export function quizScreen({ sceneTitle, imageUrl, imageW, imageH, attribution, 
   .quizpage .herobox { height:74vh; }
   /* the blurred backdrop is position:absolute, so a STATIC picture paints under it. The .split rule that used to
      give img.hero position:relative does not reach this layout — say it here or the picture disappears. */
-  .quizpage img.hero { position:relative; z-index:1; max-width:100%; max-height:74vh; width:auto; height:auto;
-    object-fit:contain; border-radius:6px; box-shadow:0 1.4vh 4vh rgba(0,0,0,.55); }
+  /* fill the panel, aspect exact. width/height 100% + object-fit:contain lets the picture GROW into the box
+     (width:auto never would — it stops at the file's own pixels, which is the bug the founder reported); the
+     inline max-width/max-height hero() writes are imageW/H x maxScale, so the element can never exceed the
+     enlargement ceiling and the aspect ratio is untouched. */
+  .quizpage img.hero { position:relative; z-index:1; width:100%; height:100%; object-fit:contain;
+    border-radius:6px; filter:drop-shadow(0 1.4vh 3vh rgba(0,0,0,.6)); }
   .quizpage .herocap { z-index:2; font-size:1.7vh; padding:0.7vh 1.1vh; }
   .qbody { display:flex; flex-direction:column; justify-content:center; height:100%; }
   .qq { font-size:4.6vh; line-height:1.24; font-weight:500; margin:0 0 3.4vh; color:var(--ink); }

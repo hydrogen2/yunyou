@@ -16,6 +16,8 @@
  * Mapillary's terms say user content is CC BY-SA *by default* but that some content is served under CC BY-NC-SA. Its
  * Graph API documents no licence field. If a licence field turns up we read it; if it does not, the frame is
  * `unknown` and is NOT downloaded unless a human passes --accept-unknown-licence (Rights decision, not an engineer's).
+ * 2026-09-08: Mapillary is ruled GREEN (review/rights-mapillary.md) — `platform-default` is permissive and needs no
+ * flag. Its absent API field means every image is CC BY-SA, not that any image might not be.
  */
 const NC_ND = /\b(nc|non[-\s]?commercial|nd|no[-\s]?deriv\w*)\b/i;
 const OK = /\b(cc0|public\s?domain|pdm|cc[-\s]?by(?:[-\s]?sa)?(?:[-\s]?\d(?:\.\d)?)?)\b/i;

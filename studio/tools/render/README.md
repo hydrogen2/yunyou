@@ -270,11 +270,11 @@ measuring turns cross-hatching into midtones. A classifier that cannot tell an e
 photograph must not decide how far we enlarge either. The size-based ceiling above is generous to exactly the same
 material a working classifier would have been generous to, and it is predictable.
 
-| treatment | chosen when | in the film |
+| treatment | chosen when (in this order) | in the film |
 |---|---|---|
-| `fill` | a contained fit already covers ≥ 90 % of the frame and the file has the pixels | plain contain |
-| `backdrop` | anything else big enough to carry the frame | bars filled with a blurred, darkened copy of the same file (`gblur` at 1/10 scale, then scaled back up — the player's trick), credit bottom-right |
-| `plate` | long side ≤ 760 px | a warm paper mount typeset in the browser, picture at 1:1, credit printed on the paper |
+| `plate` | long side ≤ 760 px | a warm paper mount typeset in the browser, credit printed on the paper. **Tested first**: once `max_scale` > 1 the fill test would otherwise claim a 709×431 elevation (0.93 coverage) and bleed a line drawing to the frame edge. At `max_scale: 1` the order is immaterial |
+| `fill` | a contained fit already covers ≥ 90 % of the frame and it fits within the enlargement ceiling | plain contain |
+| `backdrop` | anything else | bars filled with a blurred, darkened copy of the same file (`gblur` at 1/10 scale, then scaled back up — the player's trick), credit bottom-right |
 | `none` | opt-out only (`media[].treatment`) | bare frame, no backdrop, no motion |
 
 ### The drift, and why it stopped juddering (v1.0)
@@ -334,6 +334,16 @@ the remainder.
 `overlays` is **read but never drawn** (v1.0, D9) — it survives in the file so the report in `render-log.md` can
 list what the film is choosing not to say. A `player` visual whose call is `showRouteMap(…)` is routed to the film
 map. See "The map" for `routemap`.
+
+## Shots — the long-hold report
+
+Every run writes a **"Shots — where the film holds one picture"** table into `render-log.md`: the still/card vs
+moving split for the whole film, and every unmoving shot of `--long-shot N` seconds or more (default 20). Footage,
+the panowalk and the film map are exempt — they are moving pictures.
+
+This is a **rundown input, not a renderer setting.** The renderer cuts when the cut sheet gives it something to cut
+to; a card that holds for 88 seconds holds because nothing else was authored for those 88 seconds. Measured on the
+shipped 18:46 Day 1 cut: 15:33 still or card, 2:24 moving, and 18 shots ≥ 20 s totalling 12:59 — 69 % of the film.
 
 ## Rights guardrails (from review/rights.md)
 

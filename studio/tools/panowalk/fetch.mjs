@@ -210,7 +210,7 @@ for (const st of stops) {
   row.status = DRY ? 'would-fetch' : 'ok';
   Object.assign(row, {
     source: d.source, sequence_id: d.sequence_id, sequence_key: `${d.source}:${d.sequence_id}`,
-    author: d.author, licence: d.licence || (d.source === 'mapillary' ? 'CC BY-SA 4.0 (platform default — NOT stated per image)' : null),
+    author: d.author, licence: d.licence || (d.source === 'mapillary' ? 'CC BY-SA 4.0 (Mapillary Terms §3; stated per image in Mapillary\'s own download panel)' : null),
     licence_url: d.licence_url, licence_source: d.licence_source, attribution: d.attribution,
     requires_logo: !!d.requires_logo, all_pano: d.all_pano, panos: d.panos, reverse: !!d.reverse, span_m: Math.round(d.span_m || 0),
     frames: frames.length, _frames: frames, _d: d, _fit: fit,

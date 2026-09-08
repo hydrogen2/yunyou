@@ -99,11 +99,24 @@ contrast hard to read and too much text."*
   this 3 GB box cannot afford. Same seeded amount, same look, no stepping.
 
 **6. Reported, not fixed — the film holds one picture for too long.** New "Shots — where the film holds one picture"
-table in `render-log.md`: every unmoving shot ≥ 20 s (`--long-shot N`), with the still/moving split for the whole
-film. On the 18:46 Day 1 cut that is ~8½ minutes in ten shots — `pack-the-bag` 88 s on one checklist card,
-`fogg-by-the-clock` 50 s, `the-wager` 50 s, `souvenir` 54 s, `passepartout` 46 s, `count-the-steps` 46 s on the 1872
-plan, `the-dash` 40 s, `savile-row` 32 s + 28 s, `the-boat-train` 36 s. The renderer cuts when the cut sheet gives it
-something to cut to; the fix is more shots, which is the Rundown Writer's and Content Preparer's call.
+table in `render-log.md`: every unmoving shot ≥ 20 s (`--long-shot N`), plus the still/moving split for the whole
+film. Measured on the shipped 18:46 Day 1 cut: **15:33 of it is a still or a card and only 2:24 is moving picture**,
+and **18 shots hold one unmoving picture for 20 s or more — 12:59, 69 % of the film.** The worst:
+
+| s | scene | on screen |
+|--:|-------|-----------|
+| 88 | pack-the-bag | one checklist card |
+| 83 | the-world-shrinks | one map screenshot *(now animated)* |
+| 56 | cold-open | one map screenshot *(now animated)* |
+| 54 | souvenir | one player card |
+| 50 | fogg-by-the-clock / the-wager / quiz-verne-saloon | one card each |
+| 46 | passepartout-on-the-platform · count-the-steps (M-30, the 1872 plan) | |
+| 40 | the-dash (M-30 again) | |
+| 36 · 32 · 28 · 25 · 24 · 23 | the-boat-train · savile-row ×2 · the-wager · the-boat-train · charing-cross | |
+
+Animating the two map beats takes the unmoving total to about 10:40 (57 %). Everything else is a rundown decision:
+the renderer cuts when the cut sheet gives it something to cut to. `pack-the-bag`, `fogg-by-the-clock`, `souvenir`
+and `passepartout` have **no media at all** in the film — they are typeset cards holding for a minute.
 
 **Run**
 ```bash

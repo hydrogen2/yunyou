@@ -31,6 +31,7 @@
  *   --python <path>      interpreter for the TTS adapter (default ~/hilbert/.venv/bin/python)
  *   --no-drift           hold every still dead still (the player's ?drift=0)
  *   --max-upscale <k>    override the per-picture enlargement ceiling (default: 3.0 generated/map, 2.6 plates, 2.0 photos)
+ *   --long-shot <s>      threshold for the "where the film holds one picture" table in render-log.md (default 20)
  */
 import fs from 'node:fs';
 import path from 'node:path';

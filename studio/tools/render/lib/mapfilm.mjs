@@ -127,12 +127,13 @@ const polyLen = piece => { let L = 0; for (let i = 1; i < piece.length; i++) L +
 const LABEL = {
   1: { anchor: 'end', dx: -34, dy: -30 },     // London  — up and left, over the Atlantic
   2: { anchor: 'start', dx: 32, dy: 14 },     // Suez    — right, into Arabia
-  3: { anchor: 'end', dx: -34, dy: 16 },      // Bombay  — left, over the Arabian Sea
-  4: { anchor: 'start', dx: 30, dy: -22 },    // Calcutta— up and right
-  5: { anchor: 'end', dx: -36, dy: 54 },      // Hong Kong — down and LEFT, over the South China Sea
+  // Directly BELOW the dot wherever the name fits: a label 250 px to one side reads as naming whatever it sits on.
+  3: { anchor: 'middle', dx: 0, dy: 62 },     // Bombay  — below, over the Arabian Sea
+  4: { anchor: 'start', dx: 30, dy: -22 },    // Calcutta — up and right (below is the Bay of Bengal and leg 4)
+  5: { anchor: 'middle', dx: 0, dy: 64 },     // Hong Kong — below, over the South China Sea
   6: { anchor: 'middle', dx: 0, dy: 66 },     // Yokohama — below; anchored right it runs off the frame
-  7: { anchor: 'start', dx: 28, dy: 62 },     // San Francisco — below, clear of leg 7
-  8: { anchor: 'start', dx: 28, dy: 56 },     // New York — below, clear of leg 8
+  7: { anchor: 'start', dx: 28, dy: 62 },     // San Francisco — below-RIGHT: centred, the name runs off the left edge
+  8: { anchor: 'middle', dx: 0, dy: 62 },     // New York — below, over the eastern seaboard
 };
 // Where the current leg's day count sits. The plate's own anchors are laid out for a 2176-px sheet: leg 6's is at
 // 166 E, which on a 1920-px frame is 128 px from the right edge and a centred "22 days" runs off it. These are the

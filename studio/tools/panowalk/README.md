@@ -121,7 +121,14 @@ So there is no filter to apply and no org-vs-user proxy. Mapillary's Terms (15 F
 CC BY-SA **by default** and that some content is served under CC BY-NC-SA — but the API will not tell you which.
 Every Mapillary frame therefore comes back `unknown`, and only `--accept-unknown-licence` lets it through. When it
 does, `frames.json` and the on-screen credit both say so in full:
-`"CC BY-SA 4.0 (platform default — NOT stated per image)"`.
+`"CC BY-SA 4.0 (Mapillary Terms §3; stated per image in Mapillary's own download panel)"`.
+
+**Rights ruling 2026-09-08** (`day-01-london/review/rights-mapillary.md`): Mapillary imagery is **green** for our
+CC BY-SA films. The API exposing no `license` field reflects **uniformity, not ambiguity** — Mapillary states CC BY-SA
+in three first-party places, and "NonCommercial" appears nowhere in its application bundle; the NC sentence in the
+Terms is scoped to separately-distributed *data sets*, which we do not use. KartaView is likewise CC BY-SA 4.0,
+now confirmed first-hand from its own bundle rather than the OSM wiki, and requires the credit
+`© Grab and KartaView Contributors`, which our earlier attribution strings omitted.
 
 **Open for Rights:** does Mapillary's platform default cover us for a CC BY-SA output, given that the API cannot
 confirm it per image? Until that is answered, Day 1's `open` walk is built on an unverified assumption, visibly
