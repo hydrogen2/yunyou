@@ -1,114 +1,209 @@
 {
   "id": "the-wager",
-  "type": "photo",
-  "title": "The wager — twenty thousand at Baring's",
-  "subtopic": "6 — The wager",
-  "duration_s": 70,
-  "learning_goal": "Know the fictional trigger, the six names, £20,000 at Baring's, and the deadline; feel the click of a plan.",
+  "type": "video",
+  "title": "The wager",
+  "subtopic": "S7 — The bet, the route and the bank",
+  "duration_s": 90,
+  "learning_goal": "Know the bet, the shape of the route and what became of the bank; feel the click of a plan.",
   "narration": {
-    "script": "Evening, at the club. Fogg plays whist with five fellow members — four hands at the table, the same five men every night. In the story — only in the story — a thief has stolen fifty-five thousand pounds from the Bank of England. Where could such a man hide now? So a newspaper, the Daily Telegraph, counts the days: you can now go around the world in eighty days. At the table this becomes a wager. Andrew Stuart, an engineer, bets four thousand pounds that it cannot be done. Fogg bets twenty thousand pounds — half his money — that it can. Look at the card: six names. Stuart first, Fogg last. Fogg must be back in this same room on Saturday, the twenty-first of December, at a quarter to nine at night. Fogg's motto: 'The unforeseen does not exist.'",
+    "script": "A card table at the Reform, an afternoon in October 1872. A newspaper says eighty days is now possible. One of the players says it lies. Eight legs, and the days land as they go. They add up to eighty. Twenty thousand pounds — half his fortune. Back in this room on the twenty-first of December, a quarter to nine. Eighty days. Nineteen hundred and twenty hours. A hundred and fifteen thousand two hundred minutes. Fogg's bank lasted two hundred and thirty-three years — until one trader lost eight hundred and twenty-seven million pounds and killed it in 1995. Verne gives him one line worth keeping: the unforeseen does not exist. And the turn, in Verne's words: the train leaves for Dover at a quarter before nine.",
+    "voice": "guide",
     "timing": "over",
-    "voice": "guide"
+    "starts_at_s": 0
   },
   "media": [
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_06.jpg",
+      "start_s": 0,
+      "end_s": 6,
       "license": "public-domain",
       "manifest_id": "M-35",
-      "attribution": "The wager at the Reform Club — de Neuville & Benett, Hetzel illustrated edition 1873 (Wikimedia Commons, PD)",
-      "start_s": 0,
-      "end_s": 35,
-      "note": "Slow push-in on the plate, 0–30 s. Plate belongs to the 1873 illustrated Hetzel edition (the 1872 serial was unillustrated). M-36 is reference only — never ship."
+      "attribution": "The wager at the Reform Club — Neuville / Benett, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "S7.1a — the wager plate, wide."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_06.jpg",
+      "start_s": 6,
+      "end_s": 12,
+      "license": "public-domain",
+      "manifest_id": "M-35",
+      "attribution": "The wager at the Reform Club — Neuville / Benett, Hetzel edition 1872/73 (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "S7.1b — same plate, cropped to the table and the hands."
     },
     {
       "kind": "generated",
-      "ref": "generated/g-05/memorandum-card.svg",
-      "start_s": 35,
-      "end_s": 70,
+      "ref": "generated/g-01/route-map_full-loop_9-layers_16x9.svg",
+      "start_s": 12,
+      "end_s": 20,
+      "license": "generated",
+      "manifest_id": "G-01",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S7.2a — legs one to four draw in order with their days landing (7 · 13 · 3 · 13). EXISTS but needs an L4 pass: bigger type, fewer labels, four at a time. Source: generated/g-01/route-map_full-loop_9-layers_16x9.svg."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-01/route-map_full-loop_9-layers_16x9.svg",
+      "start_s": 20,
+      "end_s": 26,
+      "license": "generated",
+      "manifest_id": "G-01",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S7.2b — legs five to eight (6 · 22 · 7 · 9)."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-01/route-map_full-loop_9-layers_16x9.svg",
+      "start_s": 26,
+      "end_s": 32,
+      "license": "generated",
+      "manifest_id": "G-01",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S7.2c — '80' alone and large. HOLD 26–32 s: the map is the beat."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-05/memorandum-card_1920x1080.png",
+      "start_s": 32,
+      "end_s": 38,
       "license": "generated",
       "manifest_id": "G-05",
       "attribution": "Yunyou studio, generated",
-      "note": "REQUESTED (Content Preparer): typeset memorandum — six signatures (Stuart, Sullivan, Fallentin, Flanagan, Ralph, Fogg — the card carries the names the guide no longer reads), stake £20,000, 'Saturday 21 December 1872, 8:45 pm'. G-03 illustration is not required. A10: make 'Saturday' legible on the card — the guide no longer says 'it really was a Saturday', so this card is where the calendar joke now lives."
+      "use": "both",
+      "note": "S7.3a — the stake. EXISTS (generated/g-05/memorandum-card_1920x1080.png) but NEEDS A REV-2 PASS: the six signatories come off (rev 2 cut them as a list of invented names)."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-05/memorandum-card_1920x1080.png",
+      "start_s": 38,
+      "end_s": 44,
+      "license": "generated",
+      "manifest_id": "G-05",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S7.3b — the deadline: 'back in this room, Saturday 21 December, a quarter to nine'."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-16-80-days-1920-hours.svg",
+      "start_s": 44,
+      "end_s": 52,
+      "license": "generated",
+      "manifest_id": "C-16",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 80 days  ·  1,920 hours  ·  115,200 minutes | S7.4 — three numbers in turn, HOLD 48–52 s. The Chief ruled KEEP: this is scale, not characterisation. Since the renderer has deleted floating text, the number is ALSO spoken (see review notes)."
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-bank-barings-premises-or-1870s-banknote.jpg",
+      "start_s": 52,
+      "end_s": 58,
+      "license": "pending",
+      "manifest_id": "S-bank",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: Barings Bank's premises at 8 Bishopsgate, or an 1870s Bank of England note (F-23).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-30"
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-bank-barings-premises-or-1870s-banknote.jpg",
+      "start_s": 58,
+      "end_s": 64,
+      "license": "pending",
+      "manifest_id": "S-bank",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: same plate, second cut.. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-30"
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
+      "start_s": 64,
+      "end_s": 76,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-67",
+      "attribution": "KartaView / telenavdrives (2016) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "audio": "mute",
+      "note": "S7.6 — Pall Mall today. Source in-point 00:03. WANTED (N8): the same street in late light; open imagery is overwhelmingly daylight and a dusk pass will not come from rungs 1–2.",
+      "sa": true
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Reform_Club,_London_doorway-15248850190.jpg",
+      "start_s": 76,
+      "end_s": 83,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-105",
+      "attribution": "The Reform Club doorway, 104 Pall Mall — photo Phil Guest (2014), CC BY-SA 2.0 (Wikimedia Commons)",
+      "use": "both",
+      "note": "S7.7a — the Reform's door.",
+      "sa": true
+    },
+    {
+      "kind": "streetview",
+      "ref": "51.50678,-0.13354,165",
+      "start_s": 83,
+      "end_s": 90,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "PANO/count-the-steps-w06",
+      "attribution": "Mapillary / milhouse (10 Apr 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+      "use": "both",
+      "sa": true,
+      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w06/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S7.7b — the façade, holding. HOLD 84–90 s: nothing spoken after the quotation. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "fallback": "M-104"
     },
     {
       "kind": "audio",
       "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
       "start_s": 0,
-      "end_s": 70,
+      "end_s": 76,
       "license": "public-domain",
       "manifest_id": "M-41",
-      "attribution": "Arthur Sullivan, Overture di Ballo (1870), US Marine Band (Wikimedia Commons, PD)",
-      "note": "Low, swelling into 10 the-world-shrinks."
+      "attribution": "Arthur Sullivan, 'Overture di Ballo' (1870), US Marine Band (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "Sullivan swells for the map at 12 s, then thins."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Big_Ben_recorded_in_1890.ogg",
+      "start_s": 76,
+      "end_s": 90,
+      "license": "public-domain",
+      "manifest_id": "M-40",
+      "attribution": "Big Ben, Edison phonograph recording, 16 July 1890 (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "Music thins to a single clock for the turn line."
     }
   ],
-  "overlays": [
-    {
-      "at_s": 2,
-      "kind": "caption",
-      "until_s": 14,
-      "text": "The wager at the Reform — de Neuville & Benett, 1873",
-      "position": "bottom"
-    },
-    {
-      "at_s": 5,
-      "kind": "gloss",
-      "until_s": 17,
-      "text": "whist — a quiet card game for four players",
-      "position": "tl"
-    },
-    {
-      "at_s": 21,
-      "kind": "caption",
-      "until_s": 33,
-      "text": "Go deeper: Verne serialised the tale in a Paris daily, winter 1872",
-      "position": "bottom",
-      "note": "Connoisseur layer (A3n): the serialisation aside moved out of the spine (F-32)."
-    },
-    {
-      "at_s": 28,
-      "kind": "gloss",
-      "until_s": 40,
-      "text": "wager — a bet, with money staked on it",
-      "position": "tl"
-    },
-    {
-      "at_s": 37,
-      "kind": "caption",
-      "until_s": 49,
-      "text": "The unforeseen does not exist.",
-      "position": "bottom"
-    },
-    {
-      "at_s": 56,
-      "kind": "caption",
-      "until_s": 69,
-      "text": "The wager has outlived the bank — Baring's fell in 1995",
-      "position": "bottom"
-    }
-  ],
-  "interaction": {
-    "kind": "none"
-  },
   "transition": {
     "in": "cut",
-    "out": "cut to the Cook/Train card",
-    "music_cue": "M-41 low from 0 s"
+    "out": "cut to the 1872 plan of London",
+    "music_cue": "M-41 swells for the map, thins to M-40's clock at 76 s"
   },
-  "next": "two-real-men",
+  "next": "the-year-the-world-closed",
   "sources": [
+    "F-06",
     "F-08",
-    "F-09",
     "F-10",
     "F-11",
     "F-23",
-    "F-32"
+    "F-12"
   ],
-  "production_notes": "The £55,000 theft is Verne's plot device, said as 'in the novel' — never as history. Quotations are Towle's translation and stay inside quotation marks; the plate caption no longer quotes (the words were Stuart's, the plate Neuville's; edition 1873). The six names live on the G-05 card; the guide says 'Stuart first, Fogg last'. A5: 60 → 70 s — the whist arithmetic (five members, four hands) and the reason the robbery is in the scene (where could such a man hide now?) do not fit 60 s at ≤ 2.5 w/s; media windows M-35 0–35, G-05 35–70, M-41 bed 0–70, overlays re-spread. Narrator: ≤ 175 words per track. Linear cut: keep whole (75 s cap, plan 72.3 s), then skip 09 and play 10 without the tap.",
+  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots. Beat S6.6 (setting the card table) was cut by the Chief; slot 1's sentence absorbs it.",
   "review": {
     "fact_check": "pending",
-    "rights": "pending",
+    "rights": "amber",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: duration 80→60; names read-out cut to 'Stuart first, Fogg last' (card carries them); plate caption → 'The wager at the Reform — de Neuville & Benett, 1873' (no fake quote); 'wager outlived the bank' caption; media windows re-timed. A1 narrator 2026-08-18: script 180→149 words for 60 s (≤ 2.5 w/s, was 3.00 — validator WARN cleared); tense of the opener fixed (Continuity #9); 'six names, Stuart first, Fogg last'; 'Paris newspaper' sentence (from 01) landed here, F-32 added to sources; hedges: 'in the novel — only in the novel', plate caption unchanged. A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): whist and the wager now introduced in plain words before use (Stuart is 'one of the five friends' at the table); the Paris-serial meta aside moved out of the spine into a 'go deeper' caption; gloss chips for whist and wager; clear-English variant added. A5 narrator+scene-developer 2026-08-19 (fact-check-a5 §1–2, both tracks): (1) whist — 'Fogg and five friends sit down to whist' → 'Fogg sits down to whist with five fellow members — four hands at the table, the same five every night' (F-08: five usual partners join him and four hands play), so the narration and the 'card game for four players' chip agree; nothing invented, the gloss is unchanged. (2) The £55,000 theft now has a reason to be in the scene — 'The talk turns to where such a man could hide now. And the Daily Telegraph has done the sums…' (F-09 → F-10, ch. III), so a newcomer cannot conclude the wager is about catching the thief. (3) Clear track: 'Baring's closed' → 'failed' (F-23 collapsed, sold to ING for £1) and the word 'wager' is spoken once, which un-orphans the wager chip. duration 60 → 70 s: both fixes cannot fit 60 s at ≤ 2.5 w/s (std 166 w, clear 168 w = 2.37/2.40 w/s at 70 s); M-35 0–35, G-05 35–70, M-41 bed 0–70, overlays re-spread 2–14 / 5–17 / 21–33 / 28–40 / 37–49 / 56–69. Linear cap 70 → 75 s (plan: 72.3 s, nothing end-cut). | A10 narrator 2026-09-03 (density re-measure, EN + ZH, for the YouTube cuts). Rate model: EN 2.5 w/s (150 wpm) and ZH 4.0 zi/s (240 zi/min), both budgeted at 80 % fill of duration_s - starts_at_s; the Mandarin column is counted the way the August translator counted it (every non-whitespace character), which reproduces their 4.63 / 3.81 exactly. MEASURED before: EN literary 2.37 w/s (95 %), EN clear 2.40 (96 %), Mandarin 3.81 zi/s (95 %). THREE CUTS, both tracks and the Mandarin: (1) the spoken Baring's line goes — 'Fogg's bank, Baring's, failed in 1995. The wager has outlived the bank.' Caption 5 carries both halves verbatim at 56-69 s, over the memorandum card. Both sentences had to go together: keeping the payoff without its antecedent would leave 'the bank' referring to nothing spoken. The scene now ENDS on 'Fogg's motto: \"The unforeseen does not exist\"' — a better close than a bank failure, and caption 5 lands the Baring's beat on screen, unspoken. (2) 'Exactly eighty days. It really was a Saturday.' goes: the date is stated whole in the previous sentence and the G-05 card prints 'Saturday 21 December 1872, 8:45 pm', so the calendar delight is shown rather than told (connoisseur material belongs out of the spine — style guide). (3) clear track only: 'becomes a wager — a bet, with money on it' -> 'becomes a wager'. The em-dash gloss duplicated gloss chip 3 word for word while the chip was on screen (R3); 'wager' is still spoken once, so the chip is not orphaned (A5's condition holds). AFTER: EN literary 2.06 (82 %), EN clear 2.01 (81 %), Mandarin 3.24 zi/s (81 %) — about one point over the 80 % target on the strict all-characters count, 68 % on the spoken-character count. I stopped there: the only cuts left are the deadline sentence (the chapter's spine) and the doubled 'in the story — only in the story' hedge (fact-check A5 put it there on purpose). duration_s is unchanged at 70 s; the film's own length is narration + 2.5 s, so 08 renders at ~64 s inside its 75 s cap and is not end-cut. If the founder wants it strictly inside budget in the PLAYER, 70 -> 73 s does it with no other change."
+    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S7 (90 s, 13 slots, word cap 130).\nCOORDINATOR'S OVERLAY MIGRATION — TAKEN: 'Eighty days. 1,920 hours. 115,200 minutes.' was a cold-open OVERLAY and overlays are now deleted from the renderer with no flag to bring them back. The Chief ruled KEEP (it is scale, and deranged is memorable), so it is now BOTH spoken (slot 8's sentence) and shown as a full-frame card (C-16). ALSO TAKEN: the Baring's-1995 line, which was an overlay in the old scene 08 and is now narration (slots 9–10).\nSENTENCE ↔ SLOT: 'A card table at the Reform…' over slots 1–2 · 'Eight legs, and the days land as they go…' over slots 3–4, then HOLD 26–32 over slot 5 · 'Twenty thousand pounds at Baring's…' over slots 6–7 · 'Eighty days. Nineteen hundred and twenty hours…' over slot 8, ending by 48 s so the card holds 4 s · 'His bank was a hundred and ten years old…' over slots 9–10 · 'Verne gives him one line…' over slot 11 · 'And the turn, in Verne's words…' over slot 12, ending by 84 s so the door holds 6 s.\nATTRIBUTION: both Verne quotations are named as his before they are spoken (persona §5). No bare quotes.\nCUT IN REV 2 AND NOT RESTORED: the six signatories, the whist detail, the Bank of England director.\nPROVISIONAL: G-01 exists but needs the L4 rebuild (bigger type, fewer labels) · G-05 exists but must lose the signatories · C-16 is a pending card · S-bank has no source (fallback M-30, the 1872 plan, which is honest wallpaper and not a picture of a bank) · the dusk pass (N8) does not exist, so 64–76 s is a 2016 daylight hyperlapse · the closing façade is a cached Mapillary pano → pending: rights-mapillary."
   }
 }

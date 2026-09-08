@@ -1,0 +1,277 @@
+{
+  "id": "the-year-the-world-closed",
+  "type": "video",
+  "title": "1872 — the year the world closed into a circuit",
+  "subtopic": "S8 — Why 1872 and not 1852",
+  "duration_s": 138,
+  "learning_goal": "Know why 1872 was the first year the journey was possible: a port, twelve termini, an underground, an electric street, and a wire that closed round the planet six weeks earlier.",
+  "narration": {
+    "script": "Why was 1872 the first year anyone could seriously try this? Because of this: the largest port in the world. Eight hundred thousand tons of cargo a year in 1800; eight million by 1880. Every steamer timetable in the story radiates from here. This film is thirty-one years too late. There is no moving picture of 1872 — this is the Strand in 1903, and it is the closest thing that exists. Close to four million people. A quarter more than Beijing. The river wall he crosses was two years old. In 1878 it became the first street in Britain permanently lit by electricity. Twelve main-line termini by 1865. No other city on earth had anything like that many. The world's first underground railway was nine years old, and carried nine and a half million people in its first year. Between 1870 and 1872 they ran a wire up the middle of Australia — thirty-six thousand poles — to meet the cable from Java. It was finished on the twenty-second of August 1872. From London that October you could telegraph almost anywhere a steamer called. He races the ships. The news about him travels instantly.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 0
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
+      "start_s": 0,
+      "end_s": 6,
+      "license": "public-domain",
+      "manifest_id": "M-30",
+      "attribution": "Plan of London, 1872 — 'Plan of London', 'London Illustrated' (1872) — public domain (Wikimedia Commons)",
+      "use": "both",
+      "note": "S8.1a — Plan of London, 1872, wide."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
+      "start_s": 6,
+      "end_s": 12,
+      "license": "public-domain",
+      "manifest_id": "M-30",
+      "attribution": "Plan of London, 1872 — 'Plan of London', 'London Illustrated' (1872) — public domain (Wikimedia Commons)",
+      "use": "both",
+      "note": "S8.1b — slow push into the docks."
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-docks-port-of-london-masts.jpg",
+      "start_s": 12,
+      "end_s": 20,
+      "license": "pending",
+      "manifest_id": "S-docks",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: an engraving or photograph of the Port of London — the forests of masts (F-139).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-31"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-17-port-tonnage.svg",
+      "start_s": 20,
+      "end_s": 26,
+      "license": "generated",
+      "manifest_id": "C-17",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 800,000 tons (1800)  →  8 million (1880) | S8.2b — full-frame card."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m78-strand-1903.mp4",
+      "start_s": 26,
+      "end_s": 40,
+      "license": "public-domain",
+      "manifest_id": "M-78",
+      "attribution": "London, 1903 — 'Old London Street Scenes' (1903), London's Screen Archives / BFI — public domain (Wikimedia Commons)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S8.3 — the Strand, moving. PICTURE CARRIES — HOLD 32–40 s. THE DATE IS MANDATORY (L7, founder ruling): the caption line reads 'London, 1903' for the whole shot and the guide says out loud that the film is thirty-one years late. Source in-point 00:08. Archive audio muted (an uploader-added soundtrack over a public-domain film is not licensed to us)."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-15/london-1871-scale.svg",
+      "start_s": 40,
+      "end_s": 46,
+      "license": "generated",
+      "manifest_id": "G-15",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S8.4a — 1871: 3.9 million, revealed large. Two further reveals (a quarter larger than Beijing; five times New York) may be shown, but the guide says ONE comparison aloud, not three. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m114-hyde-park-1896.mp4",
+      "start_s": 46,
+      "end_s": 54,
+      "license": "public-domain",
+      "manifest_id": "M-114",
+      "attribution": "Hyde Park, London, 1896 — 'Hyde Park Bicycling Scene' (1896), Robert W. Paul — public domain (Wikimedia Commons)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S8.4b — Londoners, moving: a crowd along Rotten Row, cyclists, a carriage. Full frame at 958x720. THE DATE IS MANDATORY: caption 'Hyde Park, London, 1896'. Source in-point 00:03."
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-emb-victoria-embankment-new.jpg",
+      "start_s": 54,
+      "end_s": 59,
+      "license": "pending",
+      "manifest_id": "S-emb",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: the new Victoria Embankment, c. 1870 (F-26).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-31"
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:View_from_Hungerford_Bridge,_from_the_train_2025-09-06.jpg",
+      "start_s": 59,
+      "end_s": 64,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-76",
+      "attribution": "The Thames from Hungerford Bridge, 2025 — Amanda Slater (2025) · Wikimedia Commons · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "S8.5b — the river today from the bridge, so the wall reads as a thing that is still there.",
+      "sa": true
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-18/twelve-termini_a.svg",
+      "start_s": 64,
+      "end_s": 72,
+      "license": "generated",
+      "manifest_id": "G-18",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S8.6a — a plain London ring; the first dots appear with their dates. FOUR LABELS AT A TIME (L4). DOES NOT EXIST YET."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-18/twelve-termini_b.svg",
+      "start_s": 72,
+      "end_s": 80,
+      "license": "generated",
+      "manifest_id": "G-18",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S8.6b — the remaining dots complete the twelve."
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-met-metropolitan-railway-1863.jpg",
+      "start_s": 80,
+      "end_s": 87,
+      "license": "pending",
+      "manifest_id": "S-met",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: the Metropolitan Railway, 1863 — gas-lit wooden carriages in the cutting (F-25).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-31"
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-met-metropolitan-railway-1863.jpg",
+      "start_s": 87,
+      "end_s": 94,
+      "license": "pending",
+      "manifest_id": "S-met",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: same plate, second cut. PICTURE CARRIES — HOLD 88–94 s.. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-31"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/telegraph-1872_b-atlantic.svg",
+      "start_s": 94,
+      "end_s": 102,
+      "license": "generated",
+      "manifest_id": "G-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S8.8a — the Atlantic cable draws. Telegraph key under the whole 30 s. ESSENTIAL, DOES NOT EXIST YET — this is the film's thesis asset."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/telegraph-1872_c-india.svg",
+      "start_s": 102,
+      "end_s": 110,
+      "license": "generated",
+      "manifest_id": "G-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S8.8b — the line to India."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/telegraph-1872_d-australia.svg",
+      "start_s": 110,
+      "end_s": 117,
+      "license": "generated",
+      "manifest_id": "G-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S8.8c — 1870–72, the line up the middle of Australia, 36,000 poles, meeting the Darwin–Java cable."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/telegraph-1872_e-last-continent.svg",
+      "start_s": 117,
+      "end_s": 124,
+      "license": "generated",
+      "manifest_id": "G-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S8.8d — the last continent lights. HOLD 116–124 s: nothing is spoken over the final eight seconds."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-18-four-dates.svg",
+      "start_s": 124,
+      "end_s": 132,
+      "license": "generated",
+      "manifest_id": "C-18",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: Suez 1869  ·  Promontory 1869  ·  Jabalpur 1870  ·  Darwin 1872 | S8.9a — four dates in turn."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-19-a-circuit.svg",
+      "start_s": 132,
+      "end_s": 138,
+      "license": "generated",
+      "manifest_id": "C-19",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: the world had just become a circuit | S8.9b — alone, full frame."
+    },
+    {
+      "kind": "audio",
+      "ref": "media/files/pending/n7-telegraph-key.wav",
+      "start_s": 94,
+      "end_s": 124,
+      "license": "pending",
+      "manifest_id": "N7",
+      "attribution": "PENDING — not yet sourced",
+      "use": "both",
+      "note": "PENDING SFX: the telegraph key runs the whole 30-s reveal and is the last thing heard before the card (rundown §6). Not yet sourced; Freesound has CC0/CC BY Morse-key recordings."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+      "start_s": 0,
+      "end_s": 94,
+      "license": "public-domain",
+      "manifest_id": "M-41",
+      "attribution": "Arthur Sullivan, 'Overture di Ballo' (1870), US Marine Band (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "Sullivan under the first half; out at 94 s so the telegraph key has the reveal to itself."
+    }
+  ],
+  "transition": {
+    "in": "cut",
+    "out": "cut to Charing Cross",
+    "music_cue": "M-41 out at 94 s; telegraph key alone 94–124; silence into the cards"
+  },
+  "next": "charing-cross",
+  "sources": [
+    "F-142",
+    "F-139",
+    "F-138",
+    "F-26",
+    "F-140",
+    "F-25",
+    "F-141",
+    "F-33"
+  ],
+  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots. This is the hinge of the film (rundown §0): the strongest fact we own is F-141.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "green",
+    "qa": "pending",
+    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S8 (138 s, 19 slots, word cap 195).\nSENTENCE ↔ SLOT: 'Why was 1872 the first year…' over slots 1–2 · 'Because of this: the largest port…' over slots 3–4 · 'This film is thirty-one years too late…' over slot 5, ending by 32 s so the 1903 film holds 8 s · 'Close to four million people…' over slots 6–7 · 'The river wall he crosses…' over slots 8–9 · 'Twelve main-line termini by 1865…' over slots 10–11 · 'The world's first underground railway…' over slot 12, then HOLD 88–94 over slot 13 · 'Between 1870 and 1872 they ran a wire…' over slots 14–16, ENDING BY 116 s · SILENCE 116–124 (the last eight seconds of the telegraph reveal — nothing is spoken over it, L2) · 'He races the ships…' over slots 18–19.\nTRUTH ON SCREEN (L7): two archive films carry their own year in the caption line, which is the picture's own furniture and not an overlay — M-78 'London, 1903' (and the guide says it out loud) and M-114 'Hyde Park, London, 1896'.\nF-138 CARE NOTE: ONE comparison is spoken (a quarter larger than Beijing), not all three.\nPROVISIONAL: G-13 is essential and does not exist · G-15 and G-18 do not exist · C-17/C-18/C-19 are pending cards · S-docks, S-emb and S-met have no source (all three fall back to M-31, the 1875 Post Office Directory map, which at 11419x8799 can take real crops and is honest — but it is a map standing in for a dock, an embankment and a railway).\nCOORDINATOR'S NOTE ON DEAD OVERLAYS: nothing from this block's predecessor (old scene 10) is orphaned; every claim is spoken."
+  }
+}

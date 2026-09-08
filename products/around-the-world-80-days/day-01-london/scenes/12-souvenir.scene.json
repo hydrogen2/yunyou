@@ -1,0 +1,103 @@
+{
+  "id": "souvenir",
+  "type": "video",
+  "title": "Souvenir and send-off",
+  "subtopic": "S11 — One thing you can act on",
+  "duration_s": 35,
+  "learning_goal": "Leave with one findable, free thing to do — stand on the spot Britain measures its road distances from.",
+  "narration": {
+    "script": "One thing to take away. The next time you pass a sign that says LONDON and a number, you will know exactly what is being measured. Tomorrow: Dover and Calais — twenty miles of water, and why both sides are white.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 0
+  },
+  "media": [
+    {
+      "kind": "footage",
+      "ref": "media/files/m84-trafalgar-square.mp4",
+      "start_s": 0,
+      "end_s": 10,
+      "license": "cc-by-3.0",
+      "manifest_id": "M-84",
+      "attribution": "Kauko Helavuo (2015) · CC BY 3.0 · trimmed",
+      "use": "both",
+      "audio": "mute",
+      "note": "S11.1a — the Charles I statue, late in the day. WANTED (N8): the same shot in dusk light; nothing we hold is dusk. Source in-point 01:40."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-25-stand-here.svg",
+      "start_s": 10,
+      "end_s": 20,
+      "license": "generated",
+      "manifest_id": "C-25",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: Stand here. Every LONDON on a British road sign means this spot. | S11.1b — the souvenir card, full frame, held while the guide says it once."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m112-rough-sea-at-dover-1896.mp4",
+      "start_s": 20,
+      "end_s": 28,
+      "license": "public-domain",
+      "manifest_id": "M-112",
+      "attribution": "Dover, 1896 — 'Rough Sea at Dover' (1896), Birt Acres / Robert W. Paul — public domain (Wikimedia Commons)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S11.2a — heavy seas breaking over the Admiralty Pier at Dover. THE DATE IS MANDATORY (L7): caption 'Dover, 1896'. Strip the vorbis audio track (an added soundtrack over a public-domain film is not licensed to us). Source in-point 00:04."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-26-day-2.svg",
+      "start_s": 28,
+      "end_s": 35,
+      "license": "generated",
+      "manifest_id": "C-26",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: Day 2 — Dover and Calais: twenty miles of water, and why both sides are white | S11.2b — the end plate. No cliffhanger, no 'stay tuned'."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Offenbach_-_Orpheus_in_the_Underworld_-_Overture.ogg",
+      "start_s": 20,
+      "end_s": 35,
+      "license": "cc0",
+      "manifest_id": "M-42",
+      "attribution": "Offenbach, 'Orphée aux enfers' overture — Musopen (CC0)",
+      "use": "both",
+      "note": "Offenbach tail under the end plate."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Overture_di_ballo.ogg",
+      "start_s": 0,
+      "end_s": 20,
+      "license": "public-domain",
+      "manifest_id": "M-41",
+      "attribution": "Arthur Sullivan, 'Overture di Ballo' (1870), US Marine Band (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "Sullivan under the souvenir, tailing out at 20 s."
+    }
+  ],
+  "transition": {
+    "in": "cut",
+    "out": "fade to black",
+    "music_cue": "M-41 tail out at 20 s; M-42 under the end plate"
+  },
+  "next": "",
+  "sources": [
+    "F-134",
+    "F-135",
+    "F-146",
+    "F-147"
+  ],
+  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots. DEVIATION from the rundown: S11.2 was one 15-s end card. A card held 15 s breaks L1 (no still past 12 s) and would have been the film's last impression, so the beat is split — 8 s of real 1896 Dover motion, then a 7-s plate. M-112 is public domain, downloadable, full-frame, and belongs to the same visual family as the engravings the founder said he likes.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "green",
+    "qa": "pending",
+    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S11 (35 s, 4 slots, word cap 45).\nSENTENCE ↔ SLOT: 'One thing to take away…' over slots 1–2 · 'Tomorrow: Dover and Calais…' over slots 3–4, ending on the noun. The end plate holds in silence.\nSOUVENIR CHOICE: the centre of London, per the rundown's §9 recommendation (free, findable, thirty seconds off the Strand, and it survives the film). Founder Decision 8 is still open — the alternatives are the bespoke test (F-116, F-121) and the breakfast recipe (F-06, F-27, generated asset G-08, which exists).\nPROVISIONAL: C-25 and C-26 are pending cards · M-112 is proposed in manifest-motion.md and not yet fetched · the dusk pass (N8) does not exist, so slot 1 is a daylight Trafalgar Square clip.\nNOT USED: G-08 (the breakfast souvenir card) — it is a souvenir of the novel, not of the place (rev 2)."
+  }
+}

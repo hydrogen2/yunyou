@@ -1,147 +1,230 @@
 {
   "id": "savile-row",
   "type": "video",
-  "title": "Savile Row — Fogg's front door",
-  "subtopic": "2 — Savile Row",
+  "title": "Savile Row — the whole subject is 280 metres",
+  "subtopic": "S1 — Savile Row: 280 metres, and where the trade came from",
   "duration_s": 100,
-  "learning_goal": "Know that Verne put Fogg at No. 7 and Sheridan's death there in 1814, that Sheridan lived at No. 14 and died in 1816, and that the Row was already tailoring country; feel the hush of cloth and chalk.",
+  "learning_goal": "Know how short the street is, that the trade clustered here by accident of customers, that its root is uniform, and what fifty hours of hand-sewing costs.",
   "narration": {
-    "script": "This is Savile Row, a quiet street in Mayfair. The novel starts here. Phileas Fogg lives on this street — at No. 7, the book says. Tonight he will leave from that door to go round the world. Look in the shop windows: rolls of cloth, chalk marks, half-made jackets. In 1872 this was already a street of tailors. It still is. The tailor Henry Poole opened his door on the Row in 1846. The shop is still here — at No. 15 since 1982. The firm says that in 1865 they made a short evening jacket for the Prince of Wales — the grandfather, they say, of the dinner jacket. One more stop: on the roof of No. 3, in January 1969, the Beatles played their famous rooftop concert. And one small secret about No. 7. Verne wrote that the playwright Sheridan died there in 1814. In fact Sheridan lived at No. 14, and died in 1816. No. 14 has a plaque for him. Fogg has no plaque — he lived only in the book. Here is the street around 1890. Same doors. Same quiet.",
+    "script": "This is the whole subject: two hundred and eighty metres, and you can walk it in three minutes. One block behind Regent Street. Built in the seventeen-thirties as ordinary houses. Nobody planned a tailoring street. Nothing about the street is special. The customers were. Tailors were one street west, dressing the gentry, and they followed them in — a trade cluster, the way Silicon Valley is a cluster. The root here is uniform, not fashion: an army cap-maker of 1771, a navy outfitter of 1785. That shoulder was cut for men who had to ride, march, and be recognised at a distance. Every suit starts as chalk on cloth, cut from a paper pattern made for one person. From seven and a half thousand pounds. An apprentice spends two to six years learning one part of the job. Six years before anyone trusts you with trousers.",
+    "voice": "guide",
     "timing": "over",
-    "voice": "guide"
+    "starts_at_s": 3
   },
   "media": [
     {
-      "kind": "youtube",
-      "ref": "tFaUD2llMJg",
-      "start_s": 1295,
-      "end_s": 1385,
-      "license": "youtube-embed",
-      "manifest_id": "M-05",
-      "attribution": "Watched Walker, 'London Walk - Bond Street & Savile Row' (2022) — YouTube embed",
-      "note": "21:35–23:05: Burlington Gardens corner into the Row (creator chapter 'Savile Row' at 21:55). Backup M-06 SNm-h6lxu1c 01:56–03:26; spare M-07 wyl0GZBEWXs. Content Preparer: pin the frames where 14 / 15 / 3 are legible; if the No. 14 plaque is not visible, hold M-33 as a still. A8: player-only (Standard YouTube Licence, rights-a6 §3.2) — the linear cut now uses M-66 (KartaView hyperlapse) plus stills instead of a clip card.",
-      "use": "player"
-    },
-    {
       "kind": "footage",
-      "ref": "media/files/m66-savile-row-hyperlapse.mp4",
+      "ref": "media/files/m107-savile-row-end-to-end.mp4",
       "start_s": 0,
-      "end_s": 7,
+      "end_s": 14,
       "license": "cc-by-sa-4.0",
-      "manifest_id": "M-66",
-      "attribution": "KartaView / telenavdrives (2018) · CC BY-SA 4.0 · adapted",
-      "use": "linear",
+      "manifest_id": "M-107",
+      "attribution": "KartaView / telenavdrives (17 Jan 2018) · CC BY-SA 4.0 · adapted",
+      "use": "both",
       "audio": "mute",
+      "note": "S1.1 — the entire street in one unbroken move, north end looking south. Source in-point 00:00. HOLD 0–3 s, one sentence, then HOLD to 14 s. NOT YET FETCHED (see S0).",
       "sa": true,
-      "note": "Southbound Savile Row hyperlapse built from KartaView seq 1123901 frames 1770–1779 (17 Jan 2018), 1.0 s hold + 0.3 s dissolve each; cropped 2400×1350 from 2592×1936 to drop the dashboard, lifted +0.055 brightness (the source is backlit). 7.3 s. Opens the scene where the M-05 embed opens it in the player."
+      "fallback": "M-66"
     },
     {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:View_up_Savile_Row_-_geograph.org.uk_-_2929073.jpg",
-      "license": "cc-by-sa-2.0",
-      "manifest_id": "M-77a",
-      "attribution": "Robert Lamb / geograph.org.uk (2012) · CC BY-SA 2.0 · adapted",
-      "use": "linear",
-      "sa": true,
-      "note": "3456×2592, looking up the Row. Ken Burns hold under the Poole / tailoring beat. Adaptation permitted under rights-a6 §3.2 (D4 superseded the \"BY-SA unmodified\" rule)."
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:No_3,_Savile_Row_door_and_sign.jpg",
-      "license": "cc0",
-      "manifest_id": "M-77c",
-      "attribution": "VirtuallyLondonBecky (2014) · CC0",
-      "use": "linear",
-      "note": "960×540, the No. 3 door — the Beatles rooftop beat at ~52–62 s. CC0, so the only Savile Row still that may be freely cropped or tinted."
+      "kind": "generated",
+      "ref": "generated/g-10/savile-row-280m.svg",
+      "start_s": 14,
+      "end_s": 22,
+      "license": "generated",
+      "manifest_id": "G-10",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S1.2 — map card: Conduit Street to Vigo Street, one measure line, '280 m' large, two labels only (L4). ESSENTIAL, DOES NOT EXIST YET. R3: the guide does not read the number the card shows."
     },
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:London_Savile_Row_geograph-3066994-by-Ben-Brooksbank.jpg",
+      "start_s": 22,
+      "end_s": 27,
       "license": "cc-by-sa-2.0",
       "manifest_id": "M-77b",
-      "attribution": "Ben Brooksbank (1955) / geograph.org.uk · CC BY-SA 2.0 · adapted",
-      "use": "linear",
-      "sa": true,
-      "note": "2338×1447, 26 Aug 1955 — a genuine \"then\" street view of the Row; pairs with M-32 (c.1890) and M-33 for the closing beat."
+      "attribution": "Savile Row, 1955 — Savile Row, 26 August 1955 — Ben Brooksbank / geograph.org.uk · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "S1.3a — Savile Row, 1955. Slow push. Date carried in the caption line (L7).",
+      "sa": true
     },
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
+      "start_s": 27,
+      "end_s": 32,
       "license": "public-domain",
       "manifest_id": "M-32",
-      "attribution": "Savile Row c. 1890, Henry Poole & Co archive (Wikimedia Commons, PD)",
+      "attribution": "Savile Row, c. 1890 — Savile Row, c. 1890 — Henry Poole & Co archive photograph (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "S1.3b — Savile Row, c. 1890. Slow push."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m108-savile-row-walk-south.mp4",
+      "start_s": 32,
+      "end_s": 39,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-108",
+      "attribution": "Mapillary / asturksever (2022) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.4a — walking pace up the southern half: shopfronts and nameplates. Source in-point 00:00. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19). QA on device: the plan names Huntsman (No. 11) and Poole (No. 15) — do NOT name a shop until a frame shows it (places.md).",
+      "sa": true,
+      "fallback": "M-77a"
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m109-savile-row-360-north.mp4",
+      "start_s": 39,
+      "end_s": 46,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-109",
+      "attribution": "Mapillary / Stefdegreef (2024) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.4b — 360 pass, northern half, turned onto the east side. Source in-point 00:00. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "sa": true,
+      "fallback": "M-77a"
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-mil-regimental-coat-uniform-plate.jpg",
+      "start_s": 46,
+      "end_s": 52,
+      "license": "pending",
+      "manifest_id": "S-mil",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: a public-domain uniform plate or regimental coat (F-112) — army cap-maker 1771 / navy outfitter 1785. Nothing in the manifest depicts military tailoring.. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-32"
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m110-tailors-1952.mp4",
+      "start_s": 52,
+      "end_s": 58,
+      "license": "cc-by-sa-3.0-nl",
+      "manifest_id": "M-110",
+      "attribution": "Tailors at work · Netherlands, 1952 — 'Efficiencydag voor kleermakers' (1952), Polygoon-Profilti / Nederlands Instituut voor Beeld en Geluid · CC BY-SA 3.0 NL",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.5b — the finished suit worn and turned (the silhouette). Source in-point 01:16. 384x288: mount as an inset plate or a soft-edged archive window, NEVER full-frame (3.3x upscale is mush).",
+      "sa": true
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m110-tailors-1952.mp4",
+      "start_s": 58,
+      "end_s": 65,
+      "license": "cc-by-sa-3.0-nl",
+      "manifest_id": "M-110",
+      "attribution": "Tailors at work · Netherlands, 1952 — 'Efficiencydag voor kleermakers' (1952), Polygoon-Profilti / Nederlands Instituut voor Beeld en Geluid · CC BY-SA 3.0 NL",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.6a — cloth laid over a paper pattern, marked with rule and chalk. Source in-point 00:22. PICTURE CARRIES.",
+      "sa": true
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m110-tailors-1952.mp4",
+      "start_s": 65,
+      "end_s": 72,
+      "license": "cc-by-sa-3.0-nl",
+      "manifest_id": "M-110",
+      "attribution": "Tailors at work · Netherlands, 1952 — 'Efficiencydag voor kleermakers' (1952), Polygoon-Profilti / Nederlands Instituut voor Beeld en Geluid · CC BY-SA 3.0 NL",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.6b — shears going through the panel. Source in-point 00:31. HOLD: no narration 65–72.",
+      "sa": true
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m110-tailors-1952.mp4",
+      "start_s": 72,
+      "end_s": 78,
+      "license": "cc-by-sa-3.0-nl",
+      "manifest_id": "M-110",
+      "attribution": "Tailors at work · Netherlands, 1952 — 'Efficiencydag voor kleermakers' (1952), Polygoon-Profilti / Nederlands Instituut voor Beeld en Geluid · CC BY-SA 3.0 NL",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.7a — hands shaping a canvassed forepart. Source in-point 00:47.",
+      "sa": true
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m110-tailors-1952.mp4",
+      "start_s": 78,
+      "end_s": 84,
+      "license": "cc-by-sa-3.0-nl",
+      "manifest_id": "M-110",
+      "attribution": "Tailors at work · Netherlands, 1952 — 'Efficiencydag voor kleermakers' (1952), Polygoon-Profilti / Nederlands Instituut voor Beeld en Geluid · CC BY-SA 3.0 NL",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.7b — the garment on a body, being turned and checked. Source in-point 01:04. WANTED (N2): a basted jacket at a first fitting and the fitting-room mirror — covered by nothing we hold.",
+      "sa": true
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-03-fifty-hours-by-hand.svg",
+      "start_s": 84,
+      "end_s": 90,
+      "license": "generated",
+      "manifest_id": "C-03",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 50 hours by hand · 3 fittings · about 3 months | S1.7c — full-frame card; the guide says only the price aloud (R3)."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m110-tailors-1952.mp4",
       "start_s": 90,
+      "end_s": 95,
+      "license": "cc-by-sa-3.0-nl",
+      "manifest_id": "M-110",
+      "attribution": "Tailors at work · Netherlands, 1952 — 'Efficiencydag voor kleermakers' (1952), Polygoon-Profilti / Nederlands Instituut voor Beeld en Geluid · CC BY-SA 3.0 NL",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.8a — a bench, hands working. Source in-point 00:58. HONEST NOTE: this is a hall of Dutch tailors at a 1952 demonstration, not a Savile Row apprentice; the caption dates and places it and the narration never claims otherwise.",
+      "sa": true
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m108-savile-row-walk-south.mp4",
+      "start_s": 95,
       "end_s": 100,
-      "note": "10-s insert with sepia vignette at the end of the scene."
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-108",
+      "attribution": "Mapillary / asturksever (2022) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S1.8b — back to the street, a tailor's doorway. Source in-point 00:40. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "sa": true,
+      "fallback": "M-77a"
     }
   ],
-  "overlays": [
-    {
-      "at_s": 3,
-      "kind": "pin",
-      "until_s": 12,
-      "text": "Savile Row — Fogg's street in the novel",
-      "position": "bl"
-    },
-    {
-      "at_s": 30,
-      "kind": "pin",
-      "until_s": 40,
-      "text": "No. 15 — Henry Poole, on the Row since 1846, here since 1982",
-      "position": "bl"
-    },
-    {
-      "at_s": 52,
-      "kind": "pin",
-      "until_s": 62,
-      "text": "No. 3 — Beatles rooftop, 30 Jan 1969",
-      "position": "bl"
-    },
-    {
-      "at_s": 66,
-      "kind": "pin",
-      "until_s": 76,
-      "text": "No. 14 — Sheridan's real house, plaque 1881",
-      "position": "bl"
-    },
-    {
-      "at_s": 78,
-      "kind": "caption",
-      "until_s": 87,
-      "text": "Go deeper: Verne spells it 'Saville' — the street is Savile.",
-      "position": "bottom",
-      "note": "Connoisseur layer (A3n): the spelling aside moved out of the spine into this optional beat."
-    },
-    {
-      "at_s": 90,
-      "kind": "caption",
-      "until_s": 100,
-      "text": "Savile Row, about 1890",
-      "position": "bottom"
-    }
-  ],
-  "interaction": {
-    "kind": "none"
-  },
   "transition": {
-    "in": "3-s fade from the map",
-    "out": "cut to the timetable card",
-    "music_cue": "none — keep the binaural street sound of M-05"
+    "in": "cut",
+    "out": "cut to the shop window",
+    "music_cue": "traffic thins across S1.3; from 58 s only cloth, chalk and shears (M-110 is muted — its Dutch commentary track is not ours; craft SFX still wanted)"
   },
-  "next": "fogg-by-the-clock",
+  "next": "the-word",
   "sources": [
-    "F-01",
-    "F-12",
+    "F-110",
     "F-19",
-    "F-20",
-    "F-39",
-    "F-45"
+    "F-111",
+    "F-45",
+    "F-112",
+    "F-116",
+    "F-118",
+    "F-117"
   ],
-  "production_notes": "Real spelling 'Savile' in narration; Verne's 'Saville' only inside the quotation. Side language is deliberately neutral ('watch the doors… look for the numbers') until A3 pins the M-05 frames: the manifest's second pass says the walker enters at the south end and walks north, so Nos. 14/15 would be on the RIGHT and possibly after 23:05 — if so, extend the window to ~23:40, move the No. 3 pin to 8–18 s and let the Narrator say 'on your right'. Poole dates per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket attributed to the firm's own account. Narrator: ≤ 200 words, split the 35-word sentences (Continuity #8). Linear cut (A5, clear track): 84 s cap — s:0-15, i.e. everything up to 'he lived only in the book'; the M-32 insert and its three sentences ('Here is the street around 1890 / Same doors / Same quiet') go together; pins Savile Row, No. 15 and No. 14 (the last re-timed to 62–72 s). A3n: script recast (plain telling first, Sheridan reveal after) and title de-jokified — the old linear trim ('last four sentences') and the cut-sheet s:N tokens need re-picking in A4. A8 2026-08-19 (content-preparer): the linear cut no longer shows a clip card here: the scene's linear visuals are M-66 (7 s KartaView hyperlapse, CC BY-SA 4.0) → M-77a → M-77c → M-33 → M-77b. M-05 stays the PLAYER source (`use: player`) — the embed is legal, the copy is not (review/rights-a6.md §1.2). Attribution burn-ins per rights-a6 §2.6.",
+  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots. M-110 is 384x288 and carries 42 s of this scene — it must be mounted (plate / archive window), never blown to full frame.",
   "review": {
     "fact_check": "pending",
-    "rights": "pending",
+    "rights": "amber",
     "qa": "pending",
-    "notes": "Scene Developer draft 2026-08-18; not yet fact-checked, rights-reviewed or QA'd. A1 scene-developer 2026-08-18: Poole overlay/script corrected per F-45 (on the Row 1846, at No. 15 since 1982); dinner jacket hedged as Poole's own story; 'doors on the left' made side-neutral — M-05 frame unverified (A3), pins kept at their timings. A1 narrator 2026-08-18: script 250→197 words (≤ 200, Continuity #8); 35-word sentences split; Sheridan and Poole facts each stand alone (dinner-jacket hedge kept as 'Poole's own story… they say'); the gas/bells/no-books sentence dropped (03 taps and 11 carry it); side language stays neutral (frame unverified, A3); linear note 'last four sentences' still holds (Beatles → 'Same hush'). A3n narrator+scene-developer 2026-08-19 (newcomer rewrite): recast for a first-time reader — plain telling first (Fogg's street, his door, why we start here), the Verne-got-the-address-wrong beat moved AFTER it and told as a reveal, not a prerequisite; the two-Ls spelling aside moved out of the spine into a 'go deeper' caption; Burlington Gardens pin simplified; clear-English variant added; F-03 (unused) swapped for F-12 (he leaves tonight from this door). Title 'the address Verne got wrong' → 'Fogg's front door' (spine may not lead with the meta-joke). A5 narrator 2026-08-19 (fact-check-a5 §1): clear track had reinstated the A1 error — 'His shop is still here, at No. 15' → 'The shop is still here — at No. 15 since 1982' (F-45; it also contradicted overlay [1] on the same frame); 'a short evening jacket for a prince — the first dinner jacket' → 'for the Prince of Wales — the grandfather, they say, of the dinner jacket' (F-19/F-45 dinner-jacket attribution is med and belongs to the firm). Linear cut re-derived against the clear track: s:0-15 (Poole is named before 'The firm says…'), the M-32 tail and its three sentences dropped with the image, No. 14 pin added at 62 s. A8 2026-08-19 (content-preparer): M-05 marked `use: player`; M-66/M-77a/M-77b/M-77c added with `use: linear` so the rendered MP4 loses its clip card. M-66's frames were downloaded and viewed (Union Jack and LANVIN shopfront at idx 1778 confirm the Row); the hyperlapse is 10 frames over ~110 m, so it reads as a dissolve-hyperlapse, not a walk — QA to say whether that is acceptable in the spine or should be shortened to 5 s."
+    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S1 (100 s, 15 slots, word cap 145).\nSENTENCE ↔ SLOT: 'This is the whole subject…' over slot 1 (M-107, from 3 s, then HOLD to 14) · 'One block behind Regent Street.' over slot 2 (G-10) · 'It was built in the seventeen-thirties…' over slots 3–4 (M-77b, M-32) · 'Nothing about the street is special…' over slots 5–6 (M-108, M-109) · 'The root here is uniform…' + 'That shoulder was cut…' over slots 7–8 (S-mil, M-110) · 'Every suit starts as chalk on cloth…' over slot 9 (M-110 chalk) · 'From seven and a half thousand pounds.' over slot 12 (M-110 canvassing) · 'An apprentice spends two to six years…' over slot 14 (M-110 bench). SILENCES: 0–3 s, 6–14 s (after the first sentence), 65–72 s (shears, picture carries), 84–90 s (the card is read, not spoken), 95–100 s.\nPROVISIONAL: M-107 not fetched (fallback M-66) · M-108/M-109 pending: rights-mapillary · G-10 essential and does not exist · C-03 pending card · S-mil has no source at all (fallback M-32, a Savile Row street photograph, which is honest but does not show a uniform).\nTHE CRAFT PROBLEM, stated plainly: 42 of these 100 seconds are a 384x288 Dutch newsreel of 1952 (M-110). It is real craft, real shears, real canvas and licence-clean, and the caption dates and places it — but it is not Savile Row and the script must never imply that it is. manifest-motion.md §4.1 gives the three ways out (ship it / a free Pexels key, which is the founder's to create / a D2 permission email).\nNOT USED: M-111 (Accra tailoring, 1080p) — the Content Preparer's recommendation is that it must not run under Savile Row narration, and I agree."
   }
 }

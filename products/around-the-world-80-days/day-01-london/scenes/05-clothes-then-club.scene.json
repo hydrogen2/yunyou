@@ -1,0 +1,169 @@
+{
+  "id": "clothes-then-club",
+  "type": "video",
+  "title": "Clothes, then club — the walk through St James's",
+  "subtopic": "S4 — The half-mile walk: why this quarter exists",
+  "duration_s": 72,
+  "learning_goal": "Know that the quarter exists because the King moved in, and that the shops along the walk are the court's supply chain.",
+  "narration": {
+    "script": "This walk is a Victorian gentleman's supply chain. Fogg walks it every day at half past eleven, counting his steps. Half a mile. Everything in this film happens on it. Henry the Eighth built the palace at the bottom in 1536; it became the monarch's London home when Whitehall burned in 1698. The quarter grew up to serve it. The world's oldest hat shop has been here since 1676. A wine merchant since 1698. A bootmaker since 1866. Every ambassador to Britain is still accredited to the Court of St James's, a palace no monarch has lived in for two centuries. Clothes, then club.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 0
+  },
+  "media": [
+    {
+      "kind": "streetview",
+      "ref": "51.5102,-0.1397,237",
+      "start_s": 0,
+      "end_s": 12,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "PANO/count-the-steps-w01",
+      "attribution": "Mapillary / asturksever (23 Feb 2022) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+      "use": "both",
+      "sa": true,
+      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w01/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S4.1 — leaving the Row at the Burlington Gardens corner. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "fallback": "M-77a"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-10b/half-mile-route_a.svg",
+      "start_s": 12,
+      "end_s": 18,
+      "license": "generated",
+      "manifest_id": "G-10b",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S4.2a — the route drawn over M-30 (Plan of London, 1872) in strokes that stop at each turn. THREE labels only — Savile Row, Piccadilly, Pall Mall — big type (L4). DOES NOT EXIST YET (essential)."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-10b/half-mile-route_b.svg",
+      "start_s": 18,
+      "end_s": 24,
+      "license": "generated",
+      "manifest_id": "G-10b",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S4.2b — the counter runs up to 1,151 and stops. R3: the guide does not read the number the card shows."
+    },
+    {
+      "kind": "streetview",
+      "ref": "51.5065,-0.1393,147",
+      "start_s": 24,
+      "end_s": 32,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "PANO/count-the-steps-w04",
+      "attribution": "Mapillary / Stefdegreef (19 Sep 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+      "use": "both",
+      "sa": true,
+      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w04/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S4.3a — down St James's Street toward the Tudor gatehouse. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "fallback": "M-31"
+    },
+    {
+      "kind": "streetview",
+      "ref": "51.5065,-0.1393,147",
+      "start_s": 32,
+      "end_s": 40,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "PANO/count-the-steps-w04",
+      "attribution": "Mapillary / Stefdegreef (19 Sep 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+      "use": "both",
+      "sa": true,
+      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w04/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S4.3b — second window of the same 360 stop, framed on the gatehouse. HOLD 35–40 s. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "fallback": "M-31"
+    },
+    {
+      "kind": "streetview",
+      "ref": "51.5065,-0.1393,147",
+      "start_s": 40,
+      "end_s": 47,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "PANO/count-the-steps-w04",
+      "attribution": "Mapillary / Stefdegreef (19 Sep 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+      "use": "both",
+      "sa": true,
+      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w04/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S4.4a — turned onto the west side: Lock & Co's shopfront. QA ON DEVICE: if the frontages are not legible at this resolution the beat needs stills, and we hold none (N5 unfilled). PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "fallback": "M-31"
+    },
+    {
+      "kind": "streetview",
+      "ref": "51.5065,-0.1393,147",
+      "start_s": 47,
+      "end_s": 54,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "PANO/count-the-steps-w04",
+      "attribution": "Mapillary / Stefdegreef (19 Sep 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+      "use": "both",
+      "sa": true,
+      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w04/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S4.4b — Berry Bros & Rudd's doorway. Same caveat. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "fallback": "M-31"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-09-court-of-st-jamess.svg",
+      "start_s": 54,
+      "end_s": 64,
+      "license": "generated",
+      "manifest_id": "C-09",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: the Court of St James's | S4.5 — full-frame card, three words, held while the guide says the dinner-table fact."
+    },
+    {
+      "kind": "streetview",
+      "ref": "51.5053,-0.1381,65",
+      "start_s": 64,
+      "end_s": 72,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "PANO/count-the-steps-w05",
+      "attribution": "Mapillary / Stefdegreef (19 Sep 2024) — CC BY-SA 4.0 (platform default; per-image licence not stated)",
+      "use": "both",
+      "sa": true,
+      "note": "Cached open-imagery pano stop `media/files/panos/count-the-steps-w05/` (frames already on disk). NOTE: panowalk keys stop directories by scene_id, and this chapter's cache was built under the OLD scene ids — Engine must re-key the directory or re-run `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (free Mapillary graph API, nothing billable) before the render can see it. S4.6 — the turn into Pall Mall. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "fallback": "M-67"
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Big_Ben_recorded_in_1890.ogg",
+      "start_s": 64,
+      "end_s": 72,
+      "license": "public-domain",
+      "manifest_id": "M-40",
+      "attribution": "Big Ben, Edison phonograph recording, 16 July 1890 (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "Big Ben, 1890 phonograph, distant on the turn into Pall Mall. Nothing spoken over it after 68 s. NOTE: this recording is 1890 archive audio; it is atmosphere, not evidence, and no claim rests on it."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Johann_Strauss_-_Wiener_Blut_Op._354.ogg",
+      "start_s": 0,
+      "end_s": 64,
+      "license": "cc0",
+      "manifest_id": "M-43",
+      "attribution": "J. Strauss II, 'Wiener Blut' Op. 354 (Wikimedia Commons, CC0)",
+      "use": "both",
+      "note": "Wiener Blut low under the walk; out before M-40."
+    }
+  ],
+  "transition": {
+    "in": "cut",
+    "out": "cut to the clubland pass",
+    "music_cue": "M-43 low 0–64 · M-40 distant on the turn"
+  },
+  "next": "what-a-club-was",
+  "sources": [
+    "F-05",
+    "F-145",
+    "F-43",
+    "F-143",
+    "F-144"
+  ],
+  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots. Four of the nine slots are windows of ONE cached 360 sequence (count-the-steps-w04, 14 frames, 8.7 m spacing, 108 m span). That is legitimate — a 360 pass can be turned onto either side of the street — but it is also the honest limit of what we own for St James's Street (N5 unfilled).",
+  "review": {
+    "fact_check": "pending",
+    "rights": "amber",
+    "qa": "pending",
+    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S4 (72 s, 9 slots, word cap 105; 110 written).\nSENTENCE ↔ SLOT: 'The walk from tailor to club…' + 'Fogg walks it every day…' over slot 1 · 'Half a mile…' over slots 2–3 (G-10b) · 'Henry the Eighth built the palace…' over slots 4–5, ending by 35 s so the gatehouse holds 5 s · 'The world's oldest hat shop…' over slots 6–7 · 'Every ambassador to Britain…' over slot 8 (the card) · 'Clothes, then club.' over slot 9, ending on the noun. SILENCES: 35–40 s and 68–72 s (under M-40).\nKEPT ON THE CHIEF'S RULING 2: the 'counting his steps' clause survives — four seconds, and it launches the walk and labels the map. The 1,151-step stride arithmetic and Fogg's daily timetable are gone (rev 2).\nPROVISIONAL: every motion slot is a cached Mapillary pano → pending: rights-mapillary, and the cache is keyed by the OLD scene ids · G-10b is essential and does not exist · C-09 is a pending card.\nDROPPED DELIBERATELY (coordinator's overlay-migration list): the old scene's Open House London dates (F-17). They fail the interestingness test for a global audience, and they are time-bound to 12–13 September 2026 — by publication they are stale. They now appear nowhere, and that is the right answer, not an accident."
+  }
+}

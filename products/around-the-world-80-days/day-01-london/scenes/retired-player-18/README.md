@@ -1,3 +1,11 @@
+> **RETIRED, 2026-09-08 — superseded by `../README-film.md`.**
+> This is the 18-scene *interactive player* chain. The chapter is now a film (DECISIONS.md D9), planned in
+> `rundown/rundown-film.md` rev 2 and built as the twelve scene files in `../`. Nothing here is read by the
+> player, the renderer or `tour.json` any more. The files are kept, unaltered, because the linear cut sheet
+> (`studio/tools/render/cuts/day-01-london.json`), the Mandarin locale (`i18n/zh-Hans.json`) and the cached
+> pano directories (`media/files/panos/`) still address them by scene id, and all three need rebuilding
+> against the new chain before anything renders.
+
 # Scenes — Day 1: London — the departure
 
 **Scene Developer:** scene-developer (Claude)   **Date:** 2026-08-18 (draft a.m.; fix pass A1 p.m.) · **2026-08-19 D6 restructure** (scene 04 and 15)   **Status:** A1 → A3n → A5 → **D6** applied — all `review` fields still "pending" (fact-check / rights / QA re-run after the Narrator's phase 2)

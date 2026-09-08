@@ -1,0 +1,183 @@
+{
+  "id": "a-palace-with-a-motive",
+  "type": "video",
+  "title": "The Reform — a political party built as a palace",
+  "subtopic": "S6 — Why this club exists",
+  "duration_s": 74,
+  "learning_goal": "Know that this club was built to fight the one down the road, and that it did the work a party headquarters does now.",
+  "narration": {
+    "script": "Budgeted at thirty-seven and a half thousand pounds. It finished at eighty-two. Six floors, three of them below the street — kitchens and the engine that heats the whole house underneath everything. In the eighteen-thirties a club did the work a party headquarters does now: registering voters, whipping, picking candidates. This one opened with a thousand members, nearly two hundred and fifty of them MPs, to counter the Tory club down the road. A celebrity chef in 1837. Alexis Soyer helped design these kitchens, then published them as a book. People came to tour a basement. A members' library of eighty-five thousand volumes, all of it donated — which is why a member needed no study at home.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 0
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._North_Elevation.jpg",
+      "start_s": 0,
+      "end_s": 7,
+      "license": "public-domain",
+      "manifest_id": "M-22",
+      "attribution": "Reform Club, north elevation, from 'Life and Works of Sir Charles Barry' (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "S6.1a — Barry's north (Pall Mall) elevation."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-12-104-pall-mall.svg",
+      "start_s": 7,
+      "end_s": 12,
+      "license": "generated",
+      "manifest_id": "C-12",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 104 Pall Mall  ·  Charles Barry  ·  opened 1 March 1841 | S6.1b — full-frame card. R3: the guide says only the two cost figures aloud."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Life_and_works_of_sir_Charls_Barry_page_120.jpg",
+      "start_s": 12,
+      "end_s": 20,
+      "license": "public-domain",
+      "manifest_id": "M-97",
+      "attribution": "Reform Club, ground plan — Barry, 1867 — Reform Club, plan of the ground floor — Alfred Barry, 'The Life and Works of Sir Charles Barry' (1867), p. 120 (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "S6.2a — the labelled ground plan; slow move across COFFEE ROOM → SALOON → LIBRARY."
+    },
+    {
+      "kind": "image",
+      "ref": "https://archive.org/download/18361886reformcl00fagauoft/page/n72_w1200.jpg",
+      "start_s": 20,
+      "end_s": 28,
+      "license": "public-domain",
+      "manifest_id": "M-101",
+      "attribution": "Reform Club, section — Fagan, 1887 — Reform Club, section from Barry's original design — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887), p. 55 (public domain; scan: Internet Archive)",
+      "use": "both",
+      "note": "S6.2b — the section: two arcaded storeys over a vaulted basement, i.e. the kitchen floor. PICTURE CARRIES — HOLD 21–28 s.",
+      "fallback": "M-98"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-13-reform-act-1832.svg",
+      "start_s": 28,
+      "end_s": 33,
+      "license": "generated",
+      "manifest_id": "C-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: Reform Act 1832 | S6.3a — first of three reveals."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-14-the-carlton-club.svg",
+      "start_s": 33,
+      "end_s": 38,
+      "license": "generated",
+      "manifest_id": "C-14",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: the Tory Carlton Club, a few doors away | S6.3b — second reveal."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-15-8-february-1836.svg",
+      "start_s": 38,
+      "end_s": 44,
+      "license": "generated",
+      "manifest_id": "C-15",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: 8 February 1836 | S6.3c — third reveal."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Kitchen_Department_of_the_Reform_Club,_1842.jpg",
+      "start_s": 44,
+      "end_s": 50,
+      "license": "public-domain",
+      "manifest_id": "M-95",
+      "attribution": "'The Kitchen Department of the Reform Club', 1842 — 'The Kitchen Department of the Reform Club', lithograph by John Tarring, published by Alexis Soyer, 1842 (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "S6.4a — the hand-coloured kitchen cutaway, wide."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Kitchen_Department_of_the_Reform_Club,_1842.jpg",
+      "start_s": 50,
+      "end_s": 56,
+      "license": "public-domain",
+      "manifest_id": "M-95",
+      "attribution": "'The Kitchen Department of the Reform Club', 1842 — 'The Kitchen Department of the Reform Club', lithograph by John Tarring, published by Alexis Soyer, 1842 (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "S6.4b — same plate, slow move across the letterpress key and the kitchen-floor plan below it."
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/m-103-soyer-gastronomic-regenerator-title-page.jpg",
+      "start_s": 56,
+      "end_s": 62,
+      "license": "pending",
+      "manifest_id": "M-103",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: the title page of Soyer's 'Gastronomic Regenerator' (1846), 'by Monsieur A. Soyer, of the Reform Club'. The item IS in the manifest as M-103 and is public domain, but manifest.md records its Commons URL only as an ellipsis ('…(IA gastronomicregen00soye 0) (page 11 crop).jpg') — Content Preparer to complete the URL. Nothing is guessed here.. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-95"
+    },
+    {
+      "kind": "image",
+      "ref": "https://archive.org/download/18361886reformcl00fagauoft/page/n7_w1200.jpg",
+      "start_s": 62,
+      "end_s": 68,
+      "license": "public-domain",
+      "manifest_id": "M-100",
+      "attribution": "The Reform Club library, photographed c. 1886 — The library of the Reform Club, photogravure frontispiece — Louis Fagan, 'The Reform Club: its founders and architect' (B. Quaritch, 1887) (public domain; scan: Internet Archive)",
+      "use": "both",
+      "note": "S6.5a — the library, photographed c. 1886.",
+      "fallback": "M-23"
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+      "start_s": 68,
+      "end_s": 74,
+      "license": "public-domain",
+      "manifest_id": "M-23",
+      "attribution": "Reform Club saloon — 'London Interiors', 1841 — Reform Club, upper level of the saloon — 'London Interiors' (1841) (Wikimedia Commons, PD)",
+      "use": "both",
+      "note": "S6.5b — the upper level of the saloon, 'London Interiors', 1841."
+    },
+    {
+      "kind": "audio",
+      "ref": "https://commons.wikimedia.org/wiki/File:Johann_Strauss_-_Wiener_Blut_Op._354.ogg",
+      "start_s": 0,
+      "end_s": 74,
+      "license": "cc0",
+      "manifest_id": "M-43",
+      "attribution": "J. Strauss II, 'Wiener Blut' Op. 354 (Wikimedia Commons, CC0)",
+      "use": "both",
+      "note": "Wiener Blut low; lifts at 68 s toward the wager."
+    }
+  ],
+  "transition": {
+    "in": "cut",
+    "out": "cut to the wager plate",
+    "music_cue": "M-43 low; lift at 68 s"
+  },
+  "next": "the-wager",
+  "sources": [
+    "F-15",
+    "F-47",
+    "F-127",
+    "F-16",
+    "F-128",
+    "F-03"
+  ],
+  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots.",
+  "review": {
+    "fact_check": "pending",
+    "rights": "green",
+    "qa": "pending",
+    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S6 (74 s, 12 slots, word cap ~112).\nLENGTH: the rundown gives S6 as 86 s. The Chief's ruling 5 CUT beat S6.6 (setting the card table, 12 s) — 'you called it the least interesting twelve seconds in the film; that is a verdict, not a doubt' — and told the wager to absorb what it needs. So this scene is 74 s and scene 08 opens by setting the room. That is the whole of the film's -12 s, and the total is 18:42, not 18:54.\nSENTENCE ↔ SLOT: 'Budgeted at thirty-seven and a half thousand…' over slots 1–2 · 'Six floors, three of them below the street…' over slot 3, then HOLD 21–28 over slot 4 · 'In the eighteen-thirties a club did the work…' over slots 5–7 · 'A celebrity chef in 1837…' over slots 8–10 · 'A members' library of eighty-five thousand volumes…' over slots 11–12.\nCUT IN REV 2 AND NOT RESTORED: 'Verne invented the red porphyry columns'. Same species as the address joke; the interiors are shown as rooms, not as corrections.\nPROVISIONAL: C-12…C-15 are pending typeset cards (four of them; if the founder wants fewer generated assets, S6.3's three reveals can become one card) · M-103's URL is incomplete in the manifest · M-96 is not used here (its iiif.archive.org URL is fragile) but M-101 shares the same Internet Archive scan and may 504 too — fallback M-98 is declared."
+  }
+}

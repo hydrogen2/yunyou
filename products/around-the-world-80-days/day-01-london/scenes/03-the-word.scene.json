@@ -1,0 +1,215 @@
+{
+  "id": "the-word",
+  "type": "video",
+  "title": "The word — a myth, a tribunal and a tape measure",
+  "subtopic": "S2 — Who owns the word 'bespoke'",
+  "duration_s": 104,
+  "learning_goal": "Know where 'bespoke' really comes from, that the Row's origin story is false, that a 2008 ruling took the word away, and that the answer was the 100-yard rule.",
+  "narration": {
+    "script": "Where does the word bespoke come from? The word is about fifty years older than the first tailor on this street. The trade tells it differently: cloth spoken for by a customer, right here. The dates say no. In June two thousand and eight the Row took a cheaper rival to the advertising regulator: four-hundred-and-ninety-five-pound suits, machine-sewn abroad, sold as bespoke. The Row lost. Bespoke and made-to-measure, the regulator said, now mean much the same thing. The other pressure is rent. A chain store opened at number three in 2013; in 2016 the council wrote planning protection for tailoring on this street. So they stopped defending the word and defined the thing — by geography: made within a hundred yards of Savile Row. A hundred and sixty-nine firms in 1912. Nineteen by 2006. Twenty-two houses today — and the Row's first woman head cutter in 2009, with her own shop by 2016.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 0
+  },
+  "media": [
+    {
+      "kind": "footage",
+      "ref": "media/files/m108-savile-row-walk-south.mp4",
+      "start_s": 0,
+      "end_s": 4,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-108",
+      "attribution": "Mapillary / asturksever (2022) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S2.1a — a shop window with BESPOKE in the glass. Source in-point 00:26. QA on device: pin a frame that actually shows the lettering; if none does, this slot becomes the G-11 card early. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "sa": true,
+      "fallback": "M-77a"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-04-bespoke-question.svg",
+      "start_s": 4,
+      "end_s": 10,
+      "license": "generated",
+      "manifest_id": "C-04",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: Where does the word 'bespoke' come from?  /  from Savile Row  ·  from the army  ·  from an older English verb | S2.1b — the film's one quiz, posed. L5/D9: the options render with NOTHING marked and the answer is not stated for another 14 s. R5: no wording of the correct option appears in narration or on screen before the reveal."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m109-savile-row-360-north.mp4",
+      "start_s": 10,
+      "end_s": 18,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-109",
+      "attribution": "Mapillary / Stefdegreef (2024) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S2.2 — the walk continues while the viewer answers in their head. HOLD, all 8 s, no narration. Source in-point 00:20. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19). DEVIATION from the rundown: the plan kept the question on screen as a static band for these 8 s; a band is not a sanctioned form (D9, founder Decision 4 open), so the question is carried by memory and by the card that precedes it.",
+      "sa": true,
+      "fallback": "M-77a"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-11/bespoke-timeline_a.svg",
+      "start_s": 18,
+      "end_s": 24,
+      "license": "generated",
+      "manifest_id": "G-11",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S2.3a — reveal one and two: 'bespeak, to order — 1580s' then 'bespoke (adj.) — 1755'. Big type, revealed over time (L4). DOES NOT EXIST YET."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-11/bespoke-timeline_b.svg",
+      "start_s": 24,
+      "end_s": 30,
+      "license": "generated",
+      "manifest_id": "G-11",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S2.3b — reveal three: 'first tailors on Savile Row — c. 1803', landing under the other two so the gap is visible."
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-trade-period-tailors-trade-card.jpg",
+      "start_s": 30,
+      "end_s": 35,
+      "license": "pending",
+      "manifest_id": "S-trade",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: a period tailor's trade card or a dictionary page showing 'bespoke' (F-115).. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-32"
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:View_up_Savile_Row_-_geograph.org.uk_-_2929073.jpg",
+      "start_s": 35,
+      "end_s": 40,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-77a",
+      "attribution": "Robert Lamb (2012) / geograph.org.uk · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "S2.4b — the street itself, where the legend lives. Slow push.",
+      "sa": true
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-05-june-2008.svg",
+      "start_s": 40,
+      "end_s": 49,
+      "license": "generated",
+      "manifest_id": "C-05",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: June 2008  ·  £495 | S2.5a — quiet, typographic. Music out here; room tone only, which is the loudest thing in the film at this moment."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/cards/c-06-the-finding.svg",
+      "start_s": 49,
+      "end_s": 58,
+      "license": "generated",
+      "manifest_id": "C-06",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "PENDING GENERATED CARD (full-frame designed type — D9-legal, not an overlay). ON-SCREEN TEXT: The finding: 'bespoke' and 'made-to-measure' are effectively the same word now. | S2.5b — HOLD 6 s of the 9. The guide has already said it; the card lets it land."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:No_3,_Savile_Row_door_and_sign.jpg",
+      "start_s": 58,
+      "end_s": 65,
+      "license": "cc0",
+      "manifest_id": "M-77c",
+      "attribution": "No. 3 Savile Row, door and sign — VirtuallyLondonBecky (2014) · CC0",
+      "use": "both",
+      "note": "S2.6a — No. 3 Savile Row, the door and sign of the unit a clothing chain occupied 2013–2021. CC0."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m108-savile-row-walk-south.mp4",
+      "start_s": 65,
+      "end_s": 72,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-108",
+      "attribution": "Mapillary / asturksever (2022) — CC BY-SA 4.0 (Mapillary platform default; per-image licence not stated by the API)",
+      "use": "both",
+      "audio": "mute",
+      "note": "S2.6b — a tailor's door, a few numbers along. Source in-point 00:52. PENDING: rights-mapillary — Mapillary states no per-image licence; the platform default CC BY-SA 4.0 is an open Rights question (manifest-motion.md §4.3, open since 2026-08-19).",
+      "sa": true,
+      "fallback": "M-77a"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-16/hundred-yard-rule_a.svg",
+      "start_s": 72,
+      "end_s": 80,
+      "license": "generated",
+      "manifest_id": "G-16",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S2.7a — a 100-yard circle draws itself round the street on a plain plan. Big type, ≤ 4 labels."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-16/hundred-yard-rule_b.svg",
+      "start_s": 80,
+      "end_s": 88,
+      "license": "generated",
+      "manifest_id": "G-16",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S2.7b — the rule in type inside the circle: 'made within 100 yards of Savile Row'."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-14/169-19-22.svg",
+      "start_s": 88,
+      "end_s": 96,
+      "license": "generated",
+      "manifest_id": "G-14",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "S2.8a — three numbers in turn: 169 firms (1912) → 19 (2006) → 22 houses today."
+    },
+    {
+      "kind": "image",
+      "ref": "media/files/pending/s-sargent-woman-head-cutter-at-the-bench.jpg",
+      "start_s": 96,
+      "end_s": 104,
+      "license": "pending",
+      "manifest_id": "S-sargent",
+      "attribution": "PENDING — not yet sourced; attribution to follow with the file",
+      "use": "both",
+      "note": "PENDING STILL, not in the manifest. WANTED: a photograph of a woman cutting at a bench on Savile Row (F-122, Kathryn Sargent). Licence-clean and not yet found.. The renderer will show the declared fallback (or a pending-asset card) until the file exists.",
+      "fallback": "M-77a"
+    }
+  ],
+  "transition": {
+    "in": "cut",
+    "out": "cut to the south end of the Row",
+    "music_cue": "music OUT at 40 s for the 2008 card, room tone only; back in softly at 72 s under the 100-yard circle"
+  },
+  "next": "no-1-savile-row",
+  "sources": [
+    "F-114",
+    "F-115",
+    "F-121",
+    "F-120",
+    "F-116",
+    "F-119",
+    "F-122"
+  ],
+  "production_notes": "SLOT CONVENTION (film rev 2): every media entry's start_s/end_s are SCENE-CLOCK seconds — where the shot sits in this scene — not in/out points in the source file. A source in-point, where one is needed, is written in that entry's note as 'source in-point mm:ss'. Slots are contiguous and cover 0 s to duration_s with no gaps and no overlaps; audio beds are the only entries allowed to span other slots. The quiz is a film device only: pose (C-04) → hold 8 s (M-109) → reveal (G-11). There is no interaction object and the scene type is 'video', not 'quiz' — a film cannot take an answer (D9).",
+  "review": {
+    "fact_check": "pending",
+    "rights": "amber",
+    "qa": "pending",
+    "notes": "Scene Developer + Narrator, film rev 2, 2026-09-08. Block S2 (104 s, 15 slots, word cap 150).\nSENTENCE ↔ SLOT: 'Where does the word bespoke come from?' over slots 1–2 · SILENCE over slot 3 (10–18 s) · 'The word is about fifty years older…' over slots 4–5 (G-11) · 'The trade tells it differently…' over slots 6–7 · 'In June two thousand and eight…' + 'The Row lost.' + 'Bespoke and made-to-measure…' over slots 8–9, ending by ~52 s so the card holds 6 s in silence · 'The other pressure is rent…' over slots 10–11 · 'So they stopped defending the word…' over slots 12–13 · 'A hundred and sixty-nine firms…' over slots 14–15.\nFOLKLORE (places.md watchlist #1): the myth is named AS trade legend and refuted by date, on screen and in the words, before it is let go (L7). Never narrated as true.\nPROVISIONAL: M-108/M-109 pending: rights-mapillary · G-11, G-14, G-16 do not exist · C-04/C-05/C-06 pending cards · S-trade and S-sargent have no source (fallbacks M-32 and M-77a, both of which are the street, not the subject).\nR5 CHECK: the correct answer ('an older English verb, bespeak') is not spoken or shown anywhere before 18 s."
+  }
+}
