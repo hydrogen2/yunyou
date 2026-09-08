@@ -604,3 +604,23 @@ the old rundown (F-06, F-27) — charming, but a souvenir of the novel rather th
 - **With more time:** cut a 90-second silent animatic from the stills we already own to test the rhythm before a word
   is written; draft the two permission emails for N2 and N3 so the founder only has to press send; and re-cut the
   guide persona's example lines, two of which are now orphaned by the Sheridan cut.
+
+
+---
+
+## Chief's rulings on the five arguable beats (2026-09-08)
+
+Settled now rather than after a render, as asked. Founder may reverse any of these.
+
+1. **115,200 minutes — KEEP.** Not characterisation: it is *scale*. Eighty days is abstract; 115,200 minutes is
+   deranged, and deranged is memorable. Eight silent seconds of type earns its place. You were over-applying the rule.
+2. **"counting the steps" clause — KEEP.** It does structural work (launches the walk, labels the map) and costs four seconds.
+3. **S3.6 (introducing Fogg and Passepartout) — CONDITIONAL.** It rests on F-34, medium confidence from a search
+   snippet. **Fact-Checker must stand behind F-34 before this beat is scripted.** If it will not, the beat has no
+   justification and must be rewritten around something verified.
+4. **Carpet-bag — KEEP, tight.** Funny is a legitimate reason to remember something: no luggage, and a fifth of a
+   fortune in cash. Keep it to its ten seconds.
+5. **Setting the card table — CUT.** You called it "the least interesting twelve seconds in the film"; that is a
+   verdict, not a doubt. Fold what the wager needs into the wager itself.
+
+Net: −12 s ⇒ **≈ 18:42**.

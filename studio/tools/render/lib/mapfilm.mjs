@@ -143,7 +143,7 @@ const LEG_LABEL = {
   3: [80.8, 32],    // above India
   4: [99, -2],      // South China Sea, below the arc
   5: [133, 8],      // Philippine Sea, below the line and clear of Hong Kong's label
-  6: [-145, 44],    // the Pacific, on the LEFT half — the leg re-enters at the frame edge
+  6: [-145, 31],    // the Pacific, on the LEFT half (the leg re-enters at the frame edge) and BELOW its own line
   7: [-97, 47],     // above the transcontinental line
   8: [-40, 33],     // mid-Atlantic, below the homeward run
 };

@@ -14,8 +14,12 @@ about, by going to where it happened** — and it is far more specific than "tra
 
 It also dissolves the tension between the 文艺 half and the informational half: the art supplies the *emotional*
 reason to care, the facts supply the *substance*. Rick Steves has facts without a story; literary video has story
-without a place. The gap between them is the product — Day 1's best beat is exactly that gap ("Verne got the address
-wrong, and it doesn't matter").
+without a place. The gap between them is the product. **Note (2026-09-08):** this used to be illustrated with "Verne got the address
+wrong" — cut from the film for failing the interestingness test (`video-first.md`): to someone who has not read the
+novel, a detail in an unknown book being slightly wrong is not memorable. The thesis is unchanged; the good instances
+are the ones that carry a story — the street that lost the word *bespoke* at tribunal and kept it by drawing a
+100-yard circle, and the tailor who bought the explorers' headquarters at No. 1 because his firm had dressed the
+explorers. A gap only earns screen time when it is a story, not a correction.
 
 ## The grid: works × places
 The unit of production is **a work × a place**, not an episode in a series. That makes a grid, not a list:
