@@ -1,5 +1,5 @@
 # Episode 1 · London — the bet
-**Target 20:00 · 12 topics · landscape 1920×1080 · shorts cut from this master afterwards**
+**Target 20:10 · 13 topics · landscape 1920×1080 · shorts cut from this master afterwards**
 
 Status: **for founder review.** Nothing is sourced or rendered until these are approved.
 New facts researched 2026-09-09 are marked **[new]** and carry a confidence note; they are not yet
@@ -12,7 +12,7 @@ in a fact sheet and have not been through Fact-Check.
 
 ---
 
-## Block A — the question (topics 1–5, ~8 min)
+## Block A — the question (topics 1–5, ~8½ min)
 
 ### T1 · How long would it take you?
 `Fact` · **85 s** · opens cold, no title card
@@ -146,7 +146,14 @@ between *possible* and *comfortable*. Also a lovely coincidence of timing.
 
 ---
 
-## Block B — the places (topics 6–12, ~11 min)
+## Block B — the places (topics 6–13, ~12 min)
+
+> **Why this block exists, said out loud.** The founder's note on the first draft of this plan:
+> *"t7 to t11 seem disconnected from the novel without even a mention of fogg, makes me wonder why
+> are we seeing those here."* Correct, and it was a structural fault, not a tone one — the new
+> opening never established that Fogg lives on Savile Row, so the place topics had nothing holding
+> them. T7 below is the fix: it plants the geography and states the show's rule aloud. Every place
+> topic now also opens or closes on Fogg. The novel is the thread; the places are the substance.
 
 ### T6 · The largest city there had ever been
 `Explainer` · **95 s**
@@ -167,56 +174,82 @@ between *possible* and *comfortable*. Also a lovely coincidence of timing.
 
 ---
 
-### T7 · What a London club actually was
-`Explainer` · **105 s**
+### T7 · Half a mile
+`Walk` · **65 s** · **NEW — the anchor. Everything after this hangs off it.**
 
-**Hook:** *"The bet was made in a building that was, technically, a political weapon."*
+**Hook:** *"Everything left in this episode happens inside half a mile."*
 
 **What I say:**
-> A gentlemen's club was not a bar. It was a private house the size of a palace, where a few hundred men who
-> agreed with each other could eat, read, write letters, play cards, and in many of them sleep — all of it
-> staffed with servants, none of it for sale.
-> You could not buy your way in. You were proposed by a member, seconded by another, and then voted on:
-> every member dropped a ball in a box, white to admit, black to reject. Enough black balls and you were out.
-> That is where the word blackballed comes from.
-> At the height of it, London had more than four hundred of these places, most of them in a few hundred metres
-> of St James's and Pall Mall. Half of the principal ones had been founded in the previous thirty years.
-> Almost all of those buildings are still there. The street Fogg walks down is, frontage for frontage, close
-> to what you would see today.
+> Verne gives Fogg three addresses, and they are all in the same small corner of London.
+> A house on Savile Row. A club on Pall Mall. A railway station at Charing Cross.
+> He walks the first leg himself, and because he is the man he is, he counts it: five hundred and
+> seventy-five paces with the right foot, five hundred and seventy-six with the left.
+> Eleven hundred and fifty-one steps. About nine hundred metres.
+> That is the whole of London he uses. A man about to go round the Earth spends his last day on it
+> inside half a mile.
+> So we're going to walk that half mile — because all three of those places turn out to be more
+> interesting than the man who used them.
+
+**Why it stays:** it does three jobs in a minute. It plants the geography the next five topics depend on;
+it restores the 1,151 steps as *structure* rather than as characterisation, which is what made them dry
+before; and the last line tells the viewer the rule of this show, so nothing after it feels like a detour.
+
+**Facts:** F-05 (1,151 steps, ~0.9 km) · F-01 (No. 7 Savile Row) · F-12 (Charing Cross, 8:45)
+
+---
+
+### T8 · What a London club actually was
+`Explainer` · **105 s**
+
+**Hook:** *"Fogg makes the bet in a club. It is worth knowing what that word actually meant."*
+
+**What I say:**
+> Not a bar. A private house the size of a palace, where a few hundred men who agreed with each other
+> could eat, read, write letters, play cards, and in many of them sleep — all of it staffed with servants,
+> none of it for sale.
+> You could not buy your way in. You were proposed by a member, seconded by another, then voted on:
+> every member dropped a ball into a box, white to admit, black to reject. Enough black balls and you
+> were out. That is where the word blackballed comes from.
+> At the height of it London had more than four hundred of these places, most of them inside a few hundred
+> metres of St James's and Pall Mall. Half of the principal ones had been founded in the previous thirty years.
+> This is the second leg of Fogg's walk, and almost every building on it is still standing. Frontage for
+> frontage, what he passes is close to what you would see today.
 
 **Facts:** F-123, F-124, F-125, F-126, F-129
 
 ---
 
-### T8 · The Reform — a party built as a palace
+### T9 · The Reform — a party built as a palace
 `Explainer` · **85 s**
 
-**Hook:** *"The Tories built a clubhouse. So the reformers built a bigger one."*
+**Hook:** *"The room where Fogg makes his bet is, in real life, a political weapon."*
 
 **What I say:**
-> The Reform Club exists for one reason. After the Reform Act of 1832 the Conservatives founded the Carlton Club,
-> a few doors along Pall Mall. The other side wanted something "to counter the machinations of the Carlton" —
-> their words — and in 1836 they got it.
-> So the room where a fictional Englishman makes a bet about the size of the world is, in real life, the
-> headquarters of a political faction, built to out-build the opposition down the street.
+> The Reform Club exists for one reason. After the Reform Act of 1832 the Conservatives founded the
+> Carlton Club, a few doors along Pall Mall. The other side wanted something "to counter the machinations
+> of the Carlton" — their words — and in 1836 they got it.
+> So the room where a fictional Englishman bets twenty thousand pounds on the size of the world is,
+> in fact, the headquarters of a political faction, built to out-build the opposition down the street.
 > It is still there, still a club. It stopped being party-political after the war. In 1981 it became one of
 > the first of the old clubs to admit women on equal terms. Its library, given book by book by its members,
 > now runs to more than eighty-five thousand volumes.
+> Verne, incidentally, never saw the inside of it.
 
-**Facts:** F-127, F-126, F-128
+**Facts:** F-127, F-126, F-128 · ⚠ the closing line needs checking — Research to confirm whether Verne
+ever visited London clubs. **Cut it if unverified.**
 
 ---
 
-### T9 · Savile Row — 280 metres, and one word
+### T10 · Savile Row — 280 metres, and one word
 `Walk` · **120 s**
 
-**Hook:** *"Every bespoke suit in the world is named after this street. You can walk it in three minutes."*
+**Hook:** *"Verne gives Fogg a house here — number 7. Here is what he doesn't tell you about the street."*
 
 **What I say:**
-> Two hundred and eighty metres, one block behind Regent Street. It was built in the 1730s as ordinary
-> gentry housing; the tailors arrived around 1803, following the army officers and politicians who lived here.
-> Which is why the Savile Row shape — structured shoulder, high armhole — comes from military uniform, not
-> from fashion. The two firms at No. 1 started out making army caps and naval coats.
+> Two hundred and eighty metres, one block behind Regent Street. Built in the 1730s as ordinary gentry
+> housing; the tailors arrived around 1803, following the army officers and politicians who lived here.
+> Which is why the Savile Row shape — structured shoulder, high armhole — comes from military uniform,
+> not from fashion. The two firms at No. 1 started out making army caps and naval coats.
 > The street will tell you the word bespoke was born here: cloth "spoken for" by a customer. It wasn't.
 > The word is from 1755 — fifty years before the first tailor arrived.
 > And in 2008 they lost the word for real. The advertising regulator ruled that a £495 suit, cut and largely
@@ -224,18 +257,22 @@ between *possible* and *comfortable*. Also a lovely coincidence of timing.
 > So the Row stopped defending the dictionary and started defending geography. Its own standard now demands
 > a paper pattern cut for one person, at least fifty hours of hand work, three fittings — and a workshop
 > within a hundred yards of this street.
+> One last thing about Fogg living here. He leaves for a three-month journey with a single bag: two shirts
+> and three pairs of stockings. He lived on the street where one suit takes fifty hours by hand and three
+> months to finish — and he packed as though clothes did not exist.
 
-**Why it stays:** this is the material that ate five minutes of the last cut. It is genuinely good and it is
-worth exactly one topic. If it runs long in the edit, the 1803 origin goes first.
+**Why it stays:** this material ate five minutes of the last cut. It is genuinely good and it is worth
+exactly one topic. The closing turn is the anchor: it makes the street about *him* in one sentence,
+without a word of plot.
 
-**Facts:** F-110, F-111, F-112, F-114, F-115, F-121, F-116
+**Facts:** F-110, F-111, F-112, F-114, F-115, F-121, F-116 · F-12 (the carpet-bag)
 
 ---
 
-### T10 · No. 1 — where they decided what was still blank
+### T11 · No. 1 — where they decided what was still blank
 `Story` · **90 s**
 
-**Hook:** *"At the top of this street is the room where Britain worked out which parts of the world were still unmapped."*
+**Hook:** *"At the top of Fogg's street is the room where Britain worked out which parts of the world were still unmapped."*
 
 **What I say:**
 > From 1870 the Royal Geographical Society had its headquarters at No. 1 Savile Row — where expeditions to
@@ -243,8 +280,8 @@ worth exactly one topic. If it runs long in the edit, the 1803 origin goes first
 > In April 1874 David Livingstone's body lay in that building before it was carried to Westminster Abbey.
 > Six doors down the same street, Verne had just put a man who bet he could go round the world without
 > looking at any of it.
-> One end of a three-minute street: the people who wanted to see everything. The other end: a man who crosses
-> the entire planet and notices nothing.
+> One end of a three-minute street: the people who wanted to see everything. The other end: a man who
+> crosses the entire planet and notices nothing.
 > The Society sold the building to a tailor in 1912 for thirty-eight thousand pounds — partly because that
 > firm had dressed so many of the explorers.
 
@@ -252,27 +289,30 @@ worth exactly one topic. If it runs long in the edit, the 1803 origin goes first
 
 ---
 
-### T11 · Charing Cross — the point London is measured from
+### T12 · Charing Cross — the point London is measured from
 `Fact` · **85 s**
 
-**Hook:** *"When a road sign in Scotland says LONDON 400, it means this statue. Not the city. This statue."*
+**Hook:** *"He begins a journey round the world from the exact spot Britain measures every distance from."*
 
 **What I say:**
-> A bronze horseman at Charing Cross, cast in 1633. Since the early 1800s it has been the point every road
-> distance to London is measured from.
+> The third address. A bronze horseman at Charing Cross, cast in 1633. Since the early 1800s it has been
+> the point every road distance to London is counted from. When a sign in Scotland says LONDON 400,
+> it means this statue — not the city, this statue.
 > There's a stone cross in the station forecourt that looks medieval. It's Victorian — 1865 — and it's in
-> the wrong place. The real one stood where the statue is now.
+> the wrong place. The real one stood where the horseman is now.
 > It was the last of twelve. When Eleanor of Castile died in 1290, her body was carried a hundred and eighty
 > miles to Westminster over twelve days, and Edward I built a stone cross at every place it rested overnight.
 > Charing was the final night, and its cross cost seven times any of the others.
 > Parliament ordered it pulled down in 1643. It came down in 1647, after standing 353 years, and the parish
 > sold the stone — forty-seven cartloads of it — for paving.
+> Fogg's train leaves from a station built on that spot. Every distance in Britain is measured from here.
+> At a quarter to nine, a man walks onto a platform and starts measuring something rather larger.
 
-**Facts:** F-135, F-134, F-131, F-132, F-133 · ⚠ F-130: do **not** repeat the *chère reine* folk etymology
+**Facts:** F-135, F-134, F-131, F-132, F-133, F-136 · ⚠ F-130: do **not** repeat the *chère reine* folk etymology
 
 ---
 
-### T12 · A quarter to nine
+### T13 · A quarter to nine
 `Scene` · **60 s** · closes the episode, hands to E2
 
 **Hook:** *"He gave himself ten minutes to pack for the planet."*
@@ -282,10 +322,12 @@ worth exactly one topic. If it runs long in the edit, the 1803 origin goes first
 > they are going round the world and will start in ten minutes, and packs one carpet-bag: two shirts and
 > three pairs of stockings each, a mackintosh, a travelling cloak, and a railway timetable.
 > The train for Dover leaves at a quarter to nine.
-> It's raining. And somewhere behind them, in an empty house on Savile Row, a gas lamp is still burning that
-> nobody turned off — which is going to be funny for about seventy-nine more days.
+> It's raining. Passepartout's watch is four minutes slow and set to London, and he has no intention of
+> changing it for anybody.
+> And somewhere behind them, in an empty house on Savile Row, a gas lamp is still burning that nobody
+> turned off — which is going to be funny for about seventy-nine more days.
 
-**Facts:** F-12, F-13
+**Facts:** F-12, F-13, F-02 (the watch, four minutes slow)
 
 ---
 
@@ -303,7 +345,7 @@ the whist table setup · "Inside the Reform" as a separate scene. All fail the i
 viewer who has not read the book — your ruling, applied.
 
 ## What I need from you
-1. **Kill anything.** Twelve topics is 19 minutes; there is no slack, so anything you add displaces something.
+1. **Kill anything.** Thirteen topics is 20:10; there is no slack, so anything you add displaces something.
 2. **T2 is the new opening you asked for and it is long (140 s).** It can lose Palin and Train and still work.
 3. **T5 (Thomas Cook)** is the one I'd cut first if you want the episode tighter.
 4. Confirm the order: question → racers → Verne → why eighty → reality check → then the places.
