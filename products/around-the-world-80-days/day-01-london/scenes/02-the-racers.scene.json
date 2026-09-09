@@ -19,9 +19,9 @@
       "end_s": 9,
       "license": "public-domain",
       "manifest_id": "M-203",
-      "attribution": "George Francis Train — public domain",
+      "attribution": "George Francis Train, photographed by Mathew Brady — public domain (Library of Congress via Wikimedia Commons)",
       "use": "both",
-      "note": "T2.1 — Train, portrait. NOT YET SOURCED — Content Preparer."
+      "note": "T2.1 — Train, portrait. SOURCED 2026-09-09, 1186×2000."
     },
     {
       "kind": "generated",
@@ -36,36 +36,37 @@
     },
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Nellie_Bly_2.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Nellie_Bly_in_traveling_cloak.jpg",
       "start_s": 17,
       "end_s": 27,
       "license": "public-domain",
       "manifest_id": "M-204",
-      "attribution": "Nellie Bly, c. 1890 — public domain",
+      "attribution": "Nellie Bly in her travelling cloak, 1889 — public domain (Wikimedia Commons)",
       "use": "both",
-      "note": "T2.3 — Bly in her travelling coat and cap. The famous one. NOT YET SOURCED — Content Preparer."
+      "note": "T2.3 — Bly in her travelling coat and cap. The famous one. SOURCED 2026-09-09, 916×1600."
     },
     {
       "kind": "image",
-      "ref": "media/files/bly-newspaper.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Round_the_World_Nellie_Bly_board_game_box.jpg",
       "start_s": 27,
       "end_s": 37,
-      "license": "public-domain",
+      "license": "cc-by-sa-4.0",
       "manifest_id": "M-205",
-      "attribution": "New York World, 1889/90 — public domain",
+      "attribution": "'Round the World with Nellie Bly' board game, issued by the New York World — photo Mary Mark Ockerbloom · CC BY-SA 4.0 · adapted",
       "use": "both",
-      "note": "T2.4 — the World's own coverage: the board game, the guessing contest, a headline. NOT YET SOURCED — Content Preparer."
+      "note": "T2.4 — the World's own coverage: the board game, the guessing contest, a headline. SOURCED 2026-09-09, 1854×3192.",
+      "sa": true
     },
     {
       "kind": "image",
-      "ref": "media/files/amiens-verne.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:F%C3%A9lix_Nadar_1820-1910_portraits_Jules_Verne_(restoration).jpg",
       "start_s": 37,
       "end_s": 47,
       "license": "public-domain",
       "manifest_id": "M-206",
-      "attribution": "Jules Verne at Amiens — public domain",
+      "attribution": "Jules Verne photographed by Félix Nadar, c. 1878 — public domain (Wikimedia Commons, restored)",
       "use": "both",
-      "note": "T2.5 — Verne, photographed. HOLD 46–52: she stopped, on the clock, to meet him. NOT YET SOURCED — Content Preparer."
+      "note": "T2.5 — Verne, photographed. HOLD 46–52: she stopped, on the clock, to meet him. SOURCED 2026-09-09, 1508×2111."
     },
     {
       "kind": "generated",
@@ -94,14 +95,14 @@
     },
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Elizabeth_Bisland.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Elizabeth_Bisland_circa1891.jpg",
       "start_s": 62,
       "end_s": 74,
       "license": "public-domain",
       "manifest_id": "M-207",
-      "attribution": "Elizabeth Bisland — public domain",
+      "attribution": "Elizabeth Bisland, c. 1891 — public domain (Wikimedia Commons)",
       "use": "both",
-      "note": "T2.7 — Bisland. Held as long as Bly was; the race had two people in it. NOT YET SOURCED — Content Preparer."
+      "note": "T2.7 — Bisland. Held as long as Bly was; the race had two people in it. SOURCED 2026-09-09, 360×469."
     },
     {
       "kind": "generated",
@@ -122,14 +123,15 @@
     },
     {
       "kind": "image",
-      "ref": "media/files/bisland-route.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Tour_du_monde_de_Nellie_Bly_(1889-1890).png",
       "start_s": 84,
       "end_s": 95,
-      "license": "public-domain",
+      "license": "cc-by-sa-4.0",
       "manifest_id": "M-208",
-      "attribution": "(pending)",
+      "attribution": "Nellie Bly's route, 1889–90 — Eprenensouest · CC BY-SA 4.0 · adapted",
       "use": "both",
-      "note": "T2.8 — the two directions on one small globe or period map: Bly east, Bisland west. NOT YET SOURCED — Content Preparer."
+      "note": "T2.8 — the two directions on one small globe or period map: Bly east, Bisland west. SOURCED 2026-09-09, 2001×1243.",
+      "sa": true
     },
     {
       "kind": "image",

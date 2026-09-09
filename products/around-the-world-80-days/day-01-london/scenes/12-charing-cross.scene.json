@@ -17,23 +17,24 @@
       "ref": "media/files/m84-trafalgar-square.mp4",
       "start_s": 0,
       "end_s": 14,
-      "license": "unknown",
+      "license": "cc-by-3.0",
       "manifest_id": "M-84",
-      "attribution": "Kauko Helavuo (2015), 1920×1080 · licence to confirm",
+      "attribution": "Trafalgar Square, London — Kauko Helavuo (2015) · licence to confirm before publication",
       "use": "both",
-      "note": "T13.1 — Trafalgar Square today, moving. ⚠ M-84 does NOT contain the Charles I statue — Day 1 asked it to and it did not deliver. Either re-cut to a shot that does, or source a new one.",
+      "note": "T13.1 — Trafalgar Square today, moving. RESOLVED 2026-09-09: this shot does NOT contain the Charles I statue and no longer needs to — M-223 carries the statue in the next slot. M-84's job here is only 'the place, alive, now'. ⚠ Licence still to confirm with the uploader before publication.",
       "audio": "mute"
     },
     {
       "kind": "image",
-      "ref": "media/files/charles-i-statue.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Equestrian_statue_of_Charles_I,_Charing_Cross.jpg",
       "start_s": 14,
       "end_s": 28,
-      "license": "cc-by-sa-4.0",
+      "license": "cc-by-sa-2.0",
       "manifest_id": "M-223",
-      "attribution": "(pending) · CC BY-SA 4.0 · adapted",
+      "attribution": "Equestrian statue of Charles I, Charing Cross — Stephen Walli (Flickr) · CC BY-SA 2.0 · adapted",
       "use": "both",
-      "note": "T13.2 — the equestrian bronze itself, close. The topic is about this object; it must be on screen. NOT YET SOURCED — Content Preparer."
+      "note": "T13.2 — the equestrian bronze itself, close. The topic is about this object; it must be on screen. SOURCED 2026-09-09, 2736×3648.",
+      "sa": true
     },
     {
       "kind": "generated",
@@ -93,25 +94,26 @@
     },
     {
       "kind": "image",
-      "ref": "media/files/charing-cross-1905-boat-train.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:1905_LONDON_S.E_%26_C.R_CHARING_CROSS_RAILWAY_STATION_PARIS_BOAT_TRAIN_POSTCARD_(50272732396).jpg",
       "start_s": 110,
       "end_s": 124,
       "license": "public-domain",
       "manifest_id": "M-27",
-      "attribution": "Charing Cross, Paris boat train — S.E.&C.R. postcard (1905) — public domain",
+      "attribution": "Charing Cross station, Paris boat train — S.E.&C.R. postcard, 1905 · public domain",
       "use": "both",
       "note": "T13.8 — the boat train platform."
     },
     {
       "kind": "image",
-      "ref": "media/files/charles-i-statue.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Equestrian_statue_of_Charles_I,_Charing_Cross.jpg",
       "start_s": 124,
       "end_s": 138,
-      "license": "cc-by-sa-4.0",
+      "license": "cc-by-sa-2.0",
       "manifest_id": "M-223",
-      "attribution": "(pending) · CC BY-SA 4.0 · adapted",
+      "attribution": "Equestrian statue of Charles I, Charing Cross — Stephen Walli (Flickr) · CC BY-SA 2.0 · adapted",
       "use": "both",
-      "note": "T13.9 — back to the statue. HOLD the last ~6 s on 'something rather larger'."
+      "note": "T13.9 — back to the statue. HOLD the last ~6 s on 'something rather larger'.",
+      "sa": true
     }
   ],
   "review": {

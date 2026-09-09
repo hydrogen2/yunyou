@@ -14,14 +14,14 @@
   "media": [
     {
       "kind": "image",
-      "ref": "media/files/earth-from-orbit-still.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Iberian_Peninsula_at_Night_-_NASA_Earth_Observatory.jpg",
       "start_s": 0,
       "end_s": 9,
-      "license": "public-domain",
+      "license": "cc-by-2.0",
       "manifest_id": "M-200",
-      "attribution": "NASA / ISS Expedition imagery · public domain",
+      "attribution": "Earth at night from the International Space Station (ISS030-E-10008) — NASA Earth Observatory · CC BY 2.0 · adapted",
       "use": "both",
-      "note": "T1.1 — Earth's limb from orbit, night side with city lights. Opens cold, no title. Must read with sound off. NOT YET SOURCED — Content Preparer."
+      "note": "T1.1 — Earth's limb from orbit, night side with city lights. Opens cold, no title. Must read with sound off. SOURCED 2026-09-09, 1440×960."
     },
     {
       "kind": "footage",
@@ -48,14 +48,14 @@
     },
     {
       "kind": "image",
-      "ref": "media/files/iss-sunrise.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:A_Northwest_Night_Awash_in_Light_(154757).jpg",
       "start_s": 26,
       "end_s": 35,
       "license": "public-domain",
       "manifest_id": "M-202",
-      "attribution": "NASA · public domain",
+      "attribution": "Astronaut photograph ISS072-E-806482, 19 March 2025 — NASA · public domain",
       "use": "both",
-      "note": "T1.4 — orbital sunrise. HOLD 34–40, no words: the sixteen-sunrises line lands and then we look at one. NOT YET SOURCED — Content Preparer."
+      "note": "T1.4 — HOLD 34–40, no words. ⚠ SUBSTITUTE: the slot asked for an orbital SUNRISE and none was found on Commons; this is a second night-side frame, 720×480. It still holds the beat, but the 'sixteen sunrises' line now plays over night rather than over a sunrise. Re-source if a sunrise turns up."
     },
     {
       "kind": "image",

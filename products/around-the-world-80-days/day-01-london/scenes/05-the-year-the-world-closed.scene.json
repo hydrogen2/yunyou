@@ -56,31 +56,31 @@
       "end_s": 64,
       "license": "public-domain",
       "manifest_id": "M-212",
-      "attribution": "Andrew J. Russell, Promontory Summit, 10 May 1869 — public domain",
+      "attribution": "'East and West Shaking Hands at the Laying of the Last Rail', Promontory Summit, 10 May 1869 — Andrew J. Russell · public domain (restored)",
       "use": "both",
-      "note": "T4.2 — the golden spike photograph. Held. NOT YET SOURCED — Content Preparer."
+      "note": "T4.2 — the golden spike photograph. Held. SOURCED 2026-09-09, 4514×3435."
     },
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Opening_of_the_Suez_Canal.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:L%27inauguration_du_canal_de_Suez,_17_November_1869_Gal18_riou_001f.jpg",
       "start_s": 64,
       "end_s": 74,
       "license": "public-domain",
       "manifest_id": "M-213",
-      "attribution": "Opening of the Suez Canal, 17 November 1869 — public domain",
+      "attribution": "The inauguration of the Suez Canal, 17 November 1869 — engraving after Édouard Riou · public domain",
       "use": "both",
-      "note": "T4.3 — the opening ceremony, engraved. NOT YET SOURCED — Content Preparer."
+      "note": "T4.3 — the opening ceremony, engraved. SOURCED 2026-09-09, 1400×894."
     },
     {
       "kind": "image",
-      "ref": "media/files/overland-telegraph.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Australian_Overland_Telegraph_Line_repeater_station_at_Strangways_Springs,_1872.jpg",
       "start_s": 74,
       "end_s": 88,
       "license": "public-domain",
       "manifest_id": "M-214",
-      "attribution": "Australian Overland Telegraph Line construction, 1870–72 — public domain (State Library of South Australia)",
+      "attribution": "Overland Telegraph repeater station, Strangways Springs, South Australia, 1872 — public domain",
       "use": "both",
-      "note": "T4.4 — a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. NOT YET SOURCED — Content Preparer."
+      "note": "T4.4 — a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. SOURCED 2026-09-09, 790×378."
     },
     {
       "kind": "generated",

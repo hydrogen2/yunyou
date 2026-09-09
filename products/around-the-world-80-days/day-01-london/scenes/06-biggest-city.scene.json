@@ -65,14 +65,14 @@
     },
     {
       "kind": "image",
-      "ref": "media/files/metropolitan-railway-1863.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:King%27s_Cross_Metropolitan_Railway_Station,_Interior,_1862.png",
       "start_s": 39,
       "end_s": 50,
       "license": "public-domain",
       "manifest_id": "M-217",
-      "attribution": "Metropolitan Railway, trial trip 1862 / opening 1863 — public domain",
+      "attribution": "King's Cross Metropolitan Railway station, interior, 1862 — public domain (Wikimedia Commons)",
       "use": "both",
-      "note": "T6.5 — the world's first underground, packed, in a cutting. The best single image of 'new'. NOT YET SOURCED — Content Preparer."
+      "note": "T6.5 — the world's first underground, packed, in a cutting. The best single image of 'new'. SOURCED 2026-09-09, 966×724."
     },
     {
       "kind": "image",

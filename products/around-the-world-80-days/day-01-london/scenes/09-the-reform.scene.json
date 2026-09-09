@@ -26,12 +26,12 @@
     },
     {
       "kind": "image",
-      "ref": "media/files/reform-elevation.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._North_Elevation.jpg",
       "start_s": 11,
       "end_s": 24,
       "license": "public-domain",
       "manifest_id": "M-22",
-      "attribution": "Reform Club, north elevation — engraving from *Life and Works of Sir Charles Barry* — public domain",
+      "attribution": "Reform Club, north elevation — from *Life and Works of Sir Charles Barry* · public domain",
       "use": "both",
       "note": "T9.2 — Barry's drawing. The building as an argument, on paper."
     },

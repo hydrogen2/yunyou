@@ -37,14 +37,14 @@
     },
     {
       "kind": "image",
-      "ref": "media/files/livingstone.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:David_Livingstone_by_Thomas_Annan.jpg",
       "start_s": 26,
       "end_s": 39,
       "license": "public-domain",
       "manifest_id": "M-222",
-      "attribution": "David Livingstone — public domain",
+      "attribution": "David Livingstone, photographed by Thomas Annan — public domain (restored)",
       "use": "both",
-      "note": "T11.3 — Livingstone. Held, plainly, no music sting. NOT YET SOURCED — Content Preparer."
+      "note": "T11.3 — Livingstone. Held, plainly, no music sting. SOURCED 2026-09-09, 1920×2347."
     },
     {
       "kind": "generated",
