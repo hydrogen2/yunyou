@@ -92,6 +92,35 @@ export function clipCard({ channel, videoTitle, videoId, inS, outS, sceneTitle, 
     </div></div>`);
 }
 
+/** A quotation held full-frame — a page from the book, not a floating overlay (D9: designed card, nothing hovers).
+ *  Type size steps down as the quotation gets longer, so a six-word motto and a four-line paragraph both fill
+ *  the frame. CJK characters count double towards the length because they are twice as wide. */
+export function quoteCard({ text, attribution, kicker, lang }) {
+  const weight = String(text || '').replace(/[⺀-鿿＀-￯]/g, 'xx').length;
+  const size = weight <= 80 ? 66 : weight <= 150 ? 56 : weight <= 240 ? 47 : weight <= 340 ? 41 : 36;
+  const zh = /^zh/i.test(lang || '');
+  return page(`<div class="page">
+    <div class="quote${zh ? ' zh' : ''}"${zh ? ' lang="zh"' : ''}>
+      <div class="qbody">
+        ${kicker ? `<p class="kicker qk">${esc(kicker)}</p>` : ''}
+        <blockquote style="font-size:${size}px">${esc(text)}</blockquote>
+        ${attribution ? `<p class="qattr">${esc(attribution)}</p>` : ''}
+      </div>
+    </div></div>`, `
+.quote { position:relative; background:linear-gradient(160deg,#f6efdc,#e9dfc4); color:#241d15;
+         border-radius:18px; padding:74px 88px; max-width:1380px; box-shadow:0 24px 70px rgba(0,0,0,.62); }
+.quote::before { content:'“'; position:absolute; left:30px; top:-14px; font-size:200px; line-height:1;
+         color:#c2a262; opacity:.34; z-index:0; }
+.qbody { position:relative; z-index:1; }
+.quote .qk { color:#8a6a2f; margin:0 0 1.3em; }
+.quote blockquote { margin:0; line-height:1.34; font-style:italic; text-wrap:balance; }
+.quote.zh blockquote { font-style:normal; line-height:1.52; }
+.quote .qattr { margin:1.5em 0 0; padding-top:.85em; border-top:1px solid rgba(60,45,25,.28);
+         font-family:'Liberation Sans','Noto Sans CJK SC',system-ui,sans-serif;
+         font-size:21px; color:#6b5a44; letter-spacing:.02em; }
+`);
+}
+
 /** Card for a Street View stop (rights: no screen recording / caching of Street View). */
 export function streetViewCard({ sceneTitle, stops, note }) {
   const rows = stops.map((s, i) => `<li><b>Stop ${i + 1}</b> · ${esc(s.desc || '')} <span class="muted">— ${esc(s.coords)}</span></li>`).join('');

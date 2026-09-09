@@ -1,0 +1,58 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+:root { --ink:#ece6da; --dim:#a9a193; --bg:#0d0c0e; --panel:#17161a; --line:#2b292f; --accent:#d9a441; --ok:#7bc47f; --bad:#e07a6a; }
+* { box-sizing:border-box; }
+html,body { margin:0; width:100%; height:100%; background:var(--bg); color:var(--ink); font:22px/1.4 Georgia,'Liberation Serif','Times New Roman','Noto Serif CJK SC','Noto Sans CJK SC',serif; overflow:hidden; }
+.sans { font-family:'Liberation Sans','Noto Sans CJK SC',system-ui,sans-serif; }
+:lang(zh), .zh, .zh * { font-family:'Noto Sans CJK SC','Liberation Sans',system-ui,sans-serif; }
+.page { position:relative; width:100%; height:100%; display:flex; align-items:center; justify-content:center; padding:4vmin; }
+.kicker { font-family:'Liberation Sans','Noto Sans CJK SC',system-ui,sans-serif; font-size:16px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); margin:0 0 .6em; }
+.muted { color:var(--dim); }
+h1 { font-weight:500; font-size:56px; line-height:1.15; margin:0 0 .3em; letter-spacing:.01em; }
+h2 { font-weight:500; font-size:40px; line-height:1.2; margin:0 0 .4em; }
+.card { background:linear-gradient(160deg,#f4ecd8,#e7dcc0); color:#2a2118; border-radius:16px; padding:44px 56px; max-width:900px; box-shadow:0 20px 60px rgba(0,0,0,.6); font-size:24px; }
+.card h2 { color:#2a2118; font-size:34px; }
+.card small { color:#6b5a48; font-family:'Liberation Sans',system-ui,sans-serif; font-size:17px; }
+.dark { background:linear-gradient(160deg,#17161a,#0d0c0e); border:1px solid var(--line); border-radius:16px; padding:44px 56px; color:var(--ink); box-shadow:0 20px 60px rgba(0,0,0,.6); }
+.tag { display:inline-block; border:1px solid var(--accent); color:var(--accent); border-radius:999px; padding:4px 14px; font-family:'Liberation Sans',system-ui,sans-serif; font-size:16px; letter-spacing:.06em; }
+.pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:3px 12px; font-family:'Liberation Sans',system-ui,sans-serif; font-size:15px; color:var(--dim); margin-right:8px; }
+.thumb { position:absolute; right:40px; bottom:40px; width:200px; height:auto; border-radius:8px; opacity:.85; box-shadow:0 8px 24px rgba(0,0,0,.6); }
+.split { display:grid; grid-template-columns: 1fr 1fr; gap:36px; width:100%; height:100%; align-items:center; }
+.herobox { position:relative; height:100%; width:100%; border-radius:10px; overflow:hidden; background:#000; display:flex; align-items:center; justify-content:center; }
+.herobox img.back { position:absolute; inset:-12%; width:124%; height:124%; object-fit:cover; filter:blur(28px) saturate(1.12) brightness(.44); }
+/* NEVER enlarged: max-width/height are the file's OWN pixels, so a 632-px engraving stays 632 px (player v0.7) */
+.split img.hero { position:relative; max-width:100%; max-height:calc(100vh - 8vmin); width:auto; height:auto; object-fit:contain; border-radius:6px; }
+.herocap { position:absolute; left:0; right:0; bottom:0; padding:6px 10px; font-family:'Liberation Sans','Noto Sans CJK SC',sans-serif; font-size:14px; color:#cfd6dc; background:linear-gradient(transparent,rgba(0,0,0,.72)); }
+.opts { list-style:none; margin:0; padding:0; font-family:'Liberation Sans',system-ui,sans-serif; font-size:21px; }
+.opts li { margin:10px 0; padding:12px 16px; border:1px solid var(--line); border-radius:12px; background:var(--panel); break-inside:avoid; display:inline-block; width:100%; }
+.opts li.correct { border-color:var(--ok); background:#15231a; }
+.opts li.wrong { color:var(--dim); }
+.opts li.on { border-color:var(--ok); }
+.opts li.off { color:var(--dim); text-decoration:line-through; opacity:.7; }
+.fb { margin-top:12px; padding:10px 14px; border-left:3px solid var(--accent); font-size:20px; }
+.chat { display:flex; flex-direction:column; gap:12px; font-family:'Liberation Sans',system-ui,sans-serif; font-size:21px; }
+.chat .q { align-self:flex-end; background:#2a2730; padding:12px 18px; border-radius:16px 16px 4px 16px; max-width:88%; }
+.chat .a { align-self:flex-start; background:#1c2a1e; padding:12px 18px; border-radius:16px 16px 16px 4px; max-width:92%; }
+.credits { column-count:2; column-gap:48px; font-family:'Liberation Sans',system-ui,sans-serif; font-size:15px; line-height:1.35; }
+.credits p { margin:0 0 .5em; break-inside:avoid; }
+.credits b { color:var(--accent); font-weight:600; }
+.foot { position:absolute; left:40px; right:40px; bottom:28px; font-family:'Liberation Sans',system-ui,sans-serif; font-size:15px; color:var(--dim); display:flex; justify-content:space-between; }
+
+.quote { position:relative; background:linear-gradient(160deg,#f6efdc,#e9dfc4); color:#241d15;
+         border-radius:18px; padding:74px 88px; max-width:1380px; box-shadow:0 24px 70px rgba(0,0,0,.62); }
+.quote::before { content:'“'; position:absolute; left:30px; top:-14px; font-size:200px; line-height:1;
+         color:#c2a262; opacity:.34; z-index:0; }
+.qbody { position:relative; z-index:1; }
+.quote .qk { color:#8a6a2f; margin:0 0 1.3em; }
+.quote blockquote { margin:0; line-height:1.34; font-style:italic; text-wrap:balance; }
+.quote.zh blockquote { font-style:normal; line-height:1.52; }
+.quote .qattr { margin:1.5em 0 0; padding-top:.85em; border-top:1px solid rgba(60,45,25,.28);
+         font-family:'Liberation Sans','Noto Sans CJK SC',system-ui,sans-serif;
+         font-size:21px; color:#6b5a44; letter-spacing:.02em; }
+</style></head><body><div class="page">
+    <div class="quote">
+      <div class="qbody">
+        
+        <blockquote style="font-size:56px">He was so exact that he was never in a hurry, was always ready, and was economical alike of his steps and his motions.</blockquote>
+        <p class="qattr">Jules Verne, Around the World in Eighty Days, ch. I (Towle translation, 1873)</p>
+      </div>
+    </div></div></body></html>

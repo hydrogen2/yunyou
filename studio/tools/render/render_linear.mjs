@@ -1262,7 +1262,10 @@ async function runCropPreview(target) {
     prompt: s => { const t = LT.scene(s.id); return (t && t.interaction && t.interaction.prompt) || (s.interaction || {}).prompt || ''; },
     option: (s, i) => { const t = LT.scene(s.id); const src = (s.interaction || {}).options || []; const o = t && t.interaction && (t.interaction.options || []).find(x => x.i === i);
       return { ...(src[i] || {}), text: (o && o.text) || (src[i] || {}).text || '', feedback: (o && o.feedback) || (src[i] || {}).feedback || '' }; },
-    options: s => ((s.interaction || {}).options || []).map((_, i) => LT.option(s, i))
+    options: s => ((s.interaction || {}).options || []).map((_, i) => LT.option(s, i)),
+    quote: s => { const t = LT.scene(s.id); const q = s.quote || {}; const l = (t && t.quote) || {};
+      return { text: l.text || q.text || '', attribution: l.attribution || q.attribution || '',
+               kicker: l.kicker || q.kicker || '', translated: !!l.text }; }
   };
 
   // 1. selection
@@ -1826,6 +1829,13 @@ async function runCropPreview(target) {
       }
       else if (s.type === 'quiz') segs.push(await quizSeg(null));
       else if (s.type === 'dialogue') { const img = media.find(x => x.kind === 'image'); const ci = img ? await commonsImage(img.ref) : null; if (img) useCredit(img); const it = s.interaction || {}; const o = (it.options || []).length ? LT.option(s, 0) : null; segs.push({ kind: 'png', file: await shotHtml(T.chatScreen({ sceneTitle: LT.title(s), imageUrl: ci ? 'file://' + ci.file : '', imageW: ci ? ci.info.w : 0, imageH: ci ? ci.info.h : 0, attribution: img ? (img.attribution || '') : '', context: LT.prompt(s), turns: o ? [{ role: 'q', text: o.text }, { role: 'a', text: o.feedback || o.answer || '' }] : [] }), `chat_${tag}`), dur: null, attribution: img?.attribution, src: 'dialogue screen (own render)' }); }
+      else if (s.type === 'quote') {
+        // A held page from the book. No media, no motion: the pause IS the beat ("silence is content").
+        const q = LT.quote(s);
+        if (!q.text) warnings.push(`${tag}: quote scene has no quote.text`);
+        if (LANG !== 'en' && !q.translated) warnings.push(`${tag}: quote is not translated in ${LOCALE_ID} — the ${LANG} cut would show English`);
+        segs.push({ kind: 'png', file: await shotHtml(T.quoteCard({ ...q, lang: LANG }), `quote_${tag}`), dur: null, src: `quote card — ${q.attribution || 'UNATTRIBUTED'}` });
+      }
       else if (s.type === 'game') { const it = s.interaction || {}; segs.push({ kind: 'png', file: await shotHtml(T.checklistScreen({ sceneTitle: LT.title(s), prompt: LT.prompt(s), options: LT.options(s) }), `check_${tag}`), dur: null, src: 'checklist screen (own render)' }); }
       else { segs.push(await playerSeg(`showScene(${n})`, null, `${tag}_scene`)); }
     }

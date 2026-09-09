@@ -25,6 +25,7 @@
         "photo",
         "map",
         "quiz",
+        "quote",
         "dialogue",
         "game",
         "card",
@@ -295,6 +296,28 @@
           }
         }
       }
+    },
+    "quote": {
+      "type": "object",
+      "description": "For type 'quote': a passage held full-frame as a designed card. Not an overlay — D9 bans hovering text. Give the words exactly as published and say where they are from; a quote card whose attribution is vague is worse than no quote card.",
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "The quotation itself, verbatim. No ellipsis-stitching of separate sentences."
+        },
+        "attribution": {
+          "type": "string",
+          "description": "Who said it and where, e.g. 'Jules Verne, Around the World in Eighty Days, ch. III (Towle translation, 1873)'."
+        },
+        "kicker": {
+          "type": "string",
+          "description": "Optional short label above the quotation, e.g. 'Fogg's motto'."
+        }
+      },
+      "required": [
+        "text",
+        "attribution"
+      ]
     },
     "interaction": {
       "type": "object",
