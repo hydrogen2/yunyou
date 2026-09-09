@@ -3,10 +3,10 @@
   "type": "video",
   "title": "A quarter to nine",
   "subtopic": "T13 — the departure, and the look ahead",
-  "duration_s": 123,
+  "duration_s": 125,
   "learning_goal": "Know how little he took and how little time he gave himself, and leave the episode wanting the next one.",
   "narration": {
-    "script": "He gave himself ten minutes to pack for the planet. Fogg leaves the club at twenty-five past seven, tells his new servant they are going round the world and will start in ten minutes, and packs one carpet-bag: two shirts, three pairs of stockings, a mackintosh, a cloak, and a railway timetable. The train for Dover leaves at a quarter to nine. It is raining. Passepartout's watch is four minutes slow and set to London, and he has no intention of changing it for anybody. And somewhere behind them, in an empty house on Savile Row, a gas lamp is still burning that nobody turned off — which is going to be funny for about seventy-nine more days. Ahead of him: a boat across the Channel. A hole under the Alps that opened thirteen months ago. A canal three years old. A railway across India with a piece missing. An ocean that takes twenty-two days. And somewhere out on the Pacific, something quietly happens to the calendar that nobody on board notices. Eighty days. He has already gone.",
+    "script": "He gave himself ten minutes to pack for the planet. That same morning Fogg had hired a new manservant: a Frenchman called Jean Passepartout — a former acrobat, rope-dancer and Paris fireman who had taken a valet's job because he wanted, in his own words, a tranquil life. He had been in the house nine hours. Fogg leaves the club at twenty-five past seven, tells him they are going round the world and will start in ten minutes, and packs one carpet-bag: two shirts, three pairs of stockings, a mackintosh, a cloak, and a railway timetable. The train for Dover leaves at a quarter to nine. It is raining. His watch is four minutes slow and set to London, and he has no intention of changing it for anybody. And somewhere behind them, in an empty house on Savile Row, a gas lamp is still burning that nobody turned off — which is going to be funny for about seventy-nine more days. Ahead of him: a boat across the Channel. A hole under the Alps that opened thirteen months ago. A canal three years old. A railway across India with a piece missing. An ocean that takes twenty-two days. And somewhere out on the Pacific, something quietly happens to the calendar that nobody on board notices. Eighty days. He has already gone.",
     "voice": "guide",
     "timing": "over",
     "starts_at_s": 3
@@ -27,7 +27,7 @@
       "kind": "generated",
       "ref": "generated/g-50/card.json",
       "start_s": 12,
-      "end_s": 24,
+      "end_s": 25,
       "license": "generated",
       "manifest_id": "G-50",
       "attribution": "Yunyou studio, generated",
@@ -37,8 +37,8 @@
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:1905_LONDON_S.E_%26_C.R_CHARING_CROSS_RAILWAY_STATION_PARIS_BOAT_TRAIN_POSTCARD_(50272732396).jpg",
-      "start_s": 24,
-      "end_s": 39,
+      "start_s": 25,
+      "end_s": 40,
       "license": "public-domain",
       "manifest_id": "M-27",
       "attribution": "Charing Cross station, Paris boat train — S.E.&C.R. postcard, 1905 · public domain",
@@ -48,8 +48,8 @@
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:MontreGousset001.jpg",
-      "start_s": 39,
-      "end_s": 51,
+      "start_s": 40,
+      "end_s": 52,
       "license": "cc-by-sa-3.0",
       "manifest_id": "M-224",
       "attribution": "Pocket watch, savonette type — Isabelle Grosjean · CC BY-SA 3.0 · adapted",
@@ -60,8 +60,8 @@
     {
       "kind": "footage",
       "ref": "media/files/m88-hungerford-bridge-night.mp4",
-      "start_s": 51,
-      "end_s": 69,
+      "start_s": 52,
+      "end_s": 71,
       "license": "cc-by-sa-4.0",
       "manifest_id": "M-88",
       "attribution": "Commons contributor (7 Jan 2022) · CC BY-SA 4.0 · adapted",
@@ -73,8 +73,8 @@
     {
       "kind": "image",
       "ref": "media/files/m225-gas-lamp-lit.jpg",
-      "start_s": 69,
-      "end_s": 78,
+      "start_s": 71,
+      "end_s": 79,
       "license": "unknown",
       "manifest_id": "M-225",
       "attribution": "(pending)",
@@ -84,8 +84,8 @@
     {
       "kind": "generated",
       "ref": "generated/g-13/enablers-map.json",
-      "start_s": 78,
-      "end_s": 108,
+      "start_s": 79,
+      "end_s": 110,
       "license": "generated",
       "manifest_id": "G-13",
       "attribution": "Yunyou studio, generated",
@@ -95,8 +95,8 @@
     {
       "kind": "footage",
       "ref": "media/files/m88-hungerford-bridge-night.mp4",
-      "start_s": 108,
-      "end_s": 123,
+      "start_s": 110,
+      "end_s": 125,
       "license": "cc-by-sa-4.0",
       "manifest_id": "M-88",
       "attribution": "Commons contributor (2022) · CC BY-SA 4.0 · adapted",
@@ -107,14 +107,16 @@
     }
   ],
   "review": {
-    "notes": "Fill 58%. Silence at the end, over rain and steam.\n⚠ NEVER say 'date line' or 'he gains a day' in this episode. T14.7's map must stop short of the Pacific label. E8's payoff.\nPlants two threads for later episodes: the watch (E8) and the gas (E8).",
+    "notes": "Fill 58%. Silence at the end, over rain and steam.\n⚠ NEVER say 'date line' or 'he gains a day' in this episode. T14.7's map must stop short of the Pacific label. E8's payoff.\nPlants two threads for later episodes: the watch (E8) and the gas (E8).\nPASSEPARTOUT INTRODUCED 2026-09-09 on founder feedback: he previously appeared as \"his new servant\" and then by name with no introduction at all. Backstory from F-04 (circus rider, rope-dancer, sergeant fireman) and F-41 (took the job hoping for a tranquil life). \"Nine hours\" is F-02: engaged at 11:29 that morning.",
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending"
   },
   "sources": [
+    "F-02",
+    "F-04",
     "F-12",
     "F-13",
-    "F-02"
+    "F-41"
   ]
 }

@@ -1,0 +1,14 @@
+{
+  "type": "timeline",
+  "kicker": "Le Temps, Paris — 45 days",
+  "axis": { "min": -1.5, "max": 17.5 },
+  "points": [
+    { "key": "start", "at": 0, "label": "6 Nov 1872", "sub": "the first instalment" },
+    { "key": "p1", "at": 3 }, { "key": "p2", "at": 6 }, { "key": "p3", "at": 9 },
+    { "key": "ch35", "at": 12, "label": "20 Dec", "sub": "chapter XXXV" },
+    { "key": "gap", "at": 14, "label": "21 Dec", "sub": "nothing. Fogg's deadline." },
+    { "key": "end", "at": 16, "label": "22 Dec", "sub": "the last two chapters" }
+  ],
+  "footnote": "Verne timed the serial so that Fogg's deadline fell on the real calendar. Book edition: Hetzel, 30 January 1873.",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

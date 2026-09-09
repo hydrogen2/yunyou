@@ -36,6 +36,7 @@ export const IMG_DEFAULTS = {
   max_scale: 1,             // how far a picture may be enlarged past its own pixels (1 = never; the film raises it)
   drift: true, drift_s: 36, drift_from: 0.94, drift_from_plate: 0.97,
   drift_dx: 0.9, drift_dy: 0.7,   // per-cent of the picture, direction seeded from the ref
+  cover_slack: 1.15,       // how far past max_scale a COVER crop may go: it fills the frame, so softness costs less
   fallback_after_s: 6       // v0.8: a still with media[].fallback swaps to it after this long without loading
 };
 
@@ -136,6 +137,14 @@ export function pickTreatment(m, nw, nh, W, H, cfg = IMG_DEFAULTS) {
   // order is immaterial: nothing that small can pass the fill test anyway.
   if (Math.max(nw, nh) <= cfg.plate_max_px) return 'plate';       // small archive material: mount it on paper
   if (coverage >= cfg.fill_coverage && fit <= maxK * 1.02) return 'fill';
+  // 2026-09-09: a PORTRAIT photograph used to land here and get the blurred backdrop — a 2736x3648 statue played
+  // as a strip down the middle of a 1080p frame with 58 % of the screen given to a blurred copy of itself. The
+  // founder, twice: the stills are too small. Coverage is the wrong test for a picture that has pixels to spare;
+  // what matters is whether it can COVER the frame within the upscale cap, cropping the overflow. Prints and small
+  // scans are already claimed by the plate test above, so this only takes photographs — which is the intent:
+  // engravings stay mounted documents, photographs fill the screen.
+  const coverK = Math.max(W / nw, H / nh);
+  if (coverK <= maxK * (cfg.cover_slack || 1.15)) return 'fill';
   return 'backdrop';
 }
 
@@ -146,6 +155,12 @@ export function pickTreatment(m, nw, nh, W, H, cfg = IMG_DEFAULTS) {
  * maxScale = 1 reproduces the old "never upscale" rule exactly, and is still the default.
  * Returns integers plus `k` (the scale actually used) and `upscaled` (k > 1.001), which the caller logs.
  */
+/** COVER: the smallest size that fills the frame, cropping the overflow. Capped like fitSize. */
+export function coverSize(nw, nh, W, H, maxScale = 1) {
+  const k = Math.min(Math.max(W / nw, H / nh), Math.max(1, maxScale || 1) * 1.15);
+  return { w: Math.max(2, Math.round(nw * k)), h: Math.max(2, Math.round(nh * k)), k, upscaled: k > 1.001 };
+}
+
 export function fitSize(nw, nh, W, H, reserve = 0, maxScale = 1) {
   const availH = Math.max(16, H - Math.max(0, reserve));
   const k = Math.min(W / nw, availH / nh, Math.max(1, maxScale || 1));

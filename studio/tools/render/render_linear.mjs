@@ -82,6 +82,10 @@ const PYTHON = args.python || path.join(process.env.HOME || '/home/supper-user',
 const HILBERT = args.hilbert || path.join(process.env.HOME || '/home/supper-user', 'hilbert');
 const TTS_CACHE = path.resolve(args['tts-cache'] || path.join(__dirname, '.tts-cache'));
 const SLACK = args.slack !== undefined ? +args.slack : 0.10;
+// the longest pause the film will put between two sentences. Beyond this it is not breathing, it is a gap.
+const PAUSE_MAX = args['pause-max'] !== undefined ? +args['pause-max'] : 2.6;
+// a pause proportional to a LONG sentence may run further than the flat cap before it stops reading as breathing
+const PAUSE_MAX_LONG = args['pause-max-long'] !== undefined ? +args['pause-max-long'] : 4.2;
 const PLAYER = args.player || 'https://localhost/player/';
 const NO_TTS = !!args['no-tts']; const PLAN = !!args.plan;
 const DRIFT = !args['no-drift'];
@@ -635,20 +639,43 @@ async function segStill(img, dur, m, nw, nh, attribution) {
     const g = plateGeom(); const area = (g.f.w * g.f.h) / (W * H);
     if (area < CFG.plate_min_area && (args['plate-strict'] || g.f.k < 0.999)) treat = 'backdrop';
   }
-  const band = (attribution && treat !== 'plate' && treat !== 'none') ? Math.round(H * 0.041) : 0;
-  const dr = IL.driftFor(m, treat, CFG, img);
+  // 'fill' now COVERS the frame (cropping the overflow), so there is no letterbox strip to keep clear and
+  // reserving one would only shrink the picture again. The credit still burns in over the image, as it always did.
+  // 'fill' now COVERS the frame (cropping the overflow), so there is no letterbox strip to keep clear and
+  // reserving one would only shrink the picture again. The credit still burns in over the image, as it always did.
+  const band = (attribution && treat !== 'plate' && treat !== 'none' && treat !== 'fill') ? Math.round(H * 0.041) : 0;
+
+  // ---- geometry, decided in one place and BEFORE the cache key -------------------------------------------------
+  // The picture's size comes from the treatment, and it does not depend on the drift canvas, so it is settled first.
+  const fit = treat === 'plate' ? plateGeom().f
+            : treat === 'fill'  ? IL.coverSize(nw, nh, W, H, maxK)     // fills the frame; the overlay crops the rest
+            : IL.fitSize(nw, nh, W, H, band, maxK);                    // k <= maxK, aspect exact
+  const fw = fit.w + (fit.w % 2), fh = fit.h + (fit.h % 2);
+
+  // A tall picture cannot fill a 16:9 frame and still be seen: Nellie Bly at 916x1600 has room for barely a third
+  // of herself, so a centred cover played her neck-to-knees and even a top-biased crop would cut her head off. The
+  // answer documentaries have always used is to MOVE — start at the top of the picture and travel down it, so the
+  // frame is full AND the whole photograph is seen. Only used when the overflow is real; a modest one is centred.
+  // The travel is hundreds of pixels over the shot, tens of times the sub-pixel rate that made `zoompan` judder,
+  // so integer overlay positioning is invisible here.
+  const panning = treat === 'fill' && (fh - H) > H * 0.08 && dur > 3;
+  const PAN_TRAVEL = 0.86;                     // how much of the overflow the shot crosses; the rest is headroom
+
+  // The pan IS the movement, so a panning shot does not also drift-zoom. This must be settled before `from`,
+  // which sizes the canvas, and before the cache key, which has to know which of the two motions was used.
+  let dr = IL.driftFor(m, treat, CFG, img);
+  if (panning) dr = { ...dr, on: false };
   const frames = Math.max(2, Math.round(dur * FPS));
-  const key = sha(['v10', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), attribution || ''].join('|'));
+  const key = sha(['v11-cover-pan', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, attribution || ''].join('|'));
   const out = path.join(CACHE, 'seg', `im_${key}.mp4`);
   const from = dr.on ? dr.from : 1;                        // canvas is 1/from larger so the zoom ENDS at 1:1
   const BW = Math.round(W / from) + (Math.round(W / from) % 2), BH = Math.round(H / from) + (Math.round(H / from) % 2);
-  const fit = treat === 'plate' ? plateGeom().f : IL.fitSize(nw, nh, W, H, band, maxK);   // k <= maxK, aspect exact
-  const fw = fit.w + (fit.w % 2), fh = fit.h + (fit.h % 2);
+  const overflow = fh - BH;
+  const oy = panning ? 0 : Math.round((BH - band * BH / H - fh) / 2);
   // v1.2: `k` is computed BEFORE the cache check. It used to be filled in only on a cache miss, so on any warm
   // re-render every still logged "shown at 1.00x" in render-log.md — the arithmetic was right, the report was not.
-  const meta = { treat, nw, nh, maxK, k: fit.k, upscaled: fit.upscaled };
+  const meta = { treat, nw, nh, maxK, k: fit.k, upscaled: fit.upscaled, panning };
   if (fs.existsSync(out)) return { file: out, ...meta };
-  const oy = Math.round((BH - band * BH / H - fh) / 2);
   const wantBack = (treat === 'backdrop' || treat === 'plate');
 
   const fc = []; let extraIn = null;
@@ -680,7 +707,14 @@ async function segStill(img, dur, m, nw, nh, attribution) {
     extraIn = png;
   } else {
     fc.push(`[src]scale=${fw}:${fh}:flags=lanczos,setsar=1[fg]`);
-    fc.push(`[bg][fg]overlay=x=(W-w)/2:y=${oy}[cv]`);
+    if (panning) {
+      // overlay evaluates y per frame. The travel here is hundreds of pixels over the shot — tens of times the
+      // sub-pixel rate that made `zoompan` judder — so integer positioning is not visible.
+      const yEnd = -Math.round(overflow * PAN_TRAVEL);
+      fc.push(`[bg][fg]overlay=x=(W-w)/2:y='${yEnd}*min(1\,t/${Math.max(0.1, dur).toFixed(2)})':eval=frame[cv]`);
+    } else {
+      fc.push(`[bg][fg]overlay=x=(W-w)/2:y=${oy}[cv]`);
+    }
   }
   // ---- the drift: zoom 1 → 1/from over the shot (0.94 → 1.00 of the honest size) + the seeded ±0.9 % pan.
   // v1.0 (2026-09-08): done with `perspective`, NOT `zoompan`. The founder: "they jitter, not sure why but that
@@ -1418,6 +1452,40 @@ async function runCropPreview(target) {
         warnings.push(msg); p.cutLog.push(`stretched +${fmt1(p.over)} s to keep every sentence (nothing dropped)`);
       }
       p.len = Math.round(p.len * FPS) / FPS;
+      // ---- spread the silence (2026-09-09) ------------------------------------------------------------------
+      // Until now every second the script did not use became ONE held shot at the end of the scene. The intent was
+      // right — "silence is content" — but the magnitude was not: measured on the first full render, the median gap
+      // between sentences was 0.3 s and there were eleven gaps of 34 to 68 s, one per scene. Nine minutes of dead
+      // air in eleven lumps. The founder: "there are many long pauses in the narration, too long."
+      // So the surplus is now spread BETWEEN the sentences, where it reads as breathing, with a bounded hold at
+      // the end. Anything left over after the per-gap cap is residue that says the scene is simply longer than its
+      // script can fill; that is reported, because the fix for it is a shorter scene, not a longer silence.
+      const surplus = p.len - (narrAt + speechEnd);
+      if (surplus > 1.0 && p.utts.length > 1) {
+        // Gaps are PROPORTIONAL to the sentence they follow, not equal. Equal gaps were the first attempt and they
+        // desynced the film: the pictures are authored at fixed seconds on the assumption that the script advances
+        // through the scene at a steady rate, so the narration has to progress linearly in words. With equal gaps
+        // a run of short sentences fell behind its slots and Nellie Bly appeared on screen while the voice was
+        // still on George Francis Train. Proportional gaps keep cumulative time ∝ cumulative speech ∝ the slot
+        // timeline, which is the sync the authored start_s/end_s already assume.
+        const tailWant = Math.min(6, Math.max(2.0, surplus * 0.22));
+        const budget = Math.max(0, surplus - tailWant);
+        const spoken = p.utts.reduce((a, u) => a + u.dur, 0) || 1;
+        let shift = 0, biggest = 0;
+        for (let i = 0; i < p.utts.length; i++) {
+          p.utts[i].at += shift;
+          if (i < p.utts.length - 1) {
+            const add = Math.min(PAUSE_MAX_LONG, budget * (p.utts[i].dur / spoken));
+            biggest = Math.max(biggest, add); shift += add;
+          }
+        }
+        speechEnd = p.utts[p.utts.length - 1].at + p.utts[p.utts.length - 1].dur;
+        p.speechEnd = speechEnd;
+        const residue = p.len - (narrAt + speechEnd);
+        p.pauseNote = `gaps ∝ sentence length, longest +${fmt1(biggest)} s, ${fmt1(residue)} s held at the end`;
+        if (residue > 12) warnings.push(`${p.sel.idx + 1} ${p.s.id}: ${fmt1(residue)} s of silence still left after spreading. ` +
+          `The scene is longer than its script can fill — shorten the scene, do not hold the shot.`);
+      }
       if (p.len - (narrAt + speechEnd) > 6) p.tail = p.len - (narrAt + speechEnd);
       if (p.alignNote) warnings.push(`${p.sel.idx + 1} ${p.s.id}: ${p.alignNote}`);
       if (p.localised) { const chars = p.utts.reduce((a, u) => a + u.text.length, 0); const need2 = chars / 4.77; const room = p.sel.cap - p.narrAt - 1.5;
@@ -1814,7 +1882,18 @@ async function runCropPreview(target) {
       if (missed) warnings.push(`${tag}: ${missed} card beat(s) on ${m.manifest_id} point at a sentence this cut does not speak — spaced evenly instead.`);
       return { kind: 'card', card: loaded, beats: resolved, dur, src: `${m.manifest_id} card (${loaded.data.type}) — own graphic from ${id}/card.json` };
     };
-    if (FILM) { segs = await filmSegs(); }
+    if (FILM) {
+      // A quote scene carries no media on purpose — the card IS the shot. filmSegs() therefore returns nothing and
+      // the generic scene-title card used to stand in for it, which is how "115,200 minutes" shipped as small
+      // serif on black instead of the cream page. Third time this session that a branch was added to the by-type
+      // defaults while the film renders through here; handle it on the path that runs.
+      if (s.type === 'quote') {
+        const q = LT.quote(s);
+        if (!q.text) warnings.push(`${tag}: quote scene has no quote.text`);
+        if (LANG !== 'en' && !q.translated) warnings.push(`${tag}: quote is not translated in ${LOCALE_ID} — the ${LANG} cut shows English`);
+        segs = [{ kind: 'png', file: await shotHtml(T.quoteCard({ ...q, lang: LANG }), `quote_${tag}`), dur: null, src: `quote card — ${q.attribution || 'UNATTRIBUTED'}` }];
+      } else segs = await filmSegs();
+    }
     else if (hint.visuals) {
       for (const v of hint.visuals) {
         const m = v.media ? media.find(x => x.manifest_id === v.media) : null; const dur = v.dur ?? null;

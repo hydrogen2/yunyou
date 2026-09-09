@@ -1,0 +1,100 @@
+{
+  "id": "the-book",
+  "type": "video",
+  "title": "The book they were racing",
+  "subtopic": "T3 — Around the World in Eighty Days, and the serial that ran in real time",
+  "duration_s": 70,
+  "learning_goal": "Know the book's title, author and date, and that it was serialised so its ending fell on the real calendar — which is why readers bet on it.",
+  "narration": {
+    "script": "So who were they racing? A book. Around the World in Eighty Days, by Jules Verne. It ran as a serial in the Paris newspaper Le Temps, starting on the sixth of November, eighteen seventy-two — while, inside the story, Fogg was out there doing it. And Verne timed the ending to land on the real calendar. The instalments ran up to the twentieth of December. On the twenty-first — Fogg's deadline — there was nothing at all. The last two chapters appeared on the twenty-second. Some readers thought it was actually happening. Bets were placed. Shipping companies wrote to Verne asking to be put in it. The book came out complete six weeks later, and it has never been out of print since.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:F%C3%A9lix_Nadar_1820-1910_portraits_Jules_Verne_(restoration).jpg",
+      "start_s": 0,
+      "end_s": 12,
+      "license": "public-domain",
+      "manifest_id": "M-206",
+      "attribution": "Jules Verne photographed by Félix Nadar, c. 1878 — public domain (Wikimedia Commons)",
+      "use": "both",
+      "note": "T3.1 — the author, named at last. The episode had been mentioning Verne for two minutes without ever saying what he wrote."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_01.jpg",
+      "start_s": 12,
+      "end_s": 22,
+      "license": "public-domain",
+      "manifest_id": "M-52",
+      "attribution": "Route map, Hetzel edition — Neuville/Benett plate 01 (1872/73) — public domain",
+      "use": "both",
+      "note": "T3.2 — the Hetzel edition's own route map: the book, as an object."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-53/card.json",
+      "start_s": 22,
+      "end_s": 46,
+      "license": "generated",
+      "manifest_id": "G-53",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T3.3 — the serial's calendar, revealed on the voice: 6 Nov, then the run, then 20 Dec, then the silence on the 21st, then the 22nd. The empty day is the beat — hold on it.",
+      "beats": [
+        {
+          "show": "start",
+          "s": 2
+        },
+        {
+          "show": "ch35",
+          "s": 5
+        },
+        {
+          "show": "gap",
+          "s": 6
+        },
+        {
+          "show": "end",
+          "s": 6
+        }
+      ]
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
+      "start_s": 46,
+      "end_s": 58,
+      "license": "public-domain",
+      "manifest_id": "M-34",
+      "attribution": "Frontispiece 'Phileas Fogg' — Alphonse de Neuville, Hetzel edition (1872/73) — public domain",
+      "use": "both",
+      "note": "T3.4 — Fogg, under 'some readers thought it was actually happening'."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_05.jpg",
+      "start_s": 58,
+      "end_s": 70,
+      "license": "public-domain",
+      "manifest_id": "M-50",
+      "attribution": "Passepartout, Neuville/Benett plate 05 (1872/73) — public domain",
+      "use": "both",
+      "note": "T3.5 — HOLD to the end on the Hetzel plate. 'Never been out of print' lands over the book's own illustration."
+    }
+  ],
+  "sources": [
+    "F-N13",
+    "F-N14",
+    "F-11"
+  ],
+  "review": {
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending",
+    "notes": "ADDED 2026-09-09 on founder feedback: \"i didnt see a good intro of verne and his book title i think thats necessary for a series on just that book.\" Correct — the episode named Verne twice in passing and never once said what he wrote.\nThe serialisation facts (Le Temps from 6 Nov 1872; instalments timed so 21 Dec, Fogg's deadline, carried none; last two chapters 22 Dec; readers betting; companies lobbying to appear; Hetzel book 30 Jan 1873) are F-N13/F-N14, researched 2026-09-09 from the novel's Wikipedia article and NOT yet through Fact-Check.\nPlaced between the racers and the wager so \"who were they racing?\" is answered with the book before the bet is described."
+  }
+}

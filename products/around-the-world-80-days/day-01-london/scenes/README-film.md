@@ -4,8 +4,8 @@
 **Authority:** `series/episode-01-topics.md` (the founder-approved topic plan) · `studio/strategy/video-first.md` · `DECISIONS.md`
 **Supersedes:** `scenes/retired-film-v1/` — the 12-scene cut the founder watched and rejected: *"i dont get the openning, is it about bespoke suit making or tailor shops?"*
 
-**1313 s = 21 min 53 s** · **13 scenes** · **100 authored visual slots** · **1,888 narration words**
-· fill **58 %** — 9 min 17 s of this episode is picture without words.
+**1170 s = 19 min 30 s** · **14 scenes** · **105 authored visual slots** · **2,054 narration words**
+· fill **70 %** — the rest is picture, now spread BETWEEN sentences rather than dumped at the end of each scene.
 
 **Founder's runtime ruling, 2026-09-09: keep the quote card, cut Thomas Cook.** Scene 04 (the `quote` type,
 Verne's 115,200 minutes, held silent) stays. `thomas-cook` moved to `cut-but-kept/` — not deleted, because a
@@ -13,25 +13,25 @@ cut topic is the right shape for a Short.
 
 ## 1 · The scenes, in order
 
-The **block** column is the topic number from `series/episode-01-topics.md`. It is not decoration: the renderer
-parses this table as `| # | file | scene id | block | seconds | slots | …` and refuses to render if it and the
-scene files disagree. A table without the block column makes it read the slot count as the duration.
+The **block** column is the topic number. The renderer parses this table as
+`| # | file | scene id | block | seconds | slots | …` and refuses to render if it and the scene files disagree.
 
 | # | file | scene id | block | s | slots | words | fill | avg shot |
 |---|------|----------|-------|--:|------:|------:|-----:|---------:|
-| 1 | `01-how-long.scene.json` | `how-long` | **T1** | 77 | 8 | 111 | 58 % | 9.6 |
-| 2 | `02-the-racers.scene.json` | `the-racers` | **T2** | 145 | 14 | 210 | 58 % | 10.4 |
-| 3 | `03-the-bet.scene.json` | `the-bet` | **T3** | 93 | 9 | 135 | 58 % | 10.3 |
-| 4 | `04-a-hundred-and-fifteen-thousand.scene.json` | `a-hundred-and-fifteen-thousand` | **T3b** | 10 | 0 | 0 | 0 % | — |
-| 5 | `05-the-year-the-world-closed.scene.json` | `the-year-the-world-closed` | **T4** | 133 | 6 | 193 | 58 % | 22.2 |
-| 6 | `06-biggest-city.scene.json` | `biggest-city` | **T6** | 80 | 8 | 116 | 58 % | 10.0 |
-| 7 | `07-half-a-mile.scene.json` | `half-a-mile` | **T7** | 81 | 5 | 117 | 58 % | 16.2 |
-| 8 | `08-what-a-club-was.scene.json` | `what-a-club-was` | **T8** | 96 | 9 | 139 | 58 % | 10.7 |
-| 9 | `09-the-reform.scene.json` | `the-reform` | **T9** | 90 | 7 | 131 | 58 % | 12.9 |
-| 10 | `10-savile-row.scene.json` | `savile-row` | **T10** | 149 | 10 | 216 | 58 % | 14.9 |
-| 11 | `11-no-1-savile-row.scene.json` | `no-1-savile-row` | **T11** | 98 | 7 | 142 | 58 % | 14.0 |
-| 12 | `12-charing-cross.scene.json` | `charing-cross` | **T12** | 138 | 9 | 200 | 58 % | 15.3 |
-| 13 | `13-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | **T13** | 123 | 8 | 178 | 58 % | 15.4 |
+| 1 | `01-how-long.scene.json` | `how-long` | **T1** | 63 | 8 | 111 | 70 % | 7.9 |
+| 2 | `02-the-racers.scene.json` | `the-racers` | **T2** | 119 | 14 | 210 | 71 % | 8.5 |
+| 3 | `03-the-book.scene.json` | `the-book` | **T3** | 70 | 5 | 124 | 71 % | 14.0 |
+| 4 | `04-the-bet.scene.json` | `the-bet` | **T3** | 75 | 9 | 133 | 71 % | 8.3 |
+| 5 | `05-a-hundred-and-fifteen-thousand.scene.json` | `a-hundred-and-fifteen-thousand` | **T3b** | 10 | 0 | 0 | 0 % | — |
+| 6 | `06-the-year-the-world-closed.scene.json` | `the-year-the-world-closed` | **T4** | 109 | 6 | 193 | 71 % | 18.2 |
+| 7 | `07-biggest-city.scene.json` | `biggest-city` | **T6** | 66 | 8 | 116 | 70 % | 8.2 |
+| 8 | `08-half-a-mile.scene.json` | `half-a-mile` | **T7** | 66 | 5 | 117 | 71 % | 13.2 |
+| 9 | `09-what-a-club-was.scene.json` | `what-a-club-was` | **T8** | 78 | 9 | 139 | 71 % | 8.7 |
+| 10 | `10-the-reform.scene.json` | `the-reform` | **T9** | 74 | 7 | 131 | 71 % | 10.6 |
+| 11 | `11-savile-row.scene.json` | `savile-row` | **T10** | 122 | 10 | 216 | 71 % | 12.2 |
+| 12 | `12-no-1-savile-row.scene.json` | `no-1-savile-row` | **T11** | 80 | 7 | 142 | 71 % | 11.4 |
+| 13 | `13-charing-cross.scene.json` | `charing-cross` | **T12** | 113 | 9 | 200 | 71 % | 12.6 |
+| 14 | `14-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | **T13** | 125 | 8 | 222 | 71 % | 15.6 |
 
 ## 2 · What does not exist yet
 
