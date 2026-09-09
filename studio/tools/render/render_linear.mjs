@@ -51,7 +51,8 @@ import { chromium } from 'playwright-core';
 import * as T from './lib/templates.mjs';
 import * as PM from '../../player/panomove.mjs';   // ONE definition of the open-imagery walk, shared with the player
 import * as IL from '../../player/imagelayer.mjs'; // ONE definition of the image treatment + photo slots, ditto
-import * as MF from './lib/mapfilm.mjs';           // the route map as a FILM graphic (D9) — not the print plate
+import * as MF from './lib/mapfilm.mjs';
+import * as RB from './lib/recordboard.mjs';       // G-33, the record board — a chart, drawn on the same clock           // the route map as a FILM graphic (D9) — not the print plate
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FFMPEG = ffmpegPath, FFPROBE = ffprobeStatic.path;
@@ -1583,7 +1584,15 @@ async function runCropPreview(target) {
     }
     if (!MAPNAMES) warnings.push('film map: no scene in this chapter carries a translated leg list that parses as "A → B" for all eight legs, so the Mandarin map shows the ENGLISH port names. Fix by keeping the map scene\'s tap-to-find options in leg order in i18n/<locale>.json.');
   }
+  // G-33: the record board. Same contract as the film map — its own graphic, from its own data file, animated on
+  // the narration clock. Absent data is a warning and a pending card, never a silent gap.
+  const boardLoaded = RB.load(CHAPTER_DIR);
+  let boardUsed = false;
+  if (!boardLoaded) warnings.push('record board: generated/g-33/records.json is missing — G-33 slots fall back to a pending card.');
+  else note(`Record board: own 1920x1080 chart from generated/g-33/records.json (${boardLoaded.data.rows.length} rows, datum ${boardLoaded.data.datum} days).`);
+
   const mapLabels = () => ({ ports: MAPNAMES || {}, days: LANG === 'zh' ? '天' : 'days', of: LANG === 'zh' ? '/' : 'of' });
+  const boardLabels = () => ({ title: LANG === 'zh' ? '环游地球所用天数' : (boardLoaded ? boardLoaded.data.title : '') });
   const FONTS_DIR = path.resolve(__dirname, '..', '..', 'player', 'fonts');
   const ytLabel = m => { const row = manifestRow(m.manifest_id) || {}; const tm = (row.title || '').match(/^"(.+?)"\s+—\s+(.+?)\s*\(/); return { channel: tm ? tm[2] : (m.attribution || '').split(',')[0], videoTitle: tm ? tm[1] : (m.attribution || m.ref) }; };
 
@@ -1747,6 +1756,17 @@ async function runCropPreview(target) {
       if (missed) warnings.push(`${tag}: ${missed} map beat(s) point at a narration sentence this cut does not speak — those reveals are spaced evenly instead. (zh: the sentence indices are English; see README "Two cuts".)`);
       return { kind: 'mapfilm', state, beats: resolved, dur, src: `film route map (${state}${why ? ', ' + why : ''}) — own graphic from route-data.json` };
     };
+    const boardSeg = async (m, dur) => {
+      if (!boardLoaded) return await pendingSeg(m, dur);
+      boardUsed = true;
+      const resolved = (m.beats || []).map(b => {
+        const t = b.t !== undefined ? +b.t : (b.s !== undefined ? uttAt(`s:${b.s}`) : null);
+        return t == null ? null : { show: b.show, at: t - (b.lead !== undefined ? +b.lead : 0.25), from: b.s !== undefined ? `s:${b.s}` : `t=${b.t}` };
+      }).filter(Boolean);
+      const missed = (m.beats || []).length - resolved.length;
+      if (missed) warnings.push(`${tag}: ${missed} record-board beat(s) point at a sentence this cut does not speak — those rows are spaced evenly instead.`);
+      return { kind: 'recordboard', beats: resolved, dur, src: `record board — own chart from records.json` };
+    };
     if (FILM) { segs = await filmSegs(); }
     else if (hint.visuals) {
       for (const v of hint.visuals) {
@@ -1799,7 +1819,9 @@ async function runCropPreview(target) {
           // them, including G-13, so the scene carrying the series' whole argument would have played as a gap.
           else if (m.kind === 'generated') {
             // a map asset is not a picture of a map: route it to the film map, which draws itself on the clock.
-            if (/route-map|enablers-map|g-13/.test(m.ref)) {
+            if (/record-board|g-33/.test(m.ref)) {
+              segs.push(await boardSeg(m, d));
+            } else if (/route-map|enablers-map|g-13/.test(m.ref)) {
               segs.push(await mapSeg(/enablers-map|g-13/.test(m.ref) ? 'enablers' : /full-loop/.test(m.ref) ? 'loop' : 'day-1',
                                      m.beats || null, d, `from media ${m.manifest_id}`));
             } else if (!fs.existsSync(path.join(CHAPTER_DIR, m.ref))) {
@@ -1882,6 +1904,13 @@ async function runCropPreview(target) {
         const rv = Math.max(x.at + 1.5, Math.min(x.at + x.dur - 1.5, x.revealAt != null ? x.revealAt : x.at + x.dur * 0.62));
         segFiles.push(await segStates([{ file: x.ask, at: x.at }, { file: x.rev, at: rv }], x.dur, x.at));
         x.src += ` — question ${fmt1(rv - x.at)} s, then the reveal (${x.revealAt != null ? 'on the narration beat' : 'no quiz:correct token — 62 % of the beat'})`;
+      }
+      else if (x.kind === 'recordboard') {
+        const tl = RB.planTimeline({ dur: x.dur, rows: boardLoaded.data.rows, beats: (x.beats || []).map(b => ({ show: b.show, at: b.at - x.at })) });
+        const html = RB.page({ loaded: boardLoaded, W, H, tl, lang: LANG, labels: boardLabels(), fontsDir: FONTS_DIR });
+        const samples = RB.sampleTimes(tl, FPS);
+        segFiles.push(await segFrames(html, samples, x.dur, `${tag} record board`));
+        x.src += ` — ${samples.length} rendered frames; ` + ((x.beats || []).length ? (x.beats).map(b => `${b.show}@${fmt1(b.at - x.at)}s ${b.from}`).join(' · ') : 'rows spaced evenly (no beats)');
       }
       else if (x.kind === 'mapfilm') {
         const tl = MF.planTimeline({ state: x.state, dur: x.dur, beats: (x.beats || []).map(b => ({ show: b.show, at: b.at - x.at })) });

@@ -1,0 +1,24 @@
+{
+  "_generated_by": "hand-authored research data, 2026-09-09 — consumed by studio/tools/render/lib/recordboard.mjs",
+  "_consumers": ["G-33 the record board, episode 1 scene 02"],
+  "_warning": "Every row here is spoken aloud in the narration. If you change a number, change the script.",
+  "title": "Days to go round the world",
+  "axis_max": 92,
+  "datum": 80,
+  "rows": [
+    { "key": "fogg", "name": "Phileas Fogg", "sub": "fiction", "days": 80, "value": "80 days",
+      "kind": "datum", "source": "F-11 — the wager, ch. III" },
+    { "key": "train", "name": "George Francis Train", "sub": "1870, claimed", "days": 80, "value": "80",
+      "kind": "claim", "source": "F-N03 — his own claim, widely repeated; no primary found" },
+    { "key": "bly", "name": "Nellie Bly", "sub": "1889–90", "days": 72.26, "value": "72d 6h",
+      "kind": "record", "source": "F-N04 — 72d 6h 11m 14s; the seconds are secondary-source" },
+    { "key": "bisland", "name": "Elizabeth Bisland", "sub": "1889–90", "days": 76.5, "value": "76½d",
+      "kind": "record", "source": "F-N05 — westbound, arrived 30 Jan 1890" },
+    { "key": "huld", "name": "Palle Huld", "sub": "1928, aged 15", "days": 44, "value": "44d",
+      "kind": "record", "source": "F-N06 — Politiken competition, no aircraft" },
+    { "key": "trophy93", "name": "Jules Verne Trophy", "sub": "1993", "days": 79.26, "value": "79d 6h",
+      "kind": "record", "source": "F-N07 — Bruno Peyron, Explorer, 79d 6h 15m 56s" },
+    { "key": "trophy26", "name": "Jules Verne Trophy", "sub": "2026", "days": 40.45, "value": "40d 10h",
+      "kind": "now", "source": "F-N07 — Thomas Coville, Sodebo Ultim 3, 40d 10h 45m 30s" }
+  ]
+}

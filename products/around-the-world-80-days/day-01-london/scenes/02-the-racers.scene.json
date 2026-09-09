@@ -69,20 +69,34 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-31/record-board.svg",
+      "ref": "generated/g-33/record-board.json",
       "start_s": 47,
-      "end_s": 66,
+      "end_s": 62,
       "license": "generated",
       "manifest_id": "G-33",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T2.6 — THE RECORD BOARD. Builds a line at a time as each name is spoken and stays for the rest of the topic: Fogg (fiction) 80 · Bly 1890 72d 6h · Bisland 1890 76½d · Huld 1928 44d · Jules Verne Trophy 1993 79d 6h → 2026 40d 10h. Large type, few rows, high contrast — the anti-pattern is Day 1's dense map. ESSENTIAL, DOES NOT EXIST YET."
+      "note": "T2.6 — THE RECORD BOARD (G-33). Own chart from generated/g-33/records.json, drawn on the narration clock by lib/recordboard.mjs: one series, bars from zero, a dashed datum at Fogg's eighty, and every racer measured against it. First appearance: Fogg's eighty as the line everything is measured against, Train's claim level with it, then Bly's bar stopping short — the first time the line is beaten, and the shot holds on that.",
+      "beats": [
+        {
+          "show": "row:fogg",
+          "t": 0.4
+        },
+        {
+          "show": "row:train",
+          "t": 2.0
+        },
+        {
+          "show": "row:bly",
+          "s": 5
+        }
+      ]
     },
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:Elizabeth_Bisland.jpg",
-      "start_s": 66,
-      "end_s": 79,
+      "start_s": 62,
+      "end_s": 74,
       "license": "public-domain",
       "manifest_id": "M-207",
       "attribution": "Elizabeth Bisland — public domain",
@@ -90,10 +104,27 @@
       "note": "T2.7 — Bisland. Held as long as Bly was; the race had two people in it. NOT YET SOURCED — Content Preparer."
     },
     {
+      "kind": "generated",
+      "ref": "generated/g-33/record-board.json",
+      "start_s": 74,
+      "end_s": 84,
+      "license": "generated",
+      "manifest_id": "G-33",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T2.8 — THE RECORD BOARD (G-33). Own chart from generated/g-33/records.json, drawn on the narration clock by lib/recordboard.mjs: one series, bars from zero, a dashed datum at Fogg's eighty, and every racer measured against it. Bisland's row lands on 'lost by four days' — her bar is longer than Bly's and still short of the datum, which is the whole of 'she also beat Fogg' without a word.",
+      "beats": [
+        {
+          "show": "row:bisland",
+          "s": 7
+        }
+      ]
+    },
+    {
       "kind": "image",
       "ref": "generated/g-31/bisland-route.jpg",
-      "start_s": 79,
-      "end_s": 88,
+      "start_s": 84,
+      "end_s": 95,
       "license": "public-domain",
       "manifest_id": "M-208",
       "attribution": "(pending)",
@@ -103,8 +134,8 @@
     {
       "kind": "image",
       "ref": "generated/g-31/palle-huld.jpg",
-      "start_s": 88,
-      "end_s": 101,
+      "start_s": 95,
+      "end_s": 104,
       "license": "unknown",
       "manifest_id": "M-209",
       "attribution": "(pending — rights unresolved)",
@@ -112,10 +143,27 @@
       "note": "T2.9 — Huld, 1928, aged 15. ⚠ RIGHTS: Danish press photo, may still be in copyright. If not clearable, use the record board and a Politiken masthead instead. NOT YET SOURCED — Content Preparer."
     },
     {
+      "kind": "generated",
+      "ref": "generated/g-33/record-board.json",
+      "start_s": 104,
+      "end_s": 113,
+      "license": "generated",
+      "manifest_id": "G-33",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T2.11 — THE RECORD BOARD (G-33). Own chart from generated/g-33/records.json, drawn on the narration clock by lib/recordboard.mjs: one series, bars from zero, a dashed datum at Fogg's eighty, and every racer measured against it. Huld's bar on 'Forty-four days.' It is the first row that is obviously, visibly shorter — a boy of fifteen, half the line.",
+      "beats": [
+        {
+          "show": "row:huld",
+          "s": 11
+        }
+      ]
+    },
+    {
       "kind": "image",
       "ref": "generated/g-31/copenhagen-crowd.jpg",
-      "start_s": 101,
-      "end_s": 112,
+      "start_s": 113,
+      "end_s": 121,
       "license": "unknown",
       "manifest_id": "M-210",
       "attribution": "(pending — rights unresolved)",
@@ -125,8 +173,8 @@
     {
       "kind": "footage",
       "ref": "media/files/m211-ultim-trimaran.mp4",
-      "start_s": 112,
-      "end_s": 128,
+      "start_s": 121,
+      "end_s": 132,
       "license": "cc-by-4.0",
       "manifest_id": "M-211",
       "attribution": "(pending) · CC BY 4.0 · adapted",
@@ -136,18 +184,28 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-31/record-board.svg",
-      "start_s": 128,
+      "ref": "generated/g-33/record-board.json",
+      "start_s": 132,
       "end_s": 145,
       "license": "generated",
       "manifest_id": "G-33",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T2.12 — back to the board for the last figure. 40d 10h 45m lands on screen, not just in the voice. HOLD 152–158."
+      "note": "T2.14 — THE RECORD BOARD (G-33). Own chart from generated/g-33/records.json, drawn on the narration clock by lib/recordboard.mjs: one series, bars from zero, a dashed datum at Fogg's eighty, and every racer measured against it. The close: 1993 arriving a whisker inside the datum, then 2026 dropping to the shortest bar on the board. HOLD to the end of the scene on the finished chart.",
+      "beats": [
+        {
+          "show": "row:trophy93",
+          "s": 14
+        },
+        {
+          "show": "row:trophy26",
+          "s": 15
+        }
+      ]
     }
   ],
   "review": {
-    "notes": "Silence 46–52 (Verne's photograph) and 152–158 (the board, final figure).\nFill 58%. Longest slot 20 s (the record board, which is doing work the whole time it is up).\n⚠ Two rights-unresolved slots (M-209, M-210). If Huld cannot be cleared the topic still stands on the board.",
+    "notes": "Silence 46–52 (Verne's photograph) and 152–158 (the board, final figure).\nFill 58%. Longest slot 20 s (the record board, which is doing work the whole time it is up).\n⚠ Two rights-unresolved slots (M-209, M-210). If Huld cannot be cleared the topic still stands on the board.\nSLOT LAYOUT REBUILT 2026-09-09 when G-33 was drawn: the board is now the scene's spine (4 appearances) rather than two bookends, so every row reveals while the chart is actually on screen. Portraits punctuate it.\n⚠ BEAT ALIGNMENT UNVERIFIED: the beats are tied to sentence indices, which the renderer resolves against real TTS timings. Whether each row's sentence falls inside its board window is not known until the first render — check `linear/*.gaps.json` and the render log's per-beat times, and move the window, not the beat.",
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending"
