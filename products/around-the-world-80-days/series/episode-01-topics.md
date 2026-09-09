@@ -307,3 +307,23 @@ viewer who has not read the book — your ruling, applied.
 2. **T2 is the new opening you asked for and it is long (140 s).** It can lose Palin and Train and still work.
 3. **T5 (Thomas Cook)** is the one I'd cut first if you want the episode tighter.
 4. Confirm the order: question → racers → Verne → why eighty → reality check → then the places.
+
+---
+
+## Sources for the [new] facts (researched 2026-09-09, not yet in a fact sheet)
+- Novel's legacy / real attempts / Thomas Cook / George Francis Train — https://en.wikipedia.org/wiki/Around_the_World_in_Eighty_Days
+- Nellie Bly, dates, ship, route, meeting Verne at Amiens — https://en.wikipedia.org/wiki/Nellie_Bly
+- Bly's 72 d 6 h 11 m 14 s and the Bisland race (secondary; want a primary before broadcast) —
+  https://grantland.com/the-triangle/nellie-bly-around-the-world-in-seventy-two-days/ ·
+  https://publicdomainreview.org/essay/elizabeth-bislands-race-around-the-world ·
+  https://www.smithsonianmag.com/smart-news/nellie-blys-record-breaking-trip-around-world-was-to-her-surprise-race-180957910/
+- Palle Huld, 1928, *Politiken*, 44 days, the Tintin claim — https://en.wikipedia.org/wiki/Palle_Huld
+- Jules Verne Trophy progression, 1993 → 2026 — https://en.wikipedia.org/wiki/Jules_Verne_Trophy
+- Fastest circumnavigation by scheduled flights, 44 h 33 min 39 s, Nov 2024 —
+  https://www.guinnessworldrecords.com/world-records/63169-fastest-circumnavigation-on-scheduled-flights
+- Thomas Cook's first world tour, 222 days, 200 guineas, 8 travellers (⚠ departure date conflicts) —
+  https://en.wikipedia.org/wiki/Thomas_Cook_%26_Son · https://www.worldheritagesite.org/connection/Thomas+Cook+Round+the+World+tour+1872-1873
+
+**Not yet done:** none of these has been through Fact-Check, and none is in `research/fact-sheet.md`
+with an F- number. That happens after you approve the topic list — no point sourcing facts for
+topics you cut.
