@@ -25,7 +25,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-41/the-carpet-bag.svg",
+      "ref": "generated/g-50/the-carpet-bag.svg",
       "start_s": 12,
       "end_s": 24,
       "license": "generated",
@@ -36,7 +36,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-40/charing-cross-1905-boat-train.jpg",
+      "ref": "media/files/charing-cross-1905-boat-train.jpg",
       "start_s": 24,
       "end_s": 39,
       "license": "public-domain",
@@ -47,7 +47,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-41/the-watch.svg",
+      "ref": "generated/g-51/the-watch.svg",
       "start_s": 39,
       "end_s": 51,
       "license": "generated",
@@ -71,7 +71,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-41/the-gas.svg",
+      "ref": "generated/g-52/the-gas.svg",
       "start_s": 69,
       "end_s": 78,
       "license": "generated",

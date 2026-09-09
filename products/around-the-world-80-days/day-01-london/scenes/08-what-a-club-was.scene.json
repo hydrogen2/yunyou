@@ -38,7 +38,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-36/club-library-1886.jpg",
+      "ref": "media/files/club-library-1886.jpg",
       "start_s": 23,
       "end_s": 32,
       "license": "public-domain",
@@ -49,7 +49,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-36/the-ballot.svg",
+      "ref": "generated/g-40/the-ballot.svg",
       "start_s": 32,
       "end_s": 46,
       "license": "generated",
@@ -83,7 +83,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-36/four-hundred-clubs.svg",
+      "ref": "generated/g-41/four-hundred-clubs.svg",
       "start_s": 64,
       "end_s": 74,
       "license": "generated",

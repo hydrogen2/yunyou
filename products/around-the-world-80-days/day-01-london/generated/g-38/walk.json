@@ -1,0 +1,79 @@
+{
+  "_generated_by": "hand-authored, 2026-09-09 — consumed by studio/tools/render/lib/walkmap.mjs (G-38, episode 1 scene 07)",
+  "_provenance": "The three ADDRESSES are Verne's and are real places (F-01 No. 7 Savile Row; the Reform Club at 104 Pall Mall; Charing Cross station). The 1,151 steps and the ~0.9 km are F-05. The ROUTE between them is the one the research names — Burlington Gardens, Old Bond Street, Piccadilly, St James's Street, Pall Mall — but the individual waypoint coordinates below are a schematic tracing of those streets, not surveyed positions. At this scale that is a drawing decision, not a claim, and the card carries no street names for that reason. If a real base map is wanted, crop M-31 (B.R. Davies, Post Office Directory, 1875, 11419x8799, public domain) to `bbox` and drop it in as `base_image`.",
+  "bbox": {
+    "west": -0.14469,
+    "east": -0.11921,
+    "south": 51.50269,
+    "north": 51.51361,
+    "_note": "Tightened 2026-09-09 to the pins and route plus a margin; the first draft's box was 35% wider and 51% taller than its content, so a third of the frame was empty paper."
+  },
+  "base_image": null,
+  "scale_bar_m": 500,
+  "walk": {
+    "steps": 1151,
+    "label": "1,151 steps",
+    "_note": "The card shows the STEP COUNT, which is Verne's (F-05), and lets the 500 m scale bar carry distance. It does NOT label the traced line with a length: the tracing is ~1,085 m, F-05 puts Fogg's own count at roughly 0.9 km and the real streets at about 1 km. Those are three different numbers and only the step count is a fact about the novel."
+  },
+  "pins": [
+    {
+      "key": "savile",
+      "name": "7 Savile Row",
+      "sub": "Fogg's house",
+      "lon": -0.1414,
+      "lat": 51.5114
+    },
+    {
+      "key": "reform",
+      "name": "104 Pall Mall",
+      "sub": "the Reform Club",
+      "lon": -0.1345,
+      "lat": 51.5058
+    },
+    {
+      "key": "charing",
+      "name": "Charing Cross",
+      "sub": "the 8:45 to Dover",
+      "lon": -0.1223,
+      "lat": 51.5074
+    }
+  ],
+  "route": [
+    [
+      -0.1414,
+      51.5114
+    ],
+    [
+      -0.1408,
+      51.5108
+    ],
+    [
+      -0.1416,
+      51.5098
+    ],
+    [
+      -0.14105,
+      51.5083
+    ],
+    [
+      -0.14075,
+      51.5075
+    ],
+    [
+      -0.1394,
+      51.5068
+    ],
+    [
+      -0.1382,
+      51.5049
+    ],
+    [
+      -0.136,
+      51.5054
+    ],
+    [
+      -0.1345,
+      51.5058
+    ]
+  ]
+}

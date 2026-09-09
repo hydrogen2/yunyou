@@ -26,7 +26,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-39/rgs-map-room.jpg",
+      "ref": "media/files/rgs-map-room.jpg",
       "start_s": 11,
       "end_s": 26,
       "license": "public-domain",
@@ -37,7 +37,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-39/livingstone.jpg",
+      "ref": "media/files/livingstone.jpg",
       "start_s": 26,
       "end_s": 39,
       "license": "public-domain",
@@ -48,7 +48,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-39/april-1874.svg",
+      "ref": "generated/g-46/april-1874.svg",
       "start_s": 39,
       "end_s": 51,
       "license": "generated",
@@ -70,7 +70,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-39/two-ends.svg",
+      "ref": "generated/g-47/two-ends.svg",
       "start_s": 65,
       "end_s": 78,
       "license": "generated",

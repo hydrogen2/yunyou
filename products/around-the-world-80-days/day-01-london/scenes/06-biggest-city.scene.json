@@ -37,7 +37,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-34/bigger-than.svg",
+      "ref": "generated/g-37/bigger-than.svg",
       "start_s": 19,
       "end_s": 30,
       "license": "generated",
@@ -65,7 +65,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-34/metropolitan-railway-1863.jpg",
+      "ref": "media/files/metropolitan-railway-1863.jpg",
       "start_s": 39,
       "end_s": 50,
       "license": "public-domain",

@@ -26,7 +26,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-37/reform-elevation.jpg",
+      "ref": "media/files/reform-elevation.jpg",
       "start_s": 11,
       "end_s": 24,
       "license": "public-domain",
@@ -37,7 +37,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-37/carlton-vs-reform.svg",
+      "ref": "generated/g-42/carlton-vs-reform.svg",
       "start_s": 24,
       "end_s": 39,
       "license": "generated",
@@ -71,7 +71,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-37/reform-library.jpg",
+      "ref": "media/files/reform-library.jpg",
       "start_s": 63,
       "end_s": 79,
       "license": "unknown",

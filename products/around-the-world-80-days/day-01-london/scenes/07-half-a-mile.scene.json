@@ -14,20 +14,34 @@
   "media": [
     {
       "kind": "generated",
-      "ref": "generated/g-35/three-addresses.svg",
+      "ref": "generated/g-38/walk.json",
       "start_s": 0,
       "end_s": 27,
       "license": "generated",
       "manifest_id": "G-38",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T7.1 — THE ANCHOR CARD. The 1872 street plan, three pins dropped in order as they are named — 7 Savile Row, 104 Pall Mall, Charing Cross — then the walking line drawn between the first two. Three labels, nothing else. Large enough for a phone. ESSENTIAL, DOES NOT EXIST YET."
+      "note": "T7.1 — THE ANCHOR CARD (G-38). Own graphic from generated/g-38/walk.json, drawn by lib/walkmap.mjs. Three pins drop as they are named. Almost nothing else on the frame: the argument is that the dots are close together, and every extra mark makes that harder to see. Scale bar, no street names — the route line is a schematic tracing of the streets the research names, not a survey, and the card must not imply otherwise (see walk.json _provenance).",
+      "beats": [
+        {
+          "show": "pin:savile",
+          "s": 2
+        },
+        {
+          "show": "pin:reform",
+          "s": 3
+        },
+        {
+          "show": "pin:charing",
+          "s": 4
+        }
+      ]
     },
     {
       "kind": "footage",
       "ref": "media/files/m66-savile-row-hyperlapse.mp4",
       "start_s": 27,
-      "end_s": 41,
+      "end_s": 38,
       "license": "cc-by-sa-4.0",
       "manifest_id": "M-66",
       "attribution": "KartaView / telenavdrives (17 Jan 2018) · CC BY-SA 4.0 · adapted",
@@ -38,19 +52,29 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-35/1151-steps.svg",
-      "start_s": 41,
-      "end_s": 53,
+      "ref": "generated/g-38/walk.json",
+      "start_s": 38,
+      "end_s": 55,
       "license": "generated",
-      "manifest_id": "G-39",
+      "manifest_id": "G-38",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T7.3 — 575 + 576 = 1,151 STEPS · ~900 m. The card holds the arithmetic so the voice does not have to repeat it. DOES NOT EXIST YET."
+      "note": "T7.3 — the walk draws, Savile Row to Pall Mall, and '1,151 steps' lands beside it on the sentence that says the number. This slot replaces the separate G-39 steps card, which was drawing the same fact twice.",
+      "beats": [
+        {
+          "show": "route",
+          "s": 5
+        },
+        {
+          "show": "steps",
+          "s": 6
+        }
+      ]
     },
     {
       "kind": "footage",
       "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
-      "start_s": 53,
+      "start_s": 55,
       "end_s": 68,
       "license": "cc-by-sa-4.0",
       "manifest_id": "M-67",
@@ -62,18 +86,18 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-35/three-addresses.svg",
+      "ref": "generated/g-38/walk.json",
       "start_s": 68,
       "end_s": 81,
       "license": "generated",
       "manifest_id": "G-38",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T7.5 — back to the three pins under the last line. The rule of the show is stated over the map of it."
+      "note": "T7.5 — back to the finished card under the last line. Three pins, one walk, a scale bar. HOLD to the end."
     }
   ],
   "review": {
-    "notes": "Silence 58–64.\nFill 58%.\nThis scene exists because the founder found T7–T11 disconnected from the novel. It is the anchor; if it is cut, the place block loses its reason.",
+    "notes": "Silence 58–64.\nFill 58%.\nThis scene exists because the founder found T7–T11 disconnected from the novel. It is the anchor; if it is cut, the place block loses its reason.\nG-39 (a standalone '1,151 steps' card) is RETIRED: the walk map carries the step count on the line itself, so the card was stating the same fact twice. Slots rebuilt so the route draws on the sentence that describes it rather than under footage.\n⚠ BEAT ALIGNMENT UNVERIFIED until a real render resolves the TTS timings — check the render log and move the window, not the beat.",
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending"

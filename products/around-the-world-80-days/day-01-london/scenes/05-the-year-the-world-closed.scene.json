@@ -73,7 +73,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-13/overland-telegraph.jpg",
+      "ref": "media/files/overland-telegraph.jpg",
       "start_s": 74,
       "end_s": 88,
       "license": "public-domain",
@@ -84,7 +84,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-13/thirty-six-thousand.svg",
+      "ref": "generated/g-35/thirty-six-thousand.svg",
       "start_s": 88,
       "end_s": 97,
       "license": "generated",

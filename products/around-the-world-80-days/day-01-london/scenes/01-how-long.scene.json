@@ -14,7 +14,7 @@
   "media": [
     {
       "kind": "image",
-      "ref": "generated/g-30/earth-from-orbit-still.jpg",
+      "ref": "media/files/earth-from-orbit-still.jpg",
       "start_s": 0,
       "end_s": 9,
       "license": "public-domain",
@@ -48,7 +48,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-30/iss-sunrise.jpg",
+      "ref": "media/files/iss-sunrise.jpg",
       "start_s": 26,
       "end_s": 35,
       "license": "public-domain",
@@ -87,7 +87,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-30/eighty.svg",
+      "ref": "generated/g-31/eighty.svg",
       "start_s": 54,
       "end_s": 63,
       "license": "generated",

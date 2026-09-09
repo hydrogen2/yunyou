@@ -25,7 +25,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-31/train-quote.svg",
+      "ref": "generated/g-32/train-quote.svg",
       "start_s": 9,
       "end_s": 17,
       "license": "generated",
@@ -47,7 +47,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-31/bly-newspaper.jpg",
+      "ref": "media/files/bly-newspaper.jpg",
       "start_s": 27,
       "end_s": 37,
       "license": "public-domain",
@@ -58,7 +58,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-31/amiens-verne.jpg",
+      "ref": "media/files/amiens-verne.jpg",
       "start_s": 37,
       "end_s": 47,
       "license": "public-domain",
@@ -122,7 +122,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-31/bisland-route.jpg",
+      "ref": "media/files/bisland-route.jpg",
       "start_s": 84,
       "end_s": 95,
       "license": "public-domain",
@@ -133,7 +133,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-31/palle-huld.jpg",
+      "ref": "media/files/palle-huld.jpg",
       "start_s": 95,
       "end_s": 104,
       "license": "unknown",
@@ -161,7 +161,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-31/copenhagen-crowd.jpg",
+      "ref": "media/files/copenhagen-crowd.jpg",
       "start_s": 113,
       "end_s": 121,
       "license": "unknown",

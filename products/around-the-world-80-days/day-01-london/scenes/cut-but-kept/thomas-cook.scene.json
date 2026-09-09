@@ -25,7 +25,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-33/cook-poster.jpg",
+      "ref": "media/files/cook-poster.jpg",
       "start_s": 8,
       "end_s": 18,
       "license": "public-domain",
@@ -48,7 +48,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-33/222-days.svg",
+      "ref": "generated/g-36/222-days.svg",
       "start_s": 28,
       "end_s": 40,
       "license": "generated",

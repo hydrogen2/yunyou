@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:#efe6d3;overflow:hidden}
+svg{display:block}
+</style></head><body>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><filter id="fibre" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs>
+<rect width="1920" height="1080" fill="#efe6d3"/>
+<rect width="1920" height="1080" fill="#241c14" filter="url(#fibre)" opacity="0.05"/>
+<g id="scale" opacity="0"><path d="M200 962h343.7M200 949v26M543.7 949v26" stroke="#241c14" stroke-width="3.0" fill="none"/><text x="371.9" y="1008" text-anchor="middle" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-size="30.0" fill="#5b4a3a">500 m</text></g>
+<path id="route" d="M509.9 318L538.5 363.6L500.4 439.6L526.6 553.6L540.9 614.4L605.2 667.6L662.3 812L767.1 774L838.5 743.6" data-len="746.2" fill="none" stroke="#a8301f" stroke-width="9.0" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+<text id="steps" x="584.9" y="622.4" text-anchor="start" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="600" font-size="52.0" fill="#241c14" opacity="0" stroke="#efe6d3" stroke-width="8.0" paint-order="stroke" stroke-linejoin="round">1,151 steps</text>
+<g class="pin" data-pin="savile" opacity="0"><circle cx="509.9" cy="318" r="16.0" fill="#a8301f" stroke="#efe6d3" stroke-width="4.0"/><text x="543.9" y="312" text-anchor="start" font-family="'Playfair Display',Georgia,'Liberation Serif',serif" font-weight="700" font-size="50.0" fill="#241c14" stroke="#efe6d3" stroke-width="8.0" paint-order="stroke" stroke-linejoin="round">7 Savile Row</text><text x="543.9" y="352" text-anchor="start" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-size="31.0" fill="#5b4a3a" stroke="#efe6d3" stroke-width="7.0" paint-order="stroke" stroke-linejoin="round">Fogg's house</text></g>
+<g class="pin" data-pin="reform" opacity="0"><circle cx="838.5" cy="743.6" r="16.0" fill="#a8301f" stroke="#efe6d3" stroke-width="4.0"/><text x="872.5" y="795.6" text-anchor="start" font-family="'Playfair Display',Georgia,'Liberation Serif',serif" font-weight="700" font-size="50.0" fill="#241c14" stroke="#efe6d3" stroke-width="8.0" paint-order="stroke" stroke-linejoin="round">104 Pall Mall</text><text x="872.5" y="835.6" text-anchor="start" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-size="31.0" fill="#5b4a3a" stroke="#efe6d3" stroke-width="7.0" paint-order="stroke" stroke-linejoin="round">the Reform Club</text></g>
+<g class="pin" data-pin="charing" opacity="0"><circle cx="1419.6" cy="622" r="16.0" fill="#a8301f" stroke="#efe6d3" stroke-width="4.0"/><text x="1453.6" y="632" text-anchor="start" font-family="'Playfair Display',Georgia,'Liberation Serif',serif" font-weight="700" font-size="50.0" fill="#241c14" stroke="#efe6d3" stroke-width="8.0" paint-order="stroke" stroke-linejoin="round">Charing Cross</text><text x="1453.6" y="672" text-anchor="start" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-size="31.0" fill="#5b4a3a" stroke="#efe6d3" stroke-width="7.0" paint-order="stroke" stroke-linejoin="round">the 8:45 to Dover</text></g>
+</svg>
+<script>
+const TL = {"show":null}, SHOW = {"pin:savile":3,"pin:reform":5.5,"pin:charing":8,"route":11.5,"steps":16}, DUR = 26, DRAW = 2;
+const ease = p => p<=0?0 : p>=1?1 : (p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2);
+const cl = (v,a,b) => Math.max(a,Math.min(b,v));
+window.setT = function(t){
+  for (const g of document.querySelectorAll('g.pin')){
+    const at = SHOW['pin:'+g.dataset.pin];
+    g.setAttribute('opacity', at!=null && t>=at ? cl((t-at)/0.4,0,1).toFixed(3) : '0');
+  }
+  const r = document.getElementById('route'), at = SHOW['route'];
+  if (r){
+    const L = +r.dataset.len;
+    if (at!=null && t>=at){ const p = ease(cl((t-at)/DRAW,0,1));
+      r.setAttribute('opacity','1'); r.setAttribute('stroke-dasharray', L+' '+L); r.setAttribute('stroke-dashoffset', (L*(1-p)).toFixed(2)); }
+    else r.setAttribute('opacity','0');
+  }
+  const st = document.getElementById('steps'), sa = SHOW['steps'];
+  if (st) st.setAttribute('opacity', sa!=null && t>=sa ? cl((t-sa)/0.4,0,1).toFixed(3) : '0');
+  // the scale bar arrives with the first pin and stays: it is what lets the card drop street names
+  const first = Math.min(...Object.values(SHOW).filter(v=>v!=null));
+  const sb = document.getElementById('scale');
+  if (sb) sb.setAttribute('opacity', t>=first ? cl((t-first)/0.5,0,1).toFixed(3) : '0');
+};
+window.setT(0);
+</script></body></html>

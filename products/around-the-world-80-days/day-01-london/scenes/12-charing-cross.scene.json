@@ -26,7 +26,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-40/charles-i-statue.jpg",
+      "ref": "media/files/charles-i-statue.jpg",
       "start_s": 14,
       "end_s": 28,
       "license": "cc-by-sa-4.0",
@@ -37,7 +37,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-40/london-400.svg",
+      "ref": "generated/g-48/london-400.svg",
       "start_s": 28,
       "end_s": 44,
       "license": "generated",
@@ -71,7 +71,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-40/twelve-crosses.svg",
+      "ref": "generated/g-49/twelve-crosses.svg",
       "start_s": 72,
       "end_s": 94,
       "license": "generated",
@@ -93,7 +93,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-40/charing-cross-1905-boat-train.jpg",
+      "ref": "media/files/charing-cross-1905-boat-train.jpg",
       "start_s": 110,
       "end_s": 124,
       "license": "public-domain",
@@ -104,7 +104,7 @@
     },
     {
       "kind": "image",
-      "ref": "generated/g-40/charles-i-statue.jpg",
+      "ref": "media/files/charles-i-statue.jpg",
       "start_s": 124,
       "end_s": 138,
       "license": "cc-by-sa-4.0",
