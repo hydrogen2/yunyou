@@ -21,7 +21,8 @@
       "manifest_id": "M-50",
       "attribution": "Passepartout, Neuville/Benett plate 05 — public domain",
       "use": "both",
-      "note": "T14.1 — the servant, ten minutes from leaving."
+      "note": "T14.1 — the servant, ten minutes from leaving.",
+      "on_sentence": 1
     },
     {
       "kind": "generated",
@@ -32,7 +33,8 @@
       "manifest_id": "G-50",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T14.2 — the packing list as an inventory card: 2 shirts · 3 pairs of stockings · mackintosh · cloak · Bradshaw. For three months. DOES NOT EXIST YET."
+      "note": "T14.2 — the packing list as an inventory card: 2 shirts · 3 pairs of stockings · mackintosh · cloak · Bradshaw. For three months. DOES NOT EXIST YET.",
+      "on_sentence": 3
     },
     {
       "kind": "image",
@@ -43,7 +45,8 @@
       "manifest_id": "M-27",
       "attribution": "Charing Cross station, Paris boat train — S.E.&C.R. postcard, 1905 · public domain",
       "use": "both",
-      "note": "T14.3 — the platform, the boat train."
+      "note": "T14.3 — the platform, the boat train.",
+      "on_sentence": 4
     },
     {
       "kind": "image",
@@ -55,7 +58,8 @@
       "attribution": "Pocket watch, savonette type — Isabelle Grosjean · CC BY-SA 3.0 · adapted",
       "use": "both",
       "note": "T14.4 — a pocket watch face. SOURCED 2026-09-09, 800×697. ⚠ The dial cannot be made to read four minutes slow without altering the photograph, which we do not do. So the SHOT is a watch and the NARRATION carries the four minutes — do not add hands, and do not caption a time. This is the seed of Episode 8's ending; plant it plainly and never mention it again this episode.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 6
     },
     {
       "kind": "footage",
@@ -68,7 +72,8 @@
       "use": "both",
       "note": "T14.5 — leaving over the river at night, in rain. The bed under this is M-58/M-59 rain + M-60/M-61 steam.",
       "sa": true,
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 7
     },
     {
       "kind": "image",
@@ -90,7 +95,34 @@
       "manifest_id": "G-13",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T14.7 — the series map again, now travelling east along the route as the lookout is spoken: Channel, Alps, Suez, India, the Pacific. It stops before the Pacific is named on screen — the date line is E8's and must not be spoiled."
+      "note": "T14.7 — the series map again, now travelling east along the route as the lookout is spoken: Channel, Alps, Suez, India, the Pacific. It stops before the Pacific is named on screen — the date line is E8's and must not be spoiled. All five already up (t:0) and the loop closing — this is the finished circuit as the lookout is spoken, not a redraw.",
+      "on_sentence": 8,
+      "beats": [
+        {
+          "show": "enabler:B",
+          "t": 0
+        },
+        {
+          "show": "enabler:A",
+          "t": 0
+        },
+        {
+          "show": "enabler:C",
+          "t": 0
+        },
+        {
+          "show": "enabler:D",
+          "t": 0
+        },
+        {
+          "show": "enabler:E",
+          "t": 0
+        },
+        {
+          "show": "close",
+          "t": 0.5
+        }
+      ]
     },
     {
       "kind": "footage",

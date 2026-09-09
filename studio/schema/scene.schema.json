@@ -191,6 +191,15 @@
             "type": "boolean",
             "description": "kind 'image' only. false = this still does not drift. Use for a beat that must sit still (a held silence, a portrait, a death). Prefer this over treatment:'none', which also removes the backdrop and leaves black bars. Added v0.9."
           },
+          "on_sentence": {
+            "type": "integer",
+            "description": "Anchor this slot to a sentence of narration.script (0-based): the picture comes up as that sentence is spoken. Slot times are authored in SECONDS, but the narration's real pace comes from the synthesizer, so seconds alone drift — measured on the first cut, the pictures ran a whole slot ahead of the words. Anchored slots are pinned to their sentence and the unanchored slots between them are warped proportionally, so the authored rhythm survives. Anchor the slots whose subject the script names; leave the rest.",
+            "minimum": 0
+          },
+          "lead_s": {
+            "type": "number",
+            "description": "With on_sentence: how many seconds BEFORE the sentence the picture arrives. Default 0.4 — the eye should reach the subject just before the voice names it."
+          },
           "beats": {
             "type": "array",
             "description": "For kind 'generated' map assets: when each reveal happens, tied to the narration rather than to the clock. [{show:'enabler:B'|'leg:3'|'london'|'total'|'close', s:<0-based sentence index in narration.script>}] or {show, t:<seconds into the scene>}. A beat pointing at a sentence the cut does not speak is warned about and spaced evenly instead.",

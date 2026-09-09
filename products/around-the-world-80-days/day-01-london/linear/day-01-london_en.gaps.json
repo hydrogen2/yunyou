@@ -1,7 +1,7 @@
 {
  "chapter": "day-01-london",
  "lang": "en",
- "rendered": "2026-09-09T07:42:58.382Z",
+ "rendered": "2026-09-09T13:05:53.626Z",
  "video": "day-01-london_en.mp4",
  "slots_fell_back": 9,
  "assets_missing": 9,
@@ -10,8 +10,8 @@
    "n": 1,
    "scene": "how-long",
    "slot": 2,
-   "at": "9.0 s",
-   "dur": 7,
+   "at": "7.0 s",
+   "dur": 15.561487566838245,
    "wanted": "M-201",
    "wanted_ref": "media/files/m201-airliner-window.mp4",
    "used": "PENDING CARD",
@@ -23,8 +23,8 @@
    "n": 2,
    "scene": "the-racers",
    "slot": 10,
-   "at": "95.0 s",
-   "dur": 9,
+   "at": "78.0 s",
+   "dur": 14.29537821888411,
    "wanted": "M-209",
    "wanted_ref": "media/files/palle-huld.jpg",
    "used": "PENDING CARD",
@@ -36,8 +36,8 @@
    "n": 2,
    "scene": "the-racers",
    "slot": 12,
-   "at": "113.0 s",
-   "dur": 8,
+   "at": "93.0 s",
+   "dur": 5.184034334763936,
    "wanted": "M-210",
    "wanted_ref": "media/files/copenhagen-crowd.jpg",
    "used": "PENDING CARD",
@@ -49,8 +49,8 @@
    "n": 2,
    "scene": "the-racers",
    "slot": 13,
-   "at": "121.0 s",
-   "dur": 11,
+   "at": "99.0 s",
+   "dur": 4.246081008583701,
    "wanted": "M-211",
    "wanted_ref": "media/files/m211-ultim-trimaran.mp4",
    "used": "PENDING CARD",
@@ -59,11 +59,11 @@
    "kind": "footage"
   },
   {
-   "n": 8,
+   "n": 9,
    "scene": "what-a-club-was",
    "slot": 3,
-   "at": "23.0 s",
-   "dur": 9,
+   "at": "19.0 s",
+   "dur": 8.626783179898652,
    "wanted": "M-218",
    "wanted_ref": "media/files/club-library-1886.jpg",
    "used": "PENDING CARD",
@@ -72,11 +72,11 @@
    "kind": "image"
   },
   {
-   "n": 9,
+   "n": 10,
    "scene": "the-reform",
    "slot": 6,
-   "at": "63.0 s",
-   "dur": 16,
+   "at": "52.0 s",
+   "dur": 8.65913663280984,
    "wanted": "M-219",
    "wanted_ref": "media/files/reform-library.jpg",
    "used": "PENDING CARD",
@@ -85,11 +85,11 @@
    "kind": "image"
   },
   {
-   "n": 10,
+   "n": 11,
    "scene": "savile-row",
    "slot": 4,
-   "at": "44.0 s",
-   "dur": 13,
+   "at": "36.0 s",
+   "dur": 7.504102294070229,
    "wanted": "M-220",
    "wanted_ref": "media/files/gieves-hawkes-military.jpg",
    "used": "PENDING CARD",
@@ -98,11 +98,11 @@
    "kind": "image"
   },
   {
-   "n": 11,
+   "n": 12,
    "scene": "no-1-savile-row",
    "slot": 2,
-   "at": "11.0 s",
-   "dur": 15,
+   "at": "9.0 s",
+   "dur": 17.579,
    "wanted": "M-221",
    "wanted_ref": "media/files/rgs-map-room.jpg",
    "used": "PENDING CARD",
@@ -111,11 +111,11 @@
    "kind": "image"
   },
   {
-   "n": 13,
+   "n": 14,
    "scene": "a-quarter-to-nine",
    "slot": 6,
-   "at": "69.0 s",
-   "dur": 9,
+   "at": "71.0 s",
+   "dur": 4.696592592592594,
    "wanted": "M-225",
    "wanted_ref": "media/files/m225-gas-lamp-lit.jpg",
    "used": "PENDING CARD",
@@ -131,7 +131,7 @@
    "ref": "media/files/m201-airliner-window.mp4",
    "why": "local footage file is not in media/files/ (not fetched yet)",
    "slots": [
-    "01 how-long · slot 2 @ 9–16 s"
+    "01 how-long · slot 2 @ 7–13 s"
    ]
   },
   {
@@ -140,7 +140,7 @@
    "ref": "media/files/palle-huld.jpg",
    "why": "local still is not on disk",
    "slots": [
-    "02 the-racers · slot 10 @ 95–104 s"
+    "02 the-racers · slot 10 @ 78–85 s"
    ]
   },
   {
@@ -149,7 +149,7 @@
    "ref": "media/files/copenhagen-crowd.jpg",
    "why": "local still is not on disk",
    "slots": [
-    "02 the-racers · slot 12 @ 113–121 s"
+    "02 the-racers · slot 12 @ 93–99 s"
    ]
   },
   {
@@ -158,7 +158,7 @@
    "ref": "media/files/m211-ultim-trimaran.mp4",
    "why": "local footage file is not in media/files/ (not fetched yet)",
    "slots": [
-    "02 the-racers · slot 13 @ 121–132 s"
+    "02 the-racers · slot 13 @ 99–108 s"
    ]
   },
   {
@@ -167,7 +167,7 @@
    "ref": "media/files/club-library-1886.jpg",
    "why": "local still is not on disk",
    "slots": [
-    "08 what-a-club-was · slot 3 @ 23–32 s"
+    "09 what-a-club-was · slot 3 @ 19–26 s"
    ]
   },
   {
@@ -176,7 +176,7 @@
    "ref": "media/files/reform-library.jpg",
    "why": "local still is not on disk",
    "slots": [
-    "09 the-reform · slot 6 @ 63–79 s"
+    "10 the-reform · slot 6 @ 52–65 s"
    ]
   },
   {
@@ -185,7 +185,7 @@
    "ref": "media/files/gieves-hawkes-military.jpg",
    "why": "local still is not on disk",
    "slots": [
-    "10 savile-row · slot 4 @ 44–57 s"
+    "11 savile-row · slot 4 @ 36–47 s"
    ]
   },
   {
@@ -194,7 +194,7 @@
    "ref": "media/files/rgs-map-room.jpg",
    "why": "local still is not on disk",
    "slots": [
-    "11 no-1-savile-row · slot 2 @ 11–26 s"
+    "12 no-1-savile-row · slot 2 @ 9–21 s"
    ]
   },
   {
@@ -203,7 +203,7 @@
    "ref": "media/files/m225-gas-lamp-lit.jpg",
    "why": "local still is not on disk",
    "slots": [
-    "13 a-quarter-to-nine · slot 6 @ 69–78 s"
+    "14 a-quarter-to-nine · slot 6 @ 71–79 s"
    ]
   }
  ]

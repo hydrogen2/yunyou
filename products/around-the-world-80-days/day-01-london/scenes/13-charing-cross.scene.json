@@ -22,7 +22,8 @@
       "attribution": "Trafalgar Square, London — Kauko Helavuo (2015) · licence to confirm before publication",
       "use": "both",
       "note": "T13.1 — Trafalgar Square today, moving. RESOLVED 2026-09-09: this shot does NOT contain the Charles I statue and no longer needs to — M-223 carries the statue in the next slot. M-84's job here is only 'the place, alive, now'. ⚠ Licence still to confirm with the uploader before publication.",
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 0
     },
     {
       "kind": "image",
@@ -34,7 +35,8 @@
       "attribution": "Equestrian statue of Charles I, Charing Cross — Stephen Walli (Flickr) · CC BY-SA 2.0 · adapted",
       "use": "both",
       "note": "T13.2 — the equestrian bronze itself, close. The topic is about this object; it must be on screen. SOURCED 2026-09-09, 2736×3648.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 2
     },
     {
       "kind": "generated",
@@ -45,7 +47,8 @@
       "manifest_id": "G-48",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T13.3 — a British road sign reading LONDON 400, then a line drawn from it to this one point. DOES NOT EXIST YET."
+      "note": "T13.3 — a British road sign reading LONDON 400, then a line drawn from it to this one point. DOES NOT EXIST YET.",
+      "on_sentence": 4
     },
     {
       "kind": "image",
@@ -57,7 +60,8 @@
       "attribution": "Queen Eleanor Memorial Cross (E.M. Barry, 1865) — Tony Hisgett (2010) · CC BY-SA 2.0 · adapted",
       "use": "both",
       "note": "T13.4 — the replica, looking medieval and being 1865.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 7
     },
     {
       "kind": "image",
@@ -68,7 +72,8 @@
       "manifest_id": "M-74",
       "attribution": "The Eleanor Cross from Charing Cross station yard, c.1903 — public domain",
       "use": "both",
-      "note": "T13.5 — the same object, a century ago."
+      "note": "T13.5 — the same object, a century ago.",
+      "on_sentence": 9
     },
     {
       "kind": "generated",
@@ -79,7 +84,8 @@
       "manifest_id": "G-49",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T13.6 — the twelve crosses drawn as twelve stops down England, Harby to Westminster, revealed one at a time. Charing lights last. Few labels. DOES NOT EXIST YET."
+      "note": "T13.6 — the twelve crosses drawn as twelve stops down England, Harby to Westminster, revealed one at a time. Charing lights last. Few labels. DOES NOT EXIST YET.",
+      "on_sentence": 10
     },
     {
       "kind": "image",
@@ -90,7 +96,8 @@
       "manifest_id": "M-24",
       "attribution": "'Hotel at Charing Cross' — *London Illustrated* (1872) — public domain",
       "use": "both",
-      "note": "T13.7 — the station the year he leaves from it."
+      "note": "T13.7 — the station the year he leaves from it.",
+      "on_sentence": 14
     },
     {
       "kind": "image",
@@ -101,7 +108,8 @@
       "manifest_id": "M-27",
       "attribution": "Charing Cross station, Paris boat train — S.E.&C.R. postcard, 1905 · public domain",
       "use": "both",
-      "note": "T13.8 — the boat train platform."
+      "note": "T13.8 — the boat train platform.",
+      "on_sentence": 15
     },
     {
       "kind": "image",

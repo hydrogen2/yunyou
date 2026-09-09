@@ -203,10 +203,17 @@ export function planTimeline({ state = 'day-1', dur, beats = [], draw = 1.6, lab
   // Nothing else is on the map. If the caller gives no beats they are spaced evenly, so the graphic still plays.
   const CHRONO = ['B', 'A', 'C', 'D', 'E'];
   if (state === 'enablers') {
+    // If the caller names ANY enabler beat, only the named ones appear. The even spread is the no-beats
+    // fallback and nothing else. 2026-09-09: it used to spread the unnamed ones too, so a slot that asked only
+    // for Promontory also drifted Suez, India, the Alps and Australia onto the map before the script named them
+    // — and a later slot re-revealed everything from scratch, because a slot has no memory of the one before it.
+    // A continuation slot therefore lists what is ALREADY up as `t: 0`.
+    const anyGiven = CHRONO.some(L => at[`enabler:${L}`] !== undefined);
     const t0 = 4.0, t1 = Math.max(t0 + CHRONO.length * 2.2, dur * 0.80);
     CHRONO.forEach((L, i) => {
       const given = at[`enabler:${L}`];
-      enablers.push({ letter: L, t: given !== undefined ? given : t0 + (t1 - t0) * i / (CHRONO.length - 1) });
+      if (given !== undefined) enablers.push({ letter: L, t: given });
+      else if (!anyGiven) enablers.push({ letter: L, t: t0 + (t1 - t0) * i / (CHRONO.length - 1) });
     });
   } else {
     for (const L of ['A', 'B', 'C']) if (at[`enabler:${L}`] !== undefined) enablers.push({ letter: L, t: at[`enabler:${L}`] });

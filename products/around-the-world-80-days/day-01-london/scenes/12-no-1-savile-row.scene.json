@@ -22,7 +22,8 @@
       "attribution": "Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
       "use": "both",
       "note": "T11.1 — the corner at the top of the street.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 0
     },
     {
       "kind": "image",
@@ -33,7 +34,8 @@
       "manifest_id": "M-221",
       "attribution": "Royal Geographical Society map room / meeting, 19th c. — public domain",
       "use": "both",
-      "note": "T11.2 — the room itself: maps, men, argument. The whole topic depends on this image existing. NOT YET SOURCED — Content Preparer."
+      "note": "T11.2 — the room itself: maps, men, argument. The whole topic depends on this image existing. NOT YET SOURCED — Content Preparer.",
+      "on_sentence": 1
     },
     {
       "kind": "image",
@@ -44,7 +46,8 @@
       "manifest_id": "M-222",
       "attribution": "David Livingstone, photographed by Thomas Annan — public domain (restored)",
       "use": "both",
-      "note": "T11.3 — Livingstone. Held, plainly, no music sting. SOURCED 2026-09-09, 1920×2347."
+      "note": "T11.3 — Livingstone. Held, plainly, no music sting. SOURCED 2026-09-09, 1920×2347.",
+      "on_sentence": 2
     },
     {
       "kind": "generated",
@@ -66,7 +69,8 @@
       "manifest_id": "M-34",
       "attribution": "Neuville frontispiece (1872/73) — public domain",
       "use": "both",
-      "note": "T11.5 — Fogg, against the explorers. The cut is the argument."
+      "note": "T11.5 — Fogg, against the explorers. The cut is the argument.",
+      "on_sentence": 3
     },
     {
       "kind": "generated",
@@ -77,7 +81,8 @@
       "manifest_id": "G-47",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T11.6 — the street drawn with both ends labelled: No. 1 THE ROYAL GEOGRAPHICAL SOCIETY / No. 7 (Verne's Fogg). 280 m between them. DOES NOT EXIST YET."
+      "note": "T11.6 — the street drawn with both ends labelled: No. 1 THE ROYAL GEOGRAPHICAL SOCIETY / No. 7 (Verne's Fogg). 280 m between them. DOES NOT EXIST YET.",
+      "on_sentence": 4
     },
     {
       "kind": "image",
@@ -89,7 +94,8 @@
       "attribution": "Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
       "use": "both",
       "note": "T11.7 — HOLD the last ~7 s on the street after the 1912 line.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 6
     }
   ],
   "review": {

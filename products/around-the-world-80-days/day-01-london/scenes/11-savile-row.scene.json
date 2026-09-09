@@ -24,7 +24,8 @@
       "note": "T10.1 — the entire street in one unbroken move, north to south. The subject, stated by moving through it.",
       "sa": true,
       "audio": "mute",
-      "fallback": "M-66"
+      "fallback": "M-66",
+      "on_sentence": 0
     },
     {
       "kind": "generated",
@@ -35,7 +36,8 @@
       "manifest_id": "G-10",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T10.2 — the measure card: Conduit Street to Vigo Street, one line, '280 m' large, two labels only. The guide does not read the number the card shows. STILL DOES NOT EXIST."
+      "note": "T10.2 — the measure card: Conduit Street to Vigo Street, one line, '280 m' large, two labels only. The guide does not read the number the card shows. STILL DOES NOT EXIST.",
+      "on_sentence": 2
     },
     {
       "kind": "image",
@@ -46,7 +48,8 @@
       "manifest_id": "M-32",
       "attribution": "Savile Row, c. 1890 — Henry Poole & Co archive photograph — public domain",
       "use": "both",
-      "note": "T10.3 — the street when it was already the street."
+      "note": "T10.3 — the street when it was already the street.",
+      "on_sentence": 4
     },
     {
       "kind": "image",
@@ -80,7 +83,8 @@
       "manifest_id": "G-43",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T10.6 — one dated line: BESPOKE, adj. 1755 · TAILORS ON SAVILE ROW c.1803. The myth dies on a date card, not in an argument. DOES NOT EXIST YET."
+      "note": "T10.6 — one dated line: BESPOKE, adj. 1755 · TAILORS ON SAVILE ROW c.1803. The myth dies on a date card, not in an argument. DOES NOT EXIST YET.",
+      "on_sentence": 7
     },
     {
       "kind": "generated",
@@ -91,7 +95,8 @@
       "manifest_id": "G-44",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T10.7 — the 2008 ruling, quiet type: £495, machine-sewn, still 'bespoke'. DOES NOT EXIST YET."
+      "note": "T10.7 — the 2008 ruling, quiet type: £495, machine-sewn, still 'bespoke'. DOES NOT EXIST YET.",
+      "on_sentence": 8
     },
     {
       "kind": "generated",
@@ -102,7 +107,8 @@
       "manifest_id": "G-45",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T10.8 — the 100-yard circle drawn on the street plan, with the standard's three numbers: 50 hours · 3 fittings · 1 pattern. DOES NOT EXIST YET."
+      "note": "T10.8 — the 100-yard circle drawn on the street plan, with the standard's three numbers: 50 hours · 3 fittings · 1 pattern. DOES NOT EXIST YET.",
+      "on_sentence": 11
     },
     {
       "kind": "image",
@@ -114,7 +120,8 @@
       "attribution": "View up Savile Row — Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
       "use": "both",
       "note": "T10.9 — the street today, looking up it.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 13
     },
     {
       "kind": "image",
@@ -125,7 +132,8 @@
       "manifest_id": "M-50",
       "attribution": "Passepartout, Neuville/Benett plate 05 (1872/73) — public domain",
       "use": "both",
-      "note": "T10.10 — the carpet-bag turn. HOLD to the end: the man who packed nothing, on the street that makes everything."
+      "note": "T10.10 — the carpet-bag turn. HOLD to the end: the man who packed nothing, on the street that makes everything.",
+      "on_sentence": 14
     }
   ],
   "review": {

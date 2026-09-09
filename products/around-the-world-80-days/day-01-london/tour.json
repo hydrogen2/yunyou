@@ -37,7 +37,8 @@
               "manifest_id": "M-200",
               "attribution": "Earth at night from the International Space Station (ISS030-E-10008) — NASA Earth Observatory · CC BY 2.0 · adapted",
               "use": "both",
-              "note": "T1.1 — Earth's limb from orbit, night side with city lights. Opens cold, no title. Must read with sound off. SOURCED 2026-09-09, 1440×960."
+              "note": "T1.1 — Earth's limb from orbit, night side with city lights. Opens cold, no title. Must read with sound off. SOURCED 2026-09-09, 1440×960.",
+              "on_sentence": 0
             },
             {
               "kind": "footage",
@@ -49,7 +50,8 @@
               "attribution": "(pending) · CC BY 4.0 · adapted",
               "use": "both",
               "note": "T1.2 — wing and cloud from a cabin window, or a departure board rolling. Modern, banal, deliberately. NOT YET SOURCED — Content Preparer.",
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 2
             },
             {
               "kind": "generated",
@@ -60,7 +62,8 @@
               "manifest_id": "G-30",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T1.3 — the comparison card, built one line at a time: 90 MINUTES / 44 HOURS 33 MINUTES / 80 DAYS. Three lines, nothing else. Type large enough to read on a phone. The guide does not read the numbers the card shows. ESSENTIAL, DOES NOT EXIST YET."
+              "note": "T1.3 — the comparison card, built one line at a time: 90 MINUTES / 44 HOURS 33 MINUTES / 80 DAYS. Three lines, nothing else. Type large enough to read on a phone. The guide does not read the numbers the card shows. ESSENTIAL, DOES NOT EXIST YET.",
+              "on_sentence": 4
             },
             {
               "kind": "image",
@@ -71,7 +74,8 @@
               "manifest_id": "M-202",
               "attribution": "Astronaut photograph ISS072-E-806482, 19 March 2025 — NASA · public domain",
               "use": "both",
-              "note": "T1.4 — HOLD 34–40, no words. ⚠ SUBSTITUTE: the slot asked for an orbital SUNRISE and none was found on Commons; this is a second night-side frame, 720×480. It still holds the beat, but the 'sixteen sunrises' line now plays over night rather than over a sunrise. Re-source if a sunrise turns up."
+              "note": "T1.4 — HOLD 34–40, no words. ⚠ SUBSTITUTE: the slot asked for an orbital SUNRISE and none was found on Commons; this is a second night-side frame, 720×480. It still holds the beat, but the 'sixteen sunrises' line now plays over night rather than over a sunrise. Re-source if a sunrise turns up.",
+              "on_sentence": 5
             },
             {
               "kind": "image",
@@ -89,7 +93,8 @@
                 "w": 0.5,
                 "h": 0.5,
                 "why": "Central London only, from the 1872 plan. The whole sheet at 1080p is unreadable and the beat is 'this is the city he leaves from', not 'here is a map'."
-              }
+              },
+              "on_sentence": 6
             },
             {
               "kind": "image",
@@ -100,7 +105,8 @@
               "manifest_id": "M-34",
               "attribution": "Frontispiece 'Phileas Fogg' — Alphonse de Neuville, Hetzel edition (1872/73) — public domain",
               "use": "both",
-              "note": "T1.6 — first sight of Fogg. Full frame, no motion. He is introduced as a bet, not as a man."
+              "note": "T1.6 — first sight of Fogg. Full frame, no motion. He is introduced as a bet, not as a man.",
+              "on_sentence": 10
             },
             {
               "kind": "generated",
@@ -111,7 +117,8 @@
               "manifest_id": "G-31",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T1.7 — one numeral, '80', on the house cream card. Held. DOES NOT EXIST YET."
+              "note": "T1.7 — one numeral, '80', on the house cream card. Held. DOES NOT EXIST YET.",
+              "on_sentence": 11
             },
             {
               "kind": "image",
@@ -160,7 +167,8 @@
               "manifest_id": "M-203",
               "attribution": "George Francis Train, photographed by Mathew Brady — public domain (Library of Congress via Wikimedia Commons)",
               "use": "both",
-              "note": "T2.1 — Train, portrait. SOURCED 2026-09-09, 1186×2000."
+              "note": "T2.1 — Train, portrait. SOURCED 2026-09-09, 1186×2000.",
+              "on_sentence": 1
             },
             {
               "kind": "generated",
@@ -171,7 +179,8 @@
               "manifest_id": "G-32",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T2.2 — his line set as type on the cream card: 'Verne stole my thunder. I'm Phileas Fogg.' DOES NOT EXIST YET."
+              "note": "T2.2 — his line set as type on the cream card: 'Verne stole my thunder. I'm Phileas Fogg.' DOES NOT EXIST YET.",
+              "on_sentence": 2
             },
             {
               "kind": "image",
@@ -182,7 +191,8 @@
               "manifest_id": "M-204",
               "attribution": "Nellie Bly in her travelling cloak, 1889 — public domain (Wikimedia Commons)",
               "use": "both",
-              "note": "T2.3 — Bly in her travelling coat and cap. The famous one. SOURCED 2026-09-09, 916×1600."
+              "note": "T2.3 — Bly in her travelling coat and cap. The famous one. SOURCED 2026-09-09, 916×1600.",
+              "on_sentence": 3
             },
             {
               "kind": "image",
@@ -205,7 +215,8 @@
               "manifest_id": "M-206",
               "attribution": "Jules Verne photographed by Félix Nadar, c. 1878 — public domain (Wikimedia Commons, restored)",
               "use": "both",
-              "note": "T2.5 — Verne, photographed. HOLD 46–52: she stopped, on the clock, to meet him. SOURCED 2026-09-09, 1508×2111."
+              "note": "T2.5 — Verne, photographed. HOLD 46–52: she stopped, on the clock, to meet him. SOURCED 2026-09-09, 1508×2111.",
+              "on_sentence": 4
             },
             {
               "kind": "generated",
@@ -230,7 +241,8 @@
                   "show": "row:bly",
                   "s": 5
                 }
-              ]
+              ],
+              "on_sentence": 5
             },
             {
               "kind": "image",
@@ -241,7 +253,8 @@
               "manifest_id": "M-207",
               "attribution": "Elizabeth Bisland, c. 1891 — public domain (Wikimedia Commons)",
               "use": "both",
-              "note": "T2.7 — Bisland. Held as long as Bly was; the race had two people in it. SOURCED 2026-09-09, 360×469."
+              "note": "T2.7 — Bisland. Held as long as Bly was; the race had two people in it. SOURCED 2026-09-09, 360×469.",
+              "on_sentence": 6
             },
             {
               "kind": "generated",
@@ -258,7 +271,8 @@
                   "show": "row:bisland",
                   "s": 7
                 }
-              ]
+              ],
+              "on_sentence": 7
             },
             {
               "kind": "image",
@@ -281,7 +295,8 @@
               "manifest_id": "M-209",
               "attribution": "(pending — rights unresolved)",
               "use": "both",
-              "note": "T2.9 — Huld, 1928, aged 15. ⚠ RIGHTS: Danish press photo, may still be in copyright. If not clearable, use the record board and a Politiken masthead instead. NOT YET SOURCED — Content Preparer."
+              "note": "T2.9 — Huld, 1928, aged 15. ⚠ RIGHTS: Danish press photo, may still be in copyright. If not clearable, use the record board and a Politiken masthead instead. NOT YET SOURCED — Content Preparer.",
+              "on_sentence": 10
             },
             {
               "kind": "generated",
@@ -298,7 +313,8 @@
                   "show": "row:huld",
                   "s": 11
                 }
-              ]
+              ],
+              "on_sentence": 11
             },
             {
               "kind": "image",
@@ -309,7 +325,8 @@
               "manifest_id": "M-210",
               "attribution": "(pending — rights unresolved)",
               "use": "both",
-              "note": "T2.10 — the crowd at Copenhagen station. Same rights question. NOT YET SOURCED — Content Preparer."
+              "note": "T2.10 — the crowd at Copenhagen station. Same rights question. NOT YET SOURCED — Content Preparer.",
+              "on_sentence": 12
             },
             {
               "kind": "footage",
@@ -321,7 +338,8 @@
               "attribution": "(pending) · CC BY 4.0 · adapted",
               "use": "both",
               "note": "T2.11 — a modern ocean-racing trimaran at speed. The one genuinely fast-moving shot in the topic; it should feel like a different century, because it is. NOT YET SOURCED — Content Preparer.",
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 13
             },
             {
               "kind": "generated",
@@ -342,7 +360,8 @@
                   "show": "row:trophy26",
                   "s": 15
                 }
-              ]
+              ],
+              "on_sentence": 14
             }
           ],
           "review": {
@@ -383,7 +402,8 @@
               "manifest_id": "M-206",
               "attribution": "Jules Verne photographed by Félix Nadar, c. 1878 — public domain (Wikimedia Commons)",
               "use": "both",
-              "note": "T3.1 — the author, named at last. The episode had been mentioning Verne for two minutes without ever saying what he wrote."
+              "note": "T3.1 — the author, named at last. The episode had been mentioning Verne for two minutes without ever saying what he wrote.",
+              "on_sentence": 1
             },
             {
               "kind": "image",
@@ -394,7 +414,8 @@
               "manifest_id": "M-52",
               "attribution": "Route map, Hetzel edition — Neuville/Benett plate 01 (1872/73) — public domain",
               "use": "both",
-              "note": "T3.2 — the Hetzel edition's own route map: the book, as an object."
+              "note": "T3.2 — the Hetzel edition's own route map: the book, as an object.",
+              "on_sentence": 2
             },
             {
               "kind": "generated",
@@ -423,7 +444,8 @@
                   "show": "end",
                   "s": 6
                 }
-              ]
+              ],
+              "on_sentence": 3
             },
             {
               "kind": "image",
@@ -434,7 +456,8 @@
               "manifest_id": "M-34",
               "attribution": "Frontispiece 'Phileas Fogg' — Alphonse de Neuville, Hetzel edition (1872/73) — public domain",
               "use": "both",
-              "note": "T3.4 — Fogg, under 'some readers thought it was actually happening'."
+              "note": "T3.4 — Fogg, under 'some readers thought it was actually happening'.",
+              "on_sentence": 8
             },
             {
               "kind": "image",
@@ -445,7 +468,8 @@
               "manifest_id": "M-50",
               "attribution": "Passepartout, Neuville/Benett plate 05 (1872/73) — public domain",
               "use": "both",
-              "note": "T3.5 — HOLD to the end on the Hetzel plate. 'Never been out of print' lands over the book's own illustration."
+              "note": "T3.5 — HOLD to the end on the Hetzel plate. 'Never been out of print' lands over the book's own illustration.",
+              "on_sentence": 11
             }
           ],
           "sources": [
@@ -485,7 +509,8 @@
               "use": "both",
               "note": "T3.1 — Pall Mall, moving. Arrive at the club rather than cutting to it.",
               "sa": true,
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 0
             },
             {
               "kind": "image",
@@ -497,7 +522,8 @@
               "attribution": "Philafrenzy (2015) · Wikimedia Commons · CC BY-SA 4.0 · adapted",
               "use": "both",
               "note": "T3.2 — the Reform from the corner. Slow push.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 1
             },
             {
               "kind": "image",
@@ -508,7 +534,8 @@
               "manifest_id": "M-35",
               "attribution": "'…I will wager £4000 on it' — the bet at the Reform Club, Neuville/Benett (1872/73) — public domain",
               "use": "both",
-              "note": "T3.3 — the wager plate. The table, the five men, the newspaper."
+              "note": "T3.3 — the wager plate. The table, the five men, the newspaper.",
+              "on_sentence": 2
             },
             {
               "kind": "image",
@@ -541,7 +568,8 @@
               "manifest_id": "M-34",
               "attribution": "Frontispiece 'Phileas Fogg' — Neuville, Hetzel edition (1872/73) — public domain",
               "use": "both",
-              "note": "T3.6 — back to Fogg, held, while 'no visible talents and no apparent interests' is said over him."
+              "note": "T3.6 — back to Fogg, held, while 'no visible talents and no apparent interests' is said over him.",
+              "on_sentence": 4
             },
             {
               "kind": "footage",
@@ -553,7 +581,8 @@
               "attribution": "'Old London Street Scenes' (1903) — London's Screen Archives / BFI — public domain",
               "use": "both",
               "note": "T3.7 — the machine: traffic, movement, a city that works. Under 'joined up into one working machine'.",
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 5
             },
             {
               "kind": "image",
@@ -582,7 +611,8 @@
               "manifest_id": "M-52",
               "attribution": "Route map, Hetzel edition — Neuville/Benett plate 01 — public domain",
               "use": "both",
-              "note": "T3.9 — HOLD 86–92 on the route map after the last word. It is a bet about this shape."
+              "note": "T3.9 — HOLD 86–92 on the route map after the last word. It is a bet about this shape.",
+              "on_sentence": 9
             }
           ],
           "review": {
@@ -645,20 +675,62 @@
               "kind": "generated",
               "ref": "generated/g-13/enablers-map.json",
               "start_s": 0,
-              "end_s": 45,
+              "end_s": 26,
               "license": "generated",
               "manifest_id": "G-13",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T4.1 — THE FILM MAP (state 'enablers'), drawn by lib/mapfilm.mjs from route-data.json — not screenshotted from the player. Five works reveal in the order they were finished, each on its own sentence: Promontory May 1869 → Suez Nov 1869 → India Mar 1870 → Fréjus Sep 1871 → the Australian wire Aug 1872, which draws down Australia and out to Java. On 'The circuit closes' the whole route traces faintly behind them. Dates only, no names — the guide says the names. The top strip carries one number: the year.",
+              "note": "T4.1 — THE FILM MAP (state 'enablers'). Opens empty and drops Promontory as it is named. The map is this scene's spine; the photographs below cut INTO it rather than following it, so each work is seen as it is said. Continuation slots list what is ALREADY on the map as t:0 — a slot has no memory of the one before it.",
               "beats": [
                 {
                   "show": "enabler:B",
                   "s": 3
+                }
+              ],
+              "on_sentence": 0
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:East_and_West_Shaking_hands_at_the_laying_of_last_rail_Union_Pacific_Railroad_-_Restoration.jpg",
+              "start_s": 26,
+              "end_s": 34,
+              "license": "public-domain",
+              "manifest_id": "M-212",
+              "attribution": "'East and West Shaking Hands at the Laying of the Last Rail', Promontory Summit, 10 May 1869 — Andrew J. Russell · public domain (restored)",
+              "use": "both",
+              "note": "T4.2 — the golden spike photograph. Held. SOURCED 2026-09-09, 4514×3435.",
+              "on_sentence": 3
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:L%27inauguration_du_canal_de_Suez,_17_November_1869_Gal18_riou_001f.jpg",
+              "start_s": 34,
+              "end_s": 44,
+              "license": "public-domain",
+              "manifest_id": "M-213",
+              "attribution": "The inauguration of the Suez Canal, 17 November 1869 — engraving after Édouard Riou · public domain",
+              "use": "both",
+              "note": "T4.3 — the opening ceremony, engraved. SOURCED 2026-09-09, 1400×894.",
+              "on_sentence": 4
+            },
+            {
+              "kind": "generated",
+              "ref": "generated/g-13/enablers-map.json",
+              "start_s": 44,
+              "end_s": 62,
+              "license": "generated",
+              "manifest_id": "G-13",
+              "attribution": "Yunyou studio, generated",
+              "use": "both",
+              "note": "T4.4 — back to the map for Suez, India and the Alps. Continuation slots list what is ALREADY on the map as t:0 — a slot has no memory of the one before it.",
+              "beats": [
+                {
+                  "show": "enabler:B",
+                  "t": 0
                 },
                 {
                   "show": "enabler:A",
-                  "s": 4
+                  "t": 0.3
                 },
                 {
                   "show": "enabler:C",
@@ -667,81 +739,75 @@
                 {
                   "show": "enabler:D",
                   "s": 6
-                },
-                {
-                  "show": "enabler:E",
-                  "s": 7
-                },
-                {
-                  "show": "close",
-                  "s": 9
                 }
-              ]
-            },
-            {
-              "kind": "image",
-              "ref": "https://commons.wikimedia.org/wiki/File:East_and_West_Shaking_hands_at_the_laying_of_last_rail_Union_Pacific_Railroad_-_Restoration.jpg",
-              "start_s": 45,
-              "end_s": 52,
-              "license": "public-domain",
-              "manifest_id": "M-212",
-              "attribution": "'East and West Shaking Hands at the Laying of the Last Rail', Promontory Summit, 10 May 1869 — Andrew J. Russell · public domain (restored)",
-              "use": "both",
-              "note": "T4.2 — the golden spike photograph. Held. SOURCED 2026-09-09, 4514×3435."
-            },
-            {
-              "kind": "image",
-              "ref": "https://commons.wikimedia.org/wiki/File:L%27inauguration_du_canal_de_Suez,_17_November_1869_Gal18_riou_001f.jpg",
-              "start_s": 52,
-              "end_s": 61,
-              "license": "public-domain",
-              "manifest_id": "M-213",
-              "attribution": "The inauguration of the Suez Canal, 17 November 1869 — engraving after Édouard Riou · public domain",
-              "use": "both",
-              "note": "T4.3 — the opening ceremony, engraved. SOURCED 2026-09-09, 1400×894."
+              ],
+              "on_sentence": 5
             },
             {
               "kind": "image",
               "ref": "https://commons.wikimedia.org/wiki/File:Australian_Overland_Telegraph_Line_repeater_station_at_Strangways_Springs,_1872.jpg",
-              "start_s": 61,
-              "end_s": 72,
+              "start_s": 62,
+              "end_s": 76,
               "license": "public-domain",
               "manifest_id": "M-214",
               "attribution": "Overland Telegraph repeater station, Strangways Springs, South Australia, 1872 — public domain",
               "use": "both",
-              "note": "T4.4 — a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. SOURCED 2026-09-09, 790×378."
+              "note": "T4.4 — a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. SOURCED 2026-09-09, 790×378.",
+              "on_sentence": 7
             },
             {
               "kind": "generated",
               "ref": "generated/g-35/card.json",
-              "start_s": 72,
-              "end_s": 79,
+              "start_s": 76,
+              "end_s": 86,
               "license": "generated",
               "manifest_id": "G-35",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T4.5 — 36,000 POLES / 11 REPEATER STATIONS. Two lines. DOES NOT EXIST YET."
+              "note": "T4.5 — 36,000 POLES / 11 REPEATER STATIONS. Two lines. DOES NOT EXIST YET.",
+              "on_sentence": 8
             },
             {
               "kind": "generated",
               "ref": "generated/g-13/enablers-map.json",
-              "start_s": 79,
+              "start_s": 86,
               "end_s": 109,
               "license": "generated",
               "manifest_id": "G-13",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T4.6 — back to the map, which now completes the loop and holds while the series promise is spoken over it. HOLD 134–140 on the closed circuit, no words.",
+              "note": "T4.7 — the wire draws down Australia, the circuit closes, and the map holds while the series promise is spoken over it. HOLD to the end of the scene. Continuation slots list what is ALREADY on the map as t:0 — a slot has no memory of the one before it.",
               "beats": [
                 {
+                  "show": "enabler:B",
+                  "t": 0
+                },
+                {
+                  "show": "enabler:A",
+                  "t": 0
+                },
+                {
+                  "show": "enabler:C",
+                  "t": 0
+                },
+                {
+                  "show": "enabler:D",
+                  "t": 0
+                },
+                {
+                  "show": "enabler:E",
+                  "t": 0.4
+                },
+                {
                   "show": "close",
-                  "t": 0.2
+                  "s": 9
                 }
-              ]
+              ],
+              "on_sentence": 9
             }
           ],
           "review": {
-            "notes": "Silence 134–140.\nFill 58%.\nThis scene carries the series introduction (D9: no separate intro card — the route is already on screen).\nG-13 has been outstanding since the first film cut. Nothing else in the episode matters as much.",
+            "notes": "Silence 134–140.\nFill 58%.\nThis scene carries the series introduction (D9: no separate intro card — the route is already on screen).\nG-13 has been outstanding since the first film cut. Nothing else in the episode matters as much.\nSLOTS INTERLEAVED 2026-09-09: the map used to run 0–45 s with its reveals on sentences 3–9, then three photographs afterwards — so the map would have been cut away before its last two reveals fired, and the golden spike would have played under the Suez line. The map is now the spine and the photographs cut into it on the sentence that names each work.",
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending"
@@ -776,7 +842,8 @@
               "attribution": "'Old London Street Scenes' (1903) — BFI / London's Screen Archives — public domain",
               "use": "both",
               "note": "T6.1 — crowd and traffic, the scale of the thing before any number is spoken.",
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 0
             },
             {
               "kind": "image",
@@ -787,7 +854,8 @@
               "manifest_id": "M-30",
               "attribution": "Plan of London, *London Illustrated* (1872) — public domain",
               "use": "both",
-              "note": "T6.2 — the whole plan, pushing slowly out to show the sprawl."
+              "note": "T6.2 — the whole plan, pushing slowly out to show the sprawl.",
+              "on_sentence": 1
             },
             {
               "kind": "generated",
@@ -798,7 +866,8 @@
               "manifest_id": "G-37",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T6.3 — the comparison card as bars, not text: LONDON 3.9m / BEIJING / PARIS / NEW YORK. Four bars, four labels. The guide says the ratios; the card shows them. DOES NOT EXIST YET."
+              "note": "T6.3 — the comparison card as bars, not text: LONDON 3.9m / BEIJING / PARIS / NEW YORK. Four bars, four labels. The guide says the ratios; the card shows them. DOES NOT EXIST YET.",
+              "on_sentence": 2
             },
             {
               "kind": "image",
@@ -816,7 +885,8 @@
                 "w": 0.18,
                 "h": 0.18,
                 "why": "The docks, from the same 11,419 px sheet, for the port line. Post-crop ~2,055 px, so it plays full width, not as a plate."
-              }
+              },
+              "on_sentence": 5
             },
             {
               "kind": "image",
@@ -827,7 +897,8 @@
               "manifest_id": "M-217",
               "attribution": "King's Cross Metropolitan Railway station, interior, 1862 — public domain (Wikimedia Commons)",
               "use": "both",
-              "note": "T6.5 — the world's first underground, packed, in a cutting. The best single image of 'new'. SOURCED 2026-09-09, 966×724."
+              "note": "T6.5 — the world's first underground, packed, in a cutting. The best single image of 'new'. SOURCED 2026-09-09, 966×724.",
+              "on_sentence": 7
             },
             {
               "kind": "image",
@@ -838,7 +909,8 @@
               "manifest_id": "M-24",
               "attribution": "'Hotel at Charing Cross' — engraving, *London Illustrated* (1872) — public domain",
               "use": "both",
-              "note": "T6.6 — his station, eight years old, drawn the year he leaves."
+              "note": "T6.6 — his station, eight years old, drawn the year he leaves.",
+              "on_sentence": 11
             },
             {
               "kind": "footage",
@@ -850,7 +922,8 @@
               "attribution": "'A Trip Through The Streets of London' (26 Sep 1917) — Imperial War Museum — public domain",
               "use": "both",
               "note": "T6.7 — moving through the new city. 1280×720, the best-looking archive we have.",
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 13
             },
             {
               "kind": "image",
@@ -895,12 +968,13 @@
               "kind": "generated",
               "ref": "generated/g-38/walk.json",
               "start_s": 0,
-              "end_s": 22,
+              "end_s": 42,
               "license": "generated",
               "manifest_id": "G-38",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T7.1 — THE ANCHOR CARD (G-38). Own graphic from generated/g-38/walk.json, drawn by lib/walkmap.mjs. Three pins drop as they are named. Almost nothing else on the frame: the argument is that the dots are close together, and every extra mark makes that harder to see. Scale bar, no street names — the route line is a schematic tracing of the streets the research names, not a survey, and the card must not imply otherwise (see walk.json _provenance).",
+              "note": "T7.1 — THE ANCHOR CARD (G-38), one continuous slot covering every reveal: three pins as they are named, then the walk drawing, then '1,151 steps'. It used to be cut away after 22 s of 66, i.e. before the route drew.",
+              "on_sentence": 0,
               "beats": [
                 {
                   "show": "pin:savile",
@@ -913,33 +987,7 @@
                 {
                   "show": "pin:charing",
                   "s": 4
-                }
-              ]
-            },
-            {
-              "kind": "footage",
-              "ref": "media/files/m66-savile-row-hyperlapse.mp4",
-              "start_s": 22,
-              "end_s": 31,
-              "license": "cc-by-sa-4.0",
-              "manifest_id": "M-66",
-              "attribution": "KartaView / telenavdrives (17 Jan 2018) · CC BY-SA 4.0 · adapted",
-              "use": "both",
-              "note": "T7.2 — moving down Savile Row. The walk begins.",
-              "sa": true,
-              "audio": "mute"
-            },
-            {
-              "kind": "generated",
-              "ref": "generated/g-38/walk.json",
-              "start_s": 31,
-              "end_s": 45,
-              "license": "generated",
-              "manifest_id": "G-38",
-              "attribution": "Yunyou studio, generated",
-              "use": "both",
-              "note": "T7.3 — the walk draws, Savile Row to Pall Mall, and '1,151 steps' lands beside it on the sentence that says the number. This slot replaces the separate G-39 steps card, which was drawing the same fact twice.",
-              "beats": [
+                },
                 {
                   "show": "route",
                   "s": 5
@@ -952,31 +1000,47 @@
             },
             {
               "kind": "footage",
+              "ref": "media/files/m66-savile-row-hyperlapse.mp4",
+              "start_s": 42,
+              "end_s": 52,
+              "license": "cc-by-sa-4.0",
+              "manifest_id": "M-66",
+              "attribution": "KartaView / telenavdrives (17 Jan 2018) · CC BY-SA 4.0 · adapted",
+              "use": "both",
+              "note": "T7.2 — moving down Savile Row. The walk begins.",
+              "sa": true,
+              "audio": "mute",
+              "on_sentence": 8
+            },
+            {
+              "kind": "footage",
               "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
-              "start_s": 45,
-              "end_s": 55,
+              "start_s": 52,
+              "end_s": 60,
               "license": "cc-by-sa-4.0",
               "manifest_id": "M-67",
               "attribution": "KartaView / telenavdrives (25 Mar 2016) · CC BY-SA 4.0 · adapted",
               "use": "both",
               "note": "T7.4 — the second leg, Pall Mall, still moving. HOLD 58–64.",
               "sa": true,
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 9
             },
             {
               "kind": "generated",
               "ref": "generated/g-38/walk.json",
-              "start_s": 55,
+              "start_s": 60,
               "end_s": 66,
               "license": "generated",
               "manifest_id": "G-38",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T7.5 — back to the finished card under the last line. Three pins, one walk, a scale bar. HOLD to the end."
+              "note": "T7.4 — back to the finished card under the last line. HOLD to the end.",
+              "on_sentence": 10
             }
           ],
           "review": {
-            "notes": "Silence 58–64.\nFill 58%.\nThis scene exists because the founder found T7–T11 disconnected from the novel. It is the anchor; if it is cut, the place block loses its reason.\nG-39 (a standalone '1,151 steps' card) is RETIRED: the walk map carries the step count on the line itself, so the card was stating the same fact twice. Slots rebuilt so the route draws on the sentence that describes it rather than under footage.\n⚠ BEAT ALIGNMENT UNVERIFIED until a real render resolves the TTS timings — check the render log and move the window, not the beat.",
+            "notes": "Silence 58–64.\nFill 58%.\nThis scene exists because the founder found T7–T11 disconnected from the novel. It is the anchor; if it is cut, the place block loses its reason.\nG-39 (a standalone '1,151 steps' card) is RETIRED: the walk map carries the step count on the line itself, so the card was stating the same fact twice. Slots rebuilt so the route draws on the sentence that describes it rather than under footage.\n⚠ BEAT ALIGNMENT UNVERIFIED until a real render resolves the TTS timings — check the render log and move the window, not the beat.\nSLOTS REBUILT 2026-09-09: the card's five reveals are spread across sentences 2–6, but its first slot ended at 22 s of 66 — the card was gone before the walk drew. One long slot now carries all of them.",
             "fact_check": "pending",
             "rights": "pending",
             "qa": "pending"
@@ -1012,7 +1076,8 @@
               "use": "both",
               "note": "T8.1 — clubland at street level, moving.",
               "sa": true,
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 0
             },
             {
               "kind": "image",
@@ -1023,7 +1088,8 @@
               "manifest_id": "M-23",
               "attribution": "Reform Club saloon, *London Interiors* (1841) — public domain",
               "use": "both",
-              "note": "T8.2 — the interior, engraved. 632×521 — plate on the mount, never stretched."
+              "note": "T8.2 — the interior, engraved. 632×521 — plate on the mount, never stretched.",
+              "on_sentence": 3
             },
             {
               "kind": "image",
@@ -1045,7 +1111,8 @@
               "manifest_id": "G-40",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T8.4 — the ballot box: white ball / black ball, and the word BLACKBALLED. One idea, one card. DOES NOT EXIST YET."
+              "note": "T8.4 — the ballot box: white ball / black ball, and the word BLACKBALLED. One idea, one card. DOES NOT EXIST YET.",
+              "on_sentence": 5
             },
             {
               "kind": "image",
@@ -1057,7 +1124,8 @@
               "attribution": "The Athenæum Club, Pall Mall — Kevin Gordon (geograph, 2008) · CC BY-SA 2.0 · adapted",
               "use": "both",
               "note": "T8.5 — one door.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 9
             },
             {
               "kind": "image",
@@ -1091,7 +1159,8 @@
               "attribution": "The Reform Club doorway, 104 Pall Mall — Phil Guest (2014) · CC BY-SA 2.0 · adapted",
               "use": "both",
               "note": "T8.8 — arrive at his door.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 10
             },
             {
               "kind": "footage",
@@ -1145,7 +1214,8 @@
               "attribution": "Facade of The Reform Club, Pall Mall — Philip Cornwall (geograph, 2019) · CC BY-SA 2.0 · adapted",
               "use": "both",
               "note": "T9.1 — the façade, full height. A palazzo, and it should read as one.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 0
             },
             {
               "kind": "image",
@@ -1156,7 +1226,8 @@
               "manifest_id": "M-22",
               "attribution": "Reform Club, north elevation — from *Life and Works of Sir Charles Barry* · public domain",
               "use": "both",
-              "note": "T9.2 — Barry's drawing. The building as an argument, on paper."
+              "note": "T9.2 — Barry's drawing. The building as an argument, on paper.",
+              "on_sentence": 1
             },
             {
               "kind": "generated",
@@ -1167,7 +1238,8 @@
               "manifest_id": "G-42",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T9.3 — two doors on one street: CARLTON 1832 (Conservative) / REFORM 1836 (Reformers), and the few doors between them drawn to scale. The whole topic in one card. DOES NOT EXIST YET."
+              "note": "T9.3 — two doors on one street: CARLTON 1832 (Conservative) / REFORM 1836 (Reformers), and the few doors between them drawn to scale. The whole topic in one card. DOES NOT EXIST YET.",
+              "on_sentence": 2
             },
             {
               "kind": "image",
@@ -1178,7 +1250,8 @@
               "manifest_id": "M-23",
               "attribution": "Reform Club saloon, *London Interiors* (1841) — public domain",
               "use": "both",
-              "note": "T9.4 — inside, under 'the room where a fictional Englishman bets…'."
+              "note": "T9.4 — inside, under 'the room where a fictional Englishman bets…'.",
+              "on_sentence": 3
             },
             {
               "kind": "image",
@@ -1190,7 +1263,8 @@
               "attribution": "Philafrenzy (2015) · Wikimedia Commons · CC BY-SA 4.0 · adapted",
               "use": "both",
               "note": "T9.5 — the same building, today, from the corner.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 4
             },
             {
               "kind": "image",
@@ -1201,7 +1275,8 @@
               "manifest_id": "M-219",
               "attribution": "(pending — rights unresolved)",
               "use": "both",
-              "note": "T9.6 — the Reform's own library, 85,000 volumes. ⚠ The club controls interior photography; if it cannot be cleared, hold on M-23 and let the number sit on a card instead. NOT YET SOURCED — Content Preparer."
+              "note": "T9.6 — the Reform's own library, 85,000 volumes. ⚠ The club controls interior photography; if it cannot be cleared, hold on M-23 and let the number sit on a card instead. NOT YET SOURCED — Content Preparer.",
+              "on_sentence": 6
             },
             {
               "kind": "image",
@@ -1254,7 +1329,8 @@
               "note": "T10.1 — the entire street in one unbroken move, north to south. The subject, stated by moving through it.",
               "sa": true,
               "audio": "mute",
-              "fallback": "M-66"
+              "fallback": "M-66",
+              "on_sentence": 0
             },
             {
               "kind": "generated",
@@ -1265,7 +1341,8 @@
               "manifest_id": "G-10",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T10.2 — the measure card: Conduit Street to Vigo Street, one line, '280 m' large, two labels only. The guide does not read the number the card shows. STILL DOES NOT EXIST."
+              "note": "T10.2 — the measure card: Conduit Street to Vigo Street, one line, '280 m' large, two labels only. The guide does not read the number the card shows. STILL DOES NOT EXIST.",
+              "on_sentence": 2
             },
             {
               "kind": "image",
@@ -1276,7 +1353,8 @@
               "manifest_id": "M-32",
               "attribution": "Savile Row, c. 1890 — Henry Poole & Co archive photograph — public domain",
               "use": "both",
-              "note": "T10.3 — the street when it was already the street."
+              "note": "T10.3 — the street when it was already the street.",
+              "on_sentence": 4
             },
             {
               "kind": "image",
@@ -1310,7 +1388,8 @@
               "manifest_id": "G-43",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T10.6 — one dated line: BESPOKE, adj. 1755 · TAILORS ON SAVILE ROW c.1803. The myth dies on a date card, not in an argument. DOES NOT EXIST YET."
+              "note": "T10.6 — one dated line: BESPOKE, adj. 1755 · TAILORS ON SAVILE ROW c.1803. The myth dies on a date card, not in an argument. DOES NOT EXIST YET.",
+              "on_sentence": 7
             },
             {
               "kind": "generated",
@@ -1321,7 +1400,8 @@
               "manifest_id": "G-44",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T10.7 — the 2008 ruling, quiet type: £495, machine-sewn, still 'bespoke'. DOES NOT EXIST YET."
+              "note": "T10.7 — the 2008 ruling, quiet type: £495, machine-sewn, still 'bespoke'. DOES NOT EXIST YET.",
+              "on_sentence": 8
             },
             {
               "kind": "generated",
@@ -1332,7 +1412,8 @@
               "manifest_id": "G-45",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T10.8 — the 100-yard circle drawn on the street plan, with the standard's three numbers: 50 hours · 3 fittings · 1 pattern. DOES NOT EXIST YET."
+              "note": "T10.8 — the 100-yard circle drawn on the street plan, with the standard's three numbers: 50 hours · 3 fittings · 1 pattern. DOES NOT EXIST YET.",
+              "on_sentence": 11
             },
             {
               "kind": "image",
@@ -1344,7 +1425,8 @@
               "attribution": "View up Savile Row — Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
               "use": "both",
               "note": "T10.9 — the street today, looking up it.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 13
             },
             {
               "kind": "image",
@@ -1355,7 +1437,8 @@
               "manifest_id": "M-50",
               "attribution": "Passepartout, Neuville/Benett plate 05 (1872/73) — public domain",
               "use": "both",
-              "note": "T10.10 — the carpet-bag turn. HOLD to the end: the man who packed nothing, on the street that makes everything."
+              "note": "T10.10 — the carpet-bag turn. HOLD to the end: the man who packed nothing, on the street that makes everything.",
+              "on_sentence": 14
             }
           ],
           "review": {
@@ -1399,7 +1482,8 @@
               "attribution": "Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
               "use": "both",
               "note": "T11.1 — the corner at the top of the street.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 0
             },
             {
               "kind": "image",
@@ -1410,7 +1494,8 @@
               "manifest_id": "M-221",
               "attribution": "Royal Geographical Society map room / meeting, 19th c. — public domain",
               "use": "both",
-              "note": "T11.2 — the room itself: maps, men, argument. The whole topic depends on this image existing. NOT YET SOURCED — Content Preparer."
+              "note": "T11.2 — the room itself: maps, men, argument. The whole topic depends on this image existing. NOT YET SOURCED — Content Preparer.",
+              "on_sentence": 1
             },
             {
               "kind": "image",
@@ -1421,7 +1506,8 @@
               "manifest_id": "M-222",
               "attribution": "David Livingstone, photographed by Thomas Annan — public domain (restored)",
               "use": "both",
-              "note": "T11.3 — Livingstone. Held, plainly, no music sting. SOURCED 2026-09-09, 1920×2347."
+              "note": "T11.3 — Livingstone. Held, plainly, no music sting. SOURCED 2026-09-09, 1920×2347.",
+              "on_sentence": 2
             },
             {
               "kind": "generated",
@@ -1443,7 +1529,8 @@
               "manifest_id": "M-34",
               "attribution": "Neuville frontispiece (1872/73) — public domain",
               "use": "both",
-              "note": "T11.5 — Fogg, against the explorers. The cut is the argument."
+              "note": "T11.5 — Fogg, against the explorers. The cut is the argument.",
+              "on_sentence": 3
             },
             {
               "kind": "generated",
@@ -1454,7 +1541,8 @@
               "manifest_id": "G-47",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T11.6 — the street drawn with both ends labelled: No. 1 THE ROYAL GEOGRAPHICAL SOCIETY / No. 7 (Verne's Fogg). 280 m between them. DOES NOT EXIST YET."
+              "note": "T11.6 — the street drawn with both ends labelled: No. 1 THE ROYAL GEOGRAPHICAL SOCIETY / No. 7 (Verne's Fogg). 280 m between them. DOES NOT EXIST YET.",
+              "on_sentence": 4
             },
             {
               "kind": "image",
@@ -1466,7 +1554,8 @@
               "attribution": "Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
               "use": "both",
               "note": "T11.7 — HOLD the last ~7 s on the street after the 1912 line.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 6
             }
           ],
           "review": {
@@ -1503,7 +1592,8 @@
               "attribution": "Trafalgar Square, London — Kauko Helavuo (2015) · licence to confirm before publication",
               "use": "both",
               "note": "T13.1 — Trafalgar Square today, moving. RESOLVED 2026-09-09: this shot does NOT contain the Charles I statue and no longer needs to — M-223 carries the statue in the next slot. M-84's job here is only 'the place, alive, now'. ⚠ Licence still to confirm with the uploader before publication.",
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 0
             },
             {
               "kind": "image",
@@ -1515,7 +1605,8 @@
               "attribution": "Equestrian statue of Charles I, Charing Cross — Stephen Walli (Flickr) · CC BY-SA 2.0 · adapted",
               "use": "both",
               "note": "T13.2 — the equestrian bronze itself, close. The topic is about this object; it must be on screen. SOURCED 2026-09-09, 2736×3648.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 2
             },
             {
               "kind": "generated",
@@ -1526,7 +1617,8 @@
               "manifest_id": "G-48",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T13.3 — a British road sign reading LONDON 400, then a line drawn from it to this one point. DOES NOT EXIST YET."
+              "note": "T13.3 — a British road sign reading LONDON 400, then a line drawn from it to this one point. DOES NOT EXIST YET.",
+              "on_sentence": 4
             },
             {
               "kind": "image",
@@ -1538,7 +1630,8 @@
               "attribution": "Queen Eleanor Memorial Cross (E.M. Barry, 1865) — Tony Hisgett (2010) · CC BY-SA 2.0 · adapted",
               "use": "both",
               "note": "T13.4 — the replica, looking medieval and being 1865.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 7
             },
             {
               "kind": "image",
@@ -1549,7 +1642,8 @@
               "manifest_id": "M-74",
               "attribution": "The Eleanor Cross from Charing Cross station yard, c.1903 — public domain",
               "use": "both",
-              "note": "T13.5 — the same object, a century ago."
+              "note": "T13.5 — the same object, a century ago.",
+              "on_sentence": 9
             },
             {
               "kind": "generated",
@@ -1560,7 +1654,8 @@
               "manifest_id": "G-49",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T13.6 — the twelve crosses drawn as twelve stops down England, Harby to Westminster, revealed one at a time. Charing lights last. Few labels. DOES NOT EXIST YET."
+              "note": "T13.6 — the twelve crosses drawn as twelve stops down England, Harby to Westminster, revealed one at a time. Charing lights last. Few labels. DOES NOT EXIST YET.",
+              "on_sentence": 10
             },
             {
               "kind": "image",
@@ -1571,7 +1666,8 @@
               "manifest_id": "M-24",
               "attribution": "'Hotel at Charing Cross' — *London Illustrated* (1872) — public domain",
               "use": "both",
-              "note": "T13.7 — the station the year he leaves from it."
+              "note": "T13.7 — the station the year he leaves from it.",
+              "on_sentence": 14
             },
             {
               "kind": "image",
@@ -1582,7 +1678,8 @@
               "manifest_id": "M-27",
               "attribution": "Charing Cross station, Paris boat train — S.E.&C.R. postcard, 1905 · public domain",
               "use": "both",
-              "note": "T13.8 — the boat train platform."
+              "note": "T13.8 — the boat train platform.",
+              "on_sentence": 15
             },
             {
               "kind": "image",
@@ -1636,7 +1733,8 @@
               "manifest_id": "M-50",
               "attribution": "Passepartout, Neuville/Benett plate 05 — public domain",
               "use": "both",
-              "note": "T14.1 — the servant, ten minutes from leaving."
+              "note": "T14.1 — the servant, ten minutes from leaving.",
+              "on_sentence": 1
             },
             {
               "kind": "generated",
@@ -1647,7 +1745,8 @@
               "manifest_id": "G-50",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T14.2 — the packing list as an inventory card: 2 shirts · 3 pairs of stockings · mackintosh · cloak · Bradshaw. For three months. DOES NOT EXIST YET."
+              "note": "T14.2 — the packing list as an inventory card: 2 shirts · 3 pairs of stockings · mackintosh · cloak · Bradshaw. For three months. DOES NOT EXIST YET.",
+              "on_sentence": 3
             },
             {
               "kind": "image",
@@ -1658,7 +1757,8 @@
               "manifest_id": "M-27",
               "attribution": "Charing Cross station, Paris boat train — S.E.&C.R. postcard, 1905 · public domain",
               "use": "both",
-              "note": "T14.3 — the platform, the boat train."
+              "note": "T14.3 — the platform, the boat train.",
+              "on_sentence": 4
             },
             {
               "kind": "image",
@@ -1670,7 +1770,8 @@
               "attribution": "Pocket watch, savonette type — Isabelle Grosjean · CC BY-SA 3.0 · adapted",
               "use": "both",
               "note": "T14.4 — a pocket watch face. SOURCED 2026-09-09, 800×697. ⚠ The dial cannot be made to read four minutes slow without altering the photograph, which we do not do. So the SHOT is a watch and the NARRATION carries the four minutes — do not add hands, and do not caption a time. This is the seed of Episode 8's ending; plant it plainly and never mention it again this episode.",
-              "sa": true
+              "sa": true,
+              "on_sentence": 6
             },
             {
               "kind": "footage",
@@ -1683,7 +1784,8 @@
               "use": "both",
               "note": "T14.5 — leaving over the river at night, in rain. The bed under this is M-58/M-59 rain + M-60/M-61 steam.",
               "sa": true,
-              "audio": "mute"
+              "audio": "mute",
+              "on_sentence": 7
             },
             {
               "kind": "image",
@@ -1705,7 +1807,34 @@
               "manifest_id": "G-13",
               "attribution": "Yunyou studio, generated",
               "use": "both",
-              "note": "T14.7 — the series map again, now travelling east along the route as the lookout is spoken: Channel, Alps, Suez, India, the Pacific. It stops before the Pacific is named on screen — the date line is E8's and must not be spoiled."
+              "note": "T14.7 — the series map again, now travelling east along the route as the lookout is spoken: Channel, Alps, Suez, India, the Pacific. It stops before the Pacific is named on screen — the date line is E8's and must not be spoiled. All five already up (t:0) and the loop closing — this is the finished circuit as the lookout is spoken, not a redraw.",
+              "on_sentence": 8,
+              "beats": [
+                {
+                  "show": "enabler:B",
+                  "t": 0
+                },
+                {
+                  "show": "enabler:A",
+                  "t": 0
+                },
+                {
+                  "show": "enabler:C",
+                  "t": 0
+                },
+                {
+                  "show": "enabler:D",
+                  "t": 0
+                },
+                {
+                  "show": "enabler:E",
+                  "t": 0
+                },
+                {
+                  "show": "close",
+                  "t": 0.5
+                }
+              ]
             },
             {
               "kind": "footage",

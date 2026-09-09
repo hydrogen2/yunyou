@@ -23,7 +23,8 @@
       "use": "both",
       "note": "T8.1 — clubland at street level, moving.",
       "sa": true,
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 0
     },
     {
       "kind": "image",
@@ -34,7 +35,8 @@
       "manifest_id": "M-23",
       "attribution": "Reform Club saloon, *London Interiors* (1841) — public domain",
       "use": "both",
-      "note": "T8.2 — the interior, engraved. 632×521 — plate on the mount, never stretched."
+      "note": "T8.2 — the interior, engraved. 632×521 — plate on the mount, never stretched.",
+      "on_sentence": 3
     },
     {
       "kind": "image",
@@ -56,7 +58,8 @@
       "manifest_id": "G-40",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T8.4 — the ballot box: white ball / black ball, and the word BLACKBALLED. One idea, one card. DOES NOT EXIST YET."
+      "note": "T8.4 — the ballot box: white ball / black ball, and the word BLACKBALLED. One idea, one card. DOES NOT EXIST YET.",
+      "on_sentence": 5
     },
     {
       "kind": "image",
@@ -68,7 +71,8 @@
       "attribution": "The Athenæum Club, Pall Mall — Kevin Gordon (geograph, 2008) · CC BY-SA 2.0 · adapted",
       "use": "both",
       "note": "T8.5 — one door.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 9
     },
     {
       "kind": "image",
@@ -102,7 +106,8 @@
       "attribution": "The Reform Club doorway, 104 Pall Mall — Phil Guest (2014) · CC BY-SA 2.0 · adapted",
       "use": "both",
       "note": "T8.8 — arrive at his door.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 10
     },
     {
       "kind": "footage",

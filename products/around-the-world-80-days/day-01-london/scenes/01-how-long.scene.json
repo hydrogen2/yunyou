@@ -21,7 +21,8 @@
       "manifest_id": "M-200",
       "attribution": "Earth at night from the International Space Station (ISS030-E-10008) — NASA Earth Observatory · CC BY 2.0 · adapted",
       "use": "both",
-      "note": "T1.1 — Earth's limb from orbit, night side with city lights. Opens cold, no title. Must read with sound off. SOURCED 2026-09-09, 1440×960."
+      "note": "T1.1 — Earth's limb from orbit, night side with city lights. Opens cold, no title. Must read with sound off. SOURCED 2026-09-09, 1440×960.",
+      "on_sentence": 0
     },
     {
       "kind": "footage",
@@ -33,7 +34,8 @@
       "attribution": "(pending) · CC BY 4.0 · adapted",
       "use": "both",
       "note": "T1.2 — wing and cloud from a cabin window, or a departure board rolling. Modern, banal, deliberately. NOT YET SOURCED — Content Preparer.",
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 2
     },
     {
       "kind": "generated",
@@ -44,7 +46,8 @@
       "manifest_id": "G-30",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T1.3 — the comparison card, built one line at a time: 90 MINUTES / 44 HOURS 33 MINUTES / 80 DAYS. Three lines, nothing else. Type large enough to read on a phone. The guide does not read the numbers the card shows. ESSENTIAL, DOES NOT EXIST YET."
+      "note": "T1.3 — the comparison card, built one line at a time: 90 MINUTES / 44 HOURS 33 MINUTES / 80 DAYS. Three lines, nothing else. Type large enough to read on a phone. The guide does not read the numbers the card shows. ESSENTIAL, DOES NOT EXIST YET.",
+      "on_sentence": 4
     },
     {
       "kind": "image",
@@ -55,7 +58,8 @@
       "manifest_id": "M-202",
       "attribution": "Astronaut photograph ISS072-E-806482, 19 March 2025 — NASA · public domain",
       "use": "both",
-      "note": "T1.4 — HOLD 34–40, no words. ⚠ SUBSTITUTE: the slot asked for an orbital SUNRISE and none was found on Commons; this is a second night-side frame, 720×480. It still holds the beat, but the 'sixteen sunrises' line now plays over night rather than over a sunrise. Re-source if a sunrise turns up."
+      "note": "T1.4 — HOLD 34–40, no words. ⚠ SUBSTITUTE: the slot asked for an orbital SUNRISE and none was found on Commons; this is a second night-side frame, 720×480. It still holds the beat, but the 'sixteen sunrises' line now plays over night rather than over a sunrise. Re-source if a sunrise turns up.",
+      "on_sentence": 5
     },
     {
       "kind": "image",
@@ -73,7 +77,8 @@
         "w": 0.5,
         "h": 0.5,
         "why": "Central London only, from the 1872 plan. The whole sheet at 1080p is unreadable and the beat is 'this is the city he leaves from', not 'here is a map'."
-      }
+      },
+      "on_sentence": 6
     },
     {
       "kind": "image",
@@ -84,7 +89,8 @@
       "manifest_id": "M-34",
       "attribution": "Frontispiece 'Phileas Fogg' — Alphonse de Neuville, Hetzel edition (1872/73) — public domain",
       "use": "both",
-      "note": "T1.6 — first sight of Fogg. Full frame, no motion. He is introduced as a bet, not as a man."
+      "note": "T1.6 — first sight of Fogg. Full frame, no motion. He is introduced as a bet, not as a man.",
+      "on_sentence": 10
     },
     {
       "kind": "generated",
@@ -95,7 +101,8 @@
       "manifest_id": "G-31",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T1.7 — one numeral, '80', on the house cream card. Held. DOES NOT EXIST YET."
+      "note": "T1.7 — one numeral, '80', on the house cream card. Held. DOES NOT EXIST YET.",
+      "on_sentence": 11
     },
     {
       "kind": "image",

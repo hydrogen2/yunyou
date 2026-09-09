@@ -16,12 +16,13 @@
       "kind": "generated",
       "ref": "generated/g-38/walk.json",
       "start_s": 0,
-      "end_s": 22,
+      "end_s": 42,
       "license": "generated",
       "manifest_id": "G-38",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T7.1 — THE ANCHOR CARD (G-38). Own graphic from generated/g-38/walk.json, drawn by lib/walkmap.mjs. Three pins drop as they are named. Almost nothing else on the frame: the argument is that the dots are close together, and every extra mark makes that harder to see. Scale bar, no street names — the route line is a schematic tracing of the streets the research names, not a survey, and the card must not imply otherwise (see walk.json _provenance).",
+      "note": "T7.1 — THE ANCHOR CARD (G-38), one continuous slot covering every reveal: three pins as they are named, then the walk drawing, then '1,151 steps'. It used to be cut away after 22 s of 66, i.e. before the route drew.",
+      "on_sentence": 0,
       "beats": [
         {
           "show": "pin:savile",
@@ -34,33 +35,7 @@
         {
           "show": "pin:charing",
           "s": 4
-        }
-      ]
-    },
-    {
-      "kind": "footage",
-      "ref": "media/files/m66-savile-row-hyperlapse.mp4",
-      "start_s": 22,
-      "end_s": 31,
-      "license": "cc-by-sa-4.0",
-      "manifest_id": "M-66",
-      "attribution": "KartaView / telenavdrives (17 Jan 2018) · CC BY-SA 4.0 · adapted",
-      "use": "both",
-      "note": "T7.2 — moving down Savile Row. The walk begins.",
-      "sa": true,
-      "audio": "mute"
-    },
-    {
-      "kind": "generated",
-      "ref": "generated/g-38/walk.json",
-      "start_s": 31,
-      "end_s": 45,
-      "license": "generated",
-      "manifest_id": "G-38",
-      "attribution": "Yunyou studio, generated",
-      "use": "both",
-      "note": "T7.3 — the walk draws, Savile Row to Pall Mall, and '1,151 steps' lands beside it on the sentence that says the number. This slot replaces the separate G-39 steps card, which was drawing the same fact twice.",
-      "beats": [
+        },
         {
           "show": "route",
           "s": 5
@@ -73,31 +48,47 @@
     },
     {
       "kind": "footage",
+      "ref": "media/files/m66-savile-row-hyperlapse.mp4",
+      "start_s": 42,
+      "end_s": 52,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-66",
+      "attribution": "KartaView / telenavdrives (17 Jan 2018) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T7.2 — moving down Savile Row. The walk begins.",
+      "sa": true,
+      "audio": "mute",
+      "on_sentence": 8
+    },
+    {
+      "kind": "footage",
       "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
-      "start_s": 45,
-      "end_s": 55,
+      "start_s": 52,
+      "end_s": 60,
       "license": "cc-by-sa-4.0",
       "manifest_id": "M-67",
       "attribution": "KartaView / telenavdrives (25 Mar 2016) · CC BY-SA 4.0 · adapted",
       "use": "both",
       "note": "T7.4 — the second leg, Pall Mall, still moving. HOLD 58–64.",
       "sa": true,
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 9
     },
     {
       "kind": "generated",
       "ref": "generated/g-38/walk.json",
-      "start_s": 55,
+      "start_s": 60,
       "end_s": 66,
       "license": "generated",
       "manifest_id": "G-38",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T7.5 — back to the finished card under the last line. Three pins, one walk, a scale bar. HOLD to the end."
+      "note": "T7.4 — back to the finished card under the last line. HOLD to the end.",
+      "on_sentence": 10
     }
   ],
   "review": {
-    "notes": "Silence 58–64.\nFill 58%.\nThis scene exists because the founder found T7–T11 disconnected from the novel. It is the anchor; if it is cut, the place block loses its reason.\nG-39 (a standalone '1,151 steps' card) is RETIRED: the walk map carries the step count on the line itself, so the card was stating the same fact twice. Slots rebuilt so the route draws on the sentence that describes it rather than under footage.\n⚠ BEAT ALIGNMENT UNVERIFIED until a real render resolves the TTS timings — check the render log and move the window, not the beat.",
+    "notes": "Silence 58–64.\nFill 58%.\nThis scene exists because the founder found T7–T11 disconnected from the novel. It is the anchor; if it is cut, the place block loses its reason.\nG-39 (a standalone '1,151 steps' card) is RETIRED: the walk map carries the step count on the line itself, so the card was stating the same fact twice. Slots rebuilt so the route draws on the sentence that describes it rather than under footage.\n⚠ BEAT ALIGNMENT UNVERIFIED until a real render resolves the TTS timings — check the render log and move the window, not the beat.\nSLOTS REBUILT 2026-09-09: the card's five reveals are spread across sentences 2–6, but its first slot ended at 22 s of 66 — the card was gone before the walk drew. One long slot now carries all of them.",
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending"

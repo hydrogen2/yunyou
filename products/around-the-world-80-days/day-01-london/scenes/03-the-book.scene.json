@@ -21,7 +21,8 @@
       "manifest_id": "M-206",
       "attribution": "Jules Verne photographed by Félix Nadar, c. 1878 — public domain (Wikimedia Commons)",
       "use": "both",
-      "note": "T3.1 — the author, named at last. The episode had been mentioning Verne for two minutes without ever saying what he wrote."
+      "note": "T3.1 — the author, named at last. The episode had been mentioning Verne for two minutes without ever saying what he wrote.",
+      "on_sentence": 1
     },
     {
       "kind": "image",
@@ -32,7 +33,8 @@
       "manifest_id": "M-52",
       "attribution": "Route map, Hetzel edition — Neuville/Benett plate 01 (1872/73) — public domain",
       "use": "both",
-      "note": "T3.2 — the Hetzel edition's own route map: the book, as an object."
+      "note": "T3.2 — the Hetzel edition's own route map: the book, as an object.",
+      "on_sentence": 2
     },
     {
       "kind": "generated",
@@ -61,7 +63,8 @@
           "show": "end",
           "s": 6
         }
-      ]
+      ],
+      "on_sentence": 3
     },
     {
       "kind": "image",
@@ -72,7 +75,8 @@
       "manifest_id": "M-34",
       "attribution": "Frontispiece 'Phileas Fogg' — Alphonse de Neuville, Hetzel edition (1872/73) — public domain",
       "use": "both",
-      "note": "T3.4 — Fogg, under 'some readers thought it was actually happening'."
+      "note": "T3.4 — Fogg, under 'some readers thought it was actually happening'.",
+      "on_sentence": 8
     },
     {
       "kind": "image",
@@ -83,7 +87,8 @@
       "manifest_id": "M-50",
       "attribution": "Passepartout, Neuville/Benett plate 05 (1872/73) — public domain",
       "use": "both",
-      "note": "T3.5 — HOLD to the end on the Hetzel plate. 'Never been out of print' lands over the book's own illustration."
+      "note": "T3.5 — HOLD to the end on the Hetzel plate. 'Never been out of print' lands over the book's own illustration.",
+      "on_sentence": 11
     }
   ],
   "sources": [

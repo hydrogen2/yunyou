@@ -659,14 +659,16 @@ async function segStill(img, dur, m, nw, nh, attribution) {
   // The travel is hundreds of pixels over the shot, tens of times the sub-pixel rate that made `zoompan` judder,
   // so integer overlay positioning is invisible here.
   const panning = treat === 'fill' && (fh - H) > H * 0.08 && dur > 3;
-  const PAN_TRAVEL = 0.86;                     // how much of the overflow the shot crosses; the rest is headroom
+  const PAN_TRAVEL = 0.70;                     // how much of the overflow the shot crosses; the rest is headroom
+                                               // 0.86 travelled almost the whole picture and left the subject's face
+                                               // on screen for only the first second or two of a portrait.
 
   // The pan IS the movement, so a panning shot does not also drift-zoom. This must be settled before `from`,
   // which sizes the canvas, and before the cache key, which has to know which of the two motions was used.
   let dr = IL.driftFor(m, treat, CFG, img);
   if (panning) dr = { ...dr, on: false };
   const frames = Math.max(2, Math.round(dur * FPS));
-  const key = sha(['v11-cover-pan', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, attribution || ''].join('|'));
+  const key = sha(['v12-cover-pan', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, attribution || ''].join('|'));
   const out = path.join(CACHE, 'seg', `im_${key}.mp4`);
   const from = dr.on ? dr.from : 1;                        // canvas is 1/from larger so the zoom ENDS at 1:1
   const BW = Math.round(W / from) + (Math.round(W / from) % 2), BH = Math.round(H / from) + (Math.round(H / from) % 2);
@@ -1808,8 +1810,45 @@ async function runCropPreview(target) {
       const end = slots[slots.length - 1].s1;
       if (Math.abs(end - (s.duration_s || len)) > 0.01) issues.push(`last slot ends at ${end} s, scene duration_s is ${s.duration_s}`);
       if (issues.length) warnings.push(`${tag}: authored slots do not tile the scene — ${issues.join('; ')}. Rendered in start_s order; the durations below are what actually plays.`);
+
+      // ---- anchor the pictures to the words (2026-09-09) ----------------------------------------------------
+      // Slot times are authored in seconds; the narration's real pace comes from the synthesizer. On the first
+      // full cut those two clocks were a whole slot apart — George Francis Train's portrait was long gone by the
+      // time the voice reached his name, and his sentence played over Nellie Bly. A slot may now name the sentence
+      // it belongs to (`on_sentence`), and the slot timeline is warped, piecewise-linearly, so those moments land
+      // exactly. Unanchored slots ride the warp, which keeps the authored rhythm between the anchors.
+      const authoredEnd = s.duration_s || len;
+      const bps = [[0, 0]];
+      const anchorLog = [];
+      for (const sl of slots) {
+        if (sl.m.on_sentence === undefined) continue;
+        const at = uttAt(`s:${sl.m.on_sentence}`);
+        if (at == null) { warnings.push(`${tag}: slot ${sl.i + 1} (${sl.m.manifest_id}) anchors to sentence ${sl.m.on_sentence}, which this cut does not speak — left on its authored seconds.`); continue; }
+        const want = Math.max(0, at - (sl.m.lead_s !== undefined ? +sl.m.lead_s : 0.4));
+        bps.push([sl.s0, want]);
+        anchorLog.push(`${sl.m.manifest_id}@s:${sl.m.on_sentence}→${fmt1(want)}s`);
+      }
+      bps.push([authoredEnd, len]);
+      bps.sort((a, b) => a[0] - b[0]);
+      // keep it monotonic: an anchor that would run backwards is clamped rather than allowed to reorder the film
+      for (let i = 1; i < bps.length; i++) if (bps[i][1] <= bps[i - 1][1] + 0.2) bps[i][1] = bps[i - 1][1] + 0.2;
+      const warp = (t) => {
+        if (t <= bps[0][0]) return bps[0][1];
+        for (let i = 1; i < bps.length; i++) {
+          if (t <= bps[i][0]) {
+            const [a0, r0] = bps[i - 1], [a1, r1] = bps[i];
+            return a1 === a0 ? r1 : r0 + (r1 - r0) * (t - a0) / (a1 - a0);
+          }
+        }
+        return bps[bps.length - 1][1];
+      };
+      if (anchorLog.length) p.anchorNote = `${anchorLog.length} slot(s) pinned to narration: ${anchorLog.join(' · ')}`;
+
       const out = [];
-      for (const sl of slots) out.push(await filmSeg(sl.m, Math.max(0.6, (sl.s1 - sl.s0) * f), sl));
+      for (const sl of slots) {
+        const d = anchorLog.length ? warp(sl.s1) - warp(sl.s0) : (sl.s1 - sl.s0) * f;
+        out.push(await filmSeg(sl.m, Math.max(0.6, d), sl));
+      }
       return out;
     }
     // =============================================================================================================

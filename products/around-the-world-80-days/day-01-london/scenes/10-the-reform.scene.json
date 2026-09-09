@@ -22,7 +22,8 @@
       "attribution": "Facade of The Reform Club, Pall Mall — Philip Cornwall (geograph, 2019) · CC BY-SA 2.0 · adapted",
       "use": "both",
       "note": "T9.1 — the façade, full height. A palazzo, and it should read as one.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 0
     },
     {
       "kind": "image",
@@ -33,7 +34,8 @@
       "manifest_id": "M-22",
       "attribution": "Reform Club, north elevation — from *Life and Works of Sir Charles Barry* · public domain",
       "use": "both",
-      "note": "T9.2 — Barry's drawing. The building as an argument, on paper."
+      "note": "T9.2 — Barry's drawing. The building as an argument, on paper.",
+      "on_sentence": 1
     },
     {
       "kind": "generated",
@@ -44,7 +46,8 @@
       "manifest_id": "G-42",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T9.3 — two doors on one street: CARLTON 1832 (Conservative) / REFORM 1836 (Reformers), and the few doors between them drawn to scale. The whole topic in one card. DOES NOT EXIST YET."
+      "note": "T9.3 — two doors on one street: CARLTON 1832 (Conservative) / REFORM 1836 (Reformers), and the few doors between them drawn to scale. The whole topic in one card. DOES NOT EXIST YET.",
+      "on_sentence": 2
     },
     {
       "kind": "image",
@@ -55,7 +58,8 @@
       "manifest_id": "M-23",
       "attribution": "Reform Club saloon, *London Interiors* (1841) — public domain",
       "use": "both",
-      "note": "T9.4 — inside, under 'the room where a fictional Englishman bets…'."
+      "note": "T9.4 — inside, under 'the room where a fictional Englishman bets…'.",
+      "on_sentence": 3
     },
     {
       "kind": "image",
@@ -67,7 +71,8 @@
       "attribution": "Philafrenzy (2015) · Wikimedia Commons · CC BY-SA 4.0 · adapted",
       "use": "both",
       "note": "T9.5 — the same building, today, from the corner.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 4
     },
     {
       "kind": "image",
@@ -78,7 +83,8 @@
       "manifest_id": "M-219",
       "attribution": "(pending — rights unresolved)",
       "use": "both",
-      "note": "T9.6 — the Reform's own library, 85,000 volumes. ⚠ The club controls interior photography; if it cannot be cleared, hold on M-23 and let the number sit on a card instead. NOT YET SOURCED — Content Preparer."
+      "note": "T9.6 — the Reform's own library, 85,000 volumes. ⚠ The club controls interior photography; if it cannot be cleared, hold on M-23 and let the number sit on a card instead. NOT YET SOURCED — Content Preparer.",
+      "on_sentence": 6
     },
     {
       "kind": "image",

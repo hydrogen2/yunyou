@@ -22,7 +22,8 @@
       "attribution": "'Old London Street Scenes' (1903) — BFI / London's Screen Archives — public domain",
       "use": "both",
       "note": "T6.1 — crowd and traffic, the scale of the thing before any number is spoken.",
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 0
     },
     {
       "kind": "image",
@@ -33,7 +34,8 @@
       "manifest_id": "M-30",
       "attribution": "Plan of London, *London Illustrated* (1872) — public domain",
       "use": "both",
-      "note": "T6.2 — the whole plan, pushing slowly out to show the sprawl."
+      "note": "T6.2 — the whole plan, pushing slowly out to show the sprawl.",
+      "on_sentence": 1
     },
     {
       "kind": "generated",
@@ -44,7 +46,8 @@
       "manifest_id": "G-37",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T6.3 — the comparison card as bars, not text: LONDON 3.9m / BEIJING / PARIS / NEW YORK. Four bars, four labels. The guide says the ratios; the card shows them. DOES NOT EXIST YET."
+      "note": "T6.3 — the comparison card as bars, not text: LONDON 3.9m / BEIJING / PARIS / NEW YORK. Four bars, four labels. The guide says the ratios; the card shows them. DOES NOT EXIST YET.",
+      "on_sentence": 2
     },
     {
       "kind": "image",
@@ -62,7 +65,8 @@
         "w": 0.18,
         "h": 0.18,
         "why": "The docks, from the same 11,419 px sheet, for the port line. Post-crop ~2,055 px, so it plays full width, not as a plate."
-      }
+      },
+      "on_sentence": 5
     },
     {
       "kind": "image",
@@ -73,7 +77,8 @@
       "manifest_id": "M-217",
       "attribution": "King's Cross Metropolitan Railway station, interior, 1862 — public domain (Wikimedia Commons)",
       "use": "both",
-      "note": "T6.5 — the world's first underground, packed, in a cutting. The best single image of 'new'. SOURCED 2026-09-09, 966×724."
+      "note": "T6.5 — the world's first underground, packed, in a cutting. The best single image of 'new'. SOURCED 2026-09-09, 966×724.",
+      "on_sentence": 7
     },
     {
       "kind": "image",
@@ -84,7 +89,8 @@
       "manifest_id": "M-24",
       "attribution": "'Hotel at Charing Cross' — engraving, *London Illustrated* (1872) — public domain",
       "use": "both",
-      "note": "T6.6 — his station, eight years old, drawn the year he leaves."
+      "note": "T6.6 — his station, eight years old, drawn the year he leaves.",
+      "on_sentence": 11
     },
     {
       "kind": "footage",
@@ -96,7 +102,8 @@
       "attribution": "'A Trip Through The Streets of London' (26 Sep 1917) — Imperial War Museum — public domain",
       "use": "both",
       "note": "T6.7 — moving through the new city. 1280×720, the best-looking archive we have.",
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 13
     },
     {
       "kind": "image",

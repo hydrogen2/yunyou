@@ -16,20 +16,62 @@
       "kind": "generated",
       "ref": "generated/g-13/enablers-map.json",
       "start_s": 0,
-      "end_s": 45,
+      "end_s": 26,
       "license": "generated",
       "manifest_id": "G-13",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T4.1 — THE FILM MAP (state 'enablers'), drawn by lib/mapfilm.mjs from route-data.json — not screenshotted from the player. Five works reveal in the order they were finished, each on its own sentence: Promontory May 1869 → Suez Nov 1869 → India Mar 1870 → Fréjus Sep 1871 → the Australian wire Aug 1872, which draws down Australia and out to Java. On 'The circuit closes' the whole route traces faintly behind them. Dates only, no names — the guide says the names. The top strip carries one number: the year.",
+      "note": "T4.1 — THE FILM MAP (state 'enablers'). Opens empty and drops Promontory as it is named. The map is this scene's spine; the photographs below cut INTO it rather than following it, so each work is seen as it is said. Continuation slots list what is ALREADY on the map as t:0 — a slot has no memory of the one before it.",
       "beats": [
         {
           "show": "enabler:B",
           "s": 3
+        }
+      ],
+      "on_sentence": 0
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:East_and_West_Shaking_hands_at_the_laying_of_last_rail_Union_Pacific_Railroad_-_Restoration.jpg",
+      "start_s": 26,
+      "end_s": 34,
+      "license": "public-domain",
+      "manifest_id": "M-212",
+      "attribution": "'East and West Shaking Hands at the Laying of the Last Rail', Promontory Summit, 10 May 1869 — Andrew J. Russell · public domain (restored)",
+      "use": "both",
+      "note": "T4.2 — the golden spike photograph. Held. SOURCED 2026-09-09, 4514×3435.",
+      "on_sentence": 3
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:L%27inauguration_du_canal_de_Suez,_17_November_1869_Gal18_riou_001f.jpg",
+      "start_s": 34,
+      "end_s": 44,
+      "license": "public-domain",
+      "manifest_id": "M-213",
+      "attribution": "The inauguration of the Suez Canal, 17 November 1869 — engraving after Édouard Riou · public domain",
+      "use": "both",
+      "note": "T4.3 — the opening ceremony, engraved. SOURCED 2026-09-09, 1400×894.",
+      "on_sentence": 4
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/enablers-map.json",
+      "start_s": 44,
+      "end_s": 62,
+      "license": "generated",
+      "manifest_id": "G-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T4.4 — back to the map for Suez, India and the Alps. Continuation slots list what is ALREADY on the map as t:0 — a slot has no memory of the one before it.",
+      "beats": [
+        {
+          "show": "enabler:B",
+          "t": 0
         },
         {
           "show": "enabler:A",
-          "s": 4
+          "t": 0.3
         },
         {
           "show": "enabler:C",
@@ -38,81 +80,75 @@
         {
           "show": "enabler:D",
           "s": 6
-        },
-        {
-          "show": "enabler:E",
-          "s": 7
-        },
-        {
-          "show": "close",
-          "s": 9
         }
-      ]
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:East_and_West_Shaking_hands_at_the_laying_of_last_rail_Union_Pacific_Railroad_-_Restoration.jpg",
-      "start_s": 45,
-      "end_s": 52,
-      "license": "public-domain",
-      "manifest_id": "M-212",
-      "attribution": "'East and West Shaking Hands at the Laying of the Last Rail', Promontory Summit, 10 May 1869 — Andrew J. Russell · public domain (restored)",
-      "use": "both",
-      "note": "T4.2 — the golden spike photograph. Held. SOURCED 2026-09-09, 4514×3435."
-    },
-    {
-      "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:L%27inauguration_du_canal_de_Suez,_17_November_1869_Gal18_riou_001f.jpg",
-      "start_s": 52,
-      "end_s": 61,
-      "license": "public-domain",
-      "manifest_id": "M-213",
-      "attribution": "The inauguration of the Suez Canal, 17 November 1869 — engraving after Édouard Riou · public domain",
-      "use": "both",
-      "note": "T4.3 — the opening ceremony, engraved. SOURCED 2026-09-09, 1400×894."
+      ],
+      "on_sentence": 5
     },
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:Australian_Overland_Telegraph_Line_repeater_station_at_Strangways_Springs,_1872.jpg",
-      "start_s": 61,
-      "end_s": 72,
+      "start_s": 62,
+      "end_s": 76,
       "license": "public-domain",
       "manifest_id": "M-214",
       "attribution": "Overland Telegraph repeater station, Strangways Springs, South Australia, 1872 — public domain",
       "use": "both",
-      "note": "T4.4 — a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. SOURCED 2026-09-09, 790×378."
+      "note": "T4.4 — a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. SOURCED 2026-09-09, 790×378.",
+      "on_sentence": 7
     },
     {
       "kind": "generated",
       "ref": "generated/g-35/card.json",
-      "start_s": 72,
-      "end_s": 79,
+      "start_s": 76,
+      "end_s": 86,
       "license": "generated",
       "manifest_id": "G-35",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T4.5 — 36,000 POLES / 11 REPEATER STATIONS. Two lines. DOES NOT EXIST YET."
+      "note": "T4.5 — 36,000 POLES / 11 REPEATER STATIONS. Two lines. DOES NOT EXIST YET.",
+      "on_sentence": 8
     },
     {
       "kind": "generated",
       "ref": "generated/g-13/enablers-map.json",
-      "start_s": 79,
+      "start_s": 86,
       "end_s": 109,
       "license": "generated",
       "manifest_id": "G-13",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T4.6 — back to the map, which now completes the loop and holds while the series promise is spoken over it. HOLD 134–140 on the closed circuit, no words.",
+      "note": "T4.7 — the wire draws down Australia, the circuit closes, and the map holds while the series promise is spoken over it. HOLD to the end of the scene. Continuation slots list what is ALREADY on the map as t:0 — a slot has no memory of the one before it.",
       "beats": [
         {
+          "show": "enabler:B",
+          "t": 0
+        },
+        {
+          "show": "enabler:A",
+          "t": 0
+        },
+        {
+          "show": "enabler:C",
+          "t": 0
+        },
+        {
+          "show": "enabler:D",
+          "t": 0
+        },
+        {
+          "show": "enabler:E",
+          "t": 0.4
+        },
+        {
           "show": "close",
-          "t": 0.2
+          "s": 9
         }
-      ]
+      ],
+      "on_sentence": 9
     }
   ],
   "review": {
-    "notes": "Silence 134–140.\nFill 58%.\nThis scene carries the series introduction (D9: no separate intro card — the route is already on screen).\nG-13 has been outstanding since the first film cut. Nothing else in the episode matters as much.",
+    "notes": "Silence 134–140.\nFill 58%.\nThis scene carries the series introduction (D9: no separate intro card — the route is already on screen).\nG-13 has been outstanding since the first film cut. Nothing else in the episode matters as much.\nSLOTS INTERLEAVED 2026-09-09: the map used to run 0–45 s with its reveals on sentences 3–9, then three photographs afterwards — so the map would have been cut away before its last two reveals fired, and the golden spike would have played under the Suez line. The map is now the spine and the photographs cut into it on the sentence that names each work.",
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending"

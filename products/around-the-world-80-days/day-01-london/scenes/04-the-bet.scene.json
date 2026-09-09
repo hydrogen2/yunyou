@@ -23,7 +23,8 @@
       "use": "both",
       "note": "T3.1 — Pall Mall, moving. Arrive at the club rather than cutting to it.",
       "sa": true,
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 0
     },
     {
       "kind": "image",
@@ -35,7 +36,8 @@
       "attribution": "Philafrenzy (2015) · Wikimedia Commons · CC BY-SA 4.0 · adapted",
       "use": "both",
       "note": "T3.2 — the Reform from the corner. Slow push.",
-      "sa": true
+      "sa": true,
+      "on_sentence": 1
     },
     {
       "kind": "image",
@@ -46,7 +48,8 @@
       "manifest_id": "M-35",
       "attribution": "'…I will wager £4000 on it' — the bet at the Reform Club, Neuville/Benett (1872/73) — public domain",
       "use": "both",
-      "note": "T3.3 — the wager plate. The table, the five men, the newspaper."
+      "note": "T3.3 — the wager plate. The table, the five men, the newspaper.",
+      "on_sentence": 2
     },
     {
       "kind": "image",
@@ -79,7 +82,8 @@
       "manifest_id": "M-34",
       "attribution": "Frontispiece 'Phileas Fogg' — Neuville, Hetzel edition (1872/73) — public domain",
       "use": "both",
-      "note": "T3.6 — back to Fogg, held, while 'no visible talents and no apparent interests' is said over him."
+      "note": "T3.6 — back to Fogg, held, while 'no visible talents and no apparent interests' is said over him.",
+      "on_sentence": 4
     },
     {
       "kind": "footage",
@@ -91,7 +95,8 @@
       "attribution": "'Old London Street Scenes' (1903) — London's Screen Archives / BFI — public domain",
       "use": "both",
       "note": "T3.7 — the machine: traffic, movement, a city that works. Under 'joined up into one working machine'.",
-      "audio": "mute"
+      "audio": "mute",
+      "on_sentence": 5
     },
     {
       "kind": "image",
@@ -120,7 +125,8 @@
       "manifest_id": "M-52",
       "attribution": "Route map, Hetzel edition — Neuville/Benett plate 01 — public domain",
       "use": "both",
-      "note": "T3.9 — HOLD 86–92 on the route map after the last word. It is a bet about this shape."
+      "note": "T3.9 — HOLD 86–92 on the route map after the last word. It is a bet about this shape.",
+      "on_sentence": 9
     }
   ],
   "review": {
