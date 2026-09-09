@@ -1,0 +1,11 @@
+{
+  "type": "lines",
+  "spread": "tight",
+  "kicker": "Left burning at 7 Savile Row",
+  "lines": [
+    { "key": "lamp", "text": "One gas lamp", "size": "big" },
+    { "key": "hours", "text": "1,920 hours", "sub": "which is exactly how long the bet runs", "size": "big" }
+  ],
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs",
+  "_why": "Replaces M-225, a lit gas lamp at night, which does not exist free at a usable size. The card is better than the photograph would have been: eighty days is 1,920 hours (F-11), so the lamp burns for exactly the length of the wager — a connection the picture could not have made."
+}

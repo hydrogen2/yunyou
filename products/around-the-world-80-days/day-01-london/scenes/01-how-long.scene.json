@@ -25,17 +25,17 @@
       "on_sentence": 0
     },
     {
-      "kind": "footage",
-      "ref": "media/files/m201-airliner-window.mp4",
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Sunlight_on_the_wing_(26522707377).jpg",
       "start_s": 7,
       "end_s": 13,
-      "license": "cc-by-4.0",
+      "license": "cc-by-2.0",
       "manifest_id": "M-201",
-      "attribution": "(pending) · CC BY 4.0 · adapted",
+      "attribution": "At height over Europe — Mike McBey (Flickr) · CC BY 2.0 · adapted",
       "use": "both",
-      "note": "T1.2 — wing and cloud from a cabin window, or a departure board rolling. Modern, banal, deliberately. NOT YET SOURCED — Content Preparer.",
-      "audio": "mute",
-      "on_sentence": 2
+      "note": "T1.2 — wing and cloud from a cabin window. Modern, banal, deliberately. SOURCED 2026-09-09, 6775×4216. Changed from footage to a still; the shot pans across it.",
+      "on_sentence": 2,
+      "sa": true
     },
     {
       "kind": "generated",

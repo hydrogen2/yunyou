@@ -52,15 +52,15 @@
       "on_sentence": 4
     },
     {
-      "kind": "image",
-      "ref": "media/files/gieves-hawkes-military.jpg",
+      "kind": "generated",
+      "ref": "generated/g-54/card.json",
       "start_s": 36,
       "end_s": 47,
-      "license": "public-domain",
-      "manifest_id": "M-220",
-      "attribution": "Military tailoring plate / cap-maker's advertisement, 19th c. — public domain",
+      "license": "generated",
+      "manifest_id": "G-54",
+      "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T10.4 — uniform, not fashion. A cap, a frogged coat, a naval sleeve. NOT YET SOURCED — Content Preparer."
+      "note": "T10.4 — uniform, not fashion, as three dates: Hawkes 1771 (army caps), Gieves 1785 (naval outfitters), the tailors reaching the Row c.1803. REPLACES M-220, a military tailoring photograph that could not be found free. The dates are the better fact."
     },
     {
       "kind": "footage",

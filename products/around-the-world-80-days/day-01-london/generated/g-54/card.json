@@ -1,0 +1,13 @@
+{
+  "type": "timeline",
+  "kicker": "The trade's roots are uniform, not fashion",
+  "axis": { "min": 1760, "max": 1815 },
+  "points": [
+    { "key": "hawkes", "at": 1771, "label": "1771", "sub": "Hawkes — army caps and helmets" },
+    { "key": "gieves", "at": 1785, "label": "1785", "sub": "Gieves — naval outfitters" },
+    { "key": "row", "at": 1803, "label": "c.1803", "sub": "the tailors reach Savile Row" }
+  ],
+  "footnote": "Both firms are now at No. 1 Savile Row. F-112.",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs",
+  "_why": "Replaces M-220, a military tailoring photograph that could not be found free. The dates are a better fact than a generic uniform plate would have been."
+}

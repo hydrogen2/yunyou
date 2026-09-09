@@ -75,15 +75,15 @@
       "on_sentence": 4
     },
     {
-      "kind": "image",
-      "ref": "media/files/reform-library.jpg",
+      "kind": "generated",
+      "ref": "generated/g-55/card.json",
       "start_s": 52,
       "end_s": 65,
-      "license": "unknown",
-      "manifest_id": "M-219",
-      "attribution": "(pending — rights unresolved)",
+      "license": "generated",
+      "manifest_id": "G-55",
+      "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T9.6 — the Reform's own library, 85,000 volumes. ⚠ The club controls interior photography; if it cannot be cleared, hold on M-23 and let the number sit on a card instead. NOT YET SOURCED — Content Preparer.",
+      "note": "T9.6 — 85,000 VOLUMES, given book by book by the members. REPLACES M-219: the club controls photography of its own interiors, so no free picture of this room exists. The number is the point; the card states it without pretending to show the room.",
       "on_sentence": 6
     },
     {

@@ -76,15 +76,15 @@
       "on_sentence": 7
     },
     {
-      "kind": "image",
-      "ref": "media/files/m225-gas-lamp-lit.jpg",
+      "kind": "generated",
+      "ref": "generated/g-56/card.json",
       "start_s": 71,
       "end_s": 79,
-      "license": "unknown",
-      "manifest_id": "M-225",
-      "attribution": "(pending)",
+      "license": "generated",
+      "manifest_id": "G-56",
+      "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T14.6 — a single gas lamp burning in a dark window. RECLASSIFIED from a generated card 2026-09-09, same reason. NOT YET SOURCED — Content Preparer."
+      "note": "T14.6 — ONE GAS LAMP / 1,920 HOURS, which is exactly how long the bet runs. REPLACES M-225: no free lit gas lamp at a usable size. The card is better than the photograph would have been, because eighty days IS 1,920 hours (F-11) and the lamp burns for the length of the wager."
     },
     {
       "kind": "generated",
