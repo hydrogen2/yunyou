@@ -1,5 +1,5 @@
 # Episode 1 · London — the bet
-**Target 20:10 · 13 topics · landscape 1920×1080 · shorts cut from this master afterwards**
+**Target ~21:00 · 13 topics · landscape 1920×1080 · shorts cut from this master afterwards**
 
 Status: **for founder review.** Nothing is sourced or rendered until these are approved.
 New facts researched 2026-09-09 are marked **[new]** and carry a confidence note; they are not yet
@@ -15,7 +15,7 @@ in a fact sheet and have not been through Fact-Check.
 ## Block A — the question (topics 1–5, ~8½ min)
 
 ### T1 · How long would it take you?
-`Fact` · **85 s** · opens cold, no title card
+`Fact` · **90 s** · opens cold, no title card
 
 **Hook (first 6 seconds, works muted):** *"How long would it take you to go all the way round the world?"*
 
@@ -25,7 +25,9 @@ in a fact sheet and have not been through Fact-Check.
 > Higher up it's faster. The space station laps the planet every ninety minutes; the people on board
 > watch sixteen sunrises a day.
 > Now take all of that away. No aircraft. No radio. In 1872 the honest answer to the question was:
-> nobody actually knew. And that autumn, a man bet half of everything he owned on the number eighty.
+> nobody actually knew.
+> So somebody turned it into a bet. Eighty days, half a fortune — and for the next hundred and fifty
+> years, real people kept trying to beat him.
 
 **Why it stays:** it makes the viewer answer a question before we ask for any attention, and the
 ninety-minute figure is the kind of thing people repeat. It also states the show's subject in 15 seconds —
@@ -39,7 +41,7 @@ ISS orbital period ~90 min **[well established, verify exact figure]**
 ### T2 · The people who actually raced it
 `Story` · **140 s** · the topic you asked for
 
-**Hook:** *"He isn't real. That has never stopped anyone from trying to beat him."*
+**Hook:** *"Which is strange — because he never existed."*
 
 **What I say:**
 > The book came out, and people immediately started treating a novel as a challenge.
@@ -98,7 +100,7 @@ series in one sentence, and it makes a bloodless character into an interesting p
 ---
 
 ### T4 · Why eighty — the year the world closed
-`Map` · **115 s** · THE asset we still owe (G-13)
+`Map` · **140 s** · THE asset we still owe (G-13)
 
 **Hook:** *"Three years earlier the bet would have been impossible. Not hard. Impossible."*
 
@@ -112,9 +114,19 @@ series in one sentence, and it makes a bloodless character into an interesting p
 > the world and back.
 > Thirty-six thousand poles. Eleven repeater stations. The last inhabited continent joins the network.
 > The circuit closes — and then he sets off.
+>
+> That circuit is the route of this series. Eight episodes, one lap: the Channel and the Alps, the canal
+> at Suez, the railway across India with a piece missing, the ports of the East, the Pacific, the line
+> across America. The same order, the same places, a hundred and fifty years later.
+> And all the way round, the question Fogg is actually betting on. Had the world really closed?
+> We're going to find out where it held — and where it very nearly didn't.
 
 **Why it stays:** your own example of what passes the test. It is the series' argument, and it is a fact about
 the world rather than about a character.
+
+**It also carries the series intro.** The map has just drawn the circuit; that is the one moment in the
+episode where "here is what this series is" costs nothing, because the route is already on screen.
+A separate intro card would be a throat-clear, which D9 bans in an opening.
 
 **Treatment note:** large type, one line drawn at a time, four labels maximum on screen at once, dates only.
 The Day 1 map failed because it was a print master shown at 0.596 scale — this is drawn for 1080p from scratch.
@@ -313,7 +325,7 @@ without a word of plot.
 ---
 
 ### T13 · A quarter to nine
-`Scene` · **60 s** · closes the episode, hands to E2
+`Scene` · **80 s** · closes the episode, hands to E2
 
 **Hook:** *"He gave himself ten minutes to pack for the planet."*
 
@@ -326,10 +338,34 @@ without a word of plot.
 > changing it for anybody.
 > And somewhere behind them, in an empty house on Savile Row, a gas lamp is still burning that nobody
 > turned off — which is going to be funny for about seventy-nine more days.
+>
+> Ahead of him: a boat across the Channel. A hole under the Alps that opened thirteen months ago.
+> A canal three years old. A railway across India with a piece missing. An ocean that takes twenty-two days.
+> And somewhere out on the Pacific, something quietly happens to the calendar that nobody on board notices.
+> Eighty days. It's raining. He's already gone.
 
 **Facts:** F-12, F-13, F-02 (the watch, four minutes slow)
 
+**The lookout is the series hook, and it must not spoil.** The Pacific line teases the ending without
+naming it — "something happens to the calendar" is true, intriguing, and gives nothing away. Never say
+date line, never say he gains a day. That is E8's whole payoff and it is the best one we have.
+
 ---
+
+## Where the hooks go — and where they deliberately don't
+
+A cliffhanger every ninety seconds fights the house tone ("unhurried, silence is content"), so hooks
+are placed at the four seams that actually carry weight, not between every topic:
+
+| seam | device |
+|---|---|
+| **T1 → T2** | T1 ends *"real people kept trying to beat him"*; T2 opens *"Which is strange — because he never existed."* A promise, then the turn. |
+| **T4, tail** | The series intro, landing on the map that has just drawn the route. Eight episodes, one lap, and the question that runs the whole way round. |
+| **T5 → T6** | The pivot from the world at large to one city. Cook's 222 days is the last wide shot; T6 lands in London. |
+| **T13, tail** | The lookout: what is ahead of him, ending on the Pacific tease. Hands to E2 and to the series. |
+
+Everywhere else the topics simply follow one another. If the edit feels flat in the middle, the fix is
+a better topic, not a manufactured cliffhanger.
 
 ## Threads planted here, paid off later
 - **Passepartout's watch** is four minutes slow and set to London. He will refuse to change it across the
@@ -345,7 +381,7 @@ the whist table setup · "Inside the Reform" as a separate scene. All fail the i
 viewer who has not read the book — your ruling, applied.
 
 ## What I need from you
-1. **Kill anything.** Thirteen topics is 20:10; there is no slack, so anything you add displaces something.
+1. **Kill anything.** Thirteen topics is about 20:40 before tissue; there is no slack, so anything you add displaces something.
 2. **T2 is the new opening you asked for and it is long (140 s).** It can lose Palin and Train and still work.
 3. **T5 (Thomas Cook)** is the one I'd cut first if you want the episode tighter.
 4. Confirm the order: question → racers → Verne → why eighty → reality check → then the places.
