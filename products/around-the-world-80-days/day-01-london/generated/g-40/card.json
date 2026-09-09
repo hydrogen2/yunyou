@@ -1,0 +1,14 @@
+{
+  "type": "pair",
+  "kicker": "How you joined a club",
+  "left": {
+    "label": "a white ball",
+    "sub": "admit"
+  },
+  "right": {
+    "label": "a black ball",
+    "sub": "reject"
+  },
+  "note": "enough black balls and you were blackballed",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

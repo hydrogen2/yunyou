@@ -1,0 +1,7 @@
+{
+  "_what": "G-13 is not a file: it is the 'enablers' STATE of the film map, drawn live by studio/tools/render/lib/mapfilm.mjs.",
+  "_data": "generated/g-01/route-data.json (ports, legs, the five enablers, the telegraph line) — written by studio/tools/gen/g01_route_map.py",
+  "_why_this_file_exists": "So the scene's media ref points at something real. A ref to a path that does not exist is how assets go missing quietly.",
+  "state": "enablers",
+  "beats": ["enabler:B", "enabler:A", "enabler:C", "enabler:D", "enabler:E", "close"]
+}

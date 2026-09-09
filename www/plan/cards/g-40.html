@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:#efe6d3;overflow:hidden}
+svg{display:block}
+</style></head><body>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><filter id="fibre" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs>
+<rect width="1920" height="1080" fill="#efe6d3"/>
+<rect width="1920" height="1080" fill="#241c14" filter="url(#fibre)" opacity="0.05"/>
+<text x="120" y="108.0" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="600" font-size="34.0" letter-spacing="4.0" fill="#5b4a3a">HOW YOU JOINED A CLUB</text>
+<path d="M120 146.0H1800" stroke="#5b4a3a" stroke-width="2.0" stroke-opacity="0.45"/>
+<g class="rev" data-key="left" opacity="0"><text x="537.6" y="507.6" text-anchor="middle" font-family="'Playfair Display',Georgia,'Liberation Serif',serif" font-weight="700" font-size="92.0" letter-spacing="0.0" fill="#241c14">a white ball</text><text x="537.6" y="581.6" text-anchor="middle" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="400" font-size="37.0" letter-spacing="0.0" fill="#5b4a3a">admit</text></g>
+<g class="rev" data-key="right" opacity="0"><text x="1382.4" y="507.6" text-anchor="middle" font-family="'Playfair Display',Georgia,'Liberation Serif',serif" font-weight="700" font-size="92.0" letter-spacing="0.0" fill="#241c14">a black ball</text><text x="1382.4" y="581.6" text-anchor="middle" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="400" font-size="37.0" letter-spacing="0.0" fill="#5b4a3a">reject</text></g>
+<g class="rev" data-key="note" opacity="0"><text x="960" y="799.2" text-anchor="middle" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="600" font-size="60.0" letter-spacing="0.0" fill="#a8301f">enough black balls and you were blackballed</text></g>
+</svg>
+<script>
+const SHOW = {"left":0.4,"right":4.5200000000000005,"note":8.64}, DRAW = 0.7;
+const ease = p => p<=0?0 : p>=1?1 : (p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2);
+const cl = (v,a,b) => Math.max(a,Math.min(b,v));
+window.setT = function(t){
+  for (const g of document.querySelectorAll('g.rev')){
+    const at = SHOW[g.dataset.key];
+    const on = at!=null && t>=at;
+    g.setAttribute('opacity', on ? cl((t-at)/0.35,0,1).toFixed(3) : '0');
+    const bar = g.querySelector('rect.bar');
+    if (bar) bar.setAttribute('width', on ? ((+bar.dataset.w)*ease(cl((t-at)/DRAW,0,1))).toFixed(1) : '0');
+  }
+};
+window.setT(0);
+</script></body></html>

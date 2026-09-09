@@ -37,7 +37,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-30/three-answers.svg",
+      "ref": "generated/g-30/card.json",
       "start_s": 16,
       "end_s": 26,
       "license": "generated",
@@ -87,7 +87,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-31/eighty.svg",
+      "ref": "generated/g-31/card.json",
       "start_s": 54,
       "end_s": 63,
       "license": "generated",

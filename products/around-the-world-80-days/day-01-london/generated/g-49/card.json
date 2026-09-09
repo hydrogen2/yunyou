@@ -1,0 +1,63 @@
+{
+  "type": "timeline",
+  "kicker": "Twelve crosses, 1291–1295",
+  "axis": {
+    "min": -0.6,
+    "max": 11.6
+  },
+  "points": [
+    {
+      "key": "c1",
+      "at": 0
+    },
+    {
+      "key": "c2",
+      "at": 1
+    },
+    {
+      "key": "c3",
+      "at": 2
+    },
+    {
+      "key": "c4",
+      "at": 3
+    },
+    {
+      "key": "c5",
+      "at": 4
+    },
+    {
+      "key": "c6",
+      "at": 5
+    },
+    {
+      "key": "c7",
+      "at": 6
+    },
+    {
+      "key": "c8",
+      "at": 7
+    },
+    {
+      "key": "c9",
+      "at": 8
+    },
+    {
+      "key": "c10",
+      "at": 9
+    },
+    {
+      "key": "c11",
+      "at": 10
+    },
+    {
+      "key": "c12",
+      "at": 11,
+      "label": "Charing",
+      "sub": "the last, and seven times the cost of any other"
+    }
+  ],
+  "footnote": "Eleanor of Castile died in 1290. Her body was carried about 180 miles to Westminster, and Edward I built a stone cross at each place it rested overnight. F-131, F-132.",
+  "_correction": "2026-09-09: the first draft labelled the end dots 'Harby' and 'Westminster' and counted them among the twelve. Harby is where she died and Westminster is the destination; neither is a cross. The intermediate crosses are not named because this project has not sourced them — only Charing, as the last and most expensive, is in the fact sheet.",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

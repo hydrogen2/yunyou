@@ -14,7 +14,7 @@
   "media": [
     {
       "kind": "generated",
-      "ref": "generated/g-13/enablers-map.svg",
+      "ref": "generated/g-13/enablers-map.json",
       "start_s": 0,
       "end_s": 55,
       "license": "generated",
@@ -84,7 +84,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-35/thirty-six-thousand.svg",
+      "ref": "generated/g-35/card.json",
       "start_s": 88,
       "end_s": 97,
       "license": "generated",
@@ -95,7 +95,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-13/enablers-map.svg",
+      "ref": "generated/g-13/enablers-map.json",
       "start_s": 97,
       "end_s": 133,
       "license": "generated",

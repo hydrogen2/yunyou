@@ -53,7 +53,8 @@ import * as PM from '../../player/panomove.mjs';   // ONE definition of the open
 import * as IL from '../../player/imagelayer.mjs'; // ONE definition of the image treatment + photo slots, ditto
 import * as MF from './lib/mapfilm.mjs';
 import * as RB from './lib/recordboard.mjs';
-import * as WM from './lib/walkmap.mjs';           // G-38, the half-mile card — three pins and one line       // G-33, the record board — a chart, drawn on the same clock           // the route map as a FILM graphic (D9) — not the print plate
+import * as WM from './lib/walkmap.mjs';
+import * as CD from './lib/cards.mjs';             // the shared card generator — every typographic and diagram card           // G-38, the half-mile card — three pins and one line       // G-33, the record board — a chart, drawn on the same clock           // the route map as a FILM graphic (D9) — not the print plate
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FFMPEG = ffmpegPath, FFPROBE = ffprobeStatic.path;
@@ -1597,6 +1598,9 @@ async function runCropPreview(target) {
   const walkLoaded = WM.load(CHAPTER_DIR);
   if (!walkLoaded) warnings.push('half-mile card: generated/g-38/walk.json is missing — G-38 slots fall back to a pending card.');
   else note(`Half-mile card: own 1920x1080 graphic from generated/g-38/walk.json (${walkLoaded.data.pins.length} pins, ${walkLoaded.data.route.length} route points, base map ${walkLoaded.base ? 'present' : 'none — drawn on paper'}).`);
+  // A locale may override any string on any card by key: LOC.cards['g-34']['then.text'] etc. Anything it does not
+  // name stays in the authored language, so a half-translated locale degrades to mixed rather than to blank.
+  const cardLabels = (id) => (((LOC || {}).cards || {})[id] || {});
   const walkLabels = () => (LANG === 'zh' ? { steps: '1,151 步' } : {});
 
   const boardLabels = () => ({ title: LANG === 'zh' ? '环游地球所用天数' : (boardLoaded ? boardLoaded.data.title : '') });
@@ -1784,6 +1788,19 @@ async function runCropPreview(target) {
       if (missed) warnings.push(`${tag}: ${missed} half-mile beat(s) point at a sentence this cut does not speak — spaced evenly instead.`);
       return { kind: 'walkmap', beats: resolved, dur, src: 'half-mile card — own graphic from walk.json' };
     };
+    // Any generated/<id>/card.json is a card: one grammar, one type scale, one module. See lib/cards.mjs.
+    const cardSeg = async (m, dur) => {
+      const id = (m.ref.match(/generated\/([^/]+)\//) || [])[1];
+      const loaded = id ? CD.load(CHAPTER_DIR, id) : null;
+      if (!loaded) { warnings.push(`${tag}: ${m.manifest_id} has no card.json — falls back to a pending card.`); return await pendingSeg(m, dur); }
+      const resolved = (m.beats || []).map(b => {
+        const t = b.t !== undefined ? +b.t : (b.s !== undefined ? uttAt(`s:${b.s}`) : null);
+        return t == null ? null : { show: b.show, at: t - (b.lead !== undefined ? +b.lead : 0.25), from: b.s !== undefined ? `s:${b.s}` : `t=${b.t}` };
+      }).filter(Boolean);
+      const missed = (m.beats || []).length - resolved.length;
+      if (missed) warnings.push(`${tag}: ${missed} card beat(s) on ${m.manifest_id} point at a sentence this cut does not speak — spaced evenly instead.`);
+      return { kind: 'card', card: loaded, beats: resolved, dur, src: `${m.manifest_id} card (${loaded.data.type}) — own graphic from ${id}/card.json` };
+    };
     if (FILM) { segs = await filmSegs(); }
     else if (hint.visuals) {
       for (const v of hint.visuals) {
@@ -1836,9 +1853,11 @@ async function runCropPreview(target) {
           // them, including G-13, so the scene carrying the series' whole argument would have played as a gap.
           else if (m.kind === 'generated') {
             // a map asset is not a picture of a map: route it to the film map, which draws itself on the clock.
-            if (/g-38/.test(m.ref)) {
+            if (/\/card\.json$/.test(m.ref)) {
+              segs.push(await cardSeg(m, d));
+            } else if (/g-38/.test(m.ref)) {
               segs.push(await walkSeg(m, d));
-            } else if (/record-board|g-33/.test(m.ref)) {
+            } else if (/g-33\//.test(m.ref)) {
               segs.push(await boardSeg(m, d));
             } else if (/route-map|enablers-map|g-13/.test(m.ref)) {
               segs.push(await mapSeg(/enablers-map|g-13/.test(m.ref) ? 'enablers' : /full-loop/.test(m.ref) ? 'loop' : 'day-1',
@@ -1923,6 +1942,13 @@ async function runCropPreview(target) {
         const rv = Math.max(x.at + 1.5, Math.min(x.at + x.dur - 1.5, x.revealAt != null ? x.revealAt : x.at + x.dur * 0.62));
         segFiles.push(await segStates([{ file: x.ask, at: x.at }, { file: x.rev, at: rv }], x.dur, x.at));
         x.src += ` — question ${fmt1(rv - x.at)} s, then the reveal (${x.revealAt != null ? 'on the narration beat' : 'no quiz:correct token — 62 % of the beat'})`;
+      }
+      else if (x.kind === 'card') {
+        const tl = CD.planTimeline({ dur: x.dur, card: x.card.data, beats: (x.beats || []).map(b => ({ show: b.show, at: b.at - x.at })) });
+        const html = CD.page({ loaded: x.card, W, H, tl, lang: LANG, labels: cardLabels(x.card.id), fontsDir: FONTS_DIR });
+        const samples = CD.sampleTimes(tl, FPS);
+        segFiles.push(await segFrames(html, samples, x.dur, `${tag} ${x.card.id}`));
+        x.src += ` — ${samples.length} rendered frames; ` + ((x.beats || []).length ? (x.beats).map(b => `${b.show}@${fmt1(b.at - x.at)}s ${b.from}`).join(' · ') : 'spaced evenly (no beats)');
       }
       else if (x.kind === 'walkmap') {
         const tl = WM.planTimeline({ dur: x.dur, data: walkLoaded.data, beats: (x.beats || []).map(b => ({ show: b.show, at: b.at - x.at })) });

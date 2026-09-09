@@ -1,0 +1,8 @@
+{
+  "type": "measure",
+  "kicker": "Savile Row",
+  "from": "Conduit Street",
+  "to": "Vigo Street",
+  "value": "280 m",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

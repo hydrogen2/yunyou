@@ -1,0 +1,18 @@
+{
+  "type": "lines",
+  "kicker": "The Australian Overland Telegraph",
+  "lines": [
+    {
+      "key": "poles",
+      "text": "36,000 poles",
+      "size": "big"
+    },
+    {
+      "key": "stations",
+      "text": "11 repeater stations",
+      "sub": "Adelaide to Port Darwin, 1870–72",
+      "size": "big"
+    }
+  ],
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

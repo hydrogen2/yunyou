@@ -1,0 +1,25 @@
+{
+  "type": "lines",
+  "kicker": "How long it takes now",
+  "lines": [
+    {
+      "key": "iss",
+      "text": "90 minutes",
+      "sub": "the space station, one lap",
+      "size": "big"
+    },
+    {
+      "key": "air",
+      "text": "44 hours 33 minutes",
+      "sub": "scheduled flights, November 2024",
+      "size": "big"
+    },
+    {
+      "key": "fogg",
+      "text": "80 days",
+      "sub": "a bet made in 1872",
+      "size": "big"
+    }
+  ],
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

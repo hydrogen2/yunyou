@@ -1,0 +1,41 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:#efe6d3;overflow:hidden}
+svg{display:block}
+</style></head><body>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><filter id="fibre" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs>
+<rect width="1920" height="1080" fill="#efe6d3"/>
+<rect width="1920" height="1080" fill="#241c14" filter="url(#fibre)" opacity="0.05"/>
+<text x="120" y="108.0" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="600" font-size="34.0" letter-spacing="4.0" fill="#5b4a3a">TWELVE CROSSES, 1291–1295</text>
+<path d="M120 146.0H1800" stroke="#5b4a3a" stroke-width="2.0" stroke-opacity="0.45"/>
+<path d="M120 583.2H1800" stroke="#5b4a3a" stroke-width="3.0" stroke-opacity="0.55"/>
+<g class="rev" data-key="c1" opacity="0"><circle cx="202.6" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c2" opacity="0"><circle cx="340.3" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c3" opacity="0"><circle cx="478" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c4" opacity="0"><circle cx="615.7" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c5" opacity="0"><circle cx="753.4" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c6" opacity="0"><circle cx="891.1" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c7" opacity="0"><circle cx="1028.9" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c8" opacity="0"><circle cx="1166.6" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c9" opacity="0"><circle cx="1304.3" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c10" opacity="0"><circle cx="1442" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c11" opacity="0"><circle cx="1579.7" cy="583.2" r="9.0" fill="#a8301f" stroke="#efe6d3" stroke-width="3.0" fill-opacity="0.55"/></g>
+<g class="rev" data-key="c12" opacity="0"><circle cx="1717.4" cy="583.2" r="15.0" fill="#a8301f" stroke="#efe6d3" stroke-width="4.0" /><text x="1717.4" y="679.2" text-anchor="end" font-family="'Playfair Display',Georgia,'Liberation Serif',serif" font-weight="700" font-size="60.0" letter-spacing="0.0" fill="#241c14">Charing</text><text x="1717.4" y="725.2" text-anchor="end" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="400" font-size="37.0" letter-spacing="0.0" fill="#5b4a3a">the last, and seven times the cost of any other</text></g>
+<text x="120" y="1004" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-size="28.0" fill="#5b4a3a" opacity="0.85">Eleanor of Castile died in 1290. Her body was carried about 180 miles to Westminster, and Edward I built a stone cross at each place it rested overnight. F-131, F-132.</text>
+</svg>
+<script>
+const SHOW = {"c1":0.4,"c2":1.1636363636363636,"c3":1.9272727272727272,"c4":2.6909090909090905,"c5":3.454545454545454,"c6":4.218181818181818,"c7":4.9818181818181815,"c8":5.745454545454545,"c9":6.509090909090909,"c10":7.2727272727272725,"c11":8.036363636363635,"c12":8.799999999999999}, DRAW = 0.7;
+const ease = p => p<=0?0 : p>=1?1 : (p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2);
+const cl = (v,a,b) => Math.max(a,Math.min(b,v));
+window.setT = function(t){
+  for (const g of document.querySelectorAll('g.rev')){
+    const at = SHOW[g.dataset.key];
+    const on = at!=null && t>=at;
+    g.setAttribute('opacity', on ? cl((t-at)/0.35,0,1).toFixed(3) : '0');
+    const bar = g.querySelector('rect.bar');
+    if (bar) bar.setAttribute('width', on ? ((+bar.dataset.w)*ease(cl((t-at)/DRAW,0,1))).toFixed(1) : '0');
+  }
+};
+window.setT(0);
+</script></body></html>

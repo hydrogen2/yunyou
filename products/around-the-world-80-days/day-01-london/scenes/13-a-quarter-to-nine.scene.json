@@ -25,7 +25,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-50/the-carpet-bag.svg",
+      "ref": "generated/g-50/card.json",
       "start_s": 12,
       "end_s": 24,
       "license": "generated",
@@ -46,15 +46,15 @@
       "note": "T14.3 — the platform, the boat train."
     },
     {
-      "kind": "generated",
-      "ref": "generated/g-51/the-watch.svg",
+      "kind": "image",
+      "ref": "media/files/m224-pocket-watch-face.jpg",
       "start_s": 39,
       "end_s": 51,
-      "license": "generated",
-      "manifest_id": "G-51",
-      "attribution": "Yunyou studio, generated",
+      "license": "unknown",
+      "manifest_id": "M-224",
+      "attribution": "(pending)",
       "use": "both",
-      "note": "T14.4 — a watch face, four minutes slow, LONDON under it. This is the seed of Episode 8's ending; plant it plainly and never mention it again this episode. DOES NOT EXIST YET."
+      "note": "T14.4 — a pocket watch face reading four minutes slow, London time. RECLASSIFIED from a generated card 2026-09-09: a watch is a thing to photograph, not to set in type. Public-domain Victorian watch photograph or a still life. NOT YET SOURCED — Content Preparer. This is the seed of Episode 8's ending; plant it plainly and never mention it again this episode."
     },
     {
       "kind": "footage",
@@ -70,19 +70,19 @@
       "audio": "mute"
     },
     {
-      "kind": "generated",
-      "ref": "generated/g-52/the-gas.svg",
+      "kind": "image",
+      "ref": "media/files/m225-gas-lamp-lit.jpg",
       "start_s": 69,
       "end_s": 78,
-      "license": "generated",
-      "manifest_id": "G-52",
-      "attribution": "Yunyou studio, generated",
+      "license": "unknown",
+      "manifest_id": "M-225",
+      "attribution": "(pending)",
       "use": "both",
-      "note": "T14.6 — a single gas lamp burning in a dark window. DOES NOT EXIST YET."
+      "note": "T14.6 — a single gas lamp burning in a dark window. RECLASSIFIED from a generated card 2026-09-09, same reason. NOT YET SOURCED — Content Preparer."
     },
     {
       "kind": "generated",
-      "ref": "generated/g-13/enablers-map.svg",
+      "ref": "generated/g-13/enablers-map.json",
       "start_s": 78,
       "end_s": 108,
       "license": "generated",

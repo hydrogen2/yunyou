@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><style>
+
+html,body{margin:0;padding:0;width:1920px;height:1080px;background:#efe6d3;overflow:hidden}
+svg{display:block}
+</style></head><body>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+<defs><filter id="fibre" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter></defs>
+<rect width="1920" height="1080" fill="#efe6d3"/>
+<rect width="1920" height="1080" fill="#241c14" filter="url(#fibre)" opacity="0.05"/>
+<text x="120" y="108.0" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="600" font-size="34.0" letter-spacing="4.0" fill="#5b4a3a">WHERE THE WORD CAME FROM</text>
+<path d="M120 146.0H1800" stroke="#5b4a3a" stroke-width="2.0" stroke-opacity="0.45"/>
+<path d="M120 583.2H1800" stroke="#5b4a3a" stroke-width="3.0" stroke-opacity="0.55"/>
+<g class="rev" data-key="word" opacity="0"><circle cx="456" cy="583.2" r="15.0" fill="#a8301f" stroke="#efe6d3" stroke-width="4.0" /><text x="456" y="537.2" text-anchor="middle" font-family="'Playfair Display',Georgia,'Liberation Serif',serif" font-weight="700" font-size="60.0" letter-spacing="0.0" fill="#241c14">1755</text><text x="456" y="487.2" text-anchor="middle" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="400" font-size="37.0" letter-spacing="0.0" fill="#5b4a3a">“bespoke”, made to order</text></g>
+<g class="rev" data-key="tailors" opacity="0"><circle cx="1531.2" cy="583.2" r="15.0" fill="#a8301f" stroke="#efe6d3" stroke-width="4.0" /><text x="1531.2" y="679.2" text-anchor="middle" font-family="'Playfair Display',Georgia,'Liberation Serif',serif" font-weight="700" font-size="60.0" letter-spacing="0.0" fill="#241c14">c.1803</text><text x="1531.2" y="725.2" text-anchor="middle" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-weight="400" font-size="37.0" letter-spacing="0.0" fill="#5b4a3a">the first tailors reach Savile Row</text></g>
+<text x="120" y="1004" font-family="'Source Sans 3','Liberation Sans',system-ui,sans-serif" font-size="28.0" fill="#5b4a3a" opacity="0.85">The street’s own story puts the word here. The dating does not: it is about fifty years older than the trade.</text>
+</svg>
+<script>
+const SHOW = {"word":0.4,"tailors":8.64}, DRAW = 0.7;
+const ease = p => p<=0?0 : p>=1?1 : (p<0.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2);
+const cl = (v,a,b) => Math.max(a,Math.min(b,v));
+window.setT = function(t){
+  for (const g of document.querySelectorAll('g.rev')){
+    const at = SHOW[g.dataset.key];
+    const on = at!=null && t>=at;
+    g.setAttribute('opacity', on ? cl((t-at)/0.35,0,1).toFixed(3) : '0');
+    const bar = g.querySelector('rect.bar');
+    if (bar) bar.setAttribute('width', on ? ((+bar.dataset.w)*ease(cl((t-at)/DRAW,0,1))).toFixed(1) : '0');
+  }
+};
+window.setT(0);
+</script></body></html>

@@ -1,0 +1,27 @@
+{
+  "type": "lines",
+  "kicker": "Packed for three months",
+  "lines": [
+    {
+      "key": "shirts",
+      "text": "2 shirts",
+      "size": "mid"
+    },
+    {
+      "key": "stockings",
+      "text": "3 pairs of stockings",
+      "size": "mid"
+    },
+    {
+      "key": "coat",
+      "text": "a mackintosh and a travelling cloak",
+      "size": "mid"
+    },
+    {
+      "key": "book",
+      "text": "a railway timetable",
+      "size": "mid"
+    }
+  ],
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

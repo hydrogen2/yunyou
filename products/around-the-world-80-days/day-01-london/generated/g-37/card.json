@@ -1,0 +1,33 @@
+{
+  "type": "compare",
+  "kicker": "The largest city on earth, 1871",
+  "rows": [
+    {
+      "key": "london",
+      "label": "London",
+      "value": "3.9m",
+      "num": 3.9,
+      "emphasis": true
+    },
+    {
+      "key": "beijing",
+      "label": "Beijing",
+      "value": "~3.1m",
+      "num": 3.1
+    },
+    {
+      "key": "paris",
+      "label": "Paris",
+      "value": "~2.3m",
+      "num": 2.3
+    },
+    {
+      "key": "newyork",
+      "label": "New York",
+      "value": "~0.8m",
+      "num": 0.8
+    }
+  ],
+  "footnote": "Ratios as the sources give them; absolute figures approximate.",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

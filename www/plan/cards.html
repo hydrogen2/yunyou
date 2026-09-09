@@ -1,0 +1,25 @@
+<!doctype html><meta charset=utf-8>
+<meta name=viewport content="width=device-width,initial-scale=1"><title>The card generator</title>
+<style>:root{color-scheme:light dark}
+body{margin:0 auto;padding:26px 20px 70px;max-width:1000px;font:16px/1.6 -apple-system,"Segoe UI",Roboto,"Noto Sans SC",sans-serif}
+h1{font-size:23px;margin:0 0 4px} p{opacity:.78;margin:.4em 0 1em} code{background:rgba(128,128,128,.18);padding:1px 5px;border-radius:4px;font-size:.87em}
+figure{margin:0 0 20px} img{width:100%;border-radius:7px;display:block;background:#222}
+figcaption{font-size:13px;opacity:.62;padding-top:5px}
+ul{padding-left:1.2em} li{margin:.25em 0}</style>
+<h1>The card generator — 18 cards, one grammar</h1>
+<p>Episode 1 asked for twenty-one generated assets that are mostly one date, one number, or two labelled things.
+Twenty-one bespoke files would have produced twenty-one slightly different type scales, which is how a house look
+dies. Instead: <code>lib/cards.mjs</code>, one <code>card.json</code> per asset, and a type scale that lives in
+exactly one place.</p>
+<p>Six types, chosen from what the episode actually needs:</p>
+<ul>
+<li><code>lines</code> — a stack of lines, revealed in order</li>
+<li><code>figure</code> — one enormous number, plus a caption</li>
+<li><code>timeline</code> — dated points along an axis</li>
+<li><code>measure</code> — a line with two ends named and a distance</li>
+<li><code>pair</code> — two labelled things side by side</li>
+<li><code>compare</code> — labelled bars against each other</li>
+</ul>
+<p>Everything reveals on the narration clock, like the map and the record board. A locale can override any string
+on any card by key, so a half-translated Mandarin cut degrades to mixed rather than to blank.</p>
+<figure><img loading=lazy src="/plan/cards/g-10.png"><figcaption><b>G-10</b> · measure · Savile Row</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-30.png"><figcaption><b>G-30</b> · lines · How long it takes now</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-31.png"><figcaption><b>G-31</b> · figure</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-32.png"><figcaption><b>G-32</b> · lines</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-34.png"><figcaption><b>G-34</b> · lines · The stake</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-35.png"><figcaption><b>G-35</b> · lines · The Australian Overland Telegraph</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-37.png"><figcaption><b>G-37</b> · compare · The largest city on earth, 1871</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-40.png"><figcaption><b>G-40</b> · pair · How you joined a club</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-41.png"><figcaption><b>G-41</b> · figure · Clubland at its height</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-42.png"><figcaption><b>G-42</b> · pair · A few doors apart on Pall Mall</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-43.png"><figcaption><b>G-43</b> · timeline · Where the word came from</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-44.png"><figcaption><b>G-44</b> · lines · 2008 · Advertising Standards Authority</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-45.png"><figcaption><b>G-45</b> · lines · So the Row defends geography instead</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-46.png"><figcaption><b>G-46</b> · lines</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-47.png"><figcaption><b>G-47</b> · measure · One three-minute street</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-48.png"><figcaption><b>G-48</b> · lines · Every road sign in Britain</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-49.png"><figcaption><b>G-49</b> · timeline · Twelve crosses, 1291–1295</figcaption></figure><figure><img loading=lazy src="/plan/cards/g-50.png"><figcaption><b>G-50</b> · lines · Packed for three months</figcaption></figure>

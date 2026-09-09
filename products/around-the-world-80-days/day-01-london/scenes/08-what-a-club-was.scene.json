@@ -49,7 +49,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-40/the-ballot.svg",
+      "ref": "generated/g-40/card.json",
       "start_s": 32,
       "end_s": 46,
       "license": "generated",
@@ -83,7 +83,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-41/four-hundred-clubs.svg",
+      "ref": "generated/g-41/card.json",
       "start_s": 64,
       "end_s": 74,
       "license": "generated",

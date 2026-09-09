@@ -1,0 +1,20 @@
+{
+  "type": "lines",
+  "kicker": "The stake",
+  "lines": [
+    {
+      "key": "then",
+      "text": "£20,000",
+      "sub": "in 1872 — half of everything he had",
+      "size": "big"
+    },
+    {
+      "key": "now",
+      "text": "about £2 million",
+      "sub": "today",
+      "size": "big"
+    }
+  ],
+  "footnote": "Conversion: Bank of England inflation calculator, 1872–2025. Rounded.",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

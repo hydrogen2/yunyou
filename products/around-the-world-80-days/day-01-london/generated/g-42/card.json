@@ -1,0 +1,14 @@
+{
+  "type": "pair",
+  "kicker": "A few doors apart on Pall Mall",
+  "left": {
+    "label": "Carlton",
+    "sub": "1832 · Conservative"
+  },
+  "right": {
+    "label": "Reform",
+    "sub": "1836 · the other side"
+  },
+  "note": "“to counter the machinations of the Carlton”",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

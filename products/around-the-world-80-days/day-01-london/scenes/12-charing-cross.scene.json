@@ -37,7 +37,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-48/london-400.svg",
+      "ref": "generated/g-48/card.json",
       "start_s": 28,
       "end_s": 44,
       "license": "generated",
@@ -71,7 +71,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-49/twelve-crosses.svg",
+      "ref": "generated/g-49/card.json",
       "start_s": 72,
       "end_s": 94,
       "license": "generated",

@@ -1,0 +1,20 @@
+{
+  "type": "lines",
+  "kicker": "Every road sign in Britain",
+  "lines": [
+    {
+      "key": "sign",
+      "text": "LONDON  400",
+      "size": "big",
+      "font": "sans"
+    },
+    {
+      "key": "means",
+      "text": "means this statue",
+      "sub": "not the city — the bronze horseman at Charing Cross",
+      "size": "mid",
+      "font": "sans"
+    }
+  ],
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

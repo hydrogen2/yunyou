@@ -25,7 +25,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-32/train-quote.svg",
+      "ref": "generated/g-32/card.json",
       "start_s": 9,
       "end_s": 17,
       "license": "generated",
@@ -69,7 +69,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-33/record-board.json",
+      "ref": "generated/g-33/records.json",
       "start_s": 47,
       "end_s": 62,
       "license": "generated",
@@ -105,7 +105,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-33/record-board.json",
+      "ref": "generated/g-33/records.json",
       "start_s": 74,
       "end_s": 84,
       "license": "generated",
@@ -144,7 +144,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-33/record-board.json",
+      "ref": "generated/g-33/records.json",
       "start_s": 104,
       "end_s": 113,
       "license": "generated",
@@ -184,7 +184,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-33/record-board.json",
+      "ref": "generated/g-33/records.json",
       "start_s": 132,
       "end_s": 145,
       "license": "generated",

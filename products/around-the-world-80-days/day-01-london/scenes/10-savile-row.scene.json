@@ -28,7 +28,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-10/savile-row-280m.svg",
+      "ref": "generated/g-10/card.json",
       "start_s": 17,
       "end_s": 30,
       "license": "generated",
@@ -73,7 +73,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-43/bespoke-1755.svg",
+      "ref": "generated/g-43/card.json",
       "start_s": 78,
       "end_s": 92,
       "license": "generated",
@@ -84,7 +84,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-44/asa-2008.svg",
+      "ref": "generated/g-44/card.json",
       "start_s": 92,
       "end_s": 110,
       "license": "generated",
@@ -95,7 +95,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-45/hundred-yards.svg",
+      "ref": "generated/g-45/card.json",
       "start_s": 110,
       "end_s": 126,
       "license": "generated",

@@ -1,0 +1,21 @@
+{
+  "type": "lines",
+  "kicker": "2008 · Advertising Standards Authority",
+  "lines": [
+    {
+      "key": "price",
+      "text": "£495",
+      "sub": "cut and largely machine-sewn in Germany",
+      "size": "big"
+    },
+    {
+      "key": "ruling",
+      "text": "may still be called bespoke",
+      "sub": "nobody owns the term",
+      "size": "mid",
+      "font": "sans"
+    }
+  ],
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs",
+  "spread": "tight"
+}

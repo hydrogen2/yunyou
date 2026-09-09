@@ -48,7 +48,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-46/april-1874.svg",
+      "ref": "generated/g-46/card.json",
       "start_s": 39,
       "end_s": 51,
       "license": "generated",
@@ -70,7 +70,7 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-47/two-ends.svg",
+      "ref": "generated/g-47/card.json",
       "start_s": 65,
       "end_s": 78,
       "license": "generated",

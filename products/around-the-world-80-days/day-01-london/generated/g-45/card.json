@@ -1,0 +1,29 @@
+{
+  "type": "lines",
+  "kicker": "So the Row defends geography instead",
+  "lines": [
+    {
+      "key": "pattern",
+      "text": "1 paper pattern",
+      "sub": "cut for one person",
+      "size": "mid"
+    },
+    {
+      "key": "hours",
+      "text": "50 hours by hand",
+      "size": "mid"
+    },
+    {
+      "key": "fittings",
+      "text": "3 fittings",
+      "size": "mid"
+    },
+    {
+      "key": "yards",
+      "text": "within 100 yards of the street",
+      "size": "mid"
+    }
+  ],
+  "footnote": "The Savile Row Bespoke Association’s own standard.",
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}
