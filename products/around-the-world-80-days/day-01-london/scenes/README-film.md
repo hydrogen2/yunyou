@@ -1,194 +1,118 @@
-# Scenes (FILM) — Day 1: London — half a mile, and the year the world closed
+# Scenes (EPISODE 1) — London: the bet
 
-**Scene Developer + Narrator:** scene-developer (Claude), acting as both   **Date:** 2026-09-08   **Status:** draft, unrendered
-**Authority:** `rundown/rundown-film.md` (rev 2) **including the Chief's rulings appended at its foot** · `studio/strategy/video-first.md` · `DECISIONS.md` D9, D8, RULE 1
-**Facts:** `research/places.md` (F-110…F-155, the spine) · `research/fact-sheet.md` (F-01…F-47, the thread)
-**Media:** `media/manifest.md` (M-01…M-106) · `media/manifest-motion.md` (M-107…M-119)
+**Scene Developer + Narrator:** scene-developer (Claude), acting as both   **Date:** 2026-09-09   **Status:** draft, unsourced, unrendered
+**Authority:** `series/episode-01-topics.md` (the founder-approved 13-topic plan) · `studio/strategy/video-first.md` · `DECISIONS.md`
+**Supersedes:** `scenes/retired-film-v1/` (the 12-scene cut the founder watched and rejected: *"i dont get the openning, is it about bespoke suit making or tailor shops?"*)
 
-**Real total: 1,122 s = 18 min 42 s.** 12 scenes · **162 authored visual slots** · average shot **6.9 s** · longest still or card **12 s** · longest shot **14 s**.
-**Narration: 1,585 words (1,601 tokens by the validator's `split()`, which counts free-standing em-dashes) =
-10 min 40 s of speech at 150 wpm = 57 % fill**, i.e. 8 min 2 s of the film is picture without words.
-The plan's cap was ≤ 1,600 words and ~60 % fill; both are met. **All 26 HOLD markers in the plan's shot tables are honoured**
-(L2 counts them as 19 distinct silences), and each scene's `review.notes` names its silent windows by second.
+**1368 s = 22 min 48 s** · **14 scenes** · **103 authored visual slots** · **1968 narration words**
+· fill **58 %**, i.e. 9 min 40 s of this episode is picture without words.
 
-> **This file supersedes `scenes/retired-player-18/README.md`.** The old 18-scene interactive chain has been moved,
-> unaltered and still in git history, to `scenes/retired-player-18/`. It is not deleted because the linear cut sheet
-> (`studio/tools/render/cuts/day-01-london.json`), the Mandarin locale (`i18n/zh-Hans.json`) and the cached pano
-> directories all still address it by scene id. Nothing in this directory reads it.
-
----
+> **Runtime is over plan.** The approved topic list was costed at 21:00; written out and held to the studio's
+> 58 % fill it comes to **22:48**. The estimate was wrong, not the scenes — spoken numbers cost words
+> ("eighteen seventy-two" is three). Two cuts get it to about 21:00, in the order I would make them:
+> **scene 06 Thomas Cook (55 s)** and **scene 04, the quote card (10 s)**. Both are self-contained files;
+> deleting them and their rows here is the whole edit. Say which, or say leave it.
 
 ## 1 · The scenes, in order
 
-| # | file | scene id | block | s | slots | words | fill | what carries the block |
-|---|------|----------|-------|---|------:|------:|-----:|------------------------|
-| 1 | `01-cold-open.scene.json` | `cold-open` | **S0** | 45 | 8 | 65 | 58 % | Three motion shots (Savile Row, Pall Mall, Charing Cross), the telegraph map drawing itself to a date card, Neuville's Fogg, then the title card. |
-| 2 | `02-savile-row.scene.json` | `savile-row` | **S1** | 100 | 15 | 146 | 58 % | One unbroken end-to-end move down the street, a 280 m map card, two period street photographs, two walking passes — then 42 s of a 1952 tailoring newsreel for the craft. |
-| 3 | `03-the-word.scene.json` | `the-word` | **S2** | 104 | 15 | 152 | 58 % | Pose → 8 s of silent walking → the dated timeline card; then the 2008 tribunal on two quiet type cards, the chain-store door, the 100-yard circle, and 169 → 19 → 22. |
-| 4 | `04-no-1-savile-row.scene.json` | `no-1-savile-row` | **S3** | 95 | 11 | 139 | 59 % | The corner façade today, the RGS and Livingstone (both pending stills), a full-frame 1872 card, a pan up the east side, the two Neuville plates, and the 1912 purchase card. |
-| 5 | `05-clothes-then-club.scene.json` | `clothes-then-club` | **S4** | 72 | 9 | 104 | 58 % | Four windows of one cached 360 walk down St James's Street, the half-mile route drawing over the 1872 plan, one card, and the turn into Pall Mall under Big Ben (1890). |
-| 6 | `06-what-a-club-was.scene.json` | `what-a-club-was` | **S5** | 108 | 15 | 155 | 57 % | A clubland pass, the 1867 wood engraving, three real interiors (library 1886, Soyer's kitchens 1842, the saloon), two ballot cards, the clubland map, the Travellers' façade, the Reform's door. |
-| 7 | `07-a-palace-with-a-motive.scene.json` | `a-palace-with-a-motive` | **S6** | 74 | 12 | 118 | 64 % | Barry's elevation, the labelled plan and the section (six floors, three below ground), three political reveals on cards, the kitchen cutaway twice, the library and the saloon. |
-| 8 | `08-the-wager.scene.json` | `the-wager` | **S7** | 90 | 13 | 127 | 56 % | The wager plate in two crops, the route map drawing its eight legs to "80", the memorandum in two states, the minutes card, Barings (pending), Pall Mall, the club door. |
-| 9 | `09-the-year-the-world-closed.scene.json` | `the-year-the-world-closed` | **S8** | 138 | 19 | 195 | 57 % | The 1872 plan into the docks, **the Strand 1903 captioned "London, 1903"**, the scale card into **Hyde Park 1896**, the Embankment, the twelve termini, the Underground — then 30 s of the telegraph map, 8 of them silent. |
-| 10 | `10-charing-cross.scene.json` | `charing-cross` | **S9** | 143 | 22 | 195 | 55 % | Trafalgar Square motion for the statue, two folk-etymology cards, the twelve Eleanor crosses drawing north to south, the demolition, a true side-by-side then/now wipe, Hungerford → Clifton, the forecourt. |
-| 11 | `11-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | **S10** | 118 | 19 | 164 | 56 % | The bag card, Bradshaw (pending), two dated cab plates, **Donisthorpe's Trafalgar Square 1890 held silent for 12 s**, the beggar-woman under rain, the guinea card, the 1905 postcard, the gas lamps, the whistle, the lit bridge. |
-| 12 | `12-souvenir.scene.json` | `souvenir` | **S11** | 35 | 4 | 41 | 47 % | The statue, the souvenir card, **8 s of Dover 1896** (real motion, captioned) and the Day 2 plate. |
-| | | | **total** | **1122** | **162** | **1601** | **57 %** | **18:42** |
+| # | file | scene id | s | slots | words | fill | avg shot |
+|---|------|----------|--:|------:|------:|-----:|---------:|
+| 01 | `01-how-long.scene.json` | `how-long` | 77 | 8 | 111 | 58 % | 9.6 |
+| 02 | `02-the-racers.scene.json` | `the-racers` | 145 | 12 | 210 | 58 % | 12.1 |
+| 03 | `03-the-bet.scene.json` | `the-bet` | 93 | 9 | 135 | 58 % | 10.3 |
+| 04 | `04-a-hundred-and-fifteen-thousand.scene.json` | `a-hundred-and-fifteen-thousand` | 10 | 0 | 0 | 0 % | — |
+| 05 | `05-the-year-the-world-closed.scene.json` | `the-year-the-world-closed` | 133 | 6 | 193 | 58 % | 22.2 |
+| 06 | `06-thomas-cook.scene.json` | `thomas-cook` | 55 | 5 | 80 | 58 % | 11.0 |
+| 07 | `07-biggest-city.scene.json` | `biggest-city` | 80 | 8 | 116 | 58 % | 10.0 |
+| 08 | `08-half-a-mile.scene.json` | `half-a-mile` | 81 | 5 | 117 | 58 % | 16.2 |
+| 09 | `09-what-a-club-was.scene.json` | `what-a-club-was` | 96 | 9 | 139 | 58 % | 10.7 |
+| 10 | `10-the-reform.scene.json` | `the-reform` | 90 | 7 | 131 | 58 % | 12.9 |
+| 11 | `11-savile-row.scene.json` | `savile-row` | 149 | 10 | 216 | 58 % | 14.9 |
+| 12 | `12-no-1-savile-row.scene.json` | `no-1-savile-row` | 98 | 7 | 142 | 58 % | 14.0 |
+| 13 | `13-charing-cross.scene.json` | `charing-cross` | 138 | 9 | 200 | 58 % | 15.3 |
+| 14 | `14-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | 123 | 8 | 178 | 58 % | 15.4 |
 
-*The `words` column is the validator's `split()` token count, which counts a free-standing em-dash as a token. Real words: **1,585**.*
+## 2 · What does not exist yet
 
-**YouTube chapter timestamps** (they move by −12 s from S7 onward, because the Chief cut beat S6.6):
+Nothing here has been sourced. **24 new media items** and **25 new generated assets** are needed
+before this can be rendered; everything else reuses `media/manifest.md`.
 
-```
-00:00  Three places, one year
-00:45  Savile Row: the whole street is 280 metres
-02:25  Who owns the word "bespoke"
-04:09  No. 1: where the journeys were planned
-05:44  Clothes, then club: the walk through St James's
-06:56  What a London club actually was
-08:44  A political party built as a palace
-09:58  The wager
-11:28  1872: the year the world closed into a circuit
-13:46  Charing Cross: the point London is measured from
-16:09  A quarter to nine
-18:07  Souvenir
-```
+### New media to find (Content Preparer)
+| id | kind | what | for |
+|----|------|------|-----|
+| M-200 | image | Earth's limb from orbit, night side with city lights. Opens cold, no title. Must read with sound off. NOT YET SOURCED — Content Preparer. | `how-long` |
+| M-201 | footage | wing and cloud from a cabin window, or a departure board rolling. Modern, banal, deliberately. NOT YET SOURCED — Content Preparer. | `how-long` |
+| M-202 | image | orbital sunrise. HOLD 34–40, no words: the sixteen-sunrises line lands and then we look at one. NOT YET SOURCED — Content Preparer. | `how-long` |
+| M-203 | image | Train, portrait. NOT YET SOURCED — Content Preparer. | `the-racers` |
+| M-204 | image | Bly in her travelling coat and cap. The famous one. NOT YET SOURCED — Content Preparer. | `the-racers` |
+| M-205 | image | the World's own coverage: the board game, the guessing contest, a headline. NOT YET SOURCED — Content Preparer. | `the-racers` |
+| M-206 | image | Verne, photographed. HOLD 46–52: she stopped, on the clock, to meet him. NOT YET SOURCED — Content Preparer. | `the-racers` |
+| M-207 | image | Bisland. Held as long as Bly was; the race had two people in it. NOT YET SOURCED — Content Preparer. | `the-racers` |
+| M-208 | image | the two directions on one small globe or period map: Bly east, Bisland west. NOT YET SOURCED — Content Preparer. | `the-racers` |
+| M-209 | image | Huld, 1928, aged 15. ⚠ RIGHTS: Danish press photo, may still be in copyright. If not clearable, use the record board and a Politiken masthead instead. | `the-racers` |
+| M-210 | image | the crowd at Copenhagen station. Same rights question. NOT YET SOURCED — Content Preparer. | `the-racers` |
+| M-211 | footage | a modern ocean-racing trimaran at speed. The one genuinely fast-moving shot in the topic; it should feel like a different century, because it is. NOT  | `the-racers` |
+| M-212 | image | the golden spike photograph. Held. NOT YET SOURCED — Content Preparer. | `the-year-the-world-closed` |
+| M-213 | image | the opening ceremony, engraved. NOT YET SOURCED — Content Preparer. | `the-year-the-world-closed` |
+| M-214 | image | a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. NOT YET SOURCED — Content Preparer. | `the-year-the-world-closed` |
+| M-215 | image | Cook, portrait. NOT YET SOURCED — Content Preparer. | `thomas-cook` |
+| M-216 | image | the advertisement itself if one can be found; Verne is thought to have read one. NOT YET SOURCED — Content Preparer. | `thomas-cook` |
+| M-217 | image | the world's first underground, packed, in a cutting. The best single image of 'new'. NOT YET SOURCED — Content Preparer. | `biggest-city` |
+| M-218 | image | the library. 'Read, write letters' wants a room, not a façade. NOT YET SOURCED — Content Preparer. | `what-a-club-was` |
+| M-219 | image | the Reform's own library, 85,000 volumes. ⚠ The club controls interior photography; if it cannot be cleared, hold on M-23 and let the number sit on a  | `the-reform` |
+| M-220 | image | uniform, not fashion. A cap, a frogged coat, a naval sleeve. NOT YET SOURCED — Content Preparer. | `savile-row` |
+| M-221 | image | the room itself: maps, men, argument. The whole topic depends on this image existing. NOT YET SOURCED — Content Preparer. | `no-1-savile-row` |
+| M-222 | image | Livingstone. Held, plainly, no music sting. NOT YET SOURCED — Content Preparer. | `no-1-savile-row` |
+| M-223 | image | the equestrian bronze itself, close. The topic is about this object; it must be on screen. NOT YET SOURCED — Content Preparer. | `charing-cross` |
 
----
+### New generated assets to draw
+| id | what | for |
+|----|------|-----|
+| G-30 | the comparison card, built one line at a time: 90 MINUTES / 44 HOURS 33 MINUTES / 80 DAYS. Three lines, nothing else. Type large enough to read on a p | `how-long` |
+| G-31 | one numeral, '80', on the house cream card. Held. DOES NOT EXIST YET. | `how-long` |
+| G-32 | his line set as type on the cream card: 'Verne stole my thunder. I'm Phileas Fogg.' DOES NOT EXIST YET. | `the-racers` |
+| G-33 | THE RECORD BOARD. Builds a line at a time as each name is spoken and stays for the rest of the topic: Fogg (fiction) 80 · Bly 1890 72d 6h · Bisland 18 | `the-racers` |
+| G-34 | the sum, twice: £20,000 in 1872 / about £2 million today. Two lines. The card carries the conversion so the guide does not have to labour it. Cite the | `the-bet` |
+| G-13 | THE FILM MAP, drawn by lib/mapfilm.mjs, not screenshotted from the player. One line at a time, on the voice: Promontory 1869 → Suez 1869 → India 1870  | `the-year-the-world-closed` |
+| G-35 | 36,000 POLES / 11 REPEATER STATIONS. Two lines. DOES NOT EXIST YET. | `the-year-the-world-closed` |
+| G-36 | the comparison, two rows: FOGG (fiction) 80 DAYS / COOK (actual) 222 DAYS. £200 guineas, 8 travellers in small type. DOES NOT EXIST YET. | `thomas-cook` |
+| G-37 | the comparison card as bars, not text: LONDON 3.9m / BEIJING / PARIS / NEW YORK. Four bars, four labels. The guide says the ratios; the card shows the | `biggest-city` |
+| G-38 | THE ANCHOR CARD. The 1872 street plan, three pins dropped in order as they are named — 7 Savile Row, 104 Pall Mall, Charing Cross — then the walking l | `half-a-mile` |
+| G-39 | 575 + 576 = 1,151 STEPS · ~900 m. The card holds the arithmetic so the voice does not have to repeat it. DOES NOT EXIST YET. | `half-a-mile` |
+| G-40 | the ballot box: white ball / black ball, and the word BLACKBALLED. One idea, one card. DOES NOT EXIST YET. | `what-a-club-was` |
+| G-41 | clubland as dots on the St James's / Pall Mall streets. Few labels. DOES NOT EXIST YET. | `what-a-club-was` |
+| G-42 | two doors on one street: CARLTON 1832 (Conservative) / REFORM 1836 (Reformers), and the few doors between them drawn to scale. The whole topic in one  | `the-reform` |
+| G-10 | the measure card: Conduit Street to Vigo Street, one line, '280 m' large, two labels only. The guide does not read the number the card shows. STILL DO | `savile-row` |
+| G-43 | one dated line: BESPOKE, adj. 1755 · TAILORS ON SAVILE ROW c.1803. The myth dies on a date card, not in an argument. DOES NOT EXIST YET. | `savile-row` |
+| G-44 | the 2008 ruling, quiet type: £495, machine-sewn, still 'bespoke'. DOES NOT EXIST YET. | `savile-row` |
+| G-45 | the 100-yard circle drawn on the street plan, with the standard's three numbers: 50 hours · 3 fittings · 1 pattern. DOES NOT EXIST YET. | `savile-row` |
+| G-46 | one line on the cream card: APRIL 1874 · No. 1 SAVILE ROW. Nothing else. DOES NOT EXIST YET. | `no-1-savile-row` |
+| G-47 | the street drawn with both ends labelled: No. 1 THE ROYAL GEOGRAPHICAL SOCIETY / No. 7 (Verne's Fogg). 280 m between them. DOES NOT EXIST YET. | `no-1-savile-row` |
+| G-48 | a British road sign reading LONDON 400, then a line drawn from it to this one point. DOES NOT EXIST YET. | `charing-cross` |
+| G-49 | the twelve crosses drawn as twelve stops down England, Harby to Westminster, revealed one at a time. Charing lights last. Few labels. DOES NOT EXIST Y | `charing-cross` |
+| G-50 | the packing list as an inventory card: 2 shirts · 3 pairs of stockings · mackintosh · cloak · Bradshaw. For three months. DOES NOT EXIST YET. | `a-quarter-to-nine` |
+| G-51 | a watch face, four minutes slow, LONDON under it. This is the seed of Episode 8's ending; plant it plainly and never mention it again this episode. DO | `a-quarter-to-nine` |
+| G-52 | a single gas lamp burning in a dark window. DOES NOT EXIST YET. | `a-quarter-to-nine` |
 
-## 2 · How to read a scene file (the rules this pass obeys)
+**G-13 is the one that matters.** The enabler map carries the episode's whole argument and the series
+introduction, it is on screen for 58 s of scene 05 and again in scene 14, and it has been outstanding since
+the first film cut. If only one asset gets made, it is this one.
 
-1. **Authored slots, scene-clock seconds.** Every media entry carries `start_s` / `end_s` meaning *where the shot sits
-   in the scene*, not an in/out point in the source file. Where a source in-point matters it is written in that
-   entry's `note` as `source in-point mm:ss`. Slots are contiguous, cover 0 → `duration_s`, and never overlap; only
-   audio beds span other slots. **The renderer must honour these, not re-divide the scene.**
-2. **No `overlays`. No `interaction`.** Neither key appears in any of the twelve files (D9). Text on screen exists in
-   exactly two sanctioned forms: burned captions (the subtitle track), and **full-frame designed cards**, which are
-   media entries of `kind: "generated"`.
-3. **Dates on archive material live in the picture's own furniture.** Where a post-1872 film or plate stands in for
-   1872, the year is the first clause of that entry's `attribution` — the caption line under or beside the picture —
-   never a floating overlay. Nine slots carry one: `London, 1903` · `Hyde Park, London, 1896` ·
-   `Trafalgar Square, 1890` · `Charing Cross … postcard, 1905` · `A London street, c. 1891–96` · `'London Cabmen', 1877` ·
-   `Savile Row, 1955` · `Savile Row, c. 1890` · `Tailors at work · Netherlands, 1952` · `Dover, 1896`.
-4. **One narration track.** `narration.script` only; no `variants` (D8).
-5. **`review.notes` carries the sentence-to-slot map** for every scene, plus every provisional flag.
+## 3 · Facts not yet on a fact sheet
 
----
+Scenes 01, 02, 03 and 06 cite **F-N01…F-N12**, which are placeholders, not fact-sheet ids. They cover the
+2024 flight record, the ISS orbital period, Train, Bly, Bisland, Huld, the Jules Verne Trophy, Cook's 222 days
+and the £20,000 conversion. Sources are listed at the foot of `series/episode-01-topics.md`. **Researcher owes
+real F- numbers and Fact-Check owes a pass before any of this is recorded.** Two are already known-soft:
+Cook's departure date conflicts between sources, and the Huld/Tintin link is "reportedly" even at source.
 
-## 3 · What is provisional, and why
+## 4 · Rights still open
+- **M-209 / M-210** — Palle Huld, 1928 Danish press photographs. May still be in copyright. Fallback: the record board.
+- **M-219** — the Reform Club library interior. The club controls interior photography. Fallback: hold on M-23.
+- **M-84** — mis-briefed in the first cut: it does **not** contain the Charles I statue that scene 13 is about. Re-cut or replace.
 
-### 3a · Rights: Mapillary — **22 of 162 slots**
-`M-108`, `M-109`, `M-115`, `M-116` and all seven cached pano stops rest on Mapillary's *platform-default* CC BY-SA 4.0
-with **no per-image licence field**. Every one of those slots is marked `pending: rights-mapillary` in its `note` and
-in the scene's `review.notes`. This is the single largest rights exposure in the chapter: **Savile Row walking motion,
-the whole St James's walk, the clubland pass and the Charing Cross forecourt all sit on it.** Open since 2026-08-19
-(`media/manifest-motion.md` §4.3). If Rights says no, the fallback is KartaView (licence-green, but 12–17 m dashcam
-spacing) and the film loses its only pedestrian-pace footage.
-
-### 3b · Motion the plan asked for that does not exist
-| ask | slots affected | state |
-|---|---|---|
-| **N2** tailoring workroom | 7 slots, 42 s of scene 02 | Carried by **M-110**, a 384×288 Dutch newsreel of 1952. Real craft, licence-clean, captioned and dated — and not Savile Row. It must be mounted as a plate or archive window, never full-frame. |
-| **N4** Pall Mall clubland pass | scenes 01, 06, 08 | **Unfilled.** Every 2026 candidate was rejected on content (a VIOFO-watermarked dashcam; four Queen's-funeral walks). M-67 (2016 hyperlapse) and one cached 360 stop stand in. |
-| **N3a/b/d** the statue with traffic, the datum plaque, the concourse | scenes 10, 11 | **Unfilled.** Scene 10 uses a Trafalgar Square clip and asks QA to pin a window that actually holds the statue; scene 11 has two `pending` motion slots (`N3d`, `N3e`) with still fallbacks. Nothing was invented. |
-| **N5** St James's Street shopfronts | scene 05 | Four windows of one cached 360 sequence. QA must confirm Lock & Co and Berry Bros are legible; if not, the beat has no picture. |
-| **N8** dusk | scenes 08, 11, 12 | **Unfilled.** Open imagery is daylight. Daylight stands in. |
-| a train over Hungerford Bridge | scene 10 | Does not exist in any free source. The slot is a walk across the *footbridge* beside it, and the narration calls it the river, not Fogg's train. |
-
-### 3c · Stills with no source — **26 slots, 19 distinct wants**
-`S-mil` · `S-trade` · `S-sargent` · `S-rgs` · `S-liv` ×2 · `S-chur` ×2 · `S-bank` ×2 · `S-docks` · `S-emb` · `S-met` ×2 ·
-`S-plaque` · `S-sign` · `S-cross` · `S-civil` · `S-hung` ×2 · `S-brad` ×2 · `S-gas` ×2 — plus `M-103` (Soyer's title page:
-the item is in the manifest and is public domain, but `manifest.md` records its Commons URL only as an ellipsis).
-Each is authored as `kind: "image"`, `license: "pending"`, `ref: media/files/pending/<id>-<slug>.jpg`, with a `note`
-saying exactly what is wanted and a **declared `fallback` to something we hold**, so the film still renders.
-**Three of those fallbacks are honest placeholders and not pictures of the subject** and should block a ship:
-`S-liv` → M-34 (a Neuville engraving of Fogg standing in for Livingstone), `S-chur` → M-34 (ditto for Churchill),
-`S-bank` → M-30 (the 1872 plan standing in for a bank).
-
-### 3d · Generated assets
-**Illustrated / map assets (the rundown's own G-series, §5).** Existing and used: **G-01** (needs the L4 rebuild —
-bigger type, fewer labels), **G-02** (already a composited side-by-side; used as a hard wipe via its seam25/seam75
-files), **G-05** (must lose the six signatories, rev 2), **G-07** (must stop being an interactive packing game).
-Do not exist and are used: **G-10, G-10b, G-11, G-12, G-13, G-14, G-15, G-16, G-17, G-18, G-19**. Of these the rundown
-marks **G-13, G-12, G-10/G-10b as essential**; G-13 alone carries five slots and is the film's thesis.
-
-**Typeset cards — a NEW `C-` series, 26 of them.** These are the rundown's unnumbered "CARD" beats. They are plain
-designed type on a plain ground: no rights, no research, cheap, and they are what the retired overlays became. I gave
-them their own series so they do not inflate the illustrated-asset budget the founder is being asked to approve
-(rundown Decision 5). Path convention `generated/cards/c-NN-<slug>.svg`. The exact on-screen text of each is in the
-`note` of its media entry, after `ON-SCREEN TEXT:`.
-
-| id | on-screen text | scene |
-|----|----------------|-------|
-| C-01 | 22 August 1872 | 01 |
-| C-02 | DAY 1 · LONDON · 2 October 1872 | 01 |
-| C-03 | 50 hours by hand · 3 fittings · about 3 months | 02 |
-| C-04 | Where does the word 'bespoke' come from? / from Savile Row · from the army · from an older English verb | 03 |
-| C-05 | June 2008 · £495 | 03 |
-| C-06 | The finding: 'bespoke' and 'made-to-measure' are effectively the same word now. | 03 |
-| C-07 | 1872. At No. 1: the headquarters of British exploration. | 04 |
-| C-08 | 1912 · £38,000 | 04 |
-| C-09 | the Court of St James's | 05 |
-| C-10 | You did not apply. / You were proposed, seconded — and balloted. | 06 |
-| C-11 | blackballed | 06 |
-| C-12 | 104 Pall Mall · Charles Barry · opened 1 March 1841 | 07 |
-| C-13 | Reform Act 1832 | 07 |
-| C-14 | the Tory Carlton Club, a few doors away | 07 |
-| C-15 | 8 February 1836 | 07 |
-| C-16 | 80 days · 1,920 hours · 115,200 minutes | 08 |
-| C-17 | 800,000 tons (1800) → 8 million (1880) | 09 |
-| C-18 | Suez 1869 · Promontory 1869 · Jabalpur 1870 · Darwin 1872 | 09 |
-| C-19 | the world had just become a circuit | 09 |
-| C-20 | Charing — Old English 'cierring', a bend | 10 |
-| C-21 | not French 'chère reine' | 10 |
-| C-22 | over £700 — the most expensive of the twelve | 10 |
-| C-23 | ordered down 1643 · demolished 1647 · stood 353 years | 10 |
-| C-24 | a guinea = 21 shillings / last minted 1813 | 11 |
-| C-25 | Stand here. Every LONDON on a British road sign means this spot. | 12 |
-| C-26 | Day 2 — Dover and Calais: twenty miles of water, and why both sides are white | 12 |
-
-### 3e · Sound
-The **telegraph key (N7)** has no source. It is authored as a `pending` audio entry in scenes 01 and 09 (where it runs
-the whole 30-s reveal and is the last thing heard). Everything else is existing manifest audio. `M-110`'s own
-soundtrack is muted (Dutch commentary, and the archive-audio rule); the craft beats therefore currently have **no**
-cloth-and-shears sound, which the rundown's §6 asks for.
-
----
-
-## 4 · Two things Engine must do before this renders
-
-1. **The pano cache is keyed by the old scene ids.** `media/files/panos/index.json` maps stops to `scene_id`
-   `count-the-steps` and `look-up-the-cross`, which no longer exist. Either re-key the directories or re-run
-   `node studio/tools/panowalk/fetch.mjs --chapter day-01-london --scene <new id>` (Mapillary graph API + KartaView,
-   both free — nothing billable, RULE 1 intact). Until then those 12 slots fall back to their declared stills.
-2. **The cut sheet and the locale still address the old chain.** `studio/tools/render/cuts/day-01-london.json`
-   indexes narration by sentence within the retired 18 scenes, and `i18n/zh-Hans.json` overlays them by index. Both
-   need rebuilding against these twelve. Neither was touched by this pass.
-
----
-
-## 5 · Conformance to the plan
-
-- **Every beat in `rundown-film.md` rev 2 is present**, in order, at its planned duration, with its F-ids in `sources`.
-- **The Chief's five rulings are applied**: 115,200 minutes kept (and, because overlays are gone, now *spoken* as well
-  as carded) · "counting the steps" kept · **S3.6 written but flagged `fact_check: "flag"`, pending F-34** · the
-  carpet-bag kept tight at 10 s · **beat S6.6 cut**, which is the whole of the −12 s and why the film is 18:42.
-- **All seven folklore stories on the `places.md` watchlist are handled**: #1 bespoke and #2 chère reine are named as
-  legend on screen and refuted by date; #3 the black-ball ratio, #4 the Travellers' 500-mile rule and #7 the dinner
-  jacket appear nowhere; #5 and #6 are Day 2.
-- **No fact outside the two sheets is used.** Nothing was invented for a missing picture.
-
----
-
-## Digest
-- **Did:** turned all 88 beats of the film plan into 12 scene files with 162 authored, contiguous, scene-clock media
-  slots (average shot 6.9 s, no still past 12 s, no shot past 14 s), wrote and cut 1,585 words of narration to 57 %
-  fill with every HOLD in the plan honoured, retired the 18-scene interactive chain into `scenes/retired-player-18/`, reassembled
-  `tour.json`, and got a clean validator run with no warnings.
-- **Weak:** 26 slots have no picture yet and 22 more rest on an unresolved Mapillary licence; the craft beat — the
-  founder's own reason to care about Savile Row — is 42 seconds of a 384×288 Dutch newsreel; and the film ends in the
-  one place we have the least footage of.
-- **With more time:** cut a silent animatic from the slots that *do* exist to test the 6.9-second rhythm before a word
-  is recorded; write the two D2 permission emails (a Row workroom, a Charing Cross videographer) so the founder only
-  has to press send; and design the 26 C-cards as one typographic system rather than 26 decisions.
+## 5 · Before rendering
+`tour.json` still assembles the **retired** 12-scene cut and must be rebuilt against this directory; the
+renderer's rendered-vs-intended check will fail loudly until it is. The Mandarin locale `i18n/zh-Hans.json`
+addresses the retired scene ids and needs rewriting from scratch, including the new `quote` card's text —
+an untranslated quote renders English in the zh cut and only warns.

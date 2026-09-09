@@ -1,0 +1,82 @@
+{
+  "id": "thomas-cook",
+  "type": "video",
+  "title": "The tour that really left that month",
+  "subtopic": "T5 — the professional's answer, in the same autumn",
+  "duration_s": 55,
+  "learning_goal": "Know that the first commercial round-the-world tour left in the same month and took 222 days, so eighty was a provocation rather than a schedule.",
+  "narration": {
+    "script": "While Verne was inventing this, a travel agent was actually doing it. In late September eighteen seventy-two — days before Fogg's fictional departure — Thomas Cook led eight paying customers out of Liverpool on the first round-the-world tour ever sold. It cost two hundred guineas. It took two hundred and twenty-two days. So the real answer, from the man whose job this was, in the actual month: about seven months. Eighty days was not a schedule. It was a provocation.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Thomas_Cook_(1808-1892).jpg",
+      "start_s": 0,
+      "end_s": 8,
+      "license": "public-domain",
+      "manifest_id": "M-215",
+      "attribution": "Thomas Cook — public domain",
+      "use": "both",
+      "note": "T5.1 — Cook, portrait. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-33/cook-poster.jpg",
+      "start_s": 8,
+      "end_s": 18,
+      "license": "public-domain",
+      "manifest_id": "M-216",
+      "attribution": "Thomas Cook & Son advertisement, 1870s — public domain",
+      "use": "both",
+      "note": "T5.2 — the advertisement itself if one can be found; Verne is thought to have read one. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m83-seeing-london.mp4",
+      "start_s": 18,
+      "end_s": 28,
+      "license": "public-domain",
+      "manifest_id": "M-83",
+      "attribution": "'Seeing London' — Burton Holmes, ca. 1920s, Internet Archive (prelinger) — public domain",
+      "use": "both",
+      "note": "T5.3 — tourists, plural, being conducted. Period, unhurried.",
+      "audio": "mute"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-33/222-days.svg",
+      "start_s": 28,
+      "end_s": 40,
+      "license": "generated",
+      "manifest_id": "G-36",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T5.4 — the comparison, two rows: FOGG (fiction) 80 DAYS / COOK (actual) 222 DAYS. £200 guineas, 8 travellers in small type. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_01.jpg",
+      "start_s": 40,
+      "end_s": 55,
+      "license": "public-domain",
+      "manifest_id": "M-52",
+      "attribution": "Route map, Hetzel edition — public domain",
+      "use": "both",
+      "note": "T5.5 — HOLD 60–66 on the route map. 'A provocation' lands over it."
+    }
+  ],
+  "review": {
+    "notes": "Silence 60–66.\nFill 53%.\n⚠ Cook's departure date conflicts between sources (20 vs 26 Sept 1872). Script says 'late September' deliberately. Research to settle before record.\nFIRST TO CUT if the episode needs to come in under 21 minutes.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-N09",
+    "F-N10"
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "id": "what-a-club-was",
+  "type": "video",
+  "title": "What a London club actually was",
+  "subtopic": "T8 — the institution, and where 'blackballed' comes from",
+  "duration_s": 96,
+  "learning_goal": "Know what a gentlemen's club was as an institution, how election by ballot worked, and that clubland was hundreds of buildings still standing today.",
+  "narration": {
+    "script": "Fogg makes the bet in a club. It is worth knowing what that word meant. Not a bar. A private house the size of a palace, where a few hundred men who agreed with each other could eat, read, write letters and in many of them sleep — all of it staffed, none of it for sale. You could not buy your way in. You were proposed, seconded, then voted on. Every member dropped a ball into a box: white to admit, black to reject. Enough black balls and you were out. That is where blackballed comes from. At its height London had more than four hundred of these places, most inside a few hundred metres of St James's and Pall Mall. This is the second leg of Fogg's walk, and almost every building on it is still standing.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "footage",
+      "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
+      "start_s": 0,
+      "end_s": 12,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-67",
+      "attribution": "KartaView / telenavdrives (2016) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T8.1 — clubland at street level, moving.",
+      "sa": true,
+      "audio": "mute"
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+      "start_s": 12,
+      "end_s": 23,
+      "license": "public-domain",
+      "manifest_id": "M-23",
+      "attribution": "Reform Club saloon, *London Interiors* (1841) — public domain",
+      "use": "both",
+      "note": "T8.2 — the interior, engraved. 632×521 — plate on the mount, never stretched."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-36/club-library-1886.jpg",
+      "start_s": 23,
+      "end_s": 32,
+      "license": "public-domain",
+      "manifest_id": "M-218",
+      "attribution": "A London club library, 1880s — public domain",
+      "use": "both",
+      "note": "T8.3 — the library. 'Read, write letters' wants a room, not a façade. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-36/the-ballot.svg",
+      "start_s": 32,
+      "end_s": 46,
+      "license": "generated",
+      "manifest_id": "G-40",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T8.4 — the ballot box: white ball / black ball, and the word BLACKBALLED. One idea, one card. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Athen%C3%A6um_Club,_Pall_Mall_-_geograph.org.uk_-_869675.jpg",
+      "start_s": 46,
+      "end_s": 55,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-69a",
+      "attribution": "The Athenæum Club, Pall Mall — Kevin Gordon (geograph, 2008) · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "T8.5 — one door.",
+      "sa": true
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Travellers_Club,_London.jpg",
+      "start_s": 55,
+      "end_s": 64,
+      "license": "cc-by-2.0",
+      "manifest_id": "M-106",
+      "attribution": "The Travellers Club, 106 Pall Mall — Matt Brown (Flickr, 2006) · CC BY 2.0 · adapted",
+      "use": "both",
+      "note": "T8.6 — the next door along."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-36/four-hundred-clubs.svg",
+      "start_s": 64,
+      "end_s": 74,
+      "license": "generated",
+      "manifest_id": "G-41",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T8.7 — clubland as dots on the St James's / Pall Mall streets. Few labels. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Reform_Club,_London_doorway-15248850190.jpg",
+      "start_s": 74,
+      "end_s": 86,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-105",
+      "attribution": "The Reform Club doorway, 104 Pall Mall — Phil Guest (2014) · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "T8.8 — arrive at his door.",
+      "sa": true
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
+      "start_s": 86,
+      "end_s": 96,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-67",
+      "attribution": "KartaView / telenavdrives · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T8.9 — HOLD 94–100, still moving, no words.",
+      "sa": true,
+      "audio": "mute"
+    }
+  ],
+  "review": {
+    "notes": "Silence 94–100.\nFill 58%.\nM-218 (a club library interior) is the one new still.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-123",
+    "F-124",
+    "F-125",
+    "F-126",
+    "F-129"
+  ]
+}

@@ -1,0 +1,147 @@
+{
+  "id": "savile-row",
+  "type": "video",
+  "title": "Savile Row — 280 metres, and one word",
+  "subtopic": "T10 — the street, the trade, and the word it lost",
+  "duration_s": 149,
+  "learning_goal": "Know why the world's bespoke tailoring is named after one 280-metre street, that the word did not start there, and that the Row lost it at tribunal in 2008 and defended it with geography instead.",
+  "narration": {
+    "script": "Verne gives Fogg a house here — number seven. Here is what he does not tell you about the street. Two hundred and eighty metres, one block behind Regent Street. You can walk it in three minutes. The tailors arrived around eighteen-oh-three, following the army officers who already lived here — which is why the Savile Row shape comes from military uniform, not from fashion. The street will tell you the word bespoke was born here: cloth spoken for by a customer. It was not. The word is from seventeen fifty-five, fifty years before the first tailor arrived. And in two thousand and eight they lost it for real. The advertising regulator ruled that a machine-sewn suit made in Germany could still be called bespoke. Nobody owns the term. So the Row stopped defending the dictionary and started defending geography. Its own standard now demands a paper pattern cut for one person, fifty hours of hand work, three fittings — and a workshop within a hundred yards of this street. One last thing about Fogg living here. He leaves for three months with a single bag: two shirts and three pairs of stockings. He lived on the street where one suit takes fifty hours by hand — and he packed as though clothes did not exist.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "footage",
+      "ref": "media/files/m107-savile-row-end-to-end.mp4",
+      "start_s": 0,
+      "end_s": 17,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-107",
+      "attribution": "KartaView / telenavdrives (17 Jan 2018) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T10.1 — the entire street in one unbroken move, north to south. The subject, stated by moving through it.",
+      "sa": true,
+      "audio": "mute",
+      "fallback": "M-66"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-10/savile-row-280m.svg",
+      "start_s": 17,
+      "end_s": 30,
+      "license": "generated",
+      "manifest_id": "G-10",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T10.2 — the measure card: Conduit Street to Vigo Street, one line, '280 m' large, two labels only. The guide does not read the number the card shows. STILL DOES NOT EXIST."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Savile_Row_c._1890.jpg",
+      "start_s": 30,
+      "end_s": 44,
+      "license": "public-domain",
+      "manifest_id": "M-32",
+      "attribution": "Savile Row, c. 1890 — Henry Poole & Co archive photograph — public domain",
+      "use": "both",
+      "note": "T10.3 — the street when it was already the street."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-38/gieves-hawkes-military.jpg",
+      "start_s": 44,
+      "end_s": 57,
+      "license": "public-domain",
+      "manifest_id": "M-220",
+      "attribution": "Military tailoring plate / cap-maker's advertisement, 19th c. — public domain",
+      "use": "both",
+      "note": "T10.4 — uniform, not fashion. A cap, a frogged coat, a naval sleeve. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m110-tailors-1952.mp4",
+      "start_s": 57,
+      "end_s": 78,
+      "license": "public-domain",
+      "manifest_id": "M-110",
+      "attribution": "Tailoring newsreel (1952) — public domain",
+      "use": "both",
+      "note": "T10.5 — hands, chalk, shears. The craft, moving. Longest slot in the scene and it earns it.",
+      "audio": "mute"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-38/bespoke-1755.svg",
+      "start_s": 78,
+      "end_s": 92,
+      "license": "generated",
+      "manifest_id": "G-43",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T10.6 — one dated line: BESPOKE, adj. 1755 · TAILORS ON SAVILE ROW c.1803. The myth dies on a date card, not in an argument. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-38/asa-2008.svg",
+      "start_s": 92,
+      "end_s": 110,
+      "license": "generated",
+      "manifest_id": "G-44",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T10.7 — the 2008 ruling, quiet type: £495, machine-sewn, still 'bespoke'. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-38/hundred-yards.svg",
+      "start_s": 110,
+      "end_s": 126,
+      "license": "generated",
+      "manifest_id": "G-45",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T10.8 — the 100-yard circle drawn on the street plan, with the standard's three numbers: 50 hours · 3 fittings · 1 pattern. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:View_up_Savile_Row_-_geograph.org.uk_-_2952140.jpg",
+      "start_s": 126,
+      "end_s": 137,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-77a",
+      "attribution": "View up Savile Row — Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "T10.9 — the street today, looking up it.",
+      "sa": true
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_05.jpg",
+      "start_s": 137,
+      "end_s": 149,
+      "license": "public-domain",
+      "manifest_id": "M-50",
+      "attribution": "Passepartout, Neuville/Benett plate 05 (1872/73) — public domain",
+      "use": "both",
+      "note": "T10.10 — the carpet-bag turn. HOLD to the end: the man who packed nothing, on the street that makes everything."
+    }
+  ],
+  "review": {
+    "notes": "Fill 58%. Silence in the last ~6 s.\nThis is the material that ate five minutes of the first cut. One topic, and the closing turn is what anchors it to Fogg.\nFive of ten slots are generated cards that do not exist yet — the heaviest design debt in the episode after G-13.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-110",
+    "F-111",
+    "F-112",
+    "F-114",
+    "F-115",
+    "F-121",
+    "F-116",
+    "F-12"
+  ]
+}

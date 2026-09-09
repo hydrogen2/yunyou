@@ -1,0 +1,93 @@
+{
+  "id": "the-year-the-world-closed",
+  "type": "video",
+  "title": "Why eighty — the year the world closed",
+  "subtopic": "T4 — the four enablers, the telegraph, and the series promise",
+  "duration_s": 133,
+  "learning_goal": "Know that four specific works finished between 1869 and 1872 made the eighty days arithmetic rather than fantasy, and that the last of them closed six weeks before Fogg leaves.",
+  "narration": {
+    "script": "Three years earlier the bet would have been impossible. Not hard. Impossible. May eighteen sixty-nine: two railways meet in Utah, and America has a line from coast to coast. November: the Suez Canal opens, and ships stop going round Africa. Eighteen seventy: India's railways join up across the subcontinent. September eighteen seventy-one: a tunnel opens under the Alps. And on the twenty-second of August, eighteen seventy-two — six weeks before Fogg walks out of his front door — the last stretch of telegraph wire is strung across Australia, and for the first time a message can go the whole way round the world and back. The last inhabited continent joins the network. The circuit closes. And then he sets off. That circuit is the route of this series. Eight episodes, one lap: the Channel and the Alps, the canal at Suez, the railway across India with a piece missing, the ports of the East, the Pacific, the line across America. And all the way round, the question Fogg is actually betting on. Had the world really closed? We are going to find out where it held — and where it very nearly didn't.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/enablers-map.svg",
+      "start_s": 0,
+      "end_s": 55,
+      "license": "generated",
+      "manifest_id": "G-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T4.1 — THE FILM MAP, drawn by lib/mapfilm.mjs, not screenshotted from the player. One line at a time, on the voice: Promontory 1869 → Suez 1869 → India 1870 → Fréjus 1871 → the Australian wire 22 Aug 1872. Four labels on screen at once, maximum. Dates only, no prose. THE ASSET THIS EPISODE MOST DEPENDS ON AND IT DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:East_and_West_Shaking_hands_at_the_laying_of_last_rail_Union_Pacific_Railroad_-_Restoration.jpg",
+      "start_s": 55,
+      "end_s": 64,
+      "license": "public-domain",
+      "manifest_id": "M-212",
+      "attribution": "Andrew J. Russell, Promontory Summit, 10 May 1869 — public domain",
+      "use": "both",
+      "note": "T4.2 — the golden spike photograph. Held. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Opening_of_the_Suez_Canal.jpg",
+      "start_s": 64,
+      "end_s": 74,
+      "license": "public-domain",
+      "manifest_id": "M-213",
+      "attribution": "Opening of the Suez Canal, 17 November 1869 — public domain",
+      "use": "both",
+      "note": "T4.3 — the opening ceremony, engraved. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-13/overland-telegraph.jpg",
+      "start_s": 74,
+      "end_s": 88,
+      "license": "public-domain",
+      "manifest_id": "M-214",
+      "attribution": "Australian Overland Telegraph Line construction, 1870–72 — public domain (State Library of South Australia)",
+      "use": "both",
+      "note": "T4.4 — a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/thirty-six-thousand.svg",
+      "start_s": 88,
+      "end_s": 97,
+      "license": "generated",
+      "manifest_id": "G-35",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T4.5 — 36,000 POLES / 11 REPEATER STATIONS. Two lines. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/enablers-map.svg",
+      "start_s": 97,
+      "end_s": 133,
+      "license": "generated",
+      "manifest_id": "G-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T4.6 — back to the map, which now completes the loop and holds while the series promise is spoken over it. HOLD 134–140 on the closed circuit, no words."
+    }
+  ],
+  "review": {
+    "notes": "Silence 134–140.\nFill 58%.\nThis scene carries the series introduction (D9: no separate intro card — the route is already on screen).\nG-13 has been outstanding since the first film cut. Nothing else in the episode matters as much.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-141",
+    "F-10",
+    "F-33"
+  ]
+}

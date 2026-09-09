@@ -1,0 +1,29 @@
+{
+  "id": "a-hundred-and-fifteen-thousand",
+  "type": "quote",
+  "title": "115,200 minutes",
+  "subtopic": "T3b — Verne's own arithmetic, held",
+  "duration_s": 10,
+  "learning_goal": "Feel the precision of the wager as Verne wrote it.",
+  "narration": {
+    "script": "",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 0
+  },
+  "quote": {
+    "kicker": "The terms of the wager",
+    "text": "Eighty days or less; in nineteen hundred and twenty hours, or a hundred and fifteen thousand two hundred minutes.",
+    "attribution": "Jules Verne, Around the World in Eighty Days, ch. III (Towle translation, 1873)"
+  },
+  "media": [],
+  "review": {
+    "notes": "ADDED BY THE STUDIO, NOT IN THE APPROVED TOPIC LIST — the first use of the new `quote` type.\nSilent: no narration, sound design only. Delete this file and its README row to remove it.\nPlaced here so T3 does not have to say the numbers; the card is more precise than a voice can be.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-11"
+  ]
+}

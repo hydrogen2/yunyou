@@ -1,0 +1,124 @@
+{
+  "id": "biggest-city",
+  "type": "video",
+  "title": "The largest city there had ever been",
+  "subtopic": "T6 — London in 1872, and how new it was",
+  "duration_s": 80,
+  "learning_goal": "Know that London was the largest city on earth and, more surprisingly, one of the newest — Fogg sets out from a modern city, not an old one.",
+  "narration": {
+    "script": "Fogg is setting out from the biggest city that had ever existed. London, eighteen seventy-one: three point nine million people. A quarter bigger than Beijing. Two-thirds bigger than Paris. Five times New York. The world's largest port. Twelve main railway termini — no other city had anything close. And an underground railway, the first anywhere, nine years old and already carrying nine and a half million people a year. Here is what people get wrong about Fogg's London. It was not old. The Embankment was two years old. His station was eight. The clock tower was thirteen. He set out from a brand-new city to find out whether the rest of the world had caught up.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "footage",
+      "ref": "media/files/m78-london-traffic-1903.mp4",
+      "start_s": 0,
+      "end_s": 11,
+      "license": "public-domain",
+      "manifest_id": "M-78",
+      "attribution": "'Old London Street Scenes' (1903) — BFI / London's Screen Archives — public domain",
+      "use": "both",
+      "note": "T6.1 — crowd and traffic, the scale of the thing before any number is spoken.",
+      "audio": "mute"
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:London_Illustrated_1872_Plan_of_London.jpg",
+      "start_s": 11,
+      "end_s": 19,
+      "license": "public-domain",
+      "manifest_id": "M-30",
+      "attribution": "Plan of London, *London Illustrated* (1872) — public domain",
+      "use": "both",
+      "note": "T6.2 — the whole plan, pushing slowly out to show the sprawl."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-34/bigger-than.svg",
+      "start_s": 19,
+      "end_s": 30,
+      "license": "generated",
+      "manifest_id": "G-37",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T6.3 — the comparison card as bars, not text: LONDON 3.9m / BEIJING / PARIS / NEW YORK. Four bars, four labels. The guide says the ratios; the card shows them. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:London_drawn_and_engraved_expressly_for_the_Post_office_Directory_1875_by_B._R._Davies,._.._-_btv1b53060730z.jpg",
+      "start_s": 30,
+      "end_s": 39,
+      "license": "public-domain",
+      "manifest_id": "M-31",
+      "attribution": "B.R. Davies, Post Office Directory map (1875) — public domain (BnF Gallica)",
+      "use": "both",
+      "note": "T6.4 — docks detail only, for the port line.",
+      "crop": {
+        "x": 0.6,
+        "y": 0.44,
+        "w": 0.18,
+        "h": 0.18
+      }
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-34/metropolitan-railway-1863.jpg",
+      "start_s": 39,
+      "end_s": 50,
+      "license": "public-domain",
+      "manifest_id": "M-217",
+      "attribution": "Metropolitan Railway, trial trip 1862 / opening 1863 — public domain",
+      "use": "both",
+      "note": "T6.5 — the world's first underground, packed, in a cutting. The best single image of 'new'. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Hotel_at_Charing_Cross.jpg",
+      "start_s": 50,
+      "end_s": 59,
+      "license": "public-domain",
+      "manifest_id": "M-24",
+      "attribution": "'Hotel at Charing Cross' — engraving, *London Illustrated* (1872) — public domain",
+      "use": "both",
+      "note": "T6.6 — his station, eight years old, drawn the year he leaves."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m79-london-1917.mp4",
+      "start_s": 59,
+      "end_s": 69,
+      "license": "public-domain",
+      "manifest_id": "M-79",
+      "attribution": "'A Trip Through The Streets of London' (26 Sep 1917) — Imperial War Museum — public domain",
+      "use": "both",
+      "note": "T6.7 — moving through the new city. 1280×720, the best-looking archive we have.",
+      "audio": "mute"
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:London_Illustrated_1872_Plan_of_London.jpg",
+      "start_s": 69,
+      "end_s": 80,
+      "license": "public-domain",
+      "manifest_id": "M-30",
+      "attribution": "Plan of London (1872) — public domain",
+      "use": "both",
+      "note": "T6.8 — HOLD 84–90 on the plan under 'whether the rest of the world had caught up'."
+    }
+  ],
+  "review": {
+    "notes": "Silence 84–90.\nFill 58%.\nM-217 is the one new still; everything else is already in the manifest.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-138",
+    "F-139",
+    "F-140",
+    "F-142"
+  ]
+}

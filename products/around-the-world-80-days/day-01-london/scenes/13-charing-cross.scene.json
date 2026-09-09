@@ -1,0 +1,132 @@
+{
+  "id": "charing-cross",
+  "type": "video",
+  "title": "Charing Cross — the point London is measured from",
+  "subtopic": "T12 — the datum, the Eleanor cross, and the departure",
+  "duration_s": 138,
+  "learning_goal": "Know that all British road distances to London are measured from the Charing Cross statue, and what the Eleanor crosses were.",
+  "narration": {
+    "script": "He begins a journey round the world from the exact spot Britain measures every distance from. The third address. A bronze horseman at Charing Cross. Since the early eighteen hundreds it has been the point every road distance to London is counted from. When a sign in Scotland says London four hundred, it means this statue. Not the city. This statue. There is a stone cross in the station forecourt that looks medieval. It is Victorian, and it is in the wrong place. The real one stood where the horseman is now. It was the last of twelve. When Eleanor of Castile died in twelve ninety, her body was carried a hundred and eighty miles to Westminster, and Edward the First built a cross at every place it rested overnight. Charing was the final night, and its cross cost seven times any of the others. It came down in sixteen forty-seven, after standing three hundred and fifty-three years, and the parish sold the stone — forty-seven cartloads of it — for paving. Fogg's train leaves from a station built on that spot. And at a quarter to nine, a man walks onto a platform and starts measuring something rather larger.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "footage",
+      "ref": "media/files/m84-trafalgar-square.mp4",
+      "start_s": 0,
+      "end_s": 14,
+      "license": "unknown",
+      "manifest_id": "M-84",
+      "attribution": "Kauko Helavuo (2015), 1920×1080 · licence to confirm",
+      "use": "both",
+      "note": "T13.1 — Trafalgar Square today, moving. ⚠ M-84 does NOT contain the Charles I statue — Day 1 asked it to and it did not deliver. Either re-cut to a shot that does, or source a new one.",
+      "audio": "mute"
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-40/charles-i-statue.jpg",
+      "start_s": 14,
+      "end_s": 28,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-223",
+      "attribution": "(pending) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T13.2 — the equestrian bronze itself, close. The topic is about this object; it must be on screen. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-40/london-400.svg",
+      "start_s": 28,
+      "end_s": 44,
+      "license": "generated",
+      "manifest_id": "G-48",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T13.3 — a British road sign reading LONDON 400, then a line drawn from it to this one point. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Queen_Eleanor_Memorial_Cross,_Charing_Cross_-_geograph.org.uk_-_1717997.jpg",
+      "start_s": 44,
+      "end_s": 58,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-26",
+      "attribution": "Queen Eleanor Memorial Cross (E.M. Barry, 1865) — Tony Hisgett (2010) · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "T13.4 — the replica, looking medieval and being 1865.",
+      "sa": true
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Eleanor_Cross,_From_Charing-Cross_Station-yard,_London._(NBY_438623).jpg",
+      "start_s": 58,
+      "end_s": 72,
+      "license": "public-domain",
+      "manifest_id": "M-74",
+      "attribution": "The Eleanor Cross from Charing Cross station yard, c.1903 — public domain",
+      "use": "both",
+      "note": "T13.5 — the same object, a century ago."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-40/twelve-crosses.svg",
+      "start_s": 72,
+      "end_s": 94,
+      "license": "generated",
+      "manifest_id": "G-49",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T13.6 — the twelve crosses drawn as twelve stops down England, Harby to Westminster, revealed one at a time. Charing lights last. Few labels. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Hotel_at_Charing_Cross.jpg",
+      "start_s": 94,
+      "end_s": 110,
+      "license": "public-domain",
+      "manifest_id": "M-24",
+      "attribution": "'Hotel at Charing Cross' — *London Illustrated* (1872) — public domain",
+      "use": "both",
+      "note": "T13.7 — the station the year he leaves from it."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-40/charing-cross-1905-boat-train.jpg",
+      "start_s": 110,
+      "end_s": 124,
+      "license": "public-domain",
+      "manifest_id": "M-27",
+      "attribution": "Charing Cross, Paris boat train — S.E.&C.R. postcard (1905) — public domain",
+      "use": "both",
+      "note": "T13.8 — the boat train platform."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-40/charles-i-statue.jpg",
+      "start_s": 124,
+      "end_s": 138,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-223",
+      "attribution": "(pending) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T13.9 — back to the statue. HOLD the last ~6 s on 'something rather larger'."
+    }
+  ],
+  "review": {
+    "notes": "Fill 58%.\n⚠ Do NOT repeat the *chère reine* folk etymology (F-130).\n⚠ M-84 was mis-briefed in the first cut — it does not show the statue. M-223 must be sourced or this topic has no subject.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-135",
+    "F-134",
+    "F-131",
+    "F-132",
+    "F-133",
+    "F-136",
+    "F-130"
+  ]
+}

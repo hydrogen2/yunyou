@@ -1,0 +1,104 @@
+{
+  "id": "no-1-savile-row",
+  "type": "video",
+  "title": "No. 1 — where they decided what was still blank",
+  "subtopic": "T11 — the Royal Geographical Society, six doors away",
+  "duration_s": 98,
+  "learning_goal": "Know that the RGS ran the era's exploration from the top of Fogg's own street, and feel the irony against a man who crosses the world without looking at it.",
+  "narration": {
+    "script": "At the top of Fogg's street is the room where Britain worked out which parts of the world were still unmapped. From eighteen seventy the Royal Geographical Society had its headquarters at number one Savile Row — where expeditions to Africa, Asia and the South Pole were planned and argued over. In April eighteen seventy-four, David Livingstone's body lay in that building before it went to Westminster Abbey. Six doors down the same street, Verne had just put a man who bet he could go round the world without looking at any of it. One end of a three-minute street: the people who wanted to see everything. The other end: a man who crosses the planet and notices nothing. The Society sold the building to a tailor in nineteen twelve — partly because that firm had dressed so many of the explorers.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:View_up_Savile_Row_-_geograph.org.uk_-_2952140.jpg",
+      "start_s": 0,
+      "end_s": 11,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-77a",
+      "attribution": "Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "T11.1 — the corner at the top of the street.",
+      "sa": true
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-39/rgs-map-room.jpg",
+      "start_s": 11,
+      "end_s": 26,
+      "license": "public-domain",
+      "manifest_id": "M-221",
+      "attribution": "Royal Geographical Society map room / meeting, 19th c. — public domain",
+      "use": "both",
+      "note": "T11.2 — the room itself: maps, men, argument. The whole topic depends on this image existing. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-39/livingstone.jpg",
+      "start_s": 26,
+      "end_s": 39,
+      "license": "public-domain",
+      "manifest_id": "M-222",
+      "attribution": "David Livingstone — public domain",
+      "use": "both",
+      "note": "T11.3 — Livingstone. Held, plainly, no music sting. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-39/april-1874.svg",
+      "start_s": 39,
+      "end_s": 51,
+      "license": "generated",
+      "manifest_id": "G-46",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T11.4 — one line on the cream card: APRIL 1874 · No. 1 SAVILE ROW. Nothing else. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
+      "start_s": 51,
+      "end_s": 65,
+      "license": "public-domain",
+      "manifest_id": "M-34",
+      "attribution": "Neuville frontispiece (1872/73) — public domain",
+      "use": "both",
+      "note": "T11.5 — Fogg, against the explorers. The cut is the argument."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-39/two-ends.svg",
+      "start_s": 65,
+      "end_s": 78,
+      "license": "generated",
+      "manifest_id": "G-47",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T11.6 — the street drawn with both ends labelled: No. 1 THE ROYAL GEOGRAPHICAL SOCIETY / No. 7 (Verne's Fogg). 280 m between them. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:View_up_Savile_Row_-_geograph.org.uk_-_2952140.jpg",
+      "start_s": 78,
+      "end_s": 98,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-77a",
+      "attribution": "Robert Lamb (geograph, 2012) · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "T11.7 — HOLD the last ~7 s on the street after the 1912 line.",
+      "sa": true
+    }
+  ],
+  "review": {
+    "notes": "Fill 58%.\nM-221 and M-222 are both essential and both unsourced; without the RGS room this topic is a talk over a street photo.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-113"
+  ]
+}

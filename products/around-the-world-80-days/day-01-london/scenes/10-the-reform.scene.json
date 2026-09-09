@@ -1,0 +1,107 @@
+{
+  "id": "the-reform",
+  "type": "video",
+  "title": "The Reform — a party built as a palace",
+  "subtopic": "T9 — why the building exists at all",
+  "duration_s": 90,
+  "learning_goal": "Know that the Reform Club was founded in 1836 as a political counterweight to the Carlton, and what it is now.",
+  "narration": {
+    "script": "The room where Fogg makes his bet is, in real life, a political weapon. After the Reform Act of eighteen thirty-two, the Conservatives founded the Carlton Club, a few doors along Pall Mall. The other side wanted something to counter the machinations of the Carlton — their words — and in eighteen thirty-six they got it. So the room where a fictional Englishman bets half his fortune on the size of the world is the headquarters of a political faction, built to out-build the opposition down the street. It is still there, still a club. In nineteen eighty-one it became one of the first of the old clubs to admit women on equal terms. Its library, given book by book by its own members, runs to more than eighty-five thousand volumes.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Facade_of_The_Reform_Club,_Pall_Mall_-_geograph.org.uk_-_6571401.jpg",
+      "start_s": 0,
+      "end_s": 11,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-20",
+      "attribution": "Facade of The Reform Club, Pall Mall — Philip Cornwall (geograph, 2019) · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "T9.1 — the façade, full height. A palazzo, and it should read as one.",
+      "sa": true
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-37/reform-elevation.jpg",
+      "start_s": 11,
+      "end_s": 24,
+      "license": "public-domain",
+      "manifest_id": "M-22",
+      "attribution": "Reform Club, north elevation — engraving from *Life and Works of Sir Charles Barry* — public domain",
+      "use": "both",
+      "note": "T9.2 — Barry's drawing. The building as an argument, on paper."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-37/carlton-vs-reform.svg",
+      "start_s": 24,
+      "end_s": 39,
+      "license": "generated",
+      "manifest_id": "G-42",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T9.3 — two doors on one street: CARLTON 1832 (Conservative) / REFORM 1836 (Reformers), and the few doors between them drawn to scale. The whole topic in one card. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club._Upper_level_of_the_saloon._From_London_Interiors_(1841).jpg",
+      "start_s": 39,
+      "end_s": 51,
+      "license": "public-domain",
+      "manifest_id": "M-23",
+      "attribution": "Reform Club saloon, *London Interiors* (1841) — public domain",
+      "use": "both",
+      "note": "T9.4 — inside, under 'the room where a fictional Englishman bets…'."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Reform_Club_02.JPG",
+      "start_s": 51,
+      "end_s": 63,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-104",
+      "attribution": "Philafrenzy (2015) · Wikimedia Commons · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T9.5 — the same building, today, from the corner.",
+      "sa": true
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-37/reform-library.jpg",
+      "start_s": 63,
+      "end_s": 79,
+      "license": "unknown",
+      "manifest_id": "M-219",
+      "attribution": "(pending — rights unresolved)",
+      "use": "both",
+      "note": "T9.6 — the Reform's own library, 85,000 volumes. ⚠ The club controls interior photography; if it cannot be cleared, hold on M-23 and let the number sit on a card instead. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:The_Reform_Club,_London_doorway-15248850190.jpg",
+      "start_s": 79,
+      "end_s": 90,
+      "license": "cc-by-sa-2.0",
+      "manifest_id": "M-105",
+      "attribution": "Phil Guest (2014) · CC BY-SA 2.0 · adapted",
+      "use": "both",
+      "note": "T9.7 — HOLD 86–92 on the door.",
+      "sa": true
+    }
+  ],
+  "review": {
+    "notes": "Silence 86–92.\nFill 59%.\nThe plan's closing line 'Verne never saw the inside of it' is CUT — unverified, and the topic does not need it.\n⚠ M-219 rights unresolved; fallback stated in the slot note.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-127",
+    "F-126",
+    "F-128"
+  ]
+}

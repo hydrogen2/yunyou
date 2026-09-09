@@ -1,0 +1,163 @@
+{
+  "id": "the-racers",
+  "type": "video",
+  "title": "The people who actually raced it",
+  "subtopic": "T2 — Train, Bly, Bisland, Huld, and the trophy",
+  "duration_s": 145,
+  "learning_goal": "Know that real people have raced Fogg's fictional time for 150 years, that Nellie Bly won it in 72 days and met Verne on the way, and that the record now stands at 40 days by sea.",
+  "narration": {
+    "script": "Which is strange — because he never existed. The book came out, and people began treating a novel as a challenge. An American called George Francis Train insisted he had already done it, two years before the book, and spent the rest of his life saying so. Then in eighteen eighty-nine a New York reporter named Nellie Bly was given two days' notice, one bag and a ticket, and sent east. On the way she stopped at Amiens and met Jules Verne himself. She came home in seventy-two days, six hours and eleven minutes — and beat a man who did not exist. What she did not know is that a rival magazine had put a second woman on a train the same day, going the opposite way round. Elizabeth Bisland lost by four days. She also beat Fogg. It never stopped. In nineteen twenty-eight a Danish paper ran a competition in Verne's honour and sent the winner — a boy of fifteen — round the world with aircraft banned. Forty-four days. Twenty thousand people met him at Copenhagen station. And there is a sailing trophy named after Verne. The first time anyone won it, the time was seventy-nine days: under eighty by seventeen hours. It now stands at forty.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:George_Francis_Train.jpg",
+      "start_s": 0,
+      "end_s": 9,
+      "license": "public-domain",
+      "manifest_id": "M-203",
+      "attribution": "George Francis Train — public domain",
+      "use": "both",
+      "note": "T2.1 — Train, portrait. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-31/train-quote.svg",
+      "start_s": 9,
+      "end_s": 17,
+      "license": "generated",
+      "manifest_id": "G-32",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T2.2 — his line set as type on the cream card: 'Verne stole my thunder. I'm Phileas Fogg.' DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Nellie_Bly_2.jpg",
+      "start_s": 17,
+      "end_s": 27,
+      "license": "public-domain",
+      "manifest_id": "M-204",
+      "attribution": "Nellie Bly, c. 1890 — public domain",
+      "use": "both",
+      "note": "T2.3 — Bly in her travelling coat and cap. The famous one. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-31/bly-newspaper.jpg",
+      "start_s": 27,
+      "end_s": 37,
+      "license": "public-domain",
+      "manifest_id": "M-205",
+      "attribution": "New York World, 1889/90 — public domain",
+      "use": "both",
+      "note": "T2.4 — the World's own coverage: the board game, the guessing contest, a headline. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-31/amiens-verne.jpg",
+      "start_s": 37,
+      "end_s": 47,
+      "license": "public-domain",
+      "manifest_id": "M-206",
+      "attribution": "Jules Verne at Amiens — public domain",
+      "use": "both",
+      "note": "T2.5 — Verne, photographed. HOLD 46–52: she stopped, on the clock, to meet him. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-31/record-board.svg",
+      "start_s": 47,
+      "end_s": 66,
+      "license": "generated",
+      "manifest_id": "G-33",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T2.6 — THE RECORD BOARD. Builds a line at a time as each name is spoken and stays for the rest of the topic: Fogg (fiction) 80 · Bly 1890 72d 6h · Bisland 1890 76½d · Huld 1928 44d · Jules Verne Trophy 1993 79d 6h → 2026 40d 10h. Large type, few rows, high contrast — the anti-pattern is Day 1's dense map. ESSENTIAL, DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:Elizabeth_Bisland.jpg",
+      "start_s": 66,
+      "end_s": 79,
+      "license": "public-domain",
+      "manifest_id": "M-207",
+      "attribution": "Elizabeth Bisland — public domain",
+      "use": "both",
+      "note": "T2.7 — Bisland. Held as long as Bly was; the race had two people in it. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-31/bisland-route.jpg",
+      "start_s": 79,
+      "end_s": 88,
+      "license": "public-domain",
+      "manifest_id": "M-208",
+      "attribution": "(pending)",
+      "use": "both",
+      "note": "T2.8 — the two directions on one small globe or period map: Bly east, Bisland west. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-31/palle-huld.jpg",
+      "start_s": 88,
+      "end_s": 101,
+      "license": "unknown",
+      "manifest_id": "M-209",
+      "attribution": "(pending — rights unresolved)",
+      "use": "both",
+      "note": "T2.9 — Huld, 1928, aged 15. ⚠ RIGHTS: Danish press photo, may still be in copyright. If not clearable, use the record board and a Politiken masthead instead. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-31/copenhagen-crowd.jpg",
+      "start_s": 101,
+      "end_s": 112,
+      "license": "unknown",
+      "manifest_id": "M-210",
+      "attribution": "(pending — rights unresolved)",
+      "use": "both",
+      "note": "T2.10 — the crowd at Copenhagen station. Same rights question. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m211-ultim-trimaran.mp4",
+      "start_s": 112,
+      "end_s": 128,
+      "license": "cc-by-4.0",
+      "manifest_id": "M-211",
+      "attribution": "(pending) · CC BY 4.0 · adapted",
+      "use": "both",
+      "note": "T2.11 — a modern ocean-racing trimaran at speed. The one genuinely fast-moving shot in the topic; it should feel like a different century, because it is. NOT YET SOURCED — Content Preparer.",
+      "audio": "mute"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-31/record-board.svg",
+      "start_s": 128,
+      "end_s": 145,
+      "license": "generated",
+      "manifest_id": "G-33",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T2.12 — back to the board for the last figure. 40d 10h 45m lands on screen, not just in the voice. HOLD 152–158."
+    }
+  ],
+  "review": {
+    "notes": "Silence 46–52 (Verne's photograph) and 152–158 (the board, final figure).\nFill 58%. Longest slot 20 s (the record board, which is doing work the whole time it is up).\n⚠ Two rights-unresolved slots (M-209, M-210). If Huld cannot be cleared the topic still stands on the board.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-N03",
+    "F-N04",
+    "F-N05",
+    "F-N06",
+    "F-N07",
+    "F-N08"
+  ]
+}

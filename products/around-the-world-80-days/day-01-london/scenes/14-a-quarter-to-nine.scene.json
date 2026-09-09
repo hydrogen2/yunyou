@@ -1,0 +1,119 @@
+{
+  "id": "a-quarter-to-nine",
+  "type": "video",
+  "title": "A quarter to nine",
+  "subtopic": "T13 — the departure, and the look ahead",
+  "duration_s": 123,
+  "learning_goal": "Know how little he took and how little time he gave himself, and leave the episode wanting the next one.",
+  "narration": {
+    "script": "He gave himself ten minutes to pack for the planet. Fogg leaves the club at twenty-five past seven, tells his new servant they are going round the world and will start in ten minutes, and packs one carpet-bag: two shirts, three pairs of stockings, a mackintosh, a cloak, and a railway timetable. The train for Dover leaves at a quarter to nine. It is raining. Passepartout's watch is four minutes slow and set to London, and he has no intention of changing it for anybody. And somewhere behind them, in an empty house on Savile Row, a gas lamp is still burning that nobody turned off — which is going to be funny for about seventy-nine more days. Ahead of him: a boat across the Channel. A hole under the Alps that opened thirteen months ago. A canal three years old. A railway across India with a piece missing. An ocean that takes twenty-two days. And somewhere out on the Pacific, something quietly happens to the calendar that nobody on board notices. Eighty days. He has already gone.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_05.jpg",
+      "start_s": 0,
+      "end_s": 12,
+      "license": "public-domain",
+      "manifest_id": "M-50",
+      "attribution": "Passepartout, Neuville/Benett plate 05 — public domain",
+      "use": "both",
+      "note": "T14.1 — the servant, ten minutes from leaving."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-41/the-carpet-bag.svg",
+      "start_s": 12,
+      "end_s": 24,
+      "license": "generated",
+      "manifest_id": "G-50",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T14.2 — the packing list as an inventory card: 2 shirts · 3 pairs of stockings · mackintosh · cloak · Bradshaw. For three months. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-40/charing-cross-1905-boat-train.jpg",
+      "start_s": 24,
+      "end_s": 39,
+      "license": "public-domain",
+      "manifest_id": "M-27",
+      "attribution": "S.E.&C.R. postcard (1905) — public domain",
+      "use": "both",
+      "note": "T14.3 — the platform, the boat train."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-41/the-watch.svg",
+      "start_s": 39,
+      "end_s": 51,
+      "license": "generated",
+      "manifest_id": "G-51",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T14.4 — a watch face, four minutes slow, LONDON under it. This is the seed of Episode 8's ending; plant it plainly and never mention it again this episode. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m88-hungerford-bridge-night.mp4",
+      "start_s": 51,
+      "end_s": 69,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-88",
+      "attribution": "Commons contributor (7 Jan 2022) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T14.5 — leaving over the river at night, in rain. The bed under this is M-58/M-59 rain + M-60/M-61 steam.",
+      "sa": true,
+      "audio": "mute"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-41/the-gas.svg",
+      "start_s": 69,
+      "end_s": 78,
+      "license": "generated",
+      "manifest_id": "G-52",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T14.6 — a single gas lamp burning in a dark window. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-13/enablers-map.svg",
+      "start_s": 78,
+      "end_s": 108,
+      "license": "generated",
+      "manifest_id": "G-13",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T14.7 — the series map again, now travelling east along the route as the lookout is spoken: Channel, Alps, Suez, India, the Pacific. It stops before the Pacific is named on screen — the date line is E8's and must not be spoiled."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m88-hungerford-bridge-night.mp4",
+      "start_s": 108,
+      "end_s": 123,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-88",
+      "attribution": "Commons contributor (2022) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T14.8 — back to the train and the rain. HOLD the last ~7 s after 'He has already gone.'",
+      "sa": true,
+      "audio": "mute"
+    }
+  ],
+  "review": {
+    "notes": "Fill 58%. Silence at the end, over rain and steam.\n⚠ NEVER say 'date line' or 'he gains a day' in this episode. T14.7's map must stop short of the Pacific label. E8's payoff.\nPlants two threads for later episodes: the watch (E8) and the gas (E8).",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-12",
+    "F-13",
+    "F-02"
+  ]
+}

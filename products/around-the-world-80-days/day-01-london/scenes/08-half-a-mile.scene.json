@@ -1,0 +1,86 @@
+{
+  "id": "half-a-mile",
+  "type": "video",
+  "title": "Half a mile",
+  "subtopic": "T7 — the three addresses, and the rule of this series",
+  "duration_s": 81,
+  "learning_goal": "Know that Fogg's house, club and station sit within half a mile of each other, and that this episode walks that half mile.",
+  "narration": {
+    "script": "Everything left in this episode happens inside half a mile. Verne gives Fogg three addresses, all in the same corner of London. A house on Savile Row. A club on Pall Mall. A station at Charing Cross. He walks the first leg himself, and because he is the man he is, he counts it. Eleven hundred and fifty-one steps. About nine hundred metres. That is the whole of London he uses. A man about to go round the Earth spends his last day on it inside half a mile. So we are going to walk that half mile — because all three of those places turn out to be more interesting than the man who used them.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "generated",
+      "ref": "generated/g-35/three-addresses.svg",
+      "start_s": 0,
+      "end_s": 27,
+      "license": "generated",
+      "manifest_id": "G-38",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T7.1 — THE ANCHOR CARD. The 1872 street plan, three pins dropped in order as they are named — 7 Savile Row, 104 Pall Mall, Charing Cross — then the walking line drawn between the first two. Three labels, nothing else. Large enough for a phone. ESSENTIAL, DOES NOT EXIST YET."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m66-savile-row-hyperlapse.mp4",
+      "start_s": 27,
+      "end_s": 41,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-66",
+      "attribution": "KartaView / telenavdrives (17 Jan 2018) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T7.2 — moving down Savile Row. The walk begins.",
+      "sa": true,
+      "audio": "mute"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-35/1151-steps.svg",
+      "start_s": 41,
+      "end_s": 53,
+      "license": "generated",
+      "manifest_id": "G-39",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T7.3 — 575 + 576 = 1,151 STEPS · ~900 m. The card holds the arithmetic so the voice does not have to repeat it. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m67-pall-mall-hyperlapse.mp4",
+      "start_s": 53,
+      "end_s": 68,
+      "license": "cc-by-sa-4.0",
+      "manifest_id": "M-67",
+      "attribution": "KartaView / telenavdrives (25 Mar 2016) · CC BY-SA 4.0 · adapted",
+      "use": "both",
+      "note": "T7.4 — the second leg, Pall Mall, still moving. HOLD 58–64.",
+      "sa": true,
+      "audio": "mute"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-35/three-addresses.svg",
+      "start_s": 68,
+      "end_s": 81,
+      "license": "generated",
+      "manifest_id": "G-38",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T7.5 — back to the three pins under the last line. The rule of the show is stated over the map of it."
+    }
+  ],
+  "review": {
+    "notes": "Silence 58–64.\nFill 58%.\nThis scene exists because the founder found T7–T11 disconnected from the novel. It is the anchor; if it is cut, the place block loses its reason.",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-05",
+    "F-01",
+    "F-12"
+  ]
+}

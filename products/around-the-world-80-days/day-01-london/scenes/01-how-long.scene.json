@@ -1,0 +1,122 @@
+{
+  "id": "how-long",
+  "type": "video",
+  "title": "How long would it take you?",
+  "subtopic": "T1 — the question, and today's answers",
+  "duration_s": 77,
+  "learning_goal": "Know that a full circumnavigation now takes about 44 hours by scheduled flight and 90 minutes in orbit, and that in 1872 nobody knew the answer at all.",
+  "narration": {
+    "script": "How long would it take you to go all the way round the world? Today, about forty-four hours. In November twenty twenty-four, three men from Hong Kong went the whole way round on ordinary scheduled flights, on tickets anyone could buy. Higher up it is faster. The space station laps the planet every ninety minutes. The people on board watch sixteen sunrises a day. Now take all of that away. No aircraft. No radio. In eighteen seventy-two the honest answer was: nobody knew. So somebody turned it into a bet. Eighty days, half a fortune — and for the next hundred and fifty years, real people kept trying to beat him.",
+    "voice": "guide",
+    "timing": "over",
+    "starts_at_s": 3
+  },
+  "media": [
+    {
+      "kind": "image",
+      "ref": "generated/g-30/earth-from-orbit-still.jpg",
+      "start_s": 0,
+      "end_s": 9,
+      "license": "public-domain",
+      "manifest_id": "M-200",
+      "attribution": "NASA / ISS Expedition imagery · public domain",
+      "use": "both",
+      "note": "T1.1 — Earth's limb from orbit, night side with city lights. Opens cold, no title. Must read with sound off. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "footage",
+      "ref": "media/files/m201-airliner-window.mp4",
+      "start_s": 9,
+      "end_s": 16,
+      "license": "cc-by-4.0",
+      "manifest_id": "M-201",
+      "attribution": "(pending) · CC BY 4.0 · adapted",
+      "use": "both",
+      "note": "T1.2 — wing and cloud from a cabin window, or a departure board rolling. Modern, banal, deliberately. NOT YET SOURCED — Content Preparer.",
+      "audio": "mute"
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-30/three-answers.svg",
+      "start_s": 16,
+      "end_s": 26,
+      "license": "generated",
+      "manifest_id": "G-30",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T1.3 — the comparison card, built one line at a time: 90 MINUTES / 44 HOURS 33 MINUTES / 80 DAYS. Three lines, nothing else. Type large enough to read on a phone. The guide does not read the numbers the card shows. ESSENTIAL, DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "generated/g-30/iss-sunrise.jpg",
+      "start_s": 26,
+      "end_s": 35,
+      "license": "public-domain",
+      "manifest_id": "M-202",
+      "attribution": "NASA · public domain",
+      "use": "both",
+      "note": "T1.4 — orbital sunrise. HOLD 34–40, no words: the sixteen-sunrises line lands and then we look at one. NOT YET SOURCED — Content Preparer."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:London_Illustrated_1872_Plan_of_London.jpg",
+      "start_s": 35,
+      "end_s": 44,
+      "license": "public-domain",
+      "manifest_id": "M-30",
+      "attribution": "Plan of London, *London Illustrated* (1872) — public domain",
+      "use": "both",
+      "note": "T1.5 — the turn backwards. Push in slowly on the 1872 plan as 'take all of that away' lands.",
+      "crop": {
+        "x": 0.18,
+        "y": 0.2,
+        "w": 0.5,
+        "h": 0.5
+      }
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
+      "start_s": 44,
+      "end_s": 54,
+      "license": "public-domain",
+      "manifest_id": "M-34",
+      "attribution": "Frontispiece 'Phileas Fogg' — Alphonse de Neuville, Hetzel edition (1872/73) — public domain",
+      "use": "both",
+      "note": "T1.6 — first sight of Fogg. Full frame, no motion. He is introduced as a bet, not as a man."
+    },
+    {
+      "kind": "generated",
+      "ref": "generated/g-30/eighty.svg",
+      "start_s": 54,
+      "end_s": 63,
+      "license": "generated",
+      "manifest_id": "G-31",
+      "attribution": "Yunyou studio, generated",
+      "use": "both",
+      "note": "T1.7 — one numeral, '80', on the house cream card. Held. DOES NOT EXIST YET."
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_01.jpg",
+      "start_s": 63,
+      "end_s": 77,
+      "license": "public-domain",
+      "manifest_id": "M-52",
+      "attribution": "Route map of the journey, Hetzel edition — Neuville/Benett plate 01 (1872/73) — public domain",
+      "use": "both",
+      "note": "T1.8 — the Hetzel route map, slow drift east. Plants the shape of the series under the last two sentences."
+    }
+  ],
+  "review": {
+    "notes": "Silence 34–40 (orbital sunrise) and 78–88 (the route map, after the last word).\nFill 49% — deliberately airy. This is the cold open; it must breathe or the question does not land.\nAutoplay is muted: slots 1–3 carry the whole meaning with no sound (D9).",
+    "fact_check": "pending",
+    "rights": "pending",
+    "qa": "pending"
+  },
+  "sources": [
+    "F-N01",
+    "F-N02",
+    "F-11"
+  ]
+}
