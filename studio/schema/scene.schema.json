@@ -191,6 +191,20 @@
             "type": "boolean",
             "description": "kind 'image' only. false = this still does not drift. Use for a beat that must sit still (a held silence, a portrait, a death). Prefer this over treatment:'none', which also removes the backdrop and leaves black bars. Added v0.9."
           },
+          "beats": {
+            "type": "array",
+            "description": "For kind 'generated' map assets: when each reveal happens, tied to the narration rather than to the clock. [{show:'enabler:B'|'leg:3'|'london'|'total'|'close', s:<0-based sentence index in narration.script>}] or {show, t:<seconds into the scene>}. A beat pointing at a sentence the cut does not speak is warned about and spaced evenly instead.",
+            "items": {
+              "type": "object",
+              "properties": {
+                "show": { "type": "string" },
+                "s": { "type": "integer" },
+                "t": { "type": "number" },
+                "lead": { "type": "number" }
+              },
+              "required": ["show"]
+            }
+          },
           "crop": {
             "type": "object",
             "description": "kind 'image'/'generated'/'map' only. Show ONLY this rectangle of the source picture, in FRACTIONS of the source (0-1), x/y = the top-left corner: {\"x\":0.28,\"y\":0.05,\"w\":0.34,\"h\":0.30}. Fractions, not pixels, so the box survives swapping the file for a higher-resolution scan of the same image. ORDER OF OPERATIONS: crop first, then the treatment layer sees ONLY the cropped picture - the plate mounts the crop, the blurred backdrop derives from the crop, and the upscale cap (max_scale / upscale_max) measures the POST-CROP pixels, so cropping a small plate hard leaves little and the cap will hold it back. A crop changes the aspect ratio on purpose; NEVER STRETCH is untouched. Legitimate use: reframe to the subject, or remove burned-in archive marks / modern signage at an edge. NOT legitimate: cropping away context that changes what the picture means (a date stamp, a caption naming the subject, evidence the scene is elsewhere). Added v1.2 (2026-09-08); scenes without the key are unaffected.",

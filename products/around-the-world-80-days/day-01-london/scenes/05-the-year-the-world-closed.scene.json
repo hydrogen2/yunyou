@@ -21,7 +21,33 @@
       "manifest_id": "G-13",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T4.1 — THE FILM MAP, drawn by lib/mapfilm.mjs, not screenshotted from the player. One line at a time, on the voice: Promontory 1869 → Suez 1869 → India 1870 → Fréjus 1871 → the Australian wire 22 Aug 1872. Four labels on screen at once, maximum. Dates only, no prose. THE ASSET THIS EPISODE MOST DEPENDS ON AND IT DOES NOT EXIST YET."
+      "note": "T4.1 — THE FILM MAP (state 'enablers'), drawn by lib/mapfilm.mjs from route-data.json — not screenshotted from the player. Five works reveal in the order they were finished, each on its own sentence: Promontory May 1869 → Suez Nov 1869 → India Mar 1870 → Fréjus Sep 1871 → the Australian wire Aug 1872, which draws down Australia and out to Java. On 'The circuit closes' the whole route traces faintly behind them. Dates only, no names — the guide says the names. The top strip carries one number: the year.",
+      "beats": [
+        {
+          "show": "enabler:B",
+          "s": 3
+        },
+        {
+          "show": "enabler:A",
+          "s": 4
+        },
+        {
+          "show": "enabler:C",
+          "s": 5
+        },
+        {
+          "show": "enabler:D",
+          "s": 6
+        },
+        {
+          "show": "enabler:E",
+          "s": 7
+        },
+        {
+          "show": "close",
+          "s": 9
+        }
+      ]
     },
     {
       "kind": "image",
@@ -76,7 +102,13 @@
       "manifest_id": "G-13",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T4.6 — back to the map, which now completes the loop and holds while the series promise is spoken over it. HOLD 134–140 on the closed circuit, no words."
+      "note": "T4.6 — back to the map, which now completes the loop and holds while the series promise is spoken over it. HOLD 134–140 on the closed circuit, no words.",
+      "beats": [
+        {
+          "show": "close",
+          "t": 0.2
+        }
+      ]
     }
   ],
   "review": {

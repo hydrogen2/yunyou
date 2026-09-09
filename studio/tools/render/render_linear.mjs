@@ -1787,7 +1787,33 @@ async function runCropPreview(target) {
       }
     } else {
       // defaults by type
-      if (s.type === 'video') { for (const m of media) { if (m.use === 'player') continue; if (m.kind === 'image') segs.push(await imgSeg(m, Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? 0)) * f))); else if (m.kind === 'footage') segs.push(await footageSeg(m, Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? 0)) * f))); else if (m.kind === 'youtube') segs.push(await clipSeg(m, null)); } }
+      if (s.type === 'video') {
+        for (const m of media) {
+          if (m.use === 'player') continue;
+          const d = Math.max(4, ((m.end_s ?? 0) - (m.start_s ?? 0)) * f);
+          if (m.kind === 'image') segs.push(await imgSeg(m, d));
+          else if (m.kind === 'footage') segs.push(await footageSeg(m, d));
+          else if (m.kind === 'youtube') segs.push(await clipSeg(m, null));
+          // BUG FIX 2026-09-09: `generated` fell through this chain and was DROPPED. Every generated card in a
+          // `video` scene — every date card, every map — rendered as nothing at all, silently. Episode 1 has 25 of
+          // them, including G-13, so the scene carrying the series' whole argument would have played as a gap.
+          else if (m.kind === 'generated') {
+            // a map asset is not a picture of a map: route it to the film map, which draws itself on the clock.
+            if (/route-map|enablers-map|g-13/.test(m.ref)) {
+              segs.push(await mapSeg(/enablers-map|g-13/.test(m.ref) ? 'enablers' : /full-loop/.test(m.ref) ? 'loop' : 'day-1',
+                                     m.beats || null, d, `from media ${m.manifest_id}`));
+            } else if (!fs.existsSync(path.join(CHAPTER_DIR, m.ref))) {
+              segs.push(await pendingSeg(m, d));
+            } else if (/\.svg$/i.test(m.ref)) {
+              segs.push(await playerSeg(`showScene(${n}).then(()=>seek(${m.start_s ?? 0}))`, d, `${tag}_${sha(m.ref)}`));
+            } else {
+              const gf = path.join(CHAPTER_DIR, m.ref); const gp = await realPixels(gf);
+              const gr = await cropStill(m, { file: gf, w: gp.w, h: gp.h });
+              segs.push({ kind: 'still', file: gr.file, dur: d, m, nw: gr.w, nh: gr.h, src: `${m.manifest_id} generated asset ${gr.w}x${gr.h}` });
+            }
+          }
+        }
+      }
       else if (s.type === 'streetview') {
         // v0.5: if panowalk frames are cached for this scene, the walk goes in the film; otherwise the old stop card.
         const built = await buildPanowalk(s, s.id, null, Math.max(6, p.len));

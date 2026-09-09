@@ -3,7 +3,9 @@
  "_facts": [
   "F-10 itinerary and days",
   "F-11 2 Oct → 21 Dec 1872",
-  "F-33 the three enablers"
+  "F-33 the enablers",
+  "F-141 the Overland Telegraph, 22 Aug 1872",
+  "Day 2 F-69 Fréjus 17 Sep 1871"
  ],
  "_consumers": [
   "studio/tools/render/lib/mapfilm.mjs (film map)",
@@ -506,6 +508,80 @@
     79.9,
     23.2
    ]
+  },
+  {
+   "letter": "D",
+   "label": "Fréjus tunnel",
+   "date": "17 Sep 1871",
+   "lon": 6.7,
+   "lat": 45.1,
+   "on_route": [
+    6.7,
+    45.1
+   ]
+  },
+  {
+   "letter": "E",
+   "label": "Overland Telegraph",
+   "date": "22 Aug 1872",
+   "lon": 133.9,
+   "lat": -23.7,
+   "on_route": [
+    133.9,
+    -23.7
+   ]
   }
- ]
+ ],
+ "telegraph": {
+  "label": "Australian Overland Telegraph",
+  "date": "22 Aug 1872",
+  "land": [
+   [
+    138.6,
+    -34.6
+   ],
+   [
+    136.9,
+    -31.5
+   ],
+   [
+    135.0,
+    -28.0
+   ],
+   [
+    133.9,
+    -23.7
+   ],
+   [
+    133.2,
+    -19.6
+   ],
+   [
+    131.1,
+    -15.4
+   ],
+   [
+    130.84,
+    -12.46
+   ]
+  ],
+  "sea": [
+   [
+    130.84,
+    -12.46
+   ],
+   [
+    125.0,
+    -11.0
+   ],
+   [
+    117.0,
+    -8.5
+   ],
+   [
+    112.7,
+    -7.3
+   ]
+  ]
+ }
 }

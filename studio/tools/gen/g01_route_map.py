@@ -93,7 +93,24 @@ ENABLERS = [  # letter, label, date, lon, lat (drawn), spec lon/lat, label ancho
     ('A', 'Suez Canal', '17 Nov 1869', 28.3, 26.3, (32.5, 30.0), 'end', -20, 6),
     ('B', 'Promontory Summit', '10 May 1869', -112.5, 41.6, (-112.5, 41.6), 'start', 18, 30),
     ('C', 'Jabalpur', '7 Mar 1870', 79.9, 23.2, (79.9, 23.2), 'end', -28, -34),
+    # D and E added 2026-09-09 for G-13, the film's enabler map (episode 1 scene 05). The original three were the
+    # enablers *of Fogg's own route*; these two complete the argument the episode actually makes — that the world
+    # closed in a particular thirty-eight months. D: Fréjus, the hole under the Alps, Modane/Bardonecchia
+    # (Day 2 F-69). E: the Australian Overland Telegraph, plotted at Alice Springs, which is the middle of the line
+    # and exists because of it — completed 22 Aug 1872, six weeks before Fogg leaves (F-141).
+    ('D', 'Fréjus tunnel', '17 Sep 1871', 6.7, 45.1, (6.7, 45.1), 'end', -24, -30),
+    ('E', 'Overland Telegraph', '22 Aug 1872', 133.9, -23.7, (133.9, -23.7), 'middle', 0, 46),
 ]
+
+# The wire that closes the circuit. Adelaide -> Alice Springs -> Port Darwin (the Overland Telegraph, 3,200 km,
+# 36,000 poles, 11 repeater stations), then the Darwin–Java submarine cable that joined it to the world network
+# within weeks. Drawn, not pinned, because the length of it IS the fact.
+TELEGRAPH = {
+    'label': 'Australian Overland Telegraph',
+    'date': '22 Aug 1872',
+    'land': [[138.6, -34.6], [136.9, -31.5], [135.0, -28.0], [133.9, -23.7], [133.2, -19.6], [131.1, -15.4], [130.84, -12.46]],
+    'sea': [[130.84, -12.46], [125.0, -11.0], [117.0, -8.5], [112.7, -7.3]],
+}
 LEG_LABEL_ANCHOR = {3: 'start'}   # default 'middle'
 PORT_BY_N = {p[0]: p for p in PORTS}
 
@@ -479,7 +496,7 @@ def build():
 def export_data():
     data = {
         '_generated_by': 'studio/tools/gen/g01_route_map.py — do not hand-edit',
-        '_facts': ['F-10 itinerary and days', 'F-11 2 Oct → 21 Dec 1872', 'F-33 the three enablers'],
+        '_facts': ['F-10 itinerary and days', 'F-11 2 Oct → 21 Dec 1872', 'F-33 the enablers', 'F-141 the Overland Telegraph, 22 Aug 1872', 'Day 2 F-69 Fréjus 17 Sep 1871'],
         '_consumers': ['studio/tools/render/lib/mapfilm.mjs (film map)', 'the G-01 SVG plates in this directory'],
         'land_geojson': 'src/ne_110m_land.geojson',
         'start_date': '1872-10-02', 'end_date': '1872-12-21', 'total_days': 80,
@@ -489,6 +506,7 @@ def export_data():
                  for k, a, b, mode, days, dates, wps, anchor in LEGS],
         'enablers': [dict(letter=l, label=lab, date=date, lon=lon, lat=lat, on_route=list(spec))
                      for l, lab, date, lon, lat, spec, *_ in ENABLERS],
+        'telegraph': TELEGRAPH,
     }
     p = os.path.join(OUT, 'route-data.json')
     os.makedirs(OUT, exist_ok=True)

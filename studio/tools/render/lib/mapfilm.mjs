@@ -148,6 +148,10 @@ const LEG_LABEL = {
   7: [-97, 47],     // above the transcontinental line
   8: [-40, 33],     // mid-Atlantic, below the homeward run
 };
+// Where each enabler's date sits relative to its diamond, in 1080p px. Default is below; E (the Overland Telegraph,
+// plotted at Alice Springs) is close enough to the bottom of the map band that a date below it leaves the frame.
+const ENAB_LABEL = { D: -34, E: -40 };
+
 const MONTHS = { Jan: 1, Feb: 2, Mar: 3, Apr: 4, May: 5, Jun: 6, Jul: 7, Aug: 8, Sep: 9, Oct: 10, Nov: 11, Dec: 12 };
 /** "17 Nov 1869" -> "Nov 1869" / "1869年11月". Month + year only: that is what the beat is about. */
 export function monthYear(dateStr, lang) {
@@ -163,6 +167,9 @@ export function longDate(iso, lang) {
   const names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   return `${+d} ${names[+mo - 1]} ${y}`;
 }
+
+/** "22 Aug 1872" -> "1872". The one number the enabler map keeps in its top strip. */
+export function yearOf(dateStr) { const m = String(dateStr).match(/(\d{4})/); return m ? m[1] : ''; }
 
 // ---------------------------------------------------------------- the timeline
 /**
@@ -192,12 +199,26 @@ export function planTimeline({ state = 'day-1', dur, beats = [], draw = 1.6, lab
     }
     legs.sort((a, b) => a.k - b.k);
   }
-  for (const L of ['A', 'B', 'C']) if (at[`enabler:${L}`] !== undefined) enablers.push({ letter: L, t: at[`enabler:${L}`] });
+  // 'enablers' (G-13): the five works of 1869-72, in the order they were finished, not the order of the alphabet.
+  // Nothing else is on the map. If the caller gives no beats they are spaced evenly, so the graphic still plays.
+  const CHRONO = ['B', 'A', 'C', 'D', 'E'];
+  if (state === 'enablers') {
+    const t0 = 4.0, t1 = Math.max(t0 + CHRONO.length * 2.2, dur * 0.80);
+    CHRONO.forEach((L, i) => {
+      const given = at[`enabler:${L}`];
+      enablers.push({ letter: L, t: given !== undefined ? given : t0 + (t1 - t0) * i / (CHRONO.length - 1) });
+    });
+  } else {
+    for (const L of ['A', 'B', 'C']) if (at[`enabler:${L}`] !== undefined) enablers.push({ letter: L, t: at[`enabler:${L}`] });
+  }
   const tl = {
     state, dur, draw, labelHold,
     london: at['london'] !== undefined ? at['london'] : (state === 'day-1' ? Math.min(3.0, dur * 0.12) : 0),
     ghost: state === 'day-1' ? [Math.min(4.0, dur * 0.14), Math.max(6, Math.min(dur * 0.82, dur - 4))] : null,
     legs, enablers,
+    // 'enablers': the wire draws across Australia on E's beat, then the whole loop traces faintly on `close`.
+    wire: state === 'enablers' ? (enablers.find(e => e.letter === 'E') || {}).t : null,
+    close: state === 'enablers' ? (at['close'] !== undefined ? at['close'] : Math.min(dur - 3.2, (enablers.length ? enablers[enablers.length - 1].t : dur * 0.8) + 6.5)) : null,
     total: at['total'] !== undefined ? at['total'] : (state === 'loop' ? (legs.length ? legs[legs.length - 1].t + draw + 0.4 : dur * 0.9) : null),
   };
   return tl;
@@ -214,6 +235,8 @@ export function sampleTimes(tl, fps = 25) {
     add(l.t + tl.draw + tl.labelHold - 0.1, l.t + tl.draw + tl.labelHold + 0.8, 10);
   }
   for (const e of tl.enablers) { add(e.t - 0.1, e.t + 0.9, 12.5); add(e.t + 6 - 0.1, e.t + 6.9, 10); }
+  if (tl.wire != null) add(tl.wire - 0.1, tl.wire + 3.4, 12.5);
+  if (tl.close != null) add(tl.close - 0.1, tl.close + 3.6, 12.5);
   if (tl.total != null) add(tl.total - 0.1, tl.total + 1.0, 12.5);
   win.sort((a, b) => a[0] - b[0]);
   // merge overlaps (keep the finer rate)
@@ -305,9 +328,19 @@ export function page({ loaded, W, H, tl, lang = 'en', labels = {}, fontsDir }) {
     const x = g.x(e.lon), y = g.y(e.lat), r = 17 * sc;
     S.push(`<g class="enab" data-enab="${i}" opacity="0">` +
       `<path d="M${f(x)} ${f(y - r)}L${f(x + r)} ${f(y)}L${f(x)} ${f(y + r)}L${f(x - r)} ${f(y)}Z" fill="${ACCENT}" stroke="${PAPER}" stroke-width="${px(3)}"/>` +
-      `<text class="edate" x="${f(x)}" y="${f(y + 62 * sc)}" text-anchor="middle" font-family="${sans}" font-weight="600" ` +
+      `<text class="edate" x="${f(x)}" y="${f(y + (ENAB_LABEL[e.letter] ?? 62) * sc)}" text-anchor="middle" font-family="${sans}" font-weight="600" ` +
       `font-size="${px(44)}" fill="${INK}" stroke="${PAPER}" stroke-width="${px(7)}" paint-order="stroke" stroke-linejoin="round">${esc(monthYear(e.date, lang))}</text></g>`);
   });
+
+  // the wire: Adelaide -> Alice Springs -> Darwin solid, then the submarine cable to Java dashed. Drawn on E's
+  // beat, because the LENGTH of it is the fact — a diamond cannot say "three thousand two hundred kilometres".
+  if (data.telegraph) {
+    const line = pts => 'M' + pts.map(([lon, lat]) => f(g.x(lon)) + ' ' + f(g.y(lat))).join('L');
+    const len = pts => { let L = 0; for (let i = 1; i < pts.length; i++) L += Math.hypot(g.x(pts[i][0]) - g.x(pts[i-1][0]), g.y(pts[i][1]) - g.y(pts[i-1][1])); return L; };
+    S.push(`<g id="wire" opacity="0" fill="none" stroke="${ACCENT}" stroke-width="${px(6)}" stroke-linecap="round">` +
+      `<path id="wireland" data-len="${len(data.telegraph.land).toFixed(1)}" d="${line(data.telegraph.land)}"/>` +
+      `<path id="wiresea" data-len="${len(data.telegraph.sea).toFixed(1)}" stroke-dasharray="${px(10)} ${px(9)}" stroke-width="${px(4.5)}" d="${line(data.telegraph.sea)}"/></g>`);
+  }
 
   // top strip: the running total (loop) or the date (day 1). One line, big, ink on cream, aligned to the frame.
   const stripY = Math.max(46 * sc, g.top - 46 * sc);
@@ -329,7 +362,9 @@ export function page({ loaded, W, H, tl, lang = 'en', labels = {}, fontsDir }) {
   const portFrac = { 1: 0 }; { let c = 0; for (const l of data.legs) { c += legLen[l.k]; portFrac[l.to] = Math.min(1, c / totLen); } }
   const legDays = {}; for (const l of data.legs) legDays[l.k] = l.days;
   const legTo = {}; for (const l of data.legs) legTo[l.k] = l.to;
-  const RT = JSON.stringify({ tl, legDays, legTo, portFrac, total: data.total_days, daysWord: labels.days || 'days', ofWord: labels.of || 'of' });
+  const enabIdx = {}, enabYear = {};
+  (data.enablers || []).forEach((e, i) => { enabIdx[e.letter] = i; enabYear[e.letter] = yearOf(e.date); });
+  const RT = JSON.stringify({ tl, legDays, legTo, portFrac, enabIdx, enabYear, total: data.total_days, daysWord: labels.days || 'days', ofWord: labels.of || 'of' });
 
   return `<!doctype html><html lang="${lang}"><head><meta charset="utf-8"><style>
 ${fontFace}
@@ -382,6 +417,8 @@ window.setT = function(t){
     const lens = [1,2,3,4,5,6,7,8].map(k => ahead(k).reduce((a,gr)=>a+[...gr.querySelectorAll('path')].reduce((s,x)=>s+ +x.dataset.len,0),0));
     const tot = lens.reduce((a,b)=>a+b,0); let want = p*tot;
     for (let k=1;k<=8;k++){ const share = cl(want/lens[k-1],0,1); want -= lens[k-1]*share; reveal(ahead(k), share); }
+  } else if (TL.state === 'enablers'){
+    // handled below, on the 'close' beat: until then the map carries no route at all.
   } else {
     for (let k=1;k<=8;k++) reveal(ahead(k), 1);
   }
@@ -402,7 +439,7 @@ window.setT = function(t){
                      gr.setAttribute('stroke-width', isCurrent ? '${px(7)}' : '${px(5.5)}'); });
     if (isCurrent) lit = k;
     // the day badge rides with its leg and leaves with it
-    const bo = cl((t-l.t-TL.draw*0.5)/0.5,0,1) * (1-cl((t-Math.min(nextT(k),l.t+TL.draw+TL.labelHold))/0.5,0,1));
+    const bo = TL.state === 'enablers' ? 0 : cl((t-l.t-TL.draw*0.5)/0.5,0,1) * (1-cl((t-Math.min(nextT(k),l.t+TL.draw+TL.labelHold))/0.5,0,1));
     fade(document.querySelector('text.ldays[data-leg="'+k+'"]'), bo);
   }
 
@@ -419,14 +456,18 @@ window.setT = function(t){
     const on = lit1!=null && t >= lit1;
     fade(dot, on ? cl((t-lit1)/0.5,0,1) : 0);
     // ports not yet called sit as small paper discs, unlabelled, once the faint route has reached them
-    fade(ghost, on ? 0 : (TL.ghost ? (ghostP >= (R.portFrac[p]||0) - 0.001 ? 1 : 0) : 1) * 0.9);
+    // 'enablers': the unlit discs are the itinerary's ports, and this map is not about the itinerary yet.
+    fade(ghost, TL.state === 'enablers' ? 0 : (on ? 0 : (TL.ghost ? (ghostP >= (R.portFrac[p]||0) - 0.001 ? 1 : 0) : 1) * 0.9));
     let no = 0;
     if (on){
       const inP = cl((t-lit1)/0.45,0,1);
       // a port name also leaves when the NEXT leg starts drawing: with beats 2.8 s apart and a 2.4 s hold, two
       // names would otherwise be up at once, which is exactly the "too much text" this map exists to end.
       let nextLegT = Infinity; for (let k=1;k<=8;k++){ const l=legs.find(x=>x.k===k); if (l && R.legTo[k]===p){ const n=legs.find(x=>x.k===k+1); if (n) nextLegT = n.t + 0.35; } }
-      const outAt = isLondon ? Infinity : Math.min(lit1 + TL.labelHold, nextLegT);
+      // London anchors the frame while the map is empty; its NAME leaves before the first date arrives, so the
+      // enabler map never carries more than the year plus the dates it has earned.
+      const firstEnab = enabs.length ? enabs[0].t - 0.8 : Infinity;
+      const outAt = isLondon ? (TL.state === 'enablers' ? firstEnab : Infinity) : Math.min(lit1 + TL.labelHold, nextLegT);
       no = inP * (1 - cl((t-outAt)/0.5,0,1));
     }
     fade(name, no);
@@ -434,21 +475,55 @@ window.setT = function(t){
 
   // --- enablers -------------------------------------------------------------------------------------------
   enabs.forEach((e,i)=>{
-    const idx = 'ABC'.indexOf(e.letter);
+    const idx = (R.enabIdx || {})[e.letter];
+    if (idx === undefined) return;
     const gr = document.querySelector('g.enab[data-enab="'+idx+'"]'); if(!gr) return;
     fade(gr, t>=e.t ? cl((t-e.t)/0.5,0,1) : 0);
     // the diamond stays — the three doors are the point of the beat — but its date leaves after 7 s, or as soon as
     // the legs start drawing, so the map is never carrying three old labels while a fourth thing is happening.
     const d = gr.querySelector('text.edate');
     const legStart = legs.length ? legs[0].t - 0.6 : Infinity;
-    const out = Math.min(e.t + 7, legStart);
+    // 'enablers': every date stays once it is up. Five dates spread from Utah to Australia is the picture the
+    // scene is arguing for — thirty-eight months, five places — and they are far enough apart to stay legible.
+    const out = TL.state === 'enablers' ? Infinity : Math.min(e.t + 7, legStart);
     if (d) fade(d, t>=e.t ? cl((t-e.t)/0.5,0,1) * (1-cl((t-out)/0.7,0,1)) : 0);
   });
+
+  // --- the wire and the closing trace (state 'enablers') ---------------------------------------------------
+  const wireG = document.getElementById('wire');
+  if (wireG){
+    if (TL.wire != null && t >= TL.wire){
+      fade(wireG, cl((t-TL.wire)/0.4,0,1));
+      const land = document.getElementById('wireland'), sea = document.getElementById('wiresea');
+      const pl = ease(cl((t-TL.wire)/1.8,0,1)), psea = ease(cl((t-TL.wire-1.6)/1.4,0,1));
+      for (const [el,p] of [[land,pl],[sea,psea]]){
+        if(!el) continue; const L = +el.dataset.len;
+        el.setAttribute('stroke-dasharray', el.id==='wiresea' && p>=1 ? el.getAttribute('stroke-dasharray') : L+' '+L);
+        el.setAttribute('stroke-dashoffset', (L*(1-p)).toFixed(2));
+      }
+    } else fade(wireG, 0);
+  }
 
   // --- the top strip: the ledger, one number ---------------------------------------------------------------
   const strip = document.getElementById('strip'), dnum = document.getElementById('tnum'), dlab = document.getElementById('tlab');
   const ds = document.getElementById('datestrip');
-  if (TL.state === 'loop'){
+  if (TL.state === 'enablers'){
+    // one text element in the strip: the year of the most recent thing that finished.
+    let yr = '', shown = 0;
+    for (const e of enabs) if (t >= e.t){ yr = R.enabYear[e.letter] || ''; shown++; }
+    dnum.textContent = yr;
+    dnum.setAttribute('fill', shown >= enabs.length ? '${ACCENT}' : '${INK}');
+    dlab.textContent = '';
+    fade(strip, shown ? cl((t-enabs[0].t)/0.6,0,1) : 0);
+    fade(ds, 0);
+    // 'close': the whole loop traces faintly, so the last thing on screen is the shape the five works made possible.
+    if (TL.close != null){
+      const p = ease(cl((t-TL.close)/3.0,0,1));
+      const lens = [1,2,3,4,5,6,7,8].map(k => ahead(k).reduce((a,gr)=>a+[...gr.querySelectorAll('path')].reduce((s,x)=>s+ +x.dataset.len,0),0));
+      const tot = lens.reduce((a,b)=>a+b,0); let want = p*tot;
+      for (let k=1;k<=8;k++){ const share = cl(want/lens[k-1],0,1); want -= lens[k-1]*share; reveal(ahead(k), share); }
+    } else for (let k=1;k<=8;k++) reveal(ahead(k), 0);
+  } else if (TL.state === 'loop'){
     const closed = TL.total!=null && t>=TL.total;
     const n = closed ? R.total : travelled;
     dnum.textContent = n;
