@@ -1,5 +1,5 @@
 # Episode 1 · London — the bet
-**Target ~21:00 · 13 topics · landscape 1920×1080 · shorts cut from this master afterwards**
+**CUT AT 21:53 · 12 topics + a quote card · landscape 1920×1080 · shorts cut from this master afterwards**
 
 Status: **for founder review.** Nothing is sourced or rendered until these are approved.
 New facts researched 2026-09-09 are marked **[new]** and carry a confidence note; they are not yet
@@ -136,7 +136,7 @@ The Day 1 map failed because it was a print master shown at 0.596 scale — this
 
 ---
 
-### T5 · The tour that really left that month
+### T5 · The tour that really left that month  — ❌ CUT 2026-09-09 (founder)
 `Fact` · **70 s**
 
 **Hook:** *"While Verne was inventing this, a travel agent was actually doing it."*
@@ -361,7 +361,7 @@ are placed at the four seams that actually carry weight, not between every topic
 |---|---|
 | **T1 → T2** | T1 ends *"real people kept trying to beat him"*; T2 opens *"Which is strange — because he never existed."* A promise, then the turn. |
 | **T4, tail** | The series intro, landing on the map that has just drawn the route. Eight episodes, one lap, and the question that runs the whole way round. |
-| **T5 → T6** | The pivot from the world at large to one city. Cook's 222 days is the last wide shot; T6 lands in London. |
+| ~~T5 → T6~~ | Removed with Cook. T4's series promise now hands straight to London: "…where it very nearly didn't." → "Fogg is setting out from the biggest city that had ever existed." |
 | **T13, tail** | The lookout: what is ahead of him, ending on the Pacific tease. Hands to E2 and to the series. |
 
 Everywhere else the topics simply follow one another. If the edit feels flat in the middle, the fix is
@@ -383,7 +383,7 @@ viewer who has not read the book — your ruling, applied.
 ## What I need from you
 1. **Kill anything.** Thirteen topics is about 20:40 before tissue; there is no slack, so anything you add displaces something.
 2. **T2 is the new opening you asked for and it is long (140 s).** It can lose Palin and Train and still work.
-3. **T5 (Thomas Cook)** is the one I'd cut first if you want the episode tighter.
+3. ~~T5 (Thomas Cook)~~ — **cut 2026-09-09.** The scene is kept in `scenes/cut-but-kept/` as a candidate Short.
 4. Confirm the order: question → racers → Verne → why eighty → reality check → then the places.
 
 ---

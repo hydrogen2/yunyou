@@ -1,17 +1,15 @@
 # Scenes (EPISODE 1) — London: the bet
 
 **Scene Developer + Narrator:** scene-developer (Claude), acting as both   **Date:** 2026-09-09   **Status:** draft, unsourced, unrendered
-**Authority:** `series/episode-01-topics.md` (the founder-approved 13-topic plan) · `studio/strategy/video-first.md` · `DECISIONS.md`
-**Supersedes:** `scenes/retired-film-v1/` (the 12-scene cut the founder watched and rejected: *"i dont get the openning, is it about bespoke suit making or tailor shops?"*)
+**Authority:** `series/episode-01-topics.md` (the founder-approved topic plan) · `studio/strategy/video-first.md` · `DECISIONS.md`
+**Supersedes:** `scenes/retired-film-v1/` — the 12-scene cut the founder watched and rejected: *"i dont get the openning, is it about bespoke suit making or tailor shops?"*
 
-**1368 s = 22 min 48 s** · **14 scenes** · **103 authored visual slots** · **1968 narration words**
-· fill **58 %**, i.e. 9 min 40 s of this episode is picture without words.
+**1313 s = 21 min 53 s** · **13 scenes** · **98 authored visual slots** · **1888 narration words**
+· fill **58 %** — 9 min 17 s of this episode is picture without words.
 
-> **Runtime is over plan.** The approved topic list was costed at 21:00; written out and held to the studio's
-> 58 % fill it comes to **22:48**. The estimate was wrong, not the scenes — spoken numbers cost words
-> ("eighteen seventy-two" is three). Two cuts get it to about 21:00, in the order I would make them:
-> **scene 06 Thomas Cook (55 s)** and **scene 04, the quote card (10 s)**. Both are self-contained files;
-> deleting them and their rows here is the whole edit. Say which, or say leave it.
+**Founder's runtime ruling, 2026-09-09: keep the quote card, cut Thomas Cook.** Scene 04 (the `quote` type,
+Verne's 115,200 minutes, held silent) stays. `thomas-cook` moved to `cut-but-kept/` — not deleted, because a
+cut topic is the right shape for a Short.
 
 ## 1 · The scenes, in order
 
@@ -22,20 +20,19 @@
 | 03 | `03-the-bet.scene.json` | `the-bet` | 93 | 9 | 135 | 58 % | 10.3 |
 | 04 | `04-a-hundred-and-fifteen-thousand.scene.json` | `a-hundred-and-fifteen-thousand` | 10 | 0 | 0 | 0 % | — |
 | 05 | `05-the-year-the-world-closed.scene.json` | `the-year-the-world-closed` | 133 | 6 | 193 | 58 % | 22.2 |
-| 06 | `06-thomas-cook.scene.json` | `thomas-cook` | 55 | 5 | 80 | 58 % | 11.0 |
-| 07 | `07-biggest-city.scene.json` | `biggest-city` | 80 | 8 | 116 | 58 % | 10.0 |
-| 08 | `08-half-a-mile.scene.json` | `half-a-mile` | 81 | 5 | 117 | 58 % | 16.2 |
-| 09 | `09-what-a-club-was.scene.json` | `what-a-club-was` | 96 | 9 | 139 | 58 % | 10.7 |
-| 10 | `10-the-reform.scene.json` | `the-reform` | 90 | 7 | 131 | 58 % | 12.9 |
-| 11 | `11-savile-row.scene.json` | `savile-row` | 149 | 10 | 216 | 58 % | 14.9 |
-| 12 | `12-no-1-savile-row.scene.json` | `no-1-savile-row` | 98 | 7 | 142 | 58 % | 14.0 |
-| 13 | `13-charing-cross.scene.json` | `charing-cross` | 138 | 9 | 200 | 58 % | 15.3 |
-| 14 | `14-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | 123 | 8 | 178 | 58 % | 15.4 |
+| 06 | `06-biggest-city.scene.json` | `biggest-city` | 80 | 8 | 116 | 58 % | 10.0 |
+| 07 | `07-half-a-mile.scene.json` | `half-a-mile` | 81 | 5 | 117 | 58 % | 16.2 |
+| 08 | `08-what-a-club-was.scene.json` | `what-a-club-was` | 96 | 9 | 139 | 58 % | 10.7 |
+| 09 | `09-the-reform.scene.json` | `the-reform` | 90 | 7 | 131 | 58 % | 12.9 |
+| 10 | `10-savile-row.scene.json` | `savile-row` | 149 | 10 | 216 | 58 % | 14.9 |
+| 11 | `11-no-1-savile-row.scene.json` | `no-1-savile-row` | 98 | 7 | 142 | 58 % | 14.0 |
+| 12 | `12-charing-cross.scene.json` | `charing-cross` | 138 | 9 | 200 | 58 % | 15.3 |
+| 13 | `13-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | 123 | 8 | 178 | 58 % | 15.4 |
 
 ## 2 · What does not exist yet
 
-Nothing here has been sourced. **24 new media items** and **25 new generated assets** are needed
-before this can be rendered; everything else reuses `media/manifest.md`.
+Nothing is sourced. **22 new media items** and **24 new generated assets** are needed before
+this can render; everything else reuses `media/manifest.md`.
 
 ### New media to find (Content Preparer)
 | id | kind | what | for |
@@ -55,8 +52,6 @@ before this can be rendered; everything else reuses `media/manifest.md`.
 | M-212 | image | the golden spike photograph. Held. NOT YET SOURCED — Content Preparer. | `the-year-the-world-closed` |
 | M-213 | image | the opening ceremony, engraved. NOT YET SOURCED — Content Preparer. | `the-year-the-world-closed` |
 | M-214 | image | a pole party in the desert. This is the beat the whole episode turns on; give it a real photograph. NOT YET SOURCED — Content Preparer. | `the-year-the-world-closed` |
-| M-215 | image | Cook, portrait. NOT YET SOURCED — Content Preparer. | `thomas-cook` |
-| M-216 | image | the advertisement itself if one can be found; Verne is thought to have read one. NOT YET SOURCED — Content Preparer. | `thomas-cook` |
 | M-217 | image | the world's first underground, packed, in a cutting. The best single image of 'new'. NOT YET SOURCED — Content Preparer. | `biggest-city` |
 | M-218 | image | the library. 'Read, write letters' wants a room, not a façade. NOT YET SOURCED — Content Preparer. | `what-a-club-was` |
 | M-219 | image | the Reform's own library, 85,000 volumes. ⚠ The club controls interior photography; if it cannot be cleared, hold on M-23 and let the number sit on a  | `the-reform` |
@@ -75,7 +70,6 @@ before this can be rendered; everything else reuses `media/manifest.md`.
 | G-34 | the sum, twice: £20,000 in 1872 / about £2 million today. Two lines. The card carries the conversion so the guide does not have to labour it. Cite the | `the-bet` |
 | G-13 | THE FILM MAP, drawn by lib/mapfilm.mjs, not screenshotted from the player. One line at a time, on the voice: Promontory 1869 → Suez 1869 → India 1870  | `the-year-the-world-closed` |
 | G-35 | 36,000 POLES / 11 REPEATER STATIONS. Two lines. DOES NOT EXIST YET. | `the-year-the-world-closed` |
-| G-36 | the comparison, two rows: FOGG (fiction) 80 DAYS / COOK (actual) 222 DAYS. £200 guineas, 8 travellers in small type. DOES NOT EXIST YET. | `thomas-cook` |
 | G-37 | the comparison card as bars, not text: LONDON 3.9m / BEIJING / PARIS / NEW YORK. Four bars, four labels. The guide says the ratios; the card shows the | `biggest-city` |
 | G-38 | THE ANCHOR CARD. The 1872 street plan, three pins dropped in order as they are named — 7 Savile Row, 104 Pall Mall, Charing Cross — then the walking l | `half-a-mile` |
 | G-39 | 575 + 576 = 1,151 STEPS · ~900 m. The card holds the arithmetic so the voice does not have to repeat it. DOES NOT EXIST YET. | `half-a-mile` |
@@ -94,25 +88,25 @@ before this can be rendered; everything else reuses `media/manifest.md`.
 | G-51 | a watch face, four minutes slow, LONDON under it. This is the seed of Episode 8's ending; plant it plainly and never mention it again this episode. DO | `a-quarter-to-nine` |
 | G-52 | a single gas lamp burning in a dark window. DOES NOT EXIST YET. | `a-quarter-to-nine` |
 
-**G-13 is the one that matters.** The enabler map carries the episode's whole argument and the series
-introduction, it is on screen for 58 s of scene 05 and again in scene 14, and it has been outstanding since
-the first film cut. If only one asset gets made, it is this one.
+**G-13 is the one that matters.** The enabler map carries the episode's argument *and* the series
+introduction, holds the screen for 55 s of scene 05 and returns in scene 13, and has been outstanding since
+the first film cut. If one asset gets made, it is this one.
 
 ## 3 · Facts not yet on a fact sheet
 
-Scenes 01, 02, 03 and 06 cite **F-N01…F-N12**, which are placeholders, not fact-sheet ids. They cover the
-2024 flight record, the ISS orbital period, Train, Bly, Bisland, Huld, the Jules Verne Trophy, Cook's 222 days
-and the £20,000 conversion. Sources are listed at the foot of `series/episode-01-topics.md`. **Researcher owes
-real F- numbers and Fact-Check owes a pass before any of this is recorded.** Two are already known-soft:
-Cook's departure date conflicts between sources, and the Huld/Tintin link is "reportedly" even at source.
+Scenes 01, 02 and 03 cite **F-N01…F-N08, F-N12** — placeholders, not fact-sheet ids. They cover the 2024
+flight record, the ISS orbital period, Train, Bly, Bisland, Huld, the Jules Verne Trophy and the £20,000
+conversion. Sources are at the foot of `series/episode-01-topics.md`. **Researcher owes real F- numbers and
+Fact-Check owes a pass before any of this is recorded.** The Huld/Tintin link is "reportedly" even at source,
+so the script says "is said to have".
 
 ## 4 · Rights still open
-- **M-209 / M-210** — Palle Huld, 1928 Danish press photographs. May still be in copyright. Fallback: the record board.
-- **M-219** — the Reform Club library interior. The club controls interior photography. Fallback: hold on M-23.
-- **M-84** — mis-briefed in the first cut: it does **not** contain the Charles I statue that scene 13 is about. Re-cut or replace.
+- **M-209 / M-210** — Palle Huld, 1928 Danish press photographs; may still be in copyright. Fallback: the record board.
+- **M-219** — the Reform Club library interior; the club controls interior photography. Fallback: hold on M-23.
+- **M-84** — mis-briefed in the first cut: it does **not** contain the Charles I statue that scene 12 is about. Replace, do not repeat.
 
 ## 5 · Before rendering
 `tour.json` still assembles the **retired** 12-scene cut and must be rebuilt against this directory; the
-renderer's rendered-vs-intended check will fail loudly until it is. The Mandarin locale `i18n/zh-Hans.json`
-addresses the retired scene ids and needs rewriting from scratch, including the new `quote` card's text —
-an untranslated quote renders English in the zh cut and only warns.
+renderer's rendered-vs-intended check fails loudly until it is. `i18n/zh-Hans.json` addresses retired scene
+ids and needs rewriting from scratch — including the `quote` card, since an untranslated quote renders
+English in the Mandarin cut and only warns.
