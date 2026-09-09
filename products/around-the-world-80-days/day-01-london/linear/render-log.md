@@ -1,8 +1,8 @@
 # Render log — Episode 1 · London — the bet — linear cut (review animatic)
 
-**Rendered:** 2026-09-09T13:38:11.525Z   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** 10.7 min
+**Rendered:** 2026-09-09T14:11:22.982Z   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** 9.2 min
 
-**Output:** `products/around-the-world-80-days/day-01-london/linear/day-01-london_en.mp4` — 1236.0 s (20:36), 1920×1080 h264 25/1 fps, aac 48000 Hz 2 ch, 216.4 MB, faststart. Subtitles: `day-01-london_en.vtt` (burned in AND sidecar).
+**Output:** `products/around-the-world-80-days/day-01-london/linear/day-01-london_en.mp4` — 1236.0 s (20:36), 1920×1080 h264 25/1 fps, aac 48000 Hz 2 ch, 216.2 MB, faststart. Subtitles: `day-01-london_en.vtt` (burned in AND sidecar).
 
 **Language:** English. **Voice:** local Kokoro af_heart @ 0.85x via ~/hilbert (Apache-2.0, free, no account). **Narration gain:** 5.2 dB (measured). **Beds:** Commons audio at -35 LUFS (≈ 18 dB under narration), stings at -26 LUFS. **Scene length:** the scene's own `duration_s` (D9 — the scene files ARE the film). Nothing is end-cut: if the voice overruns, the scene stretches and every slot in it scales by the same factor, and the overrun is in the warnings. **Visuals:** the authored `media[].start_s`/`end_s` slots, in order, never re-divided. **Cut sheet:** none — retired for this chapter (`cuts/retired/README.md`)..
 

@@ -2119,7 +2119,27 @@ async function runCropPreview(target) {
     // undrawn overlay is listed in render-log.md, flagged when its wording is NOT already in the spoken narration,
     // so a real loss of information becomes a rundown/script task instead of disappearing quietly.
     let ass = assHeader();
-    for (const x of segs) if (x.attribution && !x.attrInFrame) ass += assLine('Attr', x.at, x.at + x.dur, complyCredit(x.attribution));
+    // A burned credit must sit over ITS OWN picture. `x.at` is where the shot list intends the shot to start; the
+    // concatenated video is the sum of the segment files' REAL durations, and those differ from the plan by a frame
+    // here and a frame there, which accumulates. Measured on the 2026-09-09 cut: by the seventh shot of a scene the
+    // credit arrived TWO SECONDS before its photograph, so a generated card briefly carried a photographer's name.
+    // That is a misattribution, not a cosmetic slip — a CC BY credit that names the wrong picture is worse than
+    // none. So the credits are timed from what is actually on disk, not from the plan.
+    {
+      let realAt = 0;
+      for (let i = 0; i < segs.length; i++) {
+        const rd = await probeDuration(segFiles[i]).catch(() => 0);
+        segs[i].realAt = realAt; segs[i].realDur = rd > 0.02 ? rd : segs[i].dur;
+        realAt += segs[i].realDur;
+      }
+      const drift = realAt - len;
+      if (Math.abs(drift) > 0.4) warnings.push(`${p.sel.idx + 1} ${s.id}: the rendered shots total ${fmt1(realAt)} s ` +
+        `against ${fmt1(len)} s of scene (${drift > 0 ? '+' : ''}${fmt1(drift)} s). Credits are timed from the real ` +
+        `durations so they stay on their own pictures, but the picture track and the narration drift apart by that ` +
+        `much by the end of the scene.`);
+    }
+    for (const x of segs) if (x.attribution && !x.attrInFrame)
+      ass += assLine('Attr', x.realAt ?? x.at, (x.realAt ?? x.at) + (x.realDur ?? x.dur), complyCredit(x.attribution));
     { const ovList = (hint.overlays ?? (s.overlays || []).map((_, i) => i)).map(x => typeof x === 'number' ? { i: x } : x);
       const spokenNow = p.utts.map(u => u.text).join(' ');
       for (const ov of ovList) { const o = (s.overlays || [])[ov.i]; if (!o) continue;
