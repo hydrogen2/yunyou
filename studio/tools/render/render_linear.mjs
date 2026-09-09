@@ -1669,6 +1669,19 @@ async function runCropPreview(target) {
       if (kind === 'generated') {
         const gf = localPath(m.ref);
         if (!fs.existsSync(gf)) return await useFallback(m, dur, sl, 'generated asset does not exist yet', depth);
+        // BUG FIX 2026-09-09: the graphics that DRAW THEMSELVES are addressed by their data file, not by a picture
+        // on disk, and this branch used to hand a .json straight to ffmpeg as if it were a raster. The film path is
+        // the one this chapter actually renders through, so wiring them into the by-type defaults (which only run
+        // for a non-film chapter) fixed nothing. Route them here, before anything tries to decode the file.
+        if (/\/card\.json$/.test(m.ref)) return await cardSeg(m, dur);
+        if (/g-33\/records\.json$/.test(m.ref)) return await boardSeg(m, dur);
+        if (/g-38\/walk\.json$/.test(m.ref)) return await walkSeg(m, dur);
+        if (/enablers-map\.json$/.test(m.ref)) return await mapSeg('enablers', m.beats || null, dur, `from media ${m.manifest_id}`);
+        if (/route-map.*\.json$/.test(m.ref)) return await mapSeg(/full-loop/.test(m.ref) ? 'loop' : 'day-1', m.beats || null, dur, `from media ${m.manifest_id}`);
+        if (/\.json$/i.test(m.ref)) {
+          warnings.push(`${tag}: ${m.manifest_id} points at ${path.basename(m.ref)}, which no drawing module claims. Pending card.`);
+          return await pendingSeg(m, dur);
+        }
         if (/\.svg$/i.test(m.ref)) {
           const png = await svgToPng(gf, W, H);
           useCredit(m);

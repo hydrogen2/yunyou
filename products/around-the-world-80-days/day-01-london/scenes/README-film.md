@@ -4,7 +4,7 @@
 **Authority:** `series/episode-01-topics.md` (the founder-approved topic plan) · `studio/strategy/video-first.md` · `DECISIONS.md`
 **Supersedes:** `scenes/retired-film-v1/` — the 12-scene cut the founder watched and rejected: *"i dont get the openning, is it about bespoke suit making or tailor shops?"*
 
-**1313 s = 21 min 53 s** · **13 scenes** · **98 authored visual slots** · **1888 narration words**
+**1313 s = 21 min 53 s** · **13 scenes** · **100 authored visual slots** · **1,888 narration words**
 · fill **58 %** — 9 min 17 s of this episode is picture without words.
 
 **Founder's runtime ruling, 2026-09-09: keep the quote card, cut Thomas Cook.** Scene 04 (the `quote` type,
@@ -13,21 +13,25 @@ cut topic is the right shape for a Short.
 
 ## 1 · The scenes, in order
 
-| # | file | scene id | s | slots | words | fill | avg shot |
-|---|------|----------|--:|------:|------:|-----:|---------:|
-| 01 | `01-how-long.scene.json` | `how-long` | 77 | 8 | 111 | 58 % | 9.6 |
-| 02 | `02-the-racers.scene.json` | `the-racers` | 145 | 12 | 210 | 58 % | 12.1 |
-| 03 | `03-the-bet.scene.json` | `the-bet` | 93 | 9 | 135 | 58 % | 10.3 |
-| 04 | `04-a-hundred-and-fifteen-thousand.scene.json` | `a-hundred-and-fifteen-thousand` | 10 | 0 | 0 | 0 % | — |
-| 05 | `05-the-year-the-world-closed.scene.json` | `the-year-the-world-closed` | 133 | 6 | 193 | 58 % | 22.2 |
-| 06 | `06-biggest-city.scene.json` | `biggest-city` | 80 | 8 | 116 | 58 % | 10.0 |
-| 07 | `07-half-a-mile.scene.json` | `half-a-mile` | 81 | 5 | 117 | 58 % | 16.2 |
-| 08 | `08-what-a-club-was.scene.json` | `what-a-club-was` | 96 | 9 | 139 | 58 % | 10.7 |
-| 09 | `09-the-reform.scene.json` | `the-reform` | 90 | 7 | 131 | 58 % | 12.9 |
-| 10 | `10-savile-row.scene.json` | `savile-row` | 149 | 10 | 216 | 58 % | 14.9 |
-| 11 | `11-no-1-savile-row.scene.json` | `no-1-savile-row` | 98 | 7 | 142 | 58 % | 14.0 |
-| 12 | `12-charing-cross.scene.json` | `charing-cross` | 138 | 9 | 200 | 58 % | 15.3 |
-| 13 | `13-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | 123 | 8 | 178 | 58 % | 15.4 |
+The **block** column is the topic number from `series/episode-01-topics.md`. It is not decoration: the renderer
+parses this table as `| # | file | scene id | block | seconds | slots | …` and refuses to render if it and the
+scene files disagree. A table without the block column makes it read the slot count as the duration.
+
+| # | file | scene id | block | s | slots | words | fill | avg shot |
+|---|------|----------|-------|--:|------:|------:|-----:|---------:|
+| 1 | `01-how-long.scene.json` | `how-long` | **T1** | 77 | 8 | 111 | 58 % | 9.6 |
+| 2 | `02-the-racers.scene.json` | `the-racers` | **T2** | 145 | 14 | 210 | 58 % | 10.4 |
+| 3 | `03-the-bet.scene.json` | `the-bet` | **T3** | 93 | 9 | 135 | 58 % | 10.3 |
+| 4 | `04-a-hundred-and-fifteen-thousand.scene.json` | `a-hundred-and-fifteen-thousand` | **T3b** | 10 | 0 | 0 | 0 % | — |
+| 5 | `05-the-year-the-world-closed.scene.json` | `the-year-the-world-closed` | **T4** | 133 | 6 | 193 | 58 % | 22.2 |
+| 6 | `06-biggest-city.scene.json` | `biggest-city` | **T6** | 80 | 8 | 116 | 58 % | 10.0 |
+| 7 | `07-half-a-mile.scene.json` | `half-a-mile` | **T7** | 81 | 5 | 117 | 58 % | 16.2 |
+| 8 | `08-what-a-club-was.scene.json` | `what-a-club-was` | **T8** | 96 | 9 | 139 | 58 % | 10.7 |
+| 9 | `09-the-reform.scene.json` | `the-reform` | **T9** | 90 | 7 | 131 | 58 % | 12.9 |
+| 10 | `10-savile-row.scene.json` | `savile-row` | **T10** | 149 | 10 | 216 | 58 % | 14.9 |
+| 11 | `11-no-1-savile-row.scene.json` | `no-1-savile-row` | **T11** | 98 | 7 | 142 | 58 % | 14.0 |
+| 12 | `12-charing-cross.scene.json` | `charing-cross` | **T12** | 138 | 9 | 200 | 58 % | 15.3 |
+| 13 | `13-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | **T13** | 123 | 8 | 178 | 58 % | 15.4 |
 
 ## 2 · What does not exist yet
 

@@ -59,7 +59,7 @@
     },
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:London_Illustrated_1872_Plan_of_London.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
       "start_s": 35,
       "end_s": 44,
       "license": "public-domain",
@@ -71,7 +71,8 @@
         "x": 0.18,
         "y": 0.2,
         "w": 0.5,
-        "h": 0.5
+        "h": 0.5,
+        "why": "Central London only, from the 1872 plan. The whole sheet at 1080p is unreadable and the beat is 'this is the city he leaves from', not 'here is a map'."
       }
     },
     {

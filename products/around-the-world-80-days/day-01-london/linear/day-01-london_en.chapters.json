@@ -3,79 +3,85 @@
  "subtitles": "day-01-london_en.vtt",
  "lang": "en",
  "locale": "en",
- "duration_s": 1224,
+ "duration_s": 1370,
  "chapters": [
   {
-   "scene": "cold-open",
+   "scene": "how-long",
    "type": "video",
    "at_s": 4,
-   "title": "Three places, one year"
+   "title": "How long would it take you?"
   },
   {
-   "scene": "savile-row",
+   "scene": "the-racers",
    "type": "video",
-   "at_s": 49,
-   "title": "Savile Row — the whole subject is 280 metres"
+   "at_s": 81,
+   "title": "The people who actually raced it"
   },
   {
-   "scene": "the-word",
+   "scene": "the-bet",
    "type": "video",
-   "at_s": 149,
-   "title": "The word — a myth, a tribunal and a tape measure"
+   "at_s": 226,
+   "title": "The man they were all chasing"
   },
   {
-   "scene": "no-1-savile-row",
-   "type": "video",
-   "at_s": 253,
-   "title": "No. 1 — where the journeys were planned"
-  },
-  {
-   "scene": "clothes-then-club",
-   "type": "video",
-   "at_s": 348,
-   "title": "Clothes, then club — the walk through St James's"
-  },
-  {
-   "scene": "what-a-club-was",
-   "type": "video",
-   "at_s": 420,
-   "title": "What a London club actually was"
-  },
-  {
-   "scene": "a-palace-with-a-motive",
-   "type": "video",
-   "at_s": 528,
-   "title": "The Reform — a political party built as a palace"
-  },
-  {
-   "scene": "the-wager",
-   "type": "video",
-   "at_s": 602,
-   "title": "The wager"
+   "scene": "a-hundred-and-fifteen-thousand",
+   "type": "quote",
+   "at_s": 319,
+   "title": "115,200 minutes"
   },
   {
    "scene": "the-year-the-world-closed",
    "type": "video",
-   "at_s": 692,
-   "title": "1872 — the year the world closed into a circuit"
+   "at_s": 329,
+   "title": "Why eighty — the year the world closed"
+  },
+  {
+   "scene": "biggest-city",
+   "type": "video",
+   "at_s": 462,
+   "title": "The largest city there had ever been"
+  },
+  {
+   "scene": "half-a-mile",
+   "type": "video",
+   "at_s": 542,
+   "title": "Half a mile"
+  },
+  {
+   "scene": "what-a-club-was",
+   "type": "video",
+   "at_s": 623,
+   "title": "What a London club actually was"
+  },
+  {
+   "scene": "the-reform",
+   "type": "video",
+   "at_s": 719,
+   "title": "The Reform — a party built as a palace"
+  },
+  {
+   "scene": "savile-row",
+   "type": "video",
+   "at_s": 809,
+   "title": "Savile Row — 280 metres, and one word"
+  },
+  {
+   "scene": "no-1-savile-row",
+   "type": "video",
+   "at_s": 958,
+   "title": "No. 1 — where they decided what was still blank"
   },
   {
    "scene": "charing-cross",
    "type": "video",
-   "at_s": 830,
+   "at_s": 1056,
    "title": "Charing Cross — the point London is measured from"
   },
   {
    "scene": "a-quarter-to-nine",
    "type": "video",
-   "at_s": 973,
+   "at_s": 1194,
    "title": "A quarter to nine"
-  },
-  {
-   "scene": "souvenir",
-   "type": "video",
-   "at_s": 1091,
-   "title": "Souvenir and send-off"
   }
  ]
 }

@@ -26,7 +26,7 @@
     },
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:London_Illustrated_1872_Plan_of_London.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
       "start_s": 11,
       "end_s": 19,
       "license": "public-domain",
@@ -60,7 +60,8 @@
         "x": 0.6,
         "y": 0.44,
         "w": 0.18,
-        "h": 0.18
+        "h": 0.18,
+        "why": "The docks, from the same 11,419 px sheet, for the port line. Post-crop ~2,055 px, so it plays full width, not as a plate."
       }
     },
     {
@@ -76,7 +77,7 @@
     },
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:Hotel_at_Charing_Cross.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.037_HOTEL_AT_CHARING_CROSS.jpg",
       "start_s": 50,
       "end_s": 59,
       "license": "public-domain",
@@ -99,7 +100,7 @@
     },
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:London_Illustrated_1872_Plan_of_London.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
       "start_s": 69,
       "end_s": 80,
       "license": "public-domain",
