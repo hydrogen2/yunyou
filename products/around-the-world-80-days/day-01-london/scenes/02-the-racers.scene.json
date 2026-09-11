@@ -136,6 +136,18 @@
       "note": "T2.8 — THE RECORD BOARD (G-33). Own chart from generated/g-33/records.json, drawn on the narration clock by lib/recordboard.mjs: one series, bars from zero, a dashed datum at Fogg's eighty, and every racer measured against it. Bisland's row lands on 'lost by four days' — her bar is longer than Bly's and still short of the datum, which is the whole of 'she also beat Fogg' without a word.",
       "beats": [
         {
+          "show": "row:fogg",
+          "t": 0
+        },
+        {
+          "show": "row:train",
+          "t": 0
+        },
+        {
+          "show": "row:bly",
+          "t": 0
+        },
+        {
           "show": "row:bisland",
           "s": 7
         }
@@ -177,6 +189,22 @@
       "use": "both",
       "note": "T2.11 — THE RECORD BOARD (G-33). Own chart from generated/g-33/records.json, drawn on the narration clock by lib/recordboard.mjs: one series, bars from zero, a dashed datum at Fogg's eighty, and every racer measured against it. Huld's bar on 'Forty-four days.' It is the first row that is obviously, visibly shorter — a boy of fifteen, half the line.",
       "beats": [
+        {
+          "show": "row:fogg",
+          "t": 0
+        },
+        {
+          "show": "row:train",
+          "t": 0
+        },
+        {
+          "show": "row:bly",
+          "t": 0
+        },
+        {
+          "show": "row:bisland",
+          "t": 0
+        },
         {
           "show": "row:huld",
           "s": 11
@@ -221,6 +249,26 @@
       "use": "both",
       "note": "T2.14 — THE RECORD BOARD (G-33). Own chart from generated/g-33/records.json, drawn on the narration clock by lib/recordboard.mjs: one series, bars from zero, a dashed datum at Fogg's eighty, and every racer measured against it. The close: 1993 arriving a whisker inside the datum, then 2026 dropping to the shortest bar on the board. HOLD to the end of the scene on the finished chart.",
       "beats": [
+        {
+          "show": "row:fogg",
+          "t": 0
+        },
+        {
+          "show": "row:train",
+          "t": 0
+        },
+        {
+          "show": "row:bly",
+          "t": 0
+        },
+        {
+          "show": "row:bisland",
+          "t": 0
+        },
+        {
+          "show": "row:huld",
+          "t": 0
+        },
         {
           "show": "row:trophy93",
           "s": 14

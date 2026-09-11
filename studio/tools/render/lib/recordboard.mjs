@@ -36,26 +36,25 @@ export function load(chapterDir) {
 export function planTimeline({ dur, rows, beats = [], draw = 0.9 }) {
   const at = {};
   for (const b of beats) if (b && b.show != null && isFinite(b.at)) at[b.show] = Math.max(0, Math.min(dur - 0.3, +b.at));
+  // If a window names ANY row, only the named rows appear in it. 2026-09-11: unnamed rows used to be slotted in
+  // straight after the named ones, and because the board appears four times in its scene, every window cascaded the
+  // rest of the table in early — Bisland, Huld and the 1993 trophy were on screen while the voice was still on Bly.
+  // Same fault as the enabler map, fixed the same way: a window has no memory of the one before it, so a
+  // continuation window lists the rows already up as `t: 0`. The even spread is only for a window with no beats.
   const anyGiven = rows.some(r => at[`row:${r.key}`] !== undefined);
   const t0 = 0.6, t1 = Math.max(t0 + rows.length * 0.9, dur * 0.85);
   const plan = rows.map((r, i) => ({
     key: r.key,
     t: at[`row:${r.key}`] !== undefined ? at[`row:${r.key}`]
-       : anyGiven ? null : t0 + (t1 - t0) * i / Math.max(1, rows.length - 1),
+       : anyGiven ? Infinity : t0 + (t1 - t0) * i / Math.max(1, rows.length - 1),
   }));
-  // a row whose beat the cut never speaks is placed between its neighbours rather than dropped
-  for (let i = 0; i < plan.length; i++) if (plan[i].t === null) {
-    const prev = plan.slice(0, i).reverse().find(x => x.t !== null);
-    const next = plan.slice(i + 1).find(x => x.t !== null);
-    plan[i].t = prev && next ? (prev.t + next.t) / 2 : prev ? prev.t + draw + 0.5 : next ? Math.max(0.4, next.t - draw - 0.5) : dur * 0.5;
-  }
   return { dur, draw, rows: plan };
 }
 
 /** Dense frames through each bar's draw, one held frame between. */
 export function sampleTimes(tl, fps = 25) {
   const win = [];
-  for (const r of tl.rows) win.push([Math.max(0, r.t - 0.1), Math.min(tl.dur, r.t + tl.draw + 0.5), 12.5]);
+  for (const r of tl.rows) if (isFinite(r.t)) win.push([Math.max(0, r.t - 0.1), Math.min(tl.dur, r.t + tl.draw + 0.5), 12.5]);
   win.sort((a, b) => a[0] - b[0]);
   const merged = [];
   for (const w of win) {
