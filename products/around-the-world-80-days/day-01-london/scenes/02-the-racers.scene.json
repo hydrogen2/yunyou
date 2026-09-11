@@ -82,8 +82,9 @@
       "manifest_id": "M-206",
       "attribution": "Jules Verne photographed by Félix Nadar, c. 1878 — public domain (Wikimedia Commons, restored)",
       "use": "both",
-      "note": "T2.5 — Verne, photographed. HOLD 46–52: she stopped, on the clock, to meet him. SOURCED 2026-09-09, 1508×2111.",
-      "on_sentence": 4
+      "note": "T2.5 — Verne, photographed. HOLD 46–52: she stopped, on the clock, to meet him. SOURCED 2026-09-09, 1508×2111. FOCUS 2026-09-11: focus_y 0.33. Nadar's portrait is a bust — hair from 0.09 of its height, beard to 0.52 — and the top-anchored default cut the beard off (founder: 'not full face, beard got cut off looks weird'). Centred on 0.33 the frame holds the whole beard, losing only a sliver of hair.",
+      "on_sentence": 4,
+      "focus_y": 0.33
     },
     {
       "kind": "generated",

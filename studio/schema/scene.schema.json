@@ -191,6 +191,10 @@
             "type": "boolean",
             "description": "kind 'image' only. false = this still does not drift. Use for a beat that must sit still (a held silence, a portrait, a death). Prefer this over treatment:'none', which also removes the backdrop and leaves black bars. Added v0.9."
           },
+          "focus_y": {
+            "type": "number", "minimum": 0, "maximum": 1,
+            "description": "For a picture taller than the frame: where the subject is, as a fraction of the picture's height (after any crop), 0 = top. The frame is centred on it. Use for BUST portraits, whose face sits mid-picture — the top-anchored default cuts off their chin or beard. Leave it out for half- and full-length figures, whose face is near the top anyway."
+          },
           "pan": {
             "type": "string",
             "enum": ["down", "up"],

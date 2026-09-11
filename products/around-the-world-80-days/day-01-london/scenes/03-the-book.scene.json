@@ -21,8 +21,9 @@
       "manifest_id": "M-206",
       "attribution": "Jules Verne photographed by Félix Nadar, c. 1878 — public domain (Wikimedia Commons)",
       "use": "both",
-      "note": "T3.1 — the author, named at last. The episode had been mentioning Verne for two minutes without ever saying what he wrote.",
-      "on_sentence": 1
+      "note": "T3.1 — the author, named at last. The episode had been mentioning Verne for two minutes without ever saying what he wrote. FOCUS 2026-09-11: focus_y 0.33. Nadar's portrait is a bust — hair from 0.09 of its height, beard to 0.52 — and the top-anchored default cut the beard off (founder: 'not full face, beard got cut off looks weird'). Centred on 0.33 the frame holds the whole beard, losing only a sliver of hair.",
+      "on_sentence": 1,
+      "focus_y": 0.33
     },
     {
       "kind": "image",

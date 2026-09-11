@@ -679,12 +679,19 @@ async function segStill(img, dur, m, nw, nh, attribution) {
   let dr = IL.driftFor(m, treat, CFG, img);
   if (panning) dr = { ...dr, on: false };
   const frames = Math.max(2, Math.round(dur * FPS));
-  const key = sha(['v14-top-anchored', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, panMode, tall, attribution || ''].join('|'));
+  const key = sha(['v14-top-anchored', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, panMode, tall, (m && m.focus_y), attribution || ''].join('|'));
   const out = path.join(CACHE, 'seg', `im_${key}.mp4`);
   const from = dr.on ? dr.from : 1;                        // canvas is 1/from larger so the zoom ENDS at 1:1
   const BW = Math.round(W / from) + (Math.round(W / from) % 2), BH = Math.round(H / from) + (Math.round(H / from) % 2);
   const overflow = fh - BH;
+  // Top-anchoring is right for a half- or full-length figure, whose face is near the top of the picture. It is wrong
+  // for a BUST portrait: Nadar's Verne has his face mid-frame and a beard that runs far below it, and a top-anchored
+  // window cut the beard off (founder, 2026-09-11: "not full face, beard got cut off looks weird"). So a slot may
+  // name where the subject is — media[].focus_y, a fraction of the picture's height (post-crop) — and the window is
+  // centred on it, clamped so it never runs past either edge. Without focus_y the top-anchored default stands.
+  const focusY = (m && typeof m.focus_y === 'number') ? Math.min(1, Math.max(0, m.focus_y)) : null;
   const oy = panning ? 0
+           : tall && focusY != null ? Math.round(Math.min(0, Math.max(BH - fh, BH / 2 - focusY * fh)))
            : tall ? -Math.round(Math.max(0, overflow) * TOP_BIAS)
            : Math.round((BH - band * BH / H - fh) / 2);
   // v1.2: `k` is computed BEFORE the cache check. It used to be filled in only on a cache miss, so on any warm
