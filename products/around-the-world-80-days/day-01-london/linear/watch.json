@@ -1,7 +1,7 @@
 {
  "video": "day-01-london_en.mp4",
  "subtitles": "day-01-london_en.vtt",
- "duration_s": 1236,
+ "duration_s": 1325,
  "track": "clear",
  "lang": "en",
  "chapters": [
@@ -42,51 +42,57 @@
    "title": "Why eighty — the year the world closed"
   },
   {
-   "scene": "biggest-city",
+   "scene": "the-london-everyone-knows",
    "type": "video",
    "at_s": 450,
+   "title": "The London everyone knows"
+  },
+  {
+   "scene": "biggest-city",
+   "type": "video",
+   "at_s": 536,
    "title": "The largest city there had ever been"
   },
   {
    "scene": "half-a-mile",
    "type": "video",
-   "at_s": 516,
+   "at_s": 599,
    "title": "Half a mile"
   },
   {
    "scene": "what-a-club-was",
    "type": "video",
-   "at_s": 582,
+   "at_s": 665,
    "title": "What a London club actually was"
   },
   {
    "scene": "the-reform",
    "type": "video",
-   "at_s": 660,
+   "at_s": 743,
    "title": "The Reform — a party built as a palace"
   },
   {
    "scene": "savile-row",
    "type": "video",
-   "at_s": 734,
+   "at_s": 817,
    "title": "Savile Row — 280 metres, and one word"
   },
   {
    "scene": "no-1-savile-row",
    "type": "video",
-   "at_s": 856,
+   "at_s": 939,
    "title": "No. 1 — where they decided what was still blank"
   },
   {
    "scene": "charing-cross",
    "type": "video",
-   "at_s": 936,
+   "at_s": 1019,
    "title": "Charing Cross — the point London is measured from"
   },
   {
    "scene": "a-quarter-to-nine",
    "type": "video",
-   "at_s": 1049,
+   "at_s": 1132,
    "title": "A quarter to nine"
   }
  ]
