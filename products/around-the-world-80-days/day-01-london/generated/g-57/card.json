@@ -1,0 +1,13 @@
+{
+  "type": "timeline",
+  "kicker": "The London Fogg left — new in places, not yet built in others",
+  "axis": { "min": 1822, "max": 1902 },
+  "points": [
+    { "key": "bridge", "at": 1831, "label": "1831", "sub": "London Bridge opens" },
+    { "key": "fire", "at": 1834, "label": "1834", "sub": "Parliament burns" },
+    { "key": "tower", "at": 1859, "label": "1859", "sub": "the clock tower" },
+    { "key": "fogg", "at": 1872, "label": "1872", "sub": "Fogg leaves" },
+    { "key": "tb", "at": 1894, "label": "1894", "sub": "Tower Bridge" }
+  ],
+  "_generated_by": "hand-authored card, consumed by studio/tools/render/lib/cards.mjs"
+}

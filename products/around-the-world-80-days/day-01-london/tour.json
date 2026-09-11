@@ -820,14 +820,140 @@
           ]
         },
         {
+          "id": "the-london-everyone-knows",
+          "type": "video",
+          "title": "The London everyone knows",
+          "subtopic": "T6a — the landmarks, and which of them Fogg could and could not have seen",
+          "duration_s": 86,
+          "learning_goal": "Place the famous London landmarks in time against 1872: Big Ben new, Parliament rebuilt, Fogg's London Bridge now in Arizona, Tower Bridge not yet built.",
+          "narration": {
+            "script": "It starts in London — so first, the London a visitor comes for. The clock tower at Westminster, and the bell inside it that everyone calls Big Ben. Strictly, Big Ben is only the bell. When Fogg left, the tower was thirteen years old. The Houses of Parliament around it had been rebuilt after a fire in eighteen thirty-four. London Bridge — Fogg's London Bridge — was a stone bridge opened in eighteen thirty-one. In nineteen sixty-eight it was sold to an American businessman for about a million pounds, taken apart, shipped across the Atlantic and rebuilt in the Arizona desert. It still stands there, in Lake Havasu City. And Tower Bridge — the one on every postcard — Fogg never saw at all. It opened in eighteen ninety-four, twenty-two years after he left. So the city he set out from was brand new in some places, and not yet built in others.",
+            "voice": "guide",
+            "timing": "over",
+            "starts_at_s": 2
+          },
+          "media": [
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:London_-_Westminster_Bridge_Road_-_South_Bank_-_Jubilee_Walkway_-_Panorama_View_on_Palace_of_Westminster_1840-70,_Big_Ben_1858,_Portcullis_House_1993-2001_by_Michael_Hopkins_and_Partners_%26_Westminster_Bridge_1862_01.jpg",
+              "start_s": 0,
+              "end_s": 20,
+              "license": "cc-by-sa-4.0",
+              "manifest_id": "M-226",
+              "sa": true,
+              "attribution": "Palace of Westminster and the clock tower from the South Bank — Txllxt TxllxT · CC BY-SA 4.0 · adapted",
+              "use": "both",
+              "note": "T6a.1 — Westminster today, the clock tower in frame. SOURCED 2026-09-11, 4602×2056.",
+              "on_sentence": 0
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:Westminster_Bridge,_or_Westminster_Clock_Tower_Met_DP888929.jpg",
+              "start_s": 20,
+              "end_s": 35,
+              "license": "cc0",
+              "manifest_id": "M-227",
+              "attribution": "Westminster Clock Tower — Félix Buhot, etching, 1860s–90s · The Metropolitan Museum of Art · CC0",
+              "use": "both",
+              "note": "T6a.2 — the same tower as a period print, under 'when Fogg left it was thirteen years old'. SOURCED 2026-09-11, 3729×2695.",
+              "on_sentence": 3
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:Gezicht_op_de_London_Bridge_London_Bridge,_from_the_Southwark_side,_shewing_the_Monument,_St._Magnus%27_Church,_Adelaide_Hotel,_and_part_of_Fishmongers%27_Hall_(titel_op_object)_Views_in_London_(serietitel_op_object),_RP-F-F05034.jpg",
+              "start_s": 35,
+              "end_s": 51,
+              "license": "cc0",
+              "manifest_id": "M-228",
+              "attribution": "London Bridge from the Southwark side — J. Davis Burton, c. 1860–80 · Rijksmuseum · CC0",
+              "use": "both",
+              "note": "T6a.3 — Rennie's London Bridge, photographed in Fogg's own decade. SOURCED 2026-09-11, 4636×2458.",
+              "on_sentence": 5
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:London_Bridge,_Lake_Havasu_City,_Arizona_(3227888290).jpg",
+              "start_s": 51,
+              "end_s": 66,
+              "license": "cc-by-sa-2.0",
+              "manifest_id": "M-229",
+              "sa": true,
+              "attribution": "London Bridge, Lake Havasu City, Arizona — Ken Lund (2009) · CC BY-SA 2.0 · adapted",
+              "use": "both",
+              "note": "T6a.4 — the same stones, in the desert. The cut from the Victorian photograph to this one IS the fact. SOURCED 2026-09-11, 1600×1200. Do NOT repeat the 'he thought he was buying Tower Bridge' story: both the buyer and the seller denied it.",
+              "on_sentence": 6
+            },
+            {
+              "kind": "image",
+              "ref": "https://commons.wikimedia.org/wiki/File:Tower_Bridge_London_Dusk_Feb_2006.jpg",
+              "start_s": 66,
+              "end_s": 76,
+              "license": "cc-by-sa-3.0",
+              "manifest_id": "M-230",
+              "sa": true,
+              "attribution": "Tower Bridge at dusk — Diliff (2006) · CC BY-SA 3.0 · adapted",
+              "use": "both",
+              "note": "T6a.5 — the postcard, under 'Fogg never saw at all'. SOURCED 2026-09-11, 6589×2922.",
+              "on_sentence": 8
+            },
+            {
+              "kind": "generated",
+              "ref": "generated/g-57/card.json",
+              "start_s": 76,
+              "end_s": 86,
+              "license": "generated",
+              "manifest_id": "G-57",
+              "attribution": "Yunyou studio, generated",
+              "use": "both",
+              "note": "T6a.6 — the landmarks on one line of years with FOGG 1872 among them: new in places, not yet built in others.",
+              "on_sentence": 10,
+              "beats": [
+                {
+                  "show": "bridge",
+                  "t": 0.2
+                },
+                {
+                  "show": "fire",
+                  "t": 0.6
+                },
+                {
+                  "show": "tower",
+                  "t": 1.0
+                },
+                {
+                  "show": "fogg",
+                  "t": 1.6
+                },
+                {
+                  "show": "tb",
+                  "t": 2.4
+                }
+              ]
+            }
+          ],
+          "sources": [
+            "F-142",
+            "F-N15",
+            "F-N16",
+            "F-N17",
+            "F-N18"
+          ],
+          "review": {
+            "fact_check": "pending",
+            "rights": "pending",
+            "qa": "pending",
+            "notes": "ADDED 2026-09-11 on founder feedback: \"for a total outsider, seems natural to flash some more famous landmark like big ben westminster london bridge etc before diving into savile row or reform club. remember this is a travel+book show.\"\nNew facts researched 2026-09-11 (F-N15..F-N18, not yet on a fact sheet): Big Ben is strictly the bell; tower completed 31 May 1859, bell first chimed 11 July 1859; Palace of Westminster largely destroyed by fire 16 Oct 1834; Rennie's London Bridge opened 1 Aug 1831, sold April 1968 to Robert P. McCulloch for £1.02 m, rededicated at Lake Havasu City 10 Oct 1971; Tower Bridge opened 30 June 1894.\nThe 'buyer thought it was Tower Bridge' story is DENIED by both parties and must not be used."
+          }
+        },
+        {
           "id": "biggest-city",
           "type": "video",
           "title": "The largest city there had ever been",
           "subtopic": "T6 — London in 1872, and how new it was",
-          "duration_s": 66,
+          "duration_s": 63,
           "learning_goal": "Know that London was the largest city on earth and, more surprisingly, one of the newest — Fogg sets out from a modern city, not an old one.",
           "narration": {
-            "script": "Fogg is setting out from the biggest city that had ever existed. London, eighteen seventy-one: three point nine million people. A quarter bigger than Beijing. Two-thirds bigger than Paris. Five times New York. The world's largest port. Twelve main railway termini — no other city had anything close. And an underground railway, the first anywhere, nine years old and already carrying nine and a half million people a year. Here is what people get wrong about Fogg's London. It was not old. The Embankment was two years old. His station was eight. The clock tower was thirteen. He set out from a brand-new city to find out whether the rest of the world had caught up.",
+            "script": "Fogg is setting out from the biggest city that had ever existed. London, eighteen seventy-one: three point nine million people. A quarter bigger than Beijing. Two-thirds bigger than Paris. Five times New York. The world's largest port. Twelve main railway termini — no other city had anything close. And an underground railway, the first anywhere, nine years old and already carrying nine and a half million people a year. Here is what people get wrong about Fogg's London. It was not old. The Embankment was two years old. His station was eight. He set out from a brand-new city to find out whether the rest of the world had caught up.",
             "voice": "guide",
             "timing": "over",
             "starts_at_s": 3
@@ -850,7 +976,7 @@
               "kind": "image",
               "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
               "start_s": 9,
-              "end_s": 16,
+              "end_s": 15,
               "license": "public-domain",
               "manifest_id": "M-30",
               "attribution": "Plan of London, *London Illustrated* (1872) — public domain",
@@ -861,8 +987,8 @@
             {
               "kind": "generated",
               "ref": "generated/g-37/card.json",
-              "start_s": 16,
-              "end_s": 25,
+              "start_s": 15,
+              "end_s": 24,
               "license": "generated",
               "manifest_id": "G-37",
               "attribution": "Yunyou studio, generated",
@@ -873,8 +999,8 @@
             {
               "kind": "image",
               "ref": "https://commons.wikimedia.org/wiki/File:London_drawn_and_engraved_expressly_for_the_Post_office_Directory_1875_by_B._R._Davies,._.._-_btv1b53060730z.jpg",
-              "start_s": 25,
-              "end_s": 32,
+              "start_s": 24,
+              "end_s": 31,
               "license": "public-domain",
               "manifest_id": "M-31",
               "attribution": "B.R. Davies, Post Office Directory map (1875) — public domain (BnF Gallica)",
@@ -892,8 +1018,8 @@
             {
               "kind": "image",
               "ref": "https://commons.wikimedia.org/wiki/File:King%27s_Cross_Metropolitan_Railway_Station,_Interior,_1862.png",
-              "start_s": 32,
-              "end_s": 41,
+              "start_s": 31,
+              "end_s": 39,
               "license": "public-domain",
               "manifest_id": "M-217",
               "attribution": "King's Cross Metropolitan Railway station, interior, 1862 — public domain (Wikimedia Commons)",
@@ -904,8 +1030,8 @@
             {
               "kind": "image",
               "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.037_HOTEL_AT_CHARING_CROSS.jpg",
-              "start_s": 41,
-              "end_s": 49,
+              "start_s": 39,
+              "end_s": 47,
               "license": "public-domain",
               "manifest_id": "M-24",
               "attribution": "'Hotel at Charing Cross' — engraving, *London Illustrated* (1872) — public domain",
@@ -916,21 +1042,21 @@
             {
               "kind": "footage",
               "ref": "media/files/m79-london-1917.mp4",
-              "start_s": 49,
-              "end_s": 57,
+              "start_s": 47,
+              "end_s": 54,
               "license": "public-domain",
               "manifest_id": "M-79",
               "attribution": "'A Trip Through The Streets of London' (26 Sep 1917) — Imperial War Museum — public domain",
               "use": "both",
               "note": "T6.7 — moving through the new city. 1280×720, the best-looking archive we have.",
               "audio": "mute",
-              "on_sentence": 13
+              "on_sentence": 12
             },
             {
               "kind": "image",
               "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
-              "start_s": 57,
-              "end_s": 66,
+              "start_s": 54,
+              "end_s": 63,
               "license": "public-domain",
               "manifest_id": "M-30",
               "attribution": "Plan of London (1872) — public domain",

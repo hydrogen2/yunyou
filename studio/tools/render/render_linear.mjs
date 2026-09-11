@@ -54,7 +54,8 @@ import * as IL from '../../player/imagelayer.mjs'; // ONE definition of the imag
 import * as MF from './lib/mapfilm.mjs';
 import * as RB from './lib/recordboard.mjs';
 import * as WM from './lib/walkmap.mjs';
-import * as CD from './lib/cards.mjs';             // the shared card generator — every typographic and diagram card           // G-38, the half-mile card — three pins and one line       // G-33, the record board — a chart, drawn on the same clock           // the route map as a FILM graphic (D9) — not the print plate
+import * as CD from './lib/cards.mjs';
+import { displayNumbers } from './lib/numerals.mjs';   // captions show 1872, the voice still says eighteen seventy-two             // the shared card generator — every typographic and diagram card           // G-38, the half-mile card — three pins and one line       // G-33, the record board — a chart, drawn on the same clock           // the route map as a FILM graphic (D9) — not the print plate
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const FFMPEG = ffmpegPath, FFPROBE = ffprobeStatic.path;
@@ -659,16 +660,18 @@ async function segStill(img, dur, m, nw, nh, attribution) {
   // The travel is hundreds of pixels over the shot, tens of times the sub-pixel rate that made `zoompan` judder,
   // so integer overlay positioning is invisible here.
   const panning = treat === 'fill' && (fh - H) > H * 0.08 && dur > 3;
-  const PAN_TRAVEL = 0.70;                     // how much of the overflow the shot crosses; the rest is headroom
-                                               // 0.86 travelled almost the whole picture and left the subject's face
-                                               // on screen for only the first second or two of a portrait.
+  // Founder, 2026-09-11: "the ken burns effect look weird on the portrait images cos much time it's on the lower
+  // half of the character." Right: a top-to-bottom pan spends most of a shot on a coat. The pan now runs the OTHER
+  // way — it starts a short way down the picture and RISES to the top, easing out, so it reaches the face early and
+  // settles there for the rest of the shot. The face is what the viewer came for; the coat is only the approach.
+  const PAN_TRAVEL = 0.30;                     // how far down the picture the shot starts, as a share of the overflow
 
   // The pan IS the movement, so a panning shot does not also drift-zoom. This must be settled before `from`,
   // which sizes the canvas, and before the cache key, which has to know which of the two motions was used.
   let dr = IL.driftFor(m, treat, CFG, img);
   if (panning) dr = { ...dr, on: false };
   const frames = Math.max(2, Math.round(dur * FPS));
-  const key = sha(['v12-cover-pan', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, attribution || ''].join('|'));
+  const key = sha(['v13-pan-up-to-face', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, attribution || ''].join('|'));
   const out = path.join(CACHE, 'seg', `im_${key}.mp4`);
   const from = dr.on ? dr.from : 1;                        // canvas is 1/from larger so the zoom ENDS at 1:1
   const BW = Math.round(W / from) + (Math.round(W / from) % 2), BH = Math.round(H / from) + (Math.round(H / from) % 2);
@@ -712,8 +715,11 @@ async function segStill(img, dur, m, nw, nh, attribution) {
     if (panning) {
       // overlay evaluates y per frame. The travel here is hundreds of pixels over the shot — tens of times the
       // sub-pixel rate that made `zoompan` judder — so integer positioning is not visible.
-      const yEnd = -Math.round(overflow * PAN_TRAVEL);
-      fc.push(`[bg][fg]overlay=x=(W-w)/2:y='${yEnd}*min(1\,t/${Math.max(0.1, dur).toFixed(2)})':eval=frame[cv]`);
+      // y rises from yStart (partway down) to 0 (the top) on an ease-out cubic, arriving with over a quarter of the
+      // shot still to run, so the picture holds on the top of the frame — the face, the king, the spire — longest.
+      const yStart = -Math.round(overflow * PAN_TRAVEL);
+      const D = Math.max(0.1, dur * 0.72).toFixed(2);
+      fc.push(`[bg][fg]overlay=x=(W-w)/2:y='${yStart}*pow(1-min(1\,t/${D})\,3)':eval=frame[cv]`);
     } else {
       fc.push(`[bg][fg]overlay=x=(W-w)/2:y=${oy}[cv]`);
     }
@@ -2146,7 +2152,10 @@ async function runCropPreview(target) {
         const txt = LT.overlay(s, ov.i); if (!txt) continue;
         const covered = overlayCovered(txt, spokenNow);
         droppedOverlays.push({ scene: s.id, n: p.sel.idx + 1, i: ov.i, kind: o.kind, text: txt, covered, drawnBefore: /pin|caption|lower-third/.test(o.kind) }); } }
-    for (const u of p.utts) { const chunks = captionCards(u.text, u.trimTo || u.dur, CAP_MAX_CHARS);
+    // Founder, 2026-09-11: years and numbers spelled out as words in the captions should be digits. The script stays
+    // in words because the synthesizer cannot tell a year from a quantity; only the DISPLAY text is converted, and it
+    // is converted before chunking so a number is never split across two caption cards.
+    for (const u of p.utts) { const chunks = captionCards(LANG === 'en' ? displayNumbers(u.text) : u.text, u.trimTo || u.dur, CAP_MAX_CHARS);
       for (const c of chunks) { const cs = p.narrAt + u.at + c.s, ce = Math.min(len, p.narrAt + u.at + c.e); ass += assLine('Cap', cs, ce, c.text); vtt.push(`${assVtt(globalT + cs)} --> ${assVtt(globalT + ce)}`, (u.voice === VOICE2 ? '<v Passepartout>' : '') + c.text, ''); } }
     const assFile = path.join(WORK, `${tag}.ass`); fs.writeFileSync(assFile, ass);
 
