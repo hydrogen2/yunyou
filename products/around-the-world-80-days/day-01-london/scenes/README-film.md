@@ -4,7 +4,7 @@
 **Authority:** `series/episode-01-topics.md` (the founder-approved topic plan) · `studio/strategy/video-first.md` · `DECISIONS.md`
 **Supersedes:** `scenes/retired-film-v1/` — the 12-scene cut the founder watched and rejected: *"i dont get the openning, is it about bespoke suit making or tailor shops?"*
 
-**1253 s = 20 min 53 s** · **15 scenes** · **111 authored visual slots** (93 pinned to a sentence) · **2,229 narration words**
+**1253 s = 20 min 53 s** · **15 scenes** · **112 authored visual slots** (94 pinned to a sentence) · **2,234 narration words**
 · fill **70 %** — the rest is picture, now spread BETWEEN sentences rather than dumped at the end of each scene.
 
 **Founder's runtime ruling, 2026-09-09: keep the quote card, cut Thomas Cook.** Scene 04 (the `quote` type,
@@ -20,7 +20,7 @@ land exactly; unanchored slots ride the warp. The **pin** column counts the anch
 The renderer parses this table as `| # | file | scene id | block | s | slots | pin | words | fill |
 |---|------|----------|-------|--:|------:|----:|------:|-----:|
 | 1 | `01-how-long.scene.json` | `how-long` | **T1** | 63 | 8 | 7 | 111 | 70 % |
-| 2 | `02-the-racers.scene.json` | `the-racers` | **T2** | 119 | 14 | 12 | 210 | 71 % |
+| 2 | `02-the-racers.scene.json` | `the-racers` | **T2** | 119 | 15 | 13 | 210 | 71 % |
 | 3 | `03-the-book.scene.json` | `the-book` | **T3** | 70 | 5 | 5 | 124 | 71 % |
 | 4 | `04-the-bet.scene.json` | `the-bet` | **T3** | 75 | 9 | 6 | 133 | 71 % |
 | 5 | `05-a-hundred-and-fifteen-thousand.scene.json` | `a-hundred-and-fifteen-thousand` | **T3b** | 10 | 0 | 0 | 0 | 0 % |
@@ -33,7 +33,7 @@ The renderer parses this table as `| # | file | scene id | block | s | slots | p
 | 12 | `12-savile-row.scene.json` | `savile-row` | **T10** | 122 | 10 | 8 | 216 | 71 % |
 | 13 | `13-no-1-savile-row.scene.json` | `no-1-savile-row` | **T11** | 80 | 7 | 6 | 169 | 84 % |
 | 14 | `14-charing-cross.scene.json` | `charing-cross` | **T12** | 113 | 9 | 8 | 200 | 71 % |
-| 15 | `15-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | **T13** | 125 | 8 | 6 | 222 | 71 % |
+| 15 | `15-a-quarter-to-nine.scene.json` | `a-quarter-to-nine` | **T13** | 125 | 8 | 6 | 227 | 73 % |
 
 ## 2 · What does not exist yet
 

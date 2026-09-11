@@ -28,32 +28,32 @@
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:Sunlight_on_the_wing_(26522707377).jpg",
       "start_s": 7,
-      "end_s": 13,
+      "end_s": 14,
       "license": "cc-by-2.0",
       "manifest_id": "M-201",
       "attribution": "At height over Europe — Mike McBey (Flickr) · CC BY 2.0 · adapted",
       "use": "both",
       "note": "T1.2 — wing and cloud from a cabin window. Modern, banal, deliberately. SOURCED 2026-09-09, 6775×4216. Changed from footage to a still; the shot pans across it.",
-      "on_sentence": 2,
+      "on_sentence": 1,
       "sa": true
     },
     {
-      "kind": "generated",
-      "ref": "generated/g-30/card.json",
-      "start_s": 13,
-      "end_s": 21,
-      "license": "generated",
-      "manifest_id": "G-30",
-      "attribution": "Yunyou studio, generated",
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:International_Space_Station_after_undocking_of_STS-132.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-232",
       "use": "both",
-      "note": "T1.3 — the comparison card, built one line at a time: 90 MINUTES / 44 HOURS 33 MINUTES / 80 DAYS. Three lines, nothing else. Type large enough to read on a phone. The guide does not read the numbers the card shows. ESSENTIAL, DOES NOT EXIST YET.",
-      "on_sentence": 4
+      "attribution": "The International Space Station after the undocking of STS-132, 23 May 2010 — NASA · public domain",
+      "note": "T1.3 — the space station itself, under 'Higher up it is faster. The space station laps the planet every 90 minutes.' ADDED 2026-09-11: the founder, 'needs a pic of space station'. SOURCED 2026-09-11, 3319×2116.",
+      "start_s": 14,
+      "end_s": 24,
+      "on_sentence": 3
     },
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:A_Northwest_Night_Awash_in_Light_(154757).jpg",
-      "start_s": 21,
-      "end_s": 29,
+      "start_s": 24,
+      "end_s": 30,
       "license": "public-domain",
       "manifest_id": "M-202",
       "attribution": "Astronaut photograph ISS072-E-806482, 19 March 2025 — NASA · public domain",
@@ -63,28 +63,28 @@
     },
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:LONDON_ILLUSTR(1872)_p1.019_PLAN_OF_LONDON.jpg",
-      "start_s": 29,
-      "end_s": 36,
-      "license": "public-domain",
-      "manifest_id": "M-30",
-      "attribution": "Plan of London, *London Illustrated* (1872) — public domain",
+      "ref": "https://commons.wikimedia.org/wiki/File:Steamship_City_of_Peking,_Pacific_Mail_Steamship_Company,_from_the_Ocean_and_River_Steamers_series_(N83)_for_Duke_brand_cigarettes_MET_DPB883244.jpg",
+      "license": "cc0",
+      "manifest_id": "M-233",
       "use": "both",
-      "note": "T1.5 — the turn backwards. Push in slowly on the 1872 plan as 'take all of that away' lands.",
+      "attribution": "Steamship City of Peking, Pacific Mail Steamship Company — cigarette card, W. Duke, Sons & Co., 1887 · The Metropolitan Museum of Art · CC0",
+      "note": "T1.5 — what is left when the aircraft and the radio are taken away: steam. REPLACES the 1872 plan of London, which the founder rightly asked about — a street map does not say 'take all of that away'. The Pacific Mail line is the one Fogg crosses the Pacific on in Episode 6. ⚠ The card is 1887, fifteen years after 1872; it stands for the steam age, not for a ship Fogg sailed. SOURCED 2026-09-11, 2846×1511.",
+      "start_s": 30,
+      "end_s": 40,
+      "on_sentence": 6,
       "crop": {
-        "x": 0.18,
-        "y": 0.2,
-        "w": 0.5,
-        "h": 0.5,
-        "why": "Central London only, from the 1872 plan. The whole sheet at 1080p is unreadable and the beat is 'this is the city he leaves from', not 'here is a map'."
-      },
-      "on_sentence": 6
+        "x": 0.34,
+        "y": 0.04,
+        "w": 0.62,
+        "h": 0.84,
+        "why": "Cigarette-card art: the left third is a decorative portrait of a woman that has nothing to do with the line. Crop to the ship, the sea and the PACIFIC MAIL S.S. Co banner, which is what the shot is for. Removes decoration, not context."
+      }
     },
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_04.jpg",
-      "start_s": 36,
-      "end_s": 44,
+      "start_s": 40,
+      "end_s": 49,
       "license": "public-domain",
       "manifest_id": "M-34",
       "attribution": "Frontispiece 'Phileas Fogg' — Alphonse de Neuville, Hetzel edition (1872/73) — public domain",
@@ -94,20 +94,34 @@
     },
     {
       "kind": "generated",
-      "ref": "generated/g-31/card.json",
-      "start_s": 44,
-      "end_s": 52,
+      "ref": "generated/g-30/card.json",
+      "start_s": 49,
+      "end_s": 57,
       "license": "generated",
-      "manifest_id": "G-31",
+      "manifest_id": "G-30",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T1.7 — one numeral, '80', on the house cream card. Held. DOES NOT EXIST YET.",
-      "on_sentence": 11
+      "note": "T1.3 — the comparison card, built one line at a time: 90 MINUTES / 44 HOURS 33 MINUTES / 80 DAYS. Three lines, nothing else. Type large enough to read on a phone. The guide does not read the numbers the card shows. ESSENTIAL, DOES NOT EXIST YET. 2026-09-11: all three lines up within about a second. With no beats the card built them evenly across the slot, so the voice said '80 days' while only '90 minutes' was on screen.",
+      "on_sentence": 11,
+      "beats": [
+        {
+          "show": "iss",
+          "t": 0.2
+        },
+        {
+          "show": "air",
+          "t": 0.7
+        },
+        {
+          "show": "fogg",
+          "t": 1.2
+        }
+      ]
     },
     {
       "kind": "image",
       "ref": "https://commons.wikimedia.org/wiki/File:%27Around_the_World_in_Eighty_Days%27_by_Neuville_and_Benett_01.jpg",
-      "start_s": 52,
+      "start_s": 57,
       "end_s": 63,
       "license": "public-domain",
       "manifest_id": "M-52",
@@ -117,7 +131,7 @@
     }
   ],
   "review": {
-    "notes": "Silence 34–40 (orbital sunrise) and 78–88 (the route map, after the last word).\nFill 49% — deliberately airy. This is the cold open; it must breathe or the question does not land.\nAutoplay is muted: slots 1–3 carry the whole meaning with no sound (D9).",
+    "notes": "Silence 34–40 (orbital sunrise) and 78–88 (the route map, after the last word).\nFill 49% — deliberately airy. This is the cold open; it must breathe or the question does not land.\nAutoplay is muted: slots 1–3 carry the whole meaning with no sound (D9).\nREBUILT 2026-09-11 on founder notes: (1) the space station is now on screen when it is named (M-232); (2) 'Now take all of that away' plays over a steamship, not a street map (M-233); (3) Fogg's frontispiece under 'So somebody turned it into a bet' is top-anchored by the renderer's new default, so it no longer starts at his waist. The '80' card (G-31) is dropped: the three-answers card G-30 now closes the topic and already says 80 days.",
     "fact_check": "pending",
     "rights": "pending",
     "qa": "pending"

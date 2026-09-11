@@ -14,27 +14,40 @@
   "media": [
     {
       "kind": "image",
-      "ref": "https://commons.wikimedia.org/wiki/File:George_Francis_Train.jpg",
+      "ref": "https://commons.wikimedia.org/wiki/File:Verne_Tour_du_Monde.jpg",
+      "license": "public-domain",
+      "manifest_id": "M-234",
+      "use": "both",
+      "attribution": "Le Tour du monde en quatre-vingts jours, first edition cover — J. Hetzel, Paris, 30 January 1873 · public domain",
+      "note": "T2.0 — the first edition, under 'Which is strange — because he never existed. The book came out…'. ADDED 2026-09-11 so Train's photograph no longer has to fill the two sentences before his name. SOURCED 2026-09-11, 672×1000 — small, so it plays contained on the mount, which suits a book cover.",
       "start_s": 0,
-      "end_s": 7,
+      "end_s": 4,
+      "on_sentence": 0
+    },
+    {
+      "kind": "image",
+      "ref": "https://commons.wikimedia.org/wiki/File:George_Francis_Train.jpg",
+      "start_s": 4,
+      "end_s": 9,
       "license": "public-domain",
       "manifest_id": "M-203",
       "attribution": "George Francis Train, photographed by Mathew Brady — public domain (Library of Congress via Wikimedia Commons)",
       "use": "both",
-      "note": "T2.1 — Train, portrait. SOURCED 2026-09-09, 1186×2000.",
-      "on_sentence": 1
+      "note": "T2.1 — Train, portrait. SOURCED 2026-09-09, 1186×2000. RE-ANCHORED 2026-09-11 to sentence 2, his introduction — the founder: 'trains photo comes too early than his intro in voice'.",
+      "on_sentence": 2
     },
     {
       "kind": "generated",
       "ref": "generated/g-32/card.json",
-      "start_s": 7,
+      "start_s": 9,
       "end_s": 14,
       "license": "generated",
       "manifest_id": "G-32",
       "attribution": "Yunyou studio, generated",
       "use": "both",
-      "note": "T2.2 — his line set as type on the cream card: 'Verne stole my thunder. I'm Phileas Fogg.' DOES NOT EXIST YET.",
-      "on_sentence": 2
+      "note": "T2.2 — his line set as type on the cream card: 'Verne stole my thunder. I'm Phileas Fogg.' DOES NOT EXIST YET. Anchored 4 s INTO sentence 2 (lead_s -4), so his line appears on 'spent the rest of his life saying so'.",
+      "on_sentence": 2,
+      "lead_s": -4.0
     },
     {
       "kind": "image",

@@ -659,7 +659,15 @@ async function segStill(img, dur, m, nw, nh, attribution) {
   // frame is full AND the whole photograph is seen. Only used when the overflow is real; a modest one is centred.
   // The travel is hundreds of pixels over the shot, tens of times the sub-pixel rate that made `zoompan` judder,
   // so integer overlay positioning is invisible here.
-  const panning = treat === 'fill' && (fh - H) > H * 0.08 && dur > 3;
+  // Founder, twice: a top-down pan "is much time on the lower half of the character"; a bottom-up pan starts
+  // "from the waist, wrong". Both notes say the same thing — in a portrait the waist should not be on screen at all.
+  // So a tall picture is now TOP-ANCHORED by default: it fills the frame from just below its top edge and takes the
+  // ordinary slow drift, and nobody's coat is ever the subject. A vertical pan is still available, but only when a
+  // slot asks for it (media[].pan = "down" | "up"), for a tall picture whose whole height IS the point.
+  const tall = treat === 'fill' && (fh - H) > H * 0.08;
+  const panMode = String((m && m.pan) || '').toLowerCase();
+  const panning = tall && dur > 3 && (panMode === 'up' || panMode === 'down');
+  const TOP_BIAS = 0.04;                       // start just below the very top: old scans often carry a border there
   // Founder, 2026-09-11: "the ken burns effect look weird on the portrait images cos much time it's on the lower
   // half of the character." Right: a top-to-bottom pan spends most of a shot on a coat. The pan now runs the OTHER
   // way — it starts a short way down the picture and RISES to the top, easing out, so it reaches the face early and
@@ -671,12 +679,14 @@ async function segStill(img, dur, m, nw, nh, attribution) {
   let dr = IL.driftFor(m, treat, CFG, img);
   if (panning) dr = { ...dr, on: false };
   const frames = Math.max(2, Math.round(dur * FPS));
-  const key = sha(['v13-pan-up-to-face', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, attribution || ''].join('|'));
+  const key = sha(['v14-top-anchored', img, dur, W, H, FPS, treat, nw, nh, band, maxK, JSON.stringify(dr), panning, panMode, tall, attribution || ''].join('|'));
   const out = path.join(CACHE, 'seg', `im_${key}.mp4`);
   const from = dr.on ? dr.from : 1;                        // canvas is 1/from larger so the zoom ENDS at 1:1
   const BW = Math.round(W / from) + (Math.round(W / from) % 2), BH = Math.round(H / from) + (Math.round(H / from) % 2);
   const overflow = fh - BH;
-  const oy = panning ? 0 : Math.round((BH - band * BH / H - fh) / 2);
+  const oy = panning ? 0
+           : tall ? -Math.round(Math.max(0, overflow) * TOP_BIAS)
+           : Math.round((BH - band * BH / H - fh) / 2);
   // v1.2: `k` is computed BEFORE the cache check. It used to be filled in only on a cache miss, so on any warm
   // re-render every still logged "shown at 1.00x" in render-log.md — the arithmetic was right, the report was not.
   const meta = { treat, nw, nh, maxK, k: fit.k, upscaled: fit.upscaled, panning };
@@ -717,9 +727,14 @@ async function segStill(img, dur, m, nw, nh, attribution) {
       // sub-pixel rate that made `zoompan` judder — so integer positioning is not visible.
       // y rises from yStart (partway down) to 0 (the top) on an ease-out cubic, arriving with over a quarter of the
       // shot still to run, so the picture holds on the top of the frame — the face, the king, the spire — longest.
-      const yStart = -Math.round(overflow * PAN_TRAVEL);
       const D = Math.max(0.1, dur * 0.72).toFixed(2);
-      fc.push(`[bg][fg]overlay=x=(W-w)/2:y='${yStart}*pow(1-min(1\,t/${D})\,3)':eval=frame[cv]`);
+      if (panMode === 'up') {
+        const yStart = -Math.round(overflow * PAN_TRAVEL);
+        fc.push(`[bg][fg]overlay=x=(W-w)/2:y='${yStart}*pow(1-min(1\,t/${D})\,3)':eval=frame[cv]`);
+      } else {
+        const yEnd = -Math.round(overflow * 0.7);
+        fc.push(`[bg][fg]overlay=x=(W-w)/2:y='${yEnd}*min(1\,t/${Math.max(0.1, dur).toFixed(2)})':eval=frame[cv]`);
+      }
     } else {
       fc.push(`[bg][fg]overlay=x=(W-w)/2:y=${oy}[cv]`);
     }

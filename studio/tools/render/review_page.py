@@ -68,6 +68,23 @@ stills = ''.join(
     for i, (t, lab) in enumerate(points, 1))
 chaps = ''.join(f'<li><span class=t>{c["at_s"] // 60}:{c["at_s"] % 60:02d}</span> {c["title"]}</li>'
                 for c in w['chapters'])
+
+# Per-topic cuts (split_topics.py writes them into linear/topics/). Founder, 2026-09-11: review one topic at a
+# time, not the whole film in one sitting. Listed first on the page, because that is now how the film is reviewed.
+def topic_rows():
+    tdir = os.path.join(LINEAR, 'topics')
+    if not os.path.isdir(tdir):
+        return ''
+    titles = {c.get('scene'): c['title'] for c in w['chapters'] if c.get('scene')}
+    out = []
+    for f in sorted(x for x in os.listdir(tdir) if x.endswith('.mp4')):
+        n, scene = f[:-4].split('-', 1)
+        mb = os.path.getsize(os.path.join(tdir, f)) / 1048576
+        secs = mb * 8 * 1024 / KBPS
+        out.append(f'<tr><td class=num>{int(n)}</td><td><a href="/{LINEAR}/topics/{f}">{titles.get(scene, scene)}</a></td>'
+                   f'<td class=num>{mb:.1f} MB</td><td class=num>{"~" + str(int(secs // 60)) + " min" if secs >= 60 else "&lt;1 min"}</td></tr>')
+    return ''.join(out)
+topics = topic_rows()
 dur = f'{w["duration_s"] // 60}:{w["duration_s"] % 60:02d}'
 title = os.path.basename(os.path.dirname(LINEAR)).replace('-', ' ')
 
@@ -90,7 +107,8 @@ figcaption{{font-size:12px;opacity:.6;padding-top:4px}}
 <h1>Day 1 · London — the departure</h1>
 <p class=sub>{dur} · {w.get("lang", "en")} cut · review copies sized for a slow line. Estimates assume {KBPS} kbps; downloads resume if they break
 (<code>curl -C - -O &lt;url&gt;</code>, or just re-click — browsers resume too).</p>
-<h2>Download</h2>
+{('<h2>One topic at a time</h2><table>' + topics + '</table>') if topics else ''}
+<h2>The whole episode</h2>
 <table>{rows()}</table>
 <h2>{len(points)} frames — the whole film for under a megabyte</h2>
 <div class=grid>{stills}</div>

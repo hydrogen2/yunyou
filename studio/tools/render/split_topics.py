@@ -26,6 +26,11 @@ dur = float(subprocess.run([FP, '-v', 'error', '-show_entries', 'format=duration
 ch = json.load(open(os.path.join(LINEAR, f'{stem}.chapters.json')))
 ch = ch if isinstance(ch, list) else ch.get('chapters', [])
 topics = [c for c in ch if c.get('scene')]            # the episode title card is not a topic
+try:                                                   # scene lengths, to end the last topic before the credits
+    tour = json.load(open(os.path.join(os.path.dirname(LINEAR), 'tour.json')))
+    scenes = [sc for chp in tour.get('chapters', []) for sc in chp.get('scenes', [])]
+except Exception:
+    scenes = []
 out_dir = os.path.join(LINEAR, 'topics'); os.makedirs(out_dir, exist_ok=True)
 for f in os.listdir(out_dir):
     if f.endswith('.mp4'): os.remove(os.path.join(out_dir, f))
@@ -33,7 +38,13 @@ for f in os.listdir(out_dir):
 rows = []
 for i, c in enumerate(topics):
     a = 0.0 if i == 0 else float(c['at_s'])          # topic 1 keeps the title card in front of it
-    b = float(topics[i + 1]['at_s']) if i + 1 < len(topics) else dur
+    # The last topic stops where its scene ends, not at the end of the file: after it come the end credits, about a
+    # minute of them, and the first split put all of that into "A quarter to nine" (190 s for a 125 s scene).
+    if i + 1 < len(topics):
+        b = float(topics[i + 1]['at_s'])
+    else:
+        sd = next((sc.get('duration_s') for sc in scenes if sc.get('id') == c['scene']), None)
+        b = min(dur, float(c['at_s']) + float(sd) + 1.5) if sd else dur
     name = f"{i + 1:02d}-{c['scene']}.mp4"
     dst = os.path.join(out_dir, name)
     subprocess.run([FF, '-nostdin', '-v', 'error', '-ss', f'{a:.3f}', '-i', master, '-t', f'{b - a:.3f}',

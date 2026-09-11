@@ -191,6 +191,11 @@
             "type": "boolean",
             "description": "kind 'image' only. false = this still does not drift. Use for a beat that must sit still (a held silence, a portrait, a death). Prefer this over treatment:'none', which also removes the backdrop and leaves black bars. Added v0.9."
           },
+          "pan": {
+            "type": "string",
+            "enum": ["down", "up"],
+            "description": "Opt-in vertical pan for a picture taller than the frame. Default (absent): the picture is TOP-ANCHORED — it fills the frame from just below its top edge and takes the ordinary slow drift, so a portrait never shows the subject's waist. Ask for a pan only when the picture's whole height is the point (a tall map, a spire read top to bottom)."
+          },
           "on_sentence": {
             "type": "integer",
             "description": "Anchor this slot to a sentence of narration.script (0-based): the picture comes up as that sentence is spoken. Slot times are authored in SECONDS, but the narration's real pace comes from the synthesizer, so seconds alone drift — measured on the first cut, the pictures ran a whole slot ahead of the words. Anchored slots are pinned to their sentence and the unanchored slots between them are warped proportionally, so the authored rhythm survives. Anchor the slots whose subject the script names; leave the rest.",
