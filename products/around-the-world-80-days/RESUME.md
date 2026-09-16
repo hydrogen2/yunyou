@@ -52,6 +52,12 @@ reclaim disk (the box hit 99 % full), so every shot and all 151 narration lines 
 - Captions convert numbers to digits for display only (`lib/numerals.mjs`); the script stays in words
   because the voice cannot tell a year from a quantity. Book titles are protected.
 
+## ⚠ Do not stop the web server
+`studio/research/prototypes/window/serve.py` on :443 serves **other projects too** — hilbert, midiman and
+the console all live under `www/`. Never restart or kill it to pick up a change here: everything this
+project publishes is a static file under `www/`, so writing the file is the whole deployment. The founder,
+2026-09-16: "please note to not to stop the web server other projects using it".
+
 ## What was deleted to reclaim disk (all regenerable)
 `linear/.cache` (4.3 GB), `studio/tools/render/.tts-cache` (267 MB), and two renders of retired content:
 the Mandarin cut and the review animatic, both of the old 12-scene structure. The 1080p English master,
