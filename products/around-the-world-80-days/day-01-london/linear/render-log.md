@@ -1,6 +1,6 @@
 # Render log — Episode 1 · London — the bet — linear cut (review animatic)
 
-**Rendered:** 2026-09-11T07:52:43.322Z   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** 36 min
+**Rendered:** 2026-09-11T10:17:37.367Z   **Tool:** studio/tools/render/render_linear.mjs   **Wall clock:** 47 min
 
 **Output:** `products/around-the-world-80-days/day-01-london/linear/day-01-london_en.mp4` — 1325.0 s (22:05), 1920×1080 h264 25/1 fps, aac 48000 Hz 2 ch, 382.9 MB, faststart. Subtitles: `day-01-london_en.vtt` (burned in AND sidecar).
 

@@ -14,3 +14,8 @@ www/serve.log
 www/config.json
 www/player-v07/
 studio/player/test/out/
+
+# per-topic review cuts — regenerable with studio/tools/render/split_topics.py
+products/**/linear/topics/
+# narration-only audio — regenerable from the master with one ffmpeg call
+products/**/linear/*_narration.m4a
