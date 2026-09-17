@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Champs-Élysées — a walk (free fallback)</title>
+<style>
+  :root { color-scheme: dark; }
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden;
+    font: 15px/1.4 -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif; color: #eee; }
+  #stage { position: fixed; inset: 0; }
+  #stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+    opacity: 0; transition: opacity .9s ease; }
+  #stage iframe.on { opacity: 1; z-index: 1; }
+  #title { position: fixed; left: 0; right: 0; top: 18%; text-align: center; z-index: 5; pointer-events: none;
+    transition: opacity 1.4s ease; text-shadow: 0 2px 12px #000; }
+  #title h1 { font: 600 clamp(22px, 4vw, 44px)/1.15 Georgia, "Noto Serif SC", serif; margin: 0 0 6px; }
+  #title p { margin: 0; opacity: .85; font-size: clamp(13px, 1.8vw, 18px); }
+  #bar { position: fixed; left: 50%; bottom: max(14px, env(safe-area-inset-bottom)); transform: translateX(-50%);
+    width: min(720px, calc(100% - 24px)); z-index: 6; background: rgba(12,12,14,.72); backdrop-filter: blur(8px);
+    border-radius: 12px; padding: 10px 14px; transition: opacity .5s ease; }
+  #bar.hide { opacity: 0; pointer-events: none; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  button, select { background: rgba(255,255,255,.1); color: #eee; border: 1px solid rgba(255,255,255,.18);
+    border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer; }
+  button:hover, select:hover { background: rgba(255,255,255,.18); }
+  #play { min-width: 44px; }
+  #track { position: relative; flex: 1; height: 6px; background: rgba(255,255,255,.18); border-radius: 3px; cursor: pointer; }
+  #fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #e8c170; border-radius: 3px; }
+  .tick { position: absolute; top: -3px; width: 2px; height: 12px; background: rgba(255,255,255,.6); }
+  #where { display: flex; justify-content: space-between; font-size: 12px; opacity: .75; margin-top: 7px; }
+  #msg { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9;
+    text-align: center; padding: 24px; background: #000; }
+</style>
+</head>
+<body>
+<div id="stage"></div>
+<div id="title"><h1>Avenue des Champs-Élysées</h1><p>Arc de Triomphe → Place de la Concorde · 1.8 km on foot</p></div>
+<div id="bar">
+  <div class="row">
+    <button id="play" title="Play / pause (space)">⏸</button>
+    <div id="track" title="Jump along the avenue"><div id="fill"></div></div>
+    <select id="speed" title="Pace">
+      <option value="5">Walk · 5 km/h</option>
+      <option value="6" selected>Brisk · 6 km/h</option>
+      <option value="12">Fast · ×2</option>
+      <option value="24">Faster · ×4</option>
+    </select>
+    <button id="full" title="Fullscreen">⛶</button>
+  </div>
+  <div id="where"><span id="dist">0.00 / 1.80 km</span><span id="near">Arc de Triomphe</span></div>
+</div>
+<div id="msg"></div>
+
+<script>
+/*
+ * FALLBACK — the free Maps Embed API version, kept for when the JavaScript API is unavailable. /champs/ is the
+ * smooth one. An auto-walk down the Champs-Élysées in Google Street View, on the Maps Embed API — the free, unlimited one
+ * (founder's RULE 1: no Google API cost; the key is enabled for the Embed API only). The Embed API cannot be driven
+ * like the JavaScript API, but its URL carries location and heading, so the walk swaps the iframe's src one step at
+ * a time. Two stacked iframes cross-fade so each reload reads as a dissolve instead of a flash — the same trick the
+ * Day 1 player used.
+ *
+ * The route is the avenue's real centreline from OpenStreetMap, resampled every STEP metres and nudged a few metres
+ * to the right of the direction of travel, so successive panoramas stay on the eastbound side instead of flipping
+ * between carriageways. The key is read from /config.json at runtime and is never written into this file.
+ */
+const LINE = [ // OSM ways 626668696, 635793356, 635793354, 4294035, 69414167, 105177511 — Arc → Concorde
+  [48.8726107, 2.2987107], [48.8720562, 2.3004567], [48.8704451, 2.3051436], [48.8691810, 2.3091111],
+  [48.8689063, 2.3103410], [48.8677540, 2.3139627], [48.8663005, 2.3185313], [48.8656393, 2.3208526]];
+const STEP = 12;          // metres between panoramas requested; Street View on the avenue is ~10–15 m apart
+const OFFSET_R = 6;       // metres to the right of travel, to hold the eastbound carriageway
+const LOOK_AHEAD = 3;     // aim the camera at the point 3 steps ahead, so the heading does not wobble
+const SETTLE_MS = 800;    // after the iframe loads, give the panorama tiles time to paint before fading in
+const LANDMARKS = [ { name: 'Arc de Triomphe', at: [48.8738, 2.2950] },
+                   { name: 'Rond-Point des Champs-Élysées', at: [48.8689063, 2.3103410] },
+                   { name: 'Place de la Concorde', at: [48.8656393, 2.3208526] } ];
+
+const R = 6371008.8, rad = d => d * Math.PI / 180, deg = r => r * 180 / Math.PI;
+function dist(a, b) {
+  const dLa = rad(b[0] - a[0]), dLo = rad(b[1] - a[1]);
+  const h = Math.sin(dLa / 2) ** 2 + Math.cos(rad(a[0])) * Math.cos(rad(b[0])) * Math.sin(dLo / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+function bearing(a, b) {
+  const y = Math.sin(rad(b[1] - a[1])) * Math.cos(rad(b[0]));
+  const x = Math.cos(rad(a[0])) * Math.sin(rad(b[0])) - Math.sin(rad(a[0])) * Math.cos(rad(b[0])) * Math.cos(rad(b[1] - a[1]));
+  return (deg(Math.atan2(y, x)) + 360) % 360;
+}
+function dest(p, brg, m) {
+  const d = m / R, t = rad(brg), la = rad(p[0]), lo = rad(p[1]);
+  const la2 = Math.asin(Math.sin(la) * Math.cos(d) + Math.cos(la) * Math.sin(d) * Math.cos(t));
+  const lo2 = lo + Math.atan2(Math.sin(t) * Math.sin(d) * Math.cos(la), Math.cos(d) - Math.sin(la) * Math.sin(la2));
+  return [deg(la2), deg(lo2)];
+}
+
+// resample the line every STEP metres
+const samples = [];
+let total = 0;
+{
+  let carry = 0;
+  for (let i = 0; i + 1 < LINE.length; i++) {
+    const a = LINE[i], b = LINE[i + 1], seg = dist(a, b), brg = bearing(a, b);
+    let s = carry;
+    while (s < seg) { samples.push({ p: dest(a, brg, s), along: total + s, brg }); s += STEP; }
+    carry = s - seg; total += seg;
+  }
+  samples.push({ p: LINE[LINE.length - 1], along: total, brg: bearing(LINE[LINE.length - 2], LINE[LINE.length - 1]) });
+}
+const stops = samples.map((s, i) => {
+  const ahead = samples[Math.min(samples.length - 1, i + LOOK_AHEAD)];
+  const heading = i + LOOK_AHEAD < samples.length ? bearing(s.p, ahead.p) : s.brg;
+  return { p: dest(s.p, (s.brg + 90) % 360, OFFSET_R), heading, along: s.along };
+});
+// open by looking back at the Arc, then turn round and set off
+const arc = LANDMARKS[0].at;
+stops.unshift({ p: stops[0].p, heading: bearing(stops[0].p, arc), along: 0, hold: 5000, label: 'Looking back at the Arc de Triomphe' });
+// finish facing the obelisk at the centre of the Place de la Concorde
+stops.push({ p: stops[stops.length - 1].p, heading: bearing(stops[stops.length - 1].p, [48.86551, 2.32117]), along: total, hold: 1e9 });
+
+const $ = id => document.getElementById(id);
+const stage = $('stage'), fill = $('fill');
+let key = null, frames = [], cur = 0, idx = 0, playing = true, busy = false, lastStepAt = 0, kmh = 6;
+
+function url(s) {
+  return 'https://www.google.com/maps/embed/v1/streetview?key=' + encodeURIComponent(key) +
+    '&location=' + s.p[0].toFixed(6) + ',' + s.p[1].toFixed(6) +
+    '&heading=' + Math.round(s.heading) + '&pitch=0&fov=90';
+}
+function show(i) {
+  if (busy) return;
+  busy = true; idx = Math.max(0, Math.min(stops.length - 1, i));
+  const next = frames[1 - cur];
+  const done = () => {
+    next.onload = null;
+    setTimeout(() => {
+      next.classList.add('on'); frames[cur].classList.remove('on'); cur = 1 - cur;
+      lastStepAt = performance.now(); busy = false; paint();
+    }, SETTLE_MS);
+  };
+  next.onload = done;
+  next.src = url(stops[idx]);
+}
+function paint() {
+  const s = stops[idx];
+  fill.style.width = (100 * s.along / total).toFixed(2) + '%';
+  $('dist').textContent = (s.along / 1000).toFixed(2) + ' / ' + (total / 1000).toFixed(2) + ' km';
+  let near = LANDMARKS[0].name, best = Infinity;
+  for (const l of LANDMARKS) { const d = dist(s.p, l.at); if (d < best) { best = d; near = l.name; } }
+  $('near').textContent = s.label || (best < 160 ? near : 'towards Place de la Concorde');
+}
+function tick(now) {
+  if (playing && !busy && key && idx < stops.length - 1) {
+    const s = stops[idx];
+    const wait = s.hold != null ? s.hold : STEP / (kmh / 3.6) * 1000;   // real pace: STEP metres at kmh
+    if (now - lastStepAt >= wait) show(idx + 1);
+  }
+  requestAnimationFrame(tick);
+}
+
+// controls
+function setPlaying(v) { playing = v; $('play').textContent = v ? '⏸' : '▶'; if (v) lastStepAt = performance.now(); }
+$('play').onclick = () => setPlaying(!playing);
+$('speed').onchange = e => { kmh = +e.target.value; };
+$('track').onclick = e => {
+  const r = e.currentTarget.getBoundingClientRect(), want = (e.clientX - r.left) / r.width * total;
+  let best = 1; for (let i = 1; i < stops.length; i++) if (Math.abs(stops[i].along - want) < Math.abs(stops[best].along - want)) best = i;
+  busy = false; show(best);
+};
+$('full').onclick = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.());
+document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); setPlaying(!playing); } });
+// the bar fades away while you watch and comes back when you move
+let hideT; const wake = () => { $('bar').classList.remove('hide'); clearTimeout(hideT); hideT = setTimeout(() => $('bar').classList.add('hide'), 3500); };
+['mousemove', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, wake, { passive: true }));
+// keep a phone screen awake for the length of the walk
+async function stayAwake() { try { await navigator.wakeLock?.request('screen'); } catch (e) {} }
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') stayAwake(); });
+
+(async function start() {
+  try { key = (await (await fetch('/config.json', { cache: 'no-store' })).json()).maps_api_key; } catch (e) {}
+  if (!key) { const m = $('msg'); m.style.display = 'flex'; m.textContent = 'No Maps key found in /config.json.'; return; }
+  for (let k = 0; k < 2; k++) {
+    const f = document.createElement('iframe');
+    f.setAttribute('allowfullscreen', ''); f.setAttribute('loading', 'eager');
+    f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+    stage.appendChild(f); frames.push(f);
+  }
+  frames[0].classList.add('on');
+  frames[0].src = url(stops[0]); lastStepAt = performance.now(); paint();
+  setTimeout(() => { $('title').style.opacity = 0; }, 4500);
+  wake(); stayAwake(); requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
