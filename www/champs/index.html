@@ -3,15 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Champs-Élysées — a slow drive</title>
+<title>Champs-Élysées — a walk</title>
 <style>
   :root { color-scheme: dark; }
   html, body { margin: 0; height: 100%; background: #000; overflow: hidden;
     font: 15px/1.4 -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif; color: #eee; }
-  #pano { position: fixed; inset: 0; }
-  /* The view angle is fixed facing forward: this transparent layer takes every touch and drag that would otherwise
-     turn the camera, so nothing but the route decides where it looks. */
-  #shield { position: fixed; inset: 0; z-index: 4; }
+  #stage { position: fixed; inset: 0; }
+  #stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+    opacity: 0; transition: opacity .5s ease; }
+  #stage iframe.on { opacity: 1; z-index: 1; }
   #title { position: fixed; left: 0; right: 0; top: 18%; text-align: center; z-index: 5; pointer-events: none;
     transition: opacity 1.4s ease; text-shadow: 0 2px 12px #000; }
   #title h1 { font: 600 clamp(22px, 4vw, 44px)/1.15 Georgia, "Noto Serif SC", serif; margin: 0 0 6px; }
@@ -23,28 +23,27 @@
   .row { display: flex; align-items: center; gap: 10px; }
   button, select { background: rgba(255,255,255,.1); color: #eee; border: 1px solid rgba(255,255,255,.18);
     border-radius: 8px; padding: 6px 10px; font: inherit; cursor: pointer; }
+  button:hover, select:hover { background: rgba(255,255,255,.18); }
   #play { min-width: 44px; }
-  #track { position: relative; flex: 1; height: 6px; background: rgba(255,255,255,.18); border-radius: 3px; }
+  #track { position: relative; flex: 1; height: 6px; background: rgba(255,255,255,.18); border-radius: 3px; cursor: pointer; }
   #fill { position: absolute; left: 0; top: 0; bottom: 0; width: 0; background: #e8c170; border-radius: 3px; }
+  .tick { position: absolute; top: -3px; width: 2px; height: 12px; background: rgba(255,255,255,.6); }
   #where { display: flex; justify-content: space-between; font-size: 12px; opacity: .75; margin-top: 7px; }
   #msg { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 9;
-    text-align: center; padding: 24px; background: #000; line-height: 1.6; }
-  #msg a { color: #e8c170; }
+    text-align: center; padding: 24px; background: #000; }
 </style>
 </head>
 <body>
-<div id="pano"></div>
-<div id="shield"></div>
-<div id="title"><h1>Avenue des Champs-Élysées</h1><p>Arc de Triomphe → Place de la Concorde · 1.8 km</p></div>
+<div id="stage"></div>
+<div id="title"><h1>Avenue des Champs-Élysées</h1><p>Arc de Triomphe → Place de la Concorde · 1.8 km on foot</p></div>
 <div id="bar">
   <div class="row">
     <button id="play" title="Play / pause (space)">⏸</button>
-    <div id="track"><div id="fill"></div></div>
+    <div id="track" title="Jump along the avenue"><div id="fill"></div></div>
     <select id="speed" title="Pace">
-      <option value="6">Brisk walk · 6 km/h</option>
-      <option value="15">Very slow car · 15 km/h</option>
-      <option value="20" selected>Slow car · 20 km/h</option>
-      <option value="30">Car · 30 km/h</option>
+      <option value="180" selected>3 min · ~36 km/h</option>
+      <option value="360">6 min · ~18 km/h</option>
+      <option value="1080">18 min · brisk walk</option>
     </select>
     <button id="full" title="Fullscreen">⛶</button>
   </div>
@@ -54,177 +53,151 @@
 
 <script>
 /*
- * A slow drive down the Champs-Élysées in Google Street View, on the Maps JavaScript API.
+ * The free Maps Embed API version. drive.html is the JavaScript API one (needs that API enabled on the key).
+ * An auto-walk down the Champs-Élysées in Google Street View, on the Maps Embed API — the free, unlimited one
+ * (founder's RULE 1: no Google API cost; the key is enabled for the Embed API only). The Embed API cannot be driven
+ * like the JavaScript API, but its URL carries location and heading, so the walk swaps the iframe's src one step at
+ * a time. Two stacked iframes cross-fade so each reload reads as a dissolve instead of a flash — the same trick the
+ * Day 1 player used.
  *
- * Founder, 2026-09-17: "use the javascript api for the smooth glide. dont enable the tilt phone for view angle
- * feature, fix a forward view angle. faster the pace maybe to a slow car ride."
- *
- * How the glide works. The camera never jumps to a coordinate: it steps along Google's OWN linked panoramas — at
- * each one it takes the link that points most nearly down the avenue — so every change is between neighbours and
- * gets Street View's native transition. Between changes it creeps forward by narrowing the field of view, then
- * hands over to the next panorama, which was taken a few metres ahead and so continues the same motion. That is the
- * hyperlapse trick, and it is what turns separate photographs into a drive.
- *
- * The heading is the direction of travel, recomputed toward a point ~40 m ahead on the avenue's real OpenStreetMap
- * centreline and eased so the bend at the Rond-Point turns rather than snaps. Pitch is level. Motion tracking is off
- * and a transparent shield takes every drag, so the view is fixed forward. The key is read from /config.json at
- * runtime and never written into this file.
+ * The route is the avenue's real centreline from OpenStreetMap, resampled every STEP metres and nudged a few metres
+ * to the right of the direction of travel, so successive panoramas stay on the eastbound side instead of flipping
+ * between carriageways. The key is read from /config.json at runtime and is never written into this file.
  */
 const LINE = [ // OSM ways 626668696, 635793356, 635793354, 4294035, 69414167, 105177511 — Arc → Concorde
   [48.8726107, 2.2987107], [48.8720562, 2.3004567], [48.8704451, 2.3051436], [48.8691810, 2.3091111],
   [48.8689063, 2.3103410], [48.8677540, 2.3139627], [48.8663005, 2.3185313], [48.8656393, 2.3208526]];
-const ARC = [48.8738, 2.2950], OBELISK = [48.86551, 2.32117];
-const LANDMARKS = [{ name: 'Arc de Triomphe', at: ARC }, { name: 'Rond-Point des Champs-Élysées', at: [48.8689063, 2.3103410] },
-                   { name: 'Place de la Concorde', at: [48.8656393, 2.3208526] }];
-const SAMPLE = 10;            // metres between route samples
-const LOOK_AHEAD_M = 40;      // steer toward the route this far ahead
-const CREEP_FOV = 0.28;       // how far the view "moves in" (as extra zoom) before handing to the next panorama
-const BASE_ZOOM = 1;          // zoom 1 ≈ 90° field of view
-const HEADING_EASE = 0.06;    // per-frame easing toward the travel heading
-const OFFSET_R = 6;           // start on the eastbound carriageway
+const STEP = 12;          // metres between panoramas requested; Street View on the avenue is ~10–15 m apart
+const OFFSET_R = 6;       // metres to the right of travel, to hold the eastbound carriageway
+const LOOK_AHEAD = 3;     // aim the camera at the point 3 steps ahead, so the heading does not wobble
+const SETTLE_MS = 450;    // after the iframe loads, give the panorama tiles time to paint before fading in
+const LANDMARKS = [ { name: 'Arc de Triomphe', at: [48.8738, 2.2950] },
+                   { name: 'Rond-Point des Champs-Élysées', at: [48.8689063, 2.3103410] },
+                   { name: 'Place de la Concorde', at: [48.8656393, 2.3208526] } ];
 
 const R = 6371008.8, rad = d => d * Math.PI / 180, deg = r => r * 180 / Math.PI;
-const dist = (a, b) => { const x = rad(b[0] - a[0]), y = rad(b[1] - a[1]);
-  const h = Math.sin(x / 2) ** 2 + Math.cos(rad(a[0])) * Math.cos(rad(b[0])) * Math.sin(y / 2) ** 2; return 2 * R * Math.asin(Math.sqrt(h)); };
-const bearing = (a, b) => { const y = Math.sin(rad(b[1] - a[1])) * Math.cos(rad(b[0]));
+function dist(a, b) {
+  const dLa = rad(b[0] - a[0]), dLo = rad(b[1] - a[1]);
+  const h = Math.sin(dLa / 2) ** 2 + Math.cos(rad(a[0])) * Math.cos(rad(b[0])) * Math.sin(dLo / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+function bearing(a, b) {
+  const y = Math.sin(rad(b[1] - a[1])) * Math.cos(rad(b[0]));
   const x = Math.cos(rad(a[0])) * Math.sin(rad(b[0])) - Math.sin(rad(a[0])) * Math.cos(rad(b[0])) * Math.cos(rad(b[1] - a[1]));
-  return (deg(Math.atan2(y, x)) + 360) % 360; };
-const dest = (p, brg, m) => { const d = m / R, t = rad(brg), la = rad(p[0]), lo = rad(p[1]);
+  return (deg(Math.atan2(y, x)) + 360) % 360;
+}
+function dest(p, brg, m) {
+  const d = m / R, t = rad(brg), la = rad(p[0]), lo = rad(p[1]);
   const la2 = Math.asin(Math.sin(la) * Math.cos(d) + Math.cos(la) * Math.sin(d) * Math.cos(t));
-  return [deg(la2), deg(lo + Math.atan2(Math.sin(t) * Math.sin(d) * Math.cos(la), Math.cos(d) - Math.sin(la) * Math.sin(la2)))]; };
-const angDiff = (a, b) => { let d = ((b - a) % 360 + 540) % 360 - 180; return d; };
+  const lo2 = lo + Math.atan2(Math.sin(t) * Math.sin(d) * Math.cos(la), Math.cos(d) - Math.sin(la) * Math.sin(la2));
+  return [deg(la2), deg(lo2)];
+}
 
-// the route, sampled every SAMPLE metres, with distance along it
-const route = []; let total = 0;
-{ let carry = 0;
+// resample the line every STEP metres
+const samples = [];
+let total = 0;
+{
+  let carry = 0;
   for (let i = 0; i + 1 < LINE.length; i++) {
     const a = LINE[i], b = LINE[i + 1], seg = dist(a, b), brg = bearing(a, b);
-    for (let s = carry; s < seg; s += SAMPLE) route.push({ p: dest(a, brg, s), along: total + s });
-    carry = (Math.ceil((seg - carry) / SAMPLE) * SAMPLE + carry) - seg; total += seg;
+    let s = carry;
+    while (s < seg) { samples.push({ p: dest(a, brg, s), along: total + s, brg }); s += STEP; }
+    carry = s - seg; total += seg;
   }
-  route.push({ p: LINE[LINE.length - 1], along: total }); }
-function nearestIdx(p, from = 0) { let best = from, bd = Infinity;
-  for (let i = from; i < route.length; i++) { const d = dist(p, route[i].p); if (d < bd) { bd = d; best = i; } } return best; }
+  samples.push({ p: LINE[LINE.length - 1], along: total, brg: bearing(LINE[LINE.length - 2], LINE[LINE.length - 1]) });
+}
+const stops = samples.map((s, i) => {
+  const ahead = samples[Math.min(samples.length - 1, i + LOOK_AHEAD)];
+  const heading = i + LOOK_AHEAD < samples.length ? bearing(s.p, ahead.p) : s.brg;
+  return { p: dest(s.p, (s.brg + 90) % 360, OFFSET_R), heading, along: s.along };
+});
+// open by looking back at the Arc, then turn round and set off
+const arc = LANDMARKS[0].at;
+stops.unshift({ p: stops[0].p, heading: bearing(stops[0].p, arc), along: 0, hold: 3000, label: 'Looking back at the Arc de Triomphe' });
+// finish facing the obelisk at the centre of the Place de la Concorde
+stops.push({ p: stops[stops.length - 1].p, heading: bearing(stops[stops.length - 1].p, [48.86551, 2.32117]), along: total, hold: 1e9 });
 
 const $ = id => document.getElementById(id);
-let pano, svc, kmh = 20, playing = true, phase = 'intro', heading = bearing(route[0].p, ARC), wantHeading = heading;
-let idx = 0, stepStart = 0, stepMs = 1800, lastPos = null, lastStepM = 10, busy = false;
+const stage = $('stage'), fill = $('fill');
+let key = null, frames = [], cur = 0, idx = 0, playing = true, busy = false, lastStepAt = 0, durS = 180, driveStart = 0;
 
-function travelHeading(p) {
-  const i = nearestIdx(p, Math.max(0, idx - 3));
-  idx = Math.max(idx, i);
-  const ahead = route[Math.min(route.length - 1, i + Math.round(LOOK_AHEAD_M / SAMPLE))];
-  return bearing(p, ahead.p);
+function url(s) {
+  return 'https://www.google.com/maps/embed/v1/streetview?key=' + encodeURIComponent(key) +
+    '&location=' + s.p[0].toFixed(6) + ',' + s.p[1].toFixed(6) +
+    '&heading=' + Math.round(s.heading) + '&pitch=0&fov=90';
 }
-function paint(p) {
-  const a = route[idx].along;
-  $('fill').style.width = (100 * a / total).toFixed(2) + '%';
-  $('dist').textContent = (a / 1000).toFixed(2) + ' / ' + (total / 1000).toFixed(2) + ' km';
-  let near = null, bd = 160;
-  for (const l of LANDMARKS) { const d = dist(p, l.at); if (d < bd) { bd = d; near = l.name; } }
-  $('near').textContent = phase === 'intro' ? 'Looking back at the Arc de Triomphe' : (near || 'towards Place de la Concorde');
-}
-// choose the linked panorama that points most nearly down the avenue; fall back to a lookup ahead on the route
-function nextPano(cb) {
-  const pos = pano.getPosition(); if (!pos) return cb(null);
-  const p = [pos.lat(), pos.lng()], want = travelHeading(p);
-  const links = (pano.getLinks() || []).filter(l => l && l.pano);
-  let best = null, bd = 60;
-  for (const l of links) { const d = Math.abs(angDiff(want, l.heading)); if (d < bd) { bd = d; best = l.pano; } }
-  if (best) return cb(best);
-  const ahead = route[Math.min(route.length - 1, idx + 2)].p;
-  svc.getPanorama({ location: { lat: ahead[0], lng: ahead[1] }, radius: 30, source: google.maps.StreetViewSource.OUTDOOR },
-    (data, status) => cb(status === 'OK' ? data.location.pano : null));
-}
-function step(now) {
+function show(i) {
   if (busy) return;
-  busy = true;
-  nextPano(id => {
-    if (!id) { busy = false; phase = 'end'; return; }
-    pano.setPano(id);
-    stepStart = now; busy = false;
-  });
+  busy = true; idx = Math.max(0, Math.min(stops.length - 1, i));
+  const next = frames[1 - cur];
+  const done = () => {
+    next.onload = null;
+    setTimeout(() => {
+      next.classList.add('on'); frames[cur].classList.remove('on'); cur = 1 - cur;
+      lastStepAt = performance.now(); busy = false; paint();
+    }, SETTLE_MS);
+  };
+  next.onload = done;
+  next.src = url(stops[idx]);
 }
-function frame(now) {
-  if (pano) {
-    const pos = pano.getPosition();
-    const p = pos ? [pos.lat(), pos.lng()] : route[0].p;
-    if (phase === 'intro') {
-      wantHeading = bearing(p, ARC);
-      if (playing && now - stepStart > 5000) { phase = 'turn'; stepStart = now; }
-    } else if (phase === 'turn') {
-      wantHeading = travelHeading(p);
-      if (Math.abs(angDiff(heading, wantHeading)) < 3) { phase = 'drive'; stepStart = now; }
-    } else if (phase === 'drive') {
-      wantHeading = travelHeading(p);
-      stepMs = Math.max(250, lastStepM / (kmh / 3.6) * 1000);
-      const t = Math.min(1, (now - stepStart) / stepMs);
-      if (playing) pano.setZoom(BASE_ZOOM + CREEP_FOV * t);                // creep forward within this panorama
-      if (playing && t >= 1) step(now);
-      if (dist(p, route[route.length - 1].p) < 20) { phase = 'end'; }
-    } else if (phase === 'end') {
-      wantHeading = bearing(p, OBELISK); pano.setZoom(BASE_ZOOM);
+function paint() {
+  const s = stops[idx];
+  fill.style.width = (100 * s.along / total).toFixed(2) + '%';
+  $('dist').textContent = (s.along / 1000).toFixed(2) + ' / ' + (total / 1000).toFixed(2) + ' km';
+  let near = LANDMARKS[0].name, best = Infinity;
+  for (const l of LANDMARKS) { const d = dist(s.p, l.at); if (d < best) { best = d; near = l.name; } }
+  $('near').textContent = s.label || (best < 160 ? near : 'towards Place de la Concorde');
+}
+function tick(now) {
+  if (playing && !busy && key && idx < stops.length - 1) {
+    const s = stops[idx];
+    if (idx === 0) {                                   // the look-back at the Arc, then the clock starts
+      if (now - lastStepAt >= s.hold) { driveStart = now; show(1); }
+    } else {
+      // Paced by the clock, not by step: the stop we should be at by now is where the avenue's length divided over
+      // durS puts us. When iframes load slower than that, stops are skipped, so the whole road still takes durS.
+      const want = Math.min(1, (now - driveStart) / (durS * 1000)) * total;
+      let j = idx; while (j < stops.length - 2 && stops[j + 1].along <= want) j++;
+      if (want >= total) j = stops.length - 1;
+      if (j > idx) show(j);
     }
-    const ease = phase === 'turn' ? 0.035 : HEADING_EASE;
-    heading = (heading + angDiff(heading, wantHeading) * ease + 360) % 360;
-    pano.setPov({ heading, pitch: 0 });
-    paint(p);
   }
-  requestAnimationFrame(frame);
+  requestAnimationFrame(tick);
 }
-
-function fail(html) { const m = $('msg'); m.style.display = 'flex'; m.innerHTML = html; }
-window.gm_authFailure = () => fail('Google refused the Maps key for the JavaScript API.<br>' +
-  'Enable <b>Maps JavaScript API</b> for this key in Google Cloud, then reload.<br>' +
-  '<a href="embed.html">The free Embed version still works →</a>');
-
-window.initDrive = function () {
-  const start = dest(route[0].p, (bearing(route[0].p, route[3].p) + 90) % 360, OFFSET_R);
-  pano = new google.maps.StreetViewPanorama($('pano'), {
-    pov: { heading, pitch: 0 }, zoom: BASE_ZOOM, visible: true,
-    disableDefaultUI: true, clickToGo: false, scrollwheel: false, linksControl: false, panControl: false,
-    zoomControl: false, addressControl: false, fullscreenControl: false, enableCloseButton: false,
-    motionTracking: false, motionTrackingControl: false, showRoadLabels: false, keyboardShortcuts: false,
-  });
-  svc = new google.maps.StreetViewService();
-  svc.getPanorama({ location: { lat: start[0], lng: start[1] }, radius: 40, source: google.maps.StreetViewSource.OUTDOOR },
-    (data, status) => {
-      if (status !== 'OK') return fail('No Street View panorama found at the start of the avenue.');
-      pano.setPano(data.location.pano);
-      lastPos = [data.location.latLng.lat(), data.location.latLng.lng()];
-    });
-  // measure how far each panorama change actually moved, so the pace is real metres at the chosen speed
-  pano.addListener('position_changed', () => {
-    const pos = pano.getPosition(); if (!pos) return;
-    const p = [pos.lat(), pos.lng()];
-    if (lastPos) { const d = dist(lastPos, p); if (d > 2 && d < 40) lastStepM = d; }
-    lastPos = p; pano.setZoom(BASE_ZOOM);
-  });
-  stepStart = performance.now();
-  setTimeout(() => { $('title').style.opacity = 0; }, 4500);
-  requestAnimationFrame(frame);
-};
 
 // controls
-function setPlaying(v) { playing = v; $('play').textContent = v ? '⏸' : '▶'; if (v) stepStart = performance.now(); }
+function setPlaying(v) { playing = v; $('play').textContent = v ? '⏸' : '▶'; if (v) rebase(); }
 $('play').onclick = () => setPlaying(!playing);
-$('speed').onchange = e => { kmh = +e.target.value; };
+// keep the current place on the avenue when the clock restarts (resume, pace change, jump)
+function rebase(along = stops[idx].along) { const now = performance.now(); lastStepAt = now; driveStart = now - along / total * durS * 1000; }
+$('speed').onchange = e => { durS = +e.target.value; rebase(); };
+$('track').onclick = e => {
+  const r = e.currentTarget.getBoundingClientRect(), want = (e.clientX - r.left) / r.width * total;
+  let best = 1; for (let i = 1; i < stops.length; i++) if (Math.abs(stops[i].along - want) < Math.abs(stops[best].along - want)) best = i;
+  busy = false; show(best); rebase(stops[best].along);
+};
 $('full').onclick = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.());
 document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); setPlaying(!playing); } });
+// the bar fades away while you watch and comes back when you move
 let hideT; const wake = () => { $('bar').classList.remove('hide'); clearTimeout(hideT); hideT = setTimeout(() => $('bar').classList.add('hide'), 3500); };
 ['mousemove', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, wake, { passive: true }));
+// keep a phone screen awake for the length of the walk
 async function stayAwake() { try { await navigator.wakeLock?.request('screen'); } catch (e) {} }
 document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible') stayAwake(); });
 
-(async function load() {
-  let key = null;
+(async function start() {
   try { key = (await (await fetch('/config.json', { cache: 'no-store' })).json()).maps_api_key; } catch (e) {}
-  if (!key) return fail('No Maps key found in /config.json.');
-  const s = document.createElement('script');
-  s.src = 'https://maps.googleapis.com/maps/api/js?key=' + encodeURIComponent(key) + '&v=weekly&callback=initDrive';
-  s.async = true; s.onerror = () => fail('Could not load Google Maps. From mainland China this needs a VPN.<br><a href="embed.html">Try the Embed version →</a>');
-  document.head.appendChild(s);
-  wake(); stayAwake();
+  if (!key) { const m = $('msg'); m.style.display = 'flex'; m.textContent = 'No Maps key found in /config.json.'; return; }
+  for (let k = 0; k < 2; k++) {
+    const f = document.createElement('iframe');
+    f.setAttribute('allowfullscreen', ''); f.setAttribute('loading', 'eager');
+    f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+    stage.appendChild(f); frames.push(f);
+  }
+  frames[0].classList.add('on');
+  frames[0].src = url(stops[0]); lastStepAt = performance.now(); paint();
+  setTimeout(() => { $('title').style.opacity = 0; }, 4500);
+  wake(); stayAwake(); requestAnimationFrame(tick);
 })();
 </script>
 </body>
