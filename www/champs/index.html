@@ -10,8 +10,8 @@
     font: 15px/1.4 -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif; color: #eee; }
   #stage { position: fixed; inset: 0; }
   #stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
-    opacity: 0; transition: opacity .5s ease; }
-  #stage iframe.on { opacity: 1; z-index: 1; }
+    opacity: 0; transition: opacity 1s ease; }
+  #stage iframe.on { opacity: 1; }
   #title { position: fixed; left: 0; right: 0; top: 18%; text-align: center; z-index: 5; pointer-events: none;
     transition: opacity 1.4s ease; text-shadow: 0 2px 12px #000; }
   #title h1 { font: 600 clamp(22px, 4vw, 44px)/1.15 Georgia, "Noto Serif SC", serif; margin: 0 0 6px; }
@@ -41,9 +41,9 @@
     <button id="play" title="Play / pause (space)">⏸</button>
     <div id="track" title="Jump along the avenue"><div id="fill"></div></div>
     <select id="speed" title="Pace">
-      <option value="180" selected>3 min · ~36 km/h</option>
-      <option value="360">6 min · ~18 km/h</option>
-      <option value="1080">18 min · brisk walk</option>
+      <option value="180">3 min · a view every 3 s</option>
+      <option value="300" selected>5 min · every 5 s</option>
+      <option value="480">8 min · every 8 s</option>
     </select>
     <button id="full" title="Fullscreen">⛶</button>
   </div>
@@ -67,10 +67,11 @@
 const LINE = [ // OSM ways 626668696, 635793356, 635793354, 4294035, 69414167, 105177511 — Arc → Concorde
   [48.8726107, 2.2987107], [48.8720562, 2.3004567], [48.8704451, 2.3051436], [48.8691810, 2.3091111],
   [48.8689063, 2.3103410], [48.8677540, 2.3139627], [48.8663005, 2.3185313], [48.8656393, 2.3208526]];
-const STEP = 12;          // metres between panoramas requested; Street View on the avenue is ~10–15 m apart
+const STEP = 30;          // metres between views: far enough that each is a real step forward, few enough to load well
 const OFFSET_R = 6;       // metres to the right of travel, to hold the eastbound carriageway
-const LOOK_AHEAD = 3;     // aim the camera at the point 3 steps ahead, so the heading does not wobble
-const SETTLE_MS = 450;    // after the iframe loads, give the panorama tiles time to paint before fading in
+const LOOK_AHEAD = 2;     // aim the camera at the point 2 steps (60 m) ahead, so the heading does not wobble
+const SETTLE_MS = 1800;   // after the iframe loads, let the blurry first tiles sharpen before it is shown
+const MIN_DWELL = 2500;   // every view stays fully on screen at least this long
 const LANDMARKS = [ { name: 'Arc de Triomphe', at: [48.8738, 2.2950] },
                    { name: 'Rond-Point des Champs-Élysées', at: [48.8689063, 2.3103410] },
                    { name: 'Place de la Concorde', at: [48.8656393, 2.3208526] } ];
@@ -119,26 +120,29 @@ stops.push({ p: stops[stops.length - 1].p, heading: bearing(stops[stops.length -
 
 const $ = id => document.getElementById(id);
 const stage = $('stage'), fill = $('fill');
-let key = null, frames = [], cur = 0, idx = 0, playing = true, busy = false, lastStepAt = 0, durS = 180, driveStart = 0;
+let key = null, frames = [], cur = 0, idx = 0, playing = true, lastStepAt = 0, durS = 300, driveStart = 0;
 
 function url(s) {
   return 'https://www.google.com/maps/embed/v1/streetview?key=' + encodeURIComponent(key) +
     '&location=' + s.p[0].toFixed(6) + ',' + s.p[1].toFixed(6) +
     '&heading=' + Math.round(s.heading) + '&pitch=0&fov=90';
 }
-function show(i) {
-  if (busy) return;
-  busy = true; idx = Math.max(0, Math.min(stops.length - 1, i));
-  const next = frames[1 - cur];
-  const done = () => {
-    next.onload = null;
-    setTimeout(() => {
-      next.classList.add('on'); frames[cur].classList.remove('on'); cur = 1 - cur;
-      lastStepAt = performance.now(); busy = false; paint();
-    }, SETTLE_MS);
-  };
-  next.onload = done;
-  next.src = url(stops[idx]);
+// The next view loads in the hidden iframe as soon as the current one is up, and is only revealed once it has loaded
+// and sharpened. It fades in ON TOP of the current view, which stays fully opaque underneath until the fade is done,
+// so there is never a moment where both are half-transparent over the black page.
+let ready = false, gen = 0, z = 1, shownAt = 0, pending = 0;
+function preload(i) {
+  const g = ++gen, next = frames[1 - cur];
+  ready = false; pending = Math.max(0, Math.min(stops.length - 1, i));
+  next.onload = () => { next.onload = null; setTimeout(() => { if (g === gen) ready = true; }, SETTLE_MS); };
+  next.src = url(stops[pending]);
+}
+function reveal(now) {
+  const next = frames[1 - cur], prev = frames[cur];
+  next.style.zIndex = ++z; next.classList.add('on');
+  cur = 1 - cur; idx = pending; shownAt = now; ready = false; paint();
+  setTimeout(() => prev.classList.remove('on'), 1100);
+  if (idx < stops.length - 1) setTimeout(() => preload(idx + 1), 1100);
 }
 function paint() {
   const s = stops[idx];
@@ -149,18 +153,10 @@ function paint() {
   $('near').textContent = s.label || (best < 160 ? near : 'towards Place de la Concorde');
 }
 function tick(now) {
-  if (playing && !busy && key && idx < stops.length - 1) {
-    const s = stops[idx];
-    if (idx === 0) {                                   // the look-back at the Arc, then the clock starts
-      if (now - lastStepAt >= s.hold) { driveStart = now; show(1); }
-    } else {
-      // Paced by the clock, not by step: the stop we should be at by now is where the avenue's length divided over
-      // durS puts us. When iframes load slower than that, stops are skipped, so the whole road still takes durS.
-      const want = Math.min(1, (now - driveStart) / (durS * 1000)) * total;
-      let j = idx; while (j < stops.length - 2 && stops[j + 1].along <= want) j++;
-      if (want >= total) j = stops.length - 1;
-      if (j > idx) show(j);
-    }
+  if (playing && ready && key && now - shownAt >= MIN_DWELL) {
+    const due = pending === 0 ? 0 : idx === 0 ? lastStepAt + stops[0].hold
+      : driveStart + stops[pending].along / total * durS * 1000;
+    if (now >= due) { if (idx === 0) driveStart = now - stops[pending].along / total * durS * 1000; reveal(now); }
   }
   requestAnimationFrame(tick);
 }
@@ -174,7 +170,7 @@ $('speed').onchange = e => { durS = +e.target.value; rebase(); };
 $('track').onclick = e => {
   const r = e.currentTarget.getBoundingClientRect(), want = (e.clientX - r.left) / r.width * total;
   let best = 1; for (let i = 1; i < stops.length; i++) if (Math.abs(stops[i].along - want) < Math.abs(stops[best].along - want)) best = i;
-  busy = false; show(best); rebase(stops[best].along);
+  preload(best); rebase(stops[best].along); shownAt = 0;
 };
 $('full').onclick = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.());
 document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); setPlaying(!playing); } });
@@ -195,7 +191,8 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
     stage.appendChild(f); frames.push(f);
   }
   frames[0].classList.add('on');
-  frames[0].src = url(stops[0]); lastStepAt = performance.now(); paint();
+  frames[0].src = url(stops[0]); lastStepAt = performance.now(); shownAt = lastStepAt; paint();
+  frames[0].onload = () => { frames[0].onload = null; lastStepAt = performance.now(); preload(1); };
   setTimeout(() => { $('title').style.opacity = 0; }, 4500);
   wake(); stayAwake(); requestAnimationFrame(tick);
 })();
