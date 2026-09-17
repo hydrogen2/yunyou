@@ -118,13 +118,38 @@ stops.unshift({ p: stops[0].p, heading: bearing(stops[0].p, arc), along: 0, hold
 // finish facing the obelisk at the centre of the Place de la Concorde
 stops.push({ p: stops[stops.length - 1].p, heading: bearing(stops[stops.length - 1].p, [48.86551, 2.32117]), along: total, hold: 1e9 });
 
+// Every stop is pinned to one Google car panorama, chosen by hand on 2026-09-17. Asked for a bare location, the embed
+// serves whatever photo is nearest, and on this avenue that is often a visitor's photosphere (inside a shop, at night)
+// or a winter drive among summer ones. Each pin below is Google's own imagery, on the carriageway, in daylight, in
+// leaf, and in order down the avenue. Keys are indexes into stops above (look-back = 0, STEP = 30 m); a stop with no
+// pin had no good panorama and is skipped. Re-survey if STEP or LINE changes.
+const PINNED = {
+  0: 'jBZ00nGPrGkZ1FlTlywtmw', 1: 'jBZ00nGPrGkZ1FlTlywtmw', 2: 'C2H8XJMkSK8550KWBJl3GA', 3: 'H1zqhJQsAFytCMLKaCZoNg',
+  4: '4cJBPiZ3fHv5XgHMVYfyMQ', 5: 'T7mjlUAnugPgGrp14tLAdw', 6: 'lvtevDIDr3T7cPu7hm_HTQ', 7: 'cAO6W5xpMfGj8m2V93fGYQ',
+  8: '_MfZHdtZ5FziYcZOWtlQOw', 9: '-Z4px5m6M4vXDAVGr15_Ag', 10: 'hTftEZv6JjY9JLWKJ99qRg', 11: 'IQr87B3nq2-M3ZO6urZgLQ',
+  12: 'gfu-pz4w6n-8BaFAU4RKLw', 13: 'ABVxgBfAN4Mx3t9cTfDLwA', 14: '6yltnYdHm6rdLuAYz3L4rQ', 15: 'pNYdl5rf6vhQ66jEjNp8Yg',
+  16: 'MMjE1tISMDcJcdgYKd-xpw', 17: 'IGb0t_5OcN4huq5ID5gdsg', 18: 'mG197IFpSXGfuTFg2H2wGA', 20: '61rKGwSN2TpGyVWI5dzb6w',
+  21: 'NA9w6c5r_mgDTW1Ng5aqJw', 23: 'mfnQHcvXYSbTudmCZymQeQ', 24: 'z-gagDDU1ArqLfpXKFpHng', 25: 'sA4uM6uwQ5ICvNrVbNZq-A',
+  26: 'WiBhZON783cc0lC7gV0EUA', 27: 'jhQAh69lUX8SNQ7FvG75Nw', 28: 'i7xbMYeAXC9GkJMzNPAMMQ', 29: 'iEq0qQowRFP7bEhLBHVrzg',
+  30: '0f5GLXIdIaqlRcqpmziysg', 31: 'Ltjeff8m9zqgRjyZwqpykw', 32: 'fm75qxnzZbxgRO1-uEEBaw', 33: 'rdZVec_O3I6feZUUJVA31Q',
+  34: 'tEVfYuwTiUrWnX23Xu1pSQ', 35: 'pGn3w6SK8mfBhlk6qjRzJw', 36: 'ngamPNEk-LozItgxbV5EKQ', 37: 'u2C4XamLnGv95uPO8aQDUQ',
+  38: 'vA26xJbDEfFOPYntNSt37g', 39: 'LG8bJ_RGeCCyvH66VP9-ug', 40: 'CbgDbOjOpvqJyHMcLUBVog', 41: 'qgE3XkkTHzNFKSMsEL0JBA',
+  42: '8o2xwSqJKWvbyHxKD_nl4g', 43: 'ZLEjmDb5qaR2z_tn5F-o7g', 44: 'fVk9LzhfPO0dAr1QRfJSag', 45: '2hQHPDw4sQdZLXynaq5ARg',
+  46: 'g75mtxgArF-W7J-z8Wfcbw', 47: '3HbfOcUJU-C1cDoKQ3zfYA', 48: 'VIYwm0SkqjCMB7InrCC4rg', 49: '85kInX6waE2lUNda_fhsSA',
+  50: 'QUfhEtppcyr8KBKjnxR-bA', 51: 'oMU3fbRtFo1Nv6YsknUffA', 52: 'iqH9A4DhVliprPYVHxkRaw', 53: 'tBqOlsni5QEYySCITCKjdw',
+  54: '0RxuxS8pIEuNUtVGldMfWg', 55: 'q1dbnFLF3RGfh6CtXMIJgQ', 56: 'vhI1n4Q86u_c82wBdCsoug', 57: 'ZsHqcp2Q6HLMb2nkgA-_LQ',
+  58: 'FVINsMejDQjy9u4EB3HbIw', 59: 'yeAZn_F8LLiGOjrlzexoPQ', 60: 'L0mS00svPXvjA8WDVWMVOw', 61: 'dq_gmxQFc9lFRxal3SjXkQ',
+  62: '-psxMnV-6XBPcA4ViSlFIg'
+};
+for (let i = stops.length - 1; i >= 0; i--) { if (PINNED[i]) stops[i].pano = PINNED[i]; else stops.splice(i, 1); }
+
 const $ = id => document.getElementById(id);
 const stage = $('stage'), fill = $('fill');
 let key = null, frames = [], cur = 0, idx = 0, playing = true, lastStepAt = 0, durS = 300, driveStart = 0;
 
 function url(s) {
   return 'https://www.google.com/maps/embed/v1/streetview?key=' + encodeURIComponent(key) +
-    '&location=' + s.p[0].toFixed(6) + ',' + s.p[1].toFixed(6) +
+    (s.pano ? '&pano=' + s.pano : '&location=' + s.p[0].toFixed(6) + ',' + s.p[1].toFixed(6)) +
     '&heading=' + Math.round(s.heading) + '&pitch=0&fov=90';
 }
 // The next view loads in the hidden iframe as soon as the current one is up, and is only revealed once it has loaded
