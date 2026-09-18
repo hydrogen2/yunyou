@@ -12,6 +12,33 @@
   #stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
     opacity: 0; transition: opacity 1s ease; }
   #stage iframe.on { opacity: 1; }
+  /* The inset map is drawn from the route's own coordinates — no tiles, no second key, and it still draws where
+     Google is blocked. North stays up, so the turn of the avenue reads as a real direction. */
+  /* The Embed API has no switch for its own furniture, so the page covers it: the address card top-left, and the
+     compass and zoom buttons on the right edge. Google's logo and Terms link are attribution and stay visible, as
+     their terms require. Corner offsets are the same at every window size, measured 2026-09-18. */
+  #hideTL, #hideBR { position: fixed; z-index: 3; pointer-events: none; }
+  #hideTL { left: 0; top: 0; width: 320px; height: 190px;
+    background: radial-gradient(115% 115% at 0 0, rgba(0,0,0,1) 52%, rgba(0,0,0,.72) 68%, transparent 84%); }
+  #hideBR { right: 0; bottom: 18px; width: 120px; height: 200px;
+    background: radial-gradient(120% 90% at 100% 55%, rgba(0,0,0,.97) 45%, rgba(0,0,0,.55) 68%, transparent 82%); }
+  /* the chevrons painted on the road are part of the panorama itself and cannot be removed; this at least stops a
+     stray click or drag turning the view away from the walk */
+  #shield { position: fixed; inset: 0; z-index: 4; }
+  /* A real Google map, from the same free Embed API in "view" mode, held still while the marker moves over it. */
+  #map { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 14px;   /* Google's address box sits top-left */
+    z-index: 6; border-radius: 12px; overflow: hidden; background: #1a1a1c;
+    border: 1px solid rgba(255,255,255,.22); box-shadow: 0 4px 18px rgba(0,0,0,.5); }
+  #map iframe { display: block; border: 0; }
+  @media (max-width: 620px) { #map { transform: scale(.62); transform-origin: top right; } }
+  #mapsvg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  #facing { position: absolute; top: 8px; right: 8px; font-size: 12px; padding: 3px 8px; border-radius: 999px;
+    background: rgba(12,12,14,.78); color: #eee; }   /* clear of Google's own controls and credits */
+  .mp-road { fill: none; stroke: rgba(30,30,35,.3); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .mp-done { fill: none; stroke: #d98f2b; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+  .mp-dot { fill: #fff; stroke: #1a1a1c; stroke-width: 1.5; }
+  .mp-dot2 { fill: #d98f2b; }
+  .mp-cone { fill: rgba(217,143,43,.5); stroke: rgba(255,255,255,.55); stroke-width: .5; }
   #title { position: fixed; left: 0; right: 0; top: 18%; text-align: center; z-index: 5; pointer-events: none;
     transition: opacity 1.4s ease; text-shadow: 0 2px 12px #000; }
   #title h1 { font: 600 clamp(22px, 4vw, 44px)/1.15 Georgia, "Noto Serif SC", serif; margin: 0 0 6px; }
@@ -35,6 +62,10 @@
 </head>
 <body>
 <div id="stage"></div>
+<div id="hideTL"></div>
+<div id="hideBR"></div>
+<div id="shield"></div>
+<div id="map"><iframe id="mapframe" title="Map of the avenue" referrerpolicy="no-referrer-when-downgrade"></iframe><svg id="mapsvg" aria-label="Where you are on the avenue"></svg><div id="facing"></div></div>
 <div id="title"><h1>Avenue des Champs-Élysées</h1><p>Arc de Triomphe → Place de la Concorde · 1.8 km on foot</p></div>
 <div id="bar">
   <div class="row">
@@ -72,6 +103,7 @@ const OFFSET_R = 6;       // metres to the right of travel, to hold the eastboun
 const LOOK_AHEAD = 2;     // aim the camera at the point 2 steps (60 m) ahead, so the heading does not wobble
 const SETTLE_MS = 1800;   // after the iframe loads, let the blurry first tiles sharpen before it is shown
 const MIN_DWELL = 2500;   // every view stays fully on screen at least this long
+const ARC_AT = [48.8738, 2.2950], OBELISK = [48.86551, 2.32117];
 const LANDMARKS = [ { name: 'Arc de Triomphe', at: [48.8738, 2.2950] },
                    { name: 'Rond-Point des Champs-Élysées', at: [48.8689063, 2.3103410] },
                    { name: 'Place de la Concorde', at: [48.8656393, 2.3208526] } ];
@@ -113,10 +145,10 @@ const stops = samples.map((s, i) => {
   return { p: dest(s.p, (s.brg + 90) % 360, OFFSET_R), heading, along: s.along };
 });
 // open by looking back at the Arc, then turn round and set off
-const arc = LANDMARKS[0].at;
+const arc = ARC_AT;
 stops.unshift({ p: stops[0].p, heading: bearing(stops[0].p, arc), along: 0, hold: 3000, label: 'Looking back at the Arc de Triomphe' });
 // finish facing the obelisk at the centre of the Place de la Concorde
-stops.push({ p: stops[stops.length - 1].p, heading: bearing(stops[stops.length - 1].p, [48.86551, 2.32117]), along: total, hold: 1e9 });
+stops.push({ p: stops[stops.length - 1].p, heading: bearing(stops[stops.length - 1].p, OBELISK), along: total, hold: 1e9 });
 
 // Every stop is pinned to one Google car panorama, chosen by hand on 2026-09-17. Asked for a bare location, the embed
 // serves whatever photo is nearest, and on this avenue that is often a visitor's photosphere (inside a shop, at night)
@@ -169,6 +201,45 @@ function reveal(now) {
   setTimeout(() => prev.classList.remove('on'), 1100);
   if (idx < stops.length - 1) setTimeout(() => preload(idx + 1), 1100);
 }
+// The inset is a real Google map — the same free Embed API, in "view" mode — fixed over the avenue while the marker
+// moves across it. The map itself never reloads: the marker's pixel position comes from the same Web Mercator
+// projection Google draws with, so a coordinate lands on the street drawn under it.
+const MAP_W = 330, MAP_H = 200, MAP_PAD = 8;   // the avenue needs 305 px across at the close zoom, so the box grants it
+const mercX = q => (q[1] + 180) / 360;
+const mercY = q => { const t = Math.sin(rad(q[0])); return 0.5 - Math.log((1 + t) / (1 - t)) / (4 * Math.PI); };
+const mpts = [...LINE, ARC_AT, OBELISK];
+const mid = f => (Math.min(...mpts.map(f)) + Math.max(...mpts.map(f))) / 2;
+const mCenter = [mid(q => q[0]), mid(q => q[1])];
+const span = f => Math.max(...mpts.map(f)) - Math.min(...mpts.map(f));
+// The embed takes whole zoom levels only, and one level out halves the detail, so take the tightest level at which
+// the avenue still fits the box — the box above is sized so that level is the close one.
+const fit = Math.log2(Math.min((MAP_W - 2 * MAP_PAD) / (span(mercX) * 256), (MAP_H - 2 * MAP_PAD) / (span(mercY) * 256)));
+const MAP_Z = Math.floor(fit) + (Math.pow(2, Math.floor(fit) + 1) * span(mercX) * 256 <= MAP_W - 2 * MAP_PAD &&
+                                 Math.pow(2, Math.floor(fit) + 1) * span(mercY) * 256 <= MAP_H - 2 * MAP_PAD ? 1 : 0);
+const world = 256 * Math.pow(2, MAP_Z);
+const PX = q => MAP_W / 2 + (mercX(q) - mercX(mCenter)) * world;
+const PY = q => MAP_H / 2 + (mercY(q) - mercY(mCenter)) * world;
+let mpLen = 0;
+function drawMap() {
+  const f = $('mapframe');
+  f.width = MAP_W; f.height = MAP_H;
+  $('map').style.width = MAP_W + 'px'; $('map').style.height = MAP_H + 'px';
+  f.src = 'https://www.google.com/maps/embed/v1/view?key=' + encodeURIComponent(key) +
+    '&center=' + mCenter[0].toFixed(6) + ',' + mCenter[1].toFixed(6) + '&zoom=' + MAP_Z + '&maptype=roadmap';
+  const d = 'M' + LINE.map(q => PX(q).toFixed(1) + ' ' + PY(q).toFixed(1)).join('L');
+  $('mapsvg').setAttribute('viewBox', '0 0 ' + MAP_W + ' ' + MAP_H);
+  $('mapsvg').innerHTML = '<path class="mp-road" d="' + d + '"/><path class="mp-done" id="mpdone" d="' + d + '"/>' +
+    '<g id="mphere"><polygon class="mp-cone" points="0,0 -12,-30 12,-30"/>' +
+    '<circle class="mp-dot" r="5.5"/><circle class="mp-dot2" r="2.5"/></g>';
+  mpLen = $('mpdone').getTotalLength();
+}
+function paintMap(s) {
+  if (!mpLen) return;
+  $('mpdone').style.strokeDasharray = (mpLen * s.along / total).toFixed(1) + ' ' + mpLen.toFixed(1);
+  $('mphere').setAttribute('transform', 'translate(' + PX(s.p).toFixed(1) + ',' + PY(s.p).toFixed(1) + ') rotate(' + Math.round(s.heading) + ')');
+  const pts = ['north', 'north-east', 'east', 'south-east', 'south', 'south-west', 'west', 'north-west'];
+  $('facing').textContent = 'facing ' + pts[Math.round(s.heading / 45) % 8] + ' · ' + Math.round(s.heading) + '°';
+}
 function paint() {
   const s = stops[idx];
   fill.style.width = (100 * s.along / total).toFixed(2) + '%';
@@ -176,6 +247,7 @@ function paint() {
   let near = LANDMARKS[0].name, best = Infinity;
   for (const l of LANDMARKS) { const d = dist(s.p, l.at); if (d < best) { best = d; near = l.name; } }
   $('near').textContent = s.label || (best < 160 ? near : 'towards Place de la Concorde');
+  paintMap(s);
 }
 function tick(now) {
   if (playing && ready && key && now - shownAt >= MIN_DWELL) {
@@ -200,7 +272,7 @@ $('track').onclick = e => {
 $('full').onclick = () => (document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen?.());
 document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); setPlaying(!playing); } });
 // the bar fades away while you watch and comes back when you move
-let hideT; const wake = () => { $('bar').classList.remove('hide'); clearTimeout(hideT); hideT = setTimeout(() => $('bar').classList.add('hide'), 3500); };
+let hideT; const wake = () => { $('bar').classList.remove('hide'); clearTimeout(hideT); hideT = setTimeout(() => $('bar').classList.add('hide'), 6000); };
 ['mousemove', 'touchstart', 'keydown'].forEach(ev => addEventListener(ev, wake, { passive: true }));
 // keep a phone screen awake for the length of the walk
 async function stayAwake() { try { await navigator.wakeLock?.request('screen'); } catch (e) {} }
@@ -215,6 +287,7 @@ document.addEventListener('visibilitychange', () => { if (document.visibilitySta
     f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
     stage.appendChild(f); frames.push(f);
   }
+  drawMap();
   frames[0].classList.add('on');
   frames[0].src = url(stops[0]); lastStepAt = performance.now(); shownAt = lastStepAt; paint();
   frames[0].onload = () => { frames[0].onload = null; lastStepAt = performance.now(); preload(1); };
