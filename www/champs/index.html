@@ -8,7 +8,11 @@
   :root { color-scheme: dark; }
   html, body { margin: 0; height: 100%; background: #000; overflow: hidden;
     font: 15px/1.4 -apple-system, "Segoe UI", Roboto, "Noto Sans SC", sans-serif; color: #eee; }
-  #stage { position: fixed; inset: 0; }
+  /* The Embed API has no switch for its own furniture, so the frame is hung larger than the window and its corners
+     fall outside it: the address card and fullscreen button off the top, the compass and zoom buttons off the right.
+     Google's logo and its "© Google / Terms" credit stay inside the window, as their terms require. Measured
+     2026-09-18; the widgets sit at the same corner offsets whatever the window size. */
+  #stage { position: fixed; left: 0; top: -84px; right: -64px; bottom: 0; }
   #stage iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
     opacity: 0; transition: opacity 1s ease; }
   #stage iframe.on { opacity: 1; }
@@ -17,11 +21,6 @@
   /* The Embed API has no switch for its own furniture, so the page covers it: the address card top-left, and the
      compass and zoom buttons on the right edge. Google's logo and Terms link are attribution and stay visible, as
      their terms require. Corner offsets are the same at every window size, measured 2026-09-18. */
-  #hideTL, #hideBR { position: fixed; z-index: 3; pointer-events: none; }
-  #hideTL { left: 0; top: 0; width: 320px; height: 190px;
-    background: radial-gradient(115% 115% at 0 0, rgba(0,0,0,1) 52%, rgba(0,0,0,.72) 68%, transparent 84%); }
-  #hideBR { right: 0; bottom: 18px; width: 120px; height: 200px;
-    background: radial-gradient(120% 90% at 100% 55%, rgba(0,0,0,.97) 45%, rgba(0,0,0,.55) 68%, transparent 82%); }
   /* the chevrons painted on the road are part of the panorama itself and cannot be removed; this at least stops a
      stray click or drag turning the view away from the walk */
   #shield { position: fixed; inset: 0; z-index: 4; }
@@ -62,8 +61,6 @@
 </head>
 <body>
 <div id="stage"></div>
-<div id="hideTL"></div>
-<div id="hideBR"></div>
 <div id="shield"></div>
 <div id="map"><iframe id="mapframe" title="Map of the avenue" referrerpolicy="no-referrer-when-downgrade"></iframe><svg id="mapsvg" aria-label="Where you are on the avenue"></svg><div id="facing"></div></div>
 <div id="title"><h1>Avenue des Champs-Élysées</h1><p>Arc de Triomphe → Place de la Concorde · 1.8 km on foot</p></div>
