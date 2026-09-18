@@ -22,7 +22,7 @@
      compass and zoom buttons on the right edge. Google's logo and Terms link are attribution and stay visible, as
      their terms require. Corner offsets are the same at every window size, measured 2026-09-18. */
   /* the chevrons painted on the road are part of the panorama itself and cannot be removed; this at least stops a
-     stray click or drag turning the view away from the walk */
+     stray touch or drag turning the view away from the walk */
   #shield { position: fixed; inset: 0; z-index: 4; }
   /* A real Google map, from the same free Embed API in "view" mode, held still while the marker moves over it. */
   #map { position: fixed; top: max(14px, env(safe-area-inset-top)); right: 14px;   /* Google's address box sits top-left */
@@ -30,7 +30,9 @@
     border: 1px solid rgba(255,255,255,.22); box-shadow: 0 4px 18px rgba(0,0,0,.5); }
   #map iframe { display: block; border: 0; }
   @media (max-width: 620px) { #map { transform: scale(.62); transform-origin: top right; } }
-  #mapsvg { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+  /* The marker is placed for a map held at one centre and zoom, so the map must not be panned or zoomed under it:
+     the overlay takes every touch on the inset. */
+  #mapsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
   #facing { position: absolute; top: 8px; right: 8px; font-size: 12px; padding: 3px 8px; border-radius: 999px;
     background: rgba(12,12,14,.78); color: #eee; }   /* clear of Google's own controls and credits */
   .mp-road { fill: none; stroke: rgba(30,30,35,.3); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
